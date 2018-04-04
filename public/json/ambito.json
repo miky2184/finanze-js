@@ -1,0 +1,28 @@
+[{
+    "ambito": 1,
+    "label": "BANCA"
+}, {
+    "ambito": 2,
+    "label": "CASA"
+}, {
+    "ambito": 3,
+    "label": "ISTRUZIONE"
+}, {
+    "ambito": 4,
+    "label": "LAVORO"
+}, {
+    "ambito": 5,
+    "label": "SALUTE"
+}, {
+    "ambito": 6,
+    "label": "SERVIZI"
+}, {
+    "ambito": 7,
+    "label": "SHOPPING"
+}, {
+    "ambito": 8,
+    "label": "SVAGO"
+}, {
+    "ambito": 9,
+    "label": "TRASPORTI"
+}]

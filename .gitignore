@@ -1,0 +1,13 @@
+node_modules/*
+.DS_Store
+.AppleDouble/*
+public/node_modules/*
+public/.DS_Store
+public/.AppleDouble/*
+package-lock.json
+public/package-lock.json
+public/view/.AppleDouble/*
+public/templates/.AppleDouble/*
+public/templates/rows/.AppleDouble/*
+public/utils/.AppleDouble/*
+public/json/.AppleDouble/*

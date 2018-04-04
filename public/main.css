@@ -1,0 +1,54 @@
+.myGrid {
+    width: auto;
+    height: auto;
+  }
+  
+.btnMargin {
+	margin-right: 2px
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
+   background-color: #ffdddd !important;
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
+   background-color: #f5d3d3 !important;
+}
+
+.ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell.delete {
+   background-color: #f5b3c3 !important;
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
+   background-color: #ddffdd
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
+   background-color: #d3f5d3
+}
+
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+.btn.btn-default.navbar-btn {
+   line-height: 1.42857;
+   font-size: 18px;
+   padding: 2px 8px;
+   width: 2.2em;
+}
+
+.ui-grid-header-cell-label {
+   white-space: normal;
+   font-size: 10px;
+}
+
+.form-login{
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

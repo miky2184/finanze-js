@@ -1,0 +1,7 @@
+[{
+    "tipoConto": 1,
+    "label": "CONTO COMUNE"
+}, {
+    "tipoConto": 2,
+    "label": "CONTO PERSONALE"
+}]

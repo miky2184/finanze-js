@@ -1,0 +1,87 @@
+<div class="row">
+<div class="col-md-3" style="padding-left: 2px">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="text-align:center">Ambito</div>
+		<div class="panel-body min-padding">
+			  <div class="row min-padding-table">
+		<div id="grid1" ui-grid="gridOptionsAmb" ui-grid-selection ui-grid-edit class="myGrid"></div>
+		</div>
+		</div>
+      <div class="panel-footer">
+  <button ng-repeat="button in settingButtons" class="btn btn-success btn-xs btnMargin" ng-click="button.listener(gridOptionsAmb, 'ambito')" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+	</div>
+</div>
+<div class="col-md-3" style="padding-left: 2px">
+<div class="panel panel-default">
+		<div class="panel-heading" style="text-align:center">Categoria</div>
+		<div class="panel-body min-padding">
+			  <div class="row min-padding-table">
+<div id="grid2" ui-grid="gridOptionsCat" ui-grid-selection ui-grid-edit class="myGrid"></div>
+	</div>
+		</div>
+  <div class="panel-footer">
+  <button ng-repeat="button in settingButtons" class="btn btn-success btn-xs btnMargin" ng-click="button.listener(gridOptionsCat, 'categoria')" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+	</div>
+</div>
+<div class="col-md-3" style="padding-left: 2px">
+<div class="panel panel-default">
+		<div class="panel-heading" style="text-align:center">Sottocategoria</div>
+		<div class="panel-body min-padding">
+			  <div class="row min-padding-table">
+<div id="grid3" ui-grid="gridOptionsSott"  ui-grid-selection ui-grid-edit class="myGrid"></div>
+	</div>
+		</div>
+  <div class="panel-footer">
+  <button ng-repeat="button in settingButtons" class="btn btn-success btn-xs  btnMargin" ng-click="button.listener(gridOptionsSott, 'sottocategoria')" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+	</div>
+</div>
+  <div class="col-md-3" style="padding-left: 2px">
+<div class="panel panel-default">
+		<div class="panel-heading" style="text-align:center">Beneficiario</div>
+		<div class="panel-body min-padding">
+			  <div class="row min-padding-table">
+<div id="grid3" ui-grid="gridOptionsBen"  ui-grid-selection ui-grid-edit class="myGrid"></div>
+	</div>
+		</div>
+  <div class="panel-footer">
+  <button ng-repeat="button in settingButtons" class="btn btn-success btn-xs  btnMargin" ng-click="button.listener(gridOptionsBen, 'beneficiario')" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+	</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6" style="padding-left: 2px">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="text-align:center">Ambito-Categoria</div>
+		<div class="panel-body min-padding">
+			  <div class="row min-padding-table">
+		<div id="grid1" ui-grid="gridOptionsAmbCat" ui-grid-selection ui-grid-edit class="myGrid"></div>
+		</div>
+		</div>
+    <div class="panel-footer">
+  <button ng-repeat="button in settingButtons" class="btn btn-success btn-xs  btnMargin" ng-click="button.listener(gridOptionsAmbCat)" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+	</div>
+</div>
+<div class="col-md-6" style="padding-left: 2px">
+<div class="panel panel-default">
+		<div class="panel-heading" style="text-align:center">Categoria-Sottocategoria</div>
+		<div class="panel-body min-padding">
+			  <div class="row min-padding-table">
+<div id="grid2" ui-grid="gridOptionsCatSott" ui-grid-selection ui-grid-edit class="myGrid"></div>
+	</div>
+		</div>
+  <div class="panel-footer">
+  <button ng-repeat="button in settingButtons" class="btn btn-success btn-xs  btnMargin" ng-click="button.listener(gridOptionsCatSott)" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+	</div>
+</div>
+</div>
+<div class="panel-footer clearfix" ng-show="login.logged"> 
+  <div class="pull-right">
+    <button ng-repeat="button in saveSettingButtons" class="btn btn-success btn-xs  btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
+  </div>
+</div>

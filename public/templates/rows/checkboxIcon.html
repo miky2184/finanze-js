@@ -1,0 +1,9 @@
+<div class="ui-grid-cell-contents text-center" title="TOOLTIP">
+	<a ng-click="grid.api.edit.raise.beginCellEdit(row.entity, col.colDef); MODEL_COL_FIELD = !COL_FIELD; grid.api.edit.raise.afterCellEdit(row.entity, col.colDef, COL_FIELD, !COL_FIELD);" href="#" 
+	ng-disable="col.colDef.buttonDisabled(row.entity, col.colDef)">
+	<span ng-class="row.entity[col.colDef.field] === true ? col.colDef.buttonNgClass : 'far fa-square'" />
+	</a>
+</div>
+
+
+<!-- <input type="checkbox" ng-class="row.entity.contabilizzata === true ? 'fas fa-balance-scale' : 'far fa-square'" ng-model="row.entity.contabilizzata" ng-change="grid.appScope.afterCellEditFunction(row.entity, 'contabilizzata', row.entity.contabilizzata, !row.entity.contabilizzata)" /> -->

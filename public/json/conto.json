@@ -1,0 +1,13 @@
+[{
+    "conto": 1,
+    "label": "CARTA PREPAGATA"
+}, {
+    "conto": 2,
+    "label": "CONTANTI"
+}, {
+    "conto": 3,
+    "label": "CONTO CORRENTE"
+}, {
+    "conto": 4,
+    "label": "DA AVERE"
+}]

@@ -1,0 +1,130 @@
+[{
+    "categoria": 1,
+    "label": "ACCESSORI"
+}, {
+    "categoria": 2,
+    "label": "ACCESSORI SPORTIVI"
+}, {
+    "categoria": 3,
+    "label": "ALTRO"
+}, {
+    "categoria": 4,
+    "label": "AUTO"
+}, {
+    "categoria": 5,
+    "label": "BENESSERE"
+}, {
+    "categoria": 6,
+    "label": "BUDGET INIZIALE"
+}, {
+    "categoria": 7,
+    "label": "CINEMA"
+}, {
+    "categoria": 8,
+    "label": "CONCERTI"
+}, {
+    "categoria": 9,
+    "label": "CONGUAGLIO"
+}, {
+    "categoria": 10,
+    "label": "COSTI"
+}, {
+    "categoria": 11,
+    "label": "DISCO"
+}, {
+    "categoria": 12,
+    "label": "ELETTRONICO"
+}, {
+    "categoria": 13,
+    "label": "FANTACALCIO"
+}, {
+    "categoria": 14,
+    "label": "FIERE"
+}, {
+    "categoria": 15,
+    "label": "GIOCATTOLI"
+}, {
+    "categoria": 16,
+    "label": "INTERESSI"
+}, {
+    "categoria": 17,
+    "label": "LIBRI"
+}, {
+    "categoria": 18,
+    "label": "MANGIARE"
+}, {
+    "categoria": 19,
+    "label": "MARE/PISCINA"
+}, {
+    "categoria": 20,
+    "label": "MATRIMONIO"
+}, {
+    "categoria": 21,
+    "label": "MEDICINALI"
+}, {
+    "categoria": 22,
+    "label": "MUSEI"
+}, {
+    "categoria": 23,
+    "label": "PARCHI DIVERTIMENTO"
+}, {
+    "categoria": 24,
+    "label": "PROFUMI E COSMETICI"
+}, {
+    "categoria": 25,
+    "label": "PUBBLICI"
+}, {
+    "categoria": 26,
+    "label": "REGALI"
+}, {
+    "categoria": 27,
+    "label": "RIVISTE"
+}, {
+    "categoria": 28,
+    "label": "SCOMMESSE"
+}, {
+    "categoria": 29,
+    "label": "SCUOLA"
+}, {
+    "categoria": 30,
+    "label": "SERVIZI"
+}, {
+    "categoria": 31,
+    "label": "SPESE"
+}, {
+    "categoria": 32,
+    "label": "SPESE TENUTA CONTO"
+}, {
+    "categoria": 33,
+    "label": "SPORT"
+}, {
+    "categoria": 34,
+    "label": "STADIO"
+}, {
+    "categoria": 35,
+    "label": "STIPENDIO"
+}, {
+    "categoria": 36,
+    "label": "TABACCHI"
+}, {
+    "categoria": 37,
+    "label": "TASSE"
+}, {
+    "categoria": 38,
+    "label": "TRASFERIMENTO"
+}, {
+    "categoria": 39,
+    "label": "UTENZE"
+}, {
+    "categoria": 40,
+    "label": "VESTIARIO"
+}, {
+    "categoria": 41,
+    "label": "VIAGGI"
+}, {
+    "categoria": 42,
+    "label": "VISITE_MEDICHE"
+}, {
+    "categoria": 43,
+    "label": "VOLI"
+}]
