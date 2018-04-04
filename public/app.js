@@ -79,7 +79,7 @@
         enableSelectAll: true,
         selectionRowHeaderWidth: 35,
         rowTemplate: 'templates/rows/deletableRow.html',
-         enableColumnMenus: false,
+        enableColumnMenus: false,
         enableGridMenu: true,
         exporterMenuCsv: false,
         exporterMenuPdf: false,
@@ -449,7 +449,7 @@
       $scope.settingButtons = [];
       $scope.saveButtons = [];
 
-      
+
       $scope.addBtn = {
         label: '+',
         listener: function (gridOptions) {
@@ -497,7 +497,7 @@
           return $scope.login.read;
         }
       };
-      
+
       $scope.actionButtons.push($scope.addBtn);
       $scope.actionButtons.push($scope.deleteBtn);
       $scope.actionButtons.push($scope.copyBtn);
@@ -565,7 +565,7 @@
 
       $scope.saveBtn = {
         label: 'Salva',
-        listener: function (gridOptions) {
+        listener: function () {
 
           var oldPromise = $q.when();
           var x = 0;
@@ -587,11 +587,31 @@
             // return $http.get('json/save.json');
           }
 
-          var expensesToSave = gridOptions.data.filter(function (row) {
-            return row.dirty
+          var expensesToSave = $scope.gridOptions.data.filter(function (row) {
+            return row.dirty;
           });
 
-          expensesToSave.forEach(salva);
+          function salvaSettings(exp) {
+            oldPromise = oldPromise.then(
+              salvaSettingsFactory(exp).then(function (resp) {
+                x++;
+                if (x === expensesToSave.length) {
+                  return expensesToSave.forEach(salva);
+                }
+              })
+            );
+
+          };
+
+          function salvaSettingsFactory(exp) {
+            return $http.post('http://2.225.127.144:3000/saveSettings', exp);
+          }
+
+          var settAmbToSave = $scope.gridOptionsAmb.data.filter(function (amb) {
+            return amb.dirty && amb.ambito !== "null";
+          });
+
+          settAmbToSave.forEach(salvaSettings);
 
         },
         disabled: function () {
