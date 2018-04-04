@@ -613,7 +613,7 @@
 
           var settAmbSave = [];
 
-          settAmbToSave.forEach(function (y) {
+          settingsAmbitoToSave.forEach(function (y) {
             var tmp = {};
             tmp.ambito = y.ambito;
             tmp.label = y.label;
