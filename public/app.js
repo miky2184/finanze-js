@@ -1101,6 +1101,7 @@
         $interval($scope.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsBen.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
+        $interval($scope.gridOptionsCatSott.gridApi.core.handleWindowResize, 100, 10);
       }
 
       $scope.gridOptionsAmb = {
