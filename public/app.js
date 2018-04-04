@@ -15,6 +15,16 @@
         if (newValue === oldValue) {
           return;
         }
+        
+        if (colDef.name === 'ambito'){
+          $scope.editDropDownAmbitoArray.filter(function(a){
+              return a[colDef.name] = newValue;
+          }).used += 1;
+          
+          $scope.editDropDownAmbitoArray.filter(function(a){
+              return a[colDef.name] = oldValue;
+          }).used += -1;
+        }
 
         rowEntity.dirty = true;
 
@@ -451,6 +461,7 @@
             })) + 1;
             newSetting.dirty = true;
             newSetting['label'] = '';
+            newSetting.used = 0;
             // gridOptions.data.unshift(newSetting);
 
             if (type === 'ambito') {
