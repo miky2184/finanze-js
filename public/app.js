@@ -15,40 +15,55 @@
         if (newValue === oldValue) {
           return;
         }
-
+        
+        var newSett = {};
+        var oldSett = {};
+        
         if (colDef.name === 'ambito') {
-          $scope.editDropDownAmbitoArray.filter(function (a) {
+          
+          newSett = $scope.editDropDownAmbitoArray.filter(function (a) {
             return a[colDef.name] === newValue;
-          })[0].used += 1;
+          })[0];                  
 
-          $scope.editDropDownAmbitoArray.filter(function (a) {
+          oldSett = $scope.editDropDownAmbitoArray.filter(function (a) {
             return a[colDef.name] === oldValue;
-          })[0].used += -1;
+          })[0];
+                    
         } else if (colDef.name === 'categoria') {
-          $scope.editDropDownCategoriaArray.filter(function (a) {
+          newSett = $scope.editDropDownCategoriaArray.filter(function (a) {
             return a[colDef.name] === newValue;
-          })[0].used += 1;
+          })[0];
 
-          $scope.editDropDownCategoriaArray.filter(function (a) {
+          oldSett = $scope.editDropDownCategoriaArray.filter(function (a) {
             return a[colDef.name] === oldValue;
-          })[0].used += -1;
+          })[0];
+          
         } else if (colDef.name === 'sottocategoria') {
-          $scope.editDropDownSottoCategoriaArray.filter(function (a) {
+          newSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
             return a[colDef.name] === newValue;
-          })[0].used += 1;
+          })[0];
 
-          $scope.editDropDownSottoCategoriaArray.filter(function (a) {
+          oldSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
             return a[colDef.name] === oldValue;
-          })[0].used += -1;
+          })[0];
+          
         } else if (colDef.name === 'beneficiario') {
-          $scope.editDropDownBeneficiarioArray.filter(function (a) {
+          newSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
             return a[colDef.name] === newValue;
-          })[0].used += 1;
+          })[0];
 
-          $scope.editDropDownBeneficiarioArray.filter(function (a) {
+          oldSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
             return a[colDef.name] === oldValue;
-          })[0].used += -1;
+          })[0];
         }
+        
+        if (newSett){
+            newSett.used = newSett.used +1;
+          }
+          
+          if (oldSett){
+            oldSett.used += -1;
+          }
 
         rowEntity.dirty = true;
 
