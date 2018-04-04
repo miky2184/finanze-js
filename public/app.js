@@ -437,7 +437,7 @@
             
             if (type === 'ambito'){
               $scope.editDropDownAmbitoArray.unshift(newSetting);              
-              $scope.gridOptionsAmb.gridApi.core.refresh();
+              $interval($scope.gridOptionsAmb.gridApi.core.refresh, 100, 10);
             }
           }
         },
