@@ -611,7 +611,11 @@
             return amb.dirty && amb.ambito !== "null";
           });
 
-          settAmbToSave.forEach(salvaSettings);
+          if (settAmbToSave && settAmbToSave.length > 0) {
+            settAmbToSave.forEach(salvaSettings);
+          } else {
+            expensesToSave.forEach(salva);
+          }
 
         },
         disabled: function () {
