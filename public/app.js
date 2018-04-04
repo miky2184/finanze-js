@@ -47,7 +47,7 @@
             editDropdownIdLabel: 'ambito',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
-            editDropdownOptionsFunction: function(rowEntity, colDef){
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
               return $scope.editDropDownAmbitoArray;
             },
             filter: {
@@ -272,14 +272,32 @@
 
               return $http.get('http://2.225.127.144:3000/categoria').then(function (response) {
                 // return $http.get('json/categoria.json').then(function (response) {
+                if (response.data) {
+                  response.data.unshift({
+                    "categoria": "null",
+                    "label": " "
+                  });
+                }
                 $scope.editDropDownCategoriaArray = response.data;
 
                 return $http.get('http://2.225.127.144:3000/sottocategoria').then(function (response) {
                   // return $http.get('json/sottocategoria.json').then(function (response) {
+                  if (response.data) {
+                    response.data.unshift({
+                      "sottocategoria": "null",
+                      "label": " "
+                    });
+                  }
                   $scope.editDropDownSottoCategoriaArray = response.data;
 
                   return $http.get('http://2.225.127.144:3000/beneficiario').then(function (response) {
                     // return $http.get('json/beneficiario.json').then(function (response) {
+                    if (response.data) {
+                      response.data.unshift({
+                        "beneficiario": "null",
+                        "label": " "
+                      });
+                    }
                     $scope.editDropDownBeneficiarioArray = response.data;
 
                     return $http.get('http://2.225.127.144:3000/tipoConto').then(function (response) {
@@ -389,7 +407,7 @@
           if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
             gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
               row.deleted = !row.deleted;
-              row.dirty = true;              
+              row.dirty = true;
             });
           }
         },
@@ -434,10 +452,27 @@
             newSetting.dirty = true;
             newSetting['label'] = '';
             // gridOptions.data.unshift(newSetting);
-            
-            if (type === 'ambito'){
-              $scope.editDropDownAmbitoArray.unshift(newSetting);              
-              $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray;
+
+            if (type === 'ambito') {
+              $scope.editDropDownAmbitoArray.unshift(newSetting);
+              $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray.filter(function (x) {
+                return x[type] != "null";
+              });
+            } else if (type === 'categoria') {
+              $scope.editDropDownCategoriaArray.unshift(newSetting);
+              $scope.gridOptionsCat.data = $scope.editDropDownCategoriaArray.filter(function (x) {
+                return x[type] != "null";
+              });
+            } else if (type === 'sottocategoria') {
+              $scope.editDropDownSottoCategoriaArray.unshift(newSetting);
+              $scope.gridOptionsSott.data = $scope.editDropDownSottoCategoriaArray.filter(function (x) {
+                return x[type] != "null";
+              });
+            } else if (type === 'beneficiario') {
+              $scope.editDropDownBeneficiarioArray.unshift(newSetting);
+              $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray.filter(function (x) {
+                return x[type] != "null";
+              });
             }
           }
         },
@@ -451,7 +486,7 @@
           if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
             gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
               row.deleted = !row.deleted;
-              row.dirty = true;              
+              row.dirty = true;
             });
           }
         },
@@ -1018,12 +1053,18 @@
        ************************************************/
 
       $scope.loadSettings = function () {
-        $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray.filter(function(j){
-            return j.ambito !== "null";
+        $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray.filter(function (j) {
+          return j.ambito !== "null";
         });
-        $scope.gridOptionsCat.data = $scope.editDropDownCategoriaArray;
-        $scope.gridOptionsSott.data = $scope.editDropDownSottoCategoriaArray;
-        $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray;
+        $scope.gridOptionsCat.data = $scope.editDropDownCategoriaArray.filter(function (j) {
+          return j.categoria !== "null";
+        });
+        $scope.gridOptionsSott.data = $scope.editDropDownSottoCategoriaArray.filter(function (j) {
+          return j.sottocategoria !== "null";
+        });
+        $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray.filter(function (j) {
+          return j.beneficiario !== "null";
+        });
         $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray;
 
         $interval($scope.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
