@@ -1114,7 +1114,7 @@
        }],
         data: [],
         isRowSelectable: function (row) {
-          return row.entity.used > 0;
+          return row.entity.used <= 0;
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmb.gridApi = gridApi;
@@ -1132,7 +1132,7 @@
        }],
         data: [],
         isRowSelectable: function (row) {
-          return row.entity.used > 0;
+          return row.entity.used <= 0;
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCat.gridApi = gridApi;
@@ -1150,7 +1150,7 @@
        }],
         data: [],
         isRowSelectable: function (row) {
-          return row.entity.used > 0;
+          return row.entity.used <= 0;
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsSott.gridApi = gridApi;
@@ -1168,7 +1168,7 @@
        }],
         data: [],
         isRowSelectable: function (row) {
-          return row.entity.used > 0;
+          return row.entity.used <= 0;
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsBen.gridApi = gridApi;
