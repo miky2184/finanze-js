@@ -625,7 +625,7 @@
           } else {
             expensesToSave.forEach(salva);
           } */
-          return $http.post('http://2.225.127.144:3000/saveAmbito', exp).then(function (res) {
+          return $http.post('http://2.225.127.144:3000/saveAmbito', settingsAmbitoToSave).then(function (res) {
             expensesToSave.forEach(salva);
           });
 
