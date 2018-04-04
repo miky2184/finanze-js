@@ -591,31 +591,43 @@
             return row.dirty;
           });
 
-          function salvaSettings(exp) {
-            oldPromise = oldPromise.then(
-              salvaSettingsFactory(exp).then(function (resp) {
-                x++;
-                if (x === expensesToSave.length) {
-                  return expensesToSave.forEach(salva);
-                }
-              })
-            );
+          /*  function salvaSettingsAmbito(exp) {
+              oldPromise = oldPromise.then(
+                salvaSettingsAmbitoFactory(exp).then(function (resp) {
+                  x++;
+                  if (x === expensesToSave.length) {
+                    return expensesToSave.forEach(salva);
+                  }
+                })
+              );
 
-          };
+            };
 
-          function salvaSettingsFactory(exp) {
-            return $http.post('http://2.225.127.144:3000/saveSettings', exp);
-          }
+            function salvaSettingsAmbitoFactory(exp) {
+              return $http.post('http://2.225.127.144:3000/saveSettings', exp);
+            } */
 
-          var settAmbToSave = $scope.gridOptionsAmb.data.filter(function (amb) {
+          var settingsAmbitoToSave = $scope.gridOptionsAmb.data.filter(function (amb) {
             return amb.dirty && amb.ambito !== "null";
           });
 
-          if (settAmbToSave && settAmbToSave.length > 0) {
-            settAmbToSave.forEach(salvaSettings);
+          var settAmbSave = [];
+
+          settAmbToSave.forEach(function (y) {
+            var tmp = {};
+            tmp.ambito = y.ambito;
+            tmp.label = y.label;
+            settAmbSave.push(tmp)
+          });
+
+          /* if (settingsAmbitoToSave && settingsAmbitoToSave.length > 0) {
+            settingsAmbitoToSave.forEach(salvaSettingsAmbito);
           } else {
             expensesToSave.forEach(salva);
-          }
+          } */
+          return $http.post('http://2.225.127.144:3000/saveAmbito', exp).then(function (res) {
+            expensesToSave.forEach(salva);
+          });
 
         },
         disabled: function () {
