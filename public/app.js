@@ -387,8 +387,7 @@
           if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
             gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
               row.deleted = !row.deleted;
-              row.dirty = true;
-              $log.log(row.deleted);
+              row.dirty = true;              
             });
           }
         },
@@ -430,6 +429,7 @@
             }).map(function (obj) {
               return obj[type];
             })) + 1;
+            newSetting.dirty = true;
             newSetting['label'] = '';
             gridOptions.data.unshift(newSetting);
           }
@@ -440,7 +440,14 @@
       };
       $scope.deleteSettingBtn = {
         label: '-',
-        listener: function (gridOptions, type) {},
+        listener: function (gridOptions) {
+          if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
+            gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
+              row.deleted = !row.deleted;
+              row.dirty = true;              
+            });
+          }
+        },
         disabled: function () {
           return $scope.login.read;
         }
@@ -1004,7 +1011,9 @@
        ************************************************/
 
       $scope.loadSettings = function () {
-        $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray;
+        $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray.filter(function(j){
+            return j.ambito !== "null";
+        });
         $scope.gridOptionsCat.data = $scope.editDropDownCategoriaArray;
         $scope.gridOptionsSott.data = $scope.editDropDownSottoCategoriaArray;
         $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray;
@@ -1021,8 +1030,6 @@
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
         columnDefs: [{
-          field: 'ambito'
-       }, {
           field: 'label'
        }],
         data: [],
