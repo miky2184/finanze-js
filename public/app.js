@@ -614,9 +614,9 @@
           var settAmbSave = [];
 
           settingsAmbitoToSave.forEach(function (y) {
-            var tmp = {};
-            tmp.ambito = y.ambito;
-            tmp.label = y.label;
+            var tmp = []
+            tmp.push(y.ambito);
+            tmp.push(y.label);
             settAmbSave.push(tmp)
           });
 
