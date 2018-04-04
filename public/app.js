@@ -626,7 +626,11 @@
             expensesToSave.forEach(salva);
           } */
           return $http.post('http://2.225.127.144:3000/saveAmbito', [settAmbSave]).then(function (res) {
-            expensesToSave.forEach(salva);
+            if (expensesToSave && expensesToSave.length > 0) {
+              expensesToSave.forEach(salva);
+            } else {
+              $scope.loadData();
+            }
           });
 
         },
