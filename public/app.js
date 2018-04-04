@@ -15,20 +15,20 @@
         if (newValue === oldValue) {
           return;
         }
-        
+
         var newSett = {};
         var oldSett = {};
-        
+
         if (colDef.name === 'ambito') {
-          
+
           newSett = $scope.editDropDownAmbitoArray.filter(function (a) {
             return a[colDef.name] === newValue;
-          })[0];                  
+          })[0];
 
           oldSett = $scope.editDropDownAmbitoArray.filter(function (a) {
             return a[colDef.name] === oldValue;
           })[0];
-                    
+
         } else if (colDef.name === 'categoria') {
           newSett = $scope.editDropDownCategoriaArray.filter(function (a) {
             return a[colDef.name] === newValue;
@@ -37,7 +37,7 @@
           oldSett = $scope.editDropDownCategoriaArray.filter(function (a) {
             return a[colDef.name] === oldValue;
           })[0];
-          
+
         } else if (colDef.name === 'sottocategoria') {
           newSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
             return a[colDef.name] === newValue;
@@ -46,7 +46,7 @@
           oldSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
             return a[colDef.name] === oldValue;
           })[0];
-          
+
         } else if (colDef.name === 'beneficiario') {
           newSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
             return a[colDef.name] === newValue;
@@ -56,14 +56,14 @@
             return a[colDef.name] === oldValue;
           })[0];
         }
-        
-        if (newSett){
-            newSett.used = newSett.used +1;
-          }
-          
-          if (oldSett){
-            oldSett.used += -1;
-          }
+
+        if (newSett) {
+          newSett.used = newSett.used + 1;
+        }
+
+        if (oldSett) {
+          oldSett.used += -1;
+        }
 
         rowEntity.dirty = true;
 
@@ -79,6 +79,12 @@
         enableSelectAll: true,
         selectionRowHeaderWidth: 35,
         rowTemplate: 'templates/rows/deletableRow.html',
+         enableColumnMenus: false,
+        enableGridMenu: true,
+        exporterMenuCsv: false,
+        exporterMenuPdf: false,
+        exporterExcelFilename: 'Finanze.xlsx',
+        exporterExcelSheetName: 'Dati Estratti',
         columnDefs: [
           {
             field: 'data',
@@ -96,7 +102,9 @@
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
             editDropdownOptionsFunction: function (rowEntity, colDef) {
-              return $scope.editDropDownAmbitoArray;
+              return $scope.editDropDownAmbitoArray.filter(function (a) {
+                return !a.deleted;
+              });
             },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
@@ -125,7 +133,7 @@
             editDropdownOptionsFunction: function (rowEntity, colDef) {
               if (rowEntity.ambito) {
                 return $scope.editDropDownCategoriaArray.filter(function (obj) {
-                  return obj.ambito === rowEntity.ambito;
+                  return obj.ambito === rowEntity.ambito && !obj.deleted;
                 });
               }
               return []; //$scope.editDropDownCategoriaArray;
@@ -154,7 +162,14 @@
             editDropdownIdLabel: 'sottocategoria',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',
-            editDropdownOptionsArray: $scope.editDropDownSottoCategoriaArray,
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
+              if (rowEntity.categoria) {
+                return $scope.editDropDownSottoCategoriaArray.filter(function (obj) {
+                  return obj.categoria === rowEntity.categoria && !obj.deleted;
+                });
+              }
+              return [];
+            },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
                 if (row.grid.appScope.$parent.editDropDownSottoCategoriaArray) {
@@ -179,7 +194,9 @@
             editDropdownIdLabel: 'beneficiario',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownBeneficiarioArray:"beneficiario":"label"',
-            editDropdownOptionsArray: $scope.editDropDownBeneficiarioArray,
+            editDropdownOptionsFunction: function () {
+              return $scope.editDropDownBeneficiarioArray;
+            },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
                 if (row.grid.appScope.$parent.editDropDownBeneficiarioArray) {
@@ -204,7 +221,9 @@
             editDropdownIdLabel: 'tipoConto',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownTipoContoArray:"tipoConto":"label"',
-            editDropdownOptionsArray: $scope.editDropDownTipoContoArray,
+            editDropdownOptionsFunction: function () {
+              return $scope.editDropDownTipoContoArray;
+            },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
                 if (row.grid.appScope.$parent.editDropDownTipoContoArray) {
@@ -230,7 +249,9 @@
             editDropdownIdLabel: 'conto',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownContoArray:"conto":"label"',
-            editDropdownOptionsArray: $scope.editDropDownContoArray,
+            editDropdownOptionsFunction: function () {
+              return $scope.editDropDownContoArray;
+            },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
                 if (row.grid.appScope.$parent.editDropDownContoArray) {
@@ -428,11 +449,7 @@
       $scope.settingButtons = [];
       $scope.saveButtons = [];
 
-      $scope.exportBtn = {
-        label: 'Export',
-        listener: function (gridOptions) {},
-        disabled: function () {}
-      };
+      
       $scope.addBtn = {
         label: '+',
         listener: function (gridOptions) {
@@ -480,8 +497,7 @@
           return $scope.login.read;
         }
       };
-
-      $scope.actionButtons.push($scope.exportBtn);
+      
       $scope.actionButtons.push($scope.addBtn);
       $scope.actionButtons.push($scope.deleteBtn);
       $scope.actionButtons.push($scope.copyBtn);
