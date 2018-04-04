@@ -329,61 +329,7 @@
             $scope.descName = resp.data[0]['NAME'];
             $scope.login.admin = resp.data[0]['PROFILE'] === 'admn' ? true : false;
             $scope.login.read = resp.data[0]['PROFILE'] === 'read' ? true : false;
-            return $http.get('http://2.225.127.144:3000/ambito').then(function (response) {
-              // return $http.get('json/ambito.json').then(function (response) {
-              if (response.data) {
-                response.data.unshift({
-                  "ambito": "null",
-                  "label": " "
-                });
-              }
-              $scope.editDropDownAmbitoArray = response.data;
-
-              return $http.get('http://2.225.127.144:3000/categoria').then(function (response) {
-                // return $http.get('json/categoria.json').then(function (response) {
-                if (response.data) {
-                  response.data.unshift({
-                    "categoria": "null",
-                    "label": " "
-                  });
-                }
-                $scope.editDropDownCategoriaArray = response.data;
-
-                return $http.get('http://2.225.127.144:3000/sottocategoria').then(function (response) {
-                  // return $http.get('json/sottocategoria.json').then(function (response) {
-                  if (response.data) {
-                    response.data.unshift({
-                      "sottocategoria": "null",
-                      "label": " "
-                    });
-                  }
-                  $scope.editDropDownSottoCategoriaArray = response.data;
-
-                  return $http.get('http://2.225.127.144:3000/beneficiario').then(function (response) {
-                    // return $http.get('json/beneficiario.json').then(function (response) {
-                    if (response.data) {
-                      response.data.unshift({
-                        "beneficiario": "null",
-                        "label": " "
-                      });
-                    }
-                    $scope.editDropDownBeneficiarioArray = response.data;
-
-                    return $http.get('http://2.225.127.144:3000/tipoConto').then(function (response) {
-                      // return $http.get('json/tipoConto.json').then(function (response) {
-                      $scope.editDropDownTipoContoArray = response.data;
-
-                      return $http.get('http://2.225.127.144:3000/conto').then(function (response) {
-                        // return $http.get('json/conto.json').then(function (response) {
-                        $scope.editDropDownContoArray = response.data;
-
-                        return $scope.loadData();
-                      });
-                    });
-                  });
-                });
-              });
-            });
+            $scope.loadData();
           } else {
             $scope.alerts.push({
               msg: 'Username e/o Password errate!!!',
@@ -401,47 +347,101 @@
       $scope.backupData = [];
 
       $scope.loadData = function () {
-        return $http.get('http://2.225.127.144:3000/all').
-        // return $http.get('json/all.json').
-        then(function (response) {
+        return $http.get('http://2.225.127.144:3000/ambito').then(function (response) {
+          // return $http.get('json/ambito.json').then(function (response) {
+          if (response.data) {
+            response.data.unshift({
+              "ambito": "null",
+              "label": " "
+            });
+          }
+          $scope.editDropDownAmbitoArray = response.data;
 
-          $scope.login.logged = true;
+          return $http.get('http://2.225.127.144:3000/categoria').then(function (response) {
+            // return $http.get('json/categoria.json').then(function (response) {
+            if (response.data) {
+              response.data.unshift({
+                "categoria": "null",
+                "label": " "
+              });
+            }
+            $scope.editDropDownCategoriaArray = response.data;
 
-          var resultsData = [];
+            return $http.get('http://2.225.127.144:3000/sottocategoria').then(function (response) {
+              // return $http.get('json/sottocategoria.json').then(function (response) {
+              if (response.data) {
+                response.data.unshift({
+                  "sottocategoria": "null",
+                  "label": " "
+                });
+              }
+              $scope.editDropDownSottoCategoriaArray = response.data;
 
-          response.data.forEach(function (row) {
-            var newRow = {};
-            newRow.id = row['ID'];
-            newRow.data = new Date(row['DATA_VAL']);
-            newRow.ambito = row['AMBITO'];
-            newRow.categoria = row['CATEGORIA'];
-            newRow.sottocategoria = row['SOTTOCATEGORIA'];
-            // newRow.prodotto = row['PRODOTTO'];
-            newRow.beneficiario = row['BENEFICIARIO'];
-            newRow.tipoConto = row['TP_CONTO'];
-            newRow.conto = row['CONTO'];
-            newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
-            newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
-            newRow.importo = row['VALUE'];
-            newRow.info = row['INFO'];
-            newRow.anno = new Date(row['DATA_VAL']).getFullYear();
-            newRow.mese = new Date(row['DATA_VAL']).getMonth() + 1;
-            return resultsData.push(newRow);
+              return $http.get('http://2.225.127.144:3000/beneficiario').then(function (response) {
+                // return $http.get('json/beneficiario.json').then(function (response) {
+                if (response.data) {
+                  response.data.unshift({
+                    "beneficiario": "null",
+                    "label": " "
+                  });
+                }
+                $scope.editDropDownBeneficiarioArray = response.data;
+
+                return $http.get('http://2.225.127.144:3000/tipoConto').then(function (response) {
+                  // return $http.get('json/tipoConto.json').then(function (response) {
+                  $scope.editDropDownTipoContoArray = response.data;
+
+                  return $http.get('http://2.225.127.144:3000/conto').then(function (response) {
+                    // return $http.get('json/conto.json').then(function (response) {
+                    $scope.editDropDownContoArray = response.data;
+
+                    return $http.get('http://2.225.127.144:3000/all').
+                    // return $http.get('json/all.json').
+                    then(function (response) {
+
+                      $scope.login.logged = true;
+
+                      var resultsData = [];
+
+                      response.data.forEach(function (row) {
+                        var newRow = {};
+                        newRow.id = row['ID'];
+                        newRow.data = new Date(row['DATA_VAL']);
+                        newRow.ambito = row['AMBITO'];
+                        newRow.categoria = row['CATEGORIA'];
+                        newRow.sottocategoria = row['SOTTOCATEGORIA'];
+                        // newRow.prodotto = row['PRODOTTO'];
+                        newRow.beneficiario = row['BENEFICIARIO'];
+                        newRow.tipoConto = row['TP_CONTO'];
+                        newRow.conto = row['CONTO'];
+                        newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
+                        newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
+                        newRow.importo = row['VALUE'];
+                        newRow.info = row['INFO'];
+                        newRow.anno = new Date(row['DATA_VAL']).getFullYear();
+                        newRow.mese = new Date(row['DATA_VAL']).getMonth() + 1;
+                        return resultsData.push(newRow);
+                      });
+
+                      $scope.backupData = angular.copy(resultsData);
+
+                      $scope.gridOptions.data = resultsData;
+
+                      $scope.gridOptions.columnDefs[1].editDropdownOptionsArray = $scope.editDropDownAmbitoArray;
+                      $scope.gridOptions.columnDefs[2].editDropdownOptionsArray = $scope.editDropDownCategoriaArray;
+                      $scope.gridOptions.columnDefs[3].editDropdownOptionsArray = $scope.editDropDownSottoCategoriaArray;
+                      $scope.gridOptions.columnDefs[4].editDropdownOptionsArray = $scope.editDropDownBeneficiarioArray;
+                      $scope.gridOptions.columnDefs[5].editDropdownOptionsArray = $scope.editDropDownTipoContoArray;
+                      $scope.gridOptions.columnDefs[6].editDropdownOptionsArray = $scope.editDropDownContoArray;
+
+                      $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+
+                    });
+                  });
+                });
+              });
+            });
           });
-
-          $scope.backupData = angular.copy(resultsData);
-
-          $scope.gridOptions.data = resultsData;
-
-          $scope.gridOptions.columnDefs[1].editDropdownOptionsArray = $scope.editDropDownAmbitoArray;
-          $scope.gridOptions.columnDefs[2].editDropdownOptionsArray = $scope.editDropDownCategoriaArray;
-          $scope.gridOptions.columnDefs[3].editDropdownOptionsArray = $scope.editDropDownSottoCategoriaArray;
-          $scope.gridOptions.columnDefs[4].editDropdownOptionsArray = $scope.editDropDownBeneficiarioArray;
-          $scope.gridOptions.columnDefs[5].editDropdownOptionsArray = $scope.editDropDownTipoContoArray;
-          $scope.gridOptions.columnDefs[6].editDropdownOptionsArray = $scope.editDropDownContoArray;
-
-          $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
-
         });
       };
 
