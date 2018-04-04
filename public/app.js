@@ -614,7 +614,7 @@
           var settAmbSave = [];
 
           settingsAmbitoToSave.forEach(function (y) {
-            var tmp = []
+            var tmp = [];
             tmp.push(y.ambito);
             tmp.push(y.label);
             settAmbSave.push(tmp)
@@ -625,7 +625,7 @@
           } else {
             expensesToSave.forEach(salva);
           } */
-          return $http.post('http://2.225.127.144:3000/saveAmbito', settingsAmbitoToSave).then(function (res) {
+          return $http.post('http://2.225.127.144:3000/saveAmbito', settAmbSave).then(function (res) {
             expensesToSave.forEach(salva);
           });
 
