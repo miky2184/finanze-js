@@ -433,7 +433,11 @@
             })) + 1;
             newSetting.dirty = true;
             newSetting['label'] = '';
-            gridOptions.data.unshift(newSetting);
+            // gridOptions.data.unshift(newSetting);
+            
+            if (type === 'ambito'){
+              $scope.editDropDownAmbitoArray.push(newSetting);
+            }
           }
         },
         disabled: function () {
