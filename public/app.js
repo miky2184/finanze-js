@@ -482,7 +482,7 @@
       };
       $scope.deleteSettingBtn = {
         label: '-',
-        listener: function (gridOptions) {
+        listener: function (gridOptions, type) {
           if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
             gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
               row.deleted = !row.deleted;
@@ -1079,8 +1079,14 @@
         rowTemplate: 'templates/rows/deletableRow.html',
         columnDefs: [{
           field: 'label'
+       }, {
+         field: 'used',
+         displayName: 'In Uso'         
        }],
         data: [],
+        isRowSelectable: function(row) {
+              return row.used > 0;
+            },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmb.gridApi = gridApi;
         }
@@ -1089,9 +1095,7 @@
       $scope.gridOptionsCat = {
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-        columnDefs: [{
-          field: 'categoria'
-       }, {
+        columnDefs: [ {
           field: 'label'
        }],
         data: [],
@@ -1104,8 +1108,6 @@
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
         columnDefs: [{
-          field: 'sottocategoria'
-       }, {
           field: 'label'
        }],
         data: [],
@@ -1151,9 +1153,7 @@
       $scope.gridOptionsBen = {
         rowTemplate: 'templates/rows/deletableRow.html',
         minRowsToShow: 8,
-        columnDefs: [{
-          field: 'beneficiario'
-       }, {
+        columnDefs: [ {
           field: 'label'
        }],
         data: [],
