@@ -436,7 +436,8 @@
             // gridOptions.data.unshift(newSetting);
             
             if (type === 'ambito'){
-              $scope.editDropDownAmbitoArray.push(newSetting);
+              $scope.editDropDownAmbitoArray.unshift(newSetting);              
+              $scope.gridOptionsAmb.gridApi.core.refresh();
             }
           }
         },
