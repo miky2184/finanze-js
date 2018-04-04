@@ -59,3 +59,28 @@
    padding-top: 8px;
    padding-bottom: 8px;
 }
+
+.min-padding-table {
+   padding: 0px;
+}
+
+.panel-footer {
+   padding: 6px;
+}
+
+.panel .panel-default {
+   margin-bottom: 4px;
+}
+
+.panel-heading {
+   font-size: 12px;
+   font-weight: 500;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   padding: 4px;
+   text-align: center;
+}
+
+.panel-body.min-padding {
+   padding: 0px 15px;
+}
