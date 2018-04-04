@@ -72,14 +72,14 @@
             editDropdownIdLabel: 'categoria',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
-            editDropdownOptionsFunction: function(rowEntity, colDef){
-				if (rowEntity.ambito){
-					return $scope.editDropDownCategoriaArray.filter(function(obj){
-						return obj.ambito === rowEntity.ambito;
-					});
-				}
-				return []; //$scope.editDropDownCategoriaArray;
-			},
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
+              if (rowEntity.ambito) {
+                return $scope.editDropDownCategoriaArray.filter(function (obj) {
+                  return obj.ambito === rowEntity.ambito;
+                });
+              }
+              return []; //$scope.editDropDownCategoriaArray;
+            },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
                 if (row.grid.appScope.$parent.editDropDownCategoriaArray) {
@@ -216,7 +216,7 @@
             footerCellFilter: 'currency',
             cellFilter: 'currency',
             width: '8%',
-            cellTooltip: true,            
+            cellTooltip: true,
             cellClass: 'text-right'
             },
           {
@@ -253,39 +253,39 @@
         user.username = $scope.username;
         user.pwd = $scope.password;
         return $http.post('http://2.225.127.144:3000/login', user).then(function (resp) {
-        // return $http.get('json/login.json').then(function (resp) {
+          // return $http.get('json/login.json').then(function (resp) {
           if (resp.data && resp.data.length === 1) {
             $scope.descName = resp.data[0]['NAME'];
             $scope.login.admin = resp.data[0]['PROFILE'] === 'admn' ? true : false;
-          $scope.login.read = resp.data[0]['PROFILE'] === 'read' ? true : false;
+            $scope.login.read = resp.data[0]['PROFILE'] === 'read' ? true : false;
             return $http.get('http://2.225.127.144:3000/ambito').then(function (response) {
-            // return $http.get('json/ambito.json').then(function (response) {
-              if (response.data){
-              response.data.unshift({
-                "ambito": "null",
-                "label": " "
-              });
+              // return $http.get('json/ambito.json').then(function (response) {
+              if (response.data) {
+                response.data.unshift({
+                  "ambito": "null",
+                  "label": " "
+                });
               }
               $scope.editDropDownAmbitoArray = response.data;
 
               return $http.get('http://2.225.127.144:3000/categoria').then(function (response) {
-              // return $http.get('json/categoria.json').then(function (response) {
+                // return $http.get('json/categoria.json').then(function (response) {
                 $scope.editDropDownCategoriaArray = response.data;
 
                 return $http.get('http://2.225.127.144:3000/sottocategoria').then(function (response) {
-                // return $http.get('json/sottocategoria.json').then(function (response) {
+                  // return $http.get('json/sottocategoria.json').then(function (response) {
                   $scope.editDropDownSottoCategoriaArray = response.data;
 
                   return $http.get('http://2.225.127.144:3000/beneficiario').then(function (response) {
-                  // return $http.get('json/beneficiario.json').then(function (response) {
+                    // return $http.get('json/beneficiario.json').then(function (response) {
                     $scope.editDropDownBeneficiarioArray = response.data;
 
                     return $http.get('http://2.225.127.144:3000/tipoConto').then(function (response) {
-                    // return $http.get('json/tipoConto.json').then(function (response) {
+                      // return $http.get('json/tipoConto.json').then(function (response) {
                       $scope.editDropDownTipoContoArray = response.data;
 
                       return $http.get('http://2.225.127.144:3000/conto').then(function (response) {
-                      // return $http.get('json/conto.json').then(function (response) {
+                        // return $http.get('json/conto.json').then(function (response) {
                         $scope.editDropDownContoArray = response.data;
 
                         return $scope.loadData();
@@ -332,7 +332,7 @@
             newRow.tipoConto = row['TP_CONTO'];
             newRow.conto = row['CONTO'];
             newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
-            newRow.visualizzare = row['FL_VISL']  === 'SI' ? true : false;
+            newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
             newRow.importo = row['VALUE'];
             newRow.info = row['INFO'];
             newRow.anno = new Date(row['DATA_VAL']).getFullYear();
@@ -357,7 +357,7 @@
       };
 
       $scope.actionButtons = [];
-    $scope.settingButtons = [];
+      $scope.settingButtons = [];
       $scope.saveButtons = [];
 
       $scope.exportBtn = {
@@ -410,36 +410,42 @@
           }
         },
         disabled: function () {
-          return $scope.login.read;}
+          return $scope.login.read;
+        }
       };
 
       $scope.actionButtons.push($scope.exportBtn);
       $scope.actionButtons.push($scope.addBtn);
       $scope.actionButtons.push($scope.deleteBtn);
       $scope.actionButtons.push($scope.copyBtn);
-      
-        $scope.addSettingBtn = {
+
+      $scope.addSettingBtn = {
         label: '+',
         listener: function (gridOptions, type) {
-          if (type){
-           var newSetting = {};
+          if (type) {
+            var newSetting = {};
             newSetting.newRow = true;
-        newSetting[type] = Math.max(...gridOptions.data.filter(function(j){return j[type]!== "null";}).map(function(obj){return obj[type];})) + 1;
-        newSetting['label'] = '';
-          gridOptions.data.unshift(newSetting); 
+            newSetting[type] = Math.max(...gridOptions.data.filter(function (j) {
+              return j[type] !== "null";
+            }).map(function (obj) {
+              return obj[type];
+            })) + 1;
+            newSetting['label'] = '';
+            gridOptions.data.unshift(newSetting);
           }
         },
         disabled: function () {
-          return $scope.login.read;}
+          return $scope.login.read;
+        }
       };
       $scope.deleteSettingBtn = {
         label: '-',
-        listener: function (gridOptions, type) {
-        },
+        listener: function (gridOptions, type) {},
         disabled: function () {
-          return $scope.login.read;}
+          return $scope.login.read;
+        }
       };
-      
+
       $scope.settingButtons.push($scope.addSettingBtn);
       $scope.settingButtons.push($scope.deleteSettingBtn);
 
@@ -475,7 +481,8 @@
 
         },
         disabled: function () {
-          return $scope.login.read;}
+          return $scope.login.read;
+        }
       };
 
       $scope.cancelBtn = {
@@ -484,7 +491,8 @@
           gridOptions.data = angular.copy($scope.backupData);
         },
         disabled: function () {
-          return $scope.login.read;}
+          return $scope.login.read;
+        }
       };
 
       $scope.saveButtons.push($scope.saveBtn);
@@ -714,10 +722,10 @@
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsPivotConto.gridApi = gridApi;
-          
-          $timeout(function() {
-			  $scope.gridOptionsPivotConto.gridApi.treeBase.expandAllRows();
-		  }, 250);
+
+          $timeout(function () {
+            $scope.gridOptionsPivotConto.gridApi.treeBase.expandAllRows();
+          }, 250);
         }
       };
 
@@ -970,129 +978,134 @@
         var tmpData = [];
         for (var x = 0; x < ambitoData.length; x++) {
           tmpAmbId = ambitoData[x].idAmb;
-          pivotData.push(ambitoData[x]);          
+          pivotData.push(ambitoData[x]);
           for (var y = 0; y < categoryData.length; y++) {
             tmpCatId = categoryData[y].idCat;
             if (tmpAmbId === categoryData[y].idAmb) {
-              pivotData.push(categoryData[y]);              
+              pivotData.push(categoryData[y]);
               for (var z = 0; z < sottocategoryData.length; z++) {
-              if (tmpCatId === sottocategoryData[z].idCat) {
-                pivotData.push(sottocategoryData[z]);
+                if (tmpCatId === sottocategoryData[z].idCat) {
+                  pivotData.push(sottocategoryData[z]);
+                }
               }
-            }  
-            }                      
+            }
           }
         }
 
         $scope.gridOptionsPivotConto.data = pivotData;
         $interval($scope.gridOptionsPivotConto.gridApi.core.handleWindowResize, 100, 10);
-        $timeout(function() {
-			  $scope.gridOptionsPivotConto.gridApi.treeBase.expandAllRows();
-		  }, 250);
+        $timeout(function () {
+          $scope.gridOptionsPivotConto.gridApi.treeBase.expandAllRows();
+        }, 250);
       };
-      
-        /************************************************
+
+      /************************************************
        *                  TAB SETTINGS
        ************************************************/
-       
-       $scope.loadSettings = function(){
+
+      $scope.loadSettings = function () {
         $scope.gridOptionsAmb.data = $scope.editDropDownAmbitoArray;
-         $scope.gridOptionsCat.data = $scope.editDropDownCategoriaArray;
-         $scope.gridOptionsSott.data = $scope.editDropDownSottoCategoriaArray;
-         $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray;
-		   $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray;
-         
-		   $interval($scope.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
-		   $interval($scope.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
-		   $interval($scope.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
-		   $interval($scope.gridOptionsBen.gridApi.core.handleWindowResize, 100, 10);
-		   $interval($scope.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
-		 }
-       
-       $scope.gridOptionsAmb = {
-         minRowsToShow: 8,
+        $scope.gridOptionsCat.data = $scope.editDropDownCategoriaArray;
+        $scope.gridOptionsSott.data = $scope.editDropDownSottoCategoriaArray;
+        $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray;
+        $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray;
+
+        $interval($scope.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
+        $interval($scope.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
+        $interval($scope.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
+        $interval($scope.gridOptionsBen.gridApi.core.handleWindowResize, 100, 10);
+        $interval($scope.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
+      }
+
+      $scope.gridOptionsAmb = {
+        minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-         columnDefs:[{
-         field: 'ambito'
-       },{
-         field: 'label'
+        columnDefs: [{
+          field: 'ambito'
+       }, {
+          field: 'label'
        }],
-	   data: [],
-	   onRegisterApi: function (gridApi) {
-          $scope.gridOptionsAmb.gridApi = gridApi;                    
-        }};
-      
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsAmb.gridApi = gridApi;
+        }
+      };
+
       $scope.gridOptionsCat = {
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-        columnDefs:[{
-         field: 'categoria'
-       },{
-         field: 'label'
+        columnDefs: [{
+          field: 'categoria'
+       }, {
+          field: 'label'
        }],
-	   data: [],
-	   onRegisterApi: function (gridApi) {
-          $scope.gridOptionsCat.gridApi = gridApi;                    
-        }};
-      
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsCat.gridApi = gridApi;
+        }
+      };
+
       $scope.gridOptionsSott = {
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-        columnDefs:[{
-         field: 'sottocategoria'
-       },{
-         field: 'label'
+        columnDefs: [{
+          field: 'sottocategoria'
+       }, {
+          field: 'label'
        }],
-	   data: [],
-	   onRegisterApi: function (gridApi) {
-          $scope.gridOptionsSott.gridApi = gridApi;                    
-        }};
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsSott.gridApi = gridApi;
+        }
+      };
 
       $scope.gridOptionsAmbCat = {
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-	   columnDefs:[{
+        columnDefs: [{
             name: 'ambito',
             displayName: 'Ambito',
             field: 'ambito',
-            width: '8%',
             editableCellTemplate: 'templates/rows/dropdownEditor.html',
             editDropdownIdLabel: 'ambito',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
-            editDropdownOptionsFunction: function(){
+            editDropdownOptionsFunction: function () {
               return $scope.editDropDownAmbitoArray;
             }
      },
-    {field:'label'
+          {
+            field: 'label'
 		}],
-	   data: [],
-	   onRegisterApi: function (gridApi) {
-          $scope.gridOptionsAmbCat.gridApi = gridApi;                    
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsAmbCat.gridApi = gridApi;
         }
-	   };
-	   
-	   $scope.gridOptionsCatSott = {
-       minRowsToShow: 8,
+      };
+
+      $scope.gridOptionsCatSott = {
+        minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-       columnDefs:[],
-	   data: [],
-	   onRegisterApi: function (gridApi) {
-          $scope.gridOptionsCatSott.gridApi = gridApi;                    
-        }};
-	   
-	   $scope.gridOptionsBen = {
+        columnDefs: [],
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsCatSott.gridApi = gridApi;
+        }
+      };
+
+      $scope.gridOptionsBen = {
         rowTemplate: 'templates/rows/deletableRow.html',
-       minRowsToShow: 8,
-       columnDefs:[{
-         field: 'beneficiario'
-       },{
-         field: 'label'
+        minRowsToShow: 8,
+        columnDefs: [{
+          field: 'beneficiario'
+       }, {
+          field: 'label'
        }],
-	   data: [],
-	   onRegisterApi: function (gridApi) {
-          $scope.gridOptionsBen.gridApi = gridApi;                    
-        }};
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsBen.gridApi = gridApi;
+        }
+      };
 
     }]).filter('map', function () {
       return function () {
