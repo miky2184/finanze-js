@@ -47,7 +47,9 @@
             editDropdownIdLabel: 'ambito',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
-            editDropdownOptionsArray: $scope.editDropDownAmbitoArray,
+            editDropdownOptionsFunction: function(rowEntity, colDef){
+              return $scope.editDropDownAmbitoArray;
+            },
             filter: {
               condition: function (searchTerm, cellValue, row, column) {
                 if (row.grid.appScope.$parent.editDropDownAmbitoArray) {
@@ -565,7 +567,7 @@
 
         var balance = [];
 
-        angular.copy($scope.editDropDownContoArray).forEach(function (row) {
+        $scope.editDropDownContoArray.forEach(function (row) {
           var newConto = {
             "conto": row.label
           };
@@ -1077,7 +1079,7 @@
             editDropdownIdLabel: 'ambito',
             editDropdownValueLabel: 'label',
             cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
-            editDropdownOptionsFunction: function () {
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
               return $scope.editDropDownAmbitoArray;
             }
      },
