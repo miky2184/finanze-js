@@ -15,20 +15,43 @@
         if (newValue === oldValue) {
           return;
         }
-        
-        if (colDef.name === 'ambito'){
-          $scope.editDropDownAmbitoArray.filter(function(a){
-              return a[colDef.name] = newValue;
-          }).used += 1;
-          
-          $scope.editDropDownAmbitoArray.filter(function(a){
-              return a[colDef.name] = oldValue;
-          }).used += -1;
+
+        if (colDef.name === 'ambito') {
+          $scope.editDropDownAmbitoArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0].used += 1;
+
+          $scope.editDropDownAmbitoArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0].used += -1;
+        } else if (colDef.name === 'categoria') {
+          $scope.editDropDownCategoriaArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0].used += 1;
+
+          $scope.editDropDownCategoriaArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0].used += -1;
+        } else if (colDef.name === 'sottocategoria') {
+          $scope.editDropDownSottoCategoriaArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0].used += 1;
+
+          $scope.editDropDownSottoCategoriaArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0].used += -1;
+        } else if (colDef.name === 'beneficiario') {
+          $scope.editDropDownBeneficiarioArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0].used += 1;
+
+          $scope.editDropDownBeneficiarioArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0].used += -1;
         }
 
         rowEntity.dirty = true;
 
-        // $scope.$apply();
       };
 
       $scope.gridOptions = {
@@ -823,9 +846,7 @@
             '10': 0,
             '11': 0,
             '12': 0,
-            '$$treeLevel': 0,
-            'livello': 1,
-            'sort': ambito.ambito * 10
+            '$$treeLevel': 0
           };
 
           for (var x = 0; x < balanceData.length; x++) {
@@ -896,14 +917,12 @@
             '10': 0,
             '11': 0,
             '12': 0,
-            '$$treeLevel': 1,
-            'livello': 2
+            '$$treeLevel': 1
           };
 
           for (var x = 0; x < balanceData.length; x++) {
             if (balanceData[x].categoria === categoria.categoria) {
               obj.idAmb = balanceData[x].ambito;
-              obj.sort = obj.idAmb * 10;
               switch (balanceData[x].mese) {
                 case 1:
                   obj['1'] = obj['1'] + balanceData[x].importo;
@@ -974,14 +993,12 @@
             '9': 0,
             '10': 0,
             '11': 0,
-            '12': 0,
-            'livello': 3
+            '12': 0
           };
 
           for (var x = 0; x < balanceData.length; x++) {
             if (balanceData[x].sottocategoria === sottocategoria.sottocategoria) {
               obj.idAmb = balanceData[x].ambito;
-              obj.sort = obj.idAmb * 10;
               obj.idCat = balanceData[x].categoria;
               switch (balanceData[x].mese) {
                 case 1:
@@ -1077,6 +1094,7 @@
           return j.beneficiario !== "null";
         });
         $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray;
+        $scope.gridOptionsCatSott.data = $scope.editDropDownSottoCategoriaArray;
 
         $interval($scope.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
@@ -1091,13 +1109,13 @@
         columnDefs: [{
           field: 'label'
        }, {
-         field: 'used',
-         displayName: 'In Uso'         
+          field: 'used',
+          displayName: 'In Uso'
        }],
         data: [],
-        isRowSelectable: function(row) {
-              return row.used > 0;
-            },
+        isRowSelectable: function (row) {
+          return row.entity.used > 0;
+        },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmb.gridApi = gridApi;
         }
@@ -1106,10 +1124,16 @@
       $scope.gridOptionsCat = {
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-        columnDefs: [ {
+        columnDefs: [{
           field: 'label'
+       }, {
+          field: 'used',
+          displayName: 'In Uso'
        }],
         data: [],
+        isRowSelectable: function (row) {
+          return row.entity.used > 0;
+        },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCat.gridApi = gridApi;
         }
@@ -1120,10 +1144,34 @@
         rowTemplate: 'templates/rows/deletableRow.html',
         columnDefs: [{
           field: 'label'
+       }, {
+          field: 'used',
+          displayName: 'In Uso'
        }],
         data: [],
+        isRowSelectable: function (row) {
+          return row.entity.used > 0;
+        },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsSott.gridApi = gridApi;
+        }
+      };
+
+      $scope.gridOptionsBen = {
+        rowTemplate: 'templates/rows/deletableRow.html',
+        minRowsToShow: 8,
+        columnDefs: [{
+          field: 'label'
+       }, {
+          field: 'used',
+          displayName: 'In Uso'
+       }],
+        data: [],
+        isRowSelectable: function (row) {
+          return row.entity.used > 0;
+        },
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsBen.gridApi = gridApi;
         }
       };
 
@@ -1154,22 +1202,24 @@
       $scope.gridOptionsCatSott = {
         minRowsToShow: 8,
         rowTemplate: 'templates/rows/deletableRow.html',
-        columnDefs: [],
+        columnDefs: [{
+            name: 'categoria',
+            displayName: 'Categoria',
+            field: 'categoria',
+            editableCellTemplate: 'templates/rows/dropdownEditor.html',
+            editDropdownIdLabel: 'categoria',
+            editDropdownValueLabel: 'label',
+            cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
+              return $scope.editDropDownCategoriaArray;
+            }
+     },
+          {
+            field: 'label'
+		}],
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCatSott.gridApi = gridApi;
-        }
-      };
-
-      $scope.gridOptionsBen = {
-        rowTemplate: 'templates/rows/deletableRow.html',
-        minRowsToShow: 8,
-        columnDefs: [ {
-          field: 'label'
-       }],
-        data: [],
-        onRegisterApi: function (gridApi) {
-          $scope.gridOptionsBen.gridApi = gridApi;
         }
       };
 
