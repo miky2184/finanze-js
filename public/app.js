@@ -1134,6 +1134,15 @@
         $interval($scope.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsCatSott.gridApi.core.handleWindowResize, 100, 10);
       }
+      
+      $scope.afterCellEditSettingsFunction = function (rowEntity, colDef, newValue, oldValue) {
+        if (newValue === oldValue) {
+          return;
+        }        
+
+        rowEntity.dirty = true;
+
+      };
 
       $scope.gridOptionsAmb = {
         minRowsToShow: 8,
@@ -1150,6 +1159,8 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmb.gridApi = gridApi;
+          
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -1168,6 +1179,8 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCat.gridApi = gridApi;
+          
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -1186,6 +1199,8 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsSott.gridApi = gridApi;
+          
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -1204,6 +1219,8 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsBen.gridApi = gridApi;
+          
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -1228,6 +1245,8 @@
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmbCat.gridApi = gridApi;
+          
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -1252,6 +1271,8 @@
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCatSott.gridApi = gridApi;
+          
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
