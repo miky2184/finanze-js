@@ -554,7 +554,7 @@
             if (type === 'ambcat'){
               $scope.gridOptionsAmbCat.data.unshift(newLink);    
             } else if (type === 'catsott'){
-              $scope.gridOptionsAmbCat.data.unshift(newLink);
+              $scope.gridOptionsCatSott.data.unshift(newLink);
             }
           }
         },
