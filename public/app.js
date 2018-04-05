@@ -329,7 +329,11 @@
             $scope.descName = resp.data[0]['NAME'];
             $scope.login.admin = resp.data[0]['PROFILE'] === 'admn' ? true : false;
             $scope.login.read = resp.data[0]['PROFILE'] === 'read' ? true : false;
-            $scope.loadData();
+            return $scope.loadData().then(function(resp){
+               if ($scope.login.admin){
+                 $scope.loadSettings();
+               }
+            });
           } else {
             $scope.alerts.push({
               msg: 'Username e/o Password errate!!!',
@@ -578,7 +582,11 @@
           });
           
           return $http.post('http://2.225.127.144:3000/save', dto).then(function(resp){
-            return $scope.loadData();
+            return $scope.loadData().then(function(resp){
+               if ($scope.login.admin){
+                 $scope.loadSettings();
+               }
+            });
           });
 
         },
