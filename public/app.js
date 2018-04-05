@@ -329,10 +329,10 @@
             $scope.descName = resp.data[0]['NAME'];
             $scope.login.admin = resp.data[0]['PROFILE'] === 'admn' ? true : false;
             $scope.login.read = resp.data[0]['PROFILE'] === 'read' ? true : false;
-            return $scope.loadData().then(function(resp){
-               if ($scope.login.admin){
-                 $scope.loadSettings();
-               }
+            return $scope.loadData().then(function (resp) {
+              if ($scope.login.admin) {
+                $scope.loadSettings();
+              }
             });
           } else {
             $scope.alerts.push({
@@ -510,8 +510,8 @@
 
       $scope.addSettingBtn = {
         label: '+',
-        listener: function (gridOptions, type) {
-          if (type) {
+        listener: function (gridOptions, type, settings) {
+          if (settings) {
             var newSetting = {};
             newSetting.newRow = true;
             newSetting[type] = Math.max(...gridOptions.data.filter(function (j) {
@@ -545,6 +545,17 @@
                 return x[type] != "null";
               });
             }
+          } else {
+            var newLink = {
+              dirty: true,
+              newRow: true,
+              deleted: false
+            };
+            if (type === 'ambcat'){
+              $scope.gridOptionsAmbCat.data.unshift(newLink);    
+            } else if (type === 'catsott'){
+              $scope.gridOptionsAmbCat.data.unshift(newLink);
+            }
           }
         },
         disabled: function () {
@@ -571,35 +582,43 @@
 
       $scope.saveBtn = {
         label: 'Salva',
-        listener: function () {                
-          var dto = {};                            
+        listener: function () {
+          var dto = {};
           dto.settings = {};
-          
-          dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function(ambito){
+
+          dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function (ambito) {
             return ambito.dirty;
           });
-          
-          dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function(categoria){
+
+          dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function (categoria) {
             return categoria.dirty;
           });
-          
-          dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function(sottocategoria){
+
+          dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
             return sottocategoria.dirty;
           });
-          
-          dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function(beneficiario){
+
+          dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function (beneficiario) {
             return beneficiario.dirty;
           });
           
-          dto.finanze = $scope.gridOptions.data.filter(function (row) {
-            return row.dirty;
+          dto.link.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function(ambcat){
+            return ambcat.dirty;
           });
           
-          return $http.post('http://2.225.127.144:3000/save', dto).then(function(resp){
-            return $scope.loadData().then(function(resp){
-               if ($scope.login.admin){
-                 $scope.loadSettings();
-               }
+          dto.link.categoriasottocategoria = $scope.gridOptionsAmbCat.data.filter(function(catsott){
+            return catsott.dirty;
+          })
+
+          dto.finanze = $scope.gridOptions.data.filter(function (row) {
+            return row.dirty;
+          });                    
+
+          return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
+            return $scope.loadData().then(function (resp) {
+              if ($scope.login.admin) {
+                $scope.loadSettings();
+              }
             });
           });
 
@@ -1139,8 +1158,8 @@
 
         $scope.refreshGridSettings();
       }
-      
-      $scope.refreshGridSettings = function() {
+
+      $scope.refreshGridSettings = function () {
         $interval($scope.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
@@ -1148,11 +1167,11 @@
         $interval($scope.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsCatSott.gridApi.core.handleWindowResize, 100, 10);
       }
-      
+
       $scope.afterCellEditSettingsFunction = function (rowEntity, colDef, newValue, oldValue) {
         if (newValue === oldValue) {
           return;
-        }        
+        }
 
         rowEntity.dirty = true;
 
@@ -1173,7 +1192,7 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmb.gridApi = gridApi;
-          
+
           gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
@@ -1193,7 +1212,7 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCat.gridApi = gridApi;
-          
+
           gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
@@ -1213,7 +1232,7 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsSott.gridApi = gridApi;
-          
+
           gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
@@ -1233,7 +1252,7 @@
         },
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsBen.gridApi = gridApi;
-          
+
           gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
@@ -1254,13 +1273,22 @@
             }
      },
           {
-            field: 'label'
-		}],
+            name: 'categoria',
+            displayName: 'Categoria',
+            field: 'categoria',
+            editableCellTemplate: 'templates/rows/dropdownEditor.html',
+            editDropdownIdLabel: 'categoria',
+            editDropdownValueLabel: 'label',
+            cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
+              return $scope.editDropDownCategoriaArray;
+            }
+     }],
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmbCat.gridApi = gridApi;
-          
-          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
+
+          gridApi.edit.on.afterCellEdit($scope, $scope. afterCellEditSettingsFunction);
         }
       };
 
@@ -1280,12 +1308,21 @@
             }
      },
           {
-            field: 'label'
-		}],
+            name: 'sottocategoria',
+            displayName: 'Sottocategoria',
+            field: 'sottocategoria',
+            editableCellTemplate: 'templates/rows/dropdownEditor.html',
+            editDropdownIdLabel: 'sottocategoria',
+            editDropdownValueLabel: 'label',
+            cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',
+            editDropdownOptionsFunction: function (rowEntity, colDef) {
+              return $scope.editDropDownSottoCategoriaArray;
+            }
+     }],
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsCatSott.gridApi = gridApi;
-          
+
           gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
