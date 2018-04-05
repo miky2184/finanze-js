@@ -3,7 +3,7 @@
 
   angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView'])
 
-    .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout) {
+    .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
 
       $scope.login = {
         logged: false,
@@ -490,11 +490,13 @@
           if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
             gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
               var copyRow = angular.copy(row);
+              copyRow.data = new Date();
               copyRow.newRow = true;
               copyRow.deleted = false;
               copyRow.dirty = true;
               gridOptions.data.unshift(copyRow);
             });
+            gridOptions.gridApi.selection.clearSelectedRows();
           }
         },
         disabled: function () {
@@ -575,6 +577,18 @@
           
           dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function(ambito){
             return ambito.dirty;
+          });
+          
+          dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function(categoria){
+            return categoria.dirty;
+          });
+          
+          dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function(sottocategoria){
+            return sottocategoria.dirty;
+          });
+          
+          dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function(beneficiario){
+            return beneficiario.dirty;
           });
           
           dto.finanze = $scope.gridOptions.data.filter(function (row) {
