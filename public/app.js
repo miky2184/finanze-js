@@ -567,7 +567,7 @@
         label: 'Salva',
         listener: function () {
 
-          var oldPromise = $q.when();
+        /*  var oldPromise = $q.when();
           var x = 0;
 
           function salva(exp) {
@@ -589,7 +589,7 @@
 
           var expensesToSave = $scope.gridOptions.data.filter(function (row) {
             return row.dirty;
-          });
+          }); */
 
           /*  function salvaSettingsAmbito(exp) {
               oldPromise = oldPromise.then(
@@ -607,7 +607,7 @@
               return $http.post('http://2.225.127.144:3000/saveSettings', exp);
             } */
 
-          var settingsAmbitoToSave = $scope.gridOptionsAmb.data.filter(function (amb) {
+       /*   var settingsAmbitoToSave = $scope.gridOptionsAmb.data.filter(function (amb) {
             return amb.dirty && amb.ambito !== "null";
           });
 
@@ -618,20 +618,30 @@
             tmp.push(y.ambito);
             tmp.push(y.label);
             settAmbSave.push(tmp)
-          });
+          }); */
 
           /* if (settingsAmbitoToSave && settingsAmbitoToSave.length > 0) {
             settingsAmbitoToSave.forEach(salvaSettingsAmbito);
           } else {
             expensesToSave.forEach(salva);
           } */
-          return $http.post('http://2.225.127.144:3000/saveAmbito', [settAmbSave]).then(function (res) {
+          /* return $http.post('http://2.225.127.144:3000/saveAmbito', [settAmbSave]).then(function (res) {
             if (expensesToSave && expensesToSave.length > 0) {
               expensesToSave.forEach(salva);
             } else {
               $scope.loadData();
             }
-          });
+          }); */
+          
+          var dto = {};
+          
+          var expensesToSave = $scope.gridOptions.data.filter(function (row) {
+            return row.dirty;
+          }); 
+          
+          dto.listaFinanzeDaSalvare = expensesToSave;
+          
+          return $http.post('http://2.225.127.144:3000/save', dto);
 
         },
         disabled: function () {
