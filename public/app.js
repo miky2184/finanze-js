@@ -585,6 +585,7 @@
         listener: function () {
           var dto = {};
           dto.settings = {};
+          dto.links = {};
 
           dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function (ambito) {
             return ambito.dirty;
@@ -602,11 +603,11 @@
             return beneficiario.dirty;
           });
           
-          dto.link.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function(ambcat){
+          dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function(ambcat){
             return ambcat.dirty;
           });
           
-          dto.link.categoriasottocategoria = $scope.gridOptionsAmbCat.data.filter(function(catsott){
+          dto.links.categoriasottocategoria = $scope.gridOptionsAmbCat.data.filter(function(catsott){
             return catsott.dirty;
           })
 
