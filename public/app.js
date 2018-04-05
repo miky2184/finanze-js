@@ -607,7 +607,7 @@
             return ambcat.dirty;
           });
           
-          dto.links.categoriasottocategoria = $scope.gridOptionsAmbCat.data.filter(function(catsott){
+          dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function(catsott){
             return catsott.dirty;
           })
 
@@ -1154,8 +1154,12 @@
         $scope.gridOptionsBen.data = $scope.editDropDownBeneficiarioArray.filter(function (j) {
           return j.beneficiario !== "null";
         });
-        $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray;
-        $scope.gridOptionsCatSott.data = $scope.editDropDownSottoCategoriaArray;
+        $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray.filter(function (j) {
+          return j.categoria !== "null";
+        });
+        $scope.gridOptionsCatSott.data = $scope.editDropDownSottoCategoriaArray.filter(function (j) {
+          return j.sottocategoria !== "null";
+        });
 
         $scope.refreshGridSettings();
       }
