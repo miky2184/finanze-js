@@ -1123,6 +1123,10 @@
         $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray;
         $scope.gridOptionsCatSott.data = $scope.editDropDownSottoCategoriaArray;
 
+        $scope.refreshGridSettings();
+      }
+      
+      $scope.refreshGridSettings = function() {
         $interval($scope.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
         $interval($scope.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
