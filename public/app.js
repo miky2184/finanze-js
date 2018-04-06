@@ -1347,11 +1347,13 @@
           $scope.data = [];
 
           if (data) {
+            var tmp = [];
             data.forEach(function (d) {
               var dateVal = d['DATA_VAL'];
               $scope.labels.push(new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10));
-              $scope.data.push(d['TOTALE']);
+              tmp.push(d['TOTALE']);
             })
+            $scope.data.push(tmp);
           }          
 
           $scope.onClick = function (points, evt) {
