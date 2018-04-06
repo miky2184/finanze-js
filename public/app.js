@@ -1340,11 +1340,19 @@
 
         return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
 
-          var data = resp;
-
+          var data = resp.data[4];
+          
           $scope.labels = [];
-          $scope.series = [];
+          $scope.series = ["Series A"];
           $scope.data = [];
+
+          if (data) {
+            data.forEach(function (d) {
+              var dateVal = d['DATA_VAL'];
+              $scope.labels.push(new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10));
+              $scope.data.push(d['TOTALE']);
+            })
+          }          
 
           $scope.onClick = function (points, evt) {
             console.log(points, evt);
@@ -1356,7 +1364,7 @@
           }, {
             yAxisID: 'y-axis-2'
           }];
-          
+
           $scope.options = {
             scales: {
               yAxes: [{
