@@ -1340,21 +1340,32 @@
 
         return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
 
-          var data = resp.data[4];
-          
+          var data = resp.data[0];
+
           $scope.labels = [];
-          $scope.series = ["Series A"];
+          $scope.series = ["Conto Comune", "Conto Personale"];
           $scope.data = [];
 
           if (data) {
-            var tmp = [];
+            var tmpContoComune = [];
+            var tmpContoPersonale = [];
             data.forEach(function (d) {
               var dateVal = d['DATA_VAL'];
-              $scope.labels.push(new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10));
-              tmp.push(d['TOTALE']);
-            })
-            $scope.data.push(tmp);
-          }          
+              var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+
+              if (!$scope.labels.indexOf(dataString)) {
+                $scope.labels.push(dataString);
+              }
+
+              if (d['TP_CONTO'] === 1) {
+                tmpContoComune.push(d['TOTALE']);
+              } else {
+                tmpContoPersonale.push(d['TOTALE']);
+              }
+            });
+            $scope.data.push(tmpContoComune);
+            $scope.data.push(tmpContoPersonale);
+          }
 
           $scope.onClick = function (points, evt) {
             console.log(points, evt);
