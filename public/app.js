@@ -1370,7 +1370,7 @@
                 display: true,
                 position: 'right'
               }]
-            };
+            }
           };
         });
       };
