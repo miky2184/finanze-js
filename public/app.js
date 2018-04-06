@@ -1338,32 +1338,71 @@
 
       $scope.loadGrafico = function () {
 
-        return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {          
+        return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
 
           $scope.labels = [];
           $scope.series = ["Conto Comune", "Conto Personale"];
           $scope.data = [];
 
-          if (resp.data) {
-            var tmpContoComune = [];
-            var tmpContoPersonale = [];
-            resp.data.forEach(function (d) {
-              var dateVal = d['DATA_VAL'];
-              var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+          var data = resp.data;
 
-              if (!$scope.labels.indexOf(dataString)) {
-                $scope.labels.push(dataString);
-              }
 
-              if (d['TP_CONTO'] === 1) {
-                tmpContoComune.push(d['TOTALE']);
-              } else {
-                tmpContoPersonale.push(d['TOTALE']);
-              }
-            });
-            $scope.data.push(tmpContoComune);
-            $scope.data.push(tmpContoPersonale);
-          }
+          data = resp.data.map(function (d) {
+            var tmp = {};
+            var dateVal = d['DATA_VAL'];
+            tmp.data = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+            tmp.tipoConto = d['TP_CONTO'];
+            tmp.importo = d['TOTALE'];
+            return tmp;
+          });
+
+          resp.data.forEach(function (d) {
+            var dateVal = d['DATA_VAL'];
+            var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+
+            if ($scope.labels.indexOf(dataString) < 0) {
+              $scope.labels.push(dataString);
+            }
+          });
+
+          var tmpContoComune = [];
+          var tmpContoPersonale = [];
+          var oldImportPersonale = 0;
+          var oldImportoComune = 0;
+
+          $scope.labels.forEach(function (l) {
+
+            if (data.filter(function (d) {
+                return d.tipoConto === 1 && d.data === l;
+              }).length > 0) {
+              tmpContoComune.push(data.filter(function (d) {
+                return d.tipoConto === 1 && d.data === l;
+              })[0].importo);
+              oldImportoComune = data.filter(function (d) {
+                return d.tipoConto === 1 && d.data === l;
+              })[0].importo;
+            } else {
+              tmpContoComune.push(oldImportoComune);
+            }
+
+
+            if (data.filter(function (d) {
+                return d.tipoConto === 2 && d.data === l;
+              }).length > 0) {
+              tmpContoPersonale.push(data.filter(function (d) {
+                return d.tipoConto === 2 && d.data === l;
+              })[0].importo);
+              oldImportPersonale = data.filter(function (d) {
+                return d.tipoConto === 2 && d.data === l;
+              })[0].importo;
+            } else {
+              tmpContoPersonale.push(oldImportPersonale);
+            }
+
+          });
+
+          $scope.data.push(tmpContoComune);
+          $scope.data.push(tmpContoPersonale);
 
           $scope.onClick = function (points, evt) {
             console.log(points, evt);
