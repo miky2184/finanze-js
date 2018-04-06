@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView'])
+  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'chart.js'])
 
     .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
 
@@ -551,9 +551,9 @@
               newRow: true,
               deleted: false
             };
-            if (type === 'ambcat'){
-              $scope.gridOptionsAmbCat.data.unshift(newLink);    
-            } else if (type === 'catsott'){
+            if (type === 'ambcat') {
+              $scope.gridOptionsAmbCat.data.unshift(newLink);
+            } else if (type === 'catsott') {
               $scope.gridOptionsCatSott.data.unshift(newLink);
             }
           }
@@ -602,18 +602,18 @@
           dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function (beneficiario) {
             return beneficiario.dirty;
           });
-          
-          dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function(ambcat){
+
+          dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function (ambcat) {
             return ambcat.dirty;
           });
-          
-          dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function(catsott){
+
+          dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function (catsott) {
             return catsott.dirty;
           })
 
           dto.finanze = $scope.gridOptions.data.filter(function (row) {
             return row.dirty;
-          });                    
+          });
 
           return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
             return $scope.loadData().then(function (resp) {
@@ -1293,7 +1293,7 @@
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmbCat.gridApi = gridApi;
 
-          gridApi.edit.on.afterCellEdit($scope, $scope. afterCellEditSettingsFunction);
+          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -1330,6 +1330,49 @@
 
           gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
+      };
+
+      /********************************************************************************
+       *                      TAB GRAFICO
+       ********************************************************************************/
+
+      $scope.loadGrafico = function () {
+
+        return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
+
+          var data = resp;
+
+          $scope.labels = [];
+          $scope.series = [];
+          $scope.data = [];
+
+          $scope.onClick = function (points, evt) {
+            console.log(points, evt);
+          };
+
+
+          $scope.datasetOverride = [{
+            yAxisID: 'y-axis-1'
+          }, {
+            yAxisID: 'y-axis-2'
+          }];
+          
+          $scope.options = {
+            scales: {
+              yAxes: [{
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
+              }, {
+                id: 'y-axis-2',
+                type: 'linear',
+                display: true,
+                position: 'right'
+              }]
+            };
+          };
+        });
       };
 
     }]).filter('map', function () {
