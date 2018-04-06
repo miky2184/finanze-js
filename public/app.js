@@ -1411,8 +1411,6 @@
 
           $scope.datasetOverride = [{
             yAxisID: 'y-axis-1'
-          }, {
-            yAxisID: 'y-axis-2'
           }];
 
           $scope.options = {
@@ -1422,11 +1420,6 @@
                 type: 'linear',
                 display: true,
                 position: 'left'
-              }, {
-                id: 'y-axis-2',
-                type: 'linear',
-                display: true,
-                position: 'right'
               }]
             }
           };
