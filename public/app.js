@@ -1338,18 +1338,16 @@
 
       $scope.loadGrafico = function () {
 
-        return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
-
-          var data = resp.data[0];
+        return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {          
 
           $scope.labels = [];
           $scope.series = ["Conto Comune", "Conto Personale"];
           $scope.data = [];
 
-          if (data) {
+          if (resp.data) {
             var tmpContoComune = [];
             var tmpContoPersonale = [];
-            data.forEach(function (d) {
+            resp.data.forEach(function (d) {
               var dateVal = d['DATA_VAL'];
               var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
 
