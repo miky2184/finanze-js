@@ -1352,13 +1352,15 @@
             }
           ];
           $scope.options = {
-            chart: 'cumulativeLineChart',
+            chart: 'lineChart',
             margin: {
               top: 20,
               right: 20,
               bottom: 50,
               left: 65
-            }
+            },
+            x: function(d){ return d.x; },
+            y: function(d){ return d.y; }
           };
 
           var data = resp.data;
@@ -1417,7 +1419,7 @@
               dataCP.push(oldImportPersonale);
             }
             
-            $scope.data[0].values.push(dataCP);
+            $scope.data[1].values.push(dataCP);
 
           });
         });
