@@ -53,13 +53,13 @@
         </uib-tab>
         <uib-tab heading="Pivot Annuale per Tipo Conto" select="loadPivotConto()">
           <div ng-include="'view/pivotConto.html'"></div>
-        </uib-tab>   
-        <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
-          <div ng-include="'view/settings.html'"></div>
         </uib-tab>  
         <uib-tab heading="Grafico" select="loadGrafico()">
           <div ng-include="'view/graph.html'"></div>
         </uib-tab>
+        <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
+          <div ng-include="'view/settings.html'"></div>
+        </uib-tab>          
       </uib-tabset>
     </div>
   </div>
