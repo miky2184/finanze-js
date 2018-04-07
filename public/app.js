@@ -1342,11 +1342,11 @@
 
           $scope.options = {
             chart: {
-              type: 'lineWithFocusChart',
+              type: 'lineChart',
               height: 350,
               useInteractiveGuideline: true,
               x: function (d) {
-                return d.x;
+                return new Date(d.x).toISOString().slice(0, 10);
               },
               y: function (d) {
                 return d.y;
