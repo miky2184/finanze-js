@@ -1347,12 +1347,12 @@
               useInteractiveGuideline: true,
               xAxis: {
                 tickFormat: function (d) {
-                  return dateService.millisToString(d);
+                  return d;
                 }
               },
               x2Axis: {
                 tickFormat: function (d) {
-                  return dateService.millisToString(d, "MMM-yyyy");
+                  return d;
                 }
               },
               yAxis: {
