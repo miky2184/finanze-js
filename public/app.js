@@ -1341,7 +1341,7 @@
         return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
 
           var labels = [];
-          $scope.data = [
+          var dataGraph = [
             {
               key: 'Conto Comune',
               values: []
@@ -1361,6 +1361,10 @@
             },
             x: function(d){ return d.x; },
             y: function(d){ return d.y; }
+          };
+          
+          $scope.data = function(){
+            return dataGraph;
           };
 
           var data = resp.data;
@@ -1401,7 +1405,7 @@
               dataCC.push(oldImportoComune);
             }
             
-            $scope.data[0].values.push(dataCC);
+            dataGraph[0].values.push(dataCC);
 
             var dataCP = [];
             dataCP.push(l);                      
@@ -1419,7 +1423,7 @@
               dataCP.push(oldImportPersonale);
             }
             
-            $scope.data[1].values.push(dataCP);
+            dataGraph[1].values.push(dataCP);
 
           });
         });
