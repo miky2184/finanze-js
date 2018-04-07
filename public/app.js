@@ -1346,7 +1346,9 @@
               height: 350,
               useInteractiveGuideline: true,
               x: function (d) {
-                return new Date(d.x).toISOString().slice(0, 10);
+                if (d) {
+                  return new Date(d.x).toISOString().slice(0, 10);
+                }
               },
               y: function (d) {
                 return d.y;
@@ -1390,7 +1392,7 @@
             tmp.importo = d['TOTALE'];
             return tmp;
           });
-          
+
           $scope.data = getDataGrafico();
 
           var oldImportPersonale = 0;
