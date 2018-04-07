@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'chart.js'])
+  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3'])
 
     .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
 
@@ -1340,89 +1340,85 @@
 
         return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
 
-          $scope.labels = [];
-          $scope.series = ["Conto Comune", "Conto Personale"];
-          $scope.data = [];
+          var labels = [];
+          $scope.data = [
+            {
+              key: 'Conto Comune',
+              values: []
+            },
+            {
+              key: 'Conto Personale',
+              values: []
+            }
+          ];
+          $scope.options = {
+            chart: 'cumulativeLineChart',
+            margin: {
+              top: 20,
+              right: 20,
+              bottom: 50,
+              left: 65
+            }
+          };
 
           var data = resp.data;
-
 
           data = resp.data.map(function (d) {
             var tmp = {};
             var dateVal = d['DATA_VAL'];
             tmp.data = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+
+            if (labels.indexOf(dataString) < 0) {
+              labels.push(dataString);
+            }
+
             tmp.tipoConto = d['TP_CONTO'];
             tmp.importo = d['TOTALE'];
             return tmp;
           });
 
-          resp.data.forEach(function (d) {
-            var dateVal = d['DATA_VAL'];
-            var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
-
-            if ($scope.labels.indexOf(dataString) < 0) {
-              $scope.labels.push(dataString);
-            }
-          });
-
-          var tmpContoComune = [];
-          var tmpContoPersonale = [];
           var oldImportPersonale = 0;
           var oldImportoComune = 0;
 
-          $scope.labels.forEach(function (l) {
+          labels.forEach(function (l) {
+
+            var dataCC = [];
+            dataCC.push(l);
 
             if (data.filter(function (d) {
                 return d.tipoConto === 1 && d.data === l;
               }).length > 0) {
-              tmpContoComune.push(data.filter(function (d) {
+              dataCC.push(data.filter(function (d) {
                 return d.tipoConto === 1 && d.data === l;
               })[0].importo);
               oldImportoComune = data.filter(function (d) {
                 return d.tipoConto === 1 && d.data === l;
               })[0].importo;
             } else {
-              tmpContoComune.push(oldImportoComune);
+              dataCC.push(oldImportoComune);
             }
+            
+            $scope.data[0].values.push(dataCC);
 
+            var dataCP = [];
+            dataCP.push(l);                      
 
             if (data.filter(function (d) {
                 return d.tipoConto === 2 && d.data === l;
               }).length > 0) {
-              tmpContoPersonale.push(data.filter(function (d) {
+              dataCP.push(data.filter(function (d) {
                 return d.tipoConto === 2 && d.data === l;
               })[0].importo);
               oldImportPersonale = data.filter(function (d) {
                 return d.tipoConto === 2 && d.data === l;
               })[0].importo;
             } else {
-              tmpContoPersonale.push(oldImportPersonale);
+              dataCP.push(oldImportPersonale);
             }
+            
+            $scope.data[0].values.push(dataCP);
 
           });
-
-          $scope.data.push(tmpContoComune);
-          $scope.data.push(tmpContoPersonale);
-
-          $scope.onClick = function (points, evt) {
-            console.log(points, evt);
-          };
-
-
-          $scope.datasetOverride = [{
-            yAxisID: 'y-axis-1'
-          }];
-
-          $scope.options = {
-            scales: {
-              yAxes: [{
-                id: 'y-axis-1',
-                type: 'linear',
-                display: true,
-                position: 'left'
-              }]
-            }
-          };
         });
       };
 
