@@ -1345,25 +1345,11 @@
               type: 'lineWithFocusChart',
               height: 350,
               useInteractiveGuideline: true,
-              xAxis: {
-                tickFormat: function (d) {
-                  return d;
-                }
+              x: function (d) {
+                return d.x;
               },
-              x2Axis: {
-                tickFormat: function (d) {
-                  return d;
-                }
-              },
-              yAxis: {
-                tickFormat: function (d) {
-                  return d;
-                }
-              },
-              y2Axis: {
-                tickFormat: function (d) {
-                  return d;
-                }
+              y: function (d) {
+                return d.y;
               }
             }
           };
