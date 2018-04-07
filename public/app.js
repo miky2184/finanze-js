@@ -1343,7 +1343,13 @@
           $scope.options = {
             chart: {
               type: 'lineChart',
-              height: 350,
+              height: 720,
+              margin: {
+                top: 20,
+                right: 20,
+                bottom: 60,
+                left: 65
+              },
               useInteractiveGuideline: true,
               x: function (d) {
                 if (d) {
@@ -1358,9 +1364,9 @@
               },
               xAxis: {
                 axisLabel: 'Date (yyyy-mm-dd)',
-                   tickFormat: function(d) {
-                        return d3.time.format('%m/%d/%y')(new Date(d))
-                    }
+                tickFormat: function (d) {
+                  return d3.time.format('%m/%d/%y')(new Date(d))
+                }
               },
               yAxis: {
                 axisLabel: 'Totale (€)'
