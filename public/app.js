@@ -1340,6 +1340,34 @@
 
         return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
 
+          $scope.options = {
+            chart: {
+              type: 'lineWithFocusChart',
+              height: 350,
+              useInteractiveGuideline: true,
+              xAxis: {
+                tickFormat: function (d) {
+                  return dateService.millisToString(d);
+                }
+              },
+              x2Axis: {
+                tickFormat: function (d) {
+                  return dateService.millisToString(d, "MMM-yyyy");
+                }
+              },
+              yAxis: {
+                tickFormat: function (d) {
+                  return d;
+                }
+              },
+              y2Axis: {
+                tickFormat: function (d) {
+                  return d;
+                }
+              }
+            }
+          };
+
           var labels = [];
           var dataGraph = [
             {
@@ -1353,21 +1381,6 @@
               "id": "contoPersonale"
             }
           ];
-          $scope.options = {
-            chart: 'lineWithFocusChart',
-            margin: {
-              top: 20,
-              right: 20,
-              bottom: 50,
-              left: 65
-            },
-            x: function (d) {
-              return d.x;
-            },
-            y: function (d) {
-              return d.y;
-            }
-          };
 
           var data = resp.data;
 
@@ -1434,6 +1447,16 @@
           };
 
           $scope.data = $scope.getDatiGrafico();
+
+          $scope.data.map(function (series) {
+            series.values = series.values.map(function (d) {
+              return {
+                x: d[0],
+                y: d[1]
+              };
+            });
+            return series;
+          });
 
         });
       };
