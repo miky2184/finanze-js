@@ -1352,7 +1352,7 @@
             }
           ];
           $scope.options = {
-            chart: 'lineChart',
+            chart: 'lineWithFocusChart',
             margin: {
               top: 20,
               right: 20,
