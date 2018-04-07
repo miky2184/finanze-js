@@ -1347,7 +1347,8 @@
               useInteractiveGuideline: true,
               x: function (d) {
                 if (d) {
-                  return new Date(d.x).toISOString().slice(0, 10);
+                  // return new Date(d.x).toISOString().slice(0, 10);
+                  return d.x;
                 }
               },
               y: function (d) {
@@ -1356,7 +1357,10 @@
                 }
               },
               xAxis: {
-                axisLabel: 'Date (yyyy-mm-dd)'
+                axisLabel: 'Date (yyyy-mm-dd)',
+                   tickFormat: function(d) {
+                        return d3.time.format('%m/%d/%y')(new Date(d))
+                    }
               },
               yAxis: {
                 axisLabel: 'Totale (€)'
