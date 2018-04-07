@@ -1359,7 +1359,6 @@
               }
             }
           };
-          $scope.data = getDataGrafico();
 
           $scope.labels = [];
           var dataGraph = [
@@ -1391,6 +1390,8 @@
             tmp.importo = d['TOTALE'];
             return tmp;
           });
+          
+          $scope.data = getDataGrafico();
 
           var oldImportPersonale = 0;
           var oldImportoComune = 0;
