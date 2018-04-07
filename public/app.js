@@ -1366,12 +1366,13 @@
           data = resp.data.map(function (d) {
             var tmp = {};
             var dateVal = d['DATA_VAL'];
-            tmp.data = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+            var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
 
             if (labels.indexOf(dataString) < 0) {
               labels.push(dataString);
             }
-
+            
+            tmp.data = dataString;
             tmp.tipoConto = d['TP_CONTO'];
             tmp.importo = d['TOTALE'];
             return tmp;
