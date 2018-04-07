@@ -1361,12 +1361,12 @@
               bottom: 50,
               left: 65
             },
-            x: function(d){ return d.x; },
-            y: function(d){ return d.y; }
-          };
-          
-          $scope.data = function(){
-            return dataGraph;
+            x: function (d) {
+              return d.x;
+            },
+            y: function (d) {
+              return d.y;
+            }
           };
 
           var data = resp.data;
@@ -1379,7 +1379,7 @@
             if (labels.indexOf(dataString) < 0) {
               labels.push(dataString);
             }
-            
+
             tmp.data = dataString;
             tmp.tipoConto = d['TP_CONTO'];
             tmp.importo = d['TOTALE'];
@@ -1389,45 +1389,52 @@
           var oldImportPersonale = 0;
           var oldImportoComune = 0;
 
-          labels.forEach(function (l) {
+          $scope.getDatiGrafico = function getDatiGrafico() {
 
-            var dataCC = [];
-            dataCC.push(l);
+            labels.forEach(function (l) {
 
-            if (data.filter(function (d) {
-                return d.tipoConto === 1 && d.data === l;
-              }).length > 0) {
-              dataCC.push(data.filter(function (d) {
-                return d.tipoConto === 1 && d.data === l;
-              })[0].importo);
-              oldImportoComune = data.filter(function (d) {
-                return d.tipoConto === 1 && d.data === l;
-              })[0].importo;
-            } else {
-              dataCC.push(oldImportoComune);
-            }
-            
-            dataGraph[0].values.push(dataCC);
+              var dataCC = [];
+              dataCC.push(l);
 
-            var dataCP = [];
-            dataCP.push(l);                      
+              if (data.filter(function (d) {
+                  return d.tipoConto === 1 && d.data === l;
+                }).length > 0) {
+                dataCC.push(data.filter(function (d) {
+                  return d.tipoConto === 1 && d.data === l;
+                })[0].importo);
+                oldImportoComune = data.filter(function (d) {
+                  return d.tipoConto === 1 && d.data === l;
+                })[0].importo;
+              } else {
+                dataCC.push(oldImportoComune);
+              }
 
-            if (data.filter(function (d) {
-                return d.tipoConto === 2 && d.data === l;
-              }).length > 0) {
-              dataCP.push(data.filter(function (d) {
-                return d.tipoConto === 2 && d.data === l;
-              })[0].importo);
-              oldImportPersonale = data.filter(function (d) {
-                return d.tipoConto === 2 && d.data === l;
-              })[0].importo;
-            } else {
-              dataCP.push(oldImportPersonale);
-            }
-            
-            dataGraph[1].values.push(dataCP);
+              dataGraph[0].values.push(dataCC);
 
-          });
+              var dataCP = [];
+              dataCP.push(l);
+
+              if (data.filter(function (d) {
+                  return d.tipoConto === 2 && d.data === l;
+                }).length > 0) {
+                dataCP.push(data.filter(function (d) {
+                  return d.tipoConto === 2 && d.data === l;
+                })[0].importo);
+                oldImportPersonale = data.filter(function (d) {
+                  return d.tipoConto === 2 && d.data === l;
+                })[0].importo;
+              } else {
+                dataCP.push(oldImportPersonale);
+              }
+
+              dataGraph[1].values.push(dataCP);
+
+            });
+            return dataGraph;
+          };
+
+          $scope.data = $scope.getDatiGrafico();
+
         });
       };
 
