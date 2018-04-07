@@ -1350,21 +1350,28 @@
               },
               y: function (d) {
                 return d.y;
+              },
+              xAxis: {
+                axisLabel: 'Date (yyyy-mm-dd)'
+              },
+              yAxis: {
+                axisLabel: 'Totale (€)'
               }
             }
           };
+          $scope.data = getDataGrafico();
 
           var labels = [];
           var dataGraph = [
             {
-              "key": 'Conto Comune',
-              "values": [],
-              "id": "contoComune"
+              key: 'Conto Comune',
+              values: [],
+              color: '#ff7f0e'
             },
             {
-              "key": 'Conto Personale',
-              "values": [],
-              "id": "contoPersonale"
+              key: 'Conto Personale',
+              values: [],
+              color: '#7777ff'
             }
           ];
 
@@ -1373,10 +1380,10 @@
           data = resp.data.map(function (d) {
             var tmp = {};
             var dateVal = d['DATA_VAL'];
-            var dataString = new Date(new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset())).toISOString().slice(0, 10);
+            var dateLong = new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset());
 
-            if (labels.indexOf(dataString) < 0) {
-              labels.push(dataString);
+            if (labels.indexOf(dateLong) < 0) {
+              labels.push(dateLong);
             }
 
             tmp.data = dataString;
@@ -1388,7 +1395,7 @@
           var oldImportPersonale = 0;
           var oldImportoComune = 0;
 
-          $scope.getDatiGrafico = function getDatiGrafico() {
+          function getDataGrafico() {
 
             labels.forEach(function (l) {
 
@@ -1429,20 +1436,16 @@
               dataGraph[1].values.push(dataCP);
 
             });
-            return dataGraph;
-          };
-
-          $scope.data = $scope.getDatiGrafico();
-
-          $scope.data.map(function (series) {
-            series.values = series.values.map(function (d) {
-              return {
-                x: d[0],
-                y: d[1]
-              };
+            return dataGraph.map(function (series) {
+              series.values = series.values.map(function (d) {
+                return {
+                  x: d[0],
+                  y: d[1]
+                };
+              });
+              return series;
             });
-            return series;
-          });
+          };
 
         });
       };
