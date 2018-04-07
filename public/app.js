@@ -1343,12 +1343,14 @@
           var labels = [];
           var dataGraph = [
             {
-              key: 'Conto Comune',
-              values: []
+              "key": 'Conto Comune',
+              "values": [],
+              "id": "contoComune"
             },
             {
-              key: 'Conto Personale',
-              values: []
+              "key": 'Conto Personale',
+              "values": [],
+              "id": "contoPersonale"
             }
           ];
           $scope.options = {
