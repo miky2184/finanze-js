@@ -1385,7 +1385,7 @@
               $scope.labels.push(dateLong);
             }
 
-            tmp.data = dataString;
+            tmp.data = dateLong;
             tmp.tipoConto = d['TP_CONTO'];
             tmp.importo = d['TOTALE'];
             return tmp;
