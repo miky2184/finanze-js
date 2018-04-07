@@ -1351,7 +1351,9 @@
                 }
               },
               y: function (d) {
-                return d.y;
+                if (d) {
+                  return d.y;
+                }
               },
               xAxis: {
                 axisLabel: 'Date (yyyy-mm-dd)'
