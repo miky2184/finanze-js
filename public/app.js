@@ -1361,7 +1361,7 @@
           };
           $scope.data = getDataGrafico();
 
-          var labels = [];
+          $scope.labels = [];
           var dataGraph = [
             {
               key: 'Conto Comune',
@@ -1382,8 +1382,8 @@
             var dateVal = d['DATA_VAL'];
             var dateLong = new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset());
 
-            if (labels.indexOf(dateLong) < 0) {
-              labels.push(dateLong);
+            if ($scope.labels.indexOf(dateLong) < 0) {
+              $scope.labels.push(dateLong);
             }
 
             tmp.data = dataString;
@@ -1397,7 +1397,7 @@
 
           function getDataGrafico() {
 
-            labels.forEach(function (l) {
+            $scope.labels.forEach(function (l) {
 
               var dataCC = [];
               dataCC.push(l);
