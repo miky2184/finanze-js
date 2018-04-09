@@ -295,7 +295,8 @@
             cellFilter: 'currency',
             width: '8%',
             cellTooltip: true,
-            cellClass: 'text-right'
+            cellClass: 'text-right',
+            type: 'number'
             },
           {
             field: 'info',
@@ -592,14 +593,14 @@
       $scope.saveBtn = {
         label: 'Salva',
         listener: function () {
-          
+
           var modalInstance = $uibModal.open({
             size: 'sm',
             templateUrl: 'templates/modal/waitingModal.html',
             backdrop: false,
             keyboard: false
           });
-          
+
           var dto = {};
           dto.settings = {};
           dto.links = {};
@@ -676,7 +677,7 @@
         columnVirtualizationThreshold: 100,
         showGridFooter: true,
         showColumnFooter: true,
-        minRowsToShow: 14,
+        minRowsToShow: 10,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
         columnDefs: [{
@@ -748,14 +749,66 @@
 
         $scope.gridOptionsBalance.data = balance;
 
-        $interval($scope.gridOptionsBalance.gridApi.core.handleWindowResize, 100, 10);
-      };
-      
-      $scope.refreshMainGrid = function(){
-        if ($scope.gridOptions && $scope.gridOptions.gridApi){
-        $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+        var avere = [];
+
+        for (var x = 0; x < balanceData.length; x++) {          
+          if (balanceData[x].conto === 4) {
+            var newAvere = {};
+            if ($scope.editDropDownBeneficiarioArray.filter(function (ben) {                
+                return balanceData[x].beneficiario === ben.beneficiario;
+              })[0]) {
+              newAvere.beneficiario = $scope.editDropDownBeneficiarioArray.filter(function (ben) {
+                console.log(x);
+                return balanceData[x].beneficiario === ben.beneficiario;
+              })[0].label;
+            }
+
+            if (balanceData[x].tipoConto === 1) {              
+              newAvere.contoComune = balanceData[x].importo;
+            } else {
+              newAvere.contoPersonale = balanceData[x].importo;
+            }
+            newAvere.dataVal = balanceData[x].data;
+            avere.push(newAvere);
+          }          
         }
-        }; 
+
+        $scope.gridOptionsAvere.data = avere;
+
+        $interval($scope.gridOptionsBalance.gridApi.core.handleWindowResize, 100, 10);
+        $interval($scope.gridOptionsAvere.gridApi.core.handleWindowResize, 100, 10);
+      };
+
+      $scope.refreshMainGrid = function () {
+        if ($scope.gridOptions && $scope.gridOptions.gridApi) {
+          $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+        }
+      };
+
+      $scope.gridOptionsAvere = {
+        columnVirtualizationThreshold: 100,
+        showGridFooter: true,
+        showColumnFooter: true,
+        minRowsToShow: 10,
+        enableFiltering: false,
+        selectionRowHeaderWidth: 35,
+        columnDefs: [{
+          field: 'dataVal',
+          cellFilter: 'date:\'yyyy-MM-dd\''
+        },{
+          field: 'beneficiario'
+        }, {
+          field: 'contoComune'
+        }, {
+          field: 'contoPersonale'
+        }],
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsAvere.gridApi = gridApi;
+        }
+      };
+
+
 
       /************************************************
        *                  TAB PIVOT CONTO COMUNE
