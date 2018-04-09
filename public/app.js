@@ -1179,10 +1179,10 @@
           return j.beneficiario !== "null";
         });
         $scope.gridOptionsAmbCat.data = $scope.editDropDownCategoriaArray.filter(function (j) {
-          return j.categoria !== "null" || j.ambito !== "null";
+          return j.categoria !== "null" && j.ambito !== null;
         });
         $scope.gridOptionsCatSott.data = $scope.editDropDownSottoCategoriaArray.filter(function (j) {
-          return j.sottocategoria !== "null" || j.categoria !== "null";
+          return j.sottocategoria !== "null" && j.categoria !== null;
         });
 
         $scope.refreshGridSettings();
