@@ -46,7 +46,7 @@
     </div>
     <div ng-show="login.logged">
       <uib-tabset>
-        <uib-tab heading="Finanze" active="true">
+        <uib-tab heading="Finanze" active="true" select="refreshMainGrid()">
           <div ng-include="'view/dettaglio.html'"></div>
         </uib-tab>
         <uib-tab heading="Balance" select="loadBalance()">

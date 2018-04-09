@@ -282,6 +282,13 @@
             buttonNgClass: 'fas fa-eye'
             },
           {
+            field: 'cartaCredito',
+            width: '3%',
+            cellTooltip: true,
+            cellTemplate: 'templates/rows/checkboxIcon.html',
+            buttonNgClass: 'far fa-credit-card'
+            },
+          {
             field: 'importo',
             aggregationType: uiGridConstants.aggregationTypes.sum,
             footerCellFilter: 'currency',
@@ -420,6 +427,7 @@
                         newRow.conto = row['CONTO'];
                         newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
                         newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
+                        newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
                         newRow.importo = row['VALUE'];
                         newRow.info = row['INFO'];
                         newRow.anno = new Date(row['DATA_VAL']).getFullYear();
@@ -463,7 +471,8 @@
             anno: new Date().getFullYear(),
             mese: new Date().getMonth() + 1,
             contabilizzata: true,
-            visualizzare: true
+            visualizzare: true,
+            cartaCredito: false
           });
         },
         disabled: function () {
@@ -583,6 +592,14 @@
       $scope.saveBtn = {
         label: 'Salva',
         listener: function () {
+          
+          var modalInstance = $uibModal.open({
+            size: 'sm',
+            templateUrl: 'templates/modal/waitingModal.html',
+            backdrop: false,
+            keyboard: false
+          });
+          
           var dto = {};
           dto.settings = {};
           dto.links = {};
@@ -620,6 +637,7 @@
               if ($scope.login.admin) {
                 $scope.loadSettings();
               }
+              modalInstance.close();
             });
           });
 
@@ -732,6 +750,12 @@
 
         $interval($scope.gridOptionsBalance.gridApi.core.handleWindowResize, 100, 10);
       };
+      
+      $scope.refreshMainGrid = function(){
+        if ($scope.gridOptions && $scope.gridOptions.gridApi){
+        $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+        }
+        }; 
 
       /************************************************
        *                  TAB PIVOT CONTO COMUNE
@@ -1363,9 +1387,9 @@
                 }
               },
               xAxis: {
-                axisLabel: 'Date (yyyy-mm-dd)',
+                axisLabel: 'Date (dd/mm/yy)',
                 tickFormat: function (d) {
-                  return d3.time.format('%m/%d/%y')(new Date(d))
+                  return d3.time.format('%d/%m/%y')(new Date(d))
                 }
               },
               yAxis: {
