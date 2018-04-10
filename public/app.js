@@ -489,6 +489,8 @@
               row.dirty = true;
             });
           }
+          
+            gridOptions.gridApi.selection.clearSelectedRows();
         },
         disabled: function () {
           return $scope.login.read;
@@ -630,7 +632,7 @@
           })
 
           dto.finanze = $scope.gridOptions.data.filter(function (row) {
-            return row.dirty;
+            return row.dirty && row.id;
           });
 
           return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
