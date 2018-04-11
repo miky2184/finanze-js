@@ -1547,6 +1547,9 @@
     }]);
       
     myApp.controller('HomeController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
+      
+      $scope.home = {};
+      $scope.home.on = true;
 
      $scope.lightOn = function(){
        console.log("luce accesa");
