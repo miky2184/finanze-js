@@ -86,5 +86,9 @@
 }
 
 .homeimg {
-    background-image: url('images/home.png');
+    background-image: url('images/home.png');      
+    background-size: 1024px 720px;
+    width: 1024px;
+    height: 720px;
+    background-repeat: no-repeat;
 }
