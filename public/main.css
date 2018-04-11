@@ -84,3 +84,7 @@
 .panel-body.min-padding {
    padding: 0px 15px;
 }
+
+.homeimg {
+    background-image: url('images/home.png');
+}
