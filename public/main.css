@@ -109,3 +109,10 @@
   margin-top: -210px;
   margin-left: 810px;
 }
+
+.panel-footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

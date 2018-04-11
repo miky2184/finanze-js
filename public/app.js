@@ -73,7 +73,7 @@
         columnVirtualizationThreshold: 100,
         showGridFooter: true,
         showColumnFooter: true,
-        minRowsToShow: 22,
+        minRowsToShow: 20,
         enableFiltering: true,
         enableRowSelection: true,
         enableSelectAll: true,
