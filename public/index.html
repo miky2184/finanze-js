@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="node_modules/nvd3/build/nv.d3.css">
 </head>
 
-<body ng-controller="MainController as $ctrl">
+<body ng-controller="MainController">
   <div class="panel-heading">
     <div class="navbar-collapse" ng-show="login.logged" style="height: 0px;">
       <div class="navbar-right">
@@ -60,7 +60,10 @@
         </uib-tab>
         <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
           <div ng-include="'view/settings.html'"></div>
-        </uib-tab>          
+        </uib-tab>   
+        <uib-tab heading="Spesa">
+          <div ng-include="'view/spesa.html'" ng-controller="SpesaController"></div>
+        </uib-tab>
       </uib-tabset>
     </div>
   </div>

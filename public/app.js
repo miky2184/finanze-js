@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3'])
+  var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3']);
 
-    .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
+    myApp.controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
 
       $scope.login = {
         logged: false,
@@ -1544,7 +1544,16 @@
         });
       };
 
-    }]).filter('map', function () {
+    }]);
+      
+    myApp.controller('SpesaController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
+
+     $scope.desc = "ciao";
+
+    }]);
+      
+      
+      myApp.filter('map', function () {
       return function () {
         return function (input, map, idLabel, valueLabel) {
           if (map !== null && map !== undefined) {
