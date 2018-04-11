@@ -1,94 +1,110 @@
 .myGrid {
-    width: auto;
-    height: auto;
-  }
-  
+  width: auto;
+  height: auto;
+}
+
 .btnMargin {
-	margin-right: 2px
+  margin-right: 2px
 }
 
 .ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
-   background-color: #ffdddd !important;
+  background-color: #ffdddd !important;
 }
 
 .ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
-   background-color: #f5d3d3 !important;
+  background-color: #f5d3d3 !important;
 }
 
 .ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell.delete {
-   background-color: #f5b3c3 !important;
+  background-color: #f5b3c3 !important;
 }
 
 .ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
-   background-color: #ddffdd
+  background-color: #ddffdd
 }
 
 .ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
-   background-color: #d3f5d3
+  background-color: #d3f5d3
 }
 
 .text-right {
   text-align: right;
 }
+
 .text-center {
   text-align: center;
 }
 
 .btn.btn-default.navbar-btn {
-   line-height: 1.42857;
-   font-size: 18px;
-   padding: 2px 8px;
-   width: 2.2em;
+  line-height: 1.42857;
+  font-size: 18px;
+  padding: 2px 8px;
+  width: 2.2em;
 }
 
 .ui-grid-header-cell-label {
-   white-space: normal;
-   font-size: 10px;
+  white-space: normal;
+  font-size: 10px;
 }
 
-.form-login{
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+.form-login {
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .min-padding {
-   padding-left: 8px;
-   padding-right: 8px;
-   padding-top: 8px;
-   padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .min-padding-table {
-   padding: 0px;
+  padding: 0px;
 }
 
 .panel-footer {
-   padding: 6px;
+  padding: 6px;
 }
 
 .panel .panel-default {
-   margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .panel-heading {
-   font-size: 12px;
-   font-weight: 500;
-   text-transform: uppercase;
-   letter-spacing: 1px;
-   padding: 4px;
-   text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px;
+  text-align: center;
 }
 
 .panel-body.min-padding {
-   padding: 0px 15px;
+  padding: 0px 15px;
 }
 
 .homeimg {
-    background-image: url('images/home.png');      
-    background-size: 1024px 720px;
-    width: 1024px;
-    height: 720px;
-    background-repeat: no-repeat;
+  background-image: url('images/home.png');
+  background-size: 1024px 720px;
+  width: 1024px;
+  height: 720px;
+  background-repeat: no-repeat;
+}
+
+.btncouch {
+  margin-left: 200px;
+  margin-top: 300px;
+}
+
+.btntv {
+  margin-top: 480px;
+  margin-left: 200px;
+}
+
+.btnbed {
+  margin-top: 250px;
+  margin-left: 715px;
 }
