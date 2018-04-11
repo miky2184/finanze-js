@@ -92,6 +92,7 @@
   width: 1024px;
   height: 720px;
   background-repeat: no-repeat;
+  position: absolute;
 }
 
 .btncouch {

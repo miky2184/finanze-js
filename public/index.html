@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:ng="http://angularjs.org" lang="en" ng-app="myApp">
 
-<head>  
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MyFinance</title>
@@ -10,84 +10,90 @@
   <link href="node_modules/angular-ui-grid/ui-grid.css" type="text/css" rel="stylesheet">
   <link href="main.css" type="text/css" rel="stylesheet">
   <link rel="stylesheet" href="node_modules/nvd3/build/nv.d3.css">
-</head>
-
-<body ng-controller="MainController">
-  <div class="panel-heading">
-    <div class="navbar-collapse" ng-show="login.logged" style="height: 0px;">
-      <div class="navbar-right">
-        <p class="navbar-text">Utente: {{descName}}</p>
-        <button class="btn btn-default navbar-btn fas fa-power-off" title="Log Out" ng-click="logout()" />
-      </div>
-    </div>
-  </div>
-
-  <div class="panel-body">
-    <div ng-show="!login.logged" class="form-login">
-      <form name="loginForm" novalidate>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input ng-model="username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input ng-model="password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary" ng-click="accesso()">Log In</button>
-        </div>
-      </form>
-      <div>
-        <script type="text/ng-template" id="alert.html">
-          <div ng-transclude></div>
-        </script>
-        <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
-      </div>
-    </div>
-    <div ng-show="login.logged">
-      <uib-tabset>
-        <uib-tab heading="Finanze" active="true" select="refreshMainGrid()">
-          <div ng-include="'view/dettaglio.html'"></div>
-        </uib-tab>
-        <uib-tab heading="Balance" select="loadBalance()">
-          <div ng-include="'view/balance.html'"></div>
-        </uib-tab>
-        <uib-tab heading="Pivot Annuale" select="loadPivotConto()">
-          <div ng-include="'view/pivotConto.html'"></div>
-        </uib-tab>  
-        <uib-tab heading="Grafico" select="loadGrafico()">
-          <div ng-include="'view/graph.html'"></div>
-        </uib-tab>
-        <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
-          <div ng-include="'view/settings.html'"></div>
-        </uib-tab>   
-        <uib-tab heading="Home">
-          <div ng-include="'view/home.html'" ng-controller="HomeController"></div>
-        </uib-tab>
-      </uib-tabset>
-    </div>
-  </div>
-  
-  <div class="panel-footer clearfix" ng-show="login.logged && !home.on">
-  <div class="pull-right">
-    <button ng-repeat="button in saveButtons" class="btn btn-success btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
-  </div>
-</div>
-
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="node_modules/angular-touch/angular-touch.js"></script>
   <script src="node_modules/angular-animate/angular-animate.js"></script>
   <script src="node_modules/angular-i18n/angular-locale_it.js"></script>
   <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-  <script src="node_modules/angular-ui-grid/ui-grid.js"></script>  
+  <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
   <script src="node_modules/lodash/lodash.min.js"></script>
-  <script src="node_modules/jszip/dist/jszip.js"></script>  
+  <script src="node_modules/jszip/dist/jszip.js"></script>
   <script src="node_modules/excel-builder/dist/excel-builder.dist.js"></script>
   <script src="node_modules/chart.js/dist/Chart.js"></script>
   <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="node_modules/d3/d3.js"></script>
-  <script src="node_modules/nvd3/build/nv.d3.js"></script> <!-- or use another assembly -->
-  <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>    
+  <script src="node_modules/nvd3/build/nv.d3.js"></script>
+  <!-- or use another assembly -->
+  <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
   <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body ng-controller="MainController">
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="navbar-collapse" ng-show="login.logged" style="height: 0px;">
+          <div class="navbar-right">
+            <p class="navbar-text">Utente: {{descName}}</p>
+            <button class="btn btn-default navbar-btn fas fa-power-off" title="Log Out" ng-click="logout()" />
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div ng-show="!login.logged" class="form-login">
+          <form name="loginForm" novalidate>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input ng-model="username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input ng-model="password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" ng-click="accesso()">Log In</button>
+            </div>
+          </form>
+          <div>
+            <script type="text/ng-template" id="alert.html">
+              <div ng-transclude></div>
+            </script>
+            <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
+          </div>
+        </div>
+        <div ng-show="login.logged">
+          <uib-tabset>
+            <uib-tab heading="Finanze" active="true" select="refreshMainGrid()">
+              <div ng-include="'view/dettaglio.html'"></div>
+            </uib-tab>
+            <uib-tab heading="Balance" select="loadBalance()">
+              <div ng-include="'view/balance.html'"></div>
+            </uib-tab>
+            <uib-tab heading="Pivot Annuale" select="loadPivotConto()">
+              <div ng-include="'view/pivotConto.html'"></div>
+            </uib-tab>
+            <uib-tab heading="Grafico" select="loadGrafico()">
+              <div ng-include="'view/graph.html'"></div>
+            </uib-tab>
+            <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
+              <div ng-include="'view/settings.html'"></div>
+            </uib-tab>
+            <uib-tab heading="Home">
+              <div ng-include="'view/home.html'" ng-controller="HomeController"></div>
+            </uib-tab>
+          </uib-tabset>
+        </div>
+      </div>
+
+      <div class="panel-footer clearfix" ng-show="login.logged">
+        <div class="pull-right">
+          <button ng-repeat="button in saveButtons" class="btn btn-success btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </body>
+
 </html>
