@@ -469,6 +469,11 @@
       label: '+',
       listener: function (gridOptions) {
         gridOptions.data.unshift({
+         /* id: Math.max(...gridOptions.data.filter(function (j) {
+            return j.id !== "null";
+          }).map(function (obj) {
+            return obj.id;
+          })) + 1; */
           newRow: true,
           data: new Date(),
           anno: new Date().getFullYear(),
@@ -641,7 +646,7 @@
         })
 
         dto.finanze = $scope.gridOptions.data.filter(function (row) {
-          return row.dirty && row.id;
+          return row.dirty && !(row.newRow && row.deleted);
         });
 
         return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
