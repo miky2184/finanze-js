@@ -768,8 +768,7 @@
           if ($scope.editDropDownBeneficiarioArray.filter(function (ben) {
               return balanceData[x].beneficiario === ben.beneficiario;
             })[0]) {
-            newAvere.beneficiario = $scope.editDropDownBeneficiarioArray.filter(function (ben) {
-              console.log(x);
+            newAvere.beneficiario = $scope.editDropDownBeneficiarioArray.filter(function (ben) {              
               return balanceData[x].beneficiario === ben.beneficiario;
             })[0].label;
           }
