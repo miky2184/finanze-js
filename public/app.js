@@ -787,10 +787,7 @@
       $interval($scope.gridOptionsAvere.gridApi.core.handleWindowResize, 100, 10);
     };
 
-    $scope.refreshMainGrid = function () {
-      $scope.actionButtons.push($scope.addBtn);
-      $scope.actionButtons.push($scope.deleteBtn);
-      $scope.actionButtons.push($scope.copyBtn);
+    $scope.refreshMainGrid = function () {      
       if ($scope.gridOptions && $scope.gridOptions.gridApi) {
         $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
       }
