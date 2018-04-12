@@ -63,10 +63,10 @@
       </div>
       <div ng-show="login.logged">
         <uib-tabset>
-          <uib-tab heading="Finanze" active="true" select="refreshMainGrid(); addActionButtons()">
+          <uib-tab heading="Finanze" active="true" select="refreshMainGrid()">
             <div ng-include="'view/dettaglio.html'"></div>
           </uib-tab>
-          <uib-tab heading="Balance" select="loadBalance(); deleteActionButton()">
+          <uib-tab heading="Balance" select="loadBalance()">
             <div ng-include="'view/balance.html'"></div>
           </uib-tab>
           <uib-tab heading="Pivot Annuale" select="loadPivotConto()">
@@ -75,7 +75,7 @@
           <uib-tab heading="Grafico" select="loadGrafico()">
             <div ng-include="'view/graph.html'"></div>
           </uib-tab>
-          <uib-tab heading="Settings" select="refreshGridSettings(); addActionButtons()" ng-show="login.admin">
+          <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
             <div ng-include="'view/settings.html'"></div>
           </uib-tab>
           <uib-tab heading="Home">

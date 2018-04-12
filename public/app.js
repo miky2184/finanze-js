@@ -457,8 +457,7 @@
           });
         });
       });
-      
-      $scope.addActionButtons();
+
     };
 
     $scope.actionButtons = [];
@@ -469,11 +468,11 @@
       label: '+',
       listener: function (gridOptions) {
         gridOptions.data.unshift({
-         /* id: Math.max(...gridOptions.data.filter(function (j) {
-            return j.id !== "null";
-          }).map(function (obj) {
-            return obj.id;
-          })) + 1; */
+          /* id: Math.max(...gridOptions.data.filter(function (j) {
+             return j.id !== "null";
+           }).map(function (obj) {
+             return obj.id;
+           })) + 1; */
           newRow: true,
           data: new Date(),
           anno: new Date().getFullYear(),
@@ -523,16 +522,10 @@
       }
     };
 
-    $scope.deleteActionButtons = function () {
-      $scope.actionButtons = [];
-    }
+    $scope.actionButtons.push($scope.addBtn);
+    $scope.actionButtons.push($scope.deleteBtn);
+    $scope.actionButtons.push($scope.copyBtn);
 
-    $scope.addActionButtons = function () {
-      $scope.actionButtons = [];
-      $scope.actionButtons.push($scope.addBtn);
-      $scope.actionButtons.push($scope.deleteBtn);
-      $scope.actionButtons.push($scope.copyBtn);
-    }
 
     $scope.addSettingBtn = {
       label: '+',
@@ -773,7 +766,7 @@
           if ($scope.editDropDownBeneficiarioArray.filter(function (ben) {
               return balanceData[x].beneficiario === ben.beneficiario;
             })[0]) {
-            newAvere.beneficiario = $scope.editDropDownBeneficiarioArray.filter(function (ben) {              
+            newAvere.beneficiario = $scope.editDropDownBeneficiarioArray.filter(function (ben) {
               return balanceData[x].beneficiario === ben.beneficiario;
             })[0].label;
           }
