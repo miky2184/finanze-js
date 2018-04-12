@@ -63,10 +63,10 @@
       </div>
       <div ng-show="login.logged">
         <uib-tabset>
-          <uib-tab heading="Finanze" active="true" select="refreshMainGrid()">
+          <uib-tab heading="Finanze" active="true" select="refreshMainGrid(); addActionButtons()">
             <div ng-include="'view/dettaglio.html'"></div>
           </uib-tab>
-          <uib-tab heading="Balance" select="loadBalance()">
+          <uib-tab heading="Balance" select="loadBalance(); deleteActionButton()">
             <div ng-include="'view/balance.html'"></div>
           </uib-tab>
           <uib-tab heading="Pivot Annuale" select="loadPivotConto()">
@@ -75,7 +75,7 @@
           <uib-tab heading="Grafico" select="loadGrafico()">
             <div ng-include="'view/graph.html'"></div>
           </uib-tab>
-          <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
+          <uib-tab heading="Settings" select="refreshGridSettings(); addActionButtons()" ng-show="login.admin">
             <div ng-include="'view/settings.html'"></div>
           </uib-tab>
           <uib-tab heading="Home">
@@ -86,6 +86,9 @@
     </div>
 
     <div class="panel-footer clearfix" ng-show="login.logged">
+      <div class="pull-left">
+        <button ng-repeat="button in actionButtons" class="btn btn-success btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
+      </div>
       <div class="pull-right">
         <button ng-repeat="button in saveButtons" class="btn btn-success btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
       </div>
