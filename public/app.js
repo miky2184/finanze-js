@@ -521,11 +521,22 @@
         return $scope.login.read;
       }
     };
+    $scope.exportBtn = {
+      label: 'Export',
+      listener: function (gridOptions) {
+        return $scope.salva().then(function(response){
+          return $http.get('http://2.225.127.144:3000/export');
+        });
+      },
+      disabled: function () {
+        return false;
+      }
+    };
 
     $scope.actionButtons.push($scope.addBtn);
     $scope.actionButtons.push($scope.deleteBtn);
     $scope.actionButtons.push($scope.copyBtn);
-
+$scope.actionButtons.push($scope.exportBtn);
 
     $scope.addSettingBtn = {
       label: '+',
@@ -598,10 +609,9 @@
 
     $scope.settingButtons.push($scope.addSettingBtn);
     $scope.settingButtons.push($scope.deleteSettingBtn);
-
-    $scope.saveBtn = {
-      label: 'Salva',
-      listener: function () {
+    
+    $scope.salva = function(){
+      
 
         var modalInstance = $uibModal.open({
           size: 'sm',
@@ -650,7 +660,12 @@
             modalInstance.close();
           });
         });
+    };
 
+    $scope.saveBtn = {
+      label: 'Salva',
+      listener: function () {
+        return $scope.salva();
       },
       disabled: function () {
         return $scope.login.read;
@@ -835,7 +850,7 @@
       exporterMenuCsv: false,
       exporterMenuPdf: false,
       exporterExcelFilename: 'Pivot_Conto_Comune.xlsx',
-      exporterExcelSheetName: 'Dati Estratti',
+      exporterExcelSheetName: 'Dati Estratti', 
       columnDefs: [{
         name: 'ambito',
         displayName: 'Ambito',
