@@ -568,7 +568,7 @@
 
             link.dispatchEvent(evt);
 
-            return result;
+            return resp;
           });
         });
       },
