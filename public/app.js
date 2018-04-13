@@ -468,7 +468,7 @@
       contentType = contentType || '';
       sliceSize = sliceSize || 512;
 
-      var byteCharacters = atob(b64Data);
+      var byteCharacters = b64Data;
       var byteArrays = [];
 
       for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
