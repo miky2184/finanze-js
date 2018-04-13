@@ -464,6 +464,32 @@
     $scope.settingButtons = [];
     $scope.saveButtons = [];
 
+    $scope.b64toBlob = function b64toBlob(b64Data, contentType, sliceSize) {
+      contentType = contentType || '';
+      sliceSize = sliceSize || 512;
+
+      var byteCharacters = atob(b64Data);
+      var byteArrays = [];
+
+      for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+          byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+      }
+
+      var blob = new Blob(byteArrays, {
+        type: contentType
+      });
+      return blob;
+    };
+
     $scope.addBtn = {
       label: '+',
       listener: function (gridOptions) {
@@ -524,8 +550,26 @@
     $scope.exportBtn = {
       label: 'Export',
       listener: function (gridOptions) {
-        return $scope.salva().then(function(response){
-          return $http.get('http://2.225.127.144:3000/export');
+        return $scope.salva().then(function (response) {
+          return $http.get('http://2.225.127.144:3000/export').then(function (resp) {
+            var excel = $scope.b64toBlob(result.data.excel);
+            var blob = new Blob([excel]);
+            var alink = angular.element('<a/>');
+            var link = alink[0];
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'Report.xlsx';
+            link.target = '_blank';
+
+            var evt = document.createEvent('MouseEvents');
+            evt.initMouseEvent('click', true, true, window,
+              0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+           // modalService.hideWaitingModal();
+
+            link.dispatchEvent(evt);
+
+            return result;
+          });
         });
       },
       disabled: function () {
@@ -536,7 +580,7 @@
     $scope.actionButtons.push($scope.addBtn);
     $scope.actionButtons.push($scope.deleteBtn);
     $scope.actionButtons.push($scope.copyBtn);
-$scope.actionButtons.push($scope.exportBtn);
+    $scope.actionButtons.push($scope.exportBtn);
 
     $scope.addSettingBtn = {
       label: '+',
@@ -609,57 +653,57 @@ $scope.actionButtons.push($scope.exportBtn);
 
     $scope.settingButtons.push($scope.addSettingBtn);
     $scope.settingButtons.push($scope.deleteSettingBtn);
-    
-    $scope.salva = function(){
-      
 
-        var modalInstance = $uibModal.open({
-          size: 'sm',
-          templateUrl: 'templates/modal/waitingModal.html',
-          backdrop: false,
-          keyboard: false
+    $scope.salva = function () {
+
+
+      var modalInstance = $uibModal.open({
+        size: 'sm',
+        templateUrl: 'templates/modal/waitingModal.html',
+        backdrop: false,
+        keyboard: false
+      });
+
+      var dto = {};
+      dto.settings = {};
+      dto.links = {};
+
+      dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function (ambito) {
+        return ambito.dirty;
+      });
+
+      dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function (categoria) {
+        return categoria.dirty;
+      });
+
+      dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
+        return sottocategoria.dirty;
+      });
+
+      dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function (beneficiario) {
+        return beneficiario.dirty;
+      });
+
+      dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function (ambcat) {
+        return ambcat.dirty;
+      });
+
+      dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function (catsott) {
+        return catsott.dirty;
+      })
+
+      dto.finanze = $scope.gridOptions.data.filter(function (row) {
+        return row.dirty && !(row.newRow && row.deleted);
+      });
+
+      return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
+        return $scope.loadData().then(function (resp) {
+          if ($scope.login.admin) {
+            $scope.loadSettings();
+          }
+          modalInstance.close();
         });
-
-        var dto = {};
-        dto.settings = {};
-        dto.links = {};
-
-        dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function (ambito) {
-          return ambito.dirty;
-        });
-
-        dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function (categoria) {
-          return categoria.dirty;
-        });
-
-        dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
-          return sottocategoria.dirty;
-        });
-
-        dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function (beneficiario) {
-          return beneficiario.dirty;
-        });
-
-        dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function (ambcat) {
-          return ambcat.dirty;
-        });
-
-        dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function (catsott) {
-          return catsott.dirty;
-        })
-
-        dto.finanze = $scope.gridOptions.data.filter(function (row) {
-          return row.dirty && !(row.newRow && row.deleted);
-        });
-
-        return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
-          return $scope.loadData().then(function (resp) {
-            if ($scope.login.admin) {
-              $scope.loadSettings();
-            }
-            modalInstance.close();
-          });
-        });
+      });
     };
 
     $scope.saveBtn = {
@@ -802,7 +846,7 @@ $scope.actionButtons.push($scope.exportBtn);
       $interval($scope.gridOptionsAvere.gridApi.core.handleWindowResize, 100, 10);
     };
 
-    $scope.refreshMainGrid = function () {      
+    $scope.refreshMainGrid = function () {
       if ($scope.gridOptions && $scope.gridOptions.gridApi) {
         $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
       }
@@ -850,7 +894,7 @@ $scope.actionButtons.push($scope.exportBtn);
       exporterMenuCsv: false,
       exporterMenuPdf: false,
       exporterExcelFilename: 'Pivot_Conto_Comune.xlsx',
-      exporterExcelSheetName: 'Dati Estratti', 
+      exporterExcelSheetName: 'Dati Estratti',
       columnDefs: [{
         name: 'ambito',
         displayName: 'Ambito',
