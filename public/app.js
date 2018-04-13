@@ -552,7 +552,7 @@
       listener: function (gridOptions) {
         return $scope.salva().then(function (response) {
           return $http.get('http://2.225.127.144:3000/export').then(function (resp) {
-            var excel = $scope.b64toBlob(result.data.excel);
+            var excel = $scope.b64toBlob(resp.data);
             var blob = new Blob([excel]);
             var alink = angular.element('<a/>');
             var link = alink[0];
