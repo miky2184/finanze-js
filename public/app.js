@@ -1605,22 +1605,30 @@
             return series;
           });
         };
+        
+          $scope.home = {};
+    $scope.home.on = true;
+
+    $scope.lightOn = function () {
+      console.log("luce accesa");
+    };
+    
+    $scope.loadHome = function (){
+      return $http.get('http://2.225.127.144:3000/temp').then(function (response) {
+        // return $http.get('json/ambito.json').then(function (response) {
+        if (response.data) {
+          $scope.temperature = response.data.temperature;
+          $scope.humidity = response.data.humidity;
+        }
+      }
+                                                                );
+    };
 
       });
     };
 
     }]);
 
-  myApp.controller('HomeController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
-
-    $scope.home = {};
-    $scope.home.on = true;
-
-    $scope.lightOn = function () {
-      console.log("luce accesa");
-    };
-
-    }]);
 
 
   myApp.filter('map', function () {

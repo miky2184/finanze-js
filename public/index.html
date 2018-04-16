@@ -78,8 +78,8 @@
           <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
             <div ng-include="'view/settings.html'"></div>
           </uib-tab>
-          <uib-tab heading="Home">
-            <div ng-include="'view/home.html'" ng-controller="HomeController"></div>
+          <uib-tab heading="Home" select="loadHome()">
+            <div ng-include="'view/home.html'"></div>
           </uib-tab>
         </uib-tabset>
       </div>
