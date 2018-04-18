@@ -110,9 +110,14 @@
   margin-left: 810px;
 }
 
+.temp {
+  margin-top: -190px;
+  margin-left: 595px;
+}
+
 .my-panel-footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
