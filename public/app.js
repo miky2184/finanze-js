@@ -359,6 +359,16 @@
     $scope.backupData = [];
 
     $scope.loadData = function () {
+      
+       var modalInstance = $uibModal.open({
+        size: 'sm',
+        templateUrl: 'templates/modal/waitingModal.html',
+        backdrop: false,
+        keyboard: false,
+        title: 'Ricerca in Corso...',
+        text: 'Sto estraendo tutte le tue finanze!!!'
+      });
+      
       return $http.get('http://2.225.127.144:3000/ambito').then(function (response) {
         // return $http.get('json/ambito.json').then(function (response) {
         if (response.data) {
@@ -457,6 +467,8 @@
           });
         });
       });
+      
+      modalInstance.close();  
 
     };
 
@@ -661,7 +673,9 @@
         size: 'sm',
         templateUrl: 'templates/modal/waitingModal.html',
         backdrop: false,
-        keyboard: false
+        keyboard: false,
+        title: 'Salvataggio in Corso...',
+        text: 'Sto salvando le tue modifiche...!!!'
       });
 
       var dto = {};
@@ -701,7 +715,7 @@
           if ($scope.login.admin) {
             $scope.loadSettings();
           }
-          modalInstance.close();
+            modalInstance.close();          
         });
       });
     };
