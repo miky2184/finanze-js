@@ -359,16 +359,14 @@
     $scope.backupData = [];
 
     $scope.loadData = function () {
-      
-       var modalInstance = $uibModal.open({
+
+      var modalSearchInstance = $uibModal.open({
         size: 'sm',
         templateUrl: 'templates/modal/waitingModal.html',
         backdrop: false,
-        keyboard: false,
-        title: 'Ricerca in Corso...',
-        text: 'Sto estraendo tutte le tue finanze!!!'
+        keyboard: false
       });
-      
+
       return $http.get('http://2.225.127.144:3000/ambito').then(function (response) {
         // return $http.get('json/ambito.json').then(function (response) {
         if (response.data) {
@@ -457,7 +455,7 @@
                     $scope.gridOptions.columnDefs[4].editDropdownOptionsArray = $scope.editDropDownBeneficiarioArray;
                     $scope.gridOptions.columnDefs[5].editDropdownOptionsArray = $scope.editDropDownTipoContoArray;
                     $scope.gridOptions.columnDefs[6].editDropdownOptionsArray = $scope.editDropDownContoArray;
-
+                    modalSearchInstance.close();
                     $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
 
                   });
@@ -467,9 +465,6 @@
           });
         });
       });
-      
-      modalInstance.close();  
-
     };
 
     $scope.actionButtons = [];
@@ -576,7 +571,7 @@
             evt.initMouseEvent('click', true, true, window,
               0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
-           // modalService.hideWaitingModal();
+            // modalService.hideWaitingModal();
 
             link.dispatchEvent(evt);
 
@@ -669,13 +664,11 @@
     $scope.salva = function () {
 
 
-      var modalInstance = $uibModal.open({
+      var modalSavingInstance = $uibModal.open({
         size: 'sm',
-        templateUrl: 'templates/modal/waitingModal.html',
+        templateUrl: 'templates/modal/savingModal.html',
         backdrop: false,
-        keyboard: false,
-        title: 'Salvataggio in Corso...',
-        text: 'Sto salvando le tue modifiche...!!!'
+        keyboard: false
       });
 
       var dto = {};
@@ -715,7 +708,7 @@
           if ($scope.login.admin) {
             $scope.loadSettings();
           }
-            modalInstance.close();          
+          modalSavingInstance.close();
         });
       });
     };
@@ -1619,24 +1612,23 @@
             return series;
           });
         };
-        
-          $scope.home = {};
-    $scope.home.on = true;
 
-    $scope.lightOn = function () {
-      console.log("luce accesa");
-    };
-    
-    $scope.loadHome = function (){
-      return $http.get('http://2.225.127.144:3000/temp').then(function (response) {
-        // return $http.get('json/ambito.json').then(function (response) {
-        if (response.data) {
-          $scope.temperature = response.data.temperature;
-          $scope.humidity = response.data.humidity;
-        }
-      }
-                                                                );
-    };
+        $scope.home = {};
+        $scope.home.on = true;
+
+        $scope.lightOn = function () {
+          console.log("luce accesa");
+        };
+
+        $scope.loadHome = function () {
+          return $http.get('http://2.225.127.144:3000/temp').then(function (response) {
+            // return $http.get('json/ambito.json').then(function (response) {
+            if (response.data) {
+              $scope.temperature = response.data.temperature;
+              $scope.humidity = response.data.humidity;
+            }
+          });
+        };
 
       });
     };
