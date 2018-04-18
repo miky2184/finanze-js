@@ -98,21 +98,26 @@
 .btncouch {
   margin-top: 290px;
   margin-left: 180px;
+  font-size: x-large;
 }
 
 .btntv {
   margin-top: 160px;
   margin-left: 200px;
+  font-size: x-large;
 }
 
 .btnbed {
   margin-top: -210px;
   margin-left: 810px;
+  font-size: x-large;
 }
 
 .temp {
   margin-top: -190px;
-  margin-left: 595px;
+  margin-left: 520px;
+  font-weight: bold;
+  font-size: x-large;
 }
 
 .my-panel-footer {
