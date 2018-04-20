@@ -1671,11 +1671,7 @@
         }],
       data: [],
       onRegisterApi: function (gridApi) {
-        $scope.gridOptionPivotAnno.gridApi = gridApi;
-
-        $timeout(function () {
-          $scope.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
-        }, 250);
+        $scope.gridOptionPivotMese.gridApi = gridApi;        
       }
     };
 
@@ -1739,23 +1735,40 @@
       function add(a, b) {
         return a + b;
       };
+      
+      function filter_array(test_array) {
+    var index = -1,
+        arr_length = test_array ? test_array.length : 0,
+        resIndex = -1,
+        result = [];
+
+    while (++index < arr_length) {
+        var value = test_array[index];
+
+        if (value) {
+            result[++resIndex] = value;
+        }
+    }
+
+    return result;
+};
 
       months.forEach(function (month) {
 
-        var newRow = [];
+        var newRow = {};
 
         newRow.mese = month.mese;
-        newRow.contocomune = dataContoComune.filter(function (obj) {
-          if (obj.mese === month) {
+        newRow.contocomune = filter_array(dataContoComune.map(function (obj) {
+          if (obj.mese === month.value) {
             return obj.importo;
           }
-        }).reduce(add, 0);
+        })).reduce(add, 0);
 
-        newRow.contopersonale = dataContoPersonale.filter(function (obj) {
-          if (obj.mese === month) {
+        newRow.contopersonale = filter_array(dataContoPersonale.map(function (obj) {
+          if (obj.mese === month.value) {
             return obj.importo;
           }
-        }).reduce(add, 0);
+        })).reduce(add, 0);
         
         pivotData.push(newRow);
 
