@@ -1806,7 +1806,10 @@
             }
           },
           yAxis: {
-            axisLabel: 'Totale (€)'
+            axisLabel: 'Totale (€)',
+            tickFormat: function(d){
+				return d3.format(",")(d) + " €";
+			}
           }
         }
       };
@@ -1833,12 +1836,7 @@
           }),
           color: '#7777ff'
             }
-          ];
-
-      d3.select(window).on("scroll." + chart.id(), function () {
-        chart.tooltip.hidden(true);
-        chart.interactiveLayer.tooltip.hidden(true);
-      });
+          ];      
 
     };
 
