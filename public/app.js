@@ -1642,7 +1642,7 @@
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       showColumnFooter: true,
-      minRowsToShow: 12,
+      minRowsToShow: 13,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       enableSorting: false,
@@ -1800,7 +1800,10 @@
               }
             },
             xAxis: {
-              axisLabel: 'Month'
+              axisLabel: 'Month',
+              tickFormat: function (d) {
+                return d3.time.format('%B')(new Date($scope.pivot.year, d, 1));
+              }
             },
             yAxis: {
               axisLabel: 'Totale (€)'
