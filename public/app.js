@@ -1814,14 +1814,16 @@
             values: pivotData.map(function(d){
               return {'x': d.value, 'y': d.contocomune};
             }),
-            color: '#ff7f0e'
+            color: '#ff7f0e',
+            area: true
             },
           {
             key: 'Conto Personale',
             values: pivotData.map(function(d){
               return {'x': d.value, 'y': d.contopersonale};
             }),
-            color: '#7777ff'
+            color: '#7777ff',
+            area: true
             }
           ];
     };
