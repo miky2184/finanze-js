@@ -83,11 +83,6 @@
       selectionRowHeaderWidth: 35,
       rowTemplate: 'templates/rows/deletableRow.html',
       enableColumnMenus: false,
-      enableGridMenu: true,
-      exporterMenuCsv: false,
-      exporterMenuPdf: false,
-      exporterExcelFilename: 'Finanze.xlsx',
-      exporterExcelSheetName: 'Dati Estratti',
       columnDefs: [
         {
           field: 'data',
@@ -888,10 +883,10 @@
 
 
     /************************************************
-     *                  TAB PIVOT CONTO COMUNE
+     *                  TAB PIVOT ANNO
      ************************************************/
 
-    $scope.gridOptionsPivotConto = {
+    $scope.gridOptionPivotAnno = {
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       showColumnFooter: true,
@@ -900,11 +895,6 @@
       selectionRowHeaderWidth: 35,
       enableSorting: false,
       enableColumnMenus: false,
-      enableGridMenu: true,
-      exporterMenuCsv: false,
-      exporterMenuPdf: false,
-      exporterExcelFilename: 'Pivot_Conto_Comune.xlsx',
-      exporterExcelSheetName: 'Dati Estratti',
       columnDefs: [{
         name: 'ambito',
         displayName: 'Ambito',
@@ -1019,10 +1009,10 @@
         }],
       data: [],
       onRegisterApi: function (gridApi) {
-        $scope.gridOptionsPivotConto.gridApi = gridApi;
+        $scope.gridOptionPivotAnno.gridApi = gridApi;
 
         $timeout(function () {
-          $scope.gridOptionsPivotConto.gridApi.treeBase.expandAllRows();
+          $scope.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
         }, 250);
       }
     };
@@ -1033,7 +1023,7 @@
     };
     $scope.years = [2018, 2017, 2016];
 
-    $scope.loadPivotConto = function () {
+    $scope.loadPivotAnno = function () {
       var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
         return obj.anno === $scope.pivot.year && obj.tipoConto === $scope.pivot.tipoConto && obj.contabilizzata;
       });
@@ -1284,10 +1274,10 @@
         }
       }
 
-      $scope.gridOptionsPivotConto.data = pivotData;
-      $interval($scope.gridOptionsPivotConto.gridApi.core.handleWindowResize, 100, 10);
+      $scope.gridOptionPivotAnno.data = pivotData;
+      $interval($scope.gridOptionPivotAnno.gridApi.core.handleWindowResize, 100, 10);
       $timeout(function () {
-        $scope.gridOptionsPivotConto.gridApi.treeBase.expandAllRows();
+        $scope.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
       }, 250);
     };
 
@@ -1618,6 +1608,10 @@
       });
     };
 
+    /******************************************************************
+     *                         TAB HOME
+     ******************************************************************/
+
     $scope.home = {};
     $scope.home.on = true;
 
@@ -1640,10 +1634,139 @@
       });
     };
 
+    /************************************************
+     *                  TAB PIVOT MESE
+     ************************************************/
+
+    $scope.gridOptionPivotMese = {
+      columnVirtualizationThreshold: 100,
+      showGridFooter: true,
+      showColumnFooter: true,
+      minRowsToShow: 12,
+      enableFiltering: false,
+      selectionRowHeaderWidth: 35,
+      enableSorting: false,
+      enableColumnMenus: false,
+      columnDefs: [{
+        name: 'mese',
+        displayName: 'Mese',
+        field: 'mese',
+        width: '10%'
+            }, {
+        name: 'contocomune',
+        displayName: 'Conto Comune',
+        field: 'contocomune',
+        width: '10%',
+        aggregationType: uiGridConstants.aggregationTypes.sum,
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
+        }, {
+        name: 'contopersonale',
+        displayName: 'Conto Personale',
+        field: 'contopersonale',
+        width: '10%',
+        aggregationType: uiGridConstants.aggregationTypes.sum,
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
+        }],
+      data: [],
+      onRegisterApi: function (gridApi) {
+        $scope.gridOptionPivotAnno.gridApi = gridApi;
+
+        $timeout(function () {
+          $scope.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
+        }, 250);
+      }
+    };
+
+    $scope.loadPivotMese = function () {
+      var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
+        return obj.anno === $scope.pivot.year;
+      });
+
+      var pivotData = [];
+
+      var months = [{
+          value: 1,
+          mese: 'Gennaio'
+        }, {
+          value: 2,
+          mese: 'Febbraio'
+        }, {
+          value: 3,
+          mese: 'Marzo'
+        },
+        {
+          value: 4,
+          mese: 'Aprile'
+        }, {
+          value: 5,
+          mese: 'Maggio'
+        }, {
+          value: 6,
+          mese: 'Giugno'
+        },
+        {
+          value: 7,
+          mese: 'Luglio'
+        }, {
+          value: 8,
+          mese: 'Agosto'
+        }, {
+          value: 9,
+          mese: 'Settembre'
+        },
+        {
+          value: 10,
+          mese: 'Ottobre'
+        }, {
+          value: 11,
+          mese: 'Novembre'
+        }, {
+          value: 12,
+          mese: 'Dicembre'
+        }];
+
+      var dataContoComune = angular.copy(balanceData).filter(function (obj) {
+        return obj.tipoConto === 1;
+      });
+
+      var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
+        return obj.tipoConto === 2;
+      });
+
+
+      function add(a, b) {
+        return a + b;
+      };
+
+      months.forEach(function (month) {
+
+        var newRow = [];
+
+        newRow.mese = month.mese;
+        newRow.contocomune = dataContoComune.filter(function (obj) {
+          if (obj.mese === month) {
+            return obj.importo;
+          }
+        }).reduce(add, 0);
+
+        newRow.contopersonale = dataContoPersonale.filter(function (obj) {
+          if (obj.mese === month) {
+            return obj.importo;
+          }
+        }).reduce(add, 0);
+        
+        pivotData.push(newRow);
+
+      });
+
+      $scope.gridOptionPivotMese.data = pivotData;
+      $interval($scope.gridOptionPivotMese.gridApi.core.handleWindowResize, 100, 10);
+    };
+
+
     }]);
-
-
-
   myApp.filter('map', function () {
     return function () {
       return function (input, map, idLabel, valueLabel) {

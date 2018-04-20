@@ -1,8 +1,0 @@
-<label for="yearSelect"> Seleziona un anno: </label>
-<select name="yearSelect" id="repeatSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadPivotConto()">  
-</select>
-
-<label for="contoSelect">Seleziona una tipologia di conto:</label>
-<select name="contoSelect"  id="repeatCnSelect" ng-options="tipoConto.tipoConto as tipoConto.label for tipoConto in editDropDownTipoContoArray" ng-model="pivot.tipoConto" ng-change="loadPivotConto()">
-</select>
-<div id="grid3" ui-grid="gridOptionsPivotConto" ui-grid-exporter ui-grid-tree-view class="myGrid"></div>

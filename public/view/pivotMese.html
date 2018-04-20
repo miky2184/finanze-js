@@ -1,0 +1,4 @@
+<div><label for="yearSelect"> Seleziona un anno: </label>
+  <select name="yearSelect" id="repeatSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadPivotMese()">  
+</select></div>
+<div id="grid4" ui-grid="gridOptionPivotMese" class="myGrid"></div>
