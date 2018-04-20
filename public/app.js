@@ -3,7 +3,7 @@
 
   var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3']);
 
-  myApp.controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {      
+  myApp.controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
 
     $scope.login = {
       logged: false,
@@ -16,45 +16,50 @@
         return;
       }
 
+      rowEntity.dirty = true;
       var newSett = {};
       var oldSett = {};
 
-      if (colDef.name === 'ambito') {
+      switch (colDef.name) {
+        case 'data':
+          rowEntity.anno = new Date(newValue).getFullYear();
+          rowEntity.mese = new Date(newValue).getMonth() + 1;
+          break;
+        case 'ambito':
+          newSett = $scope.editDropDownAmbitoArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0];
 
-        newSett = $scope.editDropDownAmbitoArray.filter(function (a) {
-          return a[colDef.name] === newValue;
-        })[0];
+          oldSett = $scope.editDropDownAmbitoArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0];
+          break;
+        case 'categoria':
+          newSett = $scope.editDropDownCategoriaArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0];
 
-        oldSett = $scope.editDropDownAmbitoArray.filter(function (a) {
-          return a[colDef.name] === oldValue;
-        })[0];
+          oldSett = $scope.editDropDownCategoriaArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0];
+        case 'sottocategoria':
+          newSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0];
 
-      } else if (colDef.name === 'categoria') {
-        newSett = $scope.editDropDownCategoriaArray.filter(function (a) {
-          return a[colDef.name] === newValue;
-        })[0];
+          oldSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0];
+        case 'beneficiario':
+          newSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
+            return a[colDef.name] === newValue;
+          })[0];
 
-        oldSett = $scope.editDropDownCategoriaArray.filter(function (a) {
-          return a[colDef.name] === oldValue;
-        })[0];
-
-      } else if (colDef.name === 'sottocategoria') {
-        newSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
-          return a[colDef.name] === newValue;
-        })[0];
-
-        oldSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
-          return a[colDef.name] === oldValue;
-        })[0];
-
-      } else if (colDef.name === 'beneficiario') {
-        newSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
-          return a[colDef.name] === newValue;
-        })[0];
-
-        oldSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
-          return a[colDef.name] === oldValue;
-        })[0];
+          oldSett = $scope.editDropDownBeneficiarioArray.filter(function (a) {
+            return a[colDef.name] === oldValue;
+          })[0];
+        default:
+          break;
       }
 
       if (newSett) {
@@ -64,8 +69,6 @@
       if (oldSett) {
         oldSett.used += -1;
       }
-
-      rowEntity.dirty = true;
 
     };
 
@@ -1621,7 +1624,7 @@
     $scope.lightOn = function () {
       console.log("luce accesa");
     };
-    
+
     $scope.lightCouchOnOff = function () {
       console.log("luce divano accesa");
       return $http.get('http://2.225.127.144:3000/hue');
