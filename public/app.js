@@ -1756,7 +1756,7 @@
       months.forEach(function (month) {
 
         var newRow = {};
-        
+
         newRow.value = month.value;
         newRow.mese = month.mese;
         newRow.contocomune = filter_array(dataContoComune.map(function (obj) {
@@ -1777,58 +1777,69 @@
 
       $scope.gridOptionPivotMese.data = pivotData;
       $interval($scope.gridOptionPivotMese.gridApi.core.handleWindowResize, 100, 10);
-      
+
       $scope.optionsMese = {
-          chart: {
-            type: 'lineChart',
-            height: 720,
-            margin: {
-              top: 20,
-              right: 20,
-              bottom: 60,
-              left: 65
-            },
-            useInteractiveGuideline: true,
-            x: function (d) {
-              if (d) {                
-                return d.x;
-              }
-            },
-            y: function (d) {
-              if (d) {
-                return d.y;
-              }
-            },
-            xAxis: {
-              axisLabel: 'Month',
-              tickFormat: function (d) {
-                return d3.time.format('%B')(new Date($scope.pivot.year, d, 1));
-              }
-            },
-            yAxis: {
-              axisLabel: 'Totale (€)'
+        chart: {
+          type: 'lineChart',
+          height: 720,
+          margin: {
+            top: 20,
+            right: 20,
+            bottom: 60,
+            left: 65
+          },
+          useInteractiveGuideline: true,
+          x: function (d) {
+            if (d) {
+              return d.x;
             }
+          },
+          y: function (d) {
+            if (d) {
+              return d.y;
+            }
+          },
+          xAxis: {
+            axisLabel: 'Month',
+            tickFormat: function (d) {
+              return d3.time.format('%B')(new Date($scope.pivot.year, d, 1));
+            }
+          },
+          yAxis: {
+            axisLabel: 'Totale (€)'
           }
-        };              
-      
-        $scope.dataMese = [
-          {
-            key: 'Conto Comune',
-            values: pivotData.map(function(d){
-              return {'x': d.value, 'y': d.contocomune};
-            }),
-            color: '#ff7f0e',
-            area: true
+        }
+      };
+
+      $scope.dataMese = [
+        {
+          key: 'Conto Comune',
+          values: pivotData.map(function (d) {
+            return {
+              'x': d.value,
+              'y': d.contocomune
+            };
+          }),
+          color: '#ff7f0e',
+          area: true
             },
-          {
-            key: 'Conto Personale',
-            values: pivotData.map(function(d){
-              return {'x': d.value, 'y': d.contopersonale};
-            }),
-            color: '#7777ff',
-            area: true
+        {
+          key: 'Conto Personale',
+          values: pivotData.map(function (d) {
+            return {
+              'x': d.value,
+              'y': d.contopersonale
+            };
+          }),
+          color: '#7777ff'
             }
           ];
+
+      d3.select(window).on("scroll." + chart.id(), function () {
+        chart.tooltip.hidden(true);
+        chart.interactiveLayer.tooltip.hidden(true);
+      });
+
     };
 
 
