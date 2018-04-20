@@ -1756,7 +1756,8 @@
       months.forEach(function (month) {
 
         var newRow = {};
-
+        
+        newRow.value = month.value;
         newRow.mese = month.mese;
         newRow.contocomune = filter_array(dataContoComune.map(function (obj) {
           if (obj.mese === month.value) {
@@ -1811,14 +1812,14 @@
           {
             key: 'Conto Comune',
             values: pivotData.map(function(d){
-              return {'x': d.mese, 'y': d.contocomune};
+              return {'x': d.value, 'y': d.contocomune};
             }),
             color: '#ff7f0e'
             },
           {
             key: 'Conto Personale',
             values: pivotData.map(function(d){
-              return {'x': d.mese, 'y': d.contopersonale};
+              return {'x': d.value, 'y': d.contopersonale};
             }),
             color: '#7777ff'
             }
