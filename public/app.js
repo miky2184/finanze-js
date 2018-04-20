@@ -1651,12 +1651,12 @@
         name: 'mese',
         displayName: 'Mese',
         field: 'mese',
-        width: '10%'
+        width: '34%'
             }, {
         name: 'contocomune',
         displayName: 'Conto Comune',
         field: 'contocomune',
-        width: '10%',
+        width: '33%',
         aggregationType: uiGridConstants.aggregationTypes.sum,
         footerCellFilter: 'currency',
         cellFilter: 'currency'
@@ -1664,7 +1664,7 @@
         name: 'contopersonale',
         displayName: 'Conto Personale',
         field: 'contopersonale',
-        width: '10%',
+        width: '33%',
         aggregationType: uiGridConstants.aggregationTypes.sum,
         footerCellFilter: 'currency',
         cellFilter: 'currency'
