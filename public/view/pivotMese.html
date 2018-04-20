@@ -1,4 +1,8 @@
-<div><label for="yearSelect"> Seleziona un anno: </label>
+<div class="col-md-3"><label for="yearSelect"> Seleziona un anno: </label>
   <select name="yearSelect" id="repeatSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadPivotMese()">  
-</select></div>
-<div id="grid4" ui-grid="gridOptionPivotMese" class="myGrid"></div>
+</select>
+  <div id="grid4" ui-grid="gridOptionPivotMese" class="myGrid"></div>
+</div>
+<div class="col-md-9">
+  <nvd3 options="optionsMese" data="dataMese" config="{deepWatchData: true, refreshDataOnly: false}"></nvd3>
+</div>

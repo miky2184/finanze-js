@@ -1671,7 +1671,7 @@
         }],
       data: [],
       onRegisterApi: function (gridApi) {
-        $scope.gridOptionPivotMese.gridApi = gridApi;        
+        $scope.gridOptionPivotMese.gridApi = gridApi;
       }
     };
 
@@ -1735,23 +1735,23 @@
       function add(a, b) {
         return a + b;
       };
-      
+
       function filter_array(test_array) {
-    var index = -1,
-        arr_length = test_array ? test_array.length : 0,
-        resIndex = -1,
-        result = [];
+        var index = -1,
+          arr_length = test_array ? test_array.length : 0,
+          resIndex = -1,
+          result = [];
 
-    while (++index < arr_length) {
-        var value = test_array[index];
+        while (++index < arr_length) {
+          var value = test_array[index];
 
-        if (value) {
+          if (value) {
             result[++resIndex] = value;
+          }
         }
-    }
 
-    return result;
-};
+        return result;
+      };
 
       months.forEach(function (month) {
 
@@ -1769,13 +1769,60 @@
             return obj.importo;
           }
         })).reduce(add, 0);
-        
+
         pivotData.push(newRow);
 
       });
 
       $scope.gridOptionPivotMese.data = pivotData;
       $interval($scope.gridOptionPivotMese.gridApi.core.handleWindowResize, 100, 10);
+      
+      $scope.optionsMese = {
+          chart: {
+            type: 'lineChart',
+            height: 720,
+            margin: {
+              top: 20,
+              right: 20,
+              bottom: 60,
+              left: 65
+            },
+            useInteractiveGuideline: true,
+            x: function (d) {
+              if (d) {                
+                return d.x;
+              }
+            },
+            y: function (d) {
+              if (d) {
+                return d.y;
+              }
+            },
+            xAxis: {
+              axisLabel: 'Month'
+            },
+            yAxis: {
+              axisLabel: 'Totale (€)'
+            }
+          }
+        };              
+      
+        $scope.dataMese = [
+          {
+            key: 'Conto Comune',
+            values: pivotData.map(function(d){
+              return {'x': d.mese, 'y': d.contocomune};
+            }),
+            color: '#ff7f0e'
+            },
+          {
+            key: 'Conto Personale',
+            values: pivotData.map(function(d){
+              return {'x': d.mese, 'y': d.contopersonale};
+            }),
+            color: '#7777ff'
+            }
+          ];
     };
 
 
