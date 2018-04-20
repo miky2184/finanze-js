@@ -1621,6 +1621,11 @@
     $scope.lightOn = function () {
       console.log("luce accesa");
     };
+    
+    $scope.lightCouchOnOff = function () {
+      console.log("luce divano accesa");
+      return $http.get('http://2.225.127.144:3000/hue');
+    };
 
     $scope.loadHome = function () {
       return $http.get('http://2.225.127.144:3000/temp').then(function (response) {
