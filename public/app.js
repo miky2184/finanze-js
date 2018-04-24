@@ -94,7 +94,7 @@
           name: 'ambito',
           displayName: 'Ambito',
           field: 'ambito',
-          width: '8%',
+          width: '6%',
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'ambito',
           editDropdownValueLabel: 'label',
@@ -123,7 +123,7 @@
           name: 'categoria',
           displayName: 'Categoria',
           field: 'categoria',
-          width: '8%',
+          width: '10%',
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'categoria',
           editDropdownValueLabel: 'label',
@@ -155,7 +155,7 @@
           name: 'sottocategoria',
           displayName: 'Sottocategoria',
           field: 'sottocategoria',
-          width: '8%',
+          width: '13%',
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'sottocategoria',
           editDropdownValueLabel: 'label',
@@ -187,7 +187,7 @@
           name: 'beneficiario',
           displayName: 'Beneficiario',
           field: 'beneficiario',
-          width: '8%',
+          width: '*',
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'beneficiario',
           editDropdownValueLabel: 'label',
@@ -214,7 +214,7 @@
           name: 'tipoConto',
           displayName: 'Tipo Conto',
           field: 'tipoConto',
-          width: '12%',
+          width: '10%',
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'tipoConto',
           editDropdownValueLabel: 'label',
@@ -242,7 +242,7 @@
           name: 'conto',
           displayName: 'Conto',
           field: 'conto',
-          width: '12%',
+          width: '9%',
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'conto',
           editDropdownValueLabel: 'label',
@@ -267,21 +267,21 @@
             },
         {
           field: 'contabilizzata',
-          width: '3%',
+          width: '2%',
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'fas fa-balance-scale'
             },
         {
           field: 'visualizzare',
-          width: '3%',
+          width: '2%',
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'fas fa-eye'
             },
         {
           field: 'cartaCredito',
-          width: '3%',
+          width: '2%',
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'far fa-credit-card'
@@ -291,7 +291,7 @@
           aggregationType: uiGridConstants.aggregationTypes.sum,
           footerCellFilter: 'currency',
           cellFilter: 'currency',
-          width: '8%',
+          width: '6%',
           cellTooltip: true,
           cellClass: 'text-right',
           type: 'number'
@@ -299,7 +299,7 @@
         {
           field: 'info',
           cellTooltip: true,
-          width: '*'
+          width: '12%'
             },
         {
           field: 'anno',
@@ -1651,12 +1651,12 @@
         name: 'mese',
         displayName: 'Mese',
         field: 'mese',
-        width: '34%'
+        width: '30%'
             }, {
         name: 'contocomune',
         displayName: 'Conto Comune',
         field: 'contocomune',
-        width: '33%',
+        width: '35%',
         aggregationType: uiGridConstants.aggregationTypes.sum,
         footerCellFilter: 'currency',
         cellFilter: 'currency'
@@ -1664,7 +1664,7 @@
         name: 'contopersonale',
         displayName: 'Conto Personale',
         field: 'contopersonale',
-        width: '33%',
+        width: '35%',
         aggregationType: uiGridConstants.aggregationTypes.sum,
         footerCellFilter: 'currency',
         cellFilter: 'currency'
@@ -1677,7 +1677,7 @@
 
     $scope.loadPivotMese = function () {
       var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
-        return obj.anno === $scope.pivot.year;
+        return obj.anno === $scope.pivot.year && obj.visualizzare;
       });
 
       var pivotData = [];
@@ -1808,7 +1808,7 @@
           yAxis: {
             axisLabel: 'Totale (€)',
             tickFormat: function(d){
-				return d3.format(",")(d) + " €";
+				return d3.round(d, 2) + " €";
 			}
           }
         }
