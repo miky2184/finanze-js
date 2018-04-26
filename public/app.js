@@ -287,6 +287,13 @@
           buttonNgClass: 'far fa-credit-card'
             },
         {
+          field: 'webapp',
+          width: '2%',
+          cellTooltip: true,
+          cellTemplate: 'templates/rows/checkboxIcon.html',
+          buttonNgClass: 'fab telegram-plane'
+            },
+        {
           field: 'importo',
           aggregationType: uiGridConstants.aggregationTypes.sum,
           footerCellFilter: 'currency',
@@ -435,6 +442,7 @@
                       newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
                       newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
                       newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
+                      newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
                       newRow.importo = row['VALUE'];
                       newRow.info = row['INFO'];
                       newRow.anno = new Date(row['DATA_VAL']).getFullYear();
@@ -510,7 +518,8 @@
           mese: new Date().getMonth() + 1,
           contabilizzata: true,
           visualizzare: true,
-          cartaCredito: false
+          cartaCredito: false,
+          webapp: false
         });
       },
       disabled: function () {
