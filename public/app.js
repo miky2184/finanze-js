@@ -291,7 +291,7 @@
           width: '2%',
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
-          buttonNgClass: 'fab telegram-plane'
+          buttonNgClass: 'fab fa-telegram-plane'
             },
         {
           field: 'importo',
