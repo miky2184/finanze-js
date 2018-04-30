@@ -1628,9 +1628,12 @@
       console.log("luce accesa");
     };
 
-    $scope.lightCouchOnOff = function () {
-      console.log("luce divano accesa");
-      return $http.get('http://2.225.127.144:3000/hue');
+    $scope.lightCouchOnOff = function () {      
+      return $http.get('http://2.225.127.144:3000/hue/9');
+    };
+    
+     $scope.lightLedOnOff = function () {      
+      return $http.get('http://2.225.127.144:3000/hue/4');
     };
 
     $scope.loadHome = function () {
@@ -1686,7 +1689,7 @@
 
     $scope.loadPivotMese = function () {
       var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
-        return obj.anno === $scope.pivot.year && obj.visualizzare;
+        return obj.anno === $scope.pivot.year && obj.visualizzare && obj.conto !== 4;
       });
 
       var pivotData = [];
