@@ -336,7 +336,7 @@
       var user = {};
       user.username = $scope.username;
       user.pwd = $scope.password;
-      return $http.post('http://2.225.127.144:3000/login', user).then(function (resp) {
+      return $http.post('http://2.225.127.144:3001/login', user).then(function (resp) {
         // return $http.get('json/login.json').then(function (resp) {
         if (resp.data && resp.data.length === 1) {
           $scope.descName = resp.data[0]['NAME'];
@@ -372,7 +372,7 @@
         keyboard: false
       });
 
-      return $http.get('http://2.225.127.144:3000/ambito').then(function (response) {
+      return $http.get('http://2.225.127.144:3001/ambito').then(function (response) {
         // return $http.get('json/ambito.json').then(function (response) {
         if (response.data) {
           response.data.unshift({
@@ -382,7 +382,7 @@
         }
         $scope.editDropDownAmbitoArray = response.data;
 
-        return $http.get('http://2.225.127.144:3000/categoria').then(function (response) {
+        return $http.get('http://2.225.127.144:3001/categoria').then(function (response) {
           // return $http.get('json/categoria.json').then(function (response) {
           if (response.data) {
             response.data.unshift({
@@ -392,7 +392,7 @@
           }
           $scope.editDropDownCategoriaArray = response.data;
 
-          return $http.get('http://2.225.127.144:3000/sottocategoria').then(function (response) {
+          return $http.get('http://2.225.127.144:3001/sottocategoria').then(function (response) {
             // return $http.get('json/sottocategoria.json').then(function (response) {
             if (response.data) {
               response.data.unshift({
@@ -402,7 +402,7 @@
             }
             $scope.editDropDownSottoCategoriaArray = response.data;
 
-            return $http.get('http://2.225.127.144:3000/beneficiario').then(function (response) {
+            return $http.get('http://2.225.127.144:3001/beneficiario').then(function (response) {
               // return $http.get('json/beneficiario.json').then(function (response) {
               if (response.data) {
                 response.data.unshift({
@@ -412,15 +412,15 @@
               }
               $scope.editDropDownBeneficiarioArray = response.data;
 
-              return $http.get('http://2.225.127.144:3000/tipoConto').then(function (response) {
+              return $http.get('http://2.225.127.144:3001/tipoConto').then(function (response) {
                 // return $http.get('json/tipoConto.json').then(function (response) {
                 $scope.editDropDownTipoContoArray = response.data;
 
-                return $http.get('http://2.225.127.144:3000/conto').then(function (response) {
+                return $http.get('http://2.225.127.144:3001/conto').then(function (response) {
                   // return $http.get('json/conto.json').then(function (response) {
                   $scope.editDropDownContoArray = response.data;
 
-                  return $http.get('http://2.225.127.144:3000/all').
+                  return $http.get('http://2.225.127.144:3001/all').
                   // return $http.get('json/all.json').
                   then(function (response) {
 
@@ -565,7 +565,7 @@
       label: 'Export',
       listener: function (gridOptions) {
         return $scope.salva().then(function (response) {
-          return $http.get('http://2.225.127.144:3000/export').then(function (resp) {
+          return $http.get('http://2.225.127.144:3001/export').then(function (resp) {
             var excel = $scope.b64toBlob(resp.data);
             var blob = new Blob([excel]);
             var alink = angular.element('<a/>');
@@ -710,7 +710,7 @@
         return row.dirty && !(row.newRow && row.deleted);
       });
 
-      return $http.post('http://2.225.127.144:3000/save', dto).then(function (resp) {
+      return $http.post('http://2.225.127.144:3001/save', dto).then(function (resp) {
         return $scope.loadData().then(function (resp) {
           if ($scope.login.admin) {
             $scope.loadSettings();
@@ -1491,7 +1491,7 @@
 
     $scope.loadGrafico = function () {
 
-      return $http.get('http://2.225.127.144:3000/graph').then(function (resp) {
+      return $http.get('http://2.225.127.144:3001/graph').then(function (resp) {
 
         $scope.options = {
           chart: {
@@ -1628,16 +1628,16 @@
       console.log("luce accesa");
     };
 
-    $scope.lightCouchOnOff = function () {      
-      return $http.get('http://2.225.127.144:3000/hue/9');
+    $scope.lightCouchOnOff = function () {
+      return $http.get('http://2.225.127.144:3001/hue/9');
     };
-    
-     $scope.lightLedOnOff = function () {      
-      return $http.get('http://2.225.127.144:3000/hue/4');
+
+    $scope.lightLedOnOff = function () {
+      return $http.get('http://2.225.127.144:3001/hue/4');
     };
 
     $scope.loadHome = function () {
-      return $http.get('http://2.225.127.144:3000/temp').then(function (response) {
+      return $http.get('http://2.225.127.144:3001/temp').then(function (response) {
         // return $http.get('json/ambito.json').then(function (response) {
         if (response.data) {
           $scope.temperature = response.data.temperature;
@@ -1819,9 +1819,9 @@
           },
           yAxis: {
             axisLabel: 'Totale (€)',
-            tickFormat: function(d){
-				return d3.round(d, 2) + " €";
-			}
+            tickFormat: function (d) {
+              return d3.round(d, 2) + " €";
+            }
           }
         }
       };
@@ -1848,7 +1848,7 @@
           }),
           color: '#7777ff'
             }
-          ];      
+          ];
 
     };
 
