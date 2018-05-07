@@ -1628,11 +1628,11 @@
       console.log("luce accesa");
     };
 
-    $scope.lightCouchOnOff = function () {      
+    $scope.lightCouchOnOff = function () {
       return $http.get('http://2.225.127.144:3000/hue/9');
     };
-    
-     $scope.lightLedOnOff = function () {      
+
+    $scope.lightLedOnOff = function () {
       return $http.get('http://2.225.127.144:3000/hue/4');
     };
 
@@ -1814,14 +1814,14 @@
           xAxis: {
             axisLabel: 'Month',
             tickFormat: function (d) {
-              return d3.time.format('%B')(new Date($scope.pivot.year, d, 1));
+              return d3.time.format('%B')(new Date($scope.pivot.year, d+1, 1));
             }
           },
           yAxis: {
             axisLabel: 'Totale (€)',
-            tickFormat: function(d){
-				return d3.round(d, 2) + " €";
-			}
+            tickFormat: function (d) {
+              return d3.round(d, 2) + " €";
+            }
           }
         }
       };
@@ -1848,10 +1848,122 @@
           }),
           color: '#7777ff'
             }
-          ];      
+          ];
 
     };
 
+
+    /*****************************************************************
+     *                      TAB WORK
+     ****************************************************************/
+
+    $scope.gridOptionsSalary = {
+      columnVirtualizationThreshold: 100,
+      minRowsToShow: 13,
+      enableFiltering: false,
+      enableSorting: false,
+      columnDefs: [{
+        name: 'anno',
+        displayName: 'Anno',
+        field: 'anno',
+        width: '5%'
+      }, {
+        name: 'mese',
+        displayName: 'Mese',
+        field: 'mese',
+        width: '5%'
+            }, {
+        name: 'data',
+        displayName: 'Data',
+        field: 'data',
+        width: '5%',
+        cellFilter: 'date:\'yyyy-MM-dd\''
+            }, {
+        name: 'stipendioLordo',
+        displayName: 'Stipendio Lordo',
+        field: 'stipendioLordo',
+        width: '10%',
+        cellFilter: 'currency'
+        }, {
+        name: 'stipendioNetto',
+        displayName: 'Stipendio Netto',
+        field: 'stipendioNetto',
+        width: '10%',
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
+        }, {
+          name: 'festivitaNonGoduta',
+        displayName: 'Festività Non Goduta',
+        field: 'festivitaNonGoduta',
+        width: '10%'
+        }, {
+          name: 'competenzaBase',
+        displayName: 'Competenza Base',
+        field: 'competenzaBase',
+        width: '10%'
+        }, {
+          name: 'liqRol',
+        displayName: 'Liquidazione ROL',
+        field: 'liqRol',
+        width: '10%'
+        }, {
+          name: 'compRol',
+        displayName: 'Compenso ROL',
+        field: 'compRol',
+        width: '10%'
+        }, {
+          name: 'totaleOreLavorate',
+        displayName: 'Tot. Ore Lavorate',
+        field: 'totaleOreLavorate',
+        width: '10%'
+        }, {
+          name: 'straordinario25',
+        displayName: 'Str. 25%',
+        field: 'straordinario25',
+        width: '10%'
+        }, {
+          name: 'compStraordinario25',
+        displayName: 'Comp. Str. 25%',
+        field: 'compStraordinario25',
+        width: '10%'
+        }, {
+          name: 'maggiorazione25',
+        displayName: 'Magg. Str. 25%',
+        field: 'maggiorazione25',
+        width: '10%'
+        }, {
+          name: 'compMaggiorazione25',
+        displayName: 'Magg. Str. 25%',
+        field: 'compMaggiorazione25',
+        width: '10%'
+        }, {
+          name: 'straordinario30',
+        displayName: 'Str. 30%',
+        field: 'straordinario30',
+        width: '10%'
+        }, {
+          name: 'compStraordinario30',
+        displayName: 'Comp. Str. 30%',
+        field: 'compStraordinario30',
+        width: '10%'
+        }, {
+          name: 'maggiorazione30',
+        displayName: 'Magg. Str. 30%',
+        field: 'maggiorazione30',
+        width: '10%'
+        }, {
+          name: 'compMaggiorazione30',
+        displayName: 'Magg. Str. 30%',
+        field: 'compMaggiorazione30',
+        width: '10%'
+        }],
+      data: [],
+      onRegisterApi: function (gridApi) {
+        $scope.gridOptionsSalary.gridApi = gridApi;
+      }
+    };
+
+    $scope.loadWork = function () {};
 
     }]);
   myApp.filter('map', function () {
