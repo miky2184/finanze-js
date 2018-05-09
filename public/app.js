@@ -1914,7 +1914,7 @@
           width: '10%'
         }, {
           name: 'liqRol',
-          displayName: 'ROL Liquidate',
+          displayName: 'Ore ROL Liquidate',
           field: 'liqRol',
           width: '10%'
         }, {
@@ -1922,11 +1922,6 @@
           displayName: 'Compenso ROL',
           field: 'compRol',
             cellFilter: 'currency',
-          width: '10%'
-        }, {
-          name: 'totaleOreLavorate',
-          displayName: 'Tot. Ore Lavorate',
-          field: 'totaleOreLavorate',
           width: '10%'
         }, {
           name: 'straordinario25',
@@ -1967,12 +1962,12 @@
           field: 'maggiorazione30',
           width: '10%'
         }, {
-          name: 'compMaggiorazione50',
-          displayName: 'Magg. Str. 50%',
-          field: 'compMaggiorazione50',
+          name: 'compMaggiorazione30',
+          displayName: 'Comp. Magg. Str. 30%',
+          field: 'compMaggiorazione30',
             cellFilter: 'currency',
           width: '10%'
-        }, {
+        },  {
           name: 'straordinario50',
           displayName: 'Str. 50%',
           field: 'straordinario50',
@@ -2006,6 +2001,12 @@
             cellFilter: 'currency',
           width: '10%'
         }, {
+          name: 'erogazioneSpeciale',
+          displayName: 'Erogazione Speciale',
+          field: 'erogazioneSpeciale',
+            cellFilter: 'currency',
+          width: '10%'
+        },{
           name: 'periquativo',
           displayName: 'Periquativo',
           field: 'periquativo',
@@ -2170,6 +2171,8 @@
          tmp.festivitaNonGoduta  =obj.festivitaNonGoduta;
          tmp.competenzaBase = obj.competenzaBase;
          tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
+         tmp.impPrevNonArr = ((obj.ggLavorativi+obj.festivitaNonGoduta)*obj.competenzaBase)+(obj.liqRol*obj.compRol)+(obj.straordinario25*obj.compStraordinario25)+(obj.maggiorazione25*obj.compMaggiorazione25)+(obj.straordinario30*obj.compStraordinario30)+(obj.maggiorazione30*obj.compMaggiorazione30)+(obj.straordinario50*obj.compStraordinario50)+(obj.maggiorazione50*obj.compMaggiorazione50)+(obj.maggiorazione60*obj.compMaggiorazione60)+obh.periquativo;
+         tmp.impPrevArr = Math.round(obj.impPrevNonArr);
          tmp.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta ;
          salaryData.push(tmp);
        });
