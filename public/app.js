@@ -2172,7 +2172,7 @@
          tmp.competenzaBase = obj.competenzaBase;
          tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
          tmp.impPrevNonArr = ((obj.ggLavorativi+obj.festivitaNonGoduta)*obj.competenzaBase)+(obj.liqRol*obj.compRol)+(obj.straordinario25*obj.compStraordinario25)+(obj.maggiorazione25*obj.compMaggiorazione25)+(obj.straordinario30*obj.compStraordinario30)+(obj.maggiorazione30*obj.compMaggiorazione30)+(obj.straordinario50*obj.compStraordinario50)+(obj.maggiorazione50*obj.compMaggiorazione50)+(obj.maggiorazione60*obj.compMaggiorazione60)+obj.periquativo;
-         tmp.impPrevArr = Math.round(obj.impPrevNonArr);
+         tmp.impPrevArr = Math.round(tmp.impPrevNonArr);
          tmp.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta ;
          salaryData.push(tmp);
        });
