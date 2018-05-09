@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3']);
+  var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning']);
 
   myApp.controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
 
@@ -1867,31 +1867,36 @@
           name: 'anno',
           displayName: 'Anno',
           field: 'anno',
-          width: '5%'
+          width: '5%',
+        pinnedLeft: true
       }, {
           name: 'mese',
           displayName: 'Mese',
           field: 'mese',
-          width: '5%'
+          width: '5%',
+        pinnedLeft: true
             }, {
           name: 'data',
           displayName: 'Data',
           field: 'data',
           width: '5%',
-          cellFilter: 'date:\'yyyy-MM-dd\''
+          cellFilter: 'date:\'yyyy-MM-dd\'',
+        pinnedLeft: true
             }, {
           name: 'stipendioLordo',
           displayName: 'Stipendio Lordo',
           field: 'stipendioLordo',
           width: '10%',
-          cellFilter: 'currency'
+          cellFilter: 'currency',
+        pinnedLeft: true
         }, {
           name: 'stipendioNetto',
           displayName: 'Stipendio Netto',
           field: 'stipendioNetto',
           width: '10%',
           footerCellFilter: 'currency',
-          cellFilter: 'currency'
+          cellFilter: 'currency',
+        pinnedLeft: true
         }, {
           name: 'festivitaNonGoduta',
           displayName: 'Festività Non Goduta',
