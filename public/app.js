@@ -2180,8 +2180,15 @@
               var salaryData = [];
 
               resp.data.forEach(function (obj) {
+                
                 var tmp = {};
                 tmp.anno = new Date(obj.data).getFullYear();
+                
+                var alq = $scope.aliquote.filter(function(a){
+                    return a['ANNO'] === 2018;
+                })[0];
+                
+                
                 tmp.mese = new Date(obj.data).getMonth() + 1;
                 tmp.data = obj.data;
                 tmp.ggLavorativi = obj.ggLavorativi;
@@ -2191,9 +2198,10 @@
                 tmp.impPrevNonArr = ((obj.ggLavorativi + obj.festivitaNonGoduta) * obj.competenzaBase) + (obj.liqRol * obj.compRol) + (obj.straordinario25 * obj.compStraordinario25) + (obj.maggiorazione25 * obj.compMaggiorazione25) + (obj.straordinario30 * obj.compStraordinario30) + (obj.maggiorazione30 * obj.compMaggiorazione30) + (obj.straordinario50 * obj.compStraordinario50) + (obj.maggiorazione50 * obj.compMaggiorazione50) + (obj.maggiorazione60 * obj.compMaggiorazione60) + obj.periquativo + obj.erogazioneSpeciale;
                 tmp.erogazioneSpeciale = obj.erogazioneSpeciale;
                 tmp.impPrevArr = Math.round(tmp.impPrevNonArr);
-                obj.ritenuteMeseInps = 0.0;
-                tmp.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
-                obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
+                tmp.ritenuteMeseInps = (tmp.impPrevArr > alq['SOGLIA_FAP'] ? ((tmp.impPrevArr - (tmp.impPrevArr*alq['INPS']/100))   +
+(tmp.impPrevArr - alq['SOGLIA_FAP']) *
+(tmp.impPrevArr - (tmp.impPrevArr*alq['ECCEZZO_FAP']/100))) : (tmp.impPrevArr - (tmp.impPrevArr*alq['INPS']/100)));                
+                tmp.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
                 salaryData.push(tmp);
               });
 
@@ -2204,6 +2212,7 @@
                 obj.imponibileTotAnnuo = sumArray(salaryData.filter(function (tmp) {
                   return tmp.anno === obj.anno && tmp.mese <= obj.mese;
                 }), 'imponibileFiscaleMese');
+                obj.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;                
               });
 
               $scope.gridOptionsSalary.data = salaryData;
