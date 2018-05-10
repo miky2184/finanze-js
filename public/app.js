@@ -2023,6 +2023,12 @@
         cellFilter: 'currency',
         width: 100
         }, {
+        name: 'tfr',
+        displayName: 'TFR',
+        field: 'tfr',
+        cellFilter: 'currency',
+        width: 100
+        }, {
         name: 'impPrevNonArr',
         displayName: 'Imponibile Previdenziale NON Arrotondato',
         field: 'impPrevNonArr',
@@ -2082,6 +2088,20 @@
         name: 'imponibilePrevistoAnnuo',
         displayName: 'Imponibile Previsto Annuo',
         field: 'imponibilePrevistoAnnuo',
+        cellFilter: 'currency',
+        width: 100,
+        enableCellEdit: false
+        }, {
+        name: 'redditoComplessivoMese',
+        displayName: 'Reddito Complessivo Mese',
+        field: 'redditoComplessivoMese',
+        cellFilter: 'currency',
+        width: 100,
+        enableCellEdit: false
+        }, {
+        name: 'redditoComplessivoAnno',
+        displayName: 'Reddito Complessivo Annuo',
+        field: 'redditoComplessivoAnno',
         cellFilter: 'currency',
         width: 100,
         enableCellEdit: false
@@ -2235,6 +2255,8 @@
                   (tmp.impPrevArr - alq['SOGLIA_FAP']) *
                   (tmp.impPrevArr * alq['ECCEZZO_FAP'] / 100)) : (tmp.impPrevArr * alq['INPS'] / 100));
                 tmp.imponibileFiscaleMese = tmp.impPrevNonArr - tmp.ritenuteMeseInps;
+                tmp.tfr = obj.tfr;
+                tmp.redditoComplessivoMese = tmp.imponibileFiscaleMese - tmp.tfr;
                 tmp.detrazioneConiuge = obj.detrazioneConiuge;
                 tmp.detrazioneFigli = obj.detrazioneFigli;
                 tmp.conguaglio = obj.conguaglio;
@@ -2278,9 +2300,13 @@
                 obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) /
                   365 * ultimo(obj.mese, obj.anno);
                 obj.ritenutaFiscaleMeseNetta = obj.ritenutaFiscaleMeseLorda - obj.detrazioniImposta - obj.detrazioneConiuge - obj.detrazioneFigli;
-
-                obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
-
+                obj.redditoComplessivoAnnuo = sumArray(salaryData.filter(function (tmp) {
+                  return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+                }), 'redditoComplessivoMese');
+                obj.redditoComplessivoMedioAnnuo = (obj.redditoComplessivoAnnuo / obj.mese);
+                obj.redditoComplessivoPrevistoAnnuo = obj.redditoComplessivoAnnuo + (obj.redditoComplessivoMedioAnnuo * (13 - obj.mese));
+                /* obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno); */
+                obj.bonusRenzi = (obj.redditoComplessivoPrevistoAnnuo > 8000 && obj.redditoComplessivoPrevistoAnnuo <= 24000 ? 960 : (obj.redditoComplessivoPrevistoAnnuo > 24000 && obj.redditoComplessivoPrevistoAnnuo < 26000 ? 960 * ((26000 - obj.redditoComplessivoPrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
                 obj.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabile - obj.addizionaleComunaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
               });
 
