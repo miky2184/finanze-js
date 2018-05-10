@@ -2161,7 +2161,7 @@
     };
 
     var ultimo = function ultimo(mese, anno) {
-      d = new Date(anno, mese, 0)
+      var d = new Date(anno, mese, 0)
       return d.getDate();
     };
 
