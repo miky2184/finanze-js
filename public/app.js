@@ -2074,12 +2074,6 @@
           cellFilter: 'currency',
           width: 100
         }, {
-          name: 'imponibilePrevistoAnnuo',
-          displayName: 'Imponibile Previsto Annuo',
-          field: 'imponibilePrevistoAnnuo',
-          cellFilter: 'currency',
-          width: 100
-        }, {
           name: 'ritenutaFiscaleMeseLorda',
           displayName: 'Ritenuta Fiscale Mese lorda',
           field: 'ritenutaFiscaleMeseLorda',
@@ -2166,6 +2160,11 @@
       return total;
     };
 
+    var ultimo = function ultimo(mese, anno) {
+      d = new Date(anno, mese, 0)
+      return d.getDate();
+    };
+
     $scope.loadWork = function () {
       return $http.get('http://2.225.127.144:3001/aliquote').then(function (response) {
         $scope.aliquote = response.data;
@@ -2202,6 +2201,8 @@
                   (tmp.impPrevArr - alq['SOGLIA_FAP']) *
                   (tmp.impPrevArr * alq['ECCEZZO_FAP'] / 100)) : (tmp.impPrevArr * alq['INPS'] / 100));
                 tmp.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
+                tmp.detrazioneConiuge = obj.detrazioneConiuge;
+                tmp.detrazioneFigli = obj.detrazioneFigli;
                 salaryData.push(tmp);
               });
 
@@ -2212,6 +2213,22 @@
                 obj.imponibileTotAnnuo = sumArray(salaryData.filter(function (tmp) {
                   return tmp.anno === obj.anno && tmp.mese <= obj.mese;
                 }), 'imponibileFiscaleMese');
+                obj.ritenuteAnnoInps = sumArray(salaryData.filter(function (tmp) {
+                  return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+                }), 'ritenuteMeseInps');
+                obj.imponibileTotAnnuo = sumArray(salaryData.filter(function (tmp) {
+                  return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+                }), 'imponibileFiscaleMese');
+                obj.imponibileMedio = (obj.imponibileTotAnnuo / obj.mese);
+                obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
+
+                //TODO
+                obj.ritenutaFiscaleMeseLorda = 0.0;
+                obj.detrazioniImposta = 0.0;
+                obj.ritenutaFiscaleMeseNetta = obj.ritenutaFiscaleMeseLorda - obj.detrazioniImposta - obj.detrazioneConiuge - obj.detrazioneFigli;
+
+                obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 0 && obj.imponibilePrevistoAnnuo < 24000 ? 960 : (obj.imponibilePrevistoAnnuo >= 24000 && obj.imponibilePrevistoAnnuo <= 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
+
                 obj.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
               });
 
