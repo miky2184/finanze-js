@@ -2099,9 +2099,23 @@
         width: 100,
         enableCellEdit: false
         }, {
-        name: 'redditoComplessivoAnno',
+        name: 'redditoComplessivoAnnuo',
         displayName: 'Reddito Complessivo Annuo',
-        field: 'redditoComplessivoAnno',
+        field: 'redditoComplessivoAnnuo',
+        cellFilter: 'currency',
+        width: 100,
+        enableCellEdit: false
+        }, {
+        name: 'redditoComplessivoMedioAnnuo',
+        displayName: 'Reddito Complessivo Medio Annuo',
+        field: 'redditoComplessivoMedioAnnuo',
+        cellFilter: 'currency',
+        width: 100,
+        enableCellEdit: false
+        }, {
+        name: 'redditoComplessivoPrevistoAnnuo',
+        displayName: 'Reddito Complessivo Previsto Annuo',
+        field: 'redditoComplessivoPrevistoAnnuo',
         cellFilter: 'currency',
         width: 100,
         enableCellEdit: false
