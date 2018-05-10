@@ -2185,7 +2185,7 @@
                 tmp.anno = new Date(obj.data).getFullYear();
                 
                 var alq = $scope.aliquote.filter(function(a){
-                    return a['ANNO'] === 2018;
+                    return a['ANNO'] === tmp.anno;
                 })[0];
                 
                 
