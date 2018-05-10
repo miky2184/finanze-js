@@ -2262,7 +2262,7 @@
                 tmp.settetrenta = obj.settetrenta;
                 tmp.competenzaBase = obj.competenzaBase;
                 tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
-                tmp.impPrevNonArr = ((obj.ggLavorativi + obj.festivitaNonGoduta) * obj.competenzaBase) + (obj.liqRol * obj.compRol) + (obj.straordinario25 * obj.compStraordinario25) + (obj.maggiorazione25 * obj.compMaggiorazione25) + (obj.straordinario30 * obj.compStraordinario30) + (obj.maggiorazione30 * obj.compMaggiorazione30) + (obj.straordinario50 * obj.compStraordinario50) + (obj.maggiorazione50 * obj.compMaggiorazione50) + (obj.maggiorazione60 * obj.compMaggiorazione60) + obj.periquativo + obj.erogazioneSpeciale;
+                tmp.impPrevNonArr = (Math.round(((obj.ggLavorativi + obj.festivitaNonGoduta) * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
                 tmp.erogazioneSpeciale = obj.erogazioneSpeciale;
                 tmp.impPrevArr = Math.round(tmp.impPrevNonArr);
                 tmp.ritenuteMeseInps = (tmp.impPrevArr > alq['SOGLIA_FAP'] ? ((tmp.impPrevArr * alq['INPS'] / 100) +
