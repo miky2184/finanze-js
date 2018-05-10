@@ -2122,6 +2122,12 @@
           cellFilter: 'currency',
           width: 100
         }, {
+          name: 'addizionaleComunaleVariabileAcconto',
+          displayName: 'Addizionale Comunale Variabile Acconto',
+          field: 'addizionaleComunaleVariabileAcconto',
+          cellFilter: 'currency',
+          width: 100
+        }, {
           name: 'addizionaleRegionaleFissa',
           displayName: 'Addizionale Regionale Fissa',
           field: 'addizionaleRegionaleFissa',
@@ -2131,12 +2137,6 @@
           name: 'addizionaleRegionaleVariabile',
           displayName: 'Addizionale Regionale Variabile',
           field: 'addizionaleRegionaleVariabile',
-          cellFilter: 'currency',
-          width: 100
-        }, {
-          name: 'addizionaleRegionaleVariabileAcconto',
-          displayName: 'Addizionale Regionale Variabile Acconto',
-          field: 'addizionaleRegionaleVariabileAcconto',
           cellFilter: 'currency',
           width: 100
         }, {
@@ -2191,6 +2191,22 @@
                 tmp.mese = new Date(obj.data).getMonth() + 1;
                 tmp.data = obj.data;
                 tmp.ggLavorativi = obj.ggLavorativi;
+                tmp.liqRol = obj.liqRol;
+                tmp.compRol = obj.compRol;
+                tmp.straordinario25 = obj.straordinario25;
+                tmp.compStraordinario25 = obj.compStraordinario25;
+                tmp.maggiorazione25 = obj.maggiorazione25;
+                tmp.compMaggiorazione25 = obj.compMaggiorazione25;
+                tmp.straordinario30 = obj.straordinario30;
+                tmp.compStraordinario30 = obj.compStraordinario30;
+                tmp.maggiorazione30 = obj.maggiorazione30;
+                tmp.compMaggiorazione30 = obj.compMaggiorazione30;
+                tmp.straordinario50 = obj.straordinario50;
+                tmp.compStraordinario50 = obj.compStraordinario50;
+                tmp.maggiorazione50 = obj.maggiorazione50;
+                tmp.compMaggiorazione50 = obj.compMaggiorazione50;
+                tmp.maggiorazione60 = obj.maggiorazione60;
+                tmp.compMaggiorazione60 = obj.compMaggiorazione60;
                 tmp.festivitaNonGoduta = obj.festivitaNonGoduta;
                 tmp.competenzaBase = obj.competenzaBase;
                 tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
@@ -2200,7 +2216,7 @@
                 tmp.ritenuteMeseInps = (tmp.impPrevArr > alq['SOGLIA_FAP'] ? ((tmp.impPrevArr * alq['INPS'] / 100) +
                   (tmp.impPrevArr - alq['SOGLIA_FAP']) *
                   (tmp.impPrevArr * alq['ECCEZZO_FAP'] / 100)) : (tmp.impPrevArr * alq['INPS'] / 100));
-                tmp.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
+                tmp.imponibileFiscaleMese = tmp.impPrevNonArr - tmp.ritenuteMeseInps;
                 tmp.detrazioneConiuge = obj.detrazioneConiuge;
                 tmp.detrazioneFigli = obj.detrazioneFigli;
                 salaryData.push(tmp);
@@ -2229,7 +2245,7 @@
 
                 obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 0 && obj.imponibilePrevistoAnnuo < 24000 ? 960 : (obj.imponibilePrevistoAnnuo >= 24000 && obj.imponibilePrevistoAnnuo <= 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
 
-                obj.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
+                obj.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabile - obj.addizionaleComunaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
               });
 
               $scope.gridOptionsSalary.data = salaryData;
