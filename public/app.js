@@ -2208,6 +2208,8 @@
                 tmp.maggiorazione60 = obj.maggiorazione60;
                 tmp.compMaggiorazione60 = obj.compMaggiorazione60;
                 tmp.festivitaNonGoduta = obj.festivitaNonGoduta;
+                tmp.periquativo = obj.periquativo;
+                tmp.settetrenta = obj.settetrenta;
                 tmp.competenzaBase = obj.competenzaBase;
                 tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
                 tmp.impPrevNonArr = ((obj.ggLavorativi + obj.festivitaNonGoduta) * obj.competenzaBase) + (obj.liqRol * obj.compRol) + (obj.straordinario25 * obj.compStraordinario25) + (obj.maggiorazione25 * obj.compMaggiorazione25) + (obj.straordinario30 * obj.compStraordinario30) + (obj.maggiorazione30 * obj.compMaggiorazione30) + (obj.straordinario50 * obj.compStraordinario50) + (obj.maggiorazione50 * obj.compMaggiorazione50) + (obj.maggiorazione60 * obj.compMaggiorazione60) + obj.periquativo + obj.erogazioneSpeciale;
@@ -2246,7 +2248,8 @@
 
                 //TODO
                 obj.ritenutaFiscaleMeseLorda = 0.0;
-                obj.detrazioniImposta = 0.0;
+                obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'] : (alq['QUOTA1'] * alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']) /
+                  365 * ultimo(obj.mese, obj.anno);
                 obj.ritenutaFiscaleMeseNetta = obj.ritenutaFiscaleMeseLorda - obj.detrazioniImposta - obj.detrazioneConiuge - obj.detrazioneFigli;
 
                 obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 0 && obj.imponibilePrevistoAnnuo < 24000 ? 960 : (obj.imponibilePrevistoAnnuo >= 24000 && obj.imponibilePrevistoAnnuo <= 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
