@@ -90,9 +90,9 @@
   "detrazioneFigli": 36.72,
   "conguaglio": 0,
   "addizionaleComunaleVariabile": 13.86,
-  "addizionaleComunaleVariabileAcconto": 0,
+  "addizionaleComunaleVariabileAcconto": 7.25,
   "addizionaleRegionaleFissa": 30.41,
-  "addizionaleRegionaleVariabile": 7.25,
+  "addizionaleRegionaleVariabile": 3.88,
   "abbonamentoAnnualeAtm": 0
       }, {
   "data": 1524780000000,
@@ -122,8 +122,8 @@
   "detrazioneFigli": 36.72,
   "conguaglio": 0,
   "addizionaleComunaleVariabile": 13.86,
-  "addizionaleComunaleVariabileAcconto": 0,
+  "addizionaleComunaleVariabileAcconto": 7.25,
   "addizionaleRegionaleFissa": 30.41,
-  "addizionaleRegionaleVariabile": 7.25,
+  "addizionaleRegionaleVariabile": 3.88,
   "abbonamentoAnnualeAtm": 0
       }]

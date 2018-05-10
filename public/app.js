@@ -1868,13 +1868,15 @@
           displayName: 'Anno',
           field: 'anno',
           width: 50,
-          pinnedLeft: true
+          pinnedLeft: true,
+          enableCellEdit: false
       }, {
           name: 'mese',
           displayName: 'Mese',
           field: 'mese',
           width: 50,
-          pinnedLeft: true
+          pinnedLeft: true,
+          enableCellEdit: false
             }, {
           name: 'data',
           displayName: 'Data',
@@ -1888,14 +1890,16 @@
           field: 'stipendioLordo',
           width: 100,
           cellFilter: 'currency',
-          pinnedLeft: true
+          pinnedLeft: true,
+          enableCellEdit: false
         }, {
           name: 'stipendioNetto',
           displayName: 'Stipendio Netto',
           field: 'stipendioNetto',
           width: 100,
           cellFilter: 'currency',
-          pinnedLeft: true
+          pinnedLeft: true,
+          enableCellEdit: false
         }, {
           name: 'ggLavorativi',
           displayName: 'Giorni Lavorativi',
@@ -2023,13 +2027,15 @@
           displayName: 'Imponibile Previdenziale NON Arrotondato',
           field: 'impPrevNonArr',
           cellFilter: 'currency',
-          width: 100
+          width: 100,
+          enableCellEdit: false
         }, {
           name: 'impPrevArr',
           displayName: 'Imponibile Previdenziale Arrotondato',
           field: 'impPrevArr',
           cellFilter: 'currency',
-          width: 100
+          width: 100,
+          enableCellEdit: false
         }
                   , {
           name: 'impAnnoArr',
@@ -2264,7 +2270,7 @@
                   365 * ultimo(obj.mese, obj.anno);
                 obj.ritenutaFiscaleMeseNetta = obj.ritenutaFiscaleMeseLorda - obj.detrazioniImposta - obj.detrazioneConiuge - obj.detrazioneFigli;
 
-                obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 0 && obj.imponibilePrevistoAnnuo < 24000 ? 960 : (obj.imponibilePrevistoAnnuo >= 24000 && obj.imponibilePrevistoAnnuo <= 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
+                obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
 
                 obj.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabile - obj.addizionaleComunaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
               });
