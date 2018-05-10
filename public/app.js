@@ -2231,6 +2231,11 @@
               });
 
               salaryData.forEach(function (obj) {
+
+                var alq = $scope.aliquote.filter(function (a) {
+                  return a['ANNO'] === obj.anno;
+                })[0];
+
                 obj.impAnnoArr = sumArray(salaryData.filter(function (tmp) {
                   return tmp.anno === obj.anno && tmp.mese <= obj.mese;
                 }), 'impPrevArr');
