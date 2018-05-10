@@ -2253,7 +2253,7 @@
 
                 //TODO
                 obj.ritenutaFiscaleMeseLorda = 0.0;
-                obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + (alq['QUOTA2'] * alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1']) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) /
+                obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) /
                   365 * ultimo(obj.mese, obj.anno);
                 obj.ritenutaFiscaleMeseNetta = obj.ritenutaFiscaleMeseLorda - obj.detrazioniImposta - obj.detrazioneConiuge - obj.detrazioneFigli;
 
