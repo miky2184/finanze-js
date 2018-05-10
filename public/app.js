@@ -1868,34 +1868,34 @@
           displayName: 'Anno',
           field: 'anno',
           width: '5%',
-        pinnedLeft: true
+          pinnedLeft: true
       }, {
           name: 'mese',
           displayName: 'Mese',
           field: 'mese',
           width: '5%',
-        pinnedLeft: true
+          pinnedLeft: true
             }, {
           name: 'data',
           displayName: 'Data',
           field: 'data',
           width: '5%',
           cellFilter: 'date:\'yyyy-MM-dd\'',
-        pinnedLeft: true
+          pinnedLeft: true
             }, {
           name: 'stipendioLordo',
           displayName: 'Stipendio Lordo',
           field: 'stipendioLordo',
           width: '10%',
           cellFilter: 'currency',
-        pinnedLeft: true
+          pinnedLeft: true
         }, {
           name: 'stipendioNetto',
           displayName: 'Stipendio Netto',
           field: 'stipendioNetto',
-          width: '10%',          
+          width: '10%',
           cellFilter: 'currency',
-        pinnedLeft: true
+          pinnedLeft: true
         }, {
           name: 'ggLavorativi',
           displayName: 'Giorni Lavorativi',
@@ -1910,7 +1910,7 @@
           name: 'competenzaBase',
           displayName: 'Competenza Base',
           field: 'competenzaBase',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'liqRol',
@@ -1921,7 +1921,7 @@
           name: 'compRol',
           displayName: 'Compenso ROL',
           field: 'compRol',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'straordinario25',
@@ -1932,7 +1932,7 @@
           name: 'compStraordinario25',
           displayName: 'Comp. Str. 25%',
           field: 'compStraordinario25',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'maggiorazione25',
@@ -1943,7 +1943,7 @@
           name: 'compMaggiorazione25',
           displayName: 'Magg. Str. 25%',
           field: 'compMaggiorazione25',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'straordinario30',
@@ -1954,7 +1954,7 @@
           name: 'compStraordinario30',
           displayName: 'Comp. Str. 30%',
           field: 'compStraordinario30',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'maggiorazione30',
@@ -1965,9 +1965,9 @@
           name: 'compMaggiorazione30',
           displayName: 'Comp. Magg. Str. 30%',
           field: 'compMaggiorazione30',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },  {
+        }, {
           name: 'straordinario50',
           displayName: 'Str. 50%',
           field: 'straordinario50',
@@ -1976,7 +1976,7 @@
           name: 'compStraordinario50',
           displayName: 'Comp. Str. 50%',
           field: 'compStraordinario50',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'maggiorazione50',
@@ -1987,7 +1987,7 @@
           name: 'compMaggiorazione50',
           displayName: 'Magg. Str. 50%',
           field: 'compMaggiorazione50',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'maggiorazione60',
@@ -1998,158 +1998,158 @@
           name: 'compMaggiorazione60',
           displayName: 'Magg. Str. 60%',
           field: 'compMaggiorazione60',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'erogazioneSpeciale',
           displayName: 'Erogazione Speciale',
           field: 'erogazioneSpeciale',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'periquativo',
           displayName: 'Periquativo',
           field: 'periquativo',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'settetrenta',
           displayName: '730',
           field: 'settetrenta',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'impPrevNonArr',
           displayName: 'Imponibile Previdenziale NON Arrotondato',
           field: 'impPrevNonArr',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'impPrevArr',
           displayName: 'Imponibile Previdenziale Arrotondato',
           field: 'impPrevArr',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }
                   , {
           name: 'impAnnoArr',
           displayName: 'Imponibile Annuo Arrotondato',
           field: 'impAnnoArr',
-                      cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'ritenuteMeseInps',
           displayName: 'Ritenute Mese INPS',
           field: 'ritenuteMeseInps',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'ritenuteAnnoInps',
           displayName: 'Ritenute Annue INPS',
           field: 'ritenuteAnnoInps',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'imponibileFiscaleMese',
           displayName: 'Imponibile Fiscale Mese',
           field: 'imponibileFiscaleMese',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'imponibileTotAnnuo',
           displayName: 'Imponibile Tot. Annuo',
           field: 'imponibileTotAnnuo',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'imponibileMedio',
           displayName: 'Imponibile Medio',
           field: 'imponibileMedio',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'imponibilePrevistoAnnuo',
           displayName: 'Imponibile Previsto Annuo',
           field: 'imponibilePrevistoAnnuo',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'imponibilePrevistoAnnuo',
           displayName: 'Imponibile Previsto Annuo',
           field: 'imponibilePrevistoAnnuo',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }, {
           name: 'ritenutaFiscaleMeseLorda',
           displayName: 'Ritenuta Fiscale Mese lorda',
           field: 'ritenutaFiscaleMeseLorda',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'detrazioniImposta',
           displayName: 'Detrazioni Imposta',
           field: 'detrazioniImposta',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'detrazioneConiuge',
           displayName: 'Detrazione Coniuge',
           field: 'detrazioneConiuge',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'detrazioneFigli',
           displayName: 'Detrazione Figli',
           field: 'detrazioneFigli',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'ritenutaFiscaleMeseNetta',
           displayName: 'Ritenuta Fiscale Mese Netta',
           field: 'ritenutaFiscaleMeseNetta',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'bonusRenzi',
           displayName: 'Bonus Renzi',
           field: 'bonusRenzi',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'conguaglio',
           displayName: 'Conguaglio',
           field: 'conguaglio',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'addizionaleComunaleVariabile',
           displayName: 'Addizionale Comunale Variabile',
           field: 'addizionaleComunaleVariabile',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'addizionaleRegionaleFissa',
           displayName: 'Addizionale Regionale Fissa',
           field: 'addizionaleRegionaleFissa',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'addizionaleRegionaleVariabile',
           displayName: 'Addizionale Regionale Variabile',
           field: 'addizionaleRegionaleVariabile',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'addizionaleRegionaleVariabileAcconto',
           displayName: 'Addizionale Regionale Variabile Acconto',
           field: 'addizionaleRegionaleVariabileAcconto',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
-        },{
+        }, {
           name: 'abbonamentoAnnualeAtm',
           displayName: 'Abbonamento Annuale ATM',
           field: 'abbonamentoAnnualeAtm',
-            cellFilter: 'currency',
+          cellFilter: 'currency',
           width: '10%'
         }],
       data: [],
@@ -2159,26 +2159,28 @@
     };
 
     $scope.loadWork = function () {
-     return $http.get('json/work.json').then(function (resp) {
-       var salaryData = [];
-       
-       resp.data.forEach(function(obj){
-         var tmp = {};
+      return $http.get('json/work.json').then(function (resp) {
+        var salaryData = [];
+
+        resp.data.forEach(function (obj) {
+          var tmp = {};
           tmp.anno = new Date(obj.data).getFullYear();
           tmp.mese = new Date(obj.data).getMonth() + 1;
-         tmp.data = obj.data;
-         tmp.ggLavorativi = obj.ggLavorativi;
-         tmp.festivitaNonGoduta  =obj.festivitaNonGoduta;
-         tmp.competenzaBase = obj.competenzaBase;
-         tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
-         tmp.impPrevNonArr = ((obj.ggLavorativi+obj.festivitaNonGoduta)*obj.competenzaBase)+(obj.liqRol*obj.compRol)+(obj.straordinario25*obj.compStraordinario25)+(obj.maggiorazione25*obj.compMaggiorazione25)+(obj.straordinario30*obj.compStraordinario30)+(obj.maggiorazione30*obj.compMaggiorazione30)+(obj.straordinario50*obj.compStraordinario50)+(obj.maggiorazione50*obj.compMaggiorazione50)+(obj.maggiorazione60*obj.compMaggiorazione60)+obj.periquativo;
-         tmp.impPrevArr = Math.round(tmp.impPrevNonArr);
-         tmp.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta ;
-         salaryData.push(tmp);
-       });
-       
-       $scope.gridOptionsSalary.data = salaryData;
-     });  $interval($scope.gridOptionsSalary.gridApi.core.handleWindowResize, 100, 10);
+          tmp.data = obj.data;
+          tmp.ggLavorativi = obj.ggLavorativi;
+          tmp.festivitaNonGoduta = obj.festivitaNonGoduta;
+          tmp.competenzaBase = obj.competenzaBase;
+          tmp.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
+          tmp.impPrevNonArr = ((obj.ggLavorativi + obj.festivitaNonGoduta) * obj.competenzaBase) + (obj.liqRol * obj.compRol) + (obj.straordinario25 * obj.compStraordinario25) + (obj.maggiorazione25 * obj.compMaggiorazione25) + (obj.straordinario30 * obj.compStraordinario30) + (obj.maggiorazione30 * obj.compMaggiorazione30) + (obj.straordinario50 * obj.compStraordinario50) + (obj.maggiorazione50 * obj.compMaggiorazione50) + (obj.maggiorazione60 * obj.compMaggiorazione60) + obj.periquativo + obj.erogazioneSpeciale;
+          tmp.erogazioneSpeciale = obj.erogazioneSpeciale;
+          tmp.impPrevArr = Math.round(tmp.impPrevNonArr);
+          tmp.stipendioNetto = obj.impPrevNonArr - obj.ritenuteMeseInps - obj.ritenutaFiscaleMeseNetta - obj.addizionaleComunaleVariabile - obj.addizionaleRegionaleFissa - obj.addizionaleRegionaleVariabileAcconto - obj.abbonamentoAnnualeAtm + obj.bonusRenzi + obj.periquativo + obj.settetrenta;
+          salaryData.push(tmp);
+        });
+
+        $scope.gridOptionsSalary.data = salaryData;
+      });
+      $interval($scope.gridOptionsSalary.gridApi.core.handleWindowResize, 100, 10);
     };
 
     }]);
