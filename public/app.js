@@ -2219,6 +2219,12 @@
                 tmp.imponibileFiscaleMese = tmp.impPrevNonArr - tmp.ritenuteMeseInps;
                 tmp.detrazioneConiuge = obj.detrazioneConiuge;
                 tmp.detrazioneFigli = obj.detrazioneFigli;
+                tmp.conguaglio = obj.conguaglio;
+                tmp.addizionaleComunaleVariabile = obj.addizionaleComunaleVariabile;
+                tmp.addizionaleComunaleVariabileAcconto = obj.addizionaleComunaleVariabileAcconto;
+                tmp.addizionaleRegionaleFissa = obj.addizionaleRegionaleFissa;
+                tmp.addizionaleRegionaleVariabile = obj.addizionaleRegionaleVariabile;
+                tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;
                 salaryData.push(tmp);
               });
 
