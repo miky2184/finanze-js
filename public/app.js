@@ -2447,15 +2447,7 @@
               tmp.periquativo = obj.periquativo;
               tmp.settetrenta = obj.settetrenta;
               tmp.competenzaBase = obj.competenzaBase;
-              tmp.stipendioLordo = 26 * obj.competenzaBase;
-              tmp.retribuzioneOrdinaria = obj.ggLavorativi * obj.competenzaBase;
-              tmp.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
               tmp.erogazioneSpeciale = obj.erogazioneSpeciale;
-              tmp.impPrevArr = Math.round(tmp.impPrevNonArr);
-              tmp.ritenuteMeseInps = (tmp.impPrevArr > alq['SOGLIA_FAP'] ? ((tmp.impPrevArr * alq['INPS'] / 100) +
-                (tmp.impPrevArr - alq['SOGLIA_FAP']) *
-                (tmp.impPrevArr * alq['ECCESSO_FAP'] / 100)) : (tmp.impPrevArr * alq['INPS'] / 100));
-              tmp.imponibileFiscaleMese = tmp.impPrevNonArr - tmp.ritenuteMeseInps;
               tmp.detrazioneConiuge = obj.detrazioneConiuge;
               tmp.detrazioneFigli = obj.detrazioneFigli;
               tmp.conguaglio = obj.conguaglio;
@@ -2463,7 +2455,7 @@
               tmp.addizionaleComunaleVariabileAcconto = obj.addizionaleComunaleVariabileAcconto;
               tmp.addizionaleRegionaleFissa = obj.addizionaleRegionaleFissa;
               tmp.addizionaleRegionaleVariabile = obj.addizionaleRegionaleVariabile;
-              tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;
+              tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;              
               salaryData.push(tmp);
             });
 
@@ -2476,6 +2468,16 @@
               var alqMese = $scope.aliquoteMese.filter(function (a) {
                 return a['ANNO'] === obj.anno;
               })[0];
+              
+              obj.stipendioLordo = 26 * obj.competenzaBase;
+              obj.retribuzioneOrdinaria = obj.ggLavorativi * obj.competenzaBase;
+              obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+
+              obj.impPrevArr = Math.round(obj.impPrevNonArr);
+              obj.ritenuteMeseInps = (obj.impPrevArr > alq['SOGLIA_FAP'] ? ((obj.impPrevArr * alq['INPS'] / 100) +
+                (obj.impPrevArr - alq['SOGLIA_FAP']) *
+                (obj.impPrevArr * alq['ECCESSO_FAP'] / 100)) : (obj.impPrevArr * alq['INPS'] / 100));
+              obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
 
               /* obj.impAnnoArr = sumArray(salaryData.filter(function (tmp) {
                 return tmp.anno === obj.anno && tmp.mese <= obj.mese;
