@@ -1869,6 +1869,7 @@
           field: 'anno',
           width: 50,
           pinnedLeft: true,
+        cellClass:'disable', 
           enableCellEdit: false
       }, {
           name: 'mese',
@@ -1876,6 +1877,7 @@
           field: 'mese',
           width: 50,
           pinnedLeft: true,
+        cellClass:'disable',
           enableCellEdit: false
             }, {
           name: 'data',
@@ -1891,6 +1893,7 @@
           width: 100,
           cellFilter: 'currency',
           pinnedLeft: true,
+              cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'totaleRitenute',
@@ -1913,6 +1916,7 @@
           width: 100,
           cellFilter: 'currency',
           pinnedLeft: true,
+          cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'ggLavorativi',
@@ -2050,6 +2054,7 @@
           field: 'impPrevNonArr',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'impPrevArr',
@@ -2057,6 +2062,7 @@
           field: 'impPrevArr',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         },
         /* {
@@ -2073,6 +2079,7 @@
           field: 'ritenuteMeseInps',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         },
         /* {
@@ -2089,6 +2096,7 @@
           field: 'imponibileFiscaleMese',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         },
         /* {
@@ -2147,6 +2155,7 @@
           field: 'ritenutaFiscaleMeseLorda',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'detrazioniImposta',
@@ -2154,6 +2163,7 @@
           field: 'detrazioniImposta',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'detrazioneConiuge',
@@ -2173,6 +2183,7 @@
           field: 'ritenutaFiscaleMeseNetta',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'bonusRenzi',
@@ -2180,6 +2191,7 @@
           field: 'bonusRenzi',
           cellFilter: 'currency',
           width: 100,
+          cellClass:'disable',
           enableCellEdit: false
         }, {
           name: 'conguaglio',

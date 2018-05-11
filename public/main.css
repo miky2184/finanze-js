@@ -128,5 +128,9 @@
 }
 
 .body {
-font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.disable {
+  background-color: gray!important;
 }
