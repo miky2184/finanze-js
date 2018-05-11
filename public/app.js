@@ -1881,7 +1881,7 @@
       var salaryData = angular.copy($scope.gridOptionsSalary.data);
 
       var alq = $scope.aliquote.filter(function (a) {
-        return a['ANNO'] === tmp.anno;
+        return a['ANNO'] === obj.anno;
       })[0];
 
       var ricalcola = function (obj) {
