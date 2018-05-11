@@ -1878,8 +1878,17 @@
 
       var numberValue = Number(newValue);
 
+      var salaryData = angular.copy($scope.gridOptionsSalary.data);
+
+      var alq = $scope.aliquote.filter(function (a) {
+        return a['ANNO'] === tmp.anno;
+      })[0];
+
       var ricalcola = function (obj) {
         obj.impPrevArr = Math.round(obj.impPrevNonArr);
+        obj.ritenuteMeseInps = (obj.impPrevArr > alq['SOGLIA_FAP'] ? ((obj.impPrevArr * alq['INPS'] / 100) +
+          (obj.impPrevArr - alq['SOGLIA_FAP']) *
+          (obj.impPrevArr * alq['ECCEZZO_FAP'] / 100)) : (obj.impPrevArr * alq['INPS'] / 100));
         obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
         obj.imponibileTotAnnuo = sumArray(salaryData.filter(function (tmp) {
           return tmp.anno === obj.anno && tmp.mese <= obj.mese;
@@ -1894,6 +1903,12 @@
         obj.ritenutaFiscaleMeseNetta = (Math.round(obj.ritenutaFiscaleMeseLorda * 100) / 100) - (Math.round(obj.detrazioniImposta * 100) / 100) - obj.detrazioneConiuge - obj.detrazioneFigli;
         obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile;
         obj.stipendioNetto = obj.totaleCompetenze - obj.totaleRitenute;
+        obj.impAnnoArr = sumArray(salaryData.filter(function (tmp) {
+          return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+        }), 'impPrevArr');
+        obj.ritenuteAnnoInps = sumArray(salaryData.filter(function (tmp) {
+          return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+        }), 'ritenuteMeseInps');
       };
 
       switch (colDef.name) {
