@@ -1919,7 +1919,7 @@
           obj.bonusRenzi = 0.0;
         }
 
-        obj.totaleCompetenze = obj.stipendioLordo + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
+        obj.totaleCompetenze = obj.retribuzioneOrdinaria + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
         obj.stipendioNetto = obj.totaleCompetenze - obj.totaleRitenute;
         /* obj.impAnnoArr = sumArray(salaryData.filter(function (tmp) {
            return tmp.anno === obj.anno && tmp.mese <= obj.mese;
@@ -2455,7 +2455,7 @@
               tmp.addizionaleComunaleVariabileAcconto = obj.addizionaleComunaleVariabileAcconto;
               tmp.addizionaleRegionaleFissa = obj.addizionaleRegionaleFissa;
               tmp.addizionaleRegionaleVariabile = obj.addizionaleRegionaleVariabile;
-              tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;              
+              tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;
               salaryData.push(tmp);
             });
 
@@ -2468,7 +2468,7 @@
               var alqMese = $scope.aliquoteMese.filter(function (a) {
                 return a['ANNO'] === obj.anno;
               })[0];
-              
+
               obj.stipendioLordo = 26 * obj.competenzaBase;
               obj.retribuzioneOrdinaria = obj.ggLavorativi * obj.competenzaBase;
               obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
@@ -2515,7 +2515,7 @@
                 obj.bonusRenzi = 0.0;
               }
               obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile;
-              obj.totaleCompetenze = obj.stipendioLordo + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
+              obj.totaleCompetenze = obj.retribuzioneOrdinaria + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
               obj.stipendioNetto = obj.totaleCompetenze - obj.totaleRitenute;
             });
 
