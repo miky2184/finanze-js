@@ -1870,7 +1870,7 @@
         return;
       }
 
-      if (!isNaN(newValue)) {
+      if (!isNaN(Number(newValue))) {
         return;
       }
 
