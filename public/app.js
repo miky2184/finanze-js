@@ -2245,10 +2245,48 @@
           $scope.aliquoteMese = response.data;
 
 
-          return $http.get('json/work.json').then(function (resp) {
+          // return $http.get('json/work.json').then(function (resp) {
+          return $http.get('http://2.225.127.144:3001/salary').then(function (resp) {
             var salaryData = [];
+            var tmpData = [];
 
             resp.data.forEach(function (obj) {
+              var x = {};
+              x.data = obj['DATA']
+              x.ggLavorativi = obj['GG_LAVORATIVI'];
+              x.liqRol = obj['LIQ_ROL'];
+              x.compRol = obj['COMP_ROL'];
+              x.straordinario25 = obj['STRAORDINARIO_25'];
+              x.compStraordinario25 = obj['COMP_STRAORDINARIO_25'];
+              x.maggiorazione25 = obj['MAGGIORAZIONE_25'];
+              x.compMaggiorazione25 = obj['COMP_MAGGIORAZIONE_25'];
+              x.straordinario30 = obj['STRAORDINARIO_30'];
+              x.compStraordinario30 = obj['COMP_STRAORDINARIO_30'];
+              x.maggiorazione30 = obj['MAGGIORAZIONE_30'];
+              x.compMaggiorazione30 = obj['COMP_MAGGIORAZIONE_30'];
+              x.straordinario50 = obj['STRAORDINARIO_50'];
+              x.compStraordinario50 = obj['COMP_STRAORDINARIO_50'];
+              x.maggiorazione50 = obj['MAGGIORAZIONE_50'];
+              x.compMaggiorazione50 = obj['COMP_MAGGIORAZIONE_50'];
+              x.maggiorazione60 = obj['MAGGIORAZIONE_60'];
+              x.compMaggiorazione60 = obj['MAGGIORAZIONE_60'];
+              x.festivitaNonGoduta = obj['FESTIVITA_NON_GODUTA'];
+              x.periquativo = obj['PERIQUATIVO'];
+              x.settetrenta = obj['SETTETRENTA'];
+              x.detrazioneConiuge = obj['DETRAZIONE_CONIUGE'];
+              x.detrazioneFigli = obj['DETRAZIONE_FIGLI'];
+              x.conguaglio = obj['CONGUAGLIO'];
+              x.erogazioneSpeciale = obj['EROGAZIONE_SPECIALE'];
+              x.addizionaleComunaleVariabile = obj['ADD_COMUNALE_VARIABILE'];
+              x.addizionaleComunaleVariabileAcconto = obj['ADD_COMUNALE_VARIABILE_ACC'];
+              x.addizionaleRegionaleFissa = obj['ADD_REGIONALE_FISSA'];
+              x.addizionaleRegionaleVariabile = obj['ADD_REGIONALE_VARIABILE'];
+              x.abbonamentoAnnualeAtm = obj['ABBONAMENTO_ATM'];
+              x.competenzaBase = obj['COMPETENZA_BASE'];
+              tmpData.push(x);
+            });
+
+            tmpData.forEach(function (obj) {
 
               var tmp = {};
               tmp.anno = new Date(obj.data).getFullYear();
