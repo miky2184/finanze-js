@@ -1928,7 +1928,7 @@
           name: 'competenzaBase',
           displayName: 'Competenza Base',
           field: 'competenzaBase',
-          cellFilter: 'currency',
+          // cellFilter: 'currency',
           width: 100
         }, {
           name: 'liqRol',
@@ -1939,7 +1939,7 @@
           name: 'compRol',
           displayName: 'Compenso ROL',
           field: 'compRol',
-          cellFilter: 'currency',
+          //  cellFilter: 'currency',
           width: 100
         }, {
           name: 'straordinario25',
@@ -1950,7 +1950,7 @@
           name: 'compStraordinario25',
           displayName: 'Comp. Str. 25%',
           field: 'compStraordinario25',
-          cellFilter: 'currency',
+          //  cellFilter: 'currency',
           width: 100
         }, {
           name: 'maggiorazione25',
@@ -1961,7 +1961,7 @@
           name: 'compMaggiorazione25',
           displayName: 'Magg. Str. 25%',
           field: 'compMaggiorazione25',
-          cellFilter: 'currency',
+          //  cellFilter: 'currency',
           width: 100
         }, {
           name: 'straordinario30',
@@ -1972,7 +1972,7 @@
           name: 'compStraordinario30',
           displayName: 'Comp. Str. 30%',
           field: 'compStraordinario30',
-          cellFilter: 'currency',
+          //  cellFilter: 'currency',
           width: 100
         }, {
           name: 'maggiorazione30',
@@ -1983,7 +1983,7 @@
           name: 'compMaggiorazione30',
           displayName: 'Comp. Magg. Str. 30%',
           field: 'compMaggiorazione30',
-          cellFilter: 'currency',
+          //  cellFilter: 'currency',
           width: 100
         }, {
           name: 'straordinario50',
@@ -1994,7 +1994,7 @@
           name: 'compStraordinario50',
           displayName: 'Comp. Str. 50%',
           field: 'compStraordinario50',
-          cellFilter: 'currency',
+          //   cellFilter: 'currency',
           width: 100
         }, {
           name: 'maggiorazione50',
@@ -2005,7 +2005,7 @@
           name: 'compMaggiorazione50',
           displayName: 'Magg. Str. 50%',
           field: 'compMaggiorazione50',
-          cellFilter: 'currency',
+          //   cellFilter: 'currency',
           width: 100
         }, {
           name: 'maggiorazione60',
@@ -2016,7 +2016,7 @@
           name: 'compMaggiorazione60',
           displayName: 'Magg. Str. 60%',
           field: 'compMaggiorazione60',
-          cellFilter: 'currency',
+          //  cellFilter: 'currency',
           width: 100
         }, {
           name: 'erogazioneSpeciale',
