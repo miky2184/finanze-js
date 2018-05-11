@@ -1912,6 +1912,8 @@
             obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
           } else if (obj.anno >= 2018) {
             obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8174 && obj.imponibilePrevistoAnnuo <= 24600 ? 960 : (obj.imponibilePrevistoAnnuo > 24600 && obj.imponibilePrevistoAnnuo < 26600 ? 960 * ((26600 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
+          } else {
+            obj.bonusRenzi = 0.0;
           }
         } else {
           obj.bonusRenzi = 0.0;
