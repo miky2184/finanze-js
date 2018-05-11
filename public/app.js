@@ -1860,7 +1860,7 @@
 
     $scope.gridOptionsSalary = {
       columnVirtualizationThreshold: 100,
-      minRowsToShow: 13,
+      minRowsToShow: 24,
       enableFiltering: false,
       enableSorting: false,
       columnDefs: [{
