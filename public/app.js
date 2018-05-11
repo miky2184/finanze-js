@@ -1905,7 +1905,7 @@
         obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
         obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) / 365 * ultimo(obj.mese, obj.anno);
         obj.ritenutaFiscaleMeseNetta = (Math.round(obj.ritenutaFiscaleMeseLorda * 100) / 100) - (Math.round(obj.detrazioniImposta * 100) / 100) - obj.detrazioneConiuge - obj.detrazioneFigli;
-        obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile;
+        obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile + obj.abbonamentoAnnualeAtm;
         var dayOfMonth = new Date(obj.data).getDate();
         if (dayOfMonth === 27) {
           if (obj.anno >= 2014 && obj.anno < 2018) {
@@ -2514,7 +2514,7 @@
               } else {
                 obj.bonusRenzi = 0.0;
               }
-              obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile;
+              obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile + obj.abbonamentoAnnualeAtm;
               obj.totaleCompetenze = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
               obj.stipendioNetto = obj.totaleCompetenze - obj.totaleRitenute;
             });
