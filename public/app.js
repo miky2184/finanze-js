@@ -2408,7 +2408,7 @@
               x.festivitaNonGoduta = obj['FESTIVITA_NON_GODUTA'];
               x.periquativo = obj['PERIQUATIVO'];
               x.settetrenta = obj['SETTETRENTA'];
-              x.premiInNatura = obj.['PREMI_IN_NATURA'];
+              x.premiInNatura = obj['PREMI_IN_NATURA'];
               x.detrazioneConiuge = obj['DETRAZIONE_CONIUGE'];
               x.detrazioneFigli = obj['DETRAZIONE_FIGLI'];
               x.conguaglio = obj['CONGUAGLIO'];
