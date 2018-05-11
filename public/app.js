@@ -1884,6 +1884,10 @@
         return a['ANNO'] === obj.anno;
       })[0];
 
+      var alqMese = $scope.aliquoteMese.filter(function (a) {
+        return a['ANNO'] === obj.anno;
+      })[0];
+
       var ricalcola = function (obj) {
         obj.impPrevArr = Math.round(obj.impPrevNonArr);
         obj.ritenuteMeseInps = (obj.impPrevArr > alq['SOGLIA_FAP'] ? ((obj.impPrevArr * alq['INPS'] / 100) +
