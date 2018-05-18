@@ -24,9 +24,9 @@
   <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
   <script src="node_modules/d3/d3.js"></script>
   <script src="node_modules/nvd3/build/nv.d3.js"></script>
-  <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>  
+  <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
   <script type="text/javascript" src="app.js"></script>
-  
+
 </head>
 
 <body ng-controller="MainController" class="body">
@@ -76,6 +76,9 @@
           <uib-tab heading="Pivot Annuale" select="loadPivotAnno()">
             <div ng-include="'view/pivotAnno.html'"></div>
           </uib-tab>
+          <uib-tab heading="Andamento Annuo" select="loadAndamentoAnnuo()">
+            <div ng-include="'view/andamentoAnnuo.html'"></div>
+          </uib-tab>
           <uib-tab heading="Grafico" select="loadGrafico()">
             <div ng-include="'view/graph.html'"></div>
           </uib-tab>
@@ -92,7 +95,7 @@
       </div>
     </div>
 
-    <div class="panel-footer clearfix my-panel-footer" ng-show="login.logged">      
+    <div class="panel-footer clearfix my-panel-footer" ng-show="login.logged">
       <div class="pull-right">
         <button ng-repeat="button in saveButtons" class="btn btn-success btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
       </div>

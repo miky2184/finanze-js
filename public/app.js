@@ -33,6 +33,8 @@
           oldSett = $scope.editDropDownAmbitoArray.filter(function (a) {
             return a[colDef.name] === oldValue;
           })[0];
+          rowEntity.categoria = null;
+          rowEntity.sottocategoria = null;
           break;
         case 'categoria':
           newSett = $scope.editDropDownCategoriaArray.filter(function (a) {
@@ -42,6 +44,7 @@
           oldSett = $scope.editDropDownCategoriaArray.filter(function (a) {
             return a[colDef.name] === oldValue;
           })[0];
+          rowEntity.sottocategoria = null;
           break;
         case 'sottocategoria':
           newSett = $scope.editDropDownSottoCategoriaArray.filter(function (a) {
@@ -89,7 +92,7 @@
       columnDefs: [
         {
           field: 'data',
-          width: '6%',
+          width: 90,
           type: 'date',
           cellFilter: 'date:\'yyyy-MM-dd\''
             },
@@ -97,7 +100,7 @@
           name: 'ambito',
           displayName: 'Ambito',
           field: 'ambito',
-          width: '6%',
+          width: 100,
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'ambito',
           editDropdownValueLabel: 'label',
@@ -126,7 +129,7 @@
           name: 'categoria',
           displayName: 'Categoria',
           field: 'categoria',
-          width: '10%',
+          width: 150,
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'categoria',
           editDropdownValueLabel: 'label',
@@ -158,7 +161,7 @@
           name: 'sottocategoria',
           displayName: 'Sottocategoria',
           field: 'sottocategoria',
-          width: '13%',
+          width: 200,
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'sottocategoria',
           editDropdownValueLabel: 'label',
@@ -190,7 +193,7 @@
           name: 'beneficiario',
           displayName: 'Beneficiario',
           field: 'beneficiario',
-          width: '*',
+          width: 200,
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'beneficiario',
           editDropdownValueLabel: 'label',
@@ -217,7 +220,7 @@
           name: 'tipoConto',
           displayName: 'Tipo Conto',
           field: 'tipoConto',
-          width: '10%',
+          width: 160,
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'tipoConto',
           editDropdownValueLabel: 'label',
@@ -244,8 +247,7 @@
           field: 'conto',
           name: 'conto',
           displayName: 'Conto',
-          field: 'conto',
-          width: '9%',
+          width: 160,
           editableCellTemplate: 'templates/rows/dropdownEditor.html',
           editDropdownIdLabel: 'conto',
           editDropdownValueLabel: 'label',
@@ -270,28 +272,28 @@
             },
         {
           field: 'contabilizzata',
-          width: '2%',
+          width: 35,
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'fas fa-balance-scale'
             },
         {
           field: 'visualizzare',
-          width: '2%',
+          width: 35,
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'fas fa-eye'
             },
         {
           field: 'cartaCredito',
-          width: '2%',
+          width: 35,
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'far fa-credit-card'
             },
         {
           field: 'webapp',
-          width: '2%',
+          width: 35,
           cellTooltip: true,
           cellTemplate: 'templates/rows/checkboxIcon.html',
           buttonNgClass: 'fab fa-telegram-plane'
@@ -301,7 +303,7 @@
           aggregationType: uiGridConstants.aggregationTypes.sum,
           footerCellFilter: 'currency',
           cellFilter: 'currency',
-          width: '6%',
+          width: 120,
           cellTooltip: true,
           cellClass: 'text-right',
           type: 'number'
@@ -309,17 +311,17 @@
         {
           field: 'info',
           cellTooltip: true,
-          width: '12%'
+          width: '*'
             },
         {
           field: 'anno',
           diplayName: 'Anno',
-          width: '3%'
+          width: 45
             },
         {
           field: 'mese',
           diplayName: 'Mese',
-          width: '3%'
+          width: 40
             }
 		],
       data: [],
@@ -904,9 +906,7 @@
 
     $scope.gridOptionPivotAnno = {
       columnVirtualizationThreshold: 100,
-      showGridFooter: true,
-      showColumnFooter: true,
-      minRowsToShow: 14,
+      minRowsToShow: 23,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       enableSorting: false,
@@ -1272,6 +1272,26 @@
 
       var tmpAmbId;
       var tmpCatId;
+
+      var removeDuplicates = function removeDuplicates(arr, key) {
+        if (!(arr instanceof Array) || key && typeof key !== 'string') {
+          return false;
+        }
+
+        if (key && typeof key === 'string') {
+          return arr.filter((obj, index, arr) => {
+            return arr.map(mapObj => mapObj[key]).indexOf(obj[key]) === index;
+          });
+
+        } else {
+          return arr.filter(function (item, index, arr) {
+            return arr.indexOf(item) == index;
+          });
+        }
+      };
+
+      categoryData = removeDuplicates(categoryData, 'idCat');
+      sottocategoryData = removeDuplicates(sottocategoryData, 'idSott');
 
       var tmpData = [];
       for (var x = 0; x < ambitoData.length; x++) {
@@ -1694,6 +1714,10 @@
       }
     };
 
+    $scope.callbackPivotMese = function (scope, element) {
+      $scope.apiPivotMese = scope.api;
+    };
+
     $scope.loadPivotMese = function () {
       var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
         return obj.anno === $scope.pivot.year && obj.visualizzare && obj.conto !== 4;
@@ -1796,6 +1820,7 @@
 
       $scope.gridOptionPivotMese.data = pivotData;
       $interval($scope.gridOptionPivotMese.gridApi.core.handleWindowResize, 100, 10);
+      $scope.apiPivotMese.refreshWithTimeout(0);
 
       $scope.optionsMese = {
         chart: {
@@ -1807,7 +1832,6 @@
             bottom: 60,
             left: 65
           },
-          useInteractiveGuideline: true,
           x: function (d) {
             if (d) {
               return d.x;
@@ -1818,6 +1842,7 @@
               return d.y;
             }
           },
+          useInteractiveGuideline: true,
           xAxis: {
             axisLabel: 'Month',
             tickFormat: function (d) {
@@ -1903,10 +1928,15 @@
               (obj.imponibileFiscaleMese <= alqMese['FASCIA4'] ? alqMese['ALIQUOTA4'] + ((obj.imponibileFiscaleMese - alqMese['FASCIA3']) * alqMese['PERC4'] / 100) : alqMese['ALIQUOTA5'] + ((obj.imponibileFiscaleMese - alqMese['FASCIA4']) * alqMese['PERC5'] / 100)))));
         obj.imponibileMedio = (obj.imponibileTotAnnuo / obj.mese);
         obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
-        obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) / 365 * ultimo(obj.mese, obj.anno);
-        obj.ritenutaFiscaleMeseNetta = (Math.round(obj.ritenutaFiscaleMeseLorda * 100) / 100) - (Math.round(obj.detrazioniImposta * 100) / 100) - obj.detrazioneConiuge - obj.detrazioneFigli;
-        obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile + obj.abbonamentoAnnualeAtm;
         var dayOfMonth = new Date(obj.data).getDate();
+        if (dayOfMonth === 27) {
+          obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) / 365 * ultimo(obj.mese, obj.anno);
+        } {
+          obj.detrazioniImposta = 0;
+        }
+        obj.ritenutaFiscaleMeseNetta = (Math.round(obj.ritenutaFiscaleMeseLorda * 100) / 100) - (Math.round(obj.detrazioniImposta * 100) / 100) - obj.detrazioneConiuge - obj.detrazioneFigli;
+        obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile + obj.abbonamentoAnnualeAtm + obj.conguaglio + obj.conguaglioRenzi;
+
         if (dayOfMonth === 27) {
           if (obj.anno >= 2014 && obj.anno < 2018) {
             obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
@@ -1919,7 +1949,7 @@
           obj.bonusRenzi = 0.0;
         }
 
-        obj.totaleCompetenze = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
+        obj.totaleCompetenze = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
         obj.stipendioNetto = obj.totaleCompetenze - obj.totaleRitenute;
         /* obj.impAnnoArr = sumArray(salaryData.filter(function (tmp) {
            return tmp.anno === obj.anno && tmp.mese <= obj.mese;
@@ -1932,51 +1962,51 @@
       switch (colDef.name) {
         case 'ggLavorativi':
           obj.retribuzioneOrdinaria = obj.ggLavorativi * obj.competenzaBase;
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'festivitaNonGoduta':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((numberValue * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((numberValue * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'competenzaBase':
           obj.stipendioLordo = 26 * numberValue;
           obj.retribuzioneOrdinaria = obj.ggLavorativi * numberValue;
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * numberValue) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * numberValue) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'liqRol':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((numberValue * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((numberValue * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compRol':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * numberValue) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * numberValue) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'straordinario25':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((numberValue * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((numberValue * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compStraordinario25':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'maggiorazione25':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compMaggiorazione25':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * numberValue) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * numberValue) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'straordinario30':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((numberValue * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((numberValue * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compStraordinario30':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'maggiorazione30':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compMaggiorazione30':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * numberValue) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * numberValue) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'straordinario50':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((numberValue * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((numberValue * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compStraordinario50':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'maggiorazione50':
           obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
@@ -1984,20 +2014,26 @@
         case 'compMaggiorazione50':
           obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
+        case 'maggiorazione55':
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          break;
+        case 'compMaggiorazione55':
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * numberValue) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          break;
         case 'maggiorazione60':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((numberValue * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'compMaggiorazione60':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * numberValue) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * numberValue) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'periquativo':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(numberValue * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(numberValue * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         case 'erogazioneSpeciale':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(numberValue * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(numberValue * 100) / 100);
           break;
         case 'premiInNatura':
-          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(numberValue * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+          obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(numberValue * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
           break;
         default:
           break;
@@ -2189,6 +2225,19 @@
           //   cellFilter: 'currency',
           width: 100
         }, {
+          name: 'maggiorazione55',
+          displayName: 'Magg. Str. 55%',
+          field: 'maggiorazione55',
+          cellClass: 'text-right',
+          width: 100
+        }, {
+          name: 'compMaggiorazione55',
+          displayName: 'Magg. Str. 55%',
+          field: 'compMaggiorazione55',
+          cellClass: 'text-right',
+          //   cellFilter: 'currency',
+          width: 100
+        }, {
           name: 'maggiorazione60',
           displayName: 'Magg. Str. 60%',
           field: 'maggiorazione60',
@@ -2305,7 +2354,7 @@
           enableCellEdit: false
         }, {
           name: 'bonusRenzi',
-          displayName: 'Bonus Renzi',
+          displayName: 'Bonus DL 66 del 24/04/2014',
           field: 'bonusRenzi',
           cellFilter: 'currency',
           width: 100,
@@ -2315,6 +2364,13 @@
           name: 'conguaglio',
           displayName: 'Conguaglio',
           field: 'conguaglio',
+          cellFilter: 'currency',
+          cellClass: 'text-right',
+          width: 100
+        }, {
+          name: 'conguaglioRenzi',
+          displayName: 'Conguaglio DL 66 del 24/04/2014',
+          field: 'conguaglioRenzi',
           cellFilter: 'currency',
           cellClass: 'text-right',
           width: 100
@@ -2406,6 +2462,8 @@
               x.compStraordinario50 = obj['COMP_STRAORDINARIO_50'];
               x.maggiorazione50 = obj['MAGGIORAZIONE_50'];
               x.compMaggiorazione50 = obj['COMP_MAGGIORAZIONE_50'];
+              x.maggiorazione55 = obj['MAGGIORAZIONE_55'];
+              x.compMaggiorazione55 = obj['COMP_MAGGIORAZIONE_55'];
               x.maggiorazione60 = obj['MAGGIORAZIONE_60'];
               x.compMaggiorazione60 = obj['MAGGIORAZIONE_60'];
               x.festivitaNonGoduta = obj['FESTIVITA_NON_GODUTA'];
@@ -2415,6 +2473,7 @@
               x.detrazioneConiuge = obj['DETRAZIONE_CONIUGE'];
               x.detrazioneFigli = obj['DETRAZIONE_FIGLI'];
               x.conguaglio = obj['CONGUAGLIO'];
+              x.conguaglioRenzi = obj['CONGUAGLIO_RENZI'];
               x.erogazioneSpeciale = obj['EROGAZIONE_SPECIALE'];
               x.addizionaleComunaleVariabile = obj['ADD_COMUNALE_VARIABILE'];
               x.addizionaleComunaleVariabileAcconto = obj['ADD_COMUNALE_VARIABILE_ACC'];
@@ -2452,6 +2511,8 @@
               tmp.compStraordinario50 = obj.compStraordinario50;
               tmp.maggiorazione50 = obj.maggiorazione50;
               tmp.compMaggiorazione50 = obj.compMaggiorazione50;
+              tmp.maggiorazione55 = obj.maggiorazione55;
+              tmp.compMaggiorazione55 = obj.compMaggiorazione55;
               tmp.maggiorazione60 = obj.maggiorazione60;
               tmp.compMaggiorazione60 = obj.compMaggiorazione60;
               tmp.festivitaNonGoduta = obj.festivitaNonGoduta;
@@ -2462,6 +2523,7 @@
               tmp.detrazioneConiuge = obj.detrazioneConiuge;
               tmp.detrazioneFigli = obj.detrazioneFigli;
               tmp.conguaglio = obj.conguaglio;
+              tmp.conguaglioRenzi = obj.conguaglioRenzi;
               tmp.premiInNatura = obj.premiInNatura;
               tmp.addizionaleComunaleVariabile = obj.addizionaleComunaleVariabile;
               tmp.addizionaleComunaleVariabileAcconto = obj.addizionaleComunaleVariabileAcconto;
@@ -2483,7 +2545,7 @@
 
               obj.stipendioLordo = 26 * obj.competenzaBase;
               obj.retribuzioneOrdinaria = obj.ggLavorativi * obj.competenzaBase;
-              obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
+              obj.impPrevNonArr = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100);
 
               obj.impPrevArr = Math.round(obj.impPrevNonArr);
               obj.ritenuteMeseInps = (obj.impPrevArr > alq['SOGLIA_FAP'] ? ((obj.impPrevArr * alq['INPS'] / 100) +
@@ -2507,14 +2569,18 @@
                 (obj.imponibileFiscaleMese <= alqMese['FASCIA2'] ? alqMese['ALIQUOTA2'] + ((obj.imponibileFiscaleMese - alqMese['FASCIA1']) * alqMese['PERC2'] / 100) :
                   (obj.imponibileFiscaleMese <= alqMese['FASCIA3'] ? alqMese['ALIQUOTA3'] + ((obj.imponibileFiscaleMese - alqMese['FASCIA2']) * alqMese['PERC3'] / 100) :
                     (obj.imponibileFiscaleMese <= alqMese['FASCIA4'] ? alqMese['ALIQUOTA4'] + ((obj.imponibileFiscaleMese - alqMese['FASCIA3']) * alqMese['PERC4'] / 100) : alqMese['ALIQUOTA5'] + ((obj.imponibileFiscaleMese - alqMese['FASCIA4']) * alqMese['PERC5'] / 100)))));
-              obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) / 365 * ultimo(obj.mese, obj.anno);
+              var dayOfMonth = new Date(obj.data).getDate();
+              if (dayOfMonth === 27) {
+                obj.detrazioniImposta = (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2']))) / 365 * ultimo(obj.mese, obj.anno);
+              } {
+                obj.detrazioniImposta = 0;
+              }
               obj.ritenutaFiscaleMeseNetta = (Math.round(obj.ritenutaFiscaleMeseLorda * 100) / 100) - (Math.round(obj.detrazioniImposta * 100) / 100) - obj.detrazioneConiuge - obj.detrazioneFigli;
               /* obj.redditoComplessivoAnnuo = sumArray(salaryData.filter(function (tmp) {
                 return tmp.anno === obj.anno && tmp.mese <= obj.mese;
               }), 'redditoComplessivoMese'); */
               // obj.redditoComplessivoMedioAnnuo = (obj.redditoComplessivoAnnuo / obj.mese);
               // obj.redditoComplessivoPrevistoAnnuo = obj.redditoComplessivoAnnuo + (obj.redditoComplessivoMedioAnnuo * (13 - obj.mese));
-              var dayOfMonth = new Date(obj.data).getDate();
               if (dayOfMonth === 27) {
                 if (obj.anno >= 2014 && obj.anno < 2018) {
                   obj.bonusRenzi = (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
@@ -2526,8 +2592,8 @@
               } else {
                 obj.bonusRenzi = 0.0;
               }
-              obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile + obj.abbonamentoAnnualeAtm;
-              obj.totaleCompetenze = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
+              obj.totaleRitenute = obj.ritenuteMeseInps + obj.ritenutaFiscaleMeseNetta + obj.addizionaleComunaleVariabile + obj.addizionaleComunaleVariabileAcconto + obj.addizionaleRegionaleFissa + obj.addizionaleRegionaleVariabile + obj.abbonamentoAnnualeAtm + obj.conguaglio + obj.conguaglioRenzi;
+              obj.totaleCompetenze = (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100);
               obj.stipendioNetto = obj.totaleCompetenze - obj.totaleRitenute;
             });
 
@@ -2536,6 +2602,194 @@
           });
         });
       });
+    };
+
+    /*****************************************************************
+     *                      TAB ANDAMENTO ANNO
+     ****************************************************************/
+
+    $scope.gridOptionAndamentoAnnuo = {
+      columnVirtualizationThreshold: 100,
+      showGridFooter: true,
+      minRowsToShow: 13,
+      enableFiltering: false,
+      selectionRowHeaderWidth: 35,
+      enableSorting: false,
+      enableColumnMenus: false,
+      columnDefs: [{
+        name: 'year',
+        displayName: 'Anno',
+        field: 'year',
+        width: '30%'
+            }, {
+        name: 'contocomune',
+        displayName: 'Conto Comune',
+        field: 'contocomune',
+        width: '35%',
+        aggregationType: uiGridConstants.aggregationTypes.sum,
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
+        }, {
+        name: 'contopersonale',
+        displayName: 'Conto Personale',
+        field: 'contopersonale',
+        width: '35%',
+        aggregationType: uiGridConstants.aggregationTypes.sum,
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
+        }],
+      data: [],
+      onRegisterApi: function (gridApi) {
+        $scope.gridOptionAndamentoAnnuo.gridApi = gridApi;
+      }
+    };
+
+    $scope.callbackAndamentoAnnuo = function (scope, element) {
+      $scope.apiAndamentoAnnuo = scope.api;
+    };
+
+    $scope.loadAndamentoAnnuo = function () {
+
+      var lowest = Number.POSITIVE_INFINITY;
+      var highest = Number.NEGATIVE_INFINITY;
+      var tmp;
+      var dataTmp = angular.copy($scope.gridOptions.data);
+      for (var i = dataTmp.length - 1; i >= 0; i--) {
+        tmp = dataTmp[i].anno;
+        if (tmp < lowest) lowest = tmp;
+        if (tmp > highest) highest = tmp;
+      }
+
+      var years = [];
+      years.push(lowest);
+      for (i = 1; i < highest - lowest; i++) {
+        var y = lowest + i;
+        years.push(y);
+      }
+      years.push(highest);
+
+
+      var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
+        return obj.conto !== 4;
+      });
+
+      var pivotData = [];
+
+      var dataContoComune = angular.copy(balanceData).filter(function (obj) {
+        return obj.tipoConto === 1;
+      });
+
+      var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
+        return obj.tipoConto === 2;
+      });
+
+
+      function add(a, b) {
+        return a + b;
+      };
+
+      function filter_array(test_array) {
+        var index = -1,
+          arr_length = test_array ? test_array.length : 0,
+          resIndex = -1,
+          result = [];
+
+        while (++index < arr_length) {
+          var value = test_array[index];
+
+          if (value) {
+            result[++resIndex] = value;
+          }
+        }
+
+        return result;
+      };
+
+      years.forEach(function (year) {
+
+        var newRow = {};
+
+        newRow.value = year;
+        newRow.year = year;
+        newRow.contocomune = filter_array(dataContoComune.map(function (obj) {
+          if (obj.anno <= year) {
+            return obj.importo;
+          }
+        })).reduce(add, 0);
+
+        newRow.contopersonale = filter_array(dataContoPersonale.map(function (obj) {
+          if (obj.anno <= year) {
+            return obj.importo;
+          }
+        })).reduce(add, 0);
+
+        pivotData.push(newRow);
+
+      });
+
+      $scope.optionsAndamentoAnno = {
+        chart: {
+          type: 'lineChart',
+          height: 720,
+          margin: {
+            top: 20,
+            right: 20,
+            bottom: 60,
+            left: 65
+          },
+          useInteractiveGuideline: true,
+          x: function (d) {
+            if (d) {
+              return d.x;
+            }
+          },
+          y: function (d) {
+            if (d) {
+              return d.y;
+            }
+          },
+          xAxis: {
+            axisLabel: 'Year',
+            tickFormat: function (d) {
+              return d3.time.format('%Y')(new Date(d, 2, 1));
+            }
+          },
+          yAxis: {
+            axisLabel: 'Totale (€)',
+            tickFormat: function (d) {
+              return d3.round(d, 2) + " €";
+            }
+          }
+        }
+      };
+
+      $scope.dataAndamentoAnno = [
+        {
+          key: 'Conto Comune',
+          values: pivotData.map(function (d) {
+            return {
+              'x': d.value,
+              'y': d.contocomune
+            };
+          }),
+          color: '#ff7f0e',
+          area: true
+            },
+        {
+          key: 'Conto Personale',
+          values: pivotData.map(function (d) {
+            return {
+              'x': d.value,
+              'y': d.contopersonale
+            };
+          }),
+          color: '#7777ff'
+            }
+          ];
+
+      $scope.gridOptionAndamentoAnnuo.data = pivotData;
+      $interval($scope.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize, 100, 10);
+      $scope.apiAndamentoAnnuo.refreshWithTimeout(0);
     };
 
     }]);

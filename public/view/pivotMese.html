@@ -4,5 +4,5 @@
   <div id="grid4" ui-grid="gridOptionPivotMese" class="myGrid"></div>
 </div>
 <div class="col-md-9">
-  <nvd3 options="optionsMese" data="dataMese" config="{deepWatchData: true, refreshDataOnly: false}"></nvd3>
+  <nvd3 options="optionsMese" data="dataMese" config="{deepWatchData: true, refreshDataOnly: false}" api="apiPivotMese" on-ready="callbackPivotMese"></nvd3>
 </div>
