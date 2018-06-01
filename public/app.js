@@ -2568,7 +2568,7 @@
 
       var dayOfMonth = new Date(obj.data).getDate();
       if (dayOfMonth === 27) {
-        return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * ultimo(obj.mese, obj.anno);
+        return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * obj.ggLavorativi;
       } else {
         return 0.0;
       }
