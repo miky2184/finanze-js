@@ -2515,19 +2515,7 @@
 
             salaryData.forEach(function (obj) {
               $scope.ricalcola(obj, salaryData);
-            });
-
-            function sortByKey(array, key) {
-              return array.sort(function (a, b) {
-                var x = a[key];
-                var y = b[key];
-                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-              });
-            }
-
-            salaryData = sortByKey(salaryData, 'anno');
-
-            salaryData = sortByKey(salaryData, 'mese');
+            });            
 
             $scope.gridOptionsSalary.data = salaryData;
             $interval($scope.gridOptionsSalary.gridApi.core.handleWindowResize, 200, 10);
