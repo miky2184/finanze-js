@@ -2525,11 +2525,12 @@
     };
 
     $scope.ricalcola = function (obj, salaryData) {
-      obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
+      obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;      
       obj.retribuzioneOrdinaria = $scope.getRetribuzioneOrdinaria(obj);
       obj.impPrevNonArr = $scope.getImpPrevNonArr(obj);
       obj.impPrevArr = Math.round(obj.impPrevNonArr);
       obj.ritenuteMeseInps = $scope.getRitenuteMeseInps(obj);
+      obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
       obj.imponibileTotAnnuo = sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'imponibileFiscaleMese');
@@ -2596,8 +2597,7 @@
       })[0];
 
       return (obj.impPrevArr > alq['SOGLIA_FAP'] ? (obj.impPrevArr * alq['INPS'] / 100) +
-        ((obj.impPrevArr - alq['SOGLIA_FAP']) * alq['ECCESSO_FAP'] / 100) : (obj.impPrevArr * alq['INPS'] / 100));
-      obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
+        ((obj.impPrevArr - alq['SOGLIA_FAP']) * alq['ECCESSO_FAP'] / 100) : (obj.impPrevArr * alq['INPS'] / 100));      
     }
 
     $scope.getImpPrevNonArr = function (obj, field, value) {
