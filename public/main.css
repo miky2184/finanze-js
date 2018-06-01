@@ -132,6 +132,11 @@
 }
 
 .disable {
-  background-color: #acb4b5 !important;
+  background-color: #f3f3f3 !important;
+  text-align: right;
+}
+
+.disable-green {
+  background-color: #8bc34a !important;
   text-align: right;
 }
