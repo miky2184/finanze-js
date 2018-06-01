@@ -2517,6 +2517,18 @@
               $scope.ricalcola(obj, salaryData);
             });
 
+            function sortByKey(array, key) {
+              return array.sort(function (a, b) {
+                var x = a[key];
+                var y = b[key];
+                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+              });
+            }
+
+            salaryData = sortByKey(salaryData, 'anno');
+
+            salaryData = sortByKey(salaryData, 'mese');
+
             $scope.gridOptionsSalary.data = salaryData;
             $interval($scope.gridOptionsSalary.gridApi.core.handleWindowResize, 200, 10);
           });
@@ -2525,7 +2537,7 @@
     };
 
     $scope.ricalcola = function (obj, salaryData) {
-      obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;      
+      obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
       obj.retribuzioneOrdinaria = $scope.getRetribuzioneOrdinaria(obj);
       obj.impPrevNonArr = $scope.getImpPrevNonArr(obj);
       obj.impPrevArr = Math.round(obj.impPrevNonArr);
@@ -2597,7 +2609,7 @@
       })[0];
 
       return (obj.impPrevArr > alq['SOGLIA_FAP'] ? (obj.impPrevArr * alq['INPS'] / 100) +
-        ((obj.impPrevArr - alq['SOGLIA_FAP']) * alq['ECCESSO_FAP'] / 100) : (obj.impPrevArr * alq['INPS'] / 100));      
+        ((obj.impPrevArr - alq['SOGLIA_FAP']) * alq['ECCESSO_FAP'] / 100) : (obj.impPrevArr * alq['INPS'] / 100));
     }
 
     $scope.getImpPrevNonArr = function (obj, field, value) {
