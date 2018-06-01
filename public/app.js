@@ -2336,7 +2336,7 @@
         }, {
           name: 'conguaglioDebito',
           displayName: 'Conguaglio a Debito',
-          field: 'conguaglio',
+          field: 'conguaglioDebito',
           cellFilter: 'currency',
           cellClass: 'text-right',
           width: 100
