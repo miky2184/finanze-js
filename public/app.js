@@ -2507,11 +2507,10 @@
       obj.ggTrascorsi = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'ggMese');
-      if (obj.mese === 2 && obj.anno === 2012) {
-        obj.imponibileMedio = obj.imponibileTotAnnuo / obj.mese;
-      } else {
-        obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / obj.mese;
-      }
+      var nom = salaryData.filter(function (tmp) {
+        return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+      }).length;
+      obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / nom;      
       obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
       obj.ritenutaFiscaleMeseLorda = $scope.getRitenutaFiscaleMeseLorda(obj);
       obj.detrazioniImposta = $scope.getDetrazioniImposta(obj);
