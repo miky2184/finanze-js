@@ -2429,9 +2429,9 @@
 
         return $http.get('http://2.225.127.144:3001/aliquoteMese').then(function (response) {
           $scope.aliquoteMese = response.data;
-          
+
           return $http.get('http://2.225.127.144:3001/salary').then(function (resp) {
-            var salaryData = [];            
+            var salaryData = [];
 
             resp.data.forEach(function (obj) {
               var x = {};
@@ -2477,7 +2477,7 @@
               x.abbonamentoAnnualeAtm = obj['ABBONAMENTO_ATM'];
               x.competenzaBase = obj['COMPETENZA_BASE'];
               salaryData.push(x);
-            });            
+            });
 
             salaryData.forEach(function (obj) {
               $scope.ricalcola(obj, salaryData);
@@ -2507,7 +2507,11 @@
       obj.ggTrascorsi = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'ggMese');
-      obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / obj.mese;
+      if (obj.mese === 2 && obj.anno === 2012) {
+        obj.imponibileMedio = obj.imponibileTotAnnuo / obj.mese;
+      } else {
+        obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / obj.mese;
+      }
       obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
       obj.ritenutaFiscaleMeseLorda = $scope.getRitenutaFiscaleMeseLorda(obj);
       obj.detrazioniImposta = $scope.getDetrazioniImposta(obj);
