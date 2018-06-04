@@ -2587,7 +2587,7 @@
     };
 
     $scope.getTotaleRitenute = function (obj) {
-      return (Math.round(obj.ritenuteMeseInps * 100) / 100) + (Math.round(obj.ritenutaFiscaleMeseNetta * 100) / 100) + (Math.round(obj.addizionaleComunaleVariabile * 100) / 100) + (Math.round(obj.addizionaleComunaleVariabileAcconto * 100) / 100) + (Math.round(obj.addizionaleRegionaleFissa * 100) / 100) + (Math.round(obj.addizionaleRegionaleVariabile * 100) / 100) + (Math.round(obj.abbonamentoAnnualeAtm * 100) / 100) + (Math.round(obj.conguaglioDebito * 100) / 100) + (Math.round(obj.conguaglioDebitoRenzi * 100) / 100) - (Math.round(obj.contributoSindacale * 100) / 100);
+      return (Math.round(obj.ritenuteMeseInps * 100) / 100) + (Math.round(obj.ritenutaFiscaleMeseNetta * 100) / 100) + (Math.round(obj.addizionaleComunaleVariabile * 100) / 100) + (Math.round(obj.addizionaleComunaleVariabileAcconto * 100) / 100) + (Math.round(obj.addizionaleRegionaleFissa * 100) / 100) + (Math.round(obj.addizionaleRegionaleVariabile * 100) / 100) + (Math.round(obj.abbonamentoAnnualeAtm * 100) / 100) + (Math.round(obj.conguaglioDebito * 100) / 100) + (Math.round(obj.conguaglioDebitoRenzi * 100) / 100) + (Math.round(obj.contributoSindacale * 100) / 100);
     };
 
     $scope.getTotaleCompetenze = function (obj) {
