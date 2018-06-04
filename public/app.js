@@ -2537,6 +2537,7 @@
     };
 
     $scope.ricalcola = function (obj, salaryData) {
+      obj.ggMese = $scope.ultimo(obj.mese, obj.anno);
       obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
       obj.retribuzioneOrdinaria = $scope.getRetribuzioneOrdinaria(obj);
       obj.impPrevNonArr = $scope.getImpPrevNonArr(obj);
@@ -2549,7 +2550,10 @@
       obj.ggLavorati = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'ggDetrazioni');
-      obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggDetrazioni) / obj.mese;
+      obj.ggTrascorsi = $scope.sumArray(salaryData.filter(function (tmp) {
+        return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+      }), 'ggMese');
+      obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / obj.mese;
       obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
       obj.ritenutaFiscaleMeseLorda = $scope.getRitenutaFiscaleMeseLorda(obj);
       obj.detrazioniImposta = $scope.getDetrazioniImposta(obj);
