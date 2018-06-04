@@ -2400,7 +2400,7 @@
       }
     };
 
-    var sumArray = function sumArray(array, field) {
+    $scope.sumArray = function sumArray(array, field) {
       var total = 0.0;
       array.forEach(function (obj) {
         total += obj[field] || 0;
@@ -2408,7 +2408,7 @@
       return total;
     };
 
-    var ultimo = function ultimo(mese, anno) {
+    $scope.ultimo = function ultimo(mese, anno) {
       var d = new Date(anno, mese, 0);
       if (mese === 2) {
         return 28;
@@ -2435,7 +2435,7 @@
               x.anno = new Date(x.data).getFullYear();
               x.mese = new Date(x.data).getMonth() + 1;
               x.ggLavorativi = obj['GG_LAVORATIVI'];
-              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : ultimo(x.mese, x.anno) ;
+              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : $scope.ultimo(x.mese, x.anno) ;
               x.liqRol = obj['LIQ_ROL'];
               x.compRol = obj['COMP_ROL'];
               x.straordinario25 = obj['STRAORDINARIO_25'];
@@ -2543,7 +2543,7 @@
       obj.impPrevArr = Math.round(obj.impPrevNonArr);
       obj.ritenuteMeseInps = $scope.getRitenuteMeseInps(obj);
       obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
-      obj.imponibileTotAnnuo = sumArray(salaryData.filter(function (tmp) {
+      obj.imponibileTotAnnuo = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'imponibileFiscaleMese');
       obj.imponibileMedio = (obj.imponibileTotAnnuo / obj.mese);
@@ -2561,9 +2561,9 @@
       var dayOfMonth = new Date(obj.data).getDate();
       if (dayOfMonth === 27) {
         if (obj.anno >= 2014 && obj.anno < 2018) {
-          return (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
+          return (obj.imponibilePrevistoAnnuo > 8000 && obj.imponibilePrevistoAnnuo <= 24000 ? 960 : (obj.imponibilePrevistoAnnuo > 24000 && obj.imponibilePrevistoAnnuo < 26000 ? 960 * ((26000 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * obj.ggDetrazioni;
         } else if (obj.anno >= 2018) {
-          return (obj.imponibilePrevistoAnnuo > 8174 && obj.imponibilePrevistoAnnuo <= 24600 ? 960 : (obj.imponibilePrevistoAnnuo > 24600 && obj.imponibilePrevistoAnnuo < 26600 ? 960 * ((26600 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * ultimo(obj.mese, obj.anno);
+          return (obj.imponibilePrevistoAnnuo > 8174 && obj.imponibilePrevistoAnnuo <= 24600 ? 960 : (obj.imponibilePrevistoAnnuo > 24600 && obj.imponibilePrevistoAnnuo < 26600 ? 960 * ((26600 - obj.imponibilePrevistoAnnuo) / 2000) : 0)) / 365 * obj.ggDetrazioni;
         } else {
           return 0.0;
         }
