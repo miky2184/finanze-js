@@ -2078,7 +2078,7 @@
           enableCellEdit: false
         }, {
           name: 'ggLavorativi',
-          displayName: 'Giorni Lavorativi',
+          displayName: 'Giorni INPS',
           field: 'ggLavorativi',
           cellClass: 'text-right',
           width: 100
@@ -2546,7 +2546,10 @@
       obj.imponibileTotAnnuo = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'imponibileFiscaleMese');
-      obj.imponibileMedio = (obj.imponibileTotAnnuo / obj.mese);
+      obj.ggLavorati = $scope.sumArray(salaryData.filter(function (tmp) {
+        return tmp.anno === obj.anno && tmp.mese <= obj.mese;
+      }), 'ggDetrazioni');
+      obj.imponibileMedio = obj.imponibileTotAnnuo / obj.ggLavorati * obj.ggDetrazioni;
       obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
       obj.ritenutaFiscaleMeseLorda = $scope.getRitenutaFiscaleMeseLorda(obj);
       obj.detrazioniImposta = $scope.getDetrazioniImposta(obj);
