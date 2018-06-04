@@ -2082,7 +2082,7 @@
           field: 'ggLavorativi',
           cellClass: 'text-right',
           width: 100
-        },{
+        }, {
           name: 'ggDetrazioni',
           displayName: 'Giorni Detrazioni',
           field: 'ggDetrazioni',
@@ -2427,7 +2427,7 @@
           // return $http.get('json/work.json').then(function (resp) {
           return $http.get('http://2.225.127.144:3001/salary').then(function (resp) {
             var salaryData = [];
-           // var tmpData = [];
+            // var tmpData = [];
 
             resp.data.forEach(function (obj) {
               var x = {};
@@ -2435,7 +2435,7 @@
               x.anno = new Date(x.data).getFullYear();
               x.mese = new Date(x.data).getMonth() + 1;
               x.ggLavorativi = obj['GG_LAVORATIVI'];
-              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : $scope.ultimo(x.mese, x.anno) ;
+              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : $scope.ultimo(x.mese, x.anno);
               x.liqRol = obj['LIQ_ROL'];
               x.compRol = obj['COMP_ROL'];
               x.straordinario25 = obj['STRAORDINARIO_25'];
@@ -2474,60 +2474,60 @@
               salaryData.push(x);
             });
 
-           /* tmpData.forEach(function (obj) {
+            /* tmpData.forEach(function (obj) {
 
-              var tmp = {};
-              
-              var alq = $scope.aliquote.filter(function (a) {
-                return a['ANNO'] === tmp.anno;
-              })[0];
-              
-              tmp.data = obj.data;
-              tmp.anno = obj.anno;
-              tmp.mese = obj.mese;              
-              tmp.ggLavorativi = obj.ggLavorativi;
-              tmp.ggDetrazioni = obj.ggDetrazioni;
-              tmp.liqRol = obj.liqRol;
-              tmp.compRol = obj.compRol;
-              tmp.straordinario25 = obj.straordinario25;
-              tmp.compStraordinario25 = obj.compStraordinario25;
-              tmp.maggiorazione25 = obj.maggiorazione25;
-              tmp.compMaggiorazione25 = obj.compMaggiorazione25;
-              tmp.straordinario30 = obj.straordinario30;
-              tmp.compStraordinario30 = obj.compStraordinario30;
-              tmp.maggiorazione30 = obj.maggiorazione30;
-              tmp.compMaggiorazione30 = obj.compMaggiorazione30;
-              tmp.straordinario50 = obj.straordinario50;
-              tmp.compStraordinario50 = obj.compStraordinario50;
-              tmp.maggiorazione50 = obj.maggiorazione50;
-              tmp.compMaggiorazione50 = obj.compMaggiorazione50;
-              tmp.maggiorazione55 = obj.maggiorazione55;
-              tmp.compMaggiorazione55 = obj.compMaggiorazione55;
-              tmp.maggiorazione60 = obj.maggiorazione60;
-              tmp.compMaggiorazione60 = obj.compMaggiorazione60;
-              tmp.festivitaNonGoduta = obj.festivitaNonGoduta;
-              tmp.periquativo = obj.periquativo;
-              tmp.settetrenta = obj.settetrenta;
-              tmp.competenzaBase = obj.competenzaBase;
-              tmp.erogazioneSpeciale = obj.erogazioneSpeciale;
-              tmp.detrazioneConiuge = obj.detrazioneConiuge;
-              tmp.detrazioneFigli = obj.detrazioneFigli;
-              tmp.conguaglio = obj.conguaglio;
-              tmp.conguaglioRenzi = obj.conguaglioRenzi;
-              tmp.conguaglioDebito = obj.conguaglioDebito;
-              tmp.conguaglioDebitoRenzi = obj.conguaglioDebitoRenzi;
-              tmp.premiInNatura = obj.premiInNatura;
-              tmp.addizionaleComunaleVariabile = obj.addizionaleComunaleVariabile;
-              tmp.addizionaleComunaleVariabileAcconto = obj.addizionaleComunaleVariabileAcconto;
-              tmp.addizionaleRegionaleFissa = obj.addizionaleRegionaleFissa;
-              tmp.addizionaleRegionaleVariabile = obj.addizionaleRegionaleVariabile;
-              tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;
-              salaryData.push(tmp);
-            }); */
+               var tmp = {};
+               
+               var alq = $scope.aliquote.filter(function (a) {
+                 return a['ANNO'] === tmp.anno;
+               })[0];
+               
+               tmp.data = obj.data;
+               tmp.anno = obj.anno;
+               tmp.mese = obj.mese;              
+               tmp.ggLavorativi = obj.ggLavorativi;
+               tmp.ggDetrazioni = obj.ggDetrazioni;
+               tmp.liqRol = obj.liqRol;
+               tmp.compRol = obj.compRol;
+               tmp.straordinario25 = obj.straordinario25;
+               tmp.compStraordinario25 = obj.compStraordinario25;
+               tmp.maggiorazione25 = obj.maggiorazione25;
+               tmp.compMaggiorazione25 = obj.compMaggiorazione25;
+               tmp.straordinario30 = obj.straordinario30;
+               tmp.compStraordinario30 = obj.compStraordinario30;
+               tmp.maggiorazione30 = obj.maggiorazione30;
+               tmp.compMaggiorazione30 = obj.compMaggiorazione30;
+               tmp.straordinario50 = obj.straordinario50;
+               tmp.compStraordinario50 = obj.compStraordinario50;
+               tmp.maggiorazione50 = obj.maggiorazione50;
+               tmp.compMaggiorazione50 = obj.compMaggiorazione50;
+               tmp.maggiorazione55 = obj.maggiorazione55;
+               tmp.compMaggiorazione55 = obj.compMaggiorazione55;
+               tmp.maggiorazione60 = obj.maggiorazione60;
+               tmp.compMaggiorazione60 = obj.compMaggiorazione60;
+               tmp.festivitaNonGoduta = obj.festivitaNonGoduta;
+               tmp.periquativo = obj.periquativo;
+               tmp.settetrenta = obj.settetrenta;
+               tmp.competenzaBase = obj.competenzaBase;
+               tmp.erogazioneSpeciale = obj.erogazioneSpeciale;
+               tmp.detrazioneConiuge = obj.detrazioneConiuge;
+               tmp.detrazioneFigli = obj.detrazioneFigli;
+               tmp.conguaglio = obj.conguaglio;
+               tmp.conguaglioRenzi = obj.conguaglioRenzi;
+               tmp.conguaglioDebito = obj.conguaglioDebito;
+               tmp.conguaglioDebitoRenzi = obj.conguaglioDebitoRenzi;
+               tmp.premiInNatura = obj.premiInNatura;
+               tmp.addizionaleComunaleVariabile = obj.addizionaleComunaleVariabile;
+               tmp.addizionaleComunaleVariabileAcconto = obj.addizionaleComunaleVariabileAcconto;
+               tmp.addizionaleRegionaleFissa = obj.addizionaleRegionaleFissa;
+               tmp.addizionaleRegionaleVariabile = obj.addizionaleRegionaleVariabile;
+               tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;
+               salaryData.push(tmp);
+             }); */
 
             salaryData.forEach(function (obj) {
               $scope.ricalcola(obj, salaryData);
-            });            
+            });
 
             $scope.gridOptionsSalary.data = salaryData;
             $interval($scope.gridOptionsSalary.gridApi.core.handleWindowResize, 200, 10);
@@ -2549,7 +2549,7 @@
       obj.ggLavorati = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }), 'ggDetrazioni');
-      obj.imponibileMedio = obj.imponibileTotAnnuo / obj.ggLavorati * obj.ggDetrazioni;
+      obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggDetrazioni) / obj.mese;
       obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
       obj.ritenutaFiscaleMeseLorda = $scope.getRitenutaFiscaleMeseLorda(obj);
       obj.detrazioniImposta = $scope.getDetrazioniImposta(obj);
@@ -2582,8 +2582,8 @@
       })[0];
 
       var dayOfMonth = new Date(obj.data).getDate();
-      if (dayOfMonth === 27) {        
-         return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * obj.ggDetrazioni;               
+      if (dayOfMonth === 27) {
+        return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * obj.ggDetrazioni;
       } else {
         return 0.0;
       }
