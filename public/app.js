@@ -1908,6 +1908,9 @@
           obj.retribuzioneOrdinaria = numberValue * obj.competenzaBase;
           obj.impPrevNonArr = $scope.getImpPrevNonArr(obj, 'ggLavorativi', numberValue);
           break;
+        case 'ggDetrazioni':
+          obj.ggDetrazioni = numberValue;
+          break;
         case 'festivitaNonGoduta':
           obj.impPrevNonArr = $scope.getImpPrevNonArr(obj, 'festivitaNonGoduta', numberValue);
           break;
@@ -2418,12 +2421,15 @@
           // return $http.get('json/work.json').then(function (resp) {
           return $http.get('http://2.225.127.144:3001/salary').then(function (resp) {
             var salaryData = [];
-            var tmpData = [];
+           // var tmpData = [];
 
             resp.data.forEach(function (obj) {
               var x = {};
               x.data = obj['DATA']
+              x.anno = new Date(x.data).getFullYear();
+              x.mese = new Date(x.data).getMonth() + 1;
               x.ggLavorativi = obj['GG_LAVORATIVI'];
+              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : ultimo(x.mese, x.anno) ;
               x.liqRol = obj['LIQ_ROL'];
               x.compRol = obj['COMP_ROL'];
               x.straordinario25 = obj['STRAORDINARIO_25'];
@@ -2459,22 +2465,22 @@
               x.addizionaleRegionaleVariabile = obj['ADD_REGIONALE_VARIABILE'];
               x.abbonamentoAnnualeAtm = obj['ABBONAMENTO_ATM'];
               x.competenzaBase = obj['COMPETENZA_BASE'];
-              tmpData.push(x);
+              salaryData.push(x);
             });
 
-            tmpData.forEach(function (obj) {
+           /* tmpData.forEach(function (obj) {
 
               var tmp = {};
-              tmp.anno = new Date(obj.data).getFullYear();
-
+              
               var alq = $scope.aliquote.filter(function (a) {
                 return a['ANNO'] === tmp.anno;
               })[0];
-
-
-              tmp.mese = new Date(obj.data).getMonth() + 1;
+              
               tmp.data = obj.data;
+              tmp.anno = obj.anno;
+              tmp.mese = obj.mese;              
               tmp.ggLavorativi = obj.ggLavorativi;
+              tmp.ggDetrazioni = obj.ggDetrazioni;
               tmp.liqRol = obj.liqRol;
               tmp.compRol = obj.compRol;
               tmp.straordinario25 = obj.straordinario25;
@@ -2511,7 +2517,7 @@
               tmp.addizionaleRegionaleVariabile = obj.addizionaleRegionaleVariabile;
               tmp.abbonamentoAnnualeAtm = obj.abbonamentoAnnualeAtm;
               salaryData.push(tmp);
-            });
+            }); */
 
             salaryData.forEach(function (obj) {
               $scope.ricalcola(obj, salaryData);
@@ -2567,12 +2573,8 @@
       })[0];
 
       var dayOfMonth = new Date(obj.data).getDate();
-      if (dayOfMonth === 27) {
-        if (obj.anno < 2013) {
-         return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * obj.ggLavorativi; 
-        } else {
-          return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * ultimo(obj.mese, obj.anno);
-        }        
+      if (dayOfMonth === 27) {        
+         return (obj.imponibilePrevistoAnnuo <= alq['SOGLIA0'] ? alq['QUOTA0'] : (obj.imponibilePrevistoAnnuo <= alq['SOGLIA1'] ? (alq['QUOTA1'] + alq['QUOTA2'] * ((alq['SOGLIA1'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE1'])) : (alq['QUOTA1'] * ((alq['SOGLIA2'] - obj.imponibilePrevistoAnnuo) / alq['DIVISORE2'])))) / 365 * obj.ggDetrazioni;               
       } else {
         return 0.0;
       }
