@@ -2082,6 +2082,12 @@
           field: 'ggLavorativi',
           cellClass: 'text-right',
           width: 100
+        },{
+          name: 'ggDetrazioni',
+          displayName: 'Giorni Detrazioni',
+          field: 'ggDetrazioni',
+          cellClass: 'text-right',
+          width: 100
         }, {
           name: 'festivitaNonGoduta',
           displayName: 'Festività Non Goduta',
