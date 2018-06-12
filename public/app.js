@@ -2457,7 +2457,7 @@
               x.maggiorazione55 = obj['MAGGIORAZIONE_55'];
               x.compMaggiorazione55 = obj['COMP_MAGGIORAZIONE_55'];
               x.maggiorazione60 = obj['MAGGIORAZIONE_60'];
-              x.compMaggiorazione60 = obj['MAGGIORAZIONE_60'];
+              x.compMaggiorazione60 = obj['COMP_MAGGIORAZIONE_60'];
               x.festivitaNonGoduta = obj['FESTIVITA_NON_GODUTA'];
               x.periquativo = obj['PERIQUATIVO'];
               x.settetrenta = obj['SETTETRENTA'];
@@ -2496,7 +2496,7 @@
       obj.retribuzioneOrdinaria = $scope.getRetribuzioneOrdinaria(obj);
       obj.impPrevNonArr = $scope.getImpPrevNonArr(obj);
       obj.impPrevArr = Math.round(obj.impPrevNonArr);
-      obj.ritenuteMeseInps = $scope.getRitenuteMeseInps(obj);
+      obj.ritenuteMeseInps = Math.round( $scope.getRitenuteMeseInps(obj) * 100) / 100;
       obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
       obj.imponibileTotAnnuo = $scope.sumArray(salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
