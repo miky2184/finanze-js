@@ -2495,7 +2495,11 @@
       obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
       obj.retribuzioneOrdinaria = $scope.getRetribuzioneOrdinaria(obj);
       obj.impPrevNonArr = $scope.getImpPrevNonArr(obj);
+      if (obj.mese === 12){
+        obj.impPrevArr = Math.floor(obj.impPrevNonArr);
+      } else {
       obj.impPrevArr = Math.round(obj.impPrevNonArr);
+        }
       obj.ritenuteMeseInps = Math.round( $scope.getRitenuteMeseInps(obj) * 100) / 100;
       obj.imponibileFiscaleMese = obj.impPrevNonArr - obj.ritenuteMeseInps;
       obj.imponibileTotAnnuo = $scope.sumArray(salaryData.filter(function (tmp) {
