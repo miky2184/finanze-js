@@ -2008,7 +2008,7 @@
     $scope.gridOptionsSalary = {
       columnVirtualizationThreshold: 100,
       minRowsToShow: 24,
-      enableFiltering: false,
+      enableFiltering: true,
       enableSorting: false,
       columnDefs: [{
           name: 'anno',
