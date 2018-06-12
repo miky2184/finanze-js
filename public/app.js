@@ -2510,7 +2510,8 @@
       var nom = salaryData.filter(function (tmp) {
         return tmp.anno === obj.anno && tmp.mese <= obj.mese;
       }).length;
-      obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / nom;      
+     // obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggLavorati) * obj.ggTrascorsi) / nom;      
+       obj.imponibileMedio = ((obj.imponibileTotAnnuo / obj.ggMese) * obj.ggLavorati) / nom;      
       obj.imponibilePrevistoAnnuo = obj.imponibileTotAnnuo + (obj.imponibileMedio * (13 - obj.mese));
       obj.ritenutaFiscaleMeseLorda = $scope.getRitenutaFiscaleMeseLorda(obj);
       obj.detrazioniImposta = $scope.getDetrazioniImposta(obj);
