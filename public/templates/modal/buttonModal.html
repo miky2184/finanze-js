@@ -1,0 +1,22 @@
+<div class="modal-header title popup-modal">
+  {{title}}
+</div>
+<div class="modal-body popup-modal">
+  <p>{{text}}</p>
+</div>
+<div class="modal-footer text-center popup-modal">
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <button class="btn" 
+              id="modal-btn"
+              ng-class="{
+                        'btn-default': !style, 
+                        'btn-warning': style==='warning', 
+                        'btn-danger': style==='error'
+                        }" 
+              ng-click="$close()">
+        {{button}}
+      </button>
+    </div>
+  </div>
+</div>

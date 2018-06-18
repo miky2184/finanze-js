@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" ng-strict-di ng-cloak class="no-js">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MyFinance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
   <link href="node_modules/angular-ui-grid/ui-grid.css" type="text/css" rel="stylesheet">
@@ -26,7 +27,10 @@
   <script src="node_modules/nvd3/build/nv.d3.js"></script>
   <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
   <script type="text/javascript" src="app.js"></script>
-
+  <script type="text/javascript" src="utils/strings.js"></script>
+  <script type="text/javascript" src="utils/modalService.js"></script>
+  <script type="text/javascript" src="utils/utilService.js"></script>
+  <script type="text/javascript" src="restService.js"></script>  
 </head>
 
 <body ng-controller="MainController" class="body">

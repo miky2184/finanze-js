@@ -1,8 +1,8 @@
 (function() {
   'use strict';
   
-  angular.module('myApp.utils')
-    .constant("$strings", {
+  angular.module('myApp')
+    .constant('$strings', {
       
       SEARCHING_MESSAGE: 'Ricerca in corso.<br/>Attendere prego...',
       

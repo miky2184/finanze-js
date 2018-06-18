@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'myApp.utils']);
+  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning'])
 
-  myApp.controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
+  .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', '$strings', 'modalService', 'restService', 'utilService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal, $strings, modalService, restService, utilService) {
     
     $scope.dirty = false;
 
@@ -349,7 +349,7 @@
           $scope.descName = resp.data[0]['NAME'];
           $scope.login.admin = resp.data[0]['PROFILE'] === 'admn' ? true : false;
           $scope.login.read = resp.data[0]['PROFILE'] === 'read' ? true : false;
-          return $scope.loadData().then(function (resp) {
+          return restService.loadData($scope).then(function (resp) {
             if ($scope.login.admin) {
               $scope.loadSettings();
             }
@@ -370,155 +370,14 @@
 
     $scope.backupData = [];
 
-    $scope.loadData = function () {
-
-      var modalSearchInstance = $uibModal.open({
-        size: 'sm',
-        templateUrl: 'templates/modal/waitingModal.html',
-        backdrop: false,
-        keyboard: false
-      });
-
-      return $http.get('http://2.225.127.144:3001/ambito').then(function (response) {
-        // return $http.get('json/ambito.json').then(function (response) {
-        if (response.data) {
-          response.data.unshift({
-            "ambito": "null",
-            "label": " "
-          });
-        }
-        $scope.editDropDownAmbitoArray = response.data;
-
-        return $http.get('http://2.225.127.144:3001/categoria').then(function (response) {
-          // return $http.get('json/categoria.json').then(function (response) {
-          if (response.data) {
-            response.data.unshift({
-              "categoria": "null",
-              "label": " "
-            });
-          }
-          $scope.editDropDownCategoriaArray = response.data;
-
-          return $http.get('http://2.225.127.144:3001/sottocategoria').then(function (response) {
-            // return $http.get('json/sottocategoria.json').then(function (response) {
-            if (response.data) {
-              response.data.unshift({
-                "sottocategoria": "null",
-                "label": " "
-              });
-            }
-            $scope.editDropDownSottoCategoriaArray = response.data;
-
-            return $http.get('http://2.225.127.144:3001/beneficiario').then(function (response) {
-              // return $http.get('json/beneficiario.json').then(function (response) {
-              if (response.data) {
-                response.data.unshift({
-                  "beneficiario": "null",
-                  "label": " "
-                });
-              }
-              $scope.editDropDownBeneficiarioArray = response.data;
-
-              return $http.get('http://2.225.127.144:3001/tipoConto').then(function (response) {
-                // return $http.get('json/tipoConto.json').then(function (response) {
-                $scope.editDropDownTipoContoArray = response.data;
-
-                return $http.get('http://2.225.127.144:3001/conto').then(function (response) {
-                  // return $http.get('json/conto.json').then(function (response) {
-                  $scope.editDropDownContoArray = response.data;
-
-                  return $http.get('http://2.225.127.144:3001/all').
-                  // return $http.get('json/all.json').
-                  then(function (response) {
-
-                    $scope.login.logged = true;
-
-                    var resultsData = [];
-
-                    response.data.forEach(function (row) {
-                      var newRow = {};
-                      newRow.id = row['ID'];
-                      newRow.data = new Date(row['DATA_VAL']);
-                      newRow.ambito = row['AMBITO'];
-                      newRow.categoria = row['CATEGORIA'];
-                      newRow.sottocategoria = row['SOTTOCATEGORIA'];
-                      // newRow.prodotto = row['PRODOTTO'];
-                      newRow.beneficiario = row['BENEFICIARIO'];
-                      newRow.tipoConto = row['TP_CONTO'];
-                      newRow.conto = row['CONTO'];
-                      newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
-                      newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
-                      newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
-                      newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
-                      newRow.importo = row['VALUE'];
-                      newRow.info = row['INFO'];
-                      newRow.anno = new Date(row['DATA_VAL']).getFullYear();
-                      newRow.mese = new Date(row['DATA_VAL']).getMonth() + 1;
-                      return resultsData.push(newRow);
-                    });
-
-                    $scope.backupData = angular.copy(resultsData);
-
-                    $scope.gridOptions.data = resultsData;
-
-
-                    $scope.gridOptions.columnDefs[1].editDropdownOptionsArray = $scope.editDropDownAmbitoArray;
-                    $scope.gridOptions.columnDefs[2].editDropdownOptionsArray = $scope.editDropDownCategoriaArray;
-                    $scope.gridOptions.columnDefs[3].editDropdownOptionsArray = $scope.editDropDownSottoCategoriaArray;
-                    $scope.gridOptions.columnDefs[4].editDropdownOptionsArray = $scope.editDropDownBeneficiarioArray;
-                    $scope.gridOptions.columnDefs[5].editDropdownOptionsArray = $scope.editDropDownTipoContoArray;
-                    $scope.gridOptions.columnDefs[6].editDropdownOptionsArray = $scope.editDropDownContoArray;
-                    modalSearchInstance.close();
-                    $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
-
-                  });
-                });
-              });
-            });
-          });
-        });
-      });
-    };
-
     $scope.actionButtons = [];
     $scope.settingButtons = [];
-    $scope.saveButtons = [];
-
-    $scope.b64toBlob = function b64toBlob(b64Data, contentType, sliceSize) {
-      contentType = contentType || '';
-      sliceSize = sliceSize || 512;
-
-      var byteCharacters = b64Data;
-      var byteArrays = [];
-
-      for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-          byteNumbers[i] = slice.charCodeAt(i);
-        }
-
-        var byteArray = new Uint8Array(byteNumbers);
-
-        byteArrays.push(byteArray);
-      }
-
-      var blob = new Blob(byteArrays, {
-        type: contentType
-      });
-      return blob;
-    };
+    $scope.saveButtons = [];    
 
     $scope.addBtn = {
       label: '+',
       listener: function (gridOptions) {
-        gridOptions.data.unshift({
-          /* id: Math.max(...gridOptions.data.filter(function (j) {
-             return j.id !== "null";
-           }).map(function (obj) {
-             return obj.id;
-           })) + 1; */
+        gridOptions.data.unshift({          
           newRow: true,
           data: new Date(),
           anno: new Date().getFullYear(),
@@ -575,7 +434,7 @@
       listener: function (gridOptions) {
         return $scope.salva().then(function (response) {
           return $http.get('http://2.225.127.144:3001/export').then(function (resp) {
-            var excel = $scope.b64toBlob(resp.data);
+            var excel = utilService.b64toBlob(resp.data);
             var blob = new Blob([excel]);
             var alink = angular.element('<a/>');
             var link = alink[0];
@@ -586,8 +445,6 @@
             var evt = document.createEvent('MouseEvents');
             evt.initMouseEvent('click', true, true, window,
               0, 0, 0, 0, 0, false, false, false, false, 0, null);
-
-            // modalService.hideWaitingModal();
 
             link.dispatchEvent(evt);
 
@@ -619,8 +476,7 @@
           newSetting.dirty = true;
           $scope.dirty = true;
           newSetting['label'] = '';
-          newSetting.used = 0;
-          // gridOptions.data.unshift(newSetting);
+          newSetting.used = 0;          
 
           if (type === 'ambito') {
             $scope.editDropDownAmbitoArray.unshift(newSetting);
@@ -727,7 +583,7 @@
       });
 
       return $http.post('http://2.225.127.144:3001/save', dto).then(function (resp) {
-        return $scope.loadData().then(function (resp) {
+        return restService.loadData($scope).then(function (resp) {
           if ($scope.login.admin) {
             $scope.loadSettings();
           }
@@ -750,20 +606,19 @@
     $scope.cancelBtn = {
       label: 'Annulla',
       listener: function (gridOptions) {
+         var deferred = $q.defer();
+        
         if ($scope.dirty){
-          var modalSavingInstance = $uibModal.open({
-        size: 'sm',
-        templateUrl: 'templates/modal/exitModal.html',  
-        controller: 'ModalInstanceCtrl',
-        controllerAs: '$ctrl',
-            resolve: {
-        items: function () {
-          return $ctrl.items;
-        }
-      }
-      });
-        } else {
-         gridOptions.data = angular.copy($scope.backupData); 
+          var promise = modalService.showYesNoModal('Attenzione', "Ci sono delle modifiche pending non salvate, sei sicuro di voler annullare??", 'OK', 'Annulla');
+          
+          promise.then(function(){
+            gridOptions.data = angular.copy($scope.backupData); 
+            $scope.dirty = false;
+            deferred.resolve();
+          }, function(){
+            deferred.reject();
+          });
+          
         }        
       },
       disabled: function () {
@@ -772,15 +627,7 @@
     };
 
     $scope.saveButtons.push($scope.saveBtn);
-    $scope.saveButtons.push($scope.cancelBtn);
-
-    function sortByKey(array, key) {
-      return array.sort(function (a, b) {
-        var x = a[key];
-        var y = b[key];
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-      });
-    }
+    $scope.saveButtons.push($scope.cancelBtn);    
 
     /************************************************
      *                  TAB BILANCIO
@@ -919,8 +766,6 @@
         $scope.gridOptionsAvere.gridApi = gridApi;
       }
     };
-
-
 
     /************************************************
      *                  TAB PIVOT ANNO
@@ -1068,7 +913,7 @@
 
       var pivotData = [];
 
-      balanceData = sortByKey(balanceData, 'ambito');
+      balanceData = utilService.sortByKey(balanceData, 'ambito');
 
       var ambitoData = [];
 
@@ -1139,7 +984,7 @@
 
       });
 
-      balanceData = sortByKey(balanceData, 'categoria');
+      balanceData = utilService.sortByKey(balanceData, 'categoria');
 
       var categoryData = [];
 
@@ -1213,10 +1058,10 @@
       categoryData = categoryData.filter(function (cat) {
         return cat.idAmb;
       });
-      categoryData = sortByKey(categoryData, 'idAmb');
+      categoryData = utilService.sortByKey(categoryData, 'idAmb');
 
 
-      balanceData = sortByKey(balanceData, 'sottocategoria');
+      balanceData = utilService.sortByKey(balanceData, 'sottocategoria');
 
       var sottocategoryData = [];
 
@@ -1290,7 +1135,7 @@
       sottocategoryData = sottocategoryData.filter(function (sott) {
         return sott.idCat;
       });
-      sottocategoryData = sortByKey(sottocategoryData, 'idCat');
+      sottocategoryData = utilService.sortByKey(sottocategoryData, 'idCat');
 
       var tmpAmbId;
       var tmpCatId;
@@ -1687,13 +1532,12 @@
     };
 
     $scope.loadHome = function () {
-      return $http.get('http://2.225.127.144:3001/temp').then(function (response) {
-        // return $http.get('json/ambito.json').then(function (response) {
+      /* return $http.get('http://2.225.127.144:3001/temp').then(function (response) {        
         if (response.data) {
           $scope.temperature = response.data.temperature;
           $scope.humidity = response.data.humidity;
         }
-      });
+      }); */
     };
 
     /************************************************
@@ -1714,7 +1558,8 @@
         displayName: 'Mese',
         field: 'mese',
         width: '30%'
-            }, {
+      }, 
+                   {
         name: 'contocomune',
         displayName: 'Conto Comune',
         field: 'contocomune',
@@ -1795,29 +1640,7 @@
 
       var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
         return obj.tipoConto === 2;
-      });
-
-
-      function add(a, b) {
-        return a + b;
-      };
-
-      function filter_array(test_array) {
-        var index = -1,
-          arr_length = test_array ? test_array.length : 0,
-          resIndex = -1,
-          result = [];
-
-        while (++index < arr_length) {
-          var value = test_array[index];
-
-          if (value) {
-            result[++resIndex] = value;
-          }
-        }
-
-        return result;
-      };
+      });      
 
       months.forEach(function (month) {
 
@@ -1825,17 +1648,17 @@
 
         newRow.value = month.value;
         newRow.mese = month.mese;
-        newRow.contocomune = filter_array(dataContoComune.map(function (obj) {
+        newRow.contocomune = utilService.filterArray(dataContoComune.map(function (obj) {
           if (obj.mese === month.value) {
             return obj.importo;
           }
-        })).reduce(add, 0);
+        })).reduce(utilService.add, 0);
 
-        newRow.contopersonale = filter_array(dataContoPersonale.map(function (obj) {
+        newRow.contopersonale = utilService.filterArray(dataContoPersonale.map(function (obj) {
           if (obj.mese === month.value) {
             return obj.importo;
           }
-        })).reduce(add, 0);
+        })).reduce(utilService.add, 0);
 
         pivotData.push(newRow);
 
@@ -2438,14 +2261,7 @@
       });
       return total;
     };
-
-    $scope.ultimo = function ultimo(mese, anno) {
-      var d = new Date(anno, mese, 0);
-      if (mese === 2) {
-        return 28;
-      }
-      return d.getDate();
-    };
+    
 
     $scope.loadWork = function () {
       return $http.get('http://2.225.127.144:3001/aliquote').then(function (response) {
@@ -2463,7 +2279,7 @@
               x.anno = new Date(x.data).getFullYear();
               x.mese = new Date(x.data).getMonth() + 1;
               x.ggLavorativi = obj['GG_LAVORATIVI'];
-              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : $scope.ultimo(x.mese, x.anno);
+              x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : utilService.ultimo(x.mese, x.anno);
               x.liqRol = obj['LIQ_ROL'];
               x.compRol = obj['COMP_ROL'];
               x.straordinario25 = obj['STRAORDINARIO_25'];
@@ -2515,7 +2331,7 @@
     };
 
     $scope.ricalcola = function (obj, salaryData) {
-      obj.ggMese = $scope.ultimo(obj.mese, obj.anno);
+      obj.ggMese = utilService.ultimo(obj.mese, obj.anno);
       obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
       obj.retribuzioneOrdinaria = $scope.getRetribuzioneOrdinaria(obj);
       obj.impPrevNonArr = $scope.getImpPrevNonArr(obj);
@@ -2627,7 +2443,7 @@
 
     $scope.getTotaleCompetenze = function (obj) {
       return (Math.round(obj.retribuzioneOrdinaria * 100) / 100) + (Math.round((obj.festivitaNonGoduta * obj.competenzaBase) * 100) / 100) + (Math.round((obj.straordinario25 * obj.compStraordinario25) * 100) / 100) + (Math.round((obj.maggiorazione25 * obj.compMaggiorazione25) * 100) / 100) + (Math.round((obj.straordinario30 * obj.compStraordinario30) * 100) / 100) + (Math.round((obj.maggiorazione30 * obj.compMaggiorazione30) * 100) / 100) + (Math.round((obj.straordinario50 * obj.compStraordinario50) * 100) / 100) + (Math.round((obj.maggiorazione50 * obj.compMaggiorazione50) * 100) / 100) + (Math.round((obj.maggiorazione55 * obj.compMaggiorazione55) * 100) / 100) + (Math.round((obj.maggiorazione60 * obj.compMaggiorazione60) * 100) / 100) + (Math.round(obj.erogazioneSpeciale * 100) / 100) + (Math.round(obj.periquativo * 100) / 100) + (Math.round(obj.settetrenta * 100) / 100) + (Math.round(obj.premiInNatura * 100) / 100) + (Math.round(obj.bonusRenzi * 100) / 100) + (Math.round((obj.liqRol * obj.compRol) * 100) / 100) + (Math.round((obj.conguaglio) * 100) / 100) + (Math.round((obj.conguaglioRenzi) * 100) / 100);
-    };
+    };    
 
     /*****************************************************************
      *                      TAB ANDAMENTO ANNO
@@ -2706,29 +2522,7 @@
 
       var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
         return obj.tipoConto === 2;
-      });
-
-
-      function add(a, b) {
-        return a + b;
-      };
-
-      function filter_array(test_array) {
-        var index = -1,
-          arr_length = test_array ? test_array.length : 0,
-          resIndex = -1,
-          result = [];
-
-        while (++index < arr_length) {
-          var value = test_array[index];
-
-          if (value) {
-            result[++resIndex] = value;
-          }
-        }
-
-        return result;
-      };
+      });      
 
       years.forEach(function (year) {
 
@@ -2736,17 +2530,17 @@
 
         newRow.value = year;
         newRow.year = year;
-        newRow.contocomune = filter_array(dataContoComune.map(function (obj) {
+        newRow.contocomune = utilService.filterArray(dataContoComune.map(function (obj) {
           if (obj.anno <= year) {
             return obj.importo;
           }
-        })).reduce(add, 0);
+        })).reduce(utilService.add, 0);
 
-        newRow.contopersonale = filter_array(dataContoPersonale.map(function (obj) {
+        newRow.contopersonale = utilService.filterArray(dataContoPersonale.map(function (obj) {
           if (obj.anno <= year) {
             return obj.importo;
           }
-        })).reduce(add, 0);
+        })).reduce(utilService.add, 0);
 
         pivotData.push(newRow);
 
@@ -2817,8 +2611,8 @@
       $scope.apiAndamentoAnnuo.refreshWithTimeout(0);
     };
 
-    }]);
-  myApp.filter('map', function () {
+    }])
+  .filter('map', function () {
     return function () {
       return function (input, map, idLabel, valueLabel) {
         if (map !== null && map !== undefined) {
