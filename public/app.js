@@ -1,9 +1,11 @@
 (function () {
   'use strict';
 
-  var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning']);
+  var myApp = angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'myApp.utils']);
 
   myApp.controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal) {
+    
+    $scope.dirty = false;
 
     $scope.login = {
       logged: false,
@@ -15,7 +17,7 @@
       if (newValue === oldValue) {
         return;
       }
-
+      $scope.dirty = true;
       rowEntity.dirty = true;
       var newSett = {};
       var oldSett = {};
@@ -538,6 +540,7 @@
           gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
             row.deleted = !row.deleted;
             row.dirty = true;
+            $scope.dirty = true;
           });
         }
 
@@ -557,6 +560,7 @@
             copyRow.newRow = true;
             copyRow.deleted = false;
             copyRow.dirty = true;
+            $scope.dirty = true;
             gridOptions.data.unshift(copyRow);
           });
           gridOptions.gridApi.selection.clearSelectedRows();
@@ -613,6 +617,7 @@
             return obj[type];
           })) + 1;
           newSetting.dirty = true;
+          $scope.dirty = true;
           newSetting['label'] = '';
           newSetting.used = 0;
           // gridOptions.data.unshift(newSetting);
@@ -639,8 +644,9 @@
             });
           }
         } else {
+          $scope.dirty = true;
           var newLink = {
-            dirty: true,
+            dirty: true,            
             newRow: true,
             deleted: false
           };
@@ -662,6 +668,7 @@
           gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
             row.deleted = !row.deleted;
             row.dirty = true;
+            $scope.dirty = true;
           });
         }
       },
@@ -673,15 +680,7 @@
     $scope.settingButtons.push($scope.addSettingBtn);
     $scope.settingButtons.push($scope.deleteSettingBtn);
 
-    $scope.salva = function () {
-
-
-      var modalSavingInstance = $uibModal.open({
-        size: 'sm',
-        templateUrl: 'templates/modal/savingModal.html',
-        backdrop: false,
-        keyboard: false
-      });
+    $scope.salva = function () {            
 
       var dto = {};
       dto.settings = {};
@@ -718,6 +717,14 @@
       dto.salary = $scope.gridOptionsSalary.data.filter(function (row) {
         return row.dirty;
       });
+      
+      if ($scope.dirty){
+        var modalSavingInstance = $uibModal.open({
+        size: 'sm',
+        templateUrl: 'templates/modal/savingModal.html',
+        backdrop: false,
+        keyboard: false
+      });
 
       return $http.post('http://2.225.127.144:3001/save', dto).then(function (resp) {
         return $scope.loadData().then(function (resp) {
@@ -726,7 +733,8 @@
           }
           modalSavingInstance.close();
         });
-      });
+      }); 
+      }          
     };
 
     $scope.saveBtn = {
@@ -742,7 +750,21 @@
     $scope.cancelBtn = {
       label: 'Annulla',
       listener: function (gridOptions) {
-        gridOptions.data = angular.copy($scope.backupData);
+        if ($scope.dirty){
+          var modalSavingInstance = $uibModal.open({
+        size: 'sm',
+        templateUrl: 'templates/modal/exitModal.html',  
+        controller: 'ModalInstanceCtrl',
+        controllerAs: '$ctrl',
+            resolve: {
+        items: function () {
+          return $ctrl.items;
+        }
+      }
+      });
+        } else {
+         gridOptions.data = angular.copy($scope.backupData); 
+        }        
       },
       disabled: function () {
         return $scope.login.read;
@@ -1359,6 +1381,7 @@
       }
 
       rowEntity.dirty = true;
+      $scope.dirty = true;
 
     };
 
@@ -1900,6 +1923,7 @@
       }
 
       obj.dirty = true;
+      $scope.dirty = true;
 
       var numberValue = Number(newValue);
 
