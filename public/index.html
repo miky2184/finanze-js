@@ -39,7 +39,7 @@
   <script type="text/javascript" src="restService.js"></script>
 </head>
 
-<body ng-controller="MainController" class="textapp">
+<body ng-controller="MainController" class="textapp" md-no-ink>
   <div layout="column" layout-align="center center" layout-fill ng-show="!login.logged">
     <md-content layout-gt-sm="row" layout-padding="">
       <md-input-container>
@@ -52,7 +52,9 @@
         <input ng-model="password" type="password">
       </md-input-container>
       <!-- <div class="form-group"> -->
-      <md-button class="md-raised md-primary" ng-click="accesso()">Log In</md-button>
+      <md-button class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="accesso()">
+        <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>        
+      </md-button>
       <div>
         <script type="text/ng-template" id="alert.html">
           <div ng-transclude></div>
@@ -62,60 +64,60 @@
     </md-content>
   </div>
   <div layout="column" layout-align="center center" layout-fill ng-show="login.logged">
-    <md-content layout-fill>      
-        <md-tabs md-dynamic-height="" md-border-bottom="">
-          <md-tab label="Lista Movimenti" md-on-select="refreshMainGrid()">
-            <md-content class="md-padding">
-              <div ng-include="'view/dettaglio.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Patrimonio Complessivo" md-on-select="loadBalance()">
-            <md-content class="md-padding">
-              <div ng-include="'view/balance.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Pivot Mese" md-on-select="loadPivotMese()">
-            <md-content class="md-padding">
-              <div ng-include="'view/pivotMese.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno()">
-            <md-content class="md-padding">
-              <div ng-include="'view/pivotAnno.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Andamento Annuo" md-on-select="loadAndamentoAnnuo()">
-            <md-content class="md-padding">
-              <div ng-include="'view/andamentoAnnuo.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Grafico" md-on-select="loadGrafico()">
-            <md-content class="md-padding">
-              <div ng-include="'view/graph.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Home" md-on-select="loadHome()">
-            <md-content class="md-padding">
-              <div ng-include="'view/home.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Stipendio" md-on-select="loadWork()">
-            <md-content class="md-padding">
-              <div ng-include="'view/work.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="login.admin">
-            <md-content class="md-padding">
-              <div ng-include="'view/settings.html'"></div>
-            </md-content>
-          </md-tab>
-          <md-button class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="logout()" >
-            <md-icon md-svg-src="images/baseline-power_settings_new-24px.svg"></md-icon>
+    <md-content layout-fill>
+      <md-tabs md-dynamic-height="" md-border-bottom="">
+        <md-tab label="Lista Movimenti" md-on-select="refreshMainGrid()">
+          <md-content class="md-padding">
+            <div ng-include="'view/dettaglio.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Patrimonio Complessivo" md-on-select="loadBalance()">
+          <md-content class="md-padding">
+            <div ng-include="'view/balance.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Pivot Mese" md-on-select="loadPivotMese()">
+          <md-content class="md-padding">
+            <div ng-include="'view/pivotMese.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno()">
+          <md-content class="md-padding">
+            <div ng-include="'view/pivotAnno.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Andamento Annuo" md-on-select="loadAndamentoAnnuo()">
+          <md-content class="md-padding">
+            <div ng-include="'view/andamentoAnnuo.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Grafico" md-on-select="loadGrafico()">
+          <md-content class="md-padding">
+            <div ng-include="'view/graph.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Home" md-on-select="loadHome()">
+          <md-content class="md-padding">
+            <div ng-include="'view/home.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Stipendio" md-on-select="loadWork()">
+          <md-content class="md-padding">
+            <div ng-include="'view/work.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="login.admin">
+          <md-content class="md-padding">
+            <div ng-include="'view/settings.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-button class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="logout()">
+          <md-icon md-svg-src="images/baseline-power_settings_new-24px.svg"></md-icon>
         </md-button>
-        </md-tabs>            
-        <div layout="row" layout-align="end end">
-          <md-button class="md-raised md-primary" ng-repeat="button in saveButtons" layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</md-button>
-        </div>      
+      </md-tabs>
+      <div layout="row" layout-align="end end">
+        <md-button class="md-raised md-primary" ng-repeat="button in saveButtons" layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</md-button>
+      </div>
     </md-content>
   </div>
 </body>
