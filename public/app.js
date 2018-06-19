@@ -1,11 +1,21 @@
 (function () {
   'use strict';
 
-  angular.module('myApp', ['ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning'])
+  angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning'])
+  
+  .config(['$mdThemingProvider', function($mdThemingProvider) {
+  $mdThemingProvider.theme('default');
+}])
 
   .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', '$strings', 'modalService', 'restService', 'utilService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal, $strings, modalService, restService, utilService) {
     
     $scope.dirty = false;
+    
+    $scope.menu = {
+      isOpen: false,
+        count: 0,
+        selectedDirection: 'right'
+    }
 
     $scope.login = {
       logged: false,
@@ -84,7 +94,7 @@
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       showColumnFooter: true,
-      minRowsToShow: 20,
+      minRowsToShow: 21,
       enableFiltering: true,
       enableRowSelection: true,
       enableSelectAll: true,
@@ -637,7 +647,7 @@
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       showColumnFooter: true,
-      minRowsToShow: 10,
+      minRowsToShow: 23,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       columnDefs: [{
@@ -732,8 +742,8 @@
         }
       }
 
-      $scope.gridOptionsAvere.data = avere;
-
+      $scope.gridOptionsAvere.data = avere;      
+      
       $interval($scope.gridOptionsBalance.gridApi.core.handleWindowResize, 100, 10);
       $interval($scope.gridOptionsAvere.gridApi.core.handleWindowResize, 100, 10);
     };
@@ -748,7 +758,7 @@
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       showColumnFooter: true,
-      minRowsToShow: 10,
+      minRowsToShow: 23,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       columnDefs: [{
@@ -1231,7 +1241,7 @@
     };
 
     $scope.gridOptionsAmb = {
-      minRowsToShow: 8,
+      minRowsToShow: 10,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
         field: 'label'
@@ -1251,7 +1261,7 @@
     };
 
     $scope.gridOptionsCat = {
-      minRowsToShow: 8,
+      minRowsToShow: 10,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
         field: 'label'
@@ -1271,7 +1281,7 @@
     };
 
     $scope.gridOptionsSott = {
-      minRowsToShow: 8,
+      minRowsToShow: 10,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
         field: 'label'
@@ -1292,7 +1302,7 @@
 
     $scope.gridOptionsBen = {
       rowTemplate: 'templates/rows/deletableRow.html',
-      minRowsToShow: 8,
+      minRowsToShow: 10,
       columnDefs: [{
         field: 'label'
        }, {
@@ -1311,7 +1321,7 @@
     };
 
     $scope.gridOptionsAmbCat = {
-      minRowsToShow: 8,
+      minRowsToShow: 10,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
           name: 'ambito',
@@ -1346,7 +1356,7 @@
     };
 
     $scope.gridOptionsCatSott = {
-      minRowsToShow: 8,
+      minRowsToShow: 10,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
           name: 'categoria',
@@ -1548,7 +1558,7 @@
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       showColumnFooter: true,
-      minRowsToShow: 13,
+      minRowsToShow: 23,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       enableSorting: false,
@@ -1854,7 +1864,7 @@
 
     $scope.gridOptionsSalary = {
       columnVirtualizationThreshold: 100,
-      minRowsToShow: 24,
+      minRowsToShow: 23,
       enableFiltering: true,
       enableSorting: false,
       columnDefs: [{
@@ -2452,7 +2462,7 @@
     $scope.gridOptionAndamentoAnnuo = {
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
-      minRowsToShow: 13,
+      minRowsToShow: 23,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       enableSorting: false,

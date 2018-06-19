@@ -1,22 +1,4 @@
-<div class="row">
-  <div class="col-md-6" style="padding-left: 2px">
-    <div class="panel panel-default">
-      <div class="panel-heading">Bilancio</div>
-      <div class="panel-body min-padding">
-        <div class="row min-padding-table">
-          <div id="grid2" ui-grid="gridOptionsBalance" class="myGrid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6" style="padding-left: 2px">
-    <div class="panel panel-default">
-      <div class="panel-heading" style="text-align:center">Da Avere</div>
-      <div class="panel-body min-padding">
-        <div class="row min-padding-table">
-          <div id="grid2" ui-grid="gridOptionsAvere" class="myGrid"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div layout="row">
+  <div flex layout="column" id="gridBalance" ui-grid="gridOptionsBalance"></div>
+  <div flex layout="column" id="gridAvere" ui-grid="gridOptionsAvere"></div>
 </div>

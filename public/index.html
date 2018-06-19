@@ -5,14 +5,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>MyFinance</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
   <link href="node_modules/angular-ui-grid/ui-grid.css" type="text/css" rel="stylesheet">
   <link href="main.css" type="text/css" rel="stylesheet">
   <link rel="stylesheet" href="node_modules/nvd3/build/nv.d3.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <script src="node_modules/angular/angular.min.js"></script>
+  <script src="/node_modules/angular-aria/angular-aria.js"></script>
+  <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
+  <script src="/node_modules/angular-messages/angular-messages.min.js"></script>
+  <script src="/node_modules/angular-material/angular-material.min.js"></script>
   <script src="node_modules/angular-touch/angular-touch.js"></script>
   <script src="node_modules/angular-animate/angular-animate.js"></script>
   <script src="node_modules/angular-i18n/angular-locale_it.js"></script>
@@ -30,81 +36,84 @@
   <script type="text/javascript" src="utils/strings.js"></script>
   <script type="text/javascript" src="utils/modalService.js"></script>
   <script type="text/javascript" src="utils/utilService.js"></script>
-  <script type="text/javascript" src="restService.js"></script>  
+  <script type="text/javascript" src="restService.js"></script>
 </head>
 
-<body ng-controller="MainController" class="body">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="navbar-collapse" ng-show="login.logged" style="height: 0px;">
-        <div class="navbar-right">
-          <p class="navbar-text">Utente: {{descName}}</p>
-          <button class="btn btn-default navbar-btn fas fa-power-off" title="Log Out" ng-click="logout()" />
-        </div>
-      </div>
-    </div>
+<body ng-controller="MainController" class="textapp">
+  <div layout="column" layout-align="center center" layout-fill ng-show="!login.logged">
+    <md-content layout-gt-sm="row" layout-padding="">
+      <md-input-container>
+        <label>Username</label>
+        <input ng-model="username">
+      </md-input-container>
 
-    <div class="panel-body">
-      <div ng-show="!login.logged" class="form-login">
-        <form name="loginForm" novalidate>
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input ng-model="username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input ng-model="password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary" ng-click="accesso()">Log In</button>
-          </div>
-        </form>
-        <div>
-          <script type="text/ng-template" id="alert.html">
-            <div ng-transclude></div>
-          </script>
-          <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
-        </div>
+      <md-input-container>
+        <label>Password</label>
+        <input ng-model="password" type="password">
+      </md-input-container>
+      <!-- <div class="form-group"> -->
+      <md-button class="md-raised md-primary" ng-click="accesso()">Log In</md-button>
+      <div>
+        <script type="text/ng-template" id="alert.html">
+          <div ng-transclude></div>
+        </script>
+        <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
       </div>
-      <div ng-show="login.logged">
-        <uib-tabset>
-          <uib-tab heading="Finanze" active="true" select="refreshMainGrid()">
-            <div ng-include="'view/dettaglio.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Balance" select="loadBalance()">
-            <div ng-include="'view/balance.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Pivot Mese" select="loadPivotMese()">
-            <div ng-include="'view/pivotMese.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Pivot Annuale" select="loadPivotAnno()">
-            <div ng-include="'view/pivotAnno.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Andamento Annuo" select="loadAndamentoAnnuo()">
-            <div ng-include="'view/andamentoAnnuo.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Grafico" select="loadGrafico()">
-            <div ng-include="'view/graph.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Settings" select="refreshGridSettings()" ng-show="login.admin">
-            <div ng-include="'view/settings.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Home" select="loadHome()">
-            <div ng-include="'view/home.html'"></div>
-          </uib-tab>
-          <uib-tab heading="Work" select="loadWork()">
-            <div ng-include="'view/work.html'"></div>
-          </uib-tab>
-        </uib-tabset>
-      </div>
-    </div>
-
-    <div class="panel-footer clearfix my-panel-footer" ng-show="login.logged">
-      <div class="pull-right">
-        <button ng-repeat="button in saveButtons" class="btn btn-success btnMargin" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</button>
-      </div>
-    </div>
-
+    </md-content>
+  </div>
+  <div layout="column" layout-align="center center" layout-fill ng-show="login.logged">
+    <md-content layout-fill>      
+        <md-tabs md-dynamic-height="" md-border-bottom="">
+          <md-tab label="Lista Movimenti" md-on-select="refreshMainGrid()">
+            <md-content class="md-padding">
+              <div ng-include="'view/dettaglio.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Patrimonio Complessivo" md-on-select="loadBalance()">
+            <md-content class="md-padding">
+              <div ng-include="'view/balance.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Pivot Mese" md-on-select="loadPivotMese()">
+            <md-content class="md-padding">
+              <div ng-include="'view/pivotMese.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno()">
+            <md-content class="md-padding">
+              <div ng-include="'view/pivotAnno.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Andamento Annuo" md-on-select="loadAndamentoAnnuo()">
+            <md-content class="md-padding">
+              <div ng-include="'view/andamentoAnnuo.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Grafico" md-on-select="loadGrafico()">
+            <md-content class="md-padding">
+              <div ng-include="'view/graph.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Home" md-on-select="loadHome()">
+            <md-content class="md-padding">
+              <div ng-include="'view/home.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Stipendio" md-on-select="loadWork()">
+            <md-content class="md-padding">
+              <div ng-include="'view/work.html'"></div>
+            </md-content>
+          </md-tab>
+          <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="login.admin">
+            <md-content class="md-padding">
+              <div ng-include="'view/settings.html'"></div>
+            </md-content>
+          </md-tab>
+        </md-tabs>            
+        <div layout="row" layout-align="end end">
+          <md-button class="md-raised md-primary" ng-repeat="button in saveButtons" layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</md-button>
+        </div>      
+    </md-content>
   </div>
 </body>
 
