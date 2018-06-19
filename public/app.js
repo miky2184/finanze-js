@@ -95,6 +95,7 @@
       showGridFooter: true,
       showColumnFooter: true,
       minRowsToShow: 21,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       enableFiltering: true,
       enableRowSelection: true,
       enableSelectAll: true,
@@ -377,6 +378,63 @@
       $scope.login.logged = false;
       $scope.login.admin = false;
     }
+    
+     $scope.salva = function () {            
+
+      var dto = {};
+      dto.settings = {};
+      dto.links = {};
+
+      dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function (ambito) {
+        return ambito.dirty;
+      });
+
+      dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function (categoria) {
+        return categoria.dirty;
+      });
+
+      dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
+        return sottocategoria.dirty;
+      });
+
+      dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function (beneficiario) {
+        return beneficiario.dirty;
+      });
+
+      dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function (ambcat) {
+        return ambcat.dirty;
+      });
+
+      dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function (catsott) {
+        return catsott.dirty;
+      })
+
+      dto.finanze = $scope.gridOptions.data.filter(function (row) {
+        return row.dirty && !(row.newRow && row.deleted);
+      });
+
+      dto.salary = $scope.gridOptionsSalary.data.filter(function (row) {
+        return row.dirty;
+      });
+      
+      if ($scope.dirty){
+        var modalSavingInstance = $uibModal.open({
+        size: 'sm',
+        templateUrl: 'templates/modal/savingModal.html',
+        backdrop: false,
+        keyboard: false
+      });
+
+      return $http.post('http://2.225.127.144:3001/save', dto).then(function (resp) {
+        return restService.loadData($scope).then(function (resp) {
+          if ($scope.login.admin) {
+            $scope.loadSettings();
+          }
+          modalSavingInstance.close();
+        });
+      }); 
+      }          
+    };
 
     $scope.backupData = [];
 
@@ -385,7 +443,7 @@
     $scope.saveButtons = [];    
 
     $scope.addBtn = {
-      label: '+',
+      src: 'images/baseline-add_circle_outline-24px.svg',
       listener: function (gridOptions) {
         gridOptions.data.unshift({          
           newRow: true,
@@ -403,7 +461,7 @@
       }
     };
     $scope.deleteBtn = {
-      label: '-',
+      src: 'images/baseline-remove_circle_outline-24px.svg',
       listener: function (gridOptions) {
         if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
           gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -420,7 +478,7 @@
       }
     };
     $scope.copyBtn = {
-      label: 'Copy',
+      src: 'images/baseline-file_copy-24px.svg',
       listener: function (gridOptions) {
         if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
           gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -440,7 +498,7 @@
       }
     };
     $scope.exportBtn = {
-      label: 'Export',
+      src: 'images/baseline-cloud_download-24px.svg',
       listener: function (gridOptions) {
         return $scope.salva().then(function (response) {
           return $http.get('http://2.225.127.144:3001/export').then(function (resp) {
@@ -544,64 +602,7 @@
     };
 
     $scope.settingButtons.push($scope.addSettingBtn);
-    $scope.settingButtons.push($scope.deleteSettingBtn);
-
-    $scope.salva = function () {            
-
-      var dto = {};
-      dto.settings = {};
-      dto.links = {};
-
-      dto.settings.ambiti = $scope.editDropDownAmbitoArray.filter(function (ambito) {
-        return ambito.dirty;
-      });
-
-      dto.settings.categorie = $scope.editDropDownCategoriaArray.filter(function (categoria) {
-        return categoria.dirty;
-      });
-
-      dto.settings.sottocategorie = $scope.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
-        return sottocategoria.dirty;
-      });
-
-      dto.settings.beneficiari = $scope.editDropDownBeneficiarioArray.filter(function (beneficiario) {
-        return beneficiario.dirty;
-      });
-
-      dto.links.ambitocategoria = $scope.gridOptionsAmbCat.data.filter(function (ambcat) {
-        return ambcat.dirty;
-      });
-
-      dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function (catsott) {
-        return catsott.dirty;
-      })
-
-      dto.finanze = $scope.gridOptions.data.filter(function (row) {
-        return row.dirty && !(row.newRow && row.deleted);
-      });
-
-      dto.salary = $scope.gridOptionsSalary.data.filter(function (row) {
-        return row.dirty;
-      });
-      
-      if ($scope.dirty){
-        var modalSavingInstance = $uibModal.open({
-        size: 'sm',
-        templateUrl: 'templates/modal/savingModal.html',
-        backdrop: false,
-        keyboard: false
-      });
-
-      return $http.post('http://2.225.127.144:3001/save', dto).then(function (resp) {
-        return restService.loadData($scope).then(function (resp) {
-          if ($scope.login.admin) {
-            $scope.loadSettings();
-          }
-          modalSavingInstance.close();
-        });
-      }); 
-      }          
-    };
+    $scope.settingButtons.push($scope.deleteSettingBtn);   
 
     $scope.saveBtn = {
       label: 'Salva',
@@ -648,6 +649,7 @@
       showGridFooter: true,
       showColumnFooter: true,
       minRowsToShow: 23,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       columnDefs: [{
@@ -759,6 +761,7 @@
       showGridFooter: true,
       showColumnFooter: true,
       minRowsToShow: 23,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       columnDefs: [{
@@ -767,9 +770,15 @@
         }, {
         field: 'beneficiario'
         }, {
-        field: 'contoComune'
+        field: 'contoComune',
+          aggregationType: uiGridConstants.aggregationTypes.sum,
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
         }, {
-        field: 'contoPersonale'
+        field: 'contoPersonale',
+          aggregationType: uiGridConstants.aggregationTypes.sum,
+        footerCellFilter: 'currency',
+        cellFilter: 'currency'
         }],
       data: [],
       onRegisterApi: function (gridApi) {
@@ -1242,6 +1251,7 @@
 
     $scope.gridOptionsAmb = {
       minRowsToShow: 10,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
         field: 'label'
@@ -1262,6 +1272,7 @@
 
     $scope.gridOptionsCat = {
       minRowsToShow: 10,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
         field: 'label'
@@ -1282,6 +1293,7 @@
 
     $scope.gridOptionsSott = {
       minRowsToShow: 10,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
         field: 'label'
@@ -1303,6 +1315,7 @@
     $scope.gridOptionsBen = {
       rowTemplate: 'templates/rows/deletableRow.html',
       minRowsToShow: 10,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       columnDefs: [{
         field: 'label'
        }, {
@@ -1321,7 +1334,8 @@
     };
 
     $scope.gridOptionsAmbCat = {
-      minRowsToShow: 10,
+      minRowsToShow: 9,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
           name: 'ambito',
@@ -1356,7 +1370,8 @@
     };
 
     $scope.gridOptionsCatSott = {
-      minRowsToShow: 10,
+      minRowsToShow: 9,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       rowTemplate: 'templates/rows/deletableRow.html',
       columnDefs: [{
           name: 'categoria',
@@ -1559,6 +1574,7 @@
       showGridFooter: true,
       showColumnFooter: true,
       minRowsToShow: 23,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       enableSorting: false,
@@ -2463,6 +2479,7 @@
       columnVirtualizationThreshold: 100,
       showGridFooter: true,
       minRowsToShow: 23,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
       enableFiltering: false,
       selectionRowHeaderWidth: 35,
       enableSorting: false,

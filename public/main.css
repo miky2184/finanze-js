@@ -140,3 +140,50 @@
   background-color: #8bc34a !important;
   text-align: right;
 }
+
+md-tab-data {
+  opacity: 1;
+  display: table;
+  right: 0;
+  left: initial;
+  z-index: 20;
+}
+
+.md-button.md-fab.md-mini {
+  line-height: 4rem;
+  width: 4rem;
+  height: 4rem;  
+}
+
+.md-button.md-fab.md-mini-mini {
+  line-height: 2rem;
+  width: 2rem;
+  height: 2rem;  
+}
+
+.listaMovimenti section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px;
+}
+
+.listaMovimenti md-content {
+  margin-right: 7px;
+}
+
+.listaMovimenti section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+label-settings {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54;
+  color: black;
+}

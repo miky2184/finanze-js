@@ -1,9 +1,11 @@
-<div class="homeimg">  
-  <div class="btncouch"><button class="btn btn-default fas fa-couch" ng-click="lightCouchOnOff()" /></div>
-  <div class="btntv"><button class="btn btn-default fas fa-tv" ng-click="lightLedOnOff()" /></div>
-  <div class="btnbed"><button class="btn btn-default fas fa-bed" ng-click="lightOn()" /></div>
-  <div class="temp">
-    <p>{{temperature}}<i class="fas fa-thermometer" style="margin-left: 5px;"></i></p>
-    <p>{{humidity}}<i class="fas fa-smile" style="margin-left: 5px;"></i></p>
+<div layout="column">
+  <div flex class="homeimg">
+    <div class="btncouch"><button class="btn btn-default fas fa-couch" ng-click="lightCouchOnOff()" /></div>
+    <div class="btntv"><button class="btn btn-default fas fa-tv" ng-click="lightLedOnOff()" /></div>
+    <div class="btnbed"><button class="btn btn-default fas fa-bed" ng-click="lightOn()" /></div>
+    <div class="temp">
+      <p>{{temperature}}<i class="fas fa-thermometer" style="margin-left: 5px;"></i></p>
+      <p>{{humidity}}<i class="fas fa-smile" style="margin-left: 5px;"></i></p>
+    </div>
   </div>
 </div>
