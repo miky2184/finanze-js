@@ -2637,6 +2637,72 @@
       $interval($scope.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize, 100, 10);
       $scope.apiAndamentoAnnuo.refreshWithTimeout(0);
     };
+    
+    
+    /*****************************************************************************************
+     *                          TAB AMAZON
+     *****************************************************************************************/
+    
+    $scope.gridOptionsAmazon = {
+      columnVirtualizationThreshold: 100,
+      showGridFooter: true,
+      minRowsToShow: 23,
+      enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+      enableFiltering: false,
+      selectionRowHeaderWidth: 35,
+      enableSorting: false,
+      enableColumnMenus: false,
+      columnDefs: [{
+        name: 'asin',
+        displayName: 'Prodotto',
+        field: 'asin',
+        width: 90
+            }, {
+        name: 'price',
+        displayName: 'Prezzo Desiderato',
+        field: 'price',
+        width: 90,
+        cellFilter: 'currency'
+        }, {
+        name: 'dataInserimento',
+        displayName: 'Data Inserimento',
+        field: 'dataInserimento',
+                    cellFilter: 'date:\'yyyy-MM-dd\'',
+        width: 90
+        }, {
+        name: 'lastPrice',
+        displayName: 'Ultimo Prezzo',
+        field: 'lastPrice',
+        cellFilter: 'currency'
+        width: 90
+        }, {
+        name: 'dataLastPrice',
+        displayName: 'Data Ultimo Prezzo',
+        field: 'dataLastPrice',
+         cellFilter: 'date:\'yyyy-MM-dd\'',
+        width: 90
+        }],
+      data: [],
+      onRegisterApi: function (gridApi) {
+        $scope.gridOptionsAmazon.gridApi = gridApi;
+      }
+    };
+    
+    $scope.loadAmazonData = function () {
+      
+      return $http.get('http://2.225.127.144:3001/amazon').then(function (resp) {
+        $scope.gridOptionsAmazon.data = resp.map(function(obj){
+          var tmp = {};
+              tmp.asin = 'http://www.amazon.it/dp/'+obj['ASIN'];
+          tmp.price = obj['PRICE'];
+          tmp.dataInserimento = obj['DATA_INSERTIMENTO'];
+          tmp.lastPrice = obj['LAST_PRICE'];
+          tmp.dataLastPrice = obj['DATA_LAST_PRICE'];
+          return tmp;
+        });
+      });
+      
+    };
 
     }])
   .filter('map', function () {
