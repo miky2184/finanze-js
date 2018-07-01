@@ -2956,33 +2956,27 @@
           });
 
           return $http.get('http://2.225.127.144:3001/prevgame').then(function (resp) {
-
             resp.data.map(function (obj) {
               var tmp = {};
-              resp.data.map(function (obj) {
-                tmp.giornata = obj['GIORNATA'];
-                tmp.data = obj['DATA_GAME'];
-                tmp.squadraCasa = obj['TEAM_NAME'];
-                tmp.squadraTrasfertra = obj['TEAM_NAME'];
-                tmp.golCasa = obj['SCORE_HOME'];
-                tmp.golTrasferta = obj['SCORE_AWAY'];
-
-                dataPrevGame.push(tmp);
-                return tmp;
-              });
+              tmp.giornata = obj['GIORNATA'];
+              tmp.data = obj['DATA_GAME'];
+              tmp.squadraCasa = obj['TEAM_NAME'];
+              tmp.squadraTrasfertra = obj['TEAM_NAME'];
+              tmp.golCasa = obj['SCORE_HOME'];
+              tmp.golTrasferta = obj['SCORE_AWAY'];
+              dataPrevGame.push(tmp);
+              return tmp;
             });
 
             return $http.get('http://2.225.127.144:3001/nextgame').then(function (resp) {
-              var tmp = {};
               resp.data.map(function (obj) {
+                var tmp = {};
                 tmp.giornata = obj['GIORNATA'];
                 tmp.data = obj['DATA_GAME'];
                 tmp.squadraCasa = obj['TEAM_NAME'];
                 tmp.squadraTrasfertra = obj['TEAM_NAME'];
                 tmp.golCasa = obj['SCORE_HOME'];
                 tmp.golTrasferta = obj['SCORE_AWAY'];
-
-
                 dataNextGame.push(tmp);
                 return tmp;
               });
