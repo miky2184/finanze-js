@@ -2713,8 +2713,8 @@
 
       $scope.gridOptionsClassifica = {
         columnVirtualizationThreshold: 100,
-        showGridFooter: true,
-        minRowsToShow: 21,
+        showGridFooter: false,
+        minRowsToShow: 20,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
@@ -2829,8 +2829,8 @@
 
       $scope.gridOptionsNextGame = {
         columnVirtualizationThreshold: 100,
-        showGridFooter: true,
-        minRowsToShow: 11,
+        showGridFooter: false,
+        minRowsToShow: 10,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
@@ -2845,7 +2845,7 @@
           name: 'data',
           displayName: 'DATA',
           field: 'data',
-          width: 150
+          width: '*'
         }, {
           name: 'squadraCasa',
           displayName: 'CASA',
@@ -2875,8 +2875,8 @@
 
       $scope.gridOptionsPrevGame = {
         columnVirtualizationThreshold: 100,
-        showGridFooter: true,
-        minRowsToShow: 11,
+        showGridFooter: false,
+        minRowsToShow: 10,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
@@ -2891,7 +2891,7 @@
           name: 'data',
           displayName: 'DATA',
           field: 'data',
-          width: 150
+          width: '*'
         }, {
           name: 'squadraCasa',
           displayName: 'CASA',
@@ -2960,8 +2960,8 @@
               var tmp = {};
               tmp.giornata = obj['GIORNATA'];
               tmp.data = obj['DATA_GAME'];
-              tmp.squadraCasa = obj['TEAM_NAME'];
-              tmp.squadraTrasfertra = obj['TEAM_NAME'];
+              tmp.squadraCasa = obj['TEAM_HOME'];
+              tmp.squadraTrasfertra = obj['TEAM_AWAY'];
               tmp.golCasa = obj['SCORE_HOME'];
               tmp.golTrasferta = obj['SCORE_AWAY'];
               dataPrevGame.push(tmp);
@@ -2973,8 +2973,8 @@
                 var tmp = {};
                 tmp.giornata = obj['GIORNATA'];
                 tmp.data = obj['DATA_GAME'];
-                tmp.squadraCasa = obj['TEAM_NAME'];
-                tmp.squadraTrasfertra = obj['TEAM_NAME'];
+                tmp.squadraCasa = obj['TEAM_HOME'];
+                tmp.squadraTrasfertra = obj['TEAM_AWAY'];
                 tmp.golCasa = obj['SCORE_HOME'];
                 tmp.golTrasferta = obj['SCORE_AWAY'];
                 dataNextGame.push(tmp);
