@@ -2837,35 +2837,25 @@
         enableSorting: false,
         enableColumnMenus: false,
         columnDefs: [{
-          name: 'giornata',
-          displayName: 'GG',
-          field: 'giornata',
-          width: 40
-        }, {
-          name: 'data',
-          displayName: 'DATA',
-          field: 'data',
-          width: '*'
-        }, {
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 120
+          width: 130
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 120
+          width: 130
         }, {
           name: 'golCasa',
           displayName: ' ',
           field: 'golCasa',
-          width: 40
+          width: 35
         }, {
           name: 'golTrasferta',
           displayName: ' ',
           field: 'golTrasferta',
-          width: 40
+          width: 35
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2883,35 +2873,25 @@
         enableSorting: false,
         enableColumnMenus: false,
         columnDefs: [{
-          name: 'giornata',
-          displayName: 'GG',
-          field: 'giornata',
-          width: 40
-        }, {
-          name: 'data',
-          displayName: 'DATA',
-          field: 'data',
-          width: '*'
-        }, {
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 120
+          width: 130
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 120
+          width: 130
         }, {
           name: 'golCasa',
           displayName: ' ',
           field: 'golCasa',
-          width: 40
+          width: 35
         }, {
           name: 'golTrasferta',
           displayName: ' ',
           field: 'golTrasferta',
-          width: 40
+          width: 35
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2958,7 +2938,7 @@
           return $http.get('http://2.225.127.144:3001/prevgame').then(function (resp) {
             resp.data.map(function (obj) {
               var tmp = {};
-              tmp.giornata = obj['GIORNATA'];
+              $scope.giornPrev = obj['GIORNATA'];
               $scope.dataGamePrev = obj['DATA_GAME'];
               tmp.squadraCasa = obj['TEAM_HOME'];
               tmp.squadraTrasferta = obj['TEAM_AWAY'];
@@ -2971,7 +2951,7 @@
             return $http.get('http://2.225.127.144:3001/nextgame').then(function (resp) {
               resp.data.map(function (obj) {
                 var tmp = {};
-                tmp.giornata = obj['GIORNATA'];
+                $scope.giornNext = obj['GIORNATA'];
                 $scope.dataGameNext = obj['DATA_GAME'];
                 tmp.squadraCasa = obj['TEAM_HOME'];
                 tmp.squadraTrasferta = obj['TEAM_AWAY'];
