@@ -1,11 +1,17 @@
 <div layout="row">
   <div flex='30' layout="column">
-    <div flex layout="row" id="grid2" ui-grid="gridOptionsPrevGame"></div>
-    <div flex layout="row" id="grid3" ui-grid="gridOptionsNextGame"></div>
+    <div class="container">
+      <p class="table-header"><strong>Giornata Precedente {{dataGamePrev}}</strong></p>
+      <div flex layout="row" id="grid2" ui-grid="gridOptionsPrevGame"></div>
+    </div>
+    <div class="container">
+      <p class="table-header"><strong>Giornata Successiva {{dataGameNext}}</strong></p>
+      <div flex layout="row" id="grid3" ui-grid="gridOptionsNextGame"></div>
+    </div>
   </div>
   <div flex='70' layout="column">
     <div class="container">
-      <p class="table-header"><strong>Table Header</strong></p>
+      <p class="table-header"><strong>Classifica</strong></p>
       <div flex layout="row" id="grid1" ui-grid="gridOptionsClassifica"></div>
     </div>
   </div>

@@ -2959,7 +2959,7 @@
             resp.data.map(function (obj) {
               var tmp = {};
               tmp.giornata = obj['GIORNATA'];
-              tmp.data = obj['DATA_GAME'];
+              $scope.dataGamePrev = obj['DATA_GAME'];
               tmp.squadraCasa = obj['TEAM_HOME'];
               tmp.squadraTrasferta = obj['TEAM_AWAY'];
               tmp.golCasa = obj['SCORE_HOME'];
@@ -2972,7 +2972,7 @@
               resp.data.map(function (obj) {
                 var tmp = {};
                 tmp.giornata = obj['GIORNATA'];
-                tmp.data = obj['DATA_GAME'];
+                $scope.dataGameNext = obj['DATA_GAME'];
                 tmp.squadraCasa = obj['TEAM_HOME'];
                 tmp.squadraTrasferta = obj['TEAM_AWAY'];
                 tmp.golCasa = obj['SCORE_HOME'];
