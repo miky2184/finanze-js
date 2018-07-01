@@ -2701,13 +2701,172 @@
             dataAmazon.push(tmp);
             return tmp;
           });
-          
+
           $scope.gridOptionsAmazon.data = dataAmazon;
-        $interval($scope.gridOptionsAmazon.gridApi.core.handleWindowResize, 100, 10);
-        });        
+          $interval($scope.gridOptionsAmazon.gridApi.core.handleWindowResize, 100, 10);
+        });
       };
 
-    }])
+      /*****************************************************************************************
+       *                          TAB MATCH ANALYSIS
+       *****************************************************************************************/
+
+      $scope.gridOptionsClassifica = {
+        columnVirtualizationThreshold: 100,
+        showGridFooter: true,
+        minRowsToShow: 23,
+        enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+        enableFiltering: false,
+        selectionRowHeaderWidth: 35,
+        enableSorting: false,
+        enableColumnMenus: false,
+        columnDefs: [{
+          name: 'position',
+          displayName: ' ',
+          field: 'position',
+          width: 40
+            }, {
+          name: 'team',
+          displayName: 'Squadra',
+          field: 'team',
+          width: '*'
+        }, {
+          name: 'punti',
+          displayName: 'Punti',
+          field: 'punti',
+          width: 40
+        }, {
+          name: 'vtot',
+          displayName: 'V',
+          field: 'vtot',
+          width: 40
+        }, {
+          name: 'ptot',
+          displayName: 'P',
+          field: 'ptot',
+          width: 40
+        }, {
+          name: 'stot',
+          displayName: 'S',
+          field: 'stot',
+          width: 40
+        }, {
+          name: 'gf',
+          displayName: 'GF',
+          field: 'gf',
+          width: 40
+        }, {
+          name: 'gs',
+          displayName: 'GS',
+          field: 'gs',
+          width: 40
+        }, {
+          name: 'puntic',
+          displayName: 'Punti Casa',
+          field: 'puntic',
+          width: 40
+        }, {
+          name: 'vc',
+          displayName: 'VC',
+          field: 'vc',
+          width: 40
+        }, {
+          name: 'pc',
+          displayName: 'PC',
+          field: 'pc',
+          width: 40
+        }, {
+          name: 'sc',
+          displayName: 'SC',
+          field: 'sc',
+          width: 40
+        }, {
+          name: 'gfc',
+          displayName: 'GF Casa',
+          field: 'gfc',
+          width: 40
+        }, {
+          name: 'gsc',
+          displayName: 'GS Casa',
+          field: 'gsc',
+          width: 40
+        }, {
+          name: 'puntit',
+          displayName: 'Punti Trasferta',
+          field: 'puntit',
+          width: 40
+        }, {
+          name: 'vt',
+          displayName: 'VT',
+          field: 'vt',
+          width: 40
+        }, {
+          name: 'pt',
+          displayName: 'PT',
+          field: 'pt',
+          width: 40
+        }, {
+          name: 'st',
+          displayName: 'ST',
+          field: 'st',
+          width: 40
+        }, {
+          name: 'gft',
+          displayName: 'GF Trasferta',
+          field: 'gft',
+          width: 40
+        }, {
+          name: 'gst',
+          displayName: 'GS Trasferta',
+          field: 'gst',
+          width: 40
+        }],
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsClassifica.gridApi = gridApi;
+        }
+      };
+
+      $scope.loadMatchAnalysis = function () {
+
+        var dataMatchAnalysis = [];
+
+        return $http.get('http://2.225.127.144:3001/classifica').then(function (resp) {
+          var pos = 1;
+          resp.data.map(function (obj) {
+            var tmp = {};
+            tmp.position = pos;
+            pos = pos + 1;
+            tmp.team = obj['TEAM_NAME'];
+            tmp.giornata = obj['GIORNATA'];
+            tmp.punti = obj['PUNTI'];
+            tmp.vtot = obj['WIN'];
+            tmp.ptot = obj['DRAW'];
+            tmp.stot = obj['LOSS'];
+            tmp.gf = obj['GOAL_FATTI'];
+            tmp.gs = obj['GOAL_SUBITI'];
+            tmp.puntic = obj['PUNTI_HOME'];
+            tmp.vc = obj['WIN_HOME'];
+            tmp.pc = obj['DRAW_HOME'];
+            tmp.sc = obj['LOSS_HOME'];
+            tmp.gfc = obj['GOAL_FATTI_HOME'];
+            tmp.gsc = obj['GOAL_SUBITI_HOME'];
+            tmp.puntit = obj['PUNTI_AWAY'];
+            tmp.vt = obj['WIN_AWAY'];
+            tmp.pt = obj['DRAW_AWAY'];
+            tmp.st = obj['LOSS_AWAY'];
+            tmp.gft = obj['GOAL_FATTI_AWAY'];
+            tmp.gst = obj['GOAL_SUBITI_AWAY'];
+            dataMatchAnalysis.push(tmp);
+            return tmp;
+          });
+
+          $scope.gridOptionsClassifica.data = dataMatchAnalysis;
+          $interval($scope.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);
+        });
+      };
+
+          }])
     .filter('map', function () {
       return function () {
         return function (input, map, idLabel, valueLabel) {

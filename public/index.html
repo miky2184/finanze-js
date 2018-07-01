@@ -53,7 +53,7 @@
       </md-input-container>
       <!-- <div class="form-group"> -->
       <md-button class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="accesso()">
-        <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>        
+        <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>
       </md-button>
       <div>
         <script type="text/ng-template" id="alert.html">
@@ -106,7 +106,12 @@
             <div ng-include="'view/work.html'"></div>
           </md-content>
         </md-tab>
-        <md-tab label="Amazon" md-on-select="loadAmazonData()" ng-show="login.admin">
+        <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis()">
+          <md-content class="md-padding">
+            <div ng-include="'view/matchAnalysis.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Amazon" md-on-select="loadAmazonData()">
           <md-content class="md-padding">
             <div ng-include="'view/amazon.html'"></div>
           </md-content>
