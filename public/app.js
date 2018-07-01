@@ -2837,7 +2837,35 @@
         enableSorting: false,
         enableColumnMenus: false,
         columnDefs: [{
-
+          name: 'giornata',
+          displayName: 'GG',
+          field: 'giornata',
+          width: 40
+        }, {
+          name: 'data',
+          displayName: 'DATA',
+          field: 'data',
+          width: 40
+        }, {
+          name: 'squadraCasa',
+          displayName: 'CASA',
+          field: 'squadraCasa',
+          width: 40
+        }, {
+          name: 'squadraTrasferta',
+          displayName: 'TRASFERTA',
+          field: 'squadraTrasferta',
+          width: 40
+        }, {
+          name: 'golCasa',
+          displayName: ' ',
+          field: 'golCasa',
+          width: 40
+        }, {
+          name: 'golTrasferta',
+          displayName: ' ',
+          field: 'golTrasferta',
+          width: 40
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2855,7 +2883,35 @@
         enableSorting: false,
         enableColumnMenus: false,
         columnDefs: [{
-
+          name: 'giornata',
+          displayName: 'GG',
+          field: 'giornata',
+          width: 40
+        }, {
+          name: 'data',
+          displayName: 'DATA',
+          field: 'data',
+          width: 40
+        }, {
+          name: 'squadraCasa',
+          displayName: 'CASA',
+          field: 'squadraCasa',
+          width: 40
+        }, {
+          name: 'squadraTrasferta',
+          displayName: 'TRASFERTA',
+          field: 'squadraTrasferta',
+          width: 40
+        }, {
+          name: 'golCasa',
+          displayName: ' ',
+          field: 'golCasa',
+          width: 40
+        }, {
+          name: 'golTrasferta',
+          displayName: ' ',
+          field: 'golTrasferta',
+          width: 40
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2903,30 +2959,33 @@
 
             resp.data.map(function (obj) {
               var tmp = {};
+              resp.data.map(function (obj) {
+                tmp.giornata = obj['GIORNATA'];
+                tmp.data = obj['DATA_GAME'];
+                tmp.squadraCasa = obj['TEAM_NAME'];
+                tmp.squadraTrasfertra = obj['TEAM_NAME'];
+                tmp.golCasa = obj['SCORE_HOME'];
+                tmp.golTrasferta = obj['SCORE_AWAY'];
 
-              tmp.giornata = obj['GIORNATA'];
-              tmp.giornata = obj['DATA_GAME'];
-              tmp.giornata = obj['TEAM_NAME'];
-              tmp.giornata = obj['TEAM_NAME'];
-              tmp.giornata = obj['SCORE_HOME'];
-              tmp.giornata = obj['SCORE_AWAY'];
-
-              dataPrevGame.push(tmp);
-
+                dataPrevGame.push(tmp);
+                return tmp;
+              });
             });
 
             return $http.get('http://2.225.127.144:3001/nextgame').then(function (resp) {
               var tmp = {};
+              resp.data.map(function (obj) {
+                tmp.giornata = obj['GIORNATA'];
+                tmp.data = obj['DATA_GAME'];
+                tmp.squadraCasa = obj['TEAM_NAME'];
+                tmp.squadraTrasfertra = obj['TEAM_NAME'];
+                tmp.golCasa = obj['SCORE_HOME'];
+                tmp.golTrasferta = obj['SCORE_AWAY'];
 
-              tmp.giornata = obj['GIORNATA'];
-              tmp.giornata = obj['DATA_GAME'];
-              tmp.giornata = obj['TEAM_NAME'];
-              tmp.giornata = obj['TEAM_NAME'];
-              tmp.giornata = obj['SCORE_HOME'];
-              tmp.giornata = obj['SCORE_AWAY'];
 
-              dataNextGame.push(tmp);
-
+                dataNextGame.push(tmp);
+                return tmp;
+              });
               $scope.gridOptionsNextGame.data = dataNextGame;
               $scope.gridOptionsPrevGame.data = dataPrevGame;
               $scope.gridOptionsClassifica.data = dataMatchAnalysis;
