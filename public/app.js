@@ -2845,17 +2845,17 @@
           name: 'data',
           displayName: 'DATA',
           field: 'data',
-          width: 100
+          width: 150
         }, {
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 100
+          width: 150
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 100
+          width: 150
         }, {
           name: 'golCasa',
           displayName: ' ',
@@ -2891,17 +2891,17 @@
           name: 'data',
           displayName: 'DATA',
           field: 'data',
-          width: 100
+          width: 150
         }, {
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 100
+          width: 150
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 100
+          width: 150
         }, {
           name: 'golCasa',
           displayName: ' ',
