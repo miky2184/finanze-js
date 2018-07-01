@@ -2714,7 +2714,7 @@
       $scope.gridOptionsClassifica = {
         columnVirtualizationThreshold: 100,
         showGridFooter: true,
-        minRowsToShow: 23,
+        minRowsToShow: 21,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
@@ -2827,9 +2827,47 @@
         }
       };
 
+      $scope.gridOptionsNextGame = {
+        columnVirtualizationThreshold: 100,
+        showGridFooter: true,
+        minRowsToShow: 11,
+        enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+        enableFiltering: false,
+        selectionRowHeaderWidth: 35,
+        enableSorting: false,
+        enableColumnMenus: false,
+        columnDefs: [{
+
+        }],
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsNextGame.gridApi = gridApi;
+        }
+      };
+
+      $scope.gridOptionsPrevGame = {
+        columnVirtualizationThreshold: 100,
+        showGridFooter: true,
+        minRowsToShow: 11,
+        enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+        enableFiltering: false,
+        selectionRowHeaderWidth: 35,
+        enableSorting: false,
+        enableColumnMenus: false,
+        columnDefs: [{
+
+        }],
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridOptionsPrevGame.gridApi = gridApi;
+        }
+      };
+
       $scope.loadMatchAnalysis = function () {
 
         var dataMatchAnalysis = [];
+        var dataNextGame = [];
+        var dataPrevGame = [];
 
         return $http.get('http://2.225.127.144:3001/classifica').then(function (resp) {
           var pos = 1;
@@ -2861,8 +2899,44 @@
             return tmp;
           });
 
-          $scope.gridOptionsClassifica.data = dataMatchAnalysis;
-          $interval($scope.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);
+          return $http.get('http://2.225.127.144:3001/prevgame').then(function (resp) {
+
+            resp.data.map(function (obj) {
+              var tmp = {};
+
+              tmp.giornata = obj['GIORNATA'];
+              tmp.giornata = obj['DATA_GAME'];
+              tmp.giornata = obj['TEAM_NAME'];
+              tmp.giornata = obj['TEAM_NAME'];
+              tmp.giornata = obj['SCORE_HOME'];
+              tmp.giornata = obj['SCORE_AWAY'];
+
+              dataPrevGame.push(tmp);
+
+            });
+
+            return $http.get('http://2.225.127.144:3001/nextgame').then(function (resp) {
+              var tmp = {};
+
+              tmp.giornata = obj['GIORNATA'];
+              tmp.giornata = obj['DATA_GAME'];
+              tmp.giornata = obj['TEAM_NAME'];
+              tmp.giornata = obj['TEAM_NAME'];
+              tmp.giornata = obj['SCORE_HOME'];
+              tmp.giornata = obj['SCORE_AWAY'];
+
+              dataNextGame.push(tmp);
+
+              $scope.gridOptionsNextGame.data = dataNextGame;
+              $scope.gridOptionsPrevGame.data = dataPrevGame;
+              $scope.gridOptionsClassifica.data = dataMatchAnalysis;
+              $interval($scope.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);
+              $interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);
+              $interval($scope.gridOptionsPrevGame.gridApi.core.handleWindowResize, 100, 10);
+            });
+
+          });
+
         });
       };
 
