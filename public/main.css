@@ -15,7 +15,7 @@
   background-color: #f5d3d3 !important;
 }
 
-.ui-grid-row.ui-grid-row-selected>[ui-grid-row]>.ui-grid-cell.delete {
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell.delete {
   background-color: #f5b3c3 !important;
 }
 
@@ -152,13 +152,13 @@ md-tab-data {
 .md-button.md-fab.md-mini {
   line-height: 4rem;
   width: 4rem;
-  height: 4rem;  
+  height: 4rem;
 }
 
 .md-button.md-fab.md-mini-mini {
   line-height: 2rem;
   width: 2rem;
-  height: 2rem;  
+  height: 2rem;
 }
 
 .listaMovimenti section {
@@ -186,4 +186,12 @@ label-settings {
   font-size: 14px;
   opacity: 0.54;
   color: black;
+}
+
+.table-header {
+  margin: 0;
+  padding: 3px 0;
+  text-align: center;
+  background: gray;
+  color: white;
 }

@@ -2850,12 +2850,12 @@
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 150
+          width: 120
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 150
+          width: 120
         }, {
           name: 'golCasa',
           displayName: ' ',
@@ -2896,12 +2896,12 @@
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 150
+          width: 120
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 150
+          width: 120
         }, {
           name: 'golCasa',
           displayName: ' ',
@@ -2961,7 +2961,7 @@
               tmp.giornata = obj['GIORNATA'];
               tmp.data = obj['DATA_GAME'];
               tmp.squadraCasa = obj['TEAM_HOME'];
-              tmp.squadraTrasfertra = obj['TEAM_AWAY'];
+              tmp.squadraTrasferta = obj['TEAM_AWAY'];
               tmp.golCasa = obj['SCORE_HOME'];
               tmp.golTrasferta = obj['SCORE_AWAY'];
               dataPrevGame.push(tmp);
@@ -2974,7 +2974,7 @@
                 tmp.giornata = obj['GIORNATA'];
                 tmp.data = obj['DATA_GAME'];
                 tmp.squadraCasa = obj['TEAM_HOME'];
-                tmp.squadraTrasfertra = obj['TEAM_AWAY'];
+                tmp.squadraTrasferta = obj['TEAM_AWAY'];
                 tmp.golCasa = obj['SCORE_HOME'];
                 tmp.golTrasferta = obj['SCORE_AWAY'];
                 dataNextGame.push(tmp);
