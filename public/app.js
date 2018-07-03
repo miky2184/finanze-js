@@ -2714,7 +2714,7 @@
       $scope.gridOptionsClassifica = {
         columnVirtualizationThreshold: 100,
         showGridFooter: false,
-        minRowsToShow: 20,
+        minRowsToShow: 22,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
@@ -2730,6 +2730,11 @@
           displayName: 'Squadra',
           field: 'team',
           width: '*'
+        }, {
+          name: 'giornata',
+          displayName: '#G',
+          field: 'giornata',
+          width: 40
         }, {
           name: 'punti',
           displayName: 'Punti',
@@ -2761,6 +2766,11 @@
           field: 'gs',
           width: 40
         }, {
+          name: 'giornataHome',
+          displayName: '#GC',
+          field: 'giornataHome',
+          width: 40
+        }, {
           name: 'puntic',
           displayName: 'Punti Casa',
           field: 'puntic',
@@ -2789,6 +2799,11 @@
           name: 'gsc',
           displayName: 'GS Casa',
           field: 'gsc',
+          width: 40
+        }, {
+          name: 'giornataAway',
+          displayName: '#GT',
+          field: 'giornataAway',
           width: 40
         }, {
           name: 'puntit',
@@ -2832,6 +2847,7 @@
         showGridFooter: false,
         minRowsToShow: 10,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+        enableVerticalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
         enableSorting: false,
@@ -2840,12 +2856,12 @@
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 130
+          width: '*'
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 130
+          width: '*'
         }, {
           name: 'golCasa',
           displayName: ' ',
@@ -2856,6 +2872,66 @@
           displayName: ' ',
           field: 'golTrasferta',
           width: 35
+        }, {
+          name: 'percWin',
+          displayName: '%1',
+          field: 'percWin',
+          width: 55
+        }, {
+          name: 'percDraw',
+          displayName: '%X',
+          field: 'percDraw',
+          width: 55
+        }, {
+          name: 'percLoss',
+          displayName: '%2',
+          field: 'percLoss',
+          width: 55
+        }, {
+          name: 'perc1X',
+          displayName: '%1X',
+          field: 'perc1X',
+          width: 55
+        }, {
+          name: 'percX2',
+          displayName: '%X2',
+          field: 'percX2',
+          width: 55
+        }, {
+          name: 'perc12',
+          displayName: '%12',
+          field: 'perc12',
+          width: 55
+        }, {
+          name: 'percGg',
+          displayName: '%GG',
+          field: 'percGg',
+          width: 55
+        }, {
+          name: 'percNg',
+          displayName: '%NG',
+          field: 'percNg',
+          width: 55
+        }, {
+          name: 'percO1',
+          displayName: '%O1.5',
+          field: 'percO1',
+          width: 55
+        }, {
+          name: 'percU1',
+          displayName: '%U1.5',
+          field: 'percU1',
+          width: 55
+        }, {
+          name: 'percO2',
+          displayName: '%O2.5',
+          field: 'percO2',
+          width: 55
+        }, {
+          name: 'percU2',
+          displayName: '%U2.5',
+          field: 'percU2',
+          width: 55
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2868,6 +2944,7 @@
         showGridFooter: false,
         minRowsToShow: 10,
         enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+        enableVerticalScrollbar: uiGridConstants.scrollbars.NEVER,
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
         enableSorting: false,
@@ -2876,12 +2953,12 @@
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 130
+          width: '*'
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 130
+          width: '*'
         }, {
           name: 'golCasa',
           displayName: ' ',
@@ -2911,6 +2988,7 @@
             var tmp = {};
             tmp.position = pos;
             pos = pos + 1;
+            tmp.id = obj['TEAM_ID'];
             tmp.team = obj['TEAM_NAME'];
             tmp.giornata = obj['GIORNATA'];
             tmp.punti = obj['PUNTI'];
@@ -2919,12 +2997,14 @@
             tmp.stot = obj['LOSS'];
             tmp.gf = obj['GOAL_FATTI'];
             tmp.gs = obj['GOAL_SUBITI'];
+            tmp.giornataHome = obj['GIORNATA_HOME'];
             tmp.puntic = obj['PUNTI_HOME'];
             tmp.vc = obj['WIN_HOME'];
             tmp.pc = obj['DRAW_HOME'];
             tmp.sc = obj['LOSS_HOME'];
             tmp.gfc = obj['GOAL_FATTI_HOME'];
             tmp.gsc = obj['GOAL_SUBITI_HOME'];
+            tmp.giornataAway = obj['GIORNATA_AWAY'];
             tmp.puntit = obj['PUNTI_AWAY'];
             tmp.vt = obj['WIN_AWAY'];
             tmp.pt = obj['DRAW_AWAY'];
@@ -2953,10 +3033,52 @@
                 var tmp = {};
                 $scope.giornNext = obj['GIORNATA'];
                 $scope.dataGameNext = obj['DATA_GAME'];
+                tmp.idHome = obj['ID_HOME'];
                 tmp.squadraCasa = obj['TEAM_HOME'];
+                tmp.idAway = obj['ID_AWAY'];
                 tmp.squadraTrasferta = obj['TEAM_AWAY'];
                 tmp.golCasa = obj['SCORE_HOME'];
                 tmp.golTrasferta = obj['SCORE_AWAY'];
+                var winTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                var winHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                //TODO
+                var winLastFiveHome = 100;
+                var propWinHome = (winTotPercHome + winHomePercHome + winLastFiveHome) / 3;
+                var drawTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'ptot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                var drawHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'pc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                //TODO
+                var drawLastFiveHome = 100;
+                var propDrawHome = (drawTotPercHome + drawHomePercHome + drawLastFiveHome) / 3;
+                var lossTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'stot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                var lossHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'sc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                //TODO
+                var lossLastFiveHome = 100;
+                var propLossHome = (lossTotPercHome + lossHomePercHome + lossLastFiveHome) / 3;
+
+                var winTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'vtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                var winAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'vt') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                //TODO
+                var winLastFiveAway = 100;
+                var propWinAway = (winTotPercAway + winAwayPercAway + winLastFiveAway) / 3;
+                var drawTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ptot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                var drawAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'pt') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                //TODO
+                var drawLastFiveAway = 100;
+                var propDrawAway = (drawTotPercAway + drawAwayPercAway + drawLastFiveAway) / 3;
+                var lossTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'stot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                var lossAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'st') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                //TODO
+                var lossLastFiveAway = 100;
+                var propLossAway = (lossTotPercAway + lossAwayPercAway + lossLastFiveAway) / 3;
+
+                tmp.percWin = Math.round(((propWinHome + propWinAway) / 2) * 100) / 100;
+                tmp.percDraw = Math.round(((propDrawHome + propDrawAway) / 2) * 100) / 100;
+                tmp.percLoss = Math.round(((propLossHome + propLossAway) / 2) * 100) / 100;
+                var sumperc = tmp.percWin + tmp.percDraw + tmp.percLoss;
+                tmp.perc1X = ((sumperc - (tmp.percWin + tmp.percDraw)) / sumperc) * 100;
+                tmp.perc12 = ((sumperc - (tmp.percWin + tmp.percLoss)) / sumperc) * 100;
+                tmp.percX2 = ((sumperc - (tmp.percDraw + tmp.percLoss)) / sumperc) * 100;
+
                 dataNextGame.push(tmp);
                 return tmp;
               });

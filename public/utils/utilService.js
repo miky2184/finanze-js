@@ -66,6 +66,21 @@
           }
 
           return result;
+        },
+
+        nvl: function nvl(value) {
+          if (isNaN(Number(value))) {
+            return 0;
+          }
+          return Number(value);
+        },
+
+        extractMatchValue: function extractMatchValue(arrayData, id, prop) {
+          return srvc.nvl(arrayData.filter(function (match) {
+            return match.id === id;
+          }).map(function (a) {
+            return a[prop];
+          })[0]);
         }
 
       };
