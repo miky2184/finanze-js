@@ -3203,11 +3203,11 @@
 
                   var percover1 = Math.round(((propOver1Home + propOver1Away) / 2) * 100) / 100;
                   var percunder1 = Math.round(((propUnder1Home + propUnder1Away) / 2) * 100) / 100;
-                  var sumoverunder1 = over1 + under1;
+                  var sumoverunder1 = percover1 + percunder1;
 
                   var percover2 = Math.round(((propOver2Home + propOver2Away) / 2) * 100) / 100;
                   var percunder2 = Math.round(((propUnder2Home + propUnder2Away) / 2) * 100) / 100;
-                  var sumoverunder2 = over2 + under2;
+                  var sumoverunder2 = percover2 + percunder2;
 
                   tmp.percWin = (percWin / sumperc) * 100;
                   tmp.percDraw = (percDraw / sumperc) * 100;
