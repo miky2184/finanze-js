@@ -3101,13 +3101,13 @@
                   var percLoss = Math.round(((propLossHome + propLossAway) / 2) * 100) / 100;
                   var sumperc = percWin + percDraw + percLoss;
 
-                  tmp.percWin = ((sumperc - tmp.percWin) / sumperc) * 100;
-                  tmp.percDraw = ((sumperc - tmp.percDraw) / sumperc) * 100;
-                  tmp.percLoss = ((sumperc - tmp.percLoss) / sumperc) * 100;
+                  tmp.percWin = ((sumperc - percWin) / sumperc) * 100;
+                  tmp.percDraw = ((sumperc - percDraw) / sumperc) * 100;
+                  tmp.percLoss = ((sumperc - percLoss) / sumperc) * 100;
 
-                  tmp.perc1X = ((sumperc - (tmp.percWin + tmp.percDraw)) / sumperc) * 100;
-                  tmp.perc12 = ((sumperc - (tmp.percWin + tmp.percLoss)) / sumperc) * 100;
-                  tmp.percX2 = ((sumperc - (tmp.percDraw + tmp.percLoss)) / sumperc) * 100;
+                  tmp.perc1X = ((sumperc - (percWin + percDraw)) / sumperc) * 100;
+                  tmp.perc12 = ((sumperc - (percWin + percLoss)) / sumperc) * 100;
+                  tmp.percX2 = ((sumperc - (percDraw + percLoss)) / sumperc) * 100;
 
                   dataNextGame.push(tmp);
                   return tmp;
