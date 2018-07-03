@@ -2903,12 +2903,12 @@
           field: 'perc12',
           width: 55
         }, {
-          name: 'percGg',
+          name: 'percgg',
           displayName: '%GG',
           field: 'percGg',
           width: 55
         }, {
-          name: 'percNg',
+          name: 'percng',
           displayName: '%NG',
           field: 'percNg',
           width: 55
@@ -3012,6 +3012,24 @@
             tmp.st = obj['LOSS_AWAY'];
             tmp.gft = obj['GOAL_FATTI_AWAY'];
             tmp.gst = obj['GOAL_SUBITI_AWAY'];
+            tmp.ggtot = obj['GG'];
+            tmp.ngtot = obj['NG'];
+            tmp.over1 = obj['OVER1'];
+            tmp.under1 = obj['UNDER1'];
+            tmp.over2 = obj['OVER2'];
+            tmp.under2 = obj['UNDER2'];
+            tmp.gghome = obj['GG_HOME'];
+            tmp.nghome = obj['NG_HOME'];
+            tmp.over1c = obj['OVER1_HOME'];
+            tmp.under1c = obj['UNDER1_HOME'];
+            tmp.over2c = obj['OVER2_HOME'];
+            tmp.under2c = obj['UNDER2_HOME'];
+            tmp.ggaway = obj['GG_AWAY'];
+            tmp.ngaway = obj['NG_AWAY'];
+            tmp.over1t = obj['OVER1_AWAY'];
+            tmp.under1t = obj['UNDER1_AWAY'];
+            tmp.over2t = obj['OVER2_AWAY'];
+            tmp.under2t = obj['UNDER2_AWAY'];
             dataMatchAnalysis.push(tmp);
             return tmp;
           });
@@ -3042,6 +3060,24 @@
               tmp.st = obj['LOSS_AWAY'];
               tmp.gft = obj['GOAL_FATTI_AWAY'];
               tmp.gst = obj['GOAL_SUBITI_AWAY'];
+              tmp.ggtot = obj['GG'];
+              tmp.ngtot = obj['NG'];
+              tmp.over1 = obj['OVER1'];
+              tmp.under1 = obj['UNDER1'];
+              tmp.over2 = obj['OVER2'];
+              tmp.under2 = obj['UNDER2'];
+              tmp.gghome = obj['GG_HOME'];
+              tmp.nghome = obj['NG_HOME'];
+              tmp.over1c = obj['OVER1_HOME'];
+              tmp.under1c = obj['UNDER1_HOME'];
+              tmp.over2c = obj['OVER2_HOME'];
+              tmp.under2c = obj['UNDER2_HOME'];
+              tmp.ggaway = obj['GG_AWAY'];
+              tmp.ngaway = obj['NG_AWAY'];
+              tmp.over1t = obj['OVER1_AWAY'];
+              tmp.under1t = obj['UNDER1_AWAY'];
+              tmp.over2t = obj['OVER2_AWAY'];
+              tmp.under2t = obj['UNDER2_AWAY'];
               dataLastFiveGame.push(tmp);
               return tmp;
             });
@@ -3096,10 +3132,62 @@
                   var lossLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'stot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propLossAway = (lossTotPercAway + lossAwayPercAway + lossLastFiveAway) / 3;
 
+                  var ggTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'ggtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var ggHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'gghome') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var ggLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'ggtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var propGgHome = (ggTotPercHome + ggHomePercHome + ggLastFiveHome) / 3;
+
+                  var ggTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ggtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var ggAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ggaway') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var ggLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'ggtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var propGgAway = (ggTotPercAway + ggAwayPercAway + ggLastFiveAway) / 3;
+
+                  var ngTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'ngtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var ngHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'nghome') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var ngLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'ngtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var propNgHome = (ngTotPercHome + ngHomePercHome + ngLastFiveHome) / 3;
+
+                  var ngTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ngtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var ngAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ngaway') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var ngLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'ngtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var propNgAway = (ngTotPercAway + ngAwayPercAway + ngLastFiveAway) / 3;
+
+                  var over1TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var over1HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over1c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var over1LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'over1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var propOver1Home = (over1TotPercHome + over1HomePercHome + over1LastFiveHome) / 3;
+
+                  var under1TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var under1AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var under1LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'under1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var propOver1Away = (under1TotPercAway + under1AwayPercAway + under1LastFiveAway) / 3;
+
+                  var over2TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var over2HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var over2LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'over2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var propOver2Home = (over2TotPercHome + over2HomePercHome + over2LastFiveHome) / 3;
+
+                  var under2TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var under2AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under2t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var under2LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'under2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var propUnder2Away = (under2TotPercAway + under2AwayPercAway + under2LastFiveAway) / 3;
+
                   var percWin = Math.round(((propWinHome + propWinAway) / 2) * 100) / 100;
                   var percDraw = Math.round(((propDrawHome + propDrawAway) / 2) * 100) / 100;
                   var percLoss = Math.round(((propLossHome + propLossAway) / 2) * 100) / 100;
                   var sumperc = percWin + percDraw + percLoss;
+
+                  var percgg = Math.round(((propGgHome + propGgAway) / 2) * 100) / 100;
+                  var percng = Math.round(((propNgHome + propNgAway) / 2) * 100) / 100;
+                  var sumggng = percgg + percng;
+
+                  var percover1 = Math.round(((propOver1Home + propOver1Away) / 2) * 100) / 100;
+                  var percunder1 = Math.round(((propUnder1Home + propUnder1Away) / 2) * 100) / 100;
+                  var sumoverunder1 = over1 + under1;
+
+                  var percover2 = Math.round(((propOver2Home + propOver2Away) / 2) * 100) / 100;
+                  var percunder2 = Math.round(((propUnder2Home + propUnder2Away) / 2) * 100) / 100;
+                  var sumoverunder2 = over2 + under2;
 
                   tmp.percWin = (percWin / sumperc) * 100;
                   tmp.percDraw = (percDraw / sumperc) * 100;
@@ -3108,6 +3196,15 @@
                   tmp.perc1X = ((percWin + percDraw) / sumperc) * 100;
                   tmp.perc12 = ((percWin + percLoss) / sumperc) * 100;
                   tmp.percX2 = ((percDraw + percLoss) / sumperc) * 100;
+
+                  tmp.percgg = (percgg / sumggng) * 100;
+                  tmp.percng = (percng / sumggng) * 100;
+
+                  tmp.percO1 = (percover1 / sumoverunder1) * 100;
+                  tmp.percU1 = (percunder1 / sumoverunder1) * 100;
+
+                  tmp.percO2 = (percover2 / sumoverunder2) * 100;
+                  tmp.percU2 = (percunder2 / sumoverunder2) * 100;
 
                   dataNextGame.push(tmp);
                   return tmp;
