@@ -3157,6 +3157,16 @@
                   var over1LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'over1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propOver1Home = (over1TotPercHome + over1HomePercHome + over1LastFiveHome) / 3;
 
+                  var over1TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var over1AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over1c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var over1LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'over1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var propOver1Away = (over1TotPercAway + over1AwayPercAway + over1LastFiveAway) / 3;
+
+                  var under1TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var under1HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under1t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var under1LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'under1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var propUnder1Home = (under1TotPercHome + under1HomePercHome + under1LastFiveHome) / 3;
+
                   var under1TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
                   var under1AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
                   var under1LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'under1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
@@ -3166,6 +3176,16 @@
                   var over2HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
                   var over2LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'over2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propOver2Home = (over2TotPercHome + over2HomePercHome + over2LastFiveHome) / 3;
+
+                  var over2TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var over2AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over2c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var over2LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'over2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var propOver2Away = (over2TotPercAway + over2AwayPercAway + over2LastFiveAway) / 3;
+
+                  var under2TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var under2HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under2t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var under2LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'under2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var propUnder2Home = (under2TotPercHome + under2HomePercHome + under2LastFiveHome) / 3;
 
                   var under2TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
                   var under2AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under2t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
