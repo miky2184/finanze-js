@@ -3160,7 +3160,7 @@
                   var under1TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
                   var under1AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
                   var under1LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'under1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
-                  var propOver1Away = (under1TotPercAway + under1AwayPercAway + under1LastFiveAway) / 3;
+                  var propUnder1Away = (under1TotPercAway + under1AwayPercAway + under1LastFiveAway) / 3;
 
                   var over2TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
                   var over2HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
