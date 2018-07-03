@@ -2876,62 +2876,62 @@
           name: 'percWin',
           displayName: '%1',
           field: 'percWin',
-          width: 55
+          width: 60
         }, {
           name: 'percDraw',
           displayName: '%X',
           field: 'percDraw',
-          width: 55
+          width: 60
         }, {
           name: 'percLoss',
           displayName: '%2',
           field: 'percLoss',
-          width: 55
+          width: 60
         }, {
           name: 'perc1X',
           displayName: '%1X',
           field: 'perc1X',
-          width: 55
+          width: 60
         }, {
           name: 'percX2',
           displayName: '%X2',
           field: 'percX2',
-          width: 55
+          width: 60
         }, {
           name: 'perc12',
           displayName: '%12',
           field: 'perc12',
-          width: 55
+          width: 60
         }, {
           name: 'percgg',
           displayName: '%GG',
           field: 'percgg',
-          width: 55
+          width: 60
         }, {
           name: 'percng',
           displayName: '%NG',
           field: 'percng',
-          width: 55
+          width: 60
         }, {
           name: 'percO1',
           displayName: '%O1.5',
           field: 'percO1',
-          width: 55
+          width: 60
         }, {
           name: 'percU1',
           displayName: '%U1.5',
           field: 'percU1',
-          width: 55
+          width: 60
         }, {
           name: 'percO2',
           displayName: '%O2.5',
           field: 'percO2',
-          width: 55
+          width: 60
         }, {
           name: 'percU2',
           displayName: '%U2.5',
           field: 'percU2',
-          width: 55
+          width: 60
         }],
         data: [],
         onRegisterApi: function (gridApi) {
