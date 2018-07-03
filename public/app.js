@@ -2905,12 +2905,12 @@
         }, {
           name: 'percgg',
           displayName: '%GG',
-          field: 'percGg',
+          field: 'percgg',
           width: 55
         }, {
           name: 'percng',
           displayName: '%NG',
-          field: 'percNg',
+          field: 'percng',
           width: 55
         }, {
           name: 'percO1',
