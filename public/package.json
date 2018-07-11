@@ -27,6 +27,7 @@
     "angular-touch": "^1.6.9",
     "angular-ui-bootstrap": "2.5.0",
     "angular-ui-grid": "^4.4.2",
+    "apac": "^3.0.2",
     "bootstrap-css-only": "^4.0.0",
     "components-font-awesome": "5.0.6",
     "excel-builder": "^2.0.3",

@@ -2650,6 +2650,7 @@
         selectionRowHeaderWidth: 35,
         enableSorting: false,
         enableColumnMenus: false,
+        multiSelect: false,
         columnDefs: [{
           name: 'asin',
           displayName: 'Prodotto',
@@ -2683,8 +2684,21 @@
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsAmazon.gridApi = gridApi;
+          gridApi.selection.on.rowSelectionChanged($scope, $scope.onSelectASIN);
         }
       };
+      
+      $scope.onSelectASIN = function onSelectASIN(row) {           
+		  var asin = {};
+		  asin.asinOrig = row.entity.asinOrig;       
+                  return $http.post('http://2.225.127.144:3001/amazonProduct', asin).then(function (resp) {
+					  $scope.amzLink = resp.data.ItemLookupResponse.Items.Item.DetailPageURL;
+					  $scope.amzPrice = resp.data.ItemLookupResponse.Items.Item.OfferSummary.LowestNewPrice.FormattedPrice;
+					  $scope.amzImage = resp.data.ItemLookupResponse.Items.Item.LargeImage.URL;
+					  $scope.amzHeight = resp.data.ItemLookupResponse.Items.Item.LargeImage.Height._;
+					  $scope.amzWidth = resp.data.ItemLookupResponse.Items.Item.LargeImage.Width._;
+				  });
+                };
 
       $scope.loadAmazonData = function () {
 
@@ -2694,6 +2708,7 @@
           resp.data.map(function (obj) {
             var tmp = {};
             tmp.asin = 'http://www.amazon.it/dp/' + obj['ASIN'];
+            tmp.asinOrig = obj['ASIN'];
             tmp.price = obj['PRICE'];
             tmp.dataInserimento = obj['DATA_INSERTIMENTO'];
             tmp.lastPrice = obj['LAST_PRICE'];
@@ -2985,6 +3000,7 @@
 
         return $http.get('http://2.225.127.144:3001/classifica').then(function (resp) {
           var pos = 1;
+          if (resp.data.length > 0){
           resp.data.map(function (obj) {
             var tmp = {};
             tmp.position = pos;
@@ -3033,8 +3049,10 @@
             dataMatchAnalysis.push(tmp);
             return tmp;
           });
+	  }
 
           return $http.get('http://2.225.127.144:3001/lastfivegame').then(function (resp) {
+			  if (resp.data.length > 0) {
             resp.data.map(function (obj) {
               var tmp = {};
               tmp.id = obj['TEAM_ID'];
@@ -3081,8 +3099,10 @@
               dataLastFiveGame.push(tmp);
               return tmp;
             });
+		}
 
             return $http.get('http://2.225.127.144:3001/prevgame').then(function (resp) {
+				if (resp.data.length > 0) {
               resp.data.map(function (obj) {
                 var tmp = {};
                 $scope.giornPrev = obj['GIORNATA'];
@@ -3094,8 +3114,10 @@
                 dataPrevGame.push(tmp);
                 return tmp;
               });
-
+		  }
+		  				
               return $http.get('http://2.225.127.144:3001/nextgame').then(function (resp) {
+				  if (resp.data.length > 0){
                 resp.data.map(function (obj) {
                   var tmp = {};
                   $scope.giornNext = obj['GIORNATA'];
@@ -3229,6 +3251,7 @@
                   dataNextGame.push(tmp);
                   return tmp;
                 });
+			}
                 $scope.gridOptionsNextGame.data = dataNextGame;
                 $scope.gridOptionsPrevGame.data = dataPrevGame;
                 $scope.gridOptionsClassifica.data = dataMatchAnalysis;

@@ -1,3 +1,16 @@
-<div layout="column">
-  <div flex layout="row" id="grid1" ui-grid="gridOptionsAmazon"></div> 
+<div layout="row">
+  <div flex="65" layout="column" id="grid1" ui-grid-selection ui-grid="gridOptionsAmazon"></div> 
+  <div flex="35" layout="column" > 
+	  <img src="{{amzImage}}" height="{{amzHeight}}" width="{{amzWidth}}">
+	  <span> Prezzo: {{amzPrice}}</span>
+    <span class="a-button a-button-primary a-button-icon">
+    <a target="_blank" href="{{amzLink}}" style="text-decoration:none;">
+        <span class="a-button-inner">
+            <i class="a-icon a-icon-cart"></i>
+            <input class="a-button-input" type="submit">
+            <span class="a-button-text" aria-hidden="true">Add to Cart</span>
+        </span>
+    </a>
+</span><br>
+  </div>
 </div>
