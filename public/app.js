@@ -3264,6 +3264,15 @@
 
         });
       };
+        
+        $scope.season = null;
+        $scope.seasons = null;
+        
+        $scope.loadSeasons = function(){
+            return $http.get('http://2.225.127.144:3001/seasons').then(function (resp) {
+                $scope.seasons = resp.data;
+            });
+        };
 
           }])
     .filter('map', function () {
