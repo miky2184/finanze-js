@@ -1,13 +1,20 @@
 (function () {
   'use strict';
 
-  angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning'])
+  angular.module('myApp', ['ngMaterial', 'ngMessages', 'ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning'])
     .config(['$mdThemingProvider', function ($mdThemingProvider) {
       $mdThemingProvider.theme('default');
     }])
     .controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$uibModal', '$strings', 'modalService', 'restService', 'utilService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $uibModal, $strings, modalService, restService, utilService) {
 
       $scope.dirty = false;
+        
+        $scope.season = {};
+        $scope.season.value = {};
+        $scope.seasons = [];
+        $scope.giornata = {};
+        $scope.giornata.value = {};
+        $scope.giornate = [];
 
       $scope.menu = {
         isOpen: false,
@@ -2739,117 +2746,117 @@
           name: 'position',
           displayName: ' ',
           field: 'position',
-          width: 40
+          width: 35
             }, {
           name: 'team',
           displayName: 'Squadra',
           field: 'team',
-          width: '*'
+          width: 120
         }, {
           name: 'giornata',
           displayName: '#G',
           field: 'giornata',
-          width: 40
+          width: 35
         }, {
           name: 'punti',
           displayName: 'Punti',
           field: 'punti',
-          width: 40
+          width: 35
         }, {
           name: 'vtot',
           displayName: 'V',
           field: 'vtot',
-          width: 40
+          width: 35
         }, {
           name: 'ptot',
           displayName: 'P',
           field: 'ptot',
-          width: 40
+          width: 35
         }, {
           name: 'stot',
           displayName: 'S',
           field: 'stot',
-          width: 40
+          width: 35
         }, {
           name: 'gf',
           displayName: 'GF',
           field: 'gf',
-          width: 40
+          width: 35
         }, {
           name: 'gs',
           displayName: 'GS',
           field: 'gs',
-          width: 40
+          width: 35
         }, {
           name: 'giornataHome',
           displayName: '#GC',
           field: 'giornataHome',
-          width: 40
+          width: 35
         }, {
           name: 'puntic',
           displayName: 'Punti Casa',
           field: 'puntic',
-          width: 40
+          width: 35
         }, {
           name: 'vc',
           displayName: 'VC',
           field: 'vc',
-          width: 40
+          width: 35
         }, {
           name: 'pc',
           displayName: 'PC',
           field: 'pc',
-          width: 40
+          width: 35
         }, {
           name: 'sc',
           displayName: 'SC',
           field: 'sc',
-          width: 40
+          width: 35
         }, {
           name: 'gfc',
           displayName: 'GF Casa',
           field: 'gfc',
-          width: 40
+          width: 35
         }, {
           name: 'gsc',
           displayName: 'GS Casa',
           field: 'gsc',
-          width: 40
+          width: 35
         }, {
           name: 'giornataAway',
           displayName: '#GT',
           field: 'giornataAway',
-          width: 40
+          width: 35
         }, {
           name: 'puntit',
           displayName: 'Punti Trasferta',
           field: 'puntit',
-          width: 40
+          width: 35
         }, {
           name: 'vt',
           displayName: 'VT',
           field: 'vt',
-          width: 40
+          width: 35
         }, {
           name: 'pt',
           displayName: 'PT',
           field: 'pt',
-          width: 40
+          width: 35
         }, {
           name: 'st',
           displayName: 'ST',
           field: 'st',
-          width: 40
+          width: 35
         }, {
           name: 'gft',
           displayName: 'GF Trasferta',
           field: 'gft',
-          width: 40
+          width: 35
         }, {
           name: 'gst',
           displayName: 'GS Trasferta',
           field: 'gst',
-          width: 40
+          width: 35
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2871,12 +2878,12 @@
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: '*'
+          width: 120
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: '*'
+          width: 120
         }, {
           name: 'golCasa',
           displayName: ' ',
@@ -2891,62 +2898,62 @@
           name: 'percWin',
           displayName: '%1',
           field: 'percWin',
-          width: 60
+          width: 55
         }, {
           name: 'percDraw',
           displayName: '%X',
           field: 'percDraw',
-          width: 60
+          width: 55
         }, {
           name: 'percLoss',
           displayName: '%2',
           field: 'percLoss',
-          width: 60
+          width: 55
         }, {
           name: 'perc1X',
           displayName: '%1X',
           field: 'perc1X',
-          width: 60
+          width: 55
         }, {
           name: 'percX2',
           displayName: '%X2',
           field: 'percX2',
-          width: 60
+          width: 55
         }, {
           name: 'perc12',
           displayName: '%12',
           field: 'perc12',
-          width: 60
+          width: 55
         }, {
           name: 'percgg',
           displayName: '%GG',
           field: 'percgg',
-          width: 60
+          width: 55
         }, {
           name: 'percng',
           displayName: '%NG',
           field: 'percng',
-          width: 60
+          width: 55
         }, {
           name: 'percO1',
           displayName: '%O1.5',
           field: 'percO1',
-          width: 60
+          width: 55
         }, {
           name: 'percU1',
           displayName: '%U1.5',
           field: 'percU1',
-          width: 60
+          width: 55
         }, {
           name: 'percO2',
           displayName: '%O2.5',
           field: 'percO2',
-          width: 60
+          width: 55
         }, {
           name: 'percU2',
           displayName: '%U2.5',
           field: 'percU2',
-          width: 60
+          width: 55
         }],
         data: [],
         onRegisterApi: function (gridApi) {
@@ -2954,7 +2961,7 @@
         }
       };
 
-      $scope.gridOptionsPrevGame = {
+     /* $scope.gridOptionsPrevGame = {
         columnVirtualizationThreshold: 100,
         showGridFooter: false,
         minRowsToShow: 10,
@@ -2989,16 +2996,16 @@
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsPrevGame.gridApi = gridApi;
         }
-      };
+      }; */                 
 
       $scope.loadMatchAnalysis = function () {
+          
+          $scope.dataMatchAnalysis = [];    
+          
+          // $scope.season.name = seasonValue.name;     
+        // var dataPrevGame = [];
 
-        var dataLastFiveGame = [];
-        var dataMatchAnalysis = [];
-        var dataNextGame = [];
-        var dataPrevGame = [];
-
-        return $http.get('http://2.225.127.144:3001/classifica').then(function (resp) {
+        return $http.post('http://2.225.127.144:3001/classifica', $scope.season.value).then(function (resp) {
           var pos = 1;
           if (resp.data.length > 0){
           resp.data.map(function (obj) {
@@ -3046,12 +3053,52 @@
             tmp.under1t = obj['UNDER1_AWAY'];
             tmp.over2t = obj['OVER2_AWAY'];
             tmp.under2t = obj['UNDER2_AWAY'];
-            dataMatchAnalysis.push(tmp);
+            $scope.dataMatchAnalysis.push(tmp);
             return tmp;
           });
 	  }
+            
+             $scope.gridOptionsClassifica.data = $scope.dataMatchAnalysis;
+                $interval($scope.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);      
 
-          return $http.get('http://2.225.127.144:3001/lastfivegame').then(function (resp) {
+          
+           // });
+          });        
+      };        
+        
+        $scope.loadSeasons = function(){
+            
+        
+            
+            return $http.get('http://2.225.127.144:3001/seasons').then(function (resp) {
+                $scope.seasons = resp.data.map(function(tmp){
+                    var obj = {};
+                    obj.id = tmp.id;
+                    obj.name = tmp.name;
+                    return obj;
+                });
+            });
+        };
+                
+        
+        $scope.loadGiornate = function(){
+                       
+       // $scope.season.id = seasonValue.id;
+            
+            return $http.post('http://2.225.127.144:3001/giornate', $scope.season.value).then(function (resp) {
+                $scope.giornate = resp.data.map(function(tmp){
+                    var obj = {};
+                    obj.id = tmp.id;
+                    obj.name = tmp.name;
+                    return obj;
+                });
+            });
+        };
+                                   
+                                   $scope.loadGiornata = function(){
+                                       $scope.dataLastFiveGame = [];         
+                                       
+                                       return $http.post('http://2.225.127.144:3001/lastfivegame', $scope.season.value).then(function (resp) {
 			  if (resp.data.length > 0) {
             resp.data.map(function (obj) {
               var tmp = {};
@@ -3096,27 +3143,18 @@
               tmp.under1t = obj['UNDER1_AWAY'];
               tmp.over2t = obj['OVER2_AWAY'];
               tmp.under2t = obj['UNDER2_AWAY'];
-              dataLastFiveGame.push(tmp);
+              $scope.dataLastFiveGame.push(tmp);
               return tmp;
             });
-		}
-
-            return $http.get('http://2.225.127.144:3001/prevgame').then(function (resp) {
-				if (resp.data.length > 0) {
-              resp.data.map(function (obj) {
-                var tmp = {};
-                $scope.giornPrev = obj['GIORNATA'];
-                $scope.dataGamePrev = obj['DATA_GAME'];
-                tmp.squadraCasa = obj['TEAM_HOME'];
-                tmp.squadraTrasferta = obj['TEAM_AWAY'];
-                tmp.golCasa = obj['SCORE_HOME'];
-                tmp.golTrasferta = obj['SCORE_AWAY'];
-                dataPrevGame.push(tmp);
-                return tmp;
-              });
-		  }
-		  				
-              return $http.get('http://2.225.127.144:3001/nextgame').then(function (resp) {
+              }
+                                       var dto = {};
+                                       dto.idSeason = $scope.season.value.id;
+                                       dto.idGiornata = $scope.giornata.value.id;
+                                   
+                                   return $http.post('http://2.225.127.144:3001/nextgame', dto).then(function (resp) {
+                                       
+                                       $scope.dataNextGame = [];
+                                       
 				  if (resp.data.length > 0){
                 resp.data.map(function (obj) {
                   var tmp = {};
@@ -3128,151 +3166,118 @@
                   tmp.squadraTrasferta = obj['TEAM_AWAY'];
                   tmp.golCasa = obj['SCORE_HOME'];
                   tmp.golTrasferta = obj['SCORE_AWAY'];
-                  var winTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var winHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var winLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var winTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var winHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var winLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propWinHome = (winTotPercHome + winHomePercHome + winLastFiveHome) / 3;
-                  var drawTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'ptot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var drawHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'pc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var drawLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'ptot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var drawTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'ptot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var drawHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'pc') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var drawLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'ptot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propDrawHome = (drawTotPercHome + drawHomePercHome + drawLastFiveHome) / 3;
-                  var lossTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'stot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var lossHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'sc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var lossLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'stot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var lossTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'stot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var lossHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'sc') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var lossLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'stot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propLossHome = (lossTotPercHome + lossHomePercHome + lossLastFiveHome) / 3;
 
-                  var winTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'vtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var winAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'vt') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var winLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'vtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var winTotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'vtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var winAwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'vt') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var winLastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'vtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propWinAway = (winTotPercAway + winAwayPercAway + winLastFiveAway) / 3;
-                  var drawTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ptot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var drawAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'pt') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var drawLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'ptot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var drawTotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'ptot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var drawAwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'pt') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var drawLastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'ptot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propDrawAway = (drawTotPercAway + drawAwayPercAway + drawLastFiveAway) / 3;
-                  var lossTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'stot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var lossAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'st') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var lossLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'stot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var lossTotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'stot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var lossAwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'st') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var lossLastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'stot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propLossAway = (lossTotPercAway + lossAwayPercAway + lossLastFiveAway) / 3;
 
-                  var ggTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'ggtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var ggHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'gghome') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var ggLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'ggtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var ggTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'ggtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var ggHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'gghome') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var ggLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'ggtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propGgHome = (ggTotPercHome + ggHomePercHome + ggLastFiveHome) / 3;
 
-                  var ggTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ggtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var ggAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ggaway') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var ggLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'ggtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var ggTotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'ggtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var ggAwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'ggaway') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var ggLastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'ggtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propGgAway = (ggTotPercAway + ggAwayPercAway + ggLastFiveAway) / 3;
 
-                  var ngTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'ngtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var ngHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'nghome') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var ngLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'ngtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var ngTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'ngtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var ngHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'nghome') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var ngLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'ngtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propNgHome = (ngTotPercHome + ngHomePercHome + ngLastFiveHome) / 3;
 
-                  var ngTotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ngtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var ngAwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'ngaway') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var ngLastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'ngtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var ngTotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'ngtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var ngAwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'ngaway') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var ngLastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'ngtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propNgAway = (ngTotPercAway + ngAwayPercAway + ngLastFiveAway) / 3;
 
-                  var over1TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var over1HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over1c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var over1LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'over1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var over1TotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'over1') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var over1HomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'over1c') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var over1LastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'over1') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propOver1Home = (over1TotPercHome + over1HomePercHome + over1LastFiveHome) / 3;
 
-                  var over1TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var over1AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over1c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var over1LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'over1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var over1TotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'over1') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var over1AwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'over1c') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var over1LastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'over1') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propOver1Away = (over1TotPercAway + over1AwayPercAway + over1LastFiveAway) / 3;
 
-                  var under1TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var under1HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under1t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var under1LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'under1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var under1TotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'under1') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var under1HomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'under1t') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var under1LastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'under1') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propUnder1Home = (under1TotPercHome + under1HomePercHome + under1LastFiveHome) / 3;
 
-                  var under1TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var under1AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under1t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var under1LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'under1') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var under1TotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'under1') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var under1AwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'under1t') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var under1LastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'under1') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propUnder1Away = (under1TotPercAway + under1AwayPercAway + under1LastFiveAway) / 3;
 
-                  var over2TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var over2HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'over2c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var over2LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'over2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var over2TotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'over2') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var over2HomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'over2c') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var over2LastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'over2') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propOver2Home = (over2TotPercHome + over2HomePercHome + over2LastFiveHome) / 3;
 
-                  var over2TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var over2AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'over2c') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var over2LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'over2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var over2TotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'over2') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var over2AwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'over2c') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var over2LastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'over2') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propOver2Away = (over2TotPercAway + over2AwayPercAway + over2LastFiveAway) / 3;
 
-                  var under2TotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
-                  var under2HomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'under2t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
-                  var under2LastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'under2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;
+                  var under2TotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'under2') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
+                  var under2HomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'under2t') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
+                  var under2LastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'under2') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
                   var propUnder2Home = (under2TotPercHome + under2HomePercHome + under2LastFiveHome) / 3;
 
-                  var under2TotPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under2') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
-                  var under2AwayPercAway = utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'under2t') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
-                  var under2LastFiveAway = utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'under2') / utilService.extractMatchValue(dataLastFiveGame, tmp.idAway, 'giornata') * 100;
+                  var under2TotPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'under2') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornata') * 100;
+                  var under2AwayPercAway = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'under2t') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idAway, 'giornataAway') * 100;
+                  var under2LastFiveAway = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'under2') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idAway, 'giornata') * 100;
                   var propUnder2Away = (under2TotPercAway + under2AwayPercAway + under2LastFiveAway) / 3;
 
-                  var percWin = Math.round(((propWinHome + propWinAway) / 2) * 100) / 100;
-                  var percDraw = Math.round(((propDrawHome + propDrawAway) / 2) * 100) / 100;
-                  var percLoss = Math.round(((propLossHome + propLossAway) / 2) * 100) / 100;
-                  var sumperc = percWin + percDraw + percLoss;
+                  tmp.percWin = Math.round(((propWinHome + propLossAway) / 2) * 100) / 100;
+                  tmp.percDraw = Math.round(((propDrawHome + propDrawAway) / 2) * 100) / 100;
+                  tmp.percLoss = Math.round(((propLossHome + propWinAway) / 2) * 100) / 100;
 
-                  var percgg = Math.round(((propGgHome + propGgAway) / 2) * 100) / 100;
-                  var percng = Math.round(((propNgHome + propNgAway) / 2) * 100) / 100;
-                  var sumggng = percgg + percng;
+                  tmp.perc1X = Math.round((tmp.percWin + tmp.percDraw) * 100) / 100;
+                  tmp.perc12 = Math.round((tmp.percWin + tmp.percLoss) * 100) / 100;
+                  tmp.percX2 = Math.round((tmp.percDraw + tmp.percLoss) * 100) / 100;
 
-                  var percover1 = Math.round(((propOver1Home + propOver1Away) / 2) * 100) / 100;
-                  var percunder1 = Math.round(((propUnder1Home + propUnder1Away) / 2) * 100) / 100;
-                  var sumoverunder1 = percover1 + percunder1;
+                  tmp.percgg = Math.round(((propGgHome + propGgAway) / 2) * 100) / 100;
+                  tmp.percng = Math.round(((propNgHome + propNgAway) / 2) * 100) / 100;
 
-                  var percover2 = Math.round(((propOver2Home + propOver2Away) / 2) * 100) / 100;
-                  var percunder2 = Math.round(((propUnder2Home + propUnder2Away) / 2) * 100) / 100;
-                  var sumoverunder2 = percover2 + percunder2;
+                  tmp.percO1 = Math.round(((propOver1Home + propOver1Away) / 2) * 100) / 100;
+                  tmp.percU1 = Math.round(((propUnder1Home + propUnder1Away) / 2) * 100) / 100;
 
-                  tmp.percWin = (percWin / sumperc) * 100;
-                  tmp.percDraw = (percDraw / sumperc) * 100;
-                  tmp.percLoss = (percLoss / sumperc) * 100;
+                  tmp.percO2 = Math.round(((propOver2Home + propOver2Away) / 2) * 100) / 100;
+                  tmp.percU2 = Math.round(((propUnder2Home + propUnder2Away) / 2) * 100) / 100;
 
-                  tmp.perc1X = ((percWin + percDraw) / sumperc) * 100;
-                  tmp.perc12 = ((percWin + percLoss) / sumperc) * 100;
-                  tmp.percX2 = ((percDraw + percLoss) / sumperc) * 100;
-
-                  tmp.percgg = (percgg / sumggng) * 100;
-                  tmp.percng = (percng / sumggng) * 100;
-
-                  tmp.percO1 = (percover1 / sumoverunder1) * 100;
-                  tmp.percU1 = (percunder1 / sumoverunder1) * 100;
-
-                  tmp.percO2 = (percover2 / sumoverunder2) * 100;
-                  tmp.percU2 = (percunder2 / sumoverunder2) * 100;
-
-                  dataNextGame.push(tmp);
+                  $scope.dataNextGame.push(tmp);
                   return tmp;
                 });
 			}
-                $scope.gridOptionsNextGame.data = dataNextGame;
-                $scope.gridOptionsPrevGame.data = dataPrevGame;
-                $scope.gridOptionsClassifica.data = dataMatchAnalysis;
-                $interval($scope.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);
-                $interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);
-                $interval($scope.gridOptionsPrevGame.gridApi.core.handleWindowResize, 100, 10);
+                $scope.gridOptionsNextGame.data = $scope.dataNextGame;
+$interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);
+                                   });
               });
-            });
-          });
-
-        });
-      };
-        
-        $scope.season = null;
-        $scope.seasons = null;
-        
-        $scope.loadSeasons = function(){
-            return $http.get('http://2.225.127.144:3001/seasons').then(function (resp) {
-                $scope.seasons = resp.data;
-            });
-        };
+                                   };
 
           }])
     .filter('map', function () {
