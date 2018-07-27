@@ -2706,6 +2706,7 @@
 					  $scope.amzWidth = resp.data.ItemLookupResponse.Items.Item.LargeImage.Width._;
 				  });
                 };
+            
 
       $scope.loadAmazonData = function () {
 
@@ -2741,17 +2742,19 @@
         enableFiltering: false,
         selectionRowHeaderWidth: 35,
         enableSorting: false,
-        enableColumnMenus: false,
+        enableColumnMenus: false,          
         columnDefs: [{
           name: 'position',
           displayName: ' ',
           field: 'position',
-          width: 35
+          width: 35,
+            pinnedLeft: true
             }, {
           name: 'team',
           displayName: 'Squadra',
           field: 'team',
-          width: 120
+          width: 120,
+                pinnedLeft: true
         }, {
           name: 'giornata',
           displayName: '#G',
@@ -2864,6 +2867,19 @@
         }
       };
 
+                $scope.checkEditableCondition = function checkEditableCondition(scope) {
+          return $scope.editableCondition(scope.row.entity, scope.col.colDef);
+        }
+
+        $scope.editableCondition = function editableCondition(rowEntity, colDef) {
+            
+            if ( colDef.name === 'golCasa' || colDef.name === 'golTrasferta'){
+                return true;
+            }
+            
+            return false;
+        }
+        
       $scope.gridOptionsNextGame = {
         columnVirtualizationThreshold: 100,
         showGridFooter: false,
@@ -2874,26 +2890,31 @@
         selectionRowHeaderWidth: 35,
         enableSorting: false,
         enableColumnMenus: false,
+          cellEditableCondition: $scope.checkEditableCondition,
         columnDefs: [{
           name: 'squadraCasa',
           displayName: 'CASA',
           field: 'squadraCasa',
-          width: 120
+          width: 140,
+            pinnedLeft: true
         }, {
           name: 'squadraTrasferta',
           displayName: 'TRASFERTA',
           field: 'squadraTrasferta',
-          width: 120
+          width: 140,
+            pinnedLeft: true
         }, {
           name: 'golCasa',
           displayName: ' ',
           field: 'golCasa',
-          width: 35
+          width: 35,
+            pinnedLeft: true
         }, {
           name: 'golTrasferta',
           displayName: ' ',
           field: 'golTrasferta',
-          width: 35
+          width: 35,
+            pinnedLeft: true
         }, {
           name: 'percWin',
           displayName: '%1',
@@ -2909,7 +2930,7 @@
           displayName: '%2',
           field: 'percLoss',
           width: 55
-        }, {
+        }, /* {
           name: 'perc1X',
           displayName: '%1X',
           field: 'perc1X',
@@ -2924,7 +2945,7 @@
           displayName: '%12',
           field: 'perc12',
           width: 55
-        }, {
+        }, */ {
           name: 'percgg',
           displayName: '%GG',
           field: 'percgg',
@@ -3256,9 +3277,9 @@
                   tmp.percDraw = Math.round(((propDrawHome + propDrawAway) / 2) * 100) / 100;
                   tmp.percLoss = Math.round(((propLossHome + propWinAway) / 2) * 100) / 100;
 
-                  tmp.perc1X = Math.round((tmp.percWin + tmp.percDraw) * 100) / 100;
-                  tmp.perc12 = Math.round((tmp.percWin + tmp.percLoss) * 100) / 100;
-                  tmp.percX2 = Math.round((tmp.percDraw + tmp.percLoss) * 100) / 100;
+                 // tmp.perc1X = Math.round((tmp.percWin + tmp.percDraw) * 100) / 100;
+                //  tmp.perc12 = Math.round((tmp.percWin + tmp.percLoss) * 100) / 100;
+                //  tmp.percX2 = Math.round((tmp.percDraw + tmp.percLoss) * 100) / 100;
 
                   tmp.percgg = Math.round(((propGgHome + propGgAway) / 2) * 100) / 100;
                   tmp.percng = Math.round(((propNgHome + propNgAway) / 2) * 100) / 100;
