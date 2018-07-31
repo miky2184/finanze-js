@@ -421,6 +421,11 @@
         dto.salary = $scope.gridOptionsSalary.data.filter(function (row) {
           return row.dirty;
         });
+          
+           dto.risultati = $scope.gridOptionsNextGame.data.filter(function (row) {
+          return row.dirty;
+        });
+
 
         if ($scope.dirty) {
           var modalSavingInstance = $uibModal.open({
@@ -3197,7 +3202,9 @@
                   tmp.squadraTrasferta = obj['TEAM_AWAY'];
                   tmp.golCasa = obj['SCORE_HOME'];
                   tmp.golTrasferta = obj['SCORE_AWAY'];
-                    tmp.giocata = obj['GIOCATA'];
+                  tmp.giocata = obj['GIOCATA'] === 'T' ? true : false;
+                  tmp.season = $scope.season.value.id;
+                    tmp.giornata = $scope.giornata.value.id;
                   var winTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
                   var winHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
                   var winLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
