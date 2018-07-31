@@ -2916,6 +2916,14 @@
           width: 35,
             pinnedLeft: true
         }, {
+          name: 'giocata',
+          displayName: 'Gioc.',
+          field: 'giocata',
+          width: 35,
+            pinnedLeft: true,
+            cellTemplate: 'templates/rows/checkboxIcon.html',
+            buttonNgClass: 'fas fa-futbol'
+        }, {
           name: 'percWin',
           displayName: '%1',
           field: 'percWin',
@@ -2979,6 +2987,8 @@
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridOptionsNextGame.gridApi = gridApi;
+            
+            gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
         }
       };
 
@@ -3187,6 +3197,7 @@
                   tmp.squadraTrasferta = obj['TEAM_AWAY'];
                   tmp.golCasa = obj['SCORE_HOME'];
                   tmp.golTrasferta = obj['SCORE_AWAY'];
+                    tmp.giocata = obj['GIOCATA'];
                   var winTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
                   var winHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
                   var winLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
