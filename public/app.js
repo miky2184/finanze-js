@@ -2878,6 +2878,10 @@
 
         $scope.editableCondition = function editableCondition(rowEntity, colDef) {
             
+            if (rowEntity.giocata && new Date($scope.dataGameNext) < new Date()){
+                return false;
+                }
+            
             if ( colDef.name === 'golCasa' || colDef.name === 'golTrasferta'){
                 return true;
             }
@@ -3195,7 +3199,7 @@
                 resp.data.map(function (obj) {
                   var tmp = {};
                   $scope.giornNext = obj['GIORNATA'];
-                  $scope.dataGameNext = obj['DATA_GAME'];
+                  $scope.dataGameNext = obj['DATA_GAME'].substr(0, 10);
                   tmp.idHome = obj['ID_HOME'];
                   tmp.squadraCasa = obj['TEAM_HOME'];
                   tmp.idAway = obj['ID_AWAY'];
@@ -3204,7 +3208,7 @@
                   tmp.golTrasferta = obj['SCORE_AWAY'];
                   tmp.giocata = obj['GIOCATA'] === 'T' ? true : false;
                   tmp.season = $scope.season.value.id;
-                    tmp.giornata = $scope.giornata.value.id;
+                  tmp.giornata = $scope.giornata.value.id;
                   var winTotPercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
                   var winHomePercHome = utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue($scope.dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
                   var winLastFiveHome = utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue($scope.dataLastFiveGame, tmp.idHome, 'giornata') * 100;
