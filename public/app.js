@@ -3333,19 +3333,19 @@
                         name: 'ID',
                         displayName: 'ID',
                         field: 'ID',
-                        width: 140,
+                        width: 30,
                         pinnedLeft: true
                 },{
                         name: 'RUOLO',
                         displayName: 'R',
                         field: 'RUOLO',
-                        width: 140,
+                        width: 30,
                         pinnedLeft: true
                 },{
                         name: 'GIOCATORE',
                         displayName: 'Giocatore',
                         field: 'GIOCATORE',
-                        width: 140,
+                        width: 200,
                         pinnedLeft: true
                 },{
                         name: 'TEAM_NAME',
@@ -3357,56 +3357,142 @@
                         name: 'VALORE_ACQUISTO',
                         displayName: 'Val. Acqs.',
                         field: 'VALORE_ACQUISTO',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'PG_TOT',
                         displayName: 'PT',
                         field: 'PG_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'MEDIA_MAGIC_TOT',
                         displayName: 'Magic Media',
                         field: 'MEDIA_MAGIC_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'MEDIA_VOTO_TOT',
                         displayName: 'Media Voto',
                         field: 'MEDIA_VOTO_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'GOL_TOT',
                         displayName: 'Gol',
                         field: 'GOL_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'ASSIST_TOT',
                         displayName: 'Assist',
                         field: 'ASSIST_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'RIGORE_TOT',
                         displayName: 'Rig.',
                         field: 'RIGORE_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
+                },{
+                        name: 'AUTORETE_TOT',
+                        displayName: 'Autorete',
+                        field: 'AUTORETE_TOT',
+                        width: 50
                 },{
                         name: 'AMMONIZIONE_TOT',
                         displayName: 'Amm.',
                         field: 'AMMONIZIONE_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
                 },{
                         name: 'ESPULSIONE_TOT',
                         displayName: 'Esp.',
                         field: 'ESPULSIONE_TOT',
-                        width: 140,
-                        pinnedLeft: true
+                        width: 50
+                },{
+                        name: 'PG_HOME',
+                        displayName: 'PTH',
+                        field: 'PG_HOME',
+                        width: 50
+                },{
+                        name: 'MEDIA_MAGIC_HOME',
+                        displayName: 'Magic Media Home',
+                        field: 'MEDIA_MAGIC_HOME',
+                        width: 50
+                },{
+                        name: 'MEDIA_VOTO_HOME',
+                        displayName: 'Media Voto Home',
+                        field: 'MEDIA_VOTO_HOME',
+                        width: 50
+                },{
+                        name: 'GOL_HOME',
+                        displayName: 'Gol Home',
+                        field: 'GOL_HOME',
+                        width: 50
+                },{
+                        name: 'ASSIST_HOME',
+                        displayName: 'Assist Home',
+                        field: 'ASSIST_HOME',
+                        width: 50
+                },{
+                        name: 'RIGORE_HOME',
+                        displayName: 'Rig. Home',
+                        field: 'RIGORE_HOME',
+                        width: 50
+                },{
+                        name: 'AUTORETE_HOME',
+                        displayName: 'Autorete Home',
+                        field: 'AUTORETE_HOME',
+                        width: 50
+                },{
+                        name: 'AMMONIZIONE_HOME',
+                        displayName: 'Amm. Home',
+                        field: 'AMMONIZIONE_HOME',
+                        width: 50
+                },{
+                        name: 'ESPULSIONE_HOME',
+                        displayName: 'Esp. Home',
+                        field: 'ESPULSIONE_HOME',
+                        width: 50
+                },{
+                        name: 'PG_AWAY',
+                        displayName: 'PTH',
+                        field: 'PG_AWAY',
+                        width: 50
+                },{
+                        name: 'MEDIA_MAGIC_AWAY',
+                        displayName: 'Magic Media AWAY',
+                        field: 'MEDIA_MAGIC_AWAY',
+                        width: 50
+                },{
+                        name: 'MEDIA_VOTO_AWAY',
+                        displayName: 'Media Voto AWAY',
+                        field: 'MEDIA_VOTO_AWAY',
+                        width: 50
+                },{
+                        name: 'GOL_AWAY',
+                        displayName: 'Gol AWAY',
+                        field: 'GOL_AWAY',
+                        width: 50
+                },{
+                        name: 'ASSIST_AWAY',
+                        displayName: 'Assist AWAY',
+                        field: 'ASSIST_AWAY',
+                        width: 50
+                },{
+                        name: 'RIGORE_AWAY',
+                        displayName: 'Rig. AWAY',
+                        field: 'RIGORE_AWAY',
+                        width: 50
+                },{
+                        name: 'AUTORETE_AWAY',
+                        displayName: 'Autorete AWAY',
+                        field: 'AUTORETE_AWAY',
+                        width: 50
+                },{
+                        name: 'AMMONIZIONE_AWAY',
+                        displayName: 'Amm. AWAY',
+                        field: 'AMMONIZIONE_AWAY',
+                        width: 50
+                },{
+                        name: 'ESPULSIONE_AWAY',
+                        displayName: 'Esp. AWAY',
+                        field: 'ESPULSIONE_AWAY',
+                        width: 50
                 }]
                 };
             
