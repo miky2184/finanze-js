@@ -1,0 +1,15 @@
+<div layout="column">
+    <div flex="5" layout="row" layout-align="center center">
+        <div flex="20" layout="column">
+            <md-select placeholder="Fantacalcio" ng-model="fanta.value" ng-model-options="{trackBy: $value.id}" style="min-width: 200px;" ng-change="loadFantaRosa()">
+                <md-option ng-value="fanta" ng-repeat="fanta in fantacalcio">{{fanta.name}}</md-option>
+            </md-select>
+        </div>        
+    </div>
+    <div flex="95" layout="row">
+        <div flex layout="column">
+            <p class="table-header"><strong>FM PANDATHINAIKOS - {{fanta.value.name}}</strong></p>
+            <div flex layout="row" id="grid1" ui-grid="gridOptionsPandathinaikos"  ui-grid-pinning></div>
+        </div>        
+    </div>
+</div>
