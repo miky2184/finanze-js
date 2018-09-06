@@ -3372,6 +3372,7 @@
                     name: 'PG_TOT',
                     displayName: 'Gioc.',
                     field: 'PG_TOT',
+                    cellClass: 'text-right',
                     width: 50
                 }, {
                     name: 'MEDIA_MAGIC_TOT',
@@ -3557,6 +3558,7 @@
                         return $http.get('http://2.225.127.144:3001/fantafighettino').then(function (resp) {
                             $scope.gridOptionsPandathinaikos.data = resp.data;
                         });
+                        break;
                 }
                 $interval($scope.gridOptionsPandathinaikos.gridApi.core.handleWindowResize, 100, 10);
             };
