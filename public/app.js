@@ -3333,7 +3333,7 @@
                         name: 'ID',
                         displayName: 'ID',
                         field: 'ID',
-                        width: 30,
+                        width: 50,
                         pinnedLeft: true
                 },{
                         name: 'RUOLO',
@@ -3345,7 +3345,7 @@
                         name: 'GIOCATORE',
                         displayName: 'Giocatore',
                         field: 'GIOCATORE',
-                        width: 200,
+                        width: '*',
                         pinnedLeft: true
                 },{
                         name: 'TEAM_NAME',
@@ -3409,14 +3409,14 @@
                         field: 'PG_HOME',
                         width: 50
                 },{
-                        name: 'MEDIA_MAGIC_HOME',
+                        name: 'MEDIA_MAGIC_PUNTI_HOME',
                         displayName: 'Magic Media Home',
-                        field: 'MEDIA_MAGIC_HOME',
+                        field: 'MEDIA_MAGIC_PUNTI_HOME',
                         width: 50
                 },{
-                        name: 'MEDIA_VOTO_HOME',
+                        name: 'MEDIA_VOTO_PAGELLA_HOME',
                         displayName: 'Media Voto Home',
-                        field: 'MEDIA_VOTO_HOME',
+                        field: 'MEDIA_VOTO_PAGELLA_HOME',
                         width: 50
                 },{
                         name: 'GOL_HOME',
@@ -3454,14 +3454,14 @@
                         field: 'PG_AWAY',
                         width: 50
                 },{
-                        name: 'MEDIA_MAGIC_AWAY',
+                        name: 'MEDIA_MAGIC_PUNTI_HOME',
                         displayName: 'Magic Media AWAY',
-                        field: 'MEDIA_MAGIC_AWAY',
+                        field: 'MEDIA_MAGIC_PUNTI_HOME',
                         width: 50
                 },{
-                        name: 'MEDIA_VOTO_AWAY',
+                        name: 'MEDIA_VOTO_PAGELLA_HOME',
                         displayName: 'Media Voto AWAY',
-                        field: 'MEDIA_VOTO_AWAY',
+                        field: 'MEDIA_VOTO_PAGELLA_HOME',
                         width: 50
                 },{
                         name: 'GOL_AWAY',
