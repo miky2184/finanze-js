@@ -10,7 +10,7 @@
 
           modalService.showSearchingModal();
 
-          return $http.get('http://2.225.127.144:3001/ambito').then(function (response) {
+          return $http.get('http://93.55.248.37:3001/ambito').then(function (response) {
             if (response.data) {
               response.data.unshift({
                 "ambito": "null",
@@ -19,7 +19,7 @@
             }
             $scope.editDropDownAmbitoArray = response.data;
 
-            return $http.get('http://2.225.127.144:3001/categoria').then(function (response) {
+            return $http.get('http://93.55.248.37:3001/categoria').then(function (response) {
               if (response.data) {
                 response.data.unshift({
                   "categoria": "null",
@@ -28,7 +28,7 @@
               }
               $scope.editDropDownCategoriaArray = response.data;
 
-              return $http.get('http://2.225.127.144:3001/sottocategoria').then(function (response) {
+              return $http.get('http://93.55.248.37:3001/sottocategoria').then(function (response) {
                 if (response.data) {
                   response.data.unshift({
                     "sottocategoria": "null",
@@ -37,7 +37,7 @@
                 }
                 $scope.editDropDownSottoCategoriaArray = response.data;
 
-                return $http.get('http://2.225.127.144:3001/beneficiario').then(function (response) {
+                return $http.get('http://93.55.248.37:3001/beneficiario').then(function (response) {
                   if (response.data) {
                     response.data.unshift({
                       "beneficiario": "null",
@@ -46,13 +46,13 @@
                   }
                   $scope.editDropDownBeneficiarioArray = response.data;
 
-                  return $http.get('http://2.225.127.144:3001/tipoConto').then(function (response) {
+                  return $http.get('http://93.55.248.37:3001/tipoConto').then(function (response) {
                     $scope.editDropDownTipoContoArray = response.data;
 
-                    return $http.get('http://2.225.127.144:3001/conto').then(function (response) {
+                    return $http.get('http://93.55.248.37:3001/conto').then(function (response) {
                       $scope.editDropDownContoArray = response.data;
 
-                      return $http.get('http://2.225.127.144:3001/all').
+                      return $http.get('http://93.55.248.37:3001/all').
                       then(function (response) {
 
                         $scope.login.logged = true;
@@ -84,7 +84,7 @@
                         $scope.backupData = angular.copy(resultsData);
 
                         $scope.gridOptions.data = resultsData;
-                    
+
                         $scope.gridOptions.columnDefs[1].editDropdownOptionsArray = $scope.editDropDownAmbitoArray;
                         $scope.gridOptions.columnDefs[2].editDropdownOptionsArray = $scope.editDropDownCategoriaArray;
                         $scope.gridOptions.columnDefs[3].editDropdownOptionsArray = $scope.editDropDownSottoCategoriaArray;
