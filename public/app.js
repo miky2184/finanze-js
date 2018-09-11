@@ -3354,7 +3354,7 @@
           name: 'GIOCATORE',
           displayName: 'Giocatore',
           field: 'GIOCATORE',
-          width: '*',
+          width: 200,
           pinnedLeft: true
                 }, {
           name: 'TEAM_NAME',
