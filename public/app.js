@@ -2763,14 +2763,14 @@
           width: 120,
           pinnedLeft: true
         }, {
-          name: 'giornata',
-          displayName: '#G',
-          field: 'giornata',
-          width: 35
-        }, {
           name: 'punti',
           displayName: 'Punti',
           field: 'punti',
+          width: 35
+        }, {
+          name: 'giornata',
+          displayName: '#G',
+          field: 'giornata',
           width: 35
         }, {
           name: 'vtot',
@@ -2798,16 +2798,16 @@
           field: 'gs',
           width: 35
         }, {
-          name: 'giornataHome',
-          displayName: '#GC',
-          field: 'giornataHome',
-          width: 35
-        }, {
           name: 'puntic',
           displayName: 'Punti Casa',
           field: 'puntic',
           width: 35
-        }, {
+        },{
+          name: 'giornataHome',
+          displayName: '#GC',
+          field: 'giornataHome',
+          width: 35
+        },  {
           name: 'vc',
           displayName: 'VC',
           field: 'vc',
@@ -2833,16 +2833,16 @@
           field: 'gsc',
           width: 35
         }, {
-          name: 'giornataAway',
-          displayName: '#GT',
-          field: 'giornataAway',
-          width: 35
-        }, {
           name: 'puntit',
           displayName: 'Punti Trasferta',
           field: 'puntit',
           width: 35
-        }, {
+        },{
+          name: 'giornataAway',
+          displayName: '#GT',
+          field: 'giornataAway',
+          width: 35
+        },  {
           name: 'vt',
           displayName: 'VT',
           field: 'vt',
