@@ -1,5 +1,5 @@
 <div layout="column" class="listaMovimenti">
-  <div flex layout="row" id="grid1" ui-grid="gridOptions" ui-grid-selection ui-grid-cellnav ui-grid-edit></div>
+  <div flex layout="row" id="grid1" ui-grid="gridOptions" ui-grid-selection ui-grid-cellnav ui-grid-edit ui-grid-auto-resize></div>
   <div flex layout="row" layout-align="start end">
     <md-button layout="column" ng-repeat="button in actionButtons" class="md-fab md-mini md-primary aria-label" style='margin-left: 0px;'  ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">
       <md-icon md-svg-src="{{button.src}}"></md-icon>

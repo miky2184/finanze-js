@@ -6,4 +6,4 @@
   <select name="contoSelect" id="repeatCnSelect" ng-options="tipoConto.tipoConto as tipoConto.label for tipoConto in editDropDownTipoContoArray" ng-model="pivot.tipoConto" ng-change="loadPivotAnno()">
 </select>
 </div>
-<div id="grid3" ui-grid="gridOptionPivotAnno" ui-grid-tree-view class="myGrid"></div>
+<div id="grid3" ui-grid="gridOptionPivotAnno" class="myGrid" ui-grid-tree-view ui-grid-auto-resize ></div>

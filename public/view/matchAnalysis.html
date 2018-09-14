@@ -17,11 +17,11 @@
     <div flex="95" layout="row">
         <div flex="50" layout="column">
             <p class="table-header"><strong>Classifica</strong></p>
-            <div flex layout="row" id="grid1" ui-grid="gridOptionsClassifica"  ui-grid-pinning></div>
+            <div flex layout="row" id="grid1" ui-grid="gridOptionsClassifica"  ui-grid-pinning ui-grid-auto-resize></div>
         </div>
         <div flex="50" layout="column">
             <p class="table-header"><strong>STAGIONE: {{season.value.name}} - GIORNATA: {{giornNext}} del {{dataGameNext}}</strong></p>
-            <div flex layout="row" id="grid3" ui-grid="gridOptionsNextGame"  ui-grid-edit  ui-grid-pinning></div>
+            <div flex layout="row" id="grid3" ui-grid="gridOptionsNextGame"  ui-grid-edit  ui-grid-pinning ui-grid-auto-resize></div>
         </div>
     </div>
 </div>

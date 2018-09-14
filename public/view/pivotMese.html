@@ -1,7 +1,7 @@
 <div class="col-md-3"><label for="yearSelect"> Seleziona un anno: </label>
   <select name="yearSelect" id="repeatSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadPivotMese()">  
 </select>
-  <div id="grid4" ui-grid="gridOptionPivotMese" class="myGrid"></div>
+  <div id="grid4" ui-grid="gridOptionPivotMese" class="myGrid" ui-grid-auto-resize></div>
 </div>
 <div class="col-md-9">
   <nvd3 options="optionsMese" data="dataMese" config="{deepWatchData: true, refreshDataOnly: false}" api="apiPivotMese" on-ready="callbackPivotMese"></nvd3>
