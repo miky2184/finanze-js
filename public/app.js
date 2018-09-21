@@ -1098,8 +1098,8 @@
 
         $scope.editDropDownSottoCategoriaArray.forEach(function (sottocategoria) {
 
-          var obj = {
-            'idSott': sottocategoria.sottocategoria,
+          var obj = {                        
+            'idSott': sottocategoria.sottocategoria,              
             'sottocategoria': sottocategoria.label,
             '1': 0,
             '2': 0,
@@ -1116,7 +1116,7 @@
           };
 
           for (var x = 0; x < balanceData.length; x++) {
-            if (balanceData[x].sottocategoria === sottocategoria.sottocategoria) {
+            if (balanceData[x].categoria === sottocategoria.categoria && balanceData[x].sottocategoria === sottocategoria.sottocategoria) {
               obj.idAmb = balanceData[x].ambito;
               obj.idCat = balanceData[x].categoria;
               switch (balanceData[x].mese) {
