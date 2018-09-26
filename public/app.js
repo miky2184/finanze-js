@@ -943,8 +943,10 @@
         });
 
         var pivotData = [];
-
-        balanceData = utilService.sortByKey(balanceData, 'ambito');
+          
+        balanceData = utilService.sortByKey(balanceData, 'sottocategoria');
+        balanceData = utilService.sortByKey(balanceData, 'categoria');
+        balanceData = utilService.sortByKey(balanceData, 'ambito');    
 
         var ambitoData = [];
 
@@ -1015,7 +1017,9 @@
 
         });
 
+          balanceData = utilService.sortByKey(balanceData, 'sottocategoria');
         balanceData = utilService.sortByKey(balanceData, 'categoria');
+        
 
         var categoryData = [];
 
@@ -1040,7 +1044,7 @@
           };
 
           for (var x = 0; x < balanceData.length; x++) {
-            if (balanceData[x].categoria === categoria.categoria) {
+            if (balanceData[x].ambito === categoria.ambito && balanceData[x].categoria === categoria.categoria) {
               obj.idAmb = balanceData[x].ambito;
               switch (balanceData[x].mese) {
                 case 1:
@@ -1188,8 +1192,8 @@
           }
         };
 
-        categoryData = removeDuplicates(categoryData, 'idCat');
-        sottocategoryData = removeDuplicates(sottocategoryData, 'idSott');
+        // categoryData = removeDuplicates(categoryData, 'idCat');
+        // sottocategoryData = removeDuplicates(sottocategoryData, 'idSott');
 
         var tmpData = [];
         for (var x = 0; x < ambitoData.length; x++) {
@@ -1208,7 +1212,8 @@
           }
         }
 
-        $scope.gridOptionPivotAnno.data = pivotData;
+        pivotData.shift();
+          $scope.gridOptionPivotAnno.data = pivotData;
         $interval($scope.gridOptionPivotAnno.gridApi.core.handleWindowResize, 100, 10);
         $timeout(function () {
           $scope.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
