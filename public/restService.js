@@ -65,8 +65,7 @@
                           newRow.data = new Date(row['DATA_VAL']);
                           newRow.ambito = row['AMBITO'];
                           newRow.categoria = row['CATEGORIA'];
-                          newRow.sottocategoria = row['SOTTOCATEGORIA'];
-                          // newRow.prodotto = row['PRODOTTO'];
+                          newRow.sottocategoria = row['SOTTOCATEGORIA'];                          
                           newRow.beneficiario = row['BENEFICIARIO'];
                           newRow.tipoConto = row['TP_CONTO'];
                           newRow.conto = row['CONTO'];
@@ -74,7 +73,7 @@
                           newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
                           newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
                           newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
-                            newRow.contabilizzata = row['FISSA'] === 'SI' ? true : false;
+                          newRow.fissa = row['FISSA'] === 'SI' ? true : false;
                           newRow.importo = row['VALUE'];
                           newRow.info = row['INFO'];
                           newRow.anno = new Date(row['DATA_VAL']).getFullYear();
