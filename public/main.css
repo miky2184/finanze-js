@@ -284,3 +284,27 @@ label-settings {
     display: inline-block;
     vertical-align: top;
 }
+
+.icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    margin: 10px;
+  }
+.webapp::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f2c6";
+  }
+.contabilizzata::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f24e";
+  }
+.visualizzare::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f06e";
+  }
+.cartacredito::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f09d";
+  }
+.fissa::before {
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f02e";
+  }

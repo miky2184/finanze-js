@@ -98,263 +98,278 @@
       };
 
       $scope.gridOptions = {
-        columnVirtualizationThreshold: 100,
-        showGridFooter: true,
-        showColumnFooter: true,
-        minRowsToShow: 21,
-        // enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
-        enableFiltering: true,
-        enableRowSelection: true,
-        enableSelectAll: true,
-        selectionRowHeaderWidth: 35,
-        rowTemplate: 'templates/rows/deletableRow.html',
-        enableColumnMenus: false,
-        columnDefs: [
-          {
-            field: 'data',
-            width: 90,
-            type: 'date',
-            cellFilter: 'date:\'yyyy-MM-dd\''
+          columnVirtualizationThreshold: 100,
+          showGridFooter: true,
+          showColumnFooter: true,
+          minRowsToShow: 21,          
+          enableFiltering: true,
+          enableRowSelection: true,
+          enableSelectAll: true,
+          selectionRowHeaderWidth: 35,
+          rowTemplate: 'templates/rows/deletableRow.html',
+          enableColumnMenus: false,
+          columnDefs: [
+              {
+                  field: 'data',
+                  width: 90,
+                  type: 'date',
+                  cellFilter: 'date:\'yyyy-MM-dd\''
             },
-          {
-            name: 'ambito',
-            displayName: 'Ambito',
-            field: 'ambito',
-            width: 100,
-            editableCellTemplate: 'templates/rows/dropdownEditor.html',
-            editDropdownIdLabel: 'ambito',
-            editDropdownValueLabel: 'label',
-            cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
-            editDropdownOptionsFunction: function (rowEntity, colDef) {
-              return $scope.editDropDownAmbitoArray.filter(function (a) {
-                return !a.deleted;
-              });
-            },
-            filter: {
-              condition: function (searchTerm, cellValue, row, column) {
-                if (row.grid.appScope.$parent.editDropDownAmbitoArray) {
-                  var cell = row.grid.appScope.$parent.editDropDownAmbitoArray.filter(function (ambito) {
-                    return ambito.ambito === cellValue;
-                  });
-                  if (cell && cell.length > 0) {
-                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                  } else {
-                    return false;
+              {
+                  name: 'ambito',
+                  displayName: 'Ambito',
+                  field: 'ambito',
+                  width: 100,
+                  editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                  editDropdownIdLabel: 'ambito',
+                  editDropdownValueLabel: 'label',
+                  cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
+                  editDropdownOptionsFunction: function (rowEntity, colDef) {
+                      return $scope.editDropDownAmbitoArray.filter(function (a) {
+                          return !a.deleted;
+                      });
+                  },
+                  filter: {
+                      condition: function (searchTerm, cellValue, row, column) {
+                          if (row.grid.appScope.$parent.editDropDownAmbitoArray) {
+                              var cell = row.grid.appScope.$parent.editDropDownAmbitoArray.filter(function (ambito) {
+                                  return ambito.ambito === cellValue;
+                              });
+                              if (cell && cell.length > 0) {
+                                  return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                              } else {
+                                  return false;
+                              }
+                          }
+                      }
                   }
-                }
-              }
-            }
             },
-          {
-            name: 'categoria',
-            displayName: 'Categoria',
-            field: 'categoria',
-            width: 150,
-            editableCellTemplate: 'templates/rows/dropdownEditor.html',
-            editDropdownIdLabel: 'categoria',
-            editDropdownValueLabel: 'label',
-            cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
-            editDropdownOptionsFunction: function (rowEntity, colDef) {
-              if (rowEntity.ambito) {
-                return $scope.editDropDownCategoriaArray.filter(function (obj) {
-                  return obj.ambito === rowEntity.ambito && !obj.deleted;
-                });
-              }
-              return []; //$scope.editDropDownCategoriaArray;
-            },
-            filter: {
-              condition: function (searchTerm, cellValue, row, column) {
-                if (row.grid.appScope.$parent.editDropDownCategoriaArray) {
-                  var cell = row.grid.appScope.$parent.editDropDownCategoriaArray.filter(function (categoria) {
-                    return categoria.categoria === cellValue;
-                  });
-                  if (cell && cell.length > 0) {
-                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                  } else {
-                    return false;
+              {
+                  name: 'categoria',
+                  displayName: 'Categoria',
+                  field: 'categoria',
+                  width: 150,
+                  editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                  editDropdownIdLabel: 'categoria',
+                  editDropdownValueLabel: 'label',
+                  cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
+                  editDropdownOptionsFunction: function (rowEntity, colDef) {
+                      if (rowEntity.ambito) {
+                          return $scope.editDropDownCategoriaArray.filter(function (obj) {
+                              return obj.ambito === rowEntity.ambito && !obj.deleted;
+                          });
+                      }
+                      return []; //$scope.editDropDownCategoriaArray;
+                  },
+                  filter: {
+                      condition: function (searchTerm, cellValue, row, column) {
+                          if (row.grid.appScope.$parent.editDropDownCategoriaArray) {
+                              var cell = row.grid.appScope.$parent.editDropDownCategoriaArray.filter(function (categoria) {
+                                  return categoria.categoria === cellValue;
+                              });
+                              if (cell && cell.length > 0) {
+                                  return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                              } else {
+                                  return false;
+                              }
+                          }
+                      }
                   }
-                }
-              }
-            }
             },
-          {
-            name: 'sottocategoria',
-            displayName: 'Sottocategoria',
-            field: 'sottocategoria',
-            width: 200,
-            editableCellTemplate: 'templates/rows/dropdownEditor.html',
-            editDropdownIdLabel: 'sottocategoria',
-            editDropdownValueLabel: 'label',
-            cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',
-            editDropdownOptionsFunction: function (rowEntity, colDef) {
-              if (rowEntity.categoria) {
-                return $scope.editDropDownSottoCategoriaArray.filter(function (obj) {
-                  return obj.categoria === rowEntity.categoria && !obj.deleted;
-                });
-              }
-              return [];
-            },
-            filter: {
-              condition: function (searchTerm, cellValue, row, column) {
-                if (row.grid.appScope.$parent.editDropDownSottoCategoriaArray) {
-                  var cell = row.grid.appScope.$parent.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
-                    return sottocategoria.sottocategoria === cellValue;
-                  });
-                  if (cell && cell.length > 0) {
-                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                  } else {
-                    return false;
+              {
+                  name: 'sottocategoria',
+                  displayName: 'Sottocategoria',
+                  field: 'sottocategoria',
+                  width: 200,
+                  editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                  editDropdownIdLabel: 'sottocategoria',
+                  editDropdownValueLabel: 'label',
+                  cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',
+                  editDropdownOptionsFunction: function (rowEntity, colDef) {
+                      if (rowEntity.categoria) {
+                          return $scope.editDropDownSottoCategoriaArray.filter(function (obj) {
+                              return obj.categoria === rowEntity.categoria && !obj.deleted;
+                          });
+                      }
+                      return [];
+                  },
+                  filter: {
+                      condition: function (searchTerm, cellValue, row, column) {
+                          if (row.grid.appScope.$parent.editDropDownSottoCategoriaArray) {
+                              var cell = row.grid.appScope.$parent.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
+                                  return sottocategoria.sottocategoria === cellValue;
+                              });
+                              if (cell && cell.length > 0) {
+                                  return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                              } else {
+                                  return false;
+                              }
+                          }
+                      }
                   }
-                }
-              }
-            }
             },
-          {
-            name: 'beneficiario',
-            displayName: 'Beneficiario',
-            field: 'beneficiario',
-            width: 200,
-            editableCellTemplate: 'templates/rows/dropdownEditor.html',
-            editDropdownIdLabel: 'beneficiario',
-            editDropdownValueLabel: 'label',
-            cellFilter: 'map:row.grid.appScope.$parent.editDropDownBeneficiarioArray:"beneficiario":"label"',
-            editDropdownOptionsFunction: function () {
-              return $scope.editDropDownBeneficiarioArray;
-            },
-            filter: {
-              condition: function (searchTerm, cellValue, row, column) {
-                if (row.grid.appScope.$parent.editDropDownBeneficiarioArray) {
-                  var cell = row.grid.appScope.$parent.editDropDownBeneficiarioArray.filter(function (beneficiario) {
-                    return beneficiario.beneficiario === cellValue;
-                  });
-                  if (cell && cell.length > 0) {
-                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                  } else {
-                    return false;
+              {
+                  name: 'beneficiario',
+                  displayName: 'Beneficiario',
+                  field: 'beneficiario',
+                  width: 200,
+                  editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                  editDropdownIdLabel: 'beneficiario',
+                  editDropdownValueLabel: 'label',
+                  cellFilter: 'map:row.grid.appScope.$parent.editDropDownBeneficiarioArray:"beneficiario":"label"',
+                  editDropdownOptionsFunction: function () {
+                      return $scope.editDropDownBeneficiarioArray;
+                  },
+                  filter: {
+                      condition: function (searchTerm, cellValue, row, column) {
+                          if (row.grid.appScope.$parent.editDropDownBeneficiarioArray) {
+                              var cell = row.grid.appScope.$parent.editDropDownBeneficiarioArray.filter(function (beneficiario) {
+                                  return beneficiario.beneficiario === cellValue;
+                              });
+                              if (cell && cell.length > 0) {
+                                  return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                              } else {
+                                  return false;
+                              }
+                          }
+                      }
                   }
-                }
-              }
-            }
             },
-          {
-            name: 'tipoConto',
-            displayName: 'Tipo Conto',
-            field: 'tipoConto',
-            width: 160,
-            editableCellTemplate: 'templates/rows/dropdownEditor.html',
-            editDropdownIdLabel: 'tipoConto',
-            editDropdownValueLabel: 'label',
-            cellFilter: 'map:row.grid.appScope.$parent.editDropDownTipoContoArray:"tipoConto":"label"',
-            editDropdownOptionsFunction: function () {
-              return $scope.editDropDownTipoContoArray;
-            },
-            filter: {
-              condition: function (searchTerm, cellValue, row, column) {
-                if (row.grid.appScope.$parent.editDropDownTipoContoArray) {
-                  var cell = row.grid.appScope.$parent.editDropDownTipoContoArray.filter(function (tipoConto) {
-                    return tipoConto.tipoConto === cellValue;
-                  });
-                  if (cell && cell.length > 0) {
-                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                  } else {
-                    return false;
+              {
+                  name: 'tipoConto',
+                  displayName: 'Tipo Conto',
+                  field: 'tipoConto',
+                  width: 160,
+                  editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                  editDropdownIdLabel: 'tipoConto',
+                  editDropdownValueLabel: 'label',
+                  cellFilter: 'map:row.grid.appScope.$parent.editDropDownTipoContoArray:"tipoConto":"label"',
+                  editDropdownOptionsFunction: function () {
+                      return $scope.editDropDownTipoContoArray;
+                  },
+                  filter: {
+                      condition: function (searchTerm, cellValue, row, column) {
+                          if (row.grid.appScope.$parent.editDropDownTipoContoArray) {
+                              var cell = row.grid.appScope.$parent.editDropDownTipoContoArray.filter(function (tipoConto) {
+                                  return tipoConto.tipoConto === cellValue;
+                              });
+                              if (cell && cell.length > 0) {
+                                  return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                              } else {
+                                  return false;
+                              }
+                          }
+                      }
                   }
-                }
-              }
-            }
             },
-          {
-            field: 'conto',
-            name: 'conto',
-            displayName: 'Conto',
-            width: 160,
-            editableCellTemplate: 'templates/rows/dropdownEditor.html',
-            editDropdownIdLabel: 'conto',
-            editDropdownValueLabel: 'label',
-            cellFilter: 'map:row.grid.appScope.$parent.editDropDownContoArray:"conto":"label"',
-            editDropdownOptionsFunction: function () {
-              return $scope.editDropDownContoArray;
-            },
-            filter: {
-              condition: function (searchTerm, cellValue, row, column) {
-                if (row.grid.appScope.$parent.editDropDownContoArray) {
-                  var cell = row.grid.appScope.$parent.editDropDownContoArray.filter(function (conto) {
-                    return conto.conto === cellValue;
-                  });
-                  if (cell && cell.length > 0) {
-                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                  } else {
-                    return false;
+              {
+                  field: 'conto',
+                  name: 'conto',
+                  displayName: 'Conto',
+                  width: 160,
+                  editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                  editDropdownIdLabel: 'conto',
+                  editDropdownValueLabel: 'label',
+                  cellFilter: 'map:row.grid.appScope.$parent.editDropDownContoArray:"conto":"label"',
+                  editDropdownOptionsFunction: function () {
+                      return $scope.editDropDownContoArray;
+                  },
+                  filter: {
+                      condition: function (searchTerm, cellValue, row, column) {
+                          if (row.grid.appScope.$parent.editDropDownContoArray) {
+                              var cell = row.grid.appScope.$parent.editDropDownContoArray.filter(function (conto) {
+                                  return conto.conto === cellValue;
+                              });
+                              if (cell && cell.length > 0) {
+                                  return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                              } else {
+                                  return false;
+                              }
+                          }
+                      }
                   }
-                }
-              }
-            }
             },
-          {
-            field: 'contabilizzata',
-            width: 35,
-            cellTooltip: true,
-            cellTemplate: 'templates/rows/checkboxIcon.html',
-            buttonNgClass: 'fas fa-balance-scale'
+              {
+                  field: 'contabilizzata',
+                  displayName: ' ',
+                  width: 35,
+                  cellTooltip: true,                  
+                  cellTemplate: 'templates/rows/checkboxIcon.html',
+                  buttonNgClass: 'fas fa-balance-scale',                  
+                  headerCellClass: 'icon contabilizzata'
             },
-          {
-            field: 'visualizzare',
-            width: 35,
-            cellTooltip: true,
-            cellTemplate: 'templates/rows/checkboxIcon.html',
-            buttonNgClass: 'fas fa-eye'
+              {
+                  field: 'visualizzare',
+                  displayName: ' ',
+                  width: 35,
+                  cellTooltip: true,                  
+                  cellTemplate: 'templates/rows/checkboxIcon.html',
+                  buttonNgClass: 'fas fa-eye',
+                  headerCellClass: 'icon visualizzare'
             },
-          {
-            field: 'cartaCredito',
-            width: 35,
-            cellTooltip: true,
-            cellTemplate: 'templates/rows/checkboxIcon.html',
-            buttonNgClass: 'far fa-credit-card'
+              {
+                  field: 'cartaCredito',
+                  displayName: ' ',
+                  width: 35,
+                  cellTooltip: true,                  
+                  cellTemplate: 'templates/rows/checkboxIcon.html',
+                  buttonNgClass: 'far fa-credit-card',
+                  headerCellClass: 'icon cartacredito'
             },
-          {
-            field: 'webapp',
-            width: 35,
-            cellTooltip: true,
-            cellTemplate: 'templates/rows/checkboxIcon.html',
-            buttonNgClass: 'fab fa-telegram-plane'
+              {
+                  field: 'webapp',
+                  displayName: ' ',
+                  width: 35,
+                  cellTooltip: true,                  
+                  cellTemplate: 'templates/rows/checkboxIcon.html',
+                  buttonNgClass: 'fab fa-telegram-plane',
+                  headerCellClass: 'icon webapp'
+            }, {
+                  field: 'fissa',
+                  displayName: ' ',
+                  width: 35,
+                  cellTooltip: true,                  
+                  cellTemplate: 'templates/rows/checkboxIcon.html',
+                  buttonNgClass: 'fas fa-bookmark',
+                  headerCellClass: 'icon fissa'
             },
-          {
-            field: 'importo',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
-            footerCellFilter: 'currency',
-            cellFilter: 'currency',
-            width: 120,
-            cellTooltip: true,
-            cellClass: 'text-right',
-            type: 'number'
+              {
+                  field: 'importo',
+                  aggregationType: uiGridConstants.aggregationTypes.sum,
+                  footerCellFilter: 'currency',
+                  cellFilter: 'currency',
+                  width: 120,
+                  cellTooltip: true,
+                  cellClass: 'text-right',
+                  type: 'number'
             },
-          {
-            field: 'info',
-            cellTooltip: true,
-            width: '*'
+              {
+                  field: 'info',
+                  cellTooltip: true,
+                  width: '*'
             },
-          {
-            field: 'anno',
-            diplayName: 'Anno',
-            width: 45
+              {
+                  field: 'anno',
+                  diplayName: 'Anno',
+                  width: 45
             },
-          {
-            field: 'mese',
-            diplayName: 'Mese',
-            width: 40
+              {
+                  field: 'mese',
+                  diplayName: 'Mese',
+                  width: 40
             }
 		],
-        data: [],
-        onRegisterApi: function (gridApi) {
-          $scope.gridOptions.gridApi = gridApi;
+          data: [],
+          onRegisterApi: function (gridApi) {
+              $scope.gridOptions.gridApi = gridApi;
 
-          gridApi.selection.on.rowSelectionChanged($scope, function (row) {});
+              gridApi.selection.on.rowSelectionChanged($scope, function (row) {});
 
-          gridApi.selection.on.rowSelectionChangedBatch($scope, function (rows) {});
+              gridApi.selection.on.rowSelectionChangedBatch($scope, function (rows) {});
 
-          gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditFunction);
+              gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditFunction);
 
-        }
+          }
       };
       $scope.alerts = [];
       $scope.accesso = function () {
@@ -465,7 +480,8 @@
             contabilizzata: true,
             visualizzare: true,
             cartaCredito: false,
-            webapp: false
+            webapp: false,
+              fissa: false
           });
         },
         disabled: function () {
@@ -509,7 +525,8 @@
           return $scope.login.read;
         }
       };
-      $scope.exportBtn = {
+      
+        /* $scope.exportBtn = {
         src: 'images/baseline-cloud_download-24px.svg',
         listener: function (gridOptions) {
           return $scope.salva().then(function (response) {
@@ -535,12 +552,12 @@
         disabled: function () {
           return false;
         }
-      };
+      }; */
 
       $scope.actionButtons.push($scope.addBtn);
       $scope.actionButtons.push($scope.deleteBtn);
       $scope.actionButtons.push($scope.copyBtn);
-      $scope.actionButtons.push($scope.exportBtn);
+      // $scope.actionButtons.push($scope.exportBtn);
 
       $scope.addSettingBtn = {
         label: '+',
