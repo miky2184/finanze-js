@@ -3584,6 +3584,68 @@
         }
         $interval($scope.gridOptionsPandathinaikos.gridApi.core.handleWindowResize, 100, 10);
       };
+        
+        /************************************************
+       *                  TAB REPORT MESE
+       ************************************************/
+
+      $scope.gridReportMese = {
+        columnVirtualizationThreshold: 100,
+        minRowsToShow: 23,
+        enableFiltering: false,
+        selectionRowHeaderWidth: 35,
+        enableSorting: false,
+        enableColumnMenus: false,
+        columnDefs: [{
+          name: 'DESC_AMB',
+          displayName: 'Ambito',
+          field: 'DESC_AMB',
+          width: '10%'
+            }, {
+          name: 'DESC_CAT',
+          displayName: 'Categoria',
+          field: 'DESC_CAT',
+          width: '10%'
+        }, {
+          name: 'DESC_SOT',
+          displayName: 'Sottocategoria',
+          field: 'DESC_SOT',
+          width: '10%'
+        }, {
+          name: 'TOTALE',
+          displayName: 'GENNAIO',
+          field: 'TOTALE',
+          width: '*',
+          aggregationType: uiGridConstants.aggregationTypes.sum,
+          footerCellFilter: 'currency',
+          cellFilter: 'currency'
+        } }],
+        data: [],
+        onRegisterApi: function (gridApi) {
+          $scope.gridReportMese.gridApi = gridApi;
+
+          $timeout(function () {
+            $scope.gridReportMese.gridApi.treeBase.expandAllRows();
+          }, 250);
+        }
+      };
+        
+        $scope.loadReportMese = function () {
+          var dto = {};
+        dto.tipoconto = $scope.season.value.id;  
+            
+            return $http.post('http://93.55.248.37:3001/login', dto).then(function (resp) {          
+          if (resp.data && resp.data.length > 0) {
+            resp.data.map(function(d){
+                return d.$$treeLevel = d['LIVELLO'] -1;
+            });
+          } 
+            gridReportMese.data = resp.data;    
+                
+        });
+            
+            
+        };            
 
 
           }])

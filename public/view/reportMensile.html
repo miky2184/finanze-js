@@ -1,0 +1,6 @@
+<div>
+  <label for="contoSelect">Seleziona una tipologia di conto:</label>
+  <select name="contoSelect" id="repeatCnSelect" ng-options="tipoConto.tipoConto as tipoConto.label for tipoConto in editDropDownTipoContoArray" ng-model="pivot.tipoConto" ng-change="loadReportMese()">
+</select>
+</div>
+<div id="gridReportMese" ui-grid="gridReportMese" class="myGrid" ui-grid-tree-view ui-grid-auto-resize ></div>
