@@ -3619,7 +3619,7 @@
           aggregationType: uiGridConstants.aggregationTypes.sum,
           footerCellFilter: 'currency',
           cellFilter: 'currency'
-        } }],
+        } ],
         data: [],
         onRegisterApi: function (gridApi) {
           $scope.gridReportMese.gridApi = gridApi;
