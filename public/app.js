@@ -3638,7 +3638,7 @@
             
             return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {          
           if (resp.data && resp.data.length > 0) {
-            gridReportMese.data = resp.data.map(function(d){
+            $scope.gridReportMese.data = resp.data.map(function(d){
                 d.$$treeLevel = d['LIVELLO'] -1;
                 return d;
             });
