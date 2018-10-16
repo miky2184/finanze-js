@@ -3613,7 +3613,7 @@
           width: '10%'
         }, {
           name: 'TOTALE',
-          displayName: 'GENNAIO',
+          displayName: 'TOT.',
           field: 'TOTALE',
           width: '*',
           aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -3632,9 +3632,9 @@
         
         $scope.loadReportMese = function () {
           var dto = {};
-        dto.tipoconto = $scope.season.value.id;  
+          dto.tipoconto = $scope.pivot.tipoConto;                      
             
-            return $http.post('http://93.55.248.37:3001/login', dto).then(function (resp) {          
+            return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {          
           if (resp.data && resp.data.length > 0) {
             resp.data.map(function(d){
                 return d.$$treeLevel = d['LIVELLO'] -1;
