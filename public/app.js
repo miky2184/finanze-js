@@ -3635,17 +3635,15 @@
 
             $scope.loadReportMese = function () {
                 var dto = {};
-                dto.tipoconto = $scope.pivot.tipoConto;
-                var data;
+                dto.tipoconto = $scope.pivot.tipoConto;                
                 return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
-                        data = resp.data.map(function (d) {
+                        $scope.gridReportMese.data = resp.data.map(function (d) {
                             d.$$treeLevel = d['LIVELLO'] - 1;
                             return d;
                         });
                     }
-                });
-                $scope.gridReportMese.data = data;
+                });                 
 
                 if ($scope.gridReportMese && $scope.gridReportMese.gridApi) {
                     $interval($scope.gridReportMese.gridApi.core.handleWindowResize, 100, 10);
