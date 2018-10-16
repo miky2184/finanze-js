@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('myApp', ['ngMaterial', 'ngMessages', 'ngTouch', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize'])
+  angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize'])
     .config(['$mdThemingProvider', function ($mdThemingProvider) {
       $mdThemingProvider.theme('default');
     }])
@@ -486,7 +486,8 @@
         },
         disabled: function () {
           return $scope.login.read;
-        }
+        },
+          label: 'Add'
       };
       $scope.deleteBtn = {
         src: 'images/baseline-remove_circle_outline-24px.svg',
@@ -503,7 +504,7 @@
         },
         disabled: function () {
           return $scope.login.read;
-        }
+        },label: 'Delete'
       };
       $scope.copyBtn = {
         src: 'images/baseline-file_copy-24px.svg',
@@ -523,7 +524,8 @@
         },
         disabled: function () {
           return $scope.login.read;
-        }
+        },
+          label: 'Copy'
       };
       
         /* $scope.exportBtn = {
@@ -612,7 +614,7 @@
         },
         disabled: function () {
           return $scope.login.read;
-        }
+        }, label: 'Add'
       };
       $scope.deleteSettingBtn = {
         label: '-',
@@ -627,7 +629,7 @@
         },
         disabled: function () {
           return $scope.login.read;
-        }
+        }, label: 'Remove'
       };
 
       $scope.settingButtons.push($scope.addSettingBtn);
