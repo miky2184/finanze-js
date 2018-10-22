@@ -3636,11 +3636,7 @@
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    $scope.gridReportMese.gridApi = gridApi;
-
-                    $timeout(function () {
-                        $scope.gridReportMese.gridApi.treeBase.expandAllRows();
-                    }, 500);
+                    $scope.gridReportMese.gridApi = gridApi;                    
                 }
             };
 
@@ -3653,7 +3649,7 @@
                 return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         $scope.gridReportMese.data = resp.data.map(function (d) {
-                            d.$$treeLevel = d['LIVELLO'] - 1;
+                            d.padre = d['LIVELLO'] - 1;
                             return d;
                         });
                     }
@@ -3661,11 +3657,7 @@
 
                 if ($scope.gridReportMese && $scope.gridReportMese.gridApi) {
                     $interval($scope.gridReportMese.gridApi.core.handleWindowResize, 100, 10);
-                }
-                
-                $timeout(function () {
-                        $scope.gridReportMese.gridApi.treeBase.expandAllRows();
-                    }, 500);
+                }                           
 
             };
 
