@@ -3659,6 +3659,10 @@
                 if ($scope.gridReportMese && $scope.gridReportMese.gridApi) {
                     $interval($scope.gridReportMese.gridApi.core.handleWindowResize, 100, 10);
                 }
+                
+                $timeout(function () {
+                        $scope.gridReportMese.gridApi.treeBase.expandAllRows();
+                    }, 500);
 
             };
 
