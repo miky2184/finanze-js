@@ -3594,6 +3594,14 @@
             /************************************************
              *                  TAB REPORT MESE
              ************************************************/
+            
+             $scope.checkReportMeseEditableCondition = function checkEditableCondition(scope) {
+                return $scope.editableReportMeseCondition(scope.row.entity, scope.col.colDef);
+            }
+
+            $scope.editableReportMeseCondition = function editableCondition(rowEntity, colDef) {            
+                return false;
+            }
 
             $scope.gridReportMese = {
                 columnVirtualizationThreshold: 100,
@@ -3602,6 +3610,7 @@
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableColumnMenus: false,
+                cellEditableCondition: $scope.checkReportMeseEditableCondition,
                 columnDefs: [{
                     name: 'DESC_AMB',
                     displayName: 'Ambito',
