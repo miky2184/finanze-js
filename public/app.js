@@ -3616,9 +3616,17 @@
                     width: '10%'
         }, {
                     name: 'TOTALE',
-                    displayName: 'TOT.',
+                    displayName: 'TOT. MESE',
                     field: 'TOTALE',
-                    width: '*',
+                    width: '10%',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
+        }, {
+                    name: 'TOTALE_MEDIO_ANNO',
+                    displayName: 'MEDIA ANNUA',
+                    field: 'TOTALE_MEDIO_ANNO',
+                    width: '10%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -3635,7 +3643,10 @@
 
             $scope.loadReportMese = function () {
                 var dto = {};
-                dto.tipoconto = $scope.pivot.tipoConto;                
+                dto.tipoconto = $scope.pivot.tipoConto;        
+                dto.mese = new Date().getMonth() + 1;
+                dto.anno = new Date().getFullYear();
+                
                 return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         $scope.gridReportMese.data = resp.data.map(function (d) {
