@@ -3649,7 +3649,9 @@
                 return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         $scope.gridReportMese.data = resp.data.map(function (d) {
-                            d.padre = d['LIVELLO'] - 1;
+                            if (d['LIVELLO'] > 0){
+                                d.padre = true;   
+                            }                            
                             return d;
                         });
                     }
