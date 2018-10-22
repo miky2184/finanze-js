@@ -3593,15 +3593,7 @@
 
             /************************************************
              *                  TAB REPORT MESE
-             ************************************************/
-            
-             $scope.checkReportMeseEditableCondition = function checkEditableCondition(scope) {
-                return $scope.editableReportMeseCondition(scope.row.entity, scope.col.colDef);
-            }
-
-            $scope.editableReportMeseCondition = function editableCondition(rowEntity, colDef) {            
-                return false;
-            }
+             ************************************************/                    
 
             $scope.gridReportMese = {
                 columnVirtualizationThreshold: 100,
@@ -3609,23 +3601,37 @@
                 enableFiltering: false,
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
-                enableColumnMenus: false,
-                cellEditableCondition: $scope.checkReportMeseEditableCondition,
+                enableColumnMenus: false,            
                 columnDefs: [{
                     name: 'DESC_AMB',
                     displayName: 'Ambito',
                     field: 'DESC_AMB',
-                    width: '10%'
+                    width: '10%',
+                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity.padre) {
+                            return 'padre';
+                        }
+                    }
             }, {
                     name: 'DESC_CAT',
                     displayName: 'Categoria',
                     field: 'DESC_CAT',
-                    width: '10%'
+                    width: '10%',
+                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity.padre) {
+                            return 'padre';
+                        }
+                    }
         }, {
                     name: 'DESC_SOT',
                     displayName: 'Sottocategoria',
                     field: 'DESC_SOT',
-                    width: '10%'
+                    width: '10%',
+                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity.padre) {
+                            return 'padre';
+                        }
+                    }
         }, {
                     name: 'TOTALE',
                     displayName: 'TOT. MESE',
@@ -3633,7 +3639,12 @@
                     width: '10%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency'
+                    cellFilter: 'currency',
+                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity.padre) {
+                            return 'padre-importo';
+                        }
+                    }
         }, {
                     name: 'TOTALE_MEDIO_ANNO',
                     displayName: 'MEDIA ANNUA',
@@ -3641,7 +3652,12 @@
                     width: '10%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency'
+                    cellFilter: 'currency',
+                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity.padre) {
+                            return 'padre-importo';
+                        }
+                    }
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {

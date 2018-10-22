@@ -27,12 +27,14 @@
   background-color: #d3f5d3
 }
 
-.ui-grid-row:nth-child(odd) .ui-grid-cell.padre {
-  font-weight: bold;
+.padre {
+  font-weight: bold;  
 }
 
-.ui-grid-row:nth-child(even) .ui-grid-cell.padre {
+
+.padre-importo {
   font-weight: bold;
+  font-size: larger;
 }
 
 .text-right {
