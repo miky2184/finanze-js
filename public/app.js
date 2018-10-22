@@ -952,7 +952,8 @@
             };
 
             $scope.pivot = {
-                year: 2018,
+                year: new Date().getFullYear(),
+                month: new Date().getMonth() + 1,
                 tipoConto: 1
             };
             $scope.years = [2018, 2017, 2016];
@@ -3646,8 +3647,8 @@
             $scope.loadReportMese = function () {
                 var dto = {};
                 dto.tipoconto = $scope.pivot.tipoConto;        
-                dto.mese = new Date().getMonth() + 1;
-                dto.anno = new Date().getFullYear();
+                dto.mese = $scope.pivot.month;
+                dto.anno = $scope.pivot.year;
                 
                 return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
