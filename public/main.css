@@ -27,6 +27,14 @@
   background-color: #d3f5d3
 }
 
+.ui-grid-row:nth-child(odd) .ui-grid-cell.$$treeLevel {
+  font-weight: bold;
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.$$treeLevel {
+  font-weight: bold;
+}
+
 .text-right {
   text-align: right;
 }
