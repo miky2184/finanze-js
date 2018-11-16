@@ -17,7 +17,14 @@
             $scope.giornata = {};
             $scope.giornata.value = {};
             $scope.giornate = [];
-
+            $scope.scontriDiretti = {
+                vinte: 0,
+                pareggiate: 0,
+                perse: 0,
+                squadraHome: '',
+                squadraAway: ''
+            }
+            
             $scope.menu = {
                 isOpen: false,
                 count: 0,
@@ -2870,7 +2877,7 @@
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    $scope.gridOptionsClassifica.gridApi = gridApi;
+                    $scope.gridOptionsClassifica.gridApi = gridApi;                    
                 }
             };
 
@@ -2890,7 +2897,45 @@
 
                 return false;
             }
-
+            
+            $scope.gridOptionsScontriDiretti = {                
+                columnDefs: [{
+                    name: 'SEASON',
+                    displayName: 'Season',
+                    field: 'SEASON',
+                    width: 60
+                },{
+                    name: 'GIORNATA',
+                    displayName: 'Giornata',
+                    field: 'GIORNATA',
+                    width: 60
+                },{
+                    name: 'HOME_DESC',
+                    displayName: 'Home',
+                    field: 'HOME_DESC',
+                    width: 60
+                },{
+                    name: 'AWAY_DESC',
+                    displayName: 'Away',
+                    field: 'AWAY_DESC',
+                    width: 60
+                },{
+                    name: 'SCORE_HOME',
+                    displayName: ' ',
+                    field: 'SCORE_HOME',
+                    width: 60
+                },{
+                    name: 'SCORE_AWAY',
+                    displayName: ' ',
+                    field: 'SCORE_AWAY',
+                    width: 60
+                }],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    $scope.gridOptionsScontriDiretti.gridApi = gridApi;                     
+                }
+            };                   
+            
             $scope.gridOptionsNextGame = {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
@@ -2903,6 +2948,7 @@
                 enableColumnMenus: false,
                 cellEditableCondition: $scope.checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                multiSelect: false,
                 columnDefs: [{
                         name: 'squadraCasa',
                         displayName: 'CASA',
@@ -3045,8 +3091,29 @@
                     $scope.gridOptionsNextGame.gridApi = gridApi;
 
                     gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
+                                         
+                    gridApi.selection.on.rowSelectionChanged($scope, doSelection);
                 }
             };
+            
+             function doSelection(row) {      
+    var cliccata = $scope.gridOptionsNextGame.gridApi.selection.getSelectedRows();
+                 
+                 var match = {
+                     idHome: cliccata[0].idHome,
+                     idAway:  cliccata[0].idAway,
+                     season: $scope.season.value
+                 }
+                 
+                 return $http.post('http://93.55.248.37:3001/scontriDiretti', match).then(function (resp) {
+                     $scope.gridOptionsScontriDiretti.data = resp.data;
+                     $scope.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
+                     $scope.scontriDiretti.squadraAway = resp.data[0]['AWAY_DESC'];
+                     $scope.scontriDiretti.vinte = resp.data[0]['WIN'];
+                     $scope.scontriDiretti.pareggiate = resp.data[0]['DRAW'];
+                     $scope.scontriDiretti.perse = resp.data[0]['LOSS'];
+                 });
+}
 
             /* $scope.gridOptionsPrevGame = {
                columnVirtualizationThreshold: 100,
@@ -3355,7 +3422,7 @@
                             });
                         }
                         $scope.gridOptionsNextGame.data = $scope.dataNextGame;
-                        $interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);
+                        $interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);                        
                     });
                 });
             };
