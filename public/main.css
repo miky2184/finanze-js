@@ -31,11 +31,15 @@
   font-weight: bold;  
 }
 
-
 .padre-importo {
   font-weight: bold;
   font-size: larger;
 }
+
+.best-bet {
+    background-color: #33cc33 !important  
+}
+
 
 .text-right {
   text-align: right;
@@ -304,7 +308,7 @@ label-settings {
     margin: 10px;
   }
 .webapp::before {
-    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f2c6";
+    font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f3cd";
   }
 .contabilizzata::before {
     font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f24e";

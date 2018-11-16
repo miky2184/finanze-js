@@ -322,7 +322,7 @@
                         width: 35,
                         cellTooltip: true,
                         cellTemplate: 'templates/rows/checkboxIcon.html',
-                        buttonNgClass: 'fab fa-telegram-plane',
+                        buttonNgClass: 'fab fa-telegram-plane', 
                         headerCellClass: 'icon webapp'
             }, {
                         field: 'fissa',
@@ -2930,6 +2930,7 @@
                 enableSorting: false,
                 enableColumnMenus: false,
                 cellEditableCondition: $scope.checkEditableCondition,
+                rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
                         name: 'squadraCasa',
                         displayName: 'CASA',
@@ -2966,17 +2967,59 @@
                         name: 'percWin',
                         displayName: '%1',
                         field: 'percWin',
-                        width: 55
+                        width: 55,
+            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                
+                        var winarray = grid.rows.map(function(e){ return e.entity.percWin;})                                            
+                        
+                        var percWinTot = 0;
+                
+                        winarray.forEach(function(match){
+                            percWinTot = percWinTot + match;
+                        });                                            
+                
+                        if (row.entity.percWin > row.entity.percDraw && row.entity.percWin > row.entity.percLoss && row.entity.percWin > (percWinTot / winarray.length) ) {
+                            return 'best-bet';
+                        }
+                    }
         }, {
                         name: 'percDraw',
                         displayName: '%X',
                         field: 'percDraw',
-                        width: 55
+                        width: 55,
+            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                            
+                            var drawarray = grid.rows.map(function(e){ return e.entity.percDraw;})
+                        
+                        var percDrawTot = 0;
+                
+                        drawarray.forEach(function(match){
+                            percDrawTot = percDrawTot + match;
+                        })                                                        
+                            
+                        if (row.entity.percWin < row.entity.percDraw && row.entity.percDraw > row.entity.percLoss && row.entity.percDraw > (percDrawTot / drawarray.length) ) {
+                            return 'best-bet';
+                        }
+                    }
         }, {
                         name: 'percLoss',
                         displayName: '%2',
                         field: 'percLoss',
-                        width: 55
+                        width: 55,
+            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                
+                  var lossarray = grid.rows.map(function(e){ return e.entity.percLoss;})
+                        
+                        var percLossTot = 0;
+                
+                        lossarray.forEach(function(match){
+                            percLossTot = percLossTot + match;
+                        })                           
+                
+                        if (row.entity.percLoss > row.entity.percDraw && row.entity.percWin < row.entity.percLoss && row.entity.percLoss > (percLossTot / lossarray.length)) {
+                            return 'best-bet';
+                        }
+                    }
         },
                     /* {
                              name: 'perc1X',
@@ -2999,32 +3042,32 @@
                         displayName: '%GG',
                         field: 'percgg',
                         width: 55
-        }, {
+        }, /* {
                         name: 'percng',
                         displayName: '%NG',
                         field: 'percng',
                         width: 55
-        }, {
+        },  {
                         name: 'percO1',
                         displayName: '%O1.5',
                         field: 'percO1',
                         width: 55
-        }, {
+        }, /* {
                         name: 'percU1',
                         displayName: '%U1.5',
                         field: 'percU1',
                         width: 55
-        }, {
+        }, */ {
                         name: 'percO2',
                         displayName: '%O2.5',
                         field: 'percO2',
                         width: 55
-        }, {
+        }/*,  {
                         name: 'percU2',
                         displayName: '%U2.5',
                         field: 'percU2',
                         width: 55
-        }],
+        }*/],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     $scope.gridOptionsNextGame.gridApi = gridApi;
