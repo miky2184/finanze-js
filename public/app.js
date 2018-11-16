@@ -3098,21 +3098,26 @@
             
              function doSelection(row) {      
     var cliccata = $scope.gridOptionsNextGame.gridApi.selection.getSelectedRows();
-                 
+                 if (cliccata[0]){
                  var match = {
                      idHome: cliccata[0].idHome,
                      idAway:  cliccata[0].idAway,
-                     season: $scope.season.value
+                     season: $scope.season.value.id
                  }
                  
                  return $http.post('http://93.55.248.37:3001/scontriDiretti', match).then(function (resp) {
-                     $scope.gridOptionsScontriDiretti.data = resp.data;
+                     if (resp.data && resp.data.length > 0 ){
+                      $scope.gridOptionsScontriDiretti.data = resp.data;
                      $scope.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
                      $scope.scontriDiretti.squadraAway = resp.data[0]['AWAY_DESC'];
                      $scope.scontriDiretti.vinte = resp.data[0]['WIN'];
                      $scope.scontriDiretti.pareggiate = resp.data[0]['DRAW'];
-                     $scope.scontriDiretti.perse = resp.data[0]['LOSS'];
-                 });
+                     $scope.scontriDiretti.perse = resp.data[0]['LOSS'];   
+                     }     else {
+                         $scope.gridOptionsScontriDiretti.data = [];
+                         $scope.scontriDiretti = {};
+                     }                
+                 });}
 }
 
             /* $scope.gridOptionsPrevGame = {
@@ -3470,7 +3475,7 @@
                     name: 'TEAM_NAME',
                     displayName: 'Squadra',
                     field: 'TEAM_NAME',
-                    width: 140,
+                    width: '*',
                     pinnedLeft: true
                 }, {
                     name: 'VALORE_ACQUISTO',
