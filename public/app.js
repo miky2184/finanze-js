@@ -1575,35 +1575,7 @@
                         });
                     };
                 });
-            };
-
-            /******************************************************************
-             *                         TAB HOME
-             ******************************************************************/
-
-            $scope.home = {};
-            $scope.home.on = true;
-
-            $scope.lightOn = function () {
-                console.log("luce accesa");
-            };
-
-            $scope.lightCouchOnOff = function () {
-                return $http.get('http://93.55.248.37:3001/hue/9');
-            };
-
-            $scope.lightLedOnOff = function () {
-                return $http.get('http://93.55.248.37:3001/hue/4');
-            };
-
-            $scope.loadHome = function () {
-                /* return $http.get('http://93.55.248.37:3001/temp').then(function (response) {        
-                  if (response.data) {
-                    $scope.temperature = response.data.temperature;
-                    $scope.humidity = response.data.humidity;
-                  }
-                }); */
-            };
+            };          
 
             /************************************************
              *                  TAB PIVOT MESE
@@ -2048,7 +2020,7 @@
                         width: 100
         }, {
                         name: 'compMaggiorazione25',
-                        displayName: 'Magg. Str. 25%',
+                        displayName: 'Comp. Magg. Str. 25%',
                         field: 'compMaggiorazione25',
                         cellClass: 'text-right',
                         //  cellFilter: 'currency',
@@ -2100,7 +2072,7 @@
                         width: 100
         }, {
                         name: 'compMaggiorazione50',
-                        displayName: 'Magg. Str. 50%',
+                        displayName: 'Comp. Magg. Str. 50%',
                         field: 'compMaggiorazione50',
                         cellClass: 'text-right',
                         //   cellFilter: 'currency',
@@ -2113,7 +2085,7 @@
                         width: 100
         }, {
                         name: 'compMaggiorazione55',
-                        displayName: 'Magg. Str. 55%',
+                        displayName: 'Comp. Magg. Str. 55%',
                         field: 'compMaggiorazione55',
                         cellClass: 'text-right',
                         //   cellFilter: 'currency',
@@ -2126,7 +2098,7 @@
                         width: 100
         }, {
                         name: 'compMaggiorazione60',
-                        displayName: 'Magg. Str. 60%',
+                        displayName: 'Comp. Magg. Str. 60%',
                         field: 'compMaggiorazione60',
                         cellClass: 'text-right',
                         //  cellFilter: 'currency',
