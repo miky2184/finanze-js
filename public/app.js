@@ -2162,7 +2162,15 @@
                         width: 100,
                         cellClass: 'disable',
                         enableCellEdit: false
-        },
+        }, {
+                        name: 'imponibilePrevistoAnnuo',
+                        displayName: 'Imponibile Previsto Annuo',
+                        field: 'imponibilePrevistoAnnuo',
+                        cellFilter: 'currency',
+                        width: 100,
+                        cellClass: 'disable',
+                        enableCellEdit: false
+        }, 
                     {
                         name: 'ritenuteMeseInps',
                         displayName: 'Ritenute Mese INPS',
