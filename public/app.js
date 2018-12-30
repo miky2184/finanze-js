@@ -3813,7 +3813,9 @@
                     displayName: 'Mese',
                     field: 'MESE_NAME',
                     width: '10%',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+
+                    }
             }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
@@ -3839,7 +3841,19 @@
                     width: '10%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                            return 'centoperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            return 'settcinqueperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            return 'cinquantaperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            return 'venticinqperc';
+                        } else {
+                            return 'zeroperc';
+                        }
+                    }
         }, {
                     name: 'SUM_VAL',
                     displayName: 'Spese del Mese',
@@ -3847,7 +3861,19 @@
                     width: '10%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                            return 'centoperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            return 'settcinqueperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            return 'cinquantaperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            return 'venticinqperc';
+                        } else {
+                            return 'zeroperc';
+                        }
+                    }
         }, {
                     name: 'BUDG_VALR_DISP',
                     displayName: 'Budget Rimanente',
@@ -3855,13 +3881,37 @@
                     width: '10%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                            return 'centoperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            return 'settcinqueperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            return 'cinquantaperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            return 'venticinqperc';
+                        } else {
+                            return 'zeroperc';
+                        }
+                    }
         }, {
                     name: 'BUDG_PERC_DISP',
                     displayName: '% Budget Rimanente',
                     field: 'BUDG_PERC_DISP',
                     width: '10%',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                            return 'centoperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            return 'settcinqueperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            return 'cinquantaperc';
+                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            return 'venticinqperc';
+                        } else {
+                            return 'zeroperc';
+                        }
+                    }
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {
