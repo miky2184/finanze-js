@@ -963,7 +963,7 @@
                 month: new Date().getMonth() + 1,
                 tipoConto: 1
             };
-            $scope.years = [2018, 2017, 2016];
+            $scope.years = [2019, 2018, 2017, 2016];
 
             $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
