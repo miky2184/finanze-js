@@ -24,7 +24,7 @@
                 squadraHome: '',
                 squadraAway: ''
             }
-            
+
             $scope.menu = {
                 isOpen: false,
                 count: 0,
@@ -329,7 +329,7 @@
                         width: 35,
                         cellTooltip: true,
                         cellTemplate: 'templates/rows/checkboxIcon.html',
-                        buttonNgClass: 'fab fa-telegram-plane', 
+                        buttonNgClass: 'fab fa-telegram-plane',
                         headerCellClass: 'icon webapp'
             }, {
                         field: 'fissa',
@@ -964,8 +964,8 @@
                 tipoConto: 1
             };
             $scope.years = [2018, 2017, 2016];
-            
-            $scope.months = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+            $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
             $scope.loadPivotAnno = function () {
                 var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
@@ -1582,7 +1582,7 @@
                         });
                     };
                 });
-            };          
+            };
 
             /************************************************
              *                  TAB PIVOT MESE
@@ -2170,7 +2170,7 @@
                         width: 100,
                         cellClass: 'disable',
                         enableCellEdit: false
-        }, 
+        },
                     {
                         name: 'ritenuteMeseInps',
                         displayName: 'Ritenute Mese INPS',
@@ -2885,7 +2885,7 @@
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    $scope.gridOptionsClassifica.gridApi = gridApi;                    
+                    $scope.gridOptionsClassifica.gridApi = gridApi;
                 }
             };
 
@@ -2905,34 +2905,34 @@
 
                 return false;
             }
-            
-            $scope.gridOptionsScontriDiretti = {                
+
+            $scope.gridOptionsScontriDiretti = {
                 columnDefs: [{
                     name: 'SEASON',
                     displayName: 'Season',
                     field: 'SEASON',
                     width: 60
-                },{
+                }, {
                     name: 'GIORNATA',
                     displayName: 'Giornata',
                     field: 'GIORNATA',
                     width: 60
-                },{
+                }, {
                     name: 'HOME_DESC',
                     displayName: 'Home',
                     field: 'HOME_DESC',
                     width: 60
-                },{
+                }, {
                     name: 'AWAY_DESC',
                     displayName: 'Away',
                     field: 'AWAY_DESC',
                     width: 60
-                },{
+                }, {
                     name: 'SCORE_HOME',
                     displayName: ' ',
                     field: 'SCORE_HOME',
                     width: 60
-                },{
+                }, {
                     name: 'SCORE_AWAY',
                     displayName: ' ',
                     field: 'SCORE_AWAY',
@@ -2940,10 +2940,10 @@
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    $scope.gridOptionsScontriDiretti.gridApi = gridApi;                     
+                    $scope.gridOptionsScontriDiretti.gridApi = gridApi;
                 }
-            };                   
-            
+            };
+
             $scope.gridOptionsNextGame = {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
@@ -2994,58 +2994,64 @@
                         displayName: '%1',
                         field: 'percWin',
                         width: 55,
-            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
-                
-                        var winarray = grid.rows.map(function(e){ return e.entity.percWin;})                                            
-                        
-                        var percWinTot = 0;
-                
-                        winarray.forEach(function(match){
-                            percWinTot = percWinTot + match;
-                        });                                            
-                
-                        if (row.entity.percWin > row.entity.percDraw && row.entity.percWin > row.entity.percLoss && row.entity.percWin > (percWinTot / winarray.length) ) {
-                            return 'best-bet';
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+
+                            var winarray = grid.rows.map(function (e) {
+                                return e.entity.percWin;
+                            })
+
+                            var percWinTot = 0;
+
+                            winarray.forEach(function (match) {
+                                percWinTot = percWinTot + match;
+                            });
+
+                            if (row.entity.percWin > row.entity.percDraw && row.entity.percWin > row.entity.percLoss && row.entity.percWin > (percWinTot / winarray.length)) {
+                                return 'best-bet';
+                            }
                         }
-                    }
         }, {
                         name: 'percDraw',
                         displayName: '%X',
                         field: 'percDraw',
                         width: 55,
-            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
-                            
-                            var drawarray = grid.rows.map(function(e){ return e.entity.percDraw;})
-                        
-                        var percDrawTot = 0;
-                
-                        drawarray.forEach(function(match){
-                            percDrawTot = percDrawTot + match;
-                        })                                                        
-                            
-                        if (row.entity.percWin < row.entity.percDraw && row.entity.percDraw > row.entity.percLoss && row.entity.percDraw > (percDrawTot / drawarray.length) ) {
-                            return 'best-bet';
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+
+                            var drawarray = grid.rows.map(function (e) {
+                                return e.entity.percDraw;
+                            })
+
+                            var percDrawTot = 0;
+
+                            drawarray.forEach(function (match) {
+                                percDrawTot = percDrawTot + match;
+                            })
+
+                            if (row.entity.percWin < row.entity.percDraw && row.entity.percDraw > row.entity.percLoss && row.entity.percDraw > (percDrawTot / drawarray.length)) {
+                                return 'best-bet';
+                            }
                         }
-                    }
         }, {
                         name: 'percLoss',
                         displayName: '%2',
                         field: 'percLoss',
                         width: 55,
-            cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
-                
-                  var lossarray = grid.rows.map(function(e){ return e.entity.percLoss;})
-                        
-                        var percLossTot = 0;
-                
-                        lossarray.forEach(function(match){
-                            percLossTot = percLossTot + match;
-                        })                           
-                
-                        if (row.entity.percLoss > row.entity.percDraw && row.entity.percWin < row.entity.percLoss && row.entity.percLoss > (percLossTot / lossarray.length)) {
-                            return 'best-bet';
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+
+                            var lossarray = grid.rows.map(function (e) {
+                                return e.entity.percLoss;
+                            })
+
+                            var percLossTot = 0;
+
+                            lossarray.forEach(function (match) {
+                                percLossTot = percLossTot + match;
+                            })
+
+                            if (row.entity.percLoss > row.entity.percDraw && row.entity.percWin < row.entity.percLoss && row.entity.percLoss > (percLossTot / lossarray.length)) {
+                                return 'best-bet';
+                            }
                         }
-                    }
         },
                     /* {
                              name: 'perc1X',
@@ -3068,65 +3074,70 @@
                         displayName: '%GG',
                         field: 'percgg',
                         width: 55
-        }, /* {
-                        name: 'percng',
-                        displayName: '%NG',
-                        field: 'percng',
-                        width: 55
-        },  {
-                        name: 'percO1',
-                        displayName: '%O1.5',
-                        field: 'percO1',
-                        width: 55
-        }, /* {
-                        name: 'percU1',
-                        displayName: '%U1.5',
-                        field: 'percU1',
-                        width: 55
-        }, */ {
+        },
+                    /* {
+                                           name: 'percng',
+                                           displayName: '%NG',
+                                           field: 'percng',
+                                           width: 55
+                           },  {
+                                           name: 'percO1',
+                                           displayName: '%O1.5',
+                                           field: 'percO1',
+                                           width: 55
+                           }, /* {
+                                           name: 'percU1',
+                                           displayName: '%U1.5',
+                                           field: 'percU1',
+                                           width: 55
+                           }, */
+                    {
                         name: 'percO2',
                         displayName: '%O2.5',
                         field: 'percO2',
                         width: 55
-        }/*,  {
-                        name: 'percU2',
-                        displayName: '%U2.5',
-                        field: 'percU2',
-                        width: 55
-        }*/],
+        }
+                    /*,  {
+                                            name: 'percU2',
+                                            displayName: '%U2.5',
+                                            field: 'percU2',
+                                            width: 55
+                            }*/
+                    ],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     $scope.gridOptionsNextGame.gridApi = gridApi;
 
                     gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditSettingsFunction);
-                                         
+
                     gridApi.selection.on.rowSelectionChanged($scope, doSelection);
                 }
             };
-            
-             function doSelection(row) {      
-    var cliccata = $scope.gridOptionsNextGame.gridApi.selection.getSelectedRows();
-                 if (cliccata[0]){
-                 var match = {
-                     idHome: cliccata[0].idHome,
-                     idAway:  cliccata[0].idAway,
-                     season: $scope.season.value.id
-                 }
-                 
-                 return $http.post('http://93.55.248.37:3001/scontriDiretti', match).then(function (resp) {
-                     if (resp.data && resp.data.length > 0 ){
-                      $scope.gridOptionsScontriDiretti.data = resp.data;
-                     $scope.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
-                     $scope.scontriDiretti.squadraAway = resp.data[0]['AWAY_DESC'];
-                     $scope.scontriDiretti.vinte = resp.data[0]['WIN'];
-                     $scope.scontriDiretti.pareggiate = resp.data[0]['DRAW'];
-                     $scope.scontriDiretti.perse = resp.data[0]['LOSS'];   
-                     }     else {
-                         $scope.gridOptionsScontriDiretti.data = [];
-                         $scope.scontriDiretti = {};
-                     }                
-                 });}
-}
+
+            function doSelection(row) {
+                var cliccata = $scope.gridOptionsNextGame.gridApi.selection.getSelectedRows();
+                if (cliccata[0]) {
+                    var match = {
+                        idHome: cliccata[0].idHome,
+                        idAway: cliccata[0].idAway,
+                        season: $scope.season.value.id
+                    }
+
+                    return $http.post('http://93.55.248.37:3001/scontriDiretti', match).then(function (resp) {
+                        if (resp.data && resp.data.length > 0) {
+                            $scope.gridOptionsScontriDiretti.data = resp.data;
+                            $scope.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
+                            $scope.scontriDiretti.squadraAway = resp.data[0]['AWAY_DESC'];
+                            $scope.scontriDiretti.vinte = resp.data[0]['WIN'];
+                            $scope.scontriDiretti.pareggiate = resp.data[0]['DRAW'];
+                            $scope.scontriDiretti.perse = resp.data[0]['LOSS'];
+                        } else {
+                            $scope.gridOptionsScontriDiretti.data = [];
+                            $scope.scontriDiretti = {};
+                        }
+                    });
+                }
+            }
 
             /* $scope.gridOptionsPrevGame = {
                columnVirtualizationThreshold: 100,
@@ -3435,7 +3446,7 @@
                             });
                         }
                         $scope.gridOptionsNextGame.data = $scope.dataNextGame;
-                        $interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);                        
+                        $interval($scope.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);
                     });
                 });
             };
@@ -3688,7 +3699,7 @@
 
             /************************************************
              *                  TAB REPORT MESE
-             ************************************************/                    
+             ************************************************/
 
             $scope.gridReportMese = {
                 columnVirtualizationThreshold: 100,
@@ -3696,13 +3707,13 @@
                 enableFiltering: false,
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
-                enableColumnMenus: false,            
+                enableColumnMenus: false,
                 columnDefs: [{
                     name: 'DESC_AMB',
                     displayName: 'Ambito',
                     field: 'DESC_AMB',
                     width: '10%',
-                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
                             return 'padre';
                         }
@@ -3712,7 +3723,7 @@
                     displayName: 'Categoria',
                     field: 'DESC_CAT',
                     width: '10%',
-                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
                             return 'padre';
                         }
@@ -3722,7 +3733,7 @@
                     displayName: 'Sottocategoria',
                     field: 'DESC_SOT',
                     width: '10%',
-                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
                             return 'padre';
                         }
@@ -3735,7 +3746,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
                             return 'padre-importo';
                         }
@@ -3748,7 +3759,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    cellClass: function(grid, row, col, rowRenderIndex, colRenderIndex) {
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
                             return 'padre-importo';
                         }
@@ -3756,30 +3767,121 @@
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    $scope.gridReportMese.gridApi = gridApi;                    
+                    $scope.gridReportMese.gridApi = gridApi;
                 }
             };
 
             $scope.loadReportMese = function () {
                 var dto = {};
-                dto.tipoconto = $scope.pivot.tipoConto;        
+                dto.tipoconto = $scope.pivot.tipoConto;
                 dto.mese = $scope.pivot.month;
                 dto.anno = $scope.pivot.year;
-                
+
                 return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         $scope.gridReportMese.data = resp.data.map(function (d) {
-                            if (d['LIVELLO'] > 0){
-                                d.padre = true;   
-                            }                            
+                            if (d['LIVELLO'] > 0) {
+                                d.padre = true;
+                            }
                             return d;
                         });
                     }
-                });                 
+                });
 
                 if ($scope.gridReportMese && $scope.gridReportMese.gridApi) {
                     $interval($scope.gridReportMese.gridApi.core.handleWindowResize, 100, 10);
-                }                           
+                }
+
+            };
+
+            /************************************************
+             *                  TAB REPORT MESE
+             ************************************************/
+
+            $scope.gridBudget = {
+                columnVirtualizationThreshold: 100,
+                minRowsToShow: 23,
+                enableFiltering: false,
+                selectionRowHeaderWidth: 35,
+                enableSorting: false,
+                enableColumnMenus: false,
+                columnDefs: [{
+                    name: 'MESE_NAME',
+                    displayName: 'Mese',
+                    field: 'MESE_NAME',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+            }, {
+                    name: 'AMBITO',
+                    displayName: 'Ambito',
+                    field: 'AMBITO',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+            }, {
+                    name: 'CATEGORIA',
+                    displayName: 'Categoria',
+                    field: 'CATEGORIA',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+        }, {
+                    name: 'SOTTOCATEGORIA',
+                    displayName: 'Sottocategoria',
+                    field: 'SOTTOCATEGORIA',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+        }, {
+                    name: 'BUDGET',
+                    displayName: 'Budget Mese',
+                    field: 'BUDGET',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+        }, {
+                    name: 'SUM_VAL',
+                    displayName: 'Spese del Mese',
+                    field: 'SUM_VAL',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+        }, {
+                    name: 'BUDG_VALR_DISP',
+                    displayName: 'Budget Rimanente',
+                    field: 'BUDG_VALR_DISP',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+        }, {
+                    name: 'BUDG_PERC_DISP',
+                    displayName: '% Budget Rimanente',
+                    field: 'BUDG_PERC_DISP',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
+        }],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    $scope.gridBudget.gridApi = gridApi;
+                }
+            };
+
+            $scope.loadBudget = function () {
+                var dto = {};
+                dto.tipoconto = $scope.pivot.tipoConto;
+                dto.anno = $scope.pivot.year;
+
+                return $http.post('http://93.55.248.37:3001/budget', dto).then(function (resp) {
+                    if (resp.data && resp.data.length > 0) {
+                        $scope.gridBudget.data = resp.data;
+                    }
+                });
+
+                if ($scope.gridBudget && $scope.gridBudget.gridApi) {
+                    $interval($scope.gridBudget.gridApi.core.handleWindowResize, 100, 10);
+                }
 
             };
 
