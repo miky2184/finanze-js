@@ -1458,7 +1458,10 @@
 
             $scope.loadGrafico = function () {
 
-                return $http.get('http://93.55.248.37:3001/graph').then(function (resp) {
+                var dto = {};
+                dto.anno = $scope.pivot.year;
+
+                return $http.post('http://93.55.248.37:3001/graph', dto).then(function (resp) {
 
                     $scope.options = {
                         chart: {
@@ -3858,8 +3861,6 @@
                     displayName: '% Budget Rimanente',
                     field: 'BUDG_PERC_DISP',
                     width: '10%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
         }],
                 data: [],

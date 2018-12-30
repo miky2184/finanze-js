@@ -1,1 +1,6 @@
+<div>
+    <label for="yearSelect"> Seleziona un anno: </label>
+    <select name="yearSelect" id="repeatYSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadBudget()">
+    </select>
+</div>
 <nvd3 options="options" data="data" config="{deepWatchData: true, refreshDataOnly: false}"></nvd3>
