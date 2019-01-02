@@ -3808,6 +3808,8 @@
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableColumnMenus: false,
+                showGridFooter: true,
+                showColumnFooter: true,
                 columnDefs: [{
                     name: 'MESE_NAME',
                     displayName: 'Mese',
