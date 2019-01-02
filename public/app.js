@@ -3798,7 +3798,7 @@
             };
 
             /************************************************
-             *                  TAB REPORT MESE
+             *                  TAB BUDGET
              ************************************************/
 
             $scope.gridBudget = {
@@ -3853,7 +3853,8 @@
                         } else {
                             return 'zeroperc';
                         }
-                    }
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
         }, {
                     name: 'SUM_VAL',
                     displayName: 'Spese del Mese',
@@ -3873,7 +3874,8 @@
                         } else {
                             return 'zeroperc';
                         }
-                    }
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
         }, {
                     name: 'BUDG_VALR_DISP',
                     displayName: 'Budget Rimanente',
@@ -3893,7 +3895,8 @@
                         } else {
                             return 'zeroperc';
                         }
-                    }
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
         }, {
                     name: 'BUDG_PERC_DISP',
                     displayName: '% Budget Rimanente',
