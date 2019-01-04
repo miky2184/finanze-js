@@ -106,7 +106,7 @@
 
             $scope.gridOptions = {
                 columnVirtualizationThreshold: 100,
-                showGridFooter: true,
+                showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 21,
                 enableFiltering: true,
@@ -686,7 +686,7 @@
 
             $scope.gridOptionsBalance = {
                 columnVirtualizationThreshold: 100,
-                showGridFooter: true,
+                showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 23,
                 // enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
@@ -798,7 +798,7 @@
 
             $scope.gridOptionsAvere = {
                 columnVirtualizationThreshold: 100,
-                showGridFooter: true,
+                showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 23,
                 // enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
@@ -1594,7 +1594,7 @@
 
             $scope.gridOptionPivotMese = {
                 columnVirtualizationThreshold: 100,
-                showGridFooter: true,
+                showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 23,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
@@ -1904,7 +1904,7 @@
             $scope.gridOptionsSalary = {
                 columnVirtualizationThreshold: 100,
                 minRowsToShow: 23,
-                showGridFooter: true,
+                showColumnFooter: true,
                 enableFiltering: true,
                 enableSorting: false,
                 columnDefs: [{
@@ -2546,7 +2546,8 @@
 
             $scope.gridOptionAndamentoAnnuo = {
                 columnVirtualizationThreshold: 100,
-                showGridFooter: true,
+                showGridFooter: false,
+                showColumnFooter: true,
                 minRowsToShow: 23,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: false,
@@ -2714,7 +2715,7 @@
 
             $scope.gridOptionsAmazon = {
                 columnVirtualizationThreshold: 100,
-                showGridFooter: true,
+                showGridFooter: false,
                 minRowsToShow: 23,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: false,
@@ -3847,7 +3848,7 @@
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableColumnMenus: false,
-                showGridFooter: true,
+                showGridFooter: false,
                 showColumnFooter: true,
                 columnDefs: [{
                     name: 'MESE_NAME',
