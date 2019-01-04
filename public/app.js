@@ -331,15 +331,16 @@
                         cellTemplate: 'templates/rows/checkboxIcon.html',
                         buttonNgClass: 'fab fa-telegram-plane',
                         headerCellClass: 'icon webapp'
-            }, {
-                        field: 'fissa',
-                        displayName: ' ',
-                        width: 35,
-                        cellTooltip: true,
-                        cellTemplate: 'templates/rows/checkboxIcon.html',
-                        buttonNgClass: 'fas fa-bookmark',
-                        headerCellClass: 'icon fissa'
             },
+                    /* {
+                                           field: 'fissa',
+                                           displayName: ' ',
+                                           width: 35,
+                                           cellTooltip: true,
+                                           cellTemplate: 'templates/rows/checkboxIcon.html',
+                                           buttonNgClass: 'fas fa-bookmark',
+                                           headerCellClass: 'icon fissa'
+                               }, */
                     {
                         field: 'importo',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -3844,16 +3845,22 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
-                            return 'centoperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
-                            return 'settcinqueperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
-                            return 'cinquantaperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
-                            return 'venticinqperc';
-                        } else {
-                            return 'zeroperc';
+
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
+                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -3865,16 +3872,21 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
-                            return 'centoperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
-                            return 'settcinqueperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
-                            return 'cinquantaperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
-                            return 'venticinqperc';
-                        } else {
-                            return 'zeroperc';
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
+                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -3886,35 +3898,44 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
-                            return 'centoperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
-                            return 'settcinqueperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
-                            return 'cinquantaperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
-                            return 'venticinqperc';
-                        } else {
-                            return 'zeroperc';
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
+                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
                         }
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
+                    }
         }, {
                     name: 'BUDG_PERC_DISP',
                     displayName: '% Budget Rimanente',
                     field: 'BUDG_PERC_DISP',
                     width: '10%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['BUDG_PERC_DISP'] >= 75) {
-                            return 'centoperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
-                            return 'settcinqueperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
-                            return 'cinquantaperc';
-                        } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
-                            return 'venticinqperc';
-                        } else {
-                            return 'zeroperc';
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
+                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
                         }
                     }
         }],
