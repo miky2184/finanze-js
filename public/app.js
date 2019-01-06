@@ -3866,7 +3866,7 @@
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: '10&',
+                    width: '10%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
         }, {
                     name: 'BUDG_TOT_ANNO',
