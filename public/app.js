@@ -3877,9 +3877,9 @@
                     width: '*',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
         }, {
-                    name: 'BUDGET',
-                    displayName: 'Budget Mese',
-                    field: 'BUDGET',
+                    name: 'BUDG_TOT_ANNO',
+                    displayName: 'Budget Anno',
+                    field: 'BUDG_TOT_ANNO',
                     width: '10%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -3888,14 +3888,14 @@
                         var d = new Date();
                         var n = d.getMonth();
 
-                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
-                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                        if (row.entity['TOT_ANNO'] !== 0) {
+                            if (row.entity['PERC_RIM_ANNO'] >= 75) {
                                 return 'centoperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < 75 && row.entity['PERC_RIM_ANNO'] >= 50) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < 50 && row.entity['PERC_RIM_ANNO'] >= 25) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < 25 && row.entity['PERC_RIM_ANNO'] >= 0) {
                                 return 'venticinqperc';
                             } else {
                                 return 'zeroperc';
@@ -3904,9 +3904,9 @@
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
         }, {
-                    name: 'SUM_VAL',
-                    displayName: 'Spese del Mese',
-                    field: 'SUM_VAL',
+                    name: 'TOT_ANNO',
+                    displayName: 'Spese Anno',
+                    field: 'TOT_ANNO',
                     width: '10%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -3914,14 +3914,14 @@
                         var d = new Date();
                         var n = d.getMonth();
 
-                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
-                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                        if (row.entity['TOT_ANNO'] !== 0) {
+                            if (row.entity['PERC_RIM_ANNO'] >= 75) {
                                 return 'centoperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < 75 && row.entity['PERC_RIM_ANNO'] >= 50) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < 50 && row.entity['PERC_RIM_ANNO'] >= 25) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < 25 && row.entity['PERC_RIM_ANNO'] >= 0) {
                                 return 'venticinqperc';
                             } else {
                                 return 'zeroperc';
@@ -3930,9 +3930,9 @@
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
         }, {
-                    name: 'BUDG_VALR_DISP',
-                    displayName: 'Budget Rimanente',
-                    field: 'BUDG_VALR_DISP',
+                    name: 'BUDG_GEN',
+                    displayName: 'Budget GEN',
+                    field: 'BUDG_GEN',
                     width: '10%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -3940,14 +3940,14 @@
                         var d = new Date();
                         var n = d.getMonth();
 
-                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
-                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                        if (row.entity['GEN'] !== 0 || 1 < n) {
+                            if (row.entity['PERC_RIM_GEN'] >= 75) {
                                 return 'centoperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            } else if (row.entity['PERC_RIM_GEN'] < 75 && row.entity['PERC_RIM_GEN'] >= 50) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            } else if (row.entity['PERC_RIM_GEN'] < 50 && row.entity['PERC_RIM_GEN'] >= 25) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            } else if (row.entity['PERC_RIM_GEN'] < 25 && row.entity['PERC_RIM_GEN'] >= 0) {
                                 return 'venticinqperc';
                             } else {
                                 return 'zeroperc';
@@ -3955,22 +3955,550 @@
                         }
                     }
         }, {
-                    name: 'BUDG_PERC_DISP',
-                    displayName: '% Budget Rimanente',
-                    field: 'BUDG_PERC_DISP',
+                    name: 'GEN',
+                    displayName: 'Spese GEN',
+                    field: 'GEN',
                     width: '10%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
 
-                        if (row.entity['SUM_VAL'] !== 0 || row.entity['MESE'] < n) {
-                            if (row.entity['BUDG_PERC_DISP'] >= 75) {
+                        if (row.entity['GEN'] !== 0 || 1 < n) {
+                            if (row.entity['PERC_RIM_GEN'] >= 75) {
                                 return 'centoperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 75 && row.entity['BUDG_PERC_DISP'] >= 50) {
+                            } else if (row.entity['PERC_RIM_GEN'] < 75 && row.entity['PERC_RIM_GEN'] >= 50) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 50 && row.entity['BUDG_PERC_DISP'] >= 25) {
+                            } else if (row.entity['PERC_RIM_GEN'] < 50 && row.entity['PERC_RIM_GEN'] >= 25) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['BUDG_PERC_DISP'] < 25 && row.entity['BUDG_PERC_DISP'] >= 0) {
+                            } else if (row.entity['PERC_RIM_GEN'] < 25 && row.entity['PERC_RIM_GEN'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_FEB',
+                    displayName: 'Budget FEB',
+                    field: 'BUDG_FEB',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['FEB'] !== 0 || 2 < n) {
+                            if (row.entity['PERC_RIM_FEB'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_FEB'] < 75 && row.entity['PERC_RIM_FEB'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_FEB'] < 50 && row.entity['PERC_RIM_FEB'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_FEB'] < 25 && row.entity['PERC_RIM_FEB'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'FEB',
+                    displayName: 'Spese FEB',
+                    field: 'FEB',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['FEB'] !== 0 || 2 < n) {
+                            if (row.entity['PERC_RIM_FEB'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_FEB'] < 75 && row.entity['PERC_RIM_FEB'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_FEB'] < 50 && row.entity['PERC_RIM_FEB'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_FEB'] < 25 && row.entity['PERC_RIM_FEB'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_MAR',
+                    displayName: 'Budget MAR',
+                    field: 'BUDG_MAR',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['MAR'] !== 0 || 3 < n) {
+                            if (row.entity['PERC_RIM_MAR'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_MAR'] < 75 && row.entity['PERC_RIM_MAR'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_MAR'] < 50 && row.entity['PERC_RIM_MAR'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_MAR'] < 25 && row.entity['PERC_RIM_MAR'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'MAR',
+                    displayName: 'Spese MAR',
+                    field: 'MAR',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['MAR'] !== 0 || 3 < n) {
+                            if (row.entity['PERC_RIM_MAR'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_MAR'] < 75 && row.entity['PERC_RIM_MAR'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_MAR'] < 50 && row.entity['PERC_RIM_MAR'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_MAR'] < 25 && row.entity['PERC_RIM_MAR'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_APR',
+                    displayName: 'Budget APR',
+                    field: 'BUDG_APR',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['APR'] !== 0 || 4 < n) {
+                            if (row.entity['PERC_RIM_APR'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_APR'] < 75 && row.entity['PERC_RIM_APR'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_APR'] < 50 && row.entity['PERC_RIM_APR'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_APR'] < 25 && row.entity['PERC_RIM_APR'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'APR',
+                    displayName: 'Spese APR',
+                    field: 'APR',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['APR'] !== 0 || 4 < n) {
+                            if (row.entity['PERC_RIM_APR'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_APR'] < 75 && row.entity['PERC_RIM_APR'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_APR'] < 50 && row.entity['PERC_RIM_APR'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_APR'] < 25 && row.entity['PERC_RIM_APR'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_MAG',
+                    displayName: 'Budget MAG',
+                    field: 'BUDG_MAG',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['MAG'] !== 0 || 5 < n) {
+                            if (row.entity['PERC_RIM_MAG'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_MAG'] < 75 && row.entity['PERC_RIM_MAG'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_MAG'] < 50 && row.entity['PERC_RIM_MAG'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_MAG'] < 25 && row.entity['PERC_RIM_MAG'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'MAG',
+                    displayName: 'Spese MAG',
+                    field: 'MAG',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['MAG'] !== 0 || 5 < n) {
+                            if (row.entity['PERC_RIM_MAG'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_MAG'] < 75 && row.entity['PERC_RIM_MAG'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_MAG'] < 50 && row.entity['PERC_RIM_MAG'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_MAG'] < 25 && row.entity['PERC_RIM_MAG'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_GIU',
+                    displayName: 'Budget GIU',
+                    field: 'BUDG_GIU',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['GIU'] !== 0 || 6 < n) {
+                            if (row.entity['PERC_RIM_GIU'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_GIU'] < 75 && row.entity['PERC_RIM_GIU'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_GIU'] < 50 && row.entity['PERC_RIM_GIU'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_GIU'] < 25 && row.entity['PERC_RIM_GIU'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'GIU',
+                    displayName: 'Spese GIU',
+                    field: 'GIU',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['GIU'] !== 0 || 6 < n) {
+                            if (row.entity['PERC_RIM_GIU'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_GIU'] < 75 && row.entity['PERC_RIM_GIU'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_GIU'] < 50 && row.entity['PERC_RIM_GIU'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_GIU'] < 25 && row.entity['PERC_RIM_GIU'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_LUG',
+                    displayName: 'Budget LUG',
+                    field: 'BUDG_LUG',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['LUG'] !== 0 || 7 < n) {
+                            if (row.entity['PERC_RIM_LUG'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_LUG'] < 75 && row.entity['PERC_RIM_LUG'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_LUG'] < 50 && row.entity['PERC_RIM_LUG'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_LUG'] < 25 && row.entity['PERC_RIM_LUG'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'LUG',
+                    displayName: 'Spese LUG',
+                    field: 'LUG',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['LUG'] !== 0 || 7 < n) {
+                            if (row.entity['PERC_RIM_LUG'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_LUG'] < 75 && row.entity['PERC_RIM_LUG'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_LUG'] < 50 && row.entity['PERC_RIM_LUG'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_LUG'] < 25 && row.entity['PERC_RIM_LUG'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_AGO',
+                    displayName: 'Budget AGO',
+                    field: 'BUDG_AGO',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['AGO'] !== 0 || 8 < n) {
+                            if (row.entity['PERC_RIM_AGO'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_AGO'] < 75 && row.entity['PERC_RIM_AGO'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_AGO'] < 50 && row.entity['PERC_RIM_AGO'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_AGO'] < 25 && row.entity['PERC_RIM_AGO'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'AGO',
+                    displayName: 'Spese AGO',
+                    field: 'AGO',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['AGO'] !== 0 || 8 < n) {
+                            if (row.entity['PERC_RIM_AGO'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_AGO'] < 75 && row.entity['PERC_RIM_AGO'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_AGO'] < 50 && row.entity['PERC_RIM_AGO'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_AGO'] < 25 && row.entity['PERC_RIM_AGO'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_SETT',
+                    displayName: 'Budget SETT',
+                    field: 'BUDG_SETT',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['SETT'] !== 0 || 9 < n) {
+                            if (row.entity['PERC_RIM_SETT'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_SETT'] < 75 && row.entity['PERC_RIM_SETT'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_SETT'] < 50 && row.entity['PERC_RIM_SETT'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_SETT'] < 25 && row.entity['PERC_RIM_SETT'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'SETT',
+                    displayName: 'Spese SETT',
+                    field: 'SETT',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['SETT'] !== 0 || 9 < n) {
+                            if (row.entity['PERC_RIM_SETT'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_SETT'] < 75 && row.entity['PERC_RIM_SETT'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_SETT'] < 50 && row.entity['PERC_RIM_SETT'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_SETT'] < 25 && row.entity['PERC_RIM_SETT'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_OTT',
+                    displayName: 'Budget OTT',
+                    field: 'BUDG_OTT',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['OTT'] !== 0 || 10 < n) {
+                            if (row.entity['PERC_RIM_OTT'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_OTT'] < 75 && row.entity['PERC_RIM_OTT'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_OTT'] < 50 && row.entity['PERC_RIM_OTT'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_OTT'] < 25 && row.entity['PERC_RIM_OTT'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'OTT',
+                    displayName: 'Spese OTT',
+                    field: 'OTT',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['OTT'] !== 0 || 10 < n) {
+                            if (row.entity['PERC_RIM_OTT'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_OTT'] < 75 && row.entity['PERC_RIM_OTT'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_OTT'] < 50 && row.entity['PERC_RIM_OTT'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_OTT'] < 25 && row.entity['PERC_RIM_OTT'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_NOV',
+                    displayName: 'Budget NOV',
+                    field: 'BUDG_NOV',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['NOV'] !== 0 || 11 < n) {
+                            if (row.entity['PERC_RIM_NOV'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_NOV'] < 75 && row.entity['PERC_RIM_NOV'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_NOV'] < 50 && row.entity['PERC_RIM_NOV'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_NOV'] < 25 && row.entity['PERC_RIM_NOV'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'NOV',
+                    displayName: 'Spese NOV',
+                    field: 'NOV',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['NOV'] !== 0 || 11 < n) {
+                            if (row.entity['PERC_RIM_NOV'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_NOV'] < 75 && row.entity['PERC_RIM_NOV'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_NOV'] < 50 && row.entity['PERC_RIM_NOV'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_NOV'] < 25 && row.entity['PERC_RIM_NOV'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'BUDG_DIC',
+                    displayName: 'Budget DIC',
+                    field: 'BUDG_DIC',
+                    width: '10%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['DIC'] !== 0 || 12 < n) {
+                            if (row.entity['PERC_RIM_DIC'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_DIC'] < 75 && row.entity['PERC_RIM_DIC'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_DIC'] < 50 && row.entity['PERC_RIM_DIC'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_DIC'] < 25 && row.entity['PERC_RIM_DIC'] >= 0) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }
+                    }
+        }, {
+                    name: 'DIC',
+                    displayName: 'Spese DIC',
+                    field: 'DIC',
+                    width: '10%',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var d = new Date();
+                        var n = d.getMonth();
+
+                        if (row.entity['DIC'] !== 0 || 12 < n) {
+                            if (row.entity['PERC_RIM_DIC'] >= 75) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_DIC'] < 75 && row.entity['PERC_RIM_DIC'] >= 50) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_DIC'] < 50 && row.entity['PERC_RIM_DIC'] >= 25) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_DIC'] < 25 && row.entity['PERC_RIM_DIC'] >= 0) {
                                 return 'venticinqperc';
                             } else {
                                 return 'zeroperc';
