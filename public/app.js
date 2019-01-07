@@ -3854,25 +3854,25 @@
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: '10%',
+                    width: '7%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
             }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
-                    width: '10%',
+                    width: '8%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
         }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: '10%',
+                    width: '12%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {}
         }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
                     field: 'BUDG_TOT_ANNO',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -3899,7 +3899,7 @@
                     name: 'TOT_ANNO',
                     displayName: 'Spese Anno',
                     field: 'TOT_ANNO',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -3925,7 +3925,7 @@
                     name: 'BUDG_GEN',
                     displayName: 'Budget GEN',
                     field: 'BUDG_GEN',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -3951,7 +3951,9 @@
                     name: 'GEN',
                     displayName: 'Spese GEN',
                     field: 'GEN',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -3975,7 +3977,7 @@
                     name: 'BUDG_FEB',
                     displayName: 'Budget FEB',
                     field: 'BUDG_FEB',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4001,7 +4003,9 @@
                     name: 'FEB',
                     displayName: 'Spese FEB',
                     field: 'FEB',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4025,7 +4029,7 @@
                     name: 'BUDG_MAR',
                     displayName: 'Budget MAR',
                     field: 'BUDG_MAR',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4051,7 +4055,9 @@
                     name: 'MAR',
                     displayName: 'Spese MAR',
                     field: 'MAR',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4075,7 +4081,7 @@
                     name: 'BUDG_APR',
                     displayName: 'Budget APR',
                     field: 'BUDG_APR',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4101,7 +4107,9 @@
                     name: 'APR',
                     displayName: 'Spese APR',
                     field: 'APR',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4125,7 +4133,7 @@
                     name: 'BUDG_MAG',
                     displayName: 'Budget MAG',
                     field: 'BUDG_MAG',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4151,7 +4159,9 @@
                     name: 'MAG',
                     displayName: 'Spese MAG',
                     field: 'MAG',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4175,7 +4185,7 @@
                     name: 'BUDG_GIU',
                     displayName: 'Budget GIU',
                     field: 'BUDG_GIU',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4201,7 +4211,9 @@
                     name: 'GIU',
                     displayName: 'Spese GIU',
                     field: 'GIU',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4225,7 +4237,7 @@
                     name: 'BUDG_LUG',
                     displayName: 'Budget LUG',
                     field: 'BUDG_LUG',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4251,7 +4263,9 @@
                     name: 'LUG',
                     displayName: 'Spese LUG',
                     field: 'LUG',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4275,7 +4289,7 @@
                     name: 'BUDG_AGO',
                     displayName: 'Budget AGO',
                     field: 'BUDG_AGO',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4301,7 +4315,9 @@
                     name: 'AGO',
                     displayName: 'Spese AGO',
                     field: 'AGO',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4325,7 +4341,7 @@
                     name: 'BUDG_SETT',
                     displayName: 'Budget SETT',
                     field: 'BUDG_SETT',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4351,7 +4367,9 @@
                     name: 'SETT',
                     displayName: 'Spese SETT',
                     field: 'SETT',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4375,7 +4393,7 @@
                     name: 'BUDG_OTT',
                     displayName: 'Budget OTT',
                     field: 'BUDG_OTT',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4401,7 +4419,9 @@
                     name: 'OTT',
                     displayName: 'Spese OTT',
                     field: 'OTT',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4425,7 +4445,7 @@
                     name: 'BUDG_NOV',
                     displayName: 'Budget NOV',
                     field: 'BUDG_NOV',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4451,7 +4471,9 @@
                     name: 'NOV',
                     displayName: 'Spese NOV',
                     field: 'NOV',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
@@ -4475,7 +4497,7 @@
                     name: 'BUDG_DIC',
                     displayName: 'Budget DIC',
                     field: 'BUDG_DIC',
-                    width: '5%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -4501,7 +4523,9 @@
                     name: 'DIC',
                     displayName: 'Spese DIC',
                     field: 'DIC',
-                    width: '5%',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var d = new Date();
                         var n = d.getMonth();
