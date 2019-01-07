@@ -360,7 +360,6 @@ label-settings {
 .centoperc {
     background-color: green !important;
     font-weight: bold;
-    font-size: larger;
     color: white;
 
 }
@@ -368,23 +367,19 @@ label-settings {
 .settcinqueperc {
     background-color: lightgreen !important;
     font-weight: bold;
-    font-size: larger;
 }
 
 .cinquantaperc {
     background-color: yellow !important;
     font-weight: bold;
-    font-size: larger;
 }
 
 .venticinqperc {
     background-color: orange !important;
     font-weight: bold;
-    font-size: larger;
 }
 
 .zeroperc {
     background-color: red !important;
     font-weight: bold;
-    font-size: larger;
 }
