@@ -383,3 +383,13 @@ label-settings {
     background-color: red !important;
     font-weight: bold;
 }
+
+.ui-grid-selectable .ui-grid-disable-selection {
+     -webkit-touch-callout: default;
+     -webkit-user-select: text;
+     -khtml-user-select: text;
+     -moz-user-select: text;
+     -ms-user-select: text;
+     user-select: text;
+     cursor:auto;
+ }

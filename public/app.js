@@ -105,7 +105,8 @@
             };
 
             $scope.gridOptions = {
-                columnVirtualizationThreshold: 100,
+                columnVirtualizationThreshold: 100,                
+                enableRowHeaderSelection: false,
                 showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 21,
@@ -3752,62 +3753,64 @@
                 enableSorting: false,
                 enableColumnMenus: false,
                 columnDefs: [{
-                    name: 'DESC_AMB',
-                    displayName: 'Ambito',
-                    field: 'DESC_AMB',
-                    width: '10%',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity.padre) {
-                            return 'padre';
+                        name: 'DESC_AMB',
+                        displayName: 'Ambito',
+                        field: 'DESC_AMB',
+                        width: '10%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.padre) {
+                                return 'padre';
+                            }
                         }
-                    }
             }, {
-                    name: 'DESC_CAT',
-                    displayName: 'Categoria',
-                    field: 'DESC_CAT',
-                    width: '10%',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity.padre) {
-                            return 'padre';
+                        name: 'DESC_CAT',
+                        displayName: 'Categoria',
+                        field: 'DESC_CAT',
+                        width: '10%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.padre) {
+                                return 'padre';
+                            }
                         }
-                    }
         }, {
-                    name: 'DESC_SOT',
-                    displayName: 'Sottocategoria',
-                    field: 'DESC_SOT',
-                    width: '10%',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity.padre) {
-                            return 'padre';
+                        name: 'DESC_SOT',
+                        displayName: 'Sottocategoria',
+                        field: 'DESC_SOT',
+                        width: '10%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.padre) {
+                                return 'padre';
+                            }
                         }
-                    }
         }, {
-                    name: 'TOTALE',
-                    displayName: 'TOT. MESE',
-                    field: 'TOTALE',
-                    width: '10%',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity.padre) {
-                            return 'padre-importo';
+                        name: 'TOTALE',
+                        displayName: 'TOT. MESE',
+                        field: 'TOTALE',
+                        width: '10%',
+                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.padre) {
+                                return 'padre-importo';
+                            }
                         }
-                    }
-        }, {
-                    name: 'TOTALE_MEDIO_ANNO',
-                    displayName: 'MEDIA ANNUA',
-                    field: 'TOTALE_MEDIO_ANNO',
-                    width: '10%',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity.padre) {
-                            return 'padre-importo';
-                        }
-                    }
-        }],
+        }
+                    /* , {
+                                        name: 'TOTALE_MEDIO_ANNO',
+                                        displayName: 'MEDIA ANNUA',
+                                        field: 'TOTALE_MEDIO_ANNO',
+                                        width: '10%',
+                                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                                        footerCellFilter: 'currency',
+                                        cellFilter: 'currency',
+                                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                                            if (row.entity.padre) {
+                                                return 'padre-importo';
+                                            }
+                                        }
+                            }*/
+                    ],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     $scope.gridReportMese.gridApi = gridApi;
