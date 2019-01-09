@@ -105,8 +105,7 @@
             };
 
             $scope.gridOptions = {
-                columnVirtualizationThreshold: 100,                
-                enableRowHeaderSelection: false,
+                columnVirtualizationThreshold: 100,                                
                 showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 21,
