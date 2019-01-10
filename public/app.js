@@ -3856,22 +3856,22 @@
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: '3%'    
-                },{
+                    width: '3%'
+                }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: '3%'    
-                },{
+                    width: '3%'
+                }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: '3%'    
-                },{
+                    width: '3%'
+                }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: '7%'                    
+                    width: '7%'
             }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
@@ -3904,7 +3904,11 @@
                             } else if (row.entity['PERC_RIM_ANNO'] < $strings.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['TOT_ANNO']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -3930,7 +3934,11 @@
                             } else if (row.entity['PERC_RIM_ANNO'] < $strings.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['TOT_ANNO']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -3956,7 +3964,11 @@
                             } else if (row.entity['PERC_RIM_GEN'] < $strings.YELLOW && row.entity['PERC_RIM_GEN'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['GEN']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -3982,7 +3994,11 @@
                             } else if (row.entity['PERC_RIM_GEN'] < $strings.YELLOW && row.entity['PERC_RIM_GEN'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['GEN']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4008,7 +4024,11 @@
                             } else if (row.entity['PERC_RIM_FEB'] < $strings.YELLOW && row.entity['PERC_RIM_FEB'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['FEB']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4034,7 +4054,11 @@
                             } else if (row.entity['PERC_RIM_FEB'] < $strings.YELLOW && row.entity['PERC_RIM_FEB'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['FEB']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4060,7 +4084,11 @@
                             } else if (row.entity['PERC_RIM_MAR'] < $strings.YELLOW && row.entity['PERC_RIM_MAR'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['MAR']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4086,7 +4114,11 @@
                             } else if (row.entity['PERC_RIM_MAR'] < $strings.YELLOW && row.entity['PERC_RIM_MAR'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['MAR']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4112,7 +4144,11 @@
                             } else if (row.entity['PERC_RIM_APR'] < $strings.YELLOW && row.entity['PERC_RIM_APR'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['APR']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4138,7 +4174,11 @@
                             } else if (row.entity['PERC_RIM_APR'] < $strings.YELLOW && row.entity['PERC_RIM_APR'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['APR']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4164,7 +4204,11 @@
                             } else if (row.entity['PERC_RIM_MAG'] < $strings.YELLOW && row.entity['PERC_RIM_MAG'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['MAG']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4190,7 +4234,11 @@
                             } else if (row.entity['PERC_RIM_MAG'] < $strings.YELLOW && row.entity['PERC_RIM_MAG'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['MAG']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4216,7 +4264,11 @@
                             } else if (row.entity['PERC_RIM_GIU'] < $strings.YELLOW && row.entity['PERC_RIM_GIU'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['GIU']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4242,7 +4294,11 @@
                             } else if (row.entity['PERC_RIM_GIU'] < $strings.YELLOW && row.entity['PERC_RIM_GIU'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['GIU']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4268,7 +4324,11 @@
                             } else if (row.entity['PERC_RIM_LUG'] < $strings.YELLOW && row.entity['PERC_RIM_LUG'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['LUG']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4294,7 +4354,11 @@
                             } else if (row.entity['PERC_RIM_LUG'] < $strings.YELLOW && row.entity['PERC_RIM_LUG'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['LUG']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4320,7 +4384,11 @@
                             } else if (row.entity['PERC_RIM_AGO'] < $strings.YELLOW && row.entity['PERC_RIM_AGO'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['AGO']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4346,7 +4414,11 @@
                             } else if (row.entity['PERC_RIM_AGO'] < $strings.YELLOW && row.entity['PERC_RIM_AGO'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['AGO']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4372,7 +4444,11 @@
                             } else if (row.entity['PERC_RIM_SETT'] < $strings.YELLOW && row.entity['PERC_RIM_SETT'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['SETT']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4398,7 +4474,11 @@
                             } else if (row.entity['PERC_RIM_SETT'] < $strings.YELLOW && row.entity['PERC_RIM_SETT'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['SETT']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4424,7 +4504,11 @@
                             } else if (row.entity['PERC_RIM_OTT'] < $strings.YELLOW && row.entity['PERC_RIM_OTT'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['OTT']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4450,7 +4534,11 @@
                             } else if (row.entity['PERC_RIM_OTT'] < $strings.YELLOW && row.entity['PERC_RIM_OTT'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['OTT']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4476,7 +4564,11 @@
                             } else if (row.entity['PERC_RIM_NOV'] < $strings.YELLOW && row.entity['PERC_RIM_NOV'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['NOV']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4502,7 +4594,11 @@
                             } else if (row.entity['PERC_RIM_NOV'] < $strings.YELLOW && row.entity['PERC_RIM_NOV'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['NOV']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4528,7 +4624,11 @@
                             } else if (row.entity['PERC_RIM_DIC'] < $strings.YELLOW && row.entity['PERC_RIM_DIC'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['DIC']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
@@ -4554,7 +4654,11 @@
                             } else if (row.entity['PERC_RIM_DIC'] < $strings.YELLOW && row.entity['PERC_RIM_DIC'] > $strings.ORANGE) {
                                 return 'venticinqperc';
                             } else {
-                                return 'zeroperc';
+                                if (row.entity['DIC']) < 0 {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
                             }
                         }
                     },
