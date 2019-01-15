@@ -10,12 +10,12 @@
 
             DEFAULT_WAITING_MESSAGE: 'Attendere prego...',
 
-            GREEN: 40,
+            GREEN: 100,
 
-            LIGHT_GREEN: 20,
+            LIGHT_GREEN: 10,
 
-            YELLOW: 10,
+            YELLOW: 5,
 
-            ORANGE: 0    
+            ORANGE: -1    
         });
 })();
