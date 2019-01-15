@@ -3775,7 +3775,7 @@
                         name: 'DESC_SOT',
                         displayName: 'Sottocategoria',
                         field: 'DESC_SOT',
-                        width: '10%',
+                        width: '*',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.padre) {
                                 return 'padre';
