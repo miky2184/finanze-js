@@ -10,7 +10,7 @@
 
             DEFAULT_WAITING_MESSAGE: 'Attendere prego...',
 
-            GREEN: 100,
+            GREEN: 60,
 
             LIGHT_GREEN: 10,
 
