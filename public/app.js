@@ -4837,26 +4837,11 @@
                         field: 'REFR_DE',
                         width: 160,
                         editableCellTemplate: 'templates/rows/uiSelect.html',
-                        editDropdownIdLabel: 'tipoConto',
-                        editDropdownValueLabel: 'label',
-                        cellFilter: 'map:row.grid.appScope.$parent.editDropDownTipoContoArray:"tipoConto":"label"',
-                        editDropdownOptionsFunction: function () {
-                            return $scope.editDropDownTipoContoArray;
-                        },
-                        filter: {
-                            condition: function (searchTerm, cellValue, row, column) {
-                                if (row.grid.appScope.$parent.editDropDownTipoContoArray) {
-                                    var cell = row.grid.appScope.$parent.editDropDownTipoContoArray.filter(function (tipoConto) {
-                                        return tipoConto.tipoConto === cellValue;
-                                    });
-                                    if (cell && cell.length > 0) {
-                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                                    } else {
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
+                        editDropdownOptionsArray: [
+          'PANE FRESCO',
+          'LATTE',
+          'ALTRO'
+        ]
             }
 		],
                 data: [],
