@@ -4873,7 +4873,13 @@
             };
             
             $scope.loadSpesa = function () {            
-
+                $scope.gridOptionsSpesa.data = [{
+                    "REPR_CD": "XXX",
+                    "SOTT_CD": "yyy",
+                    "FAMG_CD": "UUU",
+                    "EAN": "123456789",
+                    "REFR_DE": "PANE FRESCO"                    
+                }];
             };
 
           }])
