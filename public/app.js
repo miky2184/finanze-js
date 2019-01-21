@@ -4861,7 +4861,7 @@
 		],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    $scope.gridOptions.gridApi = gridApi;
+                    $scope.gridOptionsSpesa.gridApi = gridApi;
 
                     gridApi.selection.on.rowSelectionChanged($scope, function (row) {});
 
@@ -4870,6 +4870,10 @@
                     gridApi.edit.on.afterCellEdit($scope, $scope.afterCellEditFunction);
 
                 }
+            };
+            
+            $scope.loadSpesa = function () {            
+
             };
 
           }])
