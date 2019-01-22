@@ -798,10 +798,10 @@
                     srvc.gridBudget.gridApi = gridApi;
                 }
             },
-            loadBudget: function () {
+            loadBudget: function (pivot) {
                 var dto = {};
-                dto.tipoconto = scope.pivot.tipoConto;
-                dto.anno = scope.pivot.year;
+                dto.tipoconto = pivot.tipoConto;
+                dto.anno = pivot.year;
                 return $http.post('http://93.55.248.37:3001/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridBudget.data = resp.data;

@@ -11,8 +11,21 @@
 
             $scope.season = {};
             $scope.season.value = {};
+            
             $scope.fanta = {};
             $scope.fanta.value = {};
+             $scope.fantacalcio = [{
+                id: 1,
+                name: "FANTAFIGHETTINO"
+            }, {
+                id: 2,
+                name: "FANTAMARELLI"
+            }, {
+                id: 3,
+                name: "FANTABOMBOLACCI"
+            }];
+            
+            
             $scope.seasons = [];
             $scope.giornata = {};
             $scope.giornata.value = {};
@@ -36,6 +49,15 @@
                 admin: false,
                 read: false
             };
+            
+            $scope.pivot = {
+                year: new Date().getFullYear(),
+                month: new Date().getMonth() + 1,
+                tipoConto: 1
+            };
+            $scope.years = [2019, 2018, 2017, 2016];
+
+            $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
             $scope.afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
                 if (newValue === oldValue) {
@@ -957,16 +979,7 @@
                         $scope.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
                     }, 250);
                 }
-            };
-
-            $scope.pivot = {
-                year: new Date().getFullYear(),
-                month: new Date().getMonth() + 1,
-                tipoConto: 1
-            };
-            $scope.years = [2019, 2018, 2017, 2016];
-
-            $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            };            
 
             $scope.loadPivotAnno = function () {
                 var balanceData = angular.copy($scope.gridOptions.data).filter(function (obj) {
@@ -3496,18 +3509,7 @@
 
             /***************************************************************************************************
              *                      TAB FANTACALCIO
-             **************************************************************************************************/
-
-            $scope.fantacalcio = [{
-                id: 1,
-                name: "FANTAFIGHETTINO"
-            }, {
-                id: 2,
-                name: "FANTAMARELLI"
-            }, {
-                id: 3,
-                name: "FANTABOMBOLACCI"
-            }];
+             **************************************************************************************************/           
 
             $scope.gridOptionsPandathinaikos = {
                 columnVirtualizationThreshold: 100,
@@ -3845,7 +3847,7 @@
 
             $scope.gridBudget = budgetService.gridBudget;
             
-            $scope.loadBudget = budgetService.loadBudget();
+            $scope.loadBudget = budgetService.loadBudget($scope.pivot);
             
             
             /******************************************************************
