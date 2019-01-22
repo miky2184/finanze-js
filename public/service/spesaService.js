@@ -57,7 +57,7 @@
                 }
             },
             loadSpesa: function () {
-                scope.gridOptionsSpesa.data = [{
+                srvc.gridOptionsSpesa.data = [{
                     "REPR_CD": "XXX",
                     "SOTT_CD": "yyy",
                     "FAMG_CD": "UUU",
