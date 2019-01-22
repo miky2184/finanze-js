@@ -4868,7 +4868,7 @@
             };
 
           }])
-    .directive('uiSelectWrap', ['$document', 'uiGridEditConstants'], function uiSelectWrap($document, uiGridEditConstants) {
+    .directive('uiSelectWrap', ['$document', 'uiGridEditConstants', function uiSelectWrap($document, uiGridEditConstants) {
   return function link($scope, $elm, $attr) {
     $document.on('click', docClick);
     
@@ -4879,7 +4879,7 @@
       }
     }
   };
-})
+}])
         .filter('map', function () {
             return function () {
                 return function (input, map, idLabel, valueLabel) {
