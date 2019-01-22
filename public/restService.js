@@ -6,7 +6,7 @@
 
       var srvc = {
 
-        loadData: function ($scope) {
+        loadData: function (scope) {
 
           modalService.showSearchingModal();
 
@@ -17,7 +17,7 @@
                 "label": " "
               });
             }
-            $scope.editDropDownAmbitoArray = response.data;
+            scope.editDropDownAmbitoArray = response.data;
 
             return $http.get('http://93.55.248.37:3001/categoria').then(function (response) {
               if (response.data) {
@@ -26,7 +26,7 @@
                   "label": " "
                 });
               }
-              $scope.editDropDownCategoriaArray = response.data;
+              scope.editDropDownCategoriaArray = response.data;
 
               return $http.get('http://93.55.248.37:3001/sottocategoria').then(function (response) {
                 if (response.data) {
@@ -35,7 +35,7 @@
                     "label": " "
                   });
                 }
-                $scope.editDropDownSottoCategoriaArray = response.data;
+                scope.editDropDownSottoCategoriaArray = response.data;
 
                 return $http.get('http://93.55.248.37:3001/beneficiario').then(function (response) {
                   if (response.data) {
@@ -44,18 +44,18 @@
                       "label": " "
                     });
                   }
-                  $scope.editDropDownBeneficiarioArray = response.data;
+                  scope.editDropDownBeneficiarioArray = response.data;
 
                   return $http.get('http://93.55.248.37:3001/tipoConto').then(function (response) {
-                    $scope.editDropDownTipoContoArray = response.data;
+                    scope.editDropDownTipoContoArray = response.data;
 
                     return $http.get('http://93.55.248.37:3001/conto').then(function (response) {
-                      $scope.editDropDownContoArray = response.data;
+                      scope.editDropDownContoArray = response.data;
 
                       return $http.get('http://93.55.248.37:3001/all').
                       then(function (response) {
 
-                        $scope.login.logged = true;
+                        scope.login.logged = true;
 
                         var resultsData = [];
 
@@ -81,18 +81,18 @@
                           return resultsData.push(newRow);
                         });
 
-                        $scope.backupData = angular.copy(resultsData);
+                        scope.backupData = angular.copy(resultsData);
 
-                        $scope.gridOptions.data = resultsData;
+                        scope.gridOptions.data = resultsData;
 
-                        $scope.gridOptions.columnDefs[1].editDropdownOptionsArray = $scope.editDropDownAmbitoArray;
-                        $scope.gridOptions.columnDefs[2].editDropdownOptionsArray = $scope.editDropDownCategoriaArray;
-                        $scope.gridOptions.columnDefs[3].editDropdownOptionsArray = $scope.editDropDownSottoCategoriaArray;
-                        $scope.gridOptions.columnDefs[4].editDropdownOptionsArray = $scope.editDropDownBeneficiarioArray;
-                        $scope.gridOptions.columnDefs[5].editDropdownOptionsArray = $scope.editDropDownTipoContoArray;
-                        $scope.gridOptions.columnDefs[6].editDropdownOptionsArray = $scope.editDropDownContoArray;
+                        scope.gridOptions.columnDefs[1].editDropdownOptionsArray = scope.editDropDownAmbitoArray;
+                        scope.gridOptions.columnDefs[2].editDropdownOptionsArray = scope.editDropDownCategoriaArray;
+                        scope.gridOptions.columnDefs[3].editDropdownOptionsArray = scope.editDropDownSottoCategoriaArray;
+                        scope.gridOptions.columnDefs[4].editDropdownOptionsArray = scope.editDropDownBeneficiarioArray;
+                        scope.gridOptions.columnDefs[5].editDropdownOptionsArray = scope.editDropDownTipoContoArray;
+                        scope.gridOptions.columnDefs[6].editDropdownOptionsArray = scope.editDropDownContoArray;
                         modalService.hideWaitingModal();
-                        $interval($scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+                        $interval(scope.gridOptions.gridApi.core.handleWindowResize, 100, 10);
                       });
                     });
                   });
