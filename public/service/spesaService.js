@@ -53,7 +53,7 @@
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    scope.gridOptionsSpesa.gridApi = gridApi;
+                    srvc.gridOptionsSpesa.gridApi = gridApi;
                 }
             },
             loadSpesa: function () {
