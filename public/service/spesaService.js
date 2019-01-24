@@ -1,7 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('spesaService', ['modalService', '$http', '$interval', '$rootScope', function (modalService, $http, $interval, $rootScope) {
-        var scope = $rootScope.$new();
+    angular.module('myApp').factory('spesaService', ['modalService', '$http', '$interval', function (modalService, $http, $interval) {        
         var srvc = {
             gridOptionsSpesa: {
                 columnVirtualizationThreshold: 100,

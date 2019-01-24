@@ -9,7 +9,7 @@
             <span> - </span>
         </div>
         <div flex="20" layout="column">
-            <md-select placeholder="Giornata" ng-model="giornata.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadGiornate()" style="min-width: 200px;" ng-change="loadGiornata()">
+            <md-select placeholder="Giornata" ng-model="giornata.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadGiornate()" style="min-width: 200px;" ng-change="loadMatchAnalysis()">
                 <md-option ng-value="giornata" ng-repeat="giornata in giornate">{{giornata.name}}</md-option>
             </md-select>
         </div>

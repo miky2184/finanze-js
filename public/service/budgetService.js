@@ -1,7 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$rootScope', '$strings', 'uiGridConstants', function (modalService, $http, $interval, $rootScope, $strings, uiGridConstants) {
-        var scope = $rootScope.$new();
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval',  '$strings', 'uiGridConstants', function (modalService, $http, $interval, $strings, uiGridConstants) {        
         var srvc = {
             gridBudget: {
                 columnVirtualizationThreshold: 100,
