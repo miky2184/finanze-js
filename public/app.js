@@ -128,7 +128,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'ambito',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     return $scope.editDropDownAmbitoArray.filter(function (a) {
                         return !a.deleted;
@@ -156,7 +156,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'categoria',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     if (rowEntity.ambito) {
                         return $scope.editDropDownCategoriaArray.filter(function (obj) {
@@ -187,7 +187,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'sottocategoria',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     if (rowEntity.categoria) {
                         return $scope.editDropDownSottoCategoriaArray.filter(function (obj) {
@@ -218,7 +218,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'beneficiario',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownBeneficiarioArray:"beneficiario":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownBeneficiarioArray:"beneficiario":"label"',                
                 editDropdownOptionsFunction: function () {
                     return $scope.editDropDownBeneficiarioArray;
                 },
@@ -244,7 +244,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'tipoConto',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownTipoContoArray:"tipoConto":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownTipoContoArray:"tipoConto":"label"',                
                 editDropdownOptionsFunction: function () {
                     return $scope.editDropDownTipoContoArray;
                 },
@@ -270,7 +270,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'conto',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownContoArray:"conto":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownContoArray:"conto":"label"',                
                 editDropdownOptionsFunction: function () {
                     return $scope.editDropDownContoArray;
                 },
@@ -398,7 +398,8 @@
             });
             dto.links.categoriasottocategoria = $scope.gridOptionsCatSott.data.filter(function (catsott) {
                 return catsott.dirty;
-            }) dto.finanze = $scope.gridOptions.data.filter(function (row) {
+            });
+            dto.finanze = $scope.gridOptions.data.filter(function (row) {
                 return row.dirty && !(row.newRow && row.deleted);
             });
             dto.salary = $scope.gridOptionsSalary.data.filter(function (row) {
@@ -1227,7 +1228,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'ambito',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownAmbitoArray:"ambito":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     return $scope.editDropDownAmbitoArray;
                 }
@@ -1238,7 +1239,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'categoria',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     return $scope.editDropDownCategoriaArray;
                 }
@@ -1260,7 +1261,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'categoria',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownCategoriaArray:"categoria":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     return $scope.editDropDownCategoriaArray;
                 }
@@ -1271,7 +1272,7 @@
                 editableCellTemplate: 'templates/rows/dropdownEditor.html',
                 editDropdownIdLabel: 'sottocategoria',
                 editDropdownValueLabel: 'label',
-                cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',
+                cellFilter: 'map:row.grid.appScope.$parent.editDropDownSottoCategoriaArray:"sottocategoria":"label"',                
                 editDropdownOptionsFunction: function (rowEntity, colDef) {
                     return $scope.editDropDownSottoCategoriaArray;
                 }
@@ -2119,7 +2120,8 @@
                         var salaryData = [];
                         resp.data.forEach(function (obj) {
                             var x = {};
-                            x.data = obj['DATA'] x.anno = new Date(x.data).getFullYear();
+                            x.data = obj['DATA'];
+                            x.anno = new Date(x.data).getFullYear();
                             x.mese = new Date(x.data).getMonth() + 1;
                             x.ggLavorativi = obj['GG_LAVORATIVI'];
                             x.ggDetrazioni = obj['GG_DETRAZIONI'] > 0 ? obj['GG_DETRAZIONI'] : utilService.ultimo(x.mese, x.anno);
