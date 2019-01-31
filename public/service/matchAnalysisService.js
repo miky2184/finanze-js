@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('matchAnalysisService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', function (modalService, $http, $interval, $rootScope, utilService) {
+    angular.module('myApp').factory('matchAnalysisService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'dataService', function (modalService, $http, $interval, $rootScope, utilService, dataService) {
         var scope = $rootScope.$new();
         
-        scope.editableCondition = function editableCondition(rowEntity, colDef) {
+        var editableCondition = function editableCondition(rowEntity, colDef) {
                 if (rowEntity.giocata && new Date(rowEntity.dataGameNext) < new Date()) {
                     return false;
                 }
@@ -13,8 +13,8 @@
                 return false;
             };
         
-        scope.checkEditableCondition = function checkEditableCondition(scope) {
-                return scope.editableCondition(scope.row.entity, scope.col.colDef);
+        var checkEditableCondition = function checkEditableCondition(scope) {
+                return editableCondition(scope.row.entity, scope.col.colDef);
             };            
         
         var srvc = {
@@ -195,7 +195,7 @@
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableColumnMenus: false,
-                cellEditableCondition: scope.checkEditableCondition,
+                cellEditableCondition: checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 multiSelect: false,
                 columnDefs: [{
@@ -296,27 +296,28 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsNextGame.gridApi = gridApi;                    
                     srvc.gridOptionsNextGame.gridApi.selection.on.rowSelectionChanged(scope, srvc.doSelection);
+                    gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditFunction);
                 }
             },
-            afterCellEditSettingsFunction: function (rowEntity, colDef, newValue, oldValue) {
+            afterCellEditFunction: function (rowEntity, colDef, newValue, oldValue) {
                 if (newValue === oldValue) {
                     return;
                 }
                 rowEntity.dirty = true;
-                scope.dirty = true;
+                dataService.data.dirty = true;
             },
+            scontriDiretti: {},
             doSelection: function doSelection(row) {
-                var cliccata = srvc.gridOptionsNextGame.gridApi.selection.getSelectedRows();
-                if (cliccata[0]) {
+                var cliccata = row.entity;
+                if (cliccata) {
                     var match = {
-                        idHome: cliccata[0].idHome,
-                        idAway: cliccata[0].idAway,
-                        season: cliccata[0].season
+                        idHome: cliccata.idHome,
+                        idAway: cliccata.idAway,
+                        season: cliccata.season
                     }
                     return $http.post('http://93.55.248.37:3001/scontriDiretti', match).then(function (resp) {
                         if (resp.data && resp.data.length > 0) {
-                            srvc.gridOptionsScontriDiretti.data = resp.data;
-                            srvc.scontriDiretti = {};
+                            srvc.gridOptionsScontriDiretti.data = resp.data;                            
                             srvc.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
                             srvc.scontriDiretti.squadraAway = resp.data[0]['AWAY_DESC'];
                             srvc.scontriDiretti.vinte = resp.data[0]['WIN'];

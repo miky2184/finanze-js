@@ -42,17 +42,26 @@
     <script type="text/javascript" src="utils/strings.js"></script>
     <script type="text/javascript" src="utils/modalService.js"></script>
     <script type="text/javascript" src="utils/utilService.js"></script>
-    <script type="text/javascript" src="utils/restService.js"></script>
+    <script type="text/javascript" src="utils/commonService.js"></script>
+    <script type="text/javascript" src="utils/dataService.js"></script>
     <script type="text/javascript" src="service/spesaService.js"></script>
     <script type="text/javascript" src="service/budgetService.js"></script>
     <script type="text/javascript" src="service/reportMeseService.js"></script>
     <script type="text/javascript" src="service/fantacalcioService.js"></script>
     <script type="text/javascript" src="service/matchAnalysisService.js"></script>
     <script type="text/javascript" src="service/amazonService.js"></script>
+    <script type="text/javascript" src="service/listaMovimentiService.js"></script>
+    <script type="text/javascript" src="service/andamentoAnnuoService.js"></script>
+    <script type="text/javascript" src="service/settingsService.js"></script>
+    <script type="text/javascript" src="service/salaryService.js"></script>
+    <script type="text/javascript" src="service/pivotAnnoService.js"></script>
+    <script type="text/javascript" src="service/pivotMeseService.js"></script>
+    <script type="text/javascript" src="service/graficoService.js"></script>
+    <script type="text/javascript" src="service/balanceService.js"></script>
 </head>
 
 <body ng-controller="MainController" class="textapp" md-no-ink>
-    <div layout="column" layout-align="center center" layout-fill ng-show="!login.logged">
+    <div layout="column" layout-align="center center" layout-fill ng-show="!logged()">
         <md-content layout-gt-sm="row" layout-padding="">
             <md-input-container>
                 <label>Username</label>
@@ -64,7 +73,7 @@
                 <input ng-model="password" type="password">
             </md-input-container>
             <!-- <div class="form-group"> -->
-            <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="accesso()">
+            <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="login()">
                 <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>
             </md-button>
             <div>
@@ -75,10 +84,10 @@
             </div>
         </md-content>
     </div>
-    <div layout="column" layout-align="center center" layout-fill ng-show="login.logged">
+    <div layout="column" layout-align="center center" layout-fill ng-show="logged()">
         <md-content layout-fill>
             <md-tabs md-dynamic-height="" md-border-bottom="">
-                <md-tab label="Lista Movimenti" md-on-select="refreshMainGrid()">
+                <md-tab label="Lista Movimenti">
                     <md-content class="md-padding">
                         <div ng-include="'view/dettaglio.html'"></div>
                     </md-content>
@@ -103,12 +112,12 @@
                         <div ng-include="'view/reportMensile.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Pivot Mese" md-on-select="loadPivotMese()">
+                <md-tab label="Pivot Mese" md-on-select="loadPivotMese(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotMese.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno()">
+                <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno(pivot.year, 1)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotAnno.html'"></div>
                     </md-content>
@@ -118,7 +127,7 @@
                         <div ng-include="'view/andamentoAnnuo.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Grafico" md-on-select="loadGrafico()">
+                <md-tab label="Grafico" md-on-select="loadGrafico(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/graph.html'"></div>
                     </md-content>
@@ -128,7 +137,7 @@
                         <div ng-include="'view/work.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis()">
+                <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis(season, giornata)">
                     <md-content class="md-padding">
                         <div ng-include="'view/matchAnalysis.html'"></div>
                     </md-content>
@@ -143,7 +152,7 @@
                         <div ng-include="'view/amazon.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="login.admin">
+                <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="admin()">
                     <md-content class="md-padding">
                         <div ng-include="'view/settings.html'"></div>
                     </md-content>

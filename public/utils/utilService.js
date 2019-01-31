@@ -2,7 +2,7 @@
   'use strict';
   angular.module('myApp')
 
-    .factory('utilService', [function () {
+    .factory('utilService', ['dataService', function (dataService) {
       var srvc = {
 
         ultimo: function ultimo(mese, anno) {
@@ -81,6 +81,14 @@
           }).map(function (a) {
             return a[prop];
           })[0]);
+        },
+          
+        sumArray:  function sumArray(array, field) {
+            var total = 0.0;
+            array.forEach(function (obj) {
+                total += obj[field] || 0;
+            });
+            return total;
         }
 
       };

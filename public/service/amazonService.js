@@ -50,12 +50,12 @@
                     gridApi.selection.on.rowSelectionChanged(scope, srvc.onSelectASIN);
                 }
             },
+            amazon: {},
 
             onSelectASIN : function onSelectASIN(row) {
                 var asin = {};
                 asin.asinOrig = row.entity.asinOrig;
-                return $http.post('http://93.55.248.37:3001/amazonProduct', asin).then(function (resp) {
-                    srvc.amazon = {};
+                return $http.post('http://93.55.248.37:3001/amazonProduct', asin).then(function (resp) {                   
                     srvc.amazon.amzLink = resp.data.ItemLookupResponse.Items.Item.DetailPageURL;
                     srvc.amazon.amzPrice = resp.data.ItemLookupResponse.Items.Item.OfferSummary.LowestNewPrice.FormattedPrice;
                     srvc.amazon.amzImage = resp.data.ItemLookupResponse.Items.Item.LargeImage.URL;
