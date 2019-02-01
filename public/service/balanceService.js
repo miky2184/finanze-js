@@ -102,10 +102,10 @@
             for (var x = 0; x < balanceData.length; x++) {
                 if (balanceData[x].conto === 4) {
                     var newAvere = {};
-                    if (dataService.data.editDropDownBeneficiarioArray.filter(function (ben) {
+                    if (dataService.data.dropdownBeneficiario.filter(function (ben) {
                             return balanceData[x].beneficiario === ben.beneficiario;
                         })[0]) {
-                        newAvere.beneficiario = dataService.data.editDropDownBeneficiarioArray.filter(function (ben) {
+                        newAvere.beneficiario = dataService.data.dropdownBeneficiario.filter(function (ben) {
                             return balanceData[x].beneficiario === ben.beneficiario;
                         })[0].label;
                     }

@@ -102,6 +102,11 @@
                         <div ng-include="'view/budget.html'"></div>
                     </md-content>
                 </md-tab>
+                <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="admin()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/settings.html'"></div>
+                    </md-content>
+                </md-tab>
                 <md-tab label="Spesa" md-on-select="loadSpesa()">
                     <md-content class="md-padding">
                         <div ng-include="'view/spesa.html'"></div>
@@ -151,12 +156,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/amazon.html'"></div>
                     </md-content>
-                </md-tab>
-                <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="admin()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/settings.html'"></div>
-                    </md-content>
-                </md-tab>
+                </md-tab>                
                 <md-button aria-label="Logout" class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="logout()">
                     <md-icon md-svg-src="images/baseline-power_settings_new-24px.svg"></md-icon>
                 </md-button>

@@ -138,7 +138,7 @@
             balanceData = utilService.sortByKey(balanceData, 'categoria');
             balanceData = utilService.sortByKey(balanceData, 'ambito');
             var ambitoData = [];
-            dataService.data.editDropDownAmbitoArray.forEach(function (ambito) {
+            dataService.data.dropdownAmbito.forEach(function (ambito) {
                 var obj = {
                     'idAmb': ambito.ambito,
                     'ambito': ambito.label,
@@ -204,7 +204,7 @@
             balanceData = utilService.sortByKey(balanceData, 'sottocategoria');
             balanceData = utilService.sortByKey(balanceData, 'categoria');
             var categoryData = [];
-            dataService.data.editDropDownCategoriaArray.forEach(function (categoria) {
+            angular.copy(dataService.data.dropdownCategoria).forEach(function (categoria) {
                 var obj = {
                     'idCat': categoria.categoria,
                     'categoria': categoria.label,
@@ -274,7 +274,7 @@
             categoryData = utilService.sortByKey(categoryData, 'idAmb');
             balanceData = utilService.sortByKey(balanceData, 'sottocategoria');
             var sottocategoryData = [];
-            dataService.data.editDropDownSottoCategoriaArray.forEach(function (sottocategoria) {
+            dataService.data.dropdownSottocategoria.forEach(function (sottocategoria) {
                 var obj = {
                     'idSott': sottocategoria.sottocategoria,
                     'sottocategoria': sottocategoria.label,

@@ -155,12 +155,17 @@
     text-align: right;
 }
 
+md-tab-item {
+   font-weight: bold !important;    
+    padding: 9px 18px !important;
+}
+
 md-tab-data {
-    opacity: 1;
-    display: table;
-    right: 0;
-    left: initial;
-    z-index: 20;
+    opacity: 1 !important;
+    display: table !important;
+    right: 0 !important;
+    left: initial !important;
+    z-index: 20 !important;
 }
 
 .md-button.md-fab.md-mini {

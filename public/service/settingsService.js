@@ -26,23 +26,23 @@
                         newSetting['label'] = '';
                         newSetting.used = 0;
                         if (type === 'ambito') {
-                            dataService.data.editDropDownAmbitoArray.unshift(newSetting);
-                            srvc.gridOptionsAmb.data = dataService.data.editDropDownAmbitoArray.filter(function (x) {
+                            dataService.data.dropdownAmbito.unshift(newSetting);
+                            srvc.gridOptionsAmb.data = dataService.data.dropdownAmbito.filter(function (x) {
                                 return x[type] != "null";
                             });
                         } else if (type === 'categoria') {
-                            dataService.data.editDropDownCategoriaArray.unshift(newSetting);
-                            srvc.gridOptionsCat.data = dataService.data.editDropDownCategoriaArray.filter(function (x) {
+                            dataService.data.dropdownCategoria.unshift(newSetting);
+                            srvc.gridOptionsCat.data = dataService.data.dropdownCategoria.filter(function (x) {
                                 return x[type] != "null";
                             });
                         } else if (type === 'sottocategoria') {
-                            dataService.data.editDropDownSottoCategoriaArray.unshift(newSetting);
-                            srvc.gridOptionsSott.data = dataService.data.editDropDownSottoCategoriaArray.filter(function (x) {
+                            dataService.data.dropdownSottocategoria.unshift(newSetting);
+                            srvc.gridOptionsSott.data = dataService.data.dropdownSottocategoria.filter(function (x) {
                                 return x[type] != "null";
                             });
                         } else if (type === 'beneficiario') {
-                            dataService.data.editDropDownBeneficiarioArray.unshift(newSetting);
-                            srvc.gridOptionsBen.data = dataService.data.editDropDownBeneficiarioArray.filter(function (x) {
+                            dataService.data.dropdownBeneficiario.unshift(newSetting);
+                            srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (x) {
                                 return x[type] != "null";
                             });
                         }
@@ -168,7 +168,7 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.editDropDownAmbitoArray;
+                        return dataService.data.dropdownAmbito;
                     }
                 }, {
                     name: 'categoria',
@@ -179,7 +179,7 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.editDropDownCategoriaArray;
+                        return dataService.data.dropdownCategoria;
                     }
                 }],
                 data: [],
@@ -201,7 +201,7 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.editDropDownCategoriaArray;
+                        return dataService.data.dropdownCategoria;
                     }
                 }, {
                     name: 'sottocategoria',
@@ -212,7 +212,7 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.editDropDownSottoCategoriaArray;
+                        return dataService.data.dropdownSottocategoria;
                     }
                 }],
                 data: [],
@@ -222,24 +222,28 @@
                 }
             },
             loadSettings: function () {
-                srvc.gridOptionsAmb.data = dataService.data.editDropDownAmbitoArray.filter(function (j) {
+                srvc.gridOptionsAmb.data = dataService.data.dropdownAmbito.filter(function (j) {
                     return j.ambito !== "null";
                 });
-                srvc.gridOptionsCat.data = dataService.data.editDropDownCategoriaArray.filter(function (j) {
+                srvc.gridOptionsCat.data = dataService.data.dropdownCategoria.filter(function (j) {
                     return j.categoria !== "null";
                 });
-                srvc.gridOptionsSott.data = dataService.data.editDropDownSottoCategoriaArray.filter(function (j) {
+                srvc.gridOptionsSott.data = dataService.data.dropdownSottocategoria.filter(function (j) {
                     return j.sottocategoria !== "null";
                 });
-                srvc.gridOptionsBen.data = dataService.data.editDropDownBeneficiarioArray.filter(function (j) {
+                srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (j) {
                     return j.beneficiario !== "null";
                 });
-                srvc.gridOptionsAmbCat.data = dataService.data.editDropDownCategoriaArray.filter(function (j) {
+                srvc.gridOptionsAmbCat.data = dataService.data.dropdownCategoria.filter(function (j) {
                     return j.categoria !== "null" && j.ambito !== null;
                 });
-                srvc.gridOptionsCatSott.data = dataService.data.editDropDownSottoCategoriaArray.filter(function (j) {
+                srvc.gridOptionsAmbCat.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownAmbito;
+                srvc.gridOptionsAmbCat.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                srvc.gridOptionsCatSott.data = dataService.data.dropdownSottocategoria.filter(function (j) {
                     return j.sottocategoria !== "null" && j.categoria !== null;
                 });
+                 srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                srvc.gridOptionsCatSott.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
                 srvc.refreshGridSettings();
             },
             refreshGridSettings: function () {

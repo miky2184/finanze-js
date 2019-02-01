@@ -16,37 +16,37 @@
                     rowEntity.mese = new Date(newValue).getMonth() + 1;
                     break;
                 case 'ambito':
-                    newSett = dataService.data.editDropDownAmbitoArray.filter(function (a) {
+                    newSett = dataService.data.dropdownAmbito.filter(function (a) {
                         return a[colDef.name] === newValue;
                     })[0];
-                    oldSett = dataService.data.editDropDownAmbitoArray.filter(function (a) {
+                    oldSett = dataService.data.dropdownAmbito.filter(function (a) {
                         return a[colDef.name] === oldValue;
                     })[0];
                     rowEntity.categoria = null;
                     rowEntity.sottocategoria = null;
                     break;
                 case 'categoria':
-                    newSett = dataService.data.editDropDownCategoriaArray.filter(function (a) {
+                    newSett = dataService.data.dropdownCategoria.filter(function (a) {
                         return a[colDef.name] === newValue;
                     })[0];
-                    oldSett = dataService.data.editDropDownCategoriaArray.filter(function (a) {
+                    oldSett = dataService.data.dropdownCategoria.filter(function (a) {
                         return a[colDef.name] === oldValue;
                     })[0];
                     rowEntity.sottocategoria = null;
                     break;
                 case 'sottocategoria':
-                    newSett = dataService.data.editDropDownSottoCategoriaArray.filter(function (a) {
+                    newSett = dataService.data.dropdownSottocategoria.filter(function (a) {
                         return a[colDef.name] === newValue;
                     })[0];
-                    oldSett = dataService.data.editDropDownSottoCategoriaArray.filter(function (a) {
+                    oldSett = dataService.data.dropdownSottocategoria.filter(function (a) {
                         return a[colDef.name] === oldValue;
                     })[0];
                     break;
                 case 'beneficiario':
-                    newSett = dataService.data.editDropDownBeneficiarioArray.filter(function (a) {
+                    newSett = dataService.data.dropdownBeneficiario.filter(function (a) {
                         return a[colDef.name] === newValue;
                     })[0];
-                    oldSett = dataService.data.editDropDownBeneficiarioArray.filter(function (a) {
+                    oldSett = dataService.data.dropdownBeneficiario.filter(function (a) {
                         return a[colDef.name] === oldValue;
                     })[0];
                     break;
@@ -85,16 +85,16 @@
                     editableCellTemplate: 'templates/rows/dropdownEditor.html',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
-                    cellFilter: 'griddropdown:this',
+                    cellFilter: 'griddropdown:this',                    
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.editDropDownAmbitoArray.filter(function (a) {
+                        return dataService.data.dropdownAmbito.filter(function (a) {
                             return !a.deleted;
                         });
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.editDropDownAmbitoArray) {
-                                var cell = dataService.data.editDropDownAmbitoArray.filter(function (ambito) {
+                            if (dataService.data.dropdownAmbito) {
+                                var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
                                     return ambito.ambito === cellValue;
                                 });
                                 if (cell && cell.length > 0) {
@@ -116,7 +116,7 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         if (rowEntity.ambito) {
-                            return dataService.data.editDropDownCategoriaArray.filter(function (obj) {
+                            return dataService.data.dropdownCategoria.filter(function (obj) {
                                 return obj.ambito === rowEntity.ambito && !obj.deleted;
                             });
                         }
@@ -124,8 +124,8 @@
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.editDropDownCategoriaArray) {
-                                var cell = dataService.data.editDropDownCategoriaArray.filter(function (categoria) {
+                            if (dataService.data.dropdownCategoria) {
+                                var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
                                     return categoria.categoria === cellValue;
                                 });
                                 if (cell && cell.length > 0) {
@@ -147,7 +147,7 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         if (rowEntity.categoria) {
-                            return dataService.data.editDropDownSottoCategoriaArray.filter(function (obj) {
+                            return dataService.data.dropdownSottocategoria.filter(function (obj) {
                                 return obj.categoria === rowEntity.categoria && !obj.deleted;
                             });
                         }
@@ -155,8 +155,8 @@
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                            
-                            if (dataService.data.editDropDownSottoCategoriaArray) {
-                                var cell = dataService.data.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {                                   
+                            if (dataService.data.dropdownSottocategoria) {
+                                var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {                                   
                                     return sottocategoria.sottocategoria === cellValue;
                                 });                                
                                 if (cell && cell.length > 0) {                                      
@@ -177,12 +177,12 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function () {
-                        return dataService.data.editDropDownBeneficiarioArray;
+                        return dataService.data.dropdownBeneficiario;
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.editDropDownBeneficiarioArray) {
-                                var cell = dataService.data.editDropDownBeneficiarioArray.filter(function (beneficiario) {
+                            if (dataService.data.dropdownBeneficiario) {
+                                var cell = dataService.data.dropdownBeneficiario.filter(function (beneficiario) {
                                     return beneficiario.beneficiario === cellValue;
                                 });
                                 if (cell && cell.length > 0) {

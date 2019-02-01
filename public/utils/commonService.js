@@ -10,7 +10,7 @@
                             "label": " "
                         });
                     }
-                    dataService.data.editDropDownAmbitoArray = response.data;
+                    dataService.data.dropdownAmbito = response.data;
                     return $http.get('http://93.55.248.37:3001/categoria').then(function (response) {
                         if (response.data) {
                             response.data.unshift({
@@ -18,7 +18,7 @@
                                 "label": " "
                             });
                         }
-                        dataService.data.editDropDownCategoriaArray = response.data;
+                        dataService.data.dropdownCategoria = response.data;
                         return $http.get('http://93.55.248.37:3001/sottocategoria').then(function (response) {
                             if (response.data) {
                                 response.data.unshift({
@@ -26,7 +26,7 @@
                                     "label": " "
                                 });
                             }
-                            dataService.data.editDropDownSottoCategoriaArray = response.data;
+                            dataService.data.dropdownSottocategoria = response.data;
                             return $http.get('http://93.55.248.37:3001/beneficiario').then(function (response) {
                                 if (response.data) {
                                     response.data.unshift({
@@ -34,7 +34,7 @@
                                         "label": " "
                                     });
                                 }
-                                dataService.data.editDropDownBeneficiarioArray = response.data;
+                                dataService.data.dropdownBeneficiario = response.data;
                                 return $http.get('http://93.55.248.37:3001/tipoConto').then(function (response) {
                                     dataService.data.editDropDownTipoContoArray = response.data;
                                     return $http.get('http://93.55.248.37:3001/conto').then(function (response) {
@@ -64,10 +64,10 @@
                                             });
                                             dataService.data.backupData = angular.copy(resultsData);
                                             listaMovimentiService.gridOptions.data = resultsData;
-                                            listaMovimentiService.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.editDropDownAmbitoArray;
-                                            listaMovimentiService.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.editDropDownCategoriaArray;
-                                            listaMovimentiService.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.editDropDownSottoCategoriaArray;
-                                            listaMovimentiService.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.editDropDownBeneficiarioArray;
+                                            listaMovimentiService.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito; 
+                                            listaMovimentiService.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                                            listaMovimentiService.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
+                                            listaMovimentiService.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
                                             listaMovimentiService.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
                                             listaMovimentiService.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
                                         });
@@ -111,16 +111,16 @@
                 var dto = {};
                 dto.settings = {};
                 dto.links = {};
-                dto.settings.ambiti = dataService.data.editDropDownAmbitoArray.filter(function (ambito) {
+                dto.settings.ambiti = dataService.data.dropdownAmbito.filter(function (ambito) {
                     return ambito.dirty;
                 });
-                dto.settings.categorie = dataService.data.editDropDownCategoriaArray.filter(function (categoria) {
+                dto.settings.categorie = dataService.data.dropdownCategoria.filter(function (categoria) {
                     return categoria.dirty;
                 });
-                dto.settings.sottocategorie = dataService.data.editDropDownSottoCategoriaArray.filter(function (sottocategoria) {
+                dto.settings.sottocategorie = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
                     return sottocategoria.dirty;
                 });
-                dto.settings.beneficiari = dataService.data.editDropDownBeneficiarioArray.filter(function (beneficiario) {
+                dto.settings.beneficiari = dataService.data.dropdownBeneficiario.filter(function (beneficiario) {
                     return beneficiario.dirty;
                 });
                 dto.links.ambitocategoria = settingsService.gridOptionsAmbCat.data.filter(function (ambcat) {

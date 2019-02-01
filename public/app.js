@@ -40,17 +40,13 @@
             dataService.data.apiGrafico = scope.api;
         };
         
-        $scope.season = {};
-        $scope.season.id = "1819";
-        $scope.season.name = "18-19";
-        $scope.season.value = "1819";
-        $scope.giornata = {};
-        $scope.giornata.id = "1";
-        $scope.giornata.name = "1";
-        $scope.giornata.value = "1";
-        
-        $scope.fanta = {};
+        $scope.season = {};       
+        $scope.season.value = {};
+        $scope.giornata = {};    
+        $scope.giornata.value = {};
+        $scope.fanta = {};        
         $scope.fanta.value = {};
+        
         $scope.fantacalcio = [{
             id: 1,
             name: "FANTAFIGHETTINO"
@@ -61,21 +57,10 @@
             id: 3,
             name: "FANTABOMBOLACCI"
         }];
-        $scope.seasons = [];       
+        $scope.seasons = [];               
         $scope.giornate = [];
-        $scope.scontriDiretti = {
-            vinte: 0,
-            pareggiate: 0,
-            perse: 0,
-            squadraHome: '',
-            squadraAway: ''
-        };
-        $scope.menu = {
-            isOpen: false,
-            count: 0,
-            selectedDirection: 'right'
-        };        
-        $scope.years = [2019, 2018, 2017, 2016];
+        $scope.scontriDiretti = {};                
+        $scope.years = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];        
         $scope.alerts = [];
         $scope.conti = [{"tipoConto": 1, "label": "CONTO COMUNE"},{"tipoConto":2, "label": "CONTO PERSONALE"}];        
@@ -112,7 +97,7 @@
          *********************/
         $scope.loadSettings = function(){
             return settingsService.loadSettings();
-        };
+        };        
         $scope.settingButtons = [];
         $scope.settingButtons.push(settingsService.addSettingBtn);
         $scope.settingButtons.push(settingsService.deleteSettingBtn);      
