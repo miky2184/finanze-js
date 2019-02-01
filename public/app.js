@@ -4,8 +4,7 @@
         $mdThemingProvider.theme('default');
     }]).controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$strings', 'modalService', 'commonService', 'utilService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService' , 'andamentoAnnuoService', 'settingsService', 'salaryService',  'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $strings, modalService, commonService, utilService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService ) {    
         
-        /* PARAMETRI VARI */
-        
+        /* PARAMETRI */        
         /* LOGIN */
         $scope.logged = function(){
             return dataService.data.logged;
@@ -35,6 +34,11 @@
         $scope.saveButtons = [];                              
         $scope.saveButtons.push(commonService.saveBtn);
         $scope.saveButtons.push(commonService.cancelBtn); 
+        
+        /* API GRAFICI */
+        $scope.callbackGrafico = function (scope, element) {
+            dataService.data.apiGrafico = scope.api;
+        };
         
         $scope.season = {};
         $scope.season.id = "1819";
@@ -74,7 +78,7 @@
         $scope.years = [2019, 2018, 2017, 2016];
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];        
         $scope.alerts = [];
-        $scope.conti = [{"tipoConto": 1, "label": "CONTO COMUNE"},{"tipoCoto":2, "label": "CONTO PERSONALE"}];        
+        $scope.conti = [{"tipoConto": 1, "label": "CONTO COMUNE"},{"tipoConto":2, "label": "CONTO PERSONALE"}];        
         $scope.pivot = {
             year: new Date().getFullYear(),
             month: new Date().getMonth() + 1,
@@ -123,22 +127,20 @@
           TAB GRAFICO
          *********************/
         $scope.loadGrafico = function(){
-          graficoService.loadGrafico($scope.pivot.year);  
-          $scope.optionsGraph = dataService.data.optionsGraph;
-          $scope.dataGraph =  dataService.data.dataGraph;
+          return graficoService.loadGrafico($scope.pivot.year).then(function(fn){
+              $scope.dataGrafico =  dataService.data.dataGrafico;
+          $scope.optionsGrafico = dataService.data.optionsGrafico;                   
+          });            
         };            
         
         /********************* 
           TAB PIVOT MESE
          *********************/
-        $scope.gridOptionPivotMese = pivotMeseService.gridOptionPivotMese;
-        $scope.callbackPivotMese = function (scope, element) {
-            dataService.data.apiPivotMese = scope.api;
-        };
+        $scope.gridOptionPivotMese = pivotMeseService.gridOptionPivotMese;        
         $scope.loadPivotMese =  function(){
         pivotMeseService.loadPivotMese($scope.pivot.year);
-        $scope.dataMese = dataService.data.pivotMese; 
-        $scope.optionsMese = dataService.data.optionsMese;        
+        $scope.dataGrafico = dataService.data.dataGrafico; 
+        $scope.optionsGrafico = dataService.data.optionsGrafico;               
         };        
         
         /********************* 
@@ -152,15 +154,11 @@
         /********************* 
           TAB ANDAMENTO ANNUO 
          *********************/
-        $scope.gridOptionAndamentoAnnuo = andamentoAnnuoService.gridOptionAndamentoAnnuo; 
-        $scope.callbackAndamentoAnnuo = function (scope, element) {
-            dataService.data.apiAndamentoAnnuo = scope.api;
-        };
+        $scope.gridOptionAndamentoAnnuo = andamentoAnnuoService.gridOptionAndamentoAnnuo;      
         $scope.loadAndamentoAnnuo = function(){
             andamentoAnnuoService.loadAndamentoAnnuo();
-            $scope.dataAnno = dataService.data.dataAndamentoAnno;
-            $scope.optionsAndamentoAnno = andamentoAnnuoService.optionsAndamentoAnno;    
-            dataService.data.apiAndamentoAnnuo.refresh();
+            $scope.dataGrafico = dataService.data.dataGrafico;
+            $scope.optionsGrafico = dataService.data.optionsGrafico;                      
         };       
         
         /********************* 
@@ -191,7 +189,7 @@
                 });
             });
         };
-        $scope.loadGiornate = function (giornata) {
+        $scope.loadGiornate = function () {
             return $http.post('http://93.55.248.37:3001/giornate', $scope.season.value).then(function (resp) {
                 $scope.giornate = resp.data.map(function (tmp) {
                     var obj = {};
@@ -235,20 +233,7 @@
             return spesaService.loadSpesa();
         };
         
-    }])/*.filter('map', function () {
-        return function () {
-            return function (input, map, idLabel, valueLabel) {
-                if (map !== null && map !== undefined) {
-                    for (var i = 0; i < map.length; i++) {
-                        if (map[i][idLabel] === input) {
-                            return map[i][valueLabel];
-                        }
-                    }
-                }
-                return '';
-            };
-        }();
-    })*/.filter('griddropdown', function() {
+    }]).filter('griddropdown', function() {
       return function(input, context) {
         var fieldLevel = (context.editDropdownOptionsArray === undefined) ? context.col.colDef : context;
         var map = fieldLevel.editDropdownOptionsArray;

@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('graficoService', ['modalService', '$http', '$interval', 'dataService', 'uiGridConstants', 'listaMovimentiService', function (modalService, $http, $interval, dataService, uiGridConstants, listaMovimentiService) {        
+    angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService) {        
         var srvc = {            
            loadGrafico: function (year) {
-               dataService.data.optionsGraph = {
+               dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
                         height: 720,
@@ -32,14 +32,19 @@
                         },
                         yAxis: {
                             axisLabel: 'Totale (€)'
-                        }
+                        },
+                    callback: function(chart) {
+      $timeout(function() {
+        d3.selectAll('.nvtooltip').style('opacity', 0);
+      }, 100);
+                    }
                     }
                 };
             var dto = {};
             dto.anno = year;
             return $http.post('http://93.55.248.37:3001/graph', dto).then(function (resp) {                
                 var labels = [];
-                var dataGraph = [{
+                var dataGrafico = [{
                     key: 'Conto Comune',
                     values: [],
                     color: '#ff7f0e'
@@ -81,7 +86,7 @@
                         } else {
                             dataCC.push(oldImportoComune);
                         }
-                        dataGraph[0].values.push(dataCC);
+                        dataGrafico[0].values.push(dataCC);
                         var dataCP = [];
                         dataCP.push(l);
                         if (data.filter(function (d) {
@@ -96,9 +101,9 @@
                         } else {
                             dataCP.push(oldImportPersonale);
                         }
-                        dataGraph[1].values.push(dataCP);
+                        dataGrafico[1].values.push(dataCP);
                     });
-                    dataService.data.dataGraph = dataGraph.map(function (series) {
+                    dataService.data.dataGrafico = dataGrafico.map(function (series) {
                         series.values = series.values.map(function (d) {
                             return {
                                 x: d[0],

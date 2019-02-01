@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoAnnuoService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'listaMovimentiService', 'utilService', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, listaMovimentiService, utilService, dataService) {
+    angular.module('myApp').factory('andamentoAnnuoService', ['modalService', '$http', '$timeout', '$strings', 'uiGridConstants', 'listaMovimentiService', 'utilService', 'dataService', function (modalService, $http, $timeout, $strings, uiGridConstants, listaMovimentiService, utilService, dataService) {
         var pivotData = [];        
         var srvc = {                                
             gridOptionAndamentoAnnuo: {
@@ -38,6 +38,7 @@
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionAndamentoAnnuo.gridApi = gridApi;
+                    srvc.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize();
                 }
             },                       
             loadAndamentoAnnuo: function () {
@@ -83,9 +84,8 @@
                     })).reduce(utilService.add, 0);
                     pivotData.push(newRow);
                 });
-                srvc.gridOptionAndamentoAnnuo.data = pivotData;
-                $interval(srvc.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize, 100, 10);
-                dataService.data.optionsAndamentoAnno = {
+                srvc.gridOptionAndamentoAnnuo.data = pivotData;                
+                dataService.data.optionsGrafico = {
                 chart: {
                     type: 'lineChart',
                     height: 720,
@@ -94,8 +94,7 @@
                         right: 20,
                         bottom: 60,
                         left: 65
-                    },
-                    useInteractiveGuideline: true,
+                    },                    
                     x: function (d) {
                         if (d) {
                             return d.x;
@@ -106,6 +105,7 @@
                             return d.y;
                         }
                     },
+                    useInteractiveGuideline: true,
                     xAxis: {
                         axisLabel: 'Year',
                         tickFormat: function (d) {
@@ -117,13 +117,17 @@
                         tickFormat: function (d) {
                             return d3.round(d, 2) + " €";
                         }
+                    },
+                    callback: function(chart) {
+      $timeout(function() {
+        d3.selectAll('.nvtooltip').style('opacity', 0);
+      }, 100);
                     }
                 }
             };               
-                dataService.data.dataAndamentoAnno = srvc.dataAndamentoAnno();
-                dataService.data.apiAndamentoAnnuo.refresh();
+                dataService.data.dataGrafico = srvc.dataGrafico();                
             },            
-            dataAndamentoAnno: function(){
+            dataGrafico: function(){
                 return [{
                 key: 'Conto Comune',
                 values: pivotData.map(function (d) {
@@ -143,7 +147,8 @@
                     };
                 }),
                 color: '#7777ff'
-            }];}
+            }];
+        }
         };
         return srvc;
     }]);

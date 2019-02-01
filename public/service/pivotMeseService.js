@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('pivotMeseService', ['modalService', '$http', '$interval', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', function (modalService, $http, $interval, dataService, uiGridConstants, listaMovimentiService, utilService) {        
+    angular.module('myApp').factory('pivotMeseService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, utilService) {        
         var pivotData = [];
         var srvc = {
            gridOptionPivotMese: {
@@ -38,6 +38,7 @@
             data: [],
             onRegisterApi: function (gridApi) {
                 srvc.gridOptionPivotMese.gridApi = gridApi;
+                srvc.gridOptionPivotMese.gridApi.core.handleWindowResize();  
             }
         },       
         loadPivotMese: function (year) {
@@ -104,9 +105,8 @@
                 })).reduce(utilService.add, 0);
                 pivotData.push(newRow);
             }),
-            srvc.gridOptionPivotMese.data = pivotData;
-            $interval(srvc.gridOptionPivotMese.gridApi.core.handleWindowResize, 100, 10);                  
-            dataService.data.optionsMese = {
+            srvc.gridOptionPivotMese.data = pivotData;                      
+            dataService.data.optionsGrafico = {
                 chart: {
                     type: 'lineChart',
                     height: 720,
@@ -138,11 +138,15 @@
                         tickFormat: function (d) {
                             return d3.round(d, 2) + " €";
                         }
-                    }
+                    },
+                    callback: function(chart) {
+      $timeout(function() {
+        d3.selectAll('.nvtooltip').style('opacity', 0);
+      }, 100);
+    }
                 }
             };
-            dataService.data.pivotMese = srvc.dataGrafico();
-            dataService.data.apiPivotMese.refresh();
+            dataService.data.dataGrafico = srvc.dataGrafico();            
             },                
             dataGrafico : function dataGrafico(){
              return [{
