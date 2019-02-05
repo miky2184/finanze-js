@@ -89,7 +89,16 @@
                 total += obj[field] || 0;
             });
             return total;
-        }
+        },
+         max: function max(array){
+             var max = 0;
+             array.forEach(function(obj){
+                 if (obj > max){
+                     max = obj;
+                 }
+             });
+             return max;
+         }
 
       };
       return srvc;

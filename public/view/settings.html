@@ -43,7 +43,7 @@
         <div flex id="gridAmbCat" ui-grid="gridOptionsAmbCat" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </div>
       <div flex layout="row" layout-align="start end">
-        <md-button layout="column" ng-repeat="button in settingButtons" class="md-fab md-mini-mini md-primary aria-label" style="margin-left: 0px; min-height: 24px !important;" ng-click="button.listener(gridOptionsAmbCat, 'ambcat')" ng-disabled="button.disabled()">{{button.label}}</md-button>
+        <md-button layout="column" ng-repeat="button in settingButtons" class="md-fab md-mini-mini md-primary aria-label" style="margin-left: 0px; min-height: 24px !important;" ng-click="button.listener(gridOptionsAmbCat, 'ambcat', false)" ng-disabled="button.disabled()">{{button.label}}</md-button>
         <div flex layout="column" layout-align="end center" class="label-settings">Ambito-Categoria</div>
       </div>
     </section>
@@ -52,7 +52,7 @@
         <div flex id="gridCatSott" ui-grid="gridOptionsCatSott" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </div>
       <div flex layout="row" layout-align="start end">
-        <md-button layout="column" ng-repeat="button in settingButtons" class="md-fab md-mini-mini md-primary aria-label" style="margin-left: 0px; min-height: 24px !important;" ng-click="button.listener(gridOptionsCatSott, 'catsott')" ng-disabled="button.disabled()">{{button.label}}</md-button>
+        <md-button layout="column" ng-repeat="button in settingButtons" class="md-fab md-mini-mini md-primary aria-label" style="margin-left: 0px; min-height: 24px !important;" ng-click="button.listener(gridOptionsCatSott, 'catsott', false)" ng-disabled="button.disabled()">{{button.label}}</md-button>
         <div flex layout="column" layout-align="end center" class="label-settings">Categoria-Sottocategoria</div>
       </div>
     </section>

@@ -65,7 +65,7 @@
 
         showButtonModal: function (title, text, button, style) {
 
-          var scope = $rootScope.$new(false);
+          var scope = $rootScope.$new(true);
           scope.title = title;
           scope.text = text;
           scope.button = button;
@@ -73,7 +73,7 @@
 
           var modal = $uibModal.open({
             templateUrl: 'templates/modal/buttonModal.html',
-            size: 'sm',
+            size: 'lg',
             scope: scope,
             windowClass: style
           });

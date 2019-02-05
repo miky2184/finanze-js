@@ -9,6 +9,7 @@
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableColumnMenus: false,
+                showColumnFooter: true,
                 columnDefs: [{
                     name: 'DESC_AMB',
                     displayName: 'Ambito',

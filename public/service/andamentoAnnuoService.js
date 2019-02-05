@@ -22,16 +22,14 @@
                     name: 'contocomune',
                     displayName: 'Conto Comune',
                     field: 'contocomune',
-                    width: '35%',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    width: '35%',                    
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }, {
                     name: 'contopersonale',
                     displayName: 'Conto Personale',
                     field: 'contopersonale',
-                    width: '35%',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    width: '35%',                    
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }],

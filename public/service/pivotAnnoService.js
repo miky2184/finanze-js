@@ -4,6 +4,7 @@
         var srvc = {
             gridOptionPivotAnno: {
             columnVirtualizationThreshold: 100,
+            showColumnFooter: true,
             minRowsToShow: 23,
             enableFiltering: false,
             selectionRowHeaderWidth: 35,
