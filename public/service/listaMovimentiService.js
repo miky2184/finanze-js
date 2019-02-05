@@ -373,7 +373,7 @@
                 label: 'Copy'
             },
             refreshBtn: {
-                src: 'images/baseline-refresh-24px',
+                src: 'images/baseline-refresh-24px.svg',
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
                         return srvc.loadListaMovimenti();
