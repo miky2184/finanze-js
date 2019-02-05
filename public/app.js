@@ -223,19 +223,7 @@
         $scope.gridOptionsReprSott = settingsSpesaService.gridOptionsReprSott;
         $scope.gridOptionsSottFamg = settingsSpesaService.gridOptionsSottFamg;
         
-    }]).directive('uiSelectWrap', ['$document', 'uiGridEditConstants', function($document, uiGridEditConstants) {
-        return function link($scope, $elm, $attr) {
-            $document.on('click', docClick);
-
-            function docClick(evt) {
-                // if ($(evt.target).closest('.ui-select-container').size() === 0) {
-                if (!event.target.closest('.ui-select-container') || event.target.closest('.ui-select-container') === null){
-                    $scope.$emit(uiGridEditConstants.events.END_CELL_EDIT);
-                    $document.off('click', docClick);
-                }
-            }
-        };
-}]).filter('griddropdown', function() {
+    }]).filter('griddropdown', function() {
       return function(input, context) {
         var fieldLevel = (context.editDropdownOptionsArray === undefined) ? context.col.colDef : context;
         var map = fieldLevel.editDropdownOptionsArray;

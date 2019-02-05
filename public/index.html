@@ -174,20 +174,6 @@
         </md-content>
     </div>
     
-<script type="text/ng-template" id="uiSelect">
-<ui-select-wrap ng-show="!row.entity.newRow || (row.entity.reparto && row.entity.sottoreparto && row.entity.famiglia)">
-    <ui-select ng-model="MODEL_COL_FIELD" theme="selectize" ng-disabled="disabled" append-to-body="true">
-        <ui-select-match placeholder="Choose...">{{ COL_FIELD }}</ui-select-match>
-        <ui-select-choices repeat="item in col.colDef.editDropdownOptionsArray | filter: $select.search">
-            <span>{{ item }}</span>
-        </ui-select-choices>
-    </ui-select>
-</ui-select-wrap>
-<form name="inputForm">
-    <input ng-show="row.entity.newRow && !row.entity.reparto && !row.entity.sottoreparto && !row.entity.famiglia" type="INPUT_TYPE" ng-class="'colt' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" />
-</form>
-</script>
-    
 </body>
 
 </html>
