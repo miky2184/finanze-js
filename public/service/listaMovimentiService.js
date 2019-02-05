@@ -375,10 +375,15 @@
             refreshBtn: {
                 src: 'images/baseline-refresh-24px.svg',
                 listener: function (gridOptions, maschera) {
+                    modalService.showSearchingModal();
                     if (maschera === "LM") {
-                        return srvc.loadListaMovimenti();
+                        return srvc.loadListaMovimenti().finally(function (f) {
+                            modalService.hideWaitingModal();
+                        });
                     } else if (maschera === "SP") {
-                        return spesaService.loadSpesa();
+                        return spesaService.loadSpesa().finally(function (f) {
+                            modalService.hideWaitingModal();
+                        });
                     }
                 },
                 disabled: function () {
@@ -386,8 +391,8 @@
                 },
                 label: 'Delete'
             },
-            loadListaMovimenti: function(){
-                
+            loadListaMovimenti: function () {
+
                 return $http.get('http://93.55.248.37:3001/ambito').then(function (response) {
                     if (response.data) {
                         response.data.unshift({
@@ -449,7 +454,7 @@
                                             });
                                             dataService.data.backupData = angular.copy(resultsData);
                                             srvc.gridOptions.data = resultsData;
-                                            srvc.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito; 
+                                            srvc.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito;
                                             srvc.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                                             srvc.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
                                             srvc.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
