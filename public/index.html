@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
-    <link rel="stylesheet" href="node_modules/ui-select/src/common.css">
+    <link rel="stylesheet" href="node_modules/ui-select/dist/select.css">
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="/node_modules/angular-aria/angular-aria.js"></script>
     <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
@@ -37,8 +37,9 @@
     <script src="node_modules/d3/d3.js"></script>
     <script src="node_modules/nvd3/build/nv.d3.js"></script>
     <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
-    <script src="node_modules/ui-select/src/common.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <script src="node_modules/ui-select/dist/select.js"></script>    
+    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>    
     <script type="text/javascript" src="utils/strings.js"></script>
     <script type="text/javascript" src="utils/modalService.js"></script>
     <script type="text/javascript" src="utils/utilService.js"></script>
@@ -58,6 +59,7 @@
     <script type="text/javascript" src="service/pivotMeseService.js"></script>
     <script type="text/javascript" src="service/graficoService.js"></script>
     <script type="text/javascript" src="service/balanceService.js"></script>
+    <script type="text/javascript" src="service/settingsSpesaService.js"></script>
 </head>
 
 <body ng-controller="MainController" class="textapp" md-no-ink>
@@ -107,9 +109,14 @@
                         <div ng-include="'view/settings.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Spesa" md-on-select="loadSpesa()">
+                <md-tab label="Spesa">
                     <md-content class="md-padding">
                         <div ng-include="'view/spesa.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Impostazioni Spesa">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/settingsSpesa.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Report Mensile" md-on-select="loadReportMese()">
@@ -166,6 +173,21 @@
             </div>
         </md-content>
     </div>
+    
+<script type="text/ng-template" id="uiSelect">
+<ui-select-wrap ng-show="!row.entity.newRow || (row.entity.reparto && row.entity.sottoreparto && row.entity.famiglia)">
+    <ui-select ng-model="MODEL_COL_FIELD" theme="selectize" ng-disabled="disabled" append-to-body="true">
+        <ui-select-match placeholder="Choose...">{{ COL_FIELD }}</ui-select-match>
+        <ui-select-choices repeat="item in col.colDef.editDropdownOptionsArray | filter: $select.search">
+            <span>{{ item }}</span>
+        </ui-select-choices>
+    </ui-select>
+</ui-select-wrap>
+<form name="inputForm">
+    <input ng-show="row.entity.newRow && !row.entity.reparto && !row.entity.sottoreparto && !row.entity.famiglia" type="INPUT_TYPE" ng-class="'colt' + col.uid" ui-grid-editor ng-model="MODEL_COL_FIELD" />
+</form>
+</script>
+    
 </body>
 
 </html>

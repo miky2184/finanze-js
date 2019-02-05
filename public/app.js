@@ -2,10 +2,11 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'ui.select']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$strings', 'modalService', 'commonService', 'utilService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService' , 'andamentoAnnuoService', 'settingsService', 'salaryService',  'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $strings, modalService, commonService, utilService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService ) {    
+    }]).controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$strings', 'modalService', 'commonService', 'utilService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService' , 'andamentoAnnuoService', 'settingsService', 'salaryService',  'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', '$document', 'settingsSpesaService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $strings, modalService, commonService, utilService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, $document, settingsSpesaService ) {    
         
         /* PARAMETRI */        
         /* LOGIN */
+        $scope.disabled = false;
         $scope.logged = function(){
             return dataService.data.logged;
         };
@@ -30,6 +31,7 @@
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);                
+        $scope.actionButtons.push(listaMovimentiService.refreshBtn);
                 
         $scope.saveButtons = [];                              
         $scope.saveButtons.push(commonService.saveBtn);
@@ -94,10 +96,7 @@
        
         /*********************
           TAB SETTINGS
-         *********************/
-        $scope.loadSettings = function(){
-            return settingsService.loadSettings();
-        };        
+         *********************/               
         $scope.settingButtons = [];
         $scope.settingButtons.push(settingsService.addSettingBtn);
         $scope.settingButtons.push(settingsService.deleteSettingBtn);      
@@ -214,11 +213,29 @@
             TAB SPESA
         *********************/
         $scope.gridOptionsSpesa = spesaService.gridOptionsSpesa;
-        $scope.loadSpesa = function () {
-            return spesaService.loadSpesa();
-        };
         
-    }]).filter('griddropdown', function() {
+        /********************* 
+            TAB SETTINGS SPESA
+        *********************/
+        $scope.gridOptionsReparto = settingsSpesaService.gridOptionsReparto;
+        $scope.gridOptionsSottoreparto = settingsSpesaService.gridOptionsSottoreparto;
+        $scope.gridOptionsFamiglia = settingsSpesaService.gridOptionsFamiglia;
+        $scope.gridOptionsReprSott = settingsSpesaService.gridOptionsReprSott;
+        $scope.gridOptionsSottFamg = settingsSpesaService.gridOptionsSottFamg;
+        
+    }]).directive('uiSelectWrap', ['$document', 'uiGridEditConstants', function($document, uiGridEditConstants) {
+        return function link($scope, $elm, $attr) {
+            $document.on('click', docClick);
+
+            function docClick(evt) {
+                // if ($(evt.target).closest('.ui-select-container').size() === 0) {
+                if (!event.target.closest('.ui-select-container') || event.target.closest('.ui-select-container') === null){
+                    $scope.$emit(uiGridEditConstants.events.END_CELL_EDIT);
+                    $document.off('click', docClick);
+                }
+            }
+        };
+}]).filter('griddropdown', function() {
       return function(input, context) {
         var fieldLevel = (context.editDropdownOptionsArray === undefined) ? context.col.colDef : context;
         var map = fieldLevel.editDropdownOptionsArray;
@@ -236,5 +253,9 @@
         }
         return input;
       };
-    });
+    }).filter('to_trusted', ['$sce', function($sce){
+        return function(text) {
+            return $sce.trustAsHtml(text);
+        };
+    }]);
 }());

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', function (dataService, $rootScope, $interval, uiGridConstants) {
+    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', 'utilService', function (dataService, $rootScope, $interval, uiGridConstants, utilService) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function afterCellEditFunction(rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -13,17 +13,18 @@
             addSettingBtn: {
                 label: '+',
                 listener: function (gridOptions, type, settings) {
+                    dataService.data.dirty = true;
+                    var newSetting = {};
+                    newSetting.newRow = true;
+                    newSetting.dirty = true;
+                    newSetting.deleted = false;
                     if (settings) {
-                        var newSetting = {};
-                        newSetting.newRow = true;
-                        newSetting[type] = Math.max(gridOptions.data.filter(function (j) {
-                            return j[type] !== "null";
+                        newSetting['label'] = '';
+                        newSetting[type] = utilService.max(gridOptions.data.filter(function (j) {
+                            return j[type] !== "null" && !isNaN(j[type]);
                         }).map(function (obj) {
                             return obj[type];
                         })) + 1;
-                        newSetting.dirty = true;
-                        dataService.data.dirty = true;
-                        newSetting['label'] = '';
                         newSetting.used = 0;
                         if (type === 'ambito') {
                             dataService.data.dropdownAmbito.unshift(newSetting);
@@ -45,19 +46,24 @@
                             srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (x) {
                                 return x[type] != "null";
                             });
+                        } else if (type === 'reparto') {
+                            dataService.data.dropdownReparto.unshift(newSetting);
+                            gridOptions.data = dataService.data.dropdownReparto.filter(function (j) {
+                                return j.reparto !== "";
+                            });
+                        } else if (type === 'sottoreparto') {
+                            dataService.data.dropdownSottoreparto.unshift(newSetting);
+                            gridOptions.data = dataService.data.dropdownSottoreparto.filter(function (j) {
+                                return j.sottoreparto !== "";
+                            });
+                        } else if (type === 'famiglia') {
+                            dataService.data.dropdownFamiglia.unshift(newSetting);
+                            gridOptions.data = dataService.data.dropdownFamiglia.filter(function (j) {
+                                return j.famiglia !== "";
+                            });
                         }
                     } else {
-                        dataService.data.dirty = true;
-                        var newLink = {
-                            dirty: true,
-                            newRow: true,
-                            deleted: false
-                        };
-                        if (type === 'ambcat') {
-                            srvc.gridOptionsAmbCat.data.unshift(newLink);
-                        } else if (type === 'catsott') {
-                            srvc.gridOptionsCatSott.data.unshift(newLink);
-                        }
+                        gridOptions.data.unshift(newSetting);
                     }
                 },
                 disabled: function () {
@@ -163,23 +169,23 @@
                     name: 'ambito',
                     displayName: 'Ambito',
                     field: 'ambito',
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.dropdownAmbito;
+                        return colDef.editDropdownOptionsArray;
                     }
                 }, {
                     name: 'categoria',
                     displayName: 'Categoria',
                     field: 'categoria',
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.dropdownCategoria;
+                        return colDef.editDropdownOptionsArray;
                     }
                 }],
                 data: [],
@@ -196,23 +202,23 @@
                     name: 'categoria',
                     displayName: 'Categoria',
                     field: 'categoria',
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.dropdownCategoria;
+                        return colDef.editDropdownOptionsArray;
                     }
                 }, {
                     name: 'sottocategoria',
                     displayName: 'Sottocategoria',
                     field: 'sottocategoria',
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.dropdownSottocategoria;
+                        return colDef.editDropdownOptionsArray;
                     }
                 }],
                 data: [],
@@ -242,7 +248,7 @@
                 srvc.gridOptionsCatSott.data = dataService.data.dropdownSottocategoria.filter(function (j) {
                     return j.sottocategoria !== "null" && j.categoria !== null;
                 });
-                 srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                 srvc.gridOptionsCatSott.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
                 srvc.refreshGridSettings();
             },

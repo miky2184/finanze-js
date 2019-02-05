@@ -2,7 +2,7 @@
   {{title}}
 </div>
 <div class="modal-body popup-modal">
-  <p>{{text}}</p>
+  <p ng-bind-html="text | to_trusted"></p>
 </div>
 <div class="modal-footer text-center popup-modal">
   <div class="btn-group btn-group-justified">

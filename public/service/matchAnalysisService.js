@@ -444,6 +444,8 @@
                             if (resp.data.length > 0) {
                                 resp.data.map(function (obj) {
                                     var tmp = {};
+                                    tmp.season = season.value.id;
+                                    tmp.giornata = giornata.value.id;  
                                     tmp.giornNext = obj['GIORNATA'];
                                     tmp.dataGameNext = obj['DATA_GAME'].substr(0, 10);
                                     tmp.idHome = obj['ID_HOME'];
@@ -452,9 +454,7 @@
                                     tmp.squadraTrasferta = obj['TEAM_AWAY'];
                                     tmp.golCasa = obj['SCORE_HOME'];
                                     tmp.golTrasferta = obj['SCORE_AWAY'];
-                                    tmp.giocata = obj['GIOCATA'] === 'T' ? true : false;
-                                    tmp.season = season.id;
-                                    tmp.giornata = giornata.id;
+                                    tmp.giocata = obj['GIOCATA'] === 'T' ? true : false;                                    
                                     var winTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
                                     var winHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
                                     var winLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;

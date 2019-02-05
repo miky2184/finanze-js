@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -82,10 +82,10 @@
                     displayName: 'Ambito',
                     field: 'ambito',
                     width: 100,
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
-                    cellFilter: 'griddropdown:this',                    
+                    cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return dataService.data.dropdownAmbito.filter(function (a) {
                             return !a.deleted;
@@ -110,7 +110,7 @@
                     displayName: 'Categoria',
                     field: 'categoria',
                     width: 150,
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
@@ -141,7 +141,7 @@
                     displayName: 'Sottocategoria',
                     field: 'sottocategoria',
                     width: 200,
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
@@ -154,12 +154,12 @@
                         return [];
                     },
                     filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                            
+                        condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownSottocategoria) {
-                                var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {                                   
+                                var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
                                     return sottocategoria.sottocategoria === cellValue;
-                                });                                
-                                if (cell && cell.length > 0) {                                      
+                                });
+                                if (cell && cell.length > 0) {
                                     return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
                                 } else {
                                     return false;
@@ -172,7 +172,7 @@
                     displayName: 'Beneficiario',
                     field: 'beneficiario',
                     width: 200,
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'beneficiario',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
@@ -198,7 +198,7 @@
                     displayName: 'Tipo Conto',
                     field: 'tipoConto',
                     width: 160,
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'tipoConto',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
@@ -224,7 +224,7 @@
                     name: 'conto',
                     displayName: 'Conto',
                     width: 160,
-                    editableCellTemplate: 'templates/rows/dropdownEditor.html',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'conto',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
@@ -307,18 +307,27 @@
             },
             addBtn: {
                 src: 'images/baseline-add_circle_outline-24px.svg',
-                listener: function (gridOptions) {
-                    gridOptions.data.unshift({
-                        newRow: true,
-                        data: new Date(),
-                        anno: new Date().getFullYear(),
-                        mese: new Date().getMonth() + 1,
-                        contabilizzata: true,
-                        visualizzare: true,
-                        cartaCredito: false,
-                        webapp: false,
-                        fissa: false
-                    });
+                listener: function (gridOptions, maschera) {
+                    if (maschera === "LM") {
+                        gridOptions.data.unshift({
+                            newRow: true,
+                            data: new Date(),
+                            anno: new Date().getFullYear(),
+                            mese: new Date().getMonth() + 1,
+                            contabilizzata: true,
+                            visualizzare: true,
+                            cartaCredito: false,
+                            webapp: false,
+                            fissa: false,
+                            dirty: true
+                        });
+                    } else if (maschera === "SP") {
+                        gridOptions.data.unshift({
+                            newRow: true,
+                            dataSpesa: new Date(),
+                            dirty: true
+                        });
+                    }
                 },
                 disabled: function () {
                     return !dataService.data.admin;
@@ -327,7 +336,7 @@
             },
             deleteBtn: {
                 src: 'images/baseline-remove_circle_outline-24px.svg',
-                listener: function (gridOptions) {
+                listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
                             row.deleted = !row.deleted;
@@ -344,7 +353,7 @@
             },
             copyBtn: {
                 src: 'images/baseline-file_copy-24px.svg',
-                listener: function (gridOptions) {
+                listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
                             var copyRow = angular.copy(row);
@@ -362,6 +371,97 @@
                     return !dataService.data.admin;
                 },
                 label: 'Copy'
+            },
+            refreshBtn: {
+                src: 'images/baseline-refresh-24px',
+                listener: function (gridOptions, maschera) {
+                    if (maschera === "LM") {
+                        return srvc.loadListaMovimenti();
+                    } else if (maschera === "SP") {
+                        return spesaService.loadSpesa();
+                    }
+                },
+                disabled: function () {
+                    return !dataService.data.admin;
+                },
+                label: 'Delete'
+            },
+            loadListaMovimenti: function(){
+                
+                return $http.get('http://93.55.248.37:3001/ambito').then(function (response) {
+                    if (response.data) {
+                        response.data.unshift({
+                            "ambito": "null",
+                            "label": " "
+                        });
+                    }
+                    dataService.data.dropdownAmbito = response.data;
+                    return $http.get('http://93.55.248.37:3001/categoria').then(function (response) {
+                        if (response.data) {
+                            response.data.unshift({
+                                "categoria": "null",
+                                "label": " "
+                            });
+                        }
+                        dataService.data.dropdownCategoria = response.data;
+                        return $http.get('http://93.55.248.37:3001/sottocategoria').then(function (response) {
+                            if (response.data) {
+                                response.data.unshift({
+                                    "sottocategoria": "null",
+                                    "label": " "
+                                });
+                            }
+                            dataService.data.dropdownSottocategoria = response.data;
+                            return $http.get('http://93.55.248.37:3001/beneficiario').then(function (response) {
+                                if (response.data) {
+                                    response.data.unshift({
+                                        "beneficiario": "null",
+                                        "label": " "
+                                    });
+                                }
+                                dataService.data.dropdownBeneficiario = response.data;
+                                return $http.get('http://93.55.248.37:3001/tipoConto').then(function (response) {
+                                    dataService.data.editDropDownTipoContoArray = response.data;
+                                    return $http.get('http://93.55.248.37:3001/conto').then(function (response) {
+                                        dataService.data.editDropDownContoArray = response.data;
+                                        return $http.get('http://93.55.248.37:3001/all').then(function (response) {
+                                            var resultsData = [];
+                                            response.data.forEach(function (row) {
+                                                var newRow = {};
+                                                newRow.id = row['ID'];
+                                                newRow.data = new Date(row['DATA_VAL']);
+                                                newRow.ambito = row['AMBITO'];
+                                                newRow.categoria = row['CATEGORIA'];
+                                                newRow.sottocategoria = row['SOTTOCATEGORIA'];
+                                                newRow.beneficiario = row['BENEFICIARIO'];
+                                                newRow.tipoConto = row['TP_CONTO'];
+                                                newRow.conto = row['CONTO'];
+                                                newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
+                                                newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
+                                                newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
+                                                newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
+                                                newRow.fissa = row['FISSA'] === 'SI' ? true : false;
+                                                newRow.importo = row['VALUE'];
+                                                newRow.info = row['INFO'];
+                                                newRow.anno = new Date(row['DATA_VAL']).getFullYear();
+                                                newRow.mese = new Date(row['DATA_VAL']).getMonth() + 1;
+                                                return resultsData.push(newRow);
+                                            });
+                                            dataService.data.backupData = angular.copy(resultsData);
+                                            srvc.gridOptions.data = resultsData;
+                                            srvc.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito; 
+                                            srvc.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                                            srvc.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
+                                            srvc.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
+                                            srvc.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
+                                            srvc.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
             }
         };
         return srvc;

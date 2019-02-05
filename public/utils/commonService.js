@@ -1,82 +1,11 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService) {
         var srvc = {
             loadData: function () {
-                return $http.get('http://93.55.248.37:3001/ambito').then(function (response) {
-                    if (response.data) {
-                        response.data.unshift({
-                            "ambito": "null",
-                            "label": " "
-                        });
-                    }
-                    dataService.data.dropdownAmbito = response.data;
-                    return $http.get('http://93.55.248.37:3001/categoria').then(function (response) {
-                        if (response.data) {
-                            response.data.unshift({
-                                "categoria": "null",
-                                "label": " "
-                            });
-                        }
-                        dataService.data.dropdownCategoria = response.data;
-                        return $http.get('http://93.55.248.37:3001/sottocategoria').then(function (response) {
-                            if (response.data) {
-                                response.data.unshift({
-                                    "sottocategoria": "null",
-                                    "label": " "
-                                });
-                            }
-                            dataService.data.dropdownSottocategoria = response.data;
-                            return $http.get('http://93.55.248.37:3001/beneficiario').then(function (response) {
-                                if (response.data) {
-                                    response.data.unshift({
-                                        "beneficiario": "null",
-                                        "label": " "
-                                    });
-                                }
-                                dataService.data.dropdownBeneficiario = response.data;
-                                return $http.get('http://93.55.248.37:3001/tipoConto').then(function (response) {
-                                    dataService.data.editDropDownTipoContoArray = response.data;
-                                    return $http.get('http://93.55.248.37:3001/conto').then(function (response) {
-                                        dataService.data.editDropDownContoArray = response.data;
-                                        return $http.get('http://93.55.248.37:3001/all').then(function (response) {
-                                            var resultsData = [];
-                                            response.data.forEach(function (row) {
-                                                var newRow = {};
-                                                newRow.id = row['ID'];
-                                                newRow.data = new Date(row['DATA_VAL']);
-                                                newRow.ambito = row['AMBITO'];
-                                                newRow.categoria = row['CATEGORIA'];
-                                                newRow.sottocategoria = row['SOTTOCATEGORIA'];
-                                                newRow.beneficiario = row['BENEFICIARIO'];
-                                                newRow.tipoConto = row['TP_CONTO'];
-                                                newRow.conto = row['CONTO'];
-                                                newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
-                                                newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
-                                                newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
-                                                newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
-                                                newRow.fissa = row['FISSA'] === 'SI' ? true : false;
-                                                newRow.importo = row['VALUE'];
-                                                newRow.info = row['INFO'];
-                                                newRow.anno = new Date(row['DATA_VAL']).getFullYear();
-                                                newRow.mese = new Date(row['DATA_VAL']).getMonth() + 1;
-                                                return resultsData.push(newRow);
-                                            });
-                                            dataService.data.backupData = angular.copy(resultsData);
-                                            listaMovimentiService.gridOptions.data = resultsData;
-                                            listaMovimentiService.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito; 
-                                            listaMovimentiService.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
-                                            listaMovimentiService.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
-                                            listaMovimentiService.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
-                                            listaMovimentiService.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
-                                            listaMovimentiService.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
-                                        });
-                                    });
-                                });
-                            });
-                        });
-                    });
-                });
+                return listaMovimentiService.loadListaMovimenti().then(function(f){
+                    return spesaService.loadSpesa();
+                });                
             },
             logout: function () {
                 dataService.data.logged = false;
@@ -138,6 +67,9 @@
                 dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
                     return row.dirty;
                 });
+                dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
+                    return row.dirty && !(row.newRow && row.deleted);
+                });
                 if (dataService.data.dirty) {
                     var modalSavingInstance = $uibModal.open({
                         size: 'sm',
@@ -171,7 +103,8 @@
                     if (dataService.data.dirty) {
                         var promise = modalService.showYesNoModal('Attenzione', "Ci sono delle modifiche pending non salvate, sei sicuro di voler annullare??", 'OK', 'Annulla');
                         promise.then(function () {
-                            gridOptions.data = angular.copy(dataService.data.backupData);
+                            listaMovimentiService.gridOptions.data = angular.copy(dataService.data.backupData);
+                            spesaService.gridOptionsSpesa.data = angular.copy(dataService.data.backupDataSpesa);
                             dataService.data.dirty = false;
                             deferred.resolve();
                         }, function () {
