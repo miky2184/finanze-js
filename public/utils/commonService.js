@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService) {
         var srvc = {
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti().then(function(f){
@@ -39,6 +39,7 @@
             salva: function salva() {
                 var dto = {};
                 dto.settings = {};
+                dto.settingsSpesa = {};
                 dto.links = {};
                 dto.settings.ambiti = dataService.data.dropdownAmbito.filter(function (ambito) {
                     return ambito.dirty;
@@ -69,6 +70,21 @@
                 });
                 dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
                     return row.dirty && !(row.newRow && row.deleted);
+                });
+                dto.settingsSpesa.reparti = dataService.data.dropdownReparto.filter(function (r) {
+                    return r.dirty;
+                });
+                dto.settingsSpesa.sottoreparti = dataService.data.dropdownSottoreparto.filter(function (s) {
+                    return s.dirty;
+                });
+                dto.settingsSpesa.famiglie = dataService.data.dropdownFamiglia.filter(function (f) {
+                    return f.dirty;
+                });
+                dto.settingsSpesa.reprsott = settingsSpesaService.gridOptionsReprSott.data.filter(function (rs) {
+                    return rs.dirty;
+                });
+                dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
+                    return sf.dirty;
                 });
                 if (dataService.data.dirty) {
                     var modalSavingInstance = $uibModal.open({
