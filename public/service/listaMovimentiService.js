@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -309,7 +309,24 @@
                 src: 'images/baseline-get_app-24px.svg',
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
-                        return $http.get($strings.REST.SERVER+'/export');
+                        return $http.get($strings.REST.SERVER+'/export').then(function(result){
+                    var blob = new Blob([result.data], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    var alink = angular.element('<a/>');
+                    var link = alink[0];
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'ListaMovimenti_' + utilService.dateToString(new Date()) + '.xlsx';
+                    link.target = '_blank';
+
+                    var evt = document.createEvent('MouseEvents');
+                    evt.initMouseEvent('click', true, true, window,
+                      0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+                    modalService.hideWaitingModal();
+
+                    link.dispatchEvent(evt);
+
+                    return result;
+                        });
                     } 
                 },
                 disabled: function () {

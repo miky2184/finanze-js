@@ -11,7 +11,7 @@
             return 28;
           }
           return d.getDate();
-        },
+        },                  
 
         b64toBlob: function b64toBlob(b64Data, contentType, sliceSize) {
           contentType = contentType || '';
@@ -98,7 +98,17 @@
                  }
              });
              return max;
-         }
+         },
+          
+          dateToString: function dateToString(date){
+              
+              var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + '-' + monthIndex + '-' + year;
+              
+          }
 
       };
       return srvc;

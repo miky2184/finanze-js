@@ -2,6 +2,7 @@
     'use strict';
     angular.module('myApp')
         .constant('$strings', {
+        DATE_FORMAT: 'dd/MM/yyyy',
             MODAL: {
                 DEFAULT_WAITING_MESSAGE: 'Attendere prego...',
                 OK: 'OK',
