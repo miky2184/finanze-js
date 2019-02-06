@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval',  '$strings', 'uiGridConstants', function (modalService, $http, $interval, $strings, uiGridConstants) {        
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval',  '$strings', 'uiGridConstants', '$strings', function (modalService, $http, $interval, $strings, uiGridConstants, $strings) {        
         var srvc = {
             gridBudget: {
                 columnVirtualizationThreshold: 100,
@@ -50,13 +50,13 @@
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOT_ANNO'] !== null && row.entity['TOT_ANNO'] !== 0) {
-                            if (row.entity['PERC_RIM_ANNO'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['TOT_ANNO'] < 0) {
@@ -77,13 +77,13 @@
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOT_ANNO'] !== null && row.entity['TOT_ANNO'] !== 0) {
-                            if (row.entity['PERC_RIM_ANNO'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['TOT_ANNO'] < 0) {
@@ -106,13 +106,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['GEN'] !== null && row.entity['GEN'] !== 0 || 1 < n) {
-                            if (row.entity['PERC_RIM_GEN'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_GEN'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_GEN'] < $strings.GREEN && row.entity['PERC_RIM_GEN'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_GEN'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_GEN'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_GEN'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_GEN'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_GEN'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_GEN'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_GEN'] < $strings.YELLOW && row.entity['PERC_RIM_GEN'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_GEN'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_GEN'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['GEN'] < 0) {
@@ -135,13 +135,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['GEN'] !== null && row.entity['GEN'] !== 0 || 1 < n) {
-                            if (row.entity['PERC_RIM_GEN'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_GEN'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_GEN'] < $strings.GREEN && row.entity['PERC_RIM_GEN'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_GEN'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_GEN'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_GEN'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_GEN'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_GEN'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_GEN'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_GEN'] < $strings.YELLOW && row.entity['PERC_RIM_GEN'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_GEN'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_GEN'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['GEN'] < 0) {
@@ -164,13 +164,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['FEB'] !== null && row.entity['FEB'] !== 0 || 2 < n) {
-                            if (row.entity['PERC_RIM_FEB'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_FEB'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_FEB'] < $strings.GREEN && row.entity['PERC_RIM_FEB'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_FEB'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_FEB'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_FEB'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_FEB'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_FEB'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_FEB'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_FEB'] < $strings.YELLOW && row.entity['PERC_RIM_FEB'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_FEB'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_FEB'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['FEB'] < 0) {
@@ -193,13 +193,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['FEB'] !== null && row.entity['FEB'] !== 0 || 2 < n) {
-                            if (row.entity['PERC_RIM_FEB'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_FEB'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_FEB'] < $strings.GREEN && row.entity['PERC_RIM_FEB'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_FEB'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_FEB'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_FEB'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_FEB'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_FEB'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_FEB'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_FEB'] < $strings.YELLOW && row.entity['PERC_RIM_FEB'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_FEB'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_FEB'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['FEB'] < 0) {
@@ -222,13 +222,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['MAR'] !== null && row.entity['MAR'] !== 0 || 3 < n) {
-                            if (row.entity['PERC_RIM_MAR'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_MAR'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_MAR'] < $strings.GREEN && row.entity['PERC_RIM_MAR'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_MAR'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_MAR'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_MAR'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_MAR'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_MAR'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_MAR'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_MAR'] < $strings.YELLOW && row.entity['PERC_RIM_MAR'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_MAR'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_MAR'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['MAR'] < 0) {
@@ -251,13 +251,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['MAR'] !== null && row.entity['MAR'] !== 0 || 3 < n) {
-                            if (row.entity['PERC_RIM_MAR'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_MAR'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_MAR'] < $strings.GREEN && row.entity['PERC_RIM_MAR'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_MAR'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_MAR'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_MAR'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_MAR'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_MAR'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_MAR'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_MAR'] < $strings.YELLOW && row.entity['PERC_RIM_MAR'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_MAR'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_MAR'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['MAR'] < 0) {
@@ -280,13 +280,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['APR'] !== null && row.entity['APR'] !== 0 || 4 < n) {
-                            if (row.entity['PERC_RIM_APR'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_APR'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_APR'] < $strings.GREEN && row.entity['PERC_RIM_APR'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_APR'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_APR'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_APR'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_APR'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_APR'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_APR'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_APR'] < $strings.YELLOW && row.entity['PERC_RIM_APR'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_APR'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_APR'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['APR'] < 0) {
@@ -309,13 +309,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['APR'] !== null && row.entity['APR'] !== 0 || 4 < n) {
-                            if (row.entity['PERC_RIM_APR'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_APR'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_APR'] < $strings.GREEN && row.entity['PERC_RIM_APR'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_APR'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_APR'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_APR'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_APR'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_APR'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_APR'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_APR'] < $strings.YELLOW && row.entity['PERC_RIM_APR'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_APR'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_APR'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['APR'] < 0) {
@@ -338,13 +338,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['TOT_ANNO'] !== null && row.entity['MAG'] !== 0 || 5 < n) {
-                            if (row.entity['PERC_RIM_MAG'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_MAG'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_MAG'] < $strings.GREEN && row.entity['PERC_RIM_MAG'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_MAG'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_MAG'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_MAG'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_MAG'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_MAG'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_MAG'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_MAG'] < $strings.YELLOW && row.entity['PERC_RIM_MAG'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_MAG'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_MAG'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['MAG'] < 0) {
@@ -367,13 +367,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['MAG'] !== null && row.entity['MAG'] !== 0 || 5 < n) {
-                            if (row.entity['PERC_RIM_MAG'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_MAG'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_MAG'] < $strings.GREEN && row.entity['PERC_RIM_MAG'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_MAG'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_MAG'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_MAG'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_MAG'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_MAG'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_MAG'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_MAG'] < $strings.YELLOW && row.entity['PERC_RIM_MAG'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_MAG'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_MAG'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['MAG'] < 0) {
@@ -396,13 +396,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['GIU'] !== null && row.entity['GIU'] !== 0 || 6 < n) {
-                            if (row.entity['PERC_RIM_GIU'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_GIU'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_GIU'] < $strings.GREEN && row.entity['PERC_RIM_GIU'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_GIU'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_GIU'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_GIU'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_GIU'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_GIU'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_GIU'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_GIU'] < $strings.YELLOW && row.entity['PERC_RIM_GIU'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_GIU'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_GIU'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['GIU'] < 0) {
@@ -425,13 +425,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['GIU'] !== null && row.entity['GIU'] !== 0 || 6 < n) {
-                            if (row.entity['PERC_RIM_GIU'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_GIU'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_GIU'] < $strings.GREEN && row.entity['PERC_RIM_GIU'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_GIU'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_GIU'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_GIU'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_GIU'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_GIU'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_GIU'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_GIU'] < $strings.YELLOW && row.entity['PERC_RIM_GIU'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_GIU'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_GIU'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['GIU'] < 0) {
@@ -454,13 +454,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['LUG'] !== null && row.entity['LUG'] !== 0 || 7 < n) {
-                            if (row.entity['PERC_RIM_LUG'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_LUG'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_LUG'] < $strings.GREEN && row.entity['PERC_RIM_LUG'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_LUG'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_LUG'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_LUG'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_LUG'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_LUG'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_LUG'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_LUG'] < $strings.YELLOW && row.entity['PERC_RIM_LUG'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_LUG'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_LUG'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['LUG'] < 0) {
@@ -483,13 +483,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['LUG'] !== null && row.entity['LUG'] !== 0 || 7 < n) {
-                            if (row.entity['PERC_RIM_LUG'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_LUG'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_LUG'] < $strings.GREEN && row.entity['PERC_RIM_LUG'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_LUG'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_LUG'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_LUG'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_LUG'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_LUG'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_LUG'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_LUG'] < $strings.YELLOW && row.entity['PERC_RIM_LUG'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_LUG'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_LUG'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['LUG'] < 0) {
@@ -512,13 +512,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['AGO'] !== null && row.entity['AGO'] !== 0 || 8 < n) {
-                            if (row.entity['PERC_RIM_AGO'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_AGO'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_AGO'] < $strings.GREEN && row.entity['PERC_RIM_AGO'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_AGO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_AGO'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_AGO'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_AGO'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_AGO'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_AGO'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_AGO'] < $strings.YELLOW && row.entity['PERC_RIM_AGO'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_AGO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_AGO'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['AGO'] < 0) {
@@ -541,13 +541,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['AGO'] !== null && row.entity['AGO'] !== 0 || 8 < n) {
-                            if (row.entity['PERC_RIM_AGO'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_AGO'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_AGO'] < $strings.GREEN && row.entity['PERC_RIM_AGO'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_AGO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_AGO'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_AGO'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_AGO'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_AGO'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_AGO'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_AGO'] < $strings.YELLOW && row.entity['PERC_RIM_AGO'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_AGO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_AGO'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['AGO'] < 0) {
@@ -570,13 +570,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['SETT'] !== null && row.entity['SETT'] !== 0 || 9 < n) {
-                            if (row.entity['PERC_RIM_SETT'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_SETT'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_SETT'] < $strings.GREEN && row.entity['PERC_RIM_SETT'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_SETT'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_SETT'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_SETT'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_SETT'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_SETT'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_SETT'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_SETT'] < $strings.YELLOW && row.entity['PERC_RIM_SETT'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_SETT'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_SETT'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['SETT'] < 0) {
@@ -599,13 +599,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['SETT'] !== null && row.entity['SETT'] !== 0 || 9 < n) {
-                            if (row.entity['PERC_RIM_SETT'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_SETT'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_SETT'] < $strings.GREEN && row.entity['PERC_RIM_SETT'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_SETT'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_SETT'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_SETT'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_SETT'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_SETT'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_SETT'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_SETT'] < $strings.YELLOW && row.entity['PERC_RIM_SETT'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_SETT'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_SETT'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['SETT'] < 0) {
@@ -628,13 +628,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['OTT'] !== null && row.entity['OTT'] !== 0 || 10 < n) {
-                            if (row.entity['PERC_RIM_OTT'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_OTT'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_OTT'] < $strings.GREEN && row.entity['PERC_RIM_OTT'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_OTT'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_OTT'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_OTT'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_OTT'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_OTT'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_OTT'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_OTT'] < $strings.YELLOW && row.entity['PERC_RIM_OTT'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_OTT'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_OTT'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['OTT'] < 0) {
@@ -657,13 +657,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['OTT'] !== null && row.entity['OTT'] !== 0 || 10 < n) {
-                            if (row.entity['PERC_RIM_OTT'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_OTT'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_OTT'] < $strings.GREEN && row.entity['PERC_RIM_OTT'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_OTT'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_OTT'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_OTT'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_OTT'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_OTT'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_OTT'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_OTT'] < $strings.YELLOW && row.entity['PERC_RIM_OTT'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_OTT'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_OTT'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['OTT'] < 0) {
@@ -686,13 +686,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['NOV'] !== null && row.entity['NOV'] !== 0 || 11 < n) {
-                            if (row.entity['PERC_RIM_NOV'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_NOV'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_NOV'] < $strings.GREEN && row.entity['PERC_RIM_NOV'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_NOV'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_NOV'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_NOV'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_NOV'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_NOV'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_NOV'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_NOV'] < $strings.YELLOW && row.entity['PERC_RIM_NOV'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_NOV'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_NOV'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['NOV'] < 0) {
@@ -715,13 +715,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['NOV'] !== null && row.entity['NOV'] !== 0 || 11 < n) {
-                            if (row.entity['PERC_RIM_NOV'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_NOV'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_NOV'] < $strings.GREEN && row.entity['PERC_RIM_NOV'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_NOV'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_NOV'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_NOV'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_NOV'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_NOV'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_NOV'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_NOV'] < $strings.YELLOW && row.entity['PERC_RIM_NOV'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_NOV'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_NOV'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['NOV'] < 0) {
@@ -744,13 +744,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['DIC'] !== null && row.entity['DIC'] !== 0 || 12 < n) {
-                            if (row.entity['PERC_RIM_DIC'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_DIC'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_DIC'] < $strings.GREEN && row.entity['PERC_RIM_DIC'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_DIC'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_DIC'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_DIC'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_DIC'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_DIC'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_DIC'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_DIC'] < $strings.YELLOW && row.entity['PERC_RIM_DIC'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_DIC'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_DIC'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['DIC'] < 0) {
@@ -773,13 +773,13 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['DIC'] !== null && row.entity['DIC'] !== 0 || 12 < n) {
-                            if (row.entity['PERC_RIM_DIC'] >= $strings.GREEN) {
+                            if (row.entity['PERC_RIM_DIC'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
-                            } else if (row.entity['PERC_RIM_DIC'] < $strings.GREEN && row.entity['PERC_RIM_DIC'] >= $strings.LIGHT_GREEN) {
+                            } else if (row.entity['PERC_RIM_DIC'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_DIC'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
-                            } else if (row.entity['PERC_RIM_DIC'] < $strings.LIGHT_GREEN && row.entity['PERC_RIM_DIC'] >= $strings.YELLOW) {
+                            } else if (row.entity['PERC_RIM_DIC'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_DIC'] >= $strings.BUDGET.YELLOW) {
                                 return 'cinquantaperc';
-                            } else if (row.entity['PERC_RIM_DIC'] < $strings.YELLOW && row.entity['PERC_RIM_DIC'] > $strings.ORANGE) {
+                            } else if (row.entity['PERC_RIM_DIC'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_DIC'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
                             } else {
                                 if (row.entity['DIC'] < 0) {
@@ -801,7 +801,7 @@
                 var dto = {};
                 dto.tipoconto = pivot.tipoConto;
                 dto.anno = pivot.year;
-                return $http.post('http://93.55.248.37:3001/budget', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER+'/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridBudget.data = resp.data;
 

@@ -15,7 +15,7 @@
         showSearchingModal: function (text) {
 
           if (!text) {
-            text = $strings.DEFAULT_WAITING_MESSAGE;
+            text = $strings.MODAL.DEFAULT_WAITING_MESSAGE;
           }
 
           if (srvc.waitingModal) {

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('matchAnalysisService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'dataService', function (modalService, $http, $interval, $rootScope, utilService, dataService) {
+    angular.module('myApp').factory('matchAnalysisService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'dataService', '$strings', function (modalService, $http, $interval, $rootScope, utilService, dataService, $strings) {
         var scope = $rootScope.$new();
         
         var editableCondition = function editableCondition(rowEntity, colDef) {
@@ -315,7 +315,7 @@
                         idAway: cliccata.idAway,
                         season: cliccata.season
                     }
-                    return $http.post('http://93.55.248.37:3001/scontriDiretti', match).then(function (resp) {
+                    return $http.post($strings.REST.SERVER+'/scontriDiretti', match).then(function (resp) {
                         if (resp.data && resp.data.length > 0) {
                             srvc.gridOptionsScontriDiretti.data = resp.data;                            
                             srvc.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
@@ -332,7 +332,7 @@
             },
             loadMatchAnalysis: function (season, giornata) {
                 var dataMatchAnalysis = [];
-                return $http.post('http://93.55.248.37:3001/classifica', season.value).then(function (resp) {
+                return $http.post($strings.REST.SERVER+'/classifica', season.value).then(function (resp) {
                     var pos = 1;
                     if (resp.data.length > 0) {
                         resp.data.map(function (obj) {
@@ -387,7 +387,7 @@
                     srvc.gridOptionsClassifica.data = dataMatchAnalysis;
                     $interval(srvc.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);
                     var dataLastFiveGame = [];
-                    return $http.post('http://93.55.248.37:3001/lastfivegame', season.value).then(function (resp) {
+                    return $http.post($strings.REST.SERVER+'/lastfivegame', season.value).then(function (resp) {
                         if (resp.data.length > 0) {
                             resp.data.map(function (obj) {
                                 var tmp = {};
@@ -439,7 +439,7 @@
                         var dto = {};
                         dto.idSeason = season.value.id;
                         dto.idGiornata = giornata.value.id;
-                        return $http.post('http://93.55.248.37:3001/nextgame', dto).then(function (resp) {
+                        return $http.post($strings.REST.SERVER+'/nextgame', dto).then(function (resp) {
                             var dataNextGame = [];
                             if (resp.data.length > 0) {
                                 resp.data.map(function (obj) {

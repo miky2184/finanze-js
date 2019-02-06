@@ -208,22 +208,22 @@
             loadFantaRosa: function (id) {
                 switch (id) {
                     case 1:
-                        return $http.get('http://93.55.248.37:3001/fantafighettino').then(function (resp) {
+                        return $http.get($strings.REST.SERVER+'/fantafighettino').then(function (resp) {
                             srvc.gridOptionsPandathinaikos.data = resp.data;
                         });
                         break;
                     case 2:
-                        return $http.get('http://93.55.248.37:3001/fantamarelli').then(function (resp) {
+                        return $http.get($strings.REST.SERVER+'/fantamarelli').then(function (resp) {
                             srvc.gridOptionsPandathinaikos.data = resp.data;
                         });
                         break;
                     case 3:
-                        return $http.get('http://93.55.248.37:3001/fantabombolacci').then(function (resp) {
+                        return $http.get($strings.REST.SERVER+'/fantabombolacci').then(function (resp) {
                             srvc.gridOptionsPandathinaikos.data = resp.data;
                         });
                         break;
                     default:
-                        return $http.get('http://93.55.248.37:3001/fantafighettino').then(function (resp) {
+                        return $http.get($strings.REST.SERVER+'/fantafighettino').then(function (resp) {
                             srvc.gridOptionsPandathinaikos.data = resp.data;
                         });
                         break;

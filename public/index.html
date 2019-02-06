@@ -160,10 +160,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/amazon.html'"></div>
                     </md-content>
-                </md-tab>                
-                <md-button aria-label="Logout" class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="logout()">
-                    <md-icon md-svg-src="images/baseline-power_settings_new-24px.svg"></md-icon>
-                </md-button>
+                </md-tab>                                
             </md-tabs>
             <div layout="row" layout-align="end end">
                 <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons" layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</md-button>
