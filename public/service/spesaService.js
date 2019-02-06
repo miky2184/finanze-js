@@ -174,7 +174,7 @@
                     displayName: 'EAN',
                     field: 'EAN',
                     type: 'text',
-                cwidth: 120 
+                    width: 120 
                 }, {
                     name: 'descrizione',
                     displayName: 'Descrizione Referenza',
