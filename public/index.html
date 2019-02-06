@@ -14,9 +14,9 @@
     <link href="node_modules/angular-ui-grid/ui-grid.css" type="text/css" rel="stylesheet">
     <link href="main.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/nvd3/build/nv.d3.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">    
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="/node_modules/angular-aria/angular-aria.js"></script>
     <script src="/node_modules/angular-animate/angular-animate.min.js"></script>
@@ -35,8 +35,8 @@
     <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
     <script src="node_modules/d3/d3.js"></script>
     <script src="node_modules/nvd3/build/nv.d3.js"></script>
-    <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>    
-    <script type="text/javascript" src="app.js"></script>    
+    <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="utils/strings.js"></script>
     <script type="text/javascript" src="utils/modalService.js"></script>
     <script type="text/javascript" src="utils/utilService.js"></script>
@@ -151,23 +151,23 @@
                         <div ng-include="'view/matchAnalysis.html'"></div>
                     </md-content>
                 </md-tab>
-                  <md-tab label="Fantacalcio">
+                <md-tab label="Fantacalcio">
                     <md-content class="md-padding">
                         <div ng-include="'view/fantacalcio.html'"></div>
-                    </md-content> 
-                </md-tab> 
+                    </md-content>
+                </md-tab>
                 <md-tab label="Amazon" md-on-select="loadAmazonData()">
                     <md-content class="md-padding">
                         <div ng-include="'view/amazon.html'"></div>
                     </md-content>
-                </md-tab>                                
+                </md-tab>
             </md-tabs>
             <div layout="row" layout-align="end end">
                 <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons" layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</md-button>
             </div>
         </md-content>
     </div>
-    
+
 </body>
 
 </html>
