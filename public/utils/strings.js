@@ -26,7 +26,7 @@
             CONTO_PERSONALE: "CONTO PERSONALE"
         },
         REST:{
-            SERVER: $strings.REST.SERVER+''
+            SERVER: 'http://93.55.248.37:3001'
         }
         });
 })();
