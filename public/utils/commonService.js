@@ -1,18 +1,14 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings) {
         var srvc = {
             loadData: function () {
-                return listaMovimentiService.loadListaMovimenti().then(function(f){
+                return listaMovimentiService.loadListaMovimenti().then(function (f) {
                     return spesaService.loadSpesa();
-                });                
-            },
-            logout: function () {
-                dataService.data.logged = false;
-                dataService.data.admin = false;
+                });
             },
             login: function (datiAccesso) {
-                return $http.post('http://93.55.248.37:3001/login', datiAccesso).then(function (resp) {
+                return $http.post($strings.REST.SERVER+'/login', datiAccesso).then(function (resp) {
                     modalService.showSearchingModal();
                     if (resp.data && resp.data.length === 1) {
                         dataService.data.descName = resp.data[0]['NAME'];
@@ -93,7 +89,7 @@
                         backdrop: false,
                         keyboard: false
                     });
-                    return $http.post('http://93.55.248.37:3001/save', dto).then(function (resp) {
+                    return $http.post($strings.REST.SERVER+'/save', dto).then(function (resp) {
                         return srvc.loadData().then(function (resp) {
                             settingsService.loadSettings()
                         });
@@ -113,11 +109,11 @@
                 }
             },
             cancelBtn: {
-                label: 'Annulla',
+                label: $strings.MODAL.ANNULLA,
                 listener: function (gridOptions) {
                     var deferred = $q.defer();
                     if (dataService.data.dirty) {
-                        var promise = modalService.showYesNoModal('Attenzione', "Ci sono delle modifiche pending non salvate, sei sicuro di voler annullare??", 'OK', 'Annulla');
+                        var promise = modalService.showYesNoModal($strings.MODAL.WARNING, $strings.MODAL.ANNULLA_MSG, $strings.MODAL.OK, $strings.MODAL.ANNULLA);
                         promise.then(function () {
                             listaMovimentiService.gridOptions.data = angular.copy(dataService.data.backupData);
                             spesaService.gridOptionsSpesa.data = angular.copy(dataService.data.backupDataSpesa);
@@ -127,6 +123,32 @@
                             deferred.reject();
                         });
                     }
+                },
+                disabled: function () {
+                    return !dataService.data.admin;
+                }
+            },
+            exitBtn: {
+                label: 'Esci',
+                listener: function () {
+
+                    var deferred = $q.defer();
+                    if (dataService.data.dirty) {
+                        var promise = modalService.showYesNoModal($strings.MODAL.WARNING, $strings.MODAL.EXIT_MSG, $strings.MODAL.OK, $strings.MODAL.ANNULLA);
+                        promise.then(function () {
+                            dataService.data.logged = false;
+                            dataService.data.admin = false;
+                            dataService.data.dirty = false;
+                            deferred.resolve();
+                        }, function () {
+                            deferred.reject();
+                        });
+                    } else {
+                         dataService.data.logged = false;
+                            dataService.data.admin = false;                            
+                    }
+
+
                 },
                 disabled: function () {
                     return !dataService.data.admin;

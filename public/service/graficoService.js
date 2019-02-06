@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService) {        
+    angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, $strings) {        
         var srvc = {            
            loadGrafico: function (year) {
                dataService.data.optionsGrafico = {
@@ -42,7 +42,7 @@
                 };
             var dto = {};
             dto.anno = year;
-            return $http.post('http://93.55.248.37:3001/graph', dto).then(function (resp) {                
+            return $http.post($strings.REST.SERVER+'/graph', dto).then(function (resp) {                
                 var labels = [];
                 var dataGrafico = [{
                     key: 'Conto Comune',

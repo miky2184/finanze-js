@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp')
 
-        .factory('salaryService', ['dataService', 'uiGridConstants', 'utilService', '$rootScope', '$http', '$interval', function (dataService, uiGridConstants, utilService, $rootScope, $http, $interval) {
+        .factory('salaryService', ['dataService', 'uiGridConstants', 'utilService', '$rootScope', '$http', '$interval', '$strings', function (dataService, uiGridConstants, utilService, $rootScope, $http, $interval, $strings) {
             var scope = $rootScope.$new();
             var aliquote = [];
             var aliquoteMese = [];
@@ -549,11 +549,11 @@
                     }
                 },
                 loadWork: function () {
-                    return $http.get('http://93.55.248.37:3001/aliquote').then(function (response) {
+                    return $http.get($strings.REST.SERVER+'/aliquote').then(function (response) {
                         aliquote = response.data;
-                        return $http.get('http://93.55.248.37:3001/aliquoteMese').then(function (response) {
+                        return $http.get($strings.REST.SERVER+'/aliquoteMese').then(function (response) {
                             aliquoteMese = response.data;
-                            return $http.get('http://93.55.248.37:3001/salary').then(function (resp) {
+                            return $http.get($strings.REST.SERVER+'/salary').then(function (resp) {
                                 var salaryData = [];
                                 resp.data.forEach(function (obj) {
                                     var x = {};

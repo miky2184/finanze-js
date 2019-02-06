@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('amazonService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'uiGridConstants', function (modalService, $http, $interval, $rootScope, utilService, uiGridConstants) {
+    angular.module('myApp').factory('amazonService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'uiGridConstants', '$strings', function (modalService, $http, $interval, $rootScope, utilService, uiGridConstants, $strings) {
         var scope = $rootScope.$new();                    
         
         var srvc = {
@@ -55,7 +55,7 @@
             onSelectASIN : function onSelectASIN(row) {
                 var asin = {};
                 asin.asinOrig = row.entity.asinOrig;
-                return $http.post('http://93.55.248.37:3001/amazonProduct', asin).then(function (resp) {                   
+                return $http.post($strings.REST.SERVER+'/amazonProduct', asin).then(function (resp) {                   
                     srvc.amazon.amzLink = resp.data.ItemLookupResponse.Items.Item.DetailPageURL;
                     srvc.amazon.amzPrice = resp.data.ItemLookupResponse.Items.Item.OfferSummary.LowestNewPrice.FormattedPrice;
                     srvc.amazon.amzImage = resp.data.ItemLookupResponse.Items.Item.LargeImage.URL;
@@ -69,7 +69,7 @@
 
                 var dataAmazon = [];
 
-                return $http.get('http://93.55.248.37:3001/amazon').then(function (resp) {
+                return $http.get($strings.REST.SERVER+'/amazon').then(function (resp) {
                     resp.data.map(function (obj) {
                         var tmp = {};
                         tmp.asin = 'http://www.amazon.it/dp/' + obj['ASIN'];

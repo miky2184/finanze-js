@@ -64,7 +64,7 @@
                 dto.tipoconto = pivot.tipoConto;
                 dto.mese = pivot.month;
                 dto.anno = pivot.year;
-                return $http.post('http://93.55.248.37:3001/reportmese', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER+'/reportmese', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridReportMese.data = resp.data.map(function (d) {
                             if (d['LIVELLO'] > 0) {

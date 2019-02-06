@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('spesaService', ['modalService', '$http', '$interval', 'dataService', '$rootScope', 'settingsSpesaService', function (modalService, $http, $interval, dataService, $rootScope, settingsSpesaService) {
+    angular.module('myApp').factory('spesaService', ['modalService', '$http', '$interval', 'dataService', '$rootScope', 'settingsSpesaService', '$strings', function (modalService, $http, $interval, dataService, $rootScope, settingsSpesaService, $strings) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -23,7 +23,7 @@
                         dto.sottoreparto = rowEntity.sottoreparto;
                         dto.famiglia = rowEntity.famiglia;
                         dto.ean = rowEntity.EAN;
-                        return $http.post('http://93.55.248.37:3001/validaEan', dto).then(function (resp) {                            
+                        return $http.post($strings.REST.SERVER+'/validaEan', dto).then(function (resp) {                            
                             if (resp.data && resp.data.length === 1) {
                                 rowEntity.reparto = resp.data[0].reparto;
                                 rowEntity.sottoreparto = resp.data[0].sottoreparto;
@@ -44,7 +44,7 @@
                         dto.sottoreparto = rowEntity.sottoreparto;
                         dto.famiglia = rowEntity.famiglia;
                         dto.referenza = newValue;
-                        return $http.post('http://93.55.248.37:3001/validaReferenza', dto).then(function (resp) {                            
+                        return $http.post($strings.REST.SERVER+'/validaReferenza', dto).then(function (resp) {                            
                             if (resp.data && resp.data.length === 1) {
                                 rowEntity.reparto = resp.data[0].reparto;
                                 rowEntity.sottoreparto = resp.data[0].sottoreparto;
@@ -174,47 +174,13 @@
                     displayName: 'EAN',
                     field: 'EAN',
                     type: 'text',
-                    width: 120 /*,
-                    type:"text",
-                    editableCellTemplate: 'uiSelect',
-                    editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        var dto = {};
-                        dto.reparto = rowEntity.reparto || "X";
-                        dto.sottoreparto = rowEntity.sottoreparto || "X";
-                        dto.famiglia = rowEntity.famiglia || "X";
-                        return $http.post('http://93.55.248.37:3001/ean', dto).then(function (resp) {
-                            dataService.data.dropdownEan = [];
-                            if (resp.data && resp.data.length > 0) {
-                                dataService.data.dropdownEan = resp.data.map(function (f) {
-                                    return f.ean;
-                                });
-                            }
-                            colDef.editDropdownOptionsArray = dataService.data.dropdownEan;
-                        });
-                    } */
+                cwidth: 120 
                 }, {
                     name: 'descrizione',
                     displayName: 'Descrizione Referenza',
                     field: 'descrizione',
                     type: 'text',
-                    width: 300 /*,
-                    editableCellTemplate: 'uiSelect',
-                    editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        var dto = {};
-                        dto.reparto = rowEntity.reparto || "X";
-                        dto.sottoreparto = rowEntity.sottoreparto || "X";
-                        dto.famiglia = rowEntity.famiglia || "X";
-                        dto.ean = rowEntity.EAN || "";
-                        return $http.post('http://93.55.248.37:3001/referenza', dto).then(function (resp) {
-                            dataService.data.dropdownReferenza = [];
-                            if (resp.data && resp.data.length > 0) {
-                                dataService.data.dropdownReferenza = resp.data.map(function (f) {
-                                    return f.descrizione;
-                                });
-                            }
-                            colDef.editDropdownOptionsArray = dataService.data.dropdownReferenza;
-                        });
-                    } */
+                    width: 300                    
                 }, {
                     name: 'prezzo',
                     displayName: 'Prezzo Acqs.',
@@ -247,7 +213,7 @@
                 }
             },
             loadSpesa: function () {
-                return $http.get('http://93.55.248.37:3001/reparto').then(function (resp) {
+                return $http.get($strings.REST.SERVER+'/reparto').then(function (resp) {
                     if (resp.data) {
                         resp.data.unshift({
                             "reparto": "",
@@ -255,7 +221,7 @@
                         });
                     }
                     dataService.data.dropdownReparto = resp.data;
-                    return $http.get('http://93.55.248.37:3001/sottoreparto').then(function (resp) {
+                    return $http.get($strings.REST.SERVER+'/sottoreparto').then(function (resp) {
                         if (resp.data) {
                             resp.data.unshift({
                                 "sottoreparto": "",
@@ -263,7 +229,7 @@
                             });
                         }
                         dataService.data.dropdownSottoreparto = resp.data;
-                        return $http.get('http://93.55.248.37:3001/famiglia').then(function (resp) {
+                        return $http.get($strings.REST.SERVER+'/famiglia').then(function (resp) {
                             if (resp.data) {
                                 resp.data.unshift({
                                     "famiglia": "",
@@ -271,7 +237,7 @@
                                 });
                             }
                             dataService.data.dropdownFamiglia = resp.data;
-                            return $http.get('http://93.55.248.37:3001/spesa').then(function (resp) {
+                            return $http.get($strings.REST.SERVER+'/spesa').then(function (resp) {
                                 dataService.data.backupDataSpesa = angular.copy(resp.data);
                                 srvc.gridOptionsSpesa.data = resp.data;
                                 srvc.gridOptionsSpesa.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownReparto;

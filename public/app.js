@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$http', 'uiGridConstants', '$log', '$q', '$interval', '$timeout', '$strings', 'modalService', 'commonService', 'utilService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService' , 'andamentoAnnuoService', 'settingsService', 'salaryService',  'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', '$document', 'settingsSpesaService', function ($scope, $http, uiGridConstants, $log, $q, $interval, $timeout, $strings, modalService, commonService, utilService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, $document, settingsSpesaService ) {    
+    }]).controller('MainController', ['$scope', '$http',   '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService' , 'andamentoAnnuoService', 'settingsService', 'salaryService',  'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', function ($scope, $http,  $strings, commonService,  spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService ) {    
         
         /* PARAMETRI */        
         /* LOGIN */
@@ -21,13 +21,11 @@
             };            
             $scope.alerts = dataService.data.alerts;
             return commonService.login(datiAccesso);
-        }
-        $scope.logout = function(){
-            commonService.logout();
-        };
+        }        
         
         /* BUTTON */
         $scope.actionButtons = [];
+        $scope.actionButtons.push(listaMovimentiService.exportBtn);
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);                
@@ -36,6 +34,7 @@
         $scope.saveButtons = [];                              
         $scope.saveButtons.push(commonService.saveBtn);
         $scope.saveButtons.push(commonService.cancelBtn); 
+        $scope.saveButtons.push(commonService.exitBtn); 
         
         /* API GRAFICI */
         $scope.callbackGrafico = function (scope, element) {
@@ -51,13 +50,13 @@
         
         $scope.fantacalcio = [{
             id: 1,
-            name: "FANTAFIGHETTINO"
+            name: $strings.FANTACALCIO.FANTAFIGHETTINO
         }, {
             id: 2,
-            name: "FANTAMARELLI"
+            name: $strings.FANTACALCIO.FANTAMARELLI
         }, {
             id: 3,
-            name: "FANTABOMBOLACCI"
+            name: $strings.FANTACALCIO.FANTABOMBOLACCI
         }];
         $scope.seasons = [];               
         $scope.giornate = [];
@@ -65,7 +64,7 @@
         $scope.years = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];        
         $scope.alerts = [];
-        $scope.conti = [{"tipoConto": 1, "label": "CONTO COMUNE"},{"tipoConto":2, "label": "CONTO PERSONALE"}];        
+        $scope.conti = [{"tipoConto": 1, "label": $strings.CONTO.CONTO_COMUNE},{"tipoConto":2, "label": $strings.CONTO.CONTO_PERSONALE}];        
         $scope.pivot = {
             year: new Date().getFullYear(),
             month: new Date().getMonth() + 1,
@@ -164,7 +163,7 @@
             return matchAnalysisService.loadMatchAnalysis($scope.season, $scope.giornata);
         };
         $scope.loadSeasons = function () {
-            return $http.get('http://93.55.248.37:3001/seasons').then(function (resp) {
+            return $http.get($strings.REST.SERVER+'/seasons').then(function (resp) {
                 $scope.seasons = resp.data.map(function (tmp) {
                     var obj = {};
                     obj.id = tmp.id;
@@ -174,7 +173,7 @@
             });
         };
         $scope.loadGiornate = function () {
-            return $http.post('http://93.55.248.37:3001/giornate', $scope.season.value).then(function (resp) {
+            return $http.post($strings.REST.SERVER+'/giornate', $scope.season.value).then(function (resp) {
                 $scope.giornate = resp.data.map(function (tmp) {
                     var obj = {};
                     obj.id = tmp.id;
@@ -225,12 +224,12 @@
         
     }]).filter('griddropdown', function() {
       return function(input, context) {
-        var fieldLevel = (context.editDropdownOptionsArray === undefined) ? context.col.colDef : context;
+        var fieldLevel = !context.editDropdownOptionsArray ? context.col.colDef : context;
         var map = fieldLevel.editDropdownOptionsArray;
         var idField = fieldLevel.editDropdownIdLabel;
         var valueField = fieldLevel.editDropdownValueLabel;
         var initial = context.row ? context.row.entity[context.col.field] : context.entity[context.col.field];
-        if (typeof map !== "undefined") {
+        if (map) {
           for (var i = 0; i < map.length; i++) {
             if (map[i][idField] === input) {
               return map[i][valueField];
