@@ -310,7 +310,7 @@
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
                         return $http.get($strings.REST.SERVER + '/export').then(function (result) {
-                            var excel = utilService.b64toBlob(result.data.excel, result.headers()['content-type']);
+                            var excel = utilService.b64toBlob(result.data, result.headers()['content-type']);
                             var blob = new Blob([excel]);
                             var alink = angular.element('<a/>');
                             var link = alink[0];
