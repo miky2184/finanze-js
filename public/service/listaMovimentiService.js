@@ -309,25 +309,24 @@
                 src: 'images/baseline-get_app-24px.svg',
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
-                        return $http.get($strings.REST.SERVER+'/export').then(function(result){
-                    var blob = new Blob([result.data], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
-                    var alink = angular.element('<a/>');
-                    var link = alink[0];
-                    link.href = window.URL.createObjectURL(blob);
-                    link.download = 'ListaMovimenti_' + utilService.dateToString(new Date()) + '.xlsx';
-                    link.target = '_blank';
+                        return $http.get($strings.REST.SERVER + '/export').then(function (result) {
+                            var excel = srvc.b64toBlob(result.data.excel, result.headers()['content-type']);
+                            var blob = new Blob([excel]);
+                            var alink = angular.element('<a/>');
+                            var link = alink[0];
+                            link.href = window.URL.createObjectURL(blob);
+                            link.download = 'ListaMovimenti_' + utilService.dateToString(new Date()) + '.xlsx';
+                            link.target = '_blank';
 
-                    var evt = document.createEvent('MouseEvents');
-                    evt.initMouseEvent('click', true, true, window,
-                      0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                            var evt = document.createEvent('MouseEvents');
+                            evt.initMouseEvent('click', true, true, window,
+                                0, 0, 0, 0, 0, false, false, false, false, 0, null);
 
-                    modalService.hideWaitingModal();
+                            link.dispatchEvent(evt);
 
-                    link.dispatchEvent(evt);
-
-                    return result;
+                            return result;
                         });
-                    } 
+                    }
                 },
                 disabled: function () {
                     return !dataService.data.admin;
@@ -422,7 +421,7 @@
             },
             loadListaMovimenti: function () {
 
-                return $http.get($strings.REST.SERVER+'/ambito').then(function (response) {
+                return $http.get($strings.REST.SERVER + '/ambito').then(function (response) {
                     if (response.data) {
                         response.data.unshift({
                             "ambito": "null",
@@ -430,7 +429,7 @@
                         });
                     }
                     dataService.data.dropdownAmbito = response.data;
-                    return $http.get($strings.REST.SERVER+'/categoria').then(function (response) {
+                    return $http.get($strings.REST.SERVER + '/categoria').then(function (response) {
                         if (response.data) {
                             response.data.unshift({
                                 "categoria": "null",
@@ -438,7 +437,7 @@
                             });
                         }
                         dataService.data.dropdownCategoria = response.data;
-                        return $http.get($strings.REST.SERVER+'/sottocategoria').then(function (response) {
+                        return $http.get($strings.REST.SERVER + '/sottocategoria').then(function (response) {
                             if (response.data) {
                                 response.data.unshift({
                                     "sottocategoria": "null",
@@ -446,7 +445,7 @@
                                 });
                             }
                             dataService.data.dropdownSottocategoria = response.data;
-                            return $http.get($strings.REST.SERVER+'/beneficiario').then(function (response) {
+                            return $http.get($strings.REST.SERVER + '/beneficiario').then(function (response) {
                                 if (response.data) {
                                     response.data.unshift({
                                         "beneficiario": "null",
@@ -454,11 +453,11 @@
                                     });
                                 }
                                 dataService.data.dropdownBeneficiario = response.data;
-                                return $http.get($strings.REST.SERVER+'/tipoConto').then(function (response) {
+                                return $http.get($strings.REST.SERVER + '/tipoConto').then(function (response) {
                                     dataService.data.editDropDownTipoContoArray = response.data;
-                                    return $http.get($strings.REST.SERVER+'/conto').then(function (response) {
+                                    return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
                                         dataService.data.editDropDownContoArray = response.data;
-                                        return $http.get($strings.REST.SERVER+'/all').then(function (response) {
+                                        return $http.get($strings.REST.SERVER + '/all').then(function (response) {
                                             var resultsData = [];
                                             response.data.forEach(function (row) {
                                                 var newRow = {};
