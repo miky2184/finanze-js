@@ -97,7 +97,7 @@
                      max = obj;
                  }
              });
-             return max;
+             return Number(max);
          },
           
           dateToString: function dateToString(date){
