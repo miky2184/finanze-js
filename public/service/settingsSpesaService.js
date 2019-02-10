@@ -12,6 +12,7 @@
         var srvc = {            
             gridOptionsReparto: {
                 minRowsToShow: 10,
+                enableFiltering: true,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
@@ -26,6 +27,7 @@
             },
             gridOptionsSottoreparto: {
                 minRowsToShow: 10,
+                enableFiltering: true,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
@@ -40,6 +42,7 @@
             },
             gridOptionsFamiglia: {
                 minRowsToShow: 10,
+                enableFiltering: true,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
@@ -55,6 +58,7 @@
             gridOptionsReprSott: {
                 rowTemplate: 'templates/rows/deletableRow.html',
                 minRowsToShow: 10,
+                enableFiltering: true,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 columnDefs: [{
                     name: 'reparto',
@@ -91,6 +95,7 @@
             gridOptionsSottFamg: {
                 rowTemplate: 'templates/rows/deletableRow.html',
                 minRowsToShow: 10,
+                enableFiltering: true,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 columnDefs: [ {
                     name: 'sottoreparto',
