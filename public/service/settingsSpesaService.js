@@ -70,6 +70,20 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownAmbito) {
+                                var cell = dataService.data.dropdownReparto.filter(function (reparto) {
+                                    return reparto.reparto === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }, {
                     name: 'sottoreparto',
@@ -81,6 +95,20 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownAmbito) {
+                                var cell = dataService.data.dropdownSottoreparto.filter(function (sottoreparto) {
+                                    return sottoreparto.sottoreparto === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }],
                 data: [],
@@ -107,6 +135,20 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownAmbito) {
+                                var cell = dataService.data.dropdownSottoreparto.filter(function (sottoreparto) {
+                                    return sottoreparto.sottoreparto === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }, {
                     name: 'famiglia',
@@ -118,6 +160,20 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownAmbito) {
+                                var cell = dataService.data.dropdownFamiglia.filter(function (famiglia) {
+                                    return famiglia.famiglia === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
                     }
                 }],
                 data: [],
