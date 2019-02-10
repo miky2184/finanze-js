@@ -192,12 +192,12 @@
                 srvc.gridOptionsFamiglia.data = dataService.data.dropdownFamiglia.filter(function (j) {
                     return j.famiglia !== "";
                 });            
-                srvc.gridOptionsReprSott.data = dataService.data.dropdownSottoreparto.filter(function (j) {
+                srvc.gridOptionsReprSott.data = angular.copy(dataService.data.dropdownSottoreparto).filter(function (j) {
                     return j.sottoreparto !== "" && j.reparto !== "";
                 });
                 srvc.gridOptionsReprSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownReparto;
                 srvc.gridOptionsReprSott.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownSottoreparto;
-                srvc.gridOptionsSottFamg.data = dataService.data.dropdownFamiglia.filter(function (j) {
+                srvc.gridOptionsSottFamg.data = angular.copy(dataService.data.dropdownFamiglia).filter(function (j) {
                     return j.famiglia !== "" && j.sottoreparto !== "";
                 });
                 srvc.gridOptionsSottFamg.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownSottoreparto;

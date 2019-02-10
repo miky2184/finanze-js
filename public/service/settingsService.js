@@ -240,12 +240,12 @@
                 srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (j) {
                     return j.beneficiario !== "null";
                 });
-                srvc.gridOptionsAmbCat.data = dataService.data.dropdownCategoria.filter(function (j) {
+                srvc.gridOptionsAmbCat.data = angular.copy(dataService.data.dropdownCategoria).filter(function (j) {
                     return j.categoria !== "null" && j.ambito !== null;
                 });
                 srvc.gridOptionsAmbCat.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownAmbito;
                 srvc.gridOptionsAmbCat.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownCategoria;
-                srvc.gridOptionsCatSott.data = dataService.data.dropdownSottocategoria.filter(function (j) {
+                srvc.gridOptionsCatSott.data = angular.copy(dataService.data.dropdownSottocategoria).filter(function (j) {
                     return j.sottocategoria !== "null" && j.categoria !== null;
                 });
                 srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
