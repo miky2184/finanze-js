@@ -245,6 +245,10 @@
                             }
                             dataService.data.dropdownFamiglia = resp.data;
                             return $http.get($strings.REST.SERVER+'/spesa').then(function (resp) {
+                                resp.data.map(function(r){
+                                   r.peso = r.peso === 'T' ? true : false;
+                                   return r;
+                                });
                                 dataService.data.backupDataSpesa = angular.copy(resp.data);
                                 srvc.gridOptionsSpesa.data = resp.data;
                                 srvc.gridOptionsSpesa.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownReparto;
