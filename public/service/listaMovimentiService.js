@@ -309,9 +309,12 @@
                 src: 'images/baseline-get_app-24px.svg',
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
-                        return $http.get($strings.REST.SERVER + '/export', {responseType: 'arraybuffer'}).then(function (result) {
-                            var excel = utilService.b64toBlob(result.data, result.headers()['content-type']);
-                            var blob = new Blob([excel]);
+                        return $http.get($strings.REST.SERVER + '/export', {
+                            responseType: 'arraybuffer'
+                        }).then(function (result) {
+                            var blob = new Blob([result.data], {
+                                type: result.headers()['content-type']
+                            });
                             var alink = angular.element('<a/>');
                             var link = alink[0];
                             link.href = window.URL.createObjectURL(blob);
