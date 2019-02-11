@@ -188,6 +188,13 @@
                     type: 'number',
                     width: 50
                 }, {
+                    name: 'peso',
+                    displayName: 'Peso/Pezzi',
+                    field: 'peso',                    
+                    width: 80,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fas fa-balance-scale'
+                }, {
                     name: 'pesoGrammi',
                     displayName: 'gr.',
                     field: 'pesoGrammi',
