@@ -388,3 +388,20 @@ label-settings {
     background-color: red !important;
     font-weight: bold;
 }
+
+.cellLeftBorder   {
+   border-left: 2px solid !important; 
+     text-align: right;
+}  
+
+.cellRightBorder   {
+   border-right: 2px solid !important; 
+     text-align: right;
+} 
+
+.cellLeftRightBorder   {
+    border-left: 2px solid !important; 
+   border-right: 2px solid !important; 
+     text-align: right;
+} 
+

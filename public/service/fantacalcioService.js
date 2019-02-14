@@ -31,18 +31,19 @@
                     displayName: 'Squadra',
                     field: 'TEAM_NAME',
                     width: '*',
-                    pinnedLeft: true
+                    pinnedLeft: true,
+                    cellClass: 'cellRightBorder',
                 }, {
                     name: 'VALORE_ACQUISTO',
                     displayName: 'Val. Acqs.',
                     field: 'VALORE_ACQUISTO',
-                    cellClass: 'text-right',
+                    cellClass: 'cellLeftRightBorder',
                     width: 50
                 }, {
                     name: 'PG_TOT',
                     displayName: 'Gioc.',
                     field: 'PG_TOT',
-                    cellClass: 'text-right',
+                    cellClass: 'cellLeftBorder',
                     width: 50
                 }, {
                     name: 'MEDIA_MAGIC_TOT',
@@ -90,13 +91,13 @@
                     name: 'ESPULSIONE_TOT',
                     displayName: 'Esp.',
                     field: 'ESPULSIONE_TOT',
-                    cellClass: 'text-right',
+                    cellClass: 'cellRightBorder',
                     width: 50
                 }, {
                     name: 'PG_HOME',
                     displayName: 'Gioc. Home',
                     field: 'PG_HOME',
-                    cellClass: 'text-right',
+                    cellClass: 'cellLeftBorder',
                     width: 50
                 }, {
                     name: 'MEDIA_MAGIC_PUNTI_HOME',
@@ -144,13 +145,13 @@
                     name: 'ESPULSIONE_HOME',
                     displayName: 'Esp. Home',
                     field: 'ESPULSIONE_HOME',
-                    cellClass: 'text-right',
+                    cellClass: 'cellRightBorder',
                     width: 50
                 }, {
                     name: 'PG_AWAY',
                     displayName: 'Gioc. Away',
                     field: 'PG_AWAY',
-                    cellClass: 'text-right',
+                    cellClass: 'cellLeftBorder',
                     width: 50
                 }, {
                     name: 'MEDIA_MAGIC_PUNTI_AWAY',

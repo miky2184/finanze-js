@@ -8,7 +8,8 @@
                 });
             },
             login: function (datiAccesso) {
-                return $http.post($strings.REST.SERVER+'/login', datiAccesso).then(function (resp) {
+                dataService.data.alerts = [];
+                return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {
                     modalService.showSearchingModal();
                     if (resp.data && resp.data.length === 1) {
                         dataService.data.descName = resp.data[0]['NAME'];
@@ -20,16 +21,16 @@
                             }
                         });
                     } else {
-                        dataService.data.alerts = [];
                         dataService.data.alerts.push({
                             msg: 'Username e/o Password errate!!!',
                             type: 'danger'
                         });
-                        modalService.hideWaitingModal();
                     }
                 }).finally(function (fn) {
                     modalService.hideWaitingModal();
-                    $interval(listaMovimentiService.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+                    if (dataService.data.alerts.length == 0) {
+                        $interval(listaMovimentiService.gridOptions.gridApi.core.handleWindowResize, 100, 10);
+                    }
                 });
             },
             salva: function salva() {
@@ -89,7 +90,7 @@
                         backdrop: false,
                         keyboard: false
                     });
-                    return $http.post($strings.REST.SERVER+'/save', dto).then(function (resp) {
+                    return $http.post($strings.REST.SERVER + '/save', dto).then(function (resp) {
                         return srvc.loadData().then(function (resp) {
                             settingsService.loadSettings()
                         });
@@ -144,8 +145,8 @@
                             deferred.reject();
                         });
                     } else {
-                         dataService.data.logged = false;
-                            dataService.data.admin = false;                            
+                        dataService.data.logged = false;
+                        dataService.data.admin = false;
                     }
 
 

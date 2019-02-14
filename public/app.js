@@ -18,9 +18,10 @@
             var datiAccesso ={
                 username: $scope.username,
                 pwd: $scope.password
-            };            
-            $scope.alerts = dataService.data.alerts;
-            return commonService.login(datiAccesso);
+            };                        
+            return commonService.login(datiAccesso).then(function(result){
+                $scope.alerts = dataService.data.alerts;    
+            });
         }        
         
         /* BUTTON */
