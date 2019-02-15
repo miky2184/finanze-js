@@ -356,7 +356,11 @@
                         gridOptions.data.unshift({
                             newRow: true,
                             dataSpesa: new Date(),
-                            dirty: true
+                            dirty: true,
+                            peso: false,
+                            pesoGrammi: 0,
+                            prezzo: 0,
+                            prezzoAlKilo: 0
                         });
                     }
                 },
