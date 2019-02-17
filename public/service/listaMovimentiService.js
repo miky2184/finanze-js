@@ -424,7 +424,7 @@
                 disabled: function () {
                     return !dataService.data.admin;
                 },
-                label: 'Delete'
+                label: 'Refreshs'
             },
             loadListaMovimenti: function () {
 
