@@ -4,6 +4,19 @@
         $mdThemingProvider.theme('default');
     }]).controller('MainController', ['$scope', '$http',   '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService' , 'andamentoAnnuoService', 'settingsService', 'salaryService',  'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', 'barcodeService', function ($scope, $http,  $strings, commonService,  spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService, barcodeService ) {
 
+        
+        $scope.words = [];
+			$scope.triggerChar = 9;
+			$scope.separatorChar = 13;
+			$scope.triggerCallback = function () {
+				$scope.lastTrigger = 'Last trigger callback: ' + new Date().toISOString();
+				$scope.$apply();
+			};
+			$scope.scanCallback = function (word) {
+				$scope.words.push(word);
+				$scope.$apply();
+			};
+        
         /* PARAMETRI */
         /* LOGIN */
         $scope.disabled = false;
