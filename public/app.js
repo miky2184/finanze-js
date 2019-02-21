@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService) {
+    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', 'pivotSpesaService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService, pivotSpesaService) {
 
 
         $scope.words = [];
@@ -249,6 +249,14 @@
         $scope.gridOptionsFamiglia = settingsSpesaService.gridOptionsFamiglia;
         $scope.gridOptionsReprSott = settingsSpesaService.gridOptionsReprSott;
         $scope.gridOptionsSottFamg = settingsSpesaService.gridOptionsSottFamg;
+        
+        /*********************
+            TAB PIVOT SPESA
+        *********************/
+        $scope.gridOptionsPivotSpesa = pivotSpesaService.gridOptionsPivotSpesa;
+        $scope.loadPivotSpesa = function () {
+            return pivotSpesaService.loadPivotSpesa();
+        };
 
     }]).filter('griddropdown', function () {
         return function (input, context) {
