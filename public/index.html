@@ -55,7 +55,6 @@
     <script type="text/javascript" src="service/graficoService.js"></script>
     <script type="text/javascript" src="service/balanceService.js"></script>
     <script type="text/javascript" src="service/settingsSpesaService.js"></script>
-    <script type="text/javascript" src="service/barcodeService.js"></script>
 </head>
 
 <body ng-controller="MainController" class="textapp" md-no-ink >
@@ -81,30 +80,6 @@
                 <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
             </div>
         </md-content>
-    </div>
-    <div>
-    <span>{{lastTrigger}}</span>
-<br/>
-<br/>
-<div>
-    <label for="triggerChar">Trigger Character (default 9 which is TAB)</label>
-    <input id="triggerChar" type="number" ng-model="triggerChar" value="9">
-</div>
-<br/>
-<br/>
-<div>
-    <label for="separatorChar">Separator Character (default 13 which is ENTER)</label>
-    <input id="separatorChar" type="number" ng-model="separatorChar" value="13">
-</div>
-
-
-
-<br/>
-<div ng-repeat="word in words">{{word}}</div>
-
-
-<barcode-scanner separator-char="separatorChar" trigger-char="triggerChar" scan-callback="scanCallback"
-                trigger-callback="triggerCallback"></barcode-scanner>
     </div>
     <div layout="column" layout-align="center center" layout-fill ng-show="logged()">
         <md-content layout-fill>
