@@ -72,7 +72,7 @@
             },
             loadPivotSpesa: function () {
                 return $http.get($strings.REST.SERVER+'/pivotSpesa').then(function (resp) {
-                    srvc.gridOptionsPivotSpesa = resp.data;
+                    srvc.gridOptionsPivotSpesa.data = resp.data;
                 });
             }
         };
