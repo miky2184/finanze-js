@@ -3,25 +3,13 @@
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
     }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', 'pivotSpesaService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService, pivotSpesaService) {
-
-
-        $scope.words = [];
+        
         $scope.triggerChar = 9;
         $scope.separatorChar = 13;
         $scope.triggerCallback = function () {
             $scope.$apply();
         };
-        $scope.scanCallback = function (word) {
-            spesaService.gridOptionsSpesa.data.unshift({
-                newRow: true,
-                dataSpesa: new Date(),
-                dirty: true,
-                peso: false,
-                pesoGrammi: 0,
-                prezzo: 0,
-                prezzoAlKilo: 0,
-                ean: word
-            });
+        $scope.scanCallback = function (word) {            
             $scope.$apply();
         };
 

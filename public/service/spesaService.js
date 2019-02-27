@@ -19,17 +19,19 @@
                     break;                
                 case 'EAN':                        
                         rowEntity.descrizione = "";                    
+                    if (rowEntity.EAN && rowEntity.EAN.length > 3){
                         dto.reparto = rowEntity.reparto;
                         dto.sottoreparto = rowEntity.sottoreparto;
                         dto.famiglia = rowEntity.famiglia;
-                        dto.ean = rowEntity.EAN;
+                        dto.ean = rowEntity.EAN;                        
                         return $http.post($strings.REST.SERVER+'/validaEan', dto).then(function (resp) {                            
                             if (resp.data && resp.data.length === 1) {
                                 rowEntity.reparto = resp.data[0].reparto;
                                 rowEntity.sottoreparto = resp.data[0].sottoreparto;
                                 rowEntity.famiglia = resp.data[0].famiglia;
                                 rowEntity.EAN = resp.data[0].ean;
-                                rowEntity.descrizione = resp.data[0].descrizione;                                
+                                rowEntity.descrizione = resp.data[0].descrizione;    
+                                rowEntity.pesoGrammi = resp.data[0].pesoGrammi;
                             } else if (resp.data && resp.data.length > 1) {
                                 var text = "";
                                 resp.data.forEach(function(fn){ text = text + fn.ean + ' - ' + fn.descrizione + '<br/>';});
@@ -38,8 +40,9 @@
                                 modalService.showErrorModal("VALIDAZIONE EAN", "NESSUN EAN TROVATO" ,"OK" );
                             }                      
                         });
+                        }
                     break;
-                case 'descrizione':                                
+               /* case 'descrizione':                                
                         dto.reparto = rowEntity.reparto;
                         dto.sottoreparto = rowEntity.sottoreparto;
                         dto.famiglia = rowEntity.famiglia;
@@ -59,7 +62,7 @@
                                 modalService.showErrorModal("VALIDAZIONE REFERENZA", "NESSUNA REFERENZA TROVATA" ,"OK" );
                             }                      
                         });
-                    break;
+                    break; */
                 case 'prezzo':
                     rowEntity.prezzoAlKilo = Math.round(((1000 / rowEntity.pesoGrammi) * newValue) * 100) / 100;
                     break;
