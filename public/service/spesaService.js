@@ -20,9 +20,6 @@
                 case 'EAN':                        
                         rowEntity.descrizione = "";                    
                     if (rowEntity.EAN && rowEntity.EAN.length > 3){
-                        dto.reparto = rowEntity.reparto;
-                        dto.sottoreparto = rowEntity.sottoreparto;
-                        dto.famiglia = rowEntity.famiglia;
                         dto.ean = rowEntity.EAN;                        
                         return $http.post($strings.REST.SERVER+'/validaEan', dto).then(function (resp) {                            
                             if (resp.data && resp.data.length === 1) {
