@@ -15,37 +15,44 @@
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: '3%'
+                    width: '3%',
+                    pinnedLeft: true
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: '3%'
+                    width: '3%',
+                    pinnedLeft: true
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: '3%'
+                    width: '3%',
+                    pinnedLeft: true
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: '7%'
+                    width: '7%',
+                    pinnedLeft: true
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
-                    width: '8%'
+                    width: '8%',
+                    pinnedLeft: true
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: '12%'
+                    width: '12%',
+                    pinnedLeft: true
                 }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
                     field: 'BUDG_TOT_ANNO',
                     width: '7%',
+                    pinnedLeft: true,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -73,6 +80,7 @@
                     displayName: 'Spese Anno',
                     field: 'TOT_ANNO',
                     width: '7%',
+                    pinnedLeft: true,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
