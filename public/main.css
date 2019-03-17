@@ -344,10 +344,10 @@ label-settings {
     content: "\f24e";
 }
 
-.budget::before {
+.flagbudget::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    content: "\f645";
+    content: "\f15a";
 }
 
 .visualizzare::before {

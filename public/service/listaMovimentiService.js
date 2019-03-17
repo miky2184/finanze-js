@@ -267,8 +267,8 @@
                     width: 35,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fas fa-badge-dollar',
-                    headerCellClass: 'icon budget'
+                    buttonNgClass: 'fab fa-btc',
+                    headerCellClass: 'icon flagbudget'
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
