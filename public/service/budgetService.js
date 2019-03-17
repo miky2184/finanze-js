@@ -1,6 +1,16 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval',  '$strings', 'uiGridConstants', function (modalService, $http, $interval, $strings, uiGridConstants) {        
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval',  '$strings', 'uiGridConstants', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, $rootScope) {      
+        var scope = $rootScope.$new();
+        
+         var editableCondition = function editableCondition(rowEntity, colDef) {
+                return false;
+            };
+        
+        var checkEditableCondition = function checkEditableCondition(scope) {
+                return editableCondition(scope.row.entity, scope.col.colDef);
+            };     
+        
         var srvc = {
             gridBudget: {
                 columnVirtualizationThreshold: 100,
@@ -9,6 +19,7 @@
                 enableSorting: false,
                 enableFiltering: true,
                 enableColumnMenus: false,
+                cellEditableCondition: checkEditableCondition,
                 showGridFooter: false,
                 showColumnFooter: true,
                 columnDefs: [{
