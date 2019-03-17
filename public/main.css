@@ -404,19 +404,3 @@ label-settings {
    border-right: 2px solid !important; 
      text-align: right;
 } 
-
-.ui-grid-row{
-    height: auto!important;
-
-    > div {
-        display: table-row;
-    }
-
-    .ui-grid-cell {
-        display: table-cell
-        float: none
-        vertical-align: middle
-        height: auto!important
-    }
-}
-
