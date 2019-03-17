@@ -344,6 +344,12 @@ label-settings {
     content: "\f24e";
 }
 
+.budget::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f645";
+}
+
 .visualizzare::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;

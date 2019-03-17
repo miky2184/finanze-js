@@ -261,6 +261,14 @@
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
                     headerCellClass: 'icon visualizzare'
+                },{
+                    field: 'budget',
+                    displayName: ' ',
+                    width: 35,
+                    cellTooltip: true,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fas fa-badge-dollar',
+                    headerCellClass: 'icon budget'
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
@@ -346,6 +354,7 @@
                             anno: new Date().getFullYear(),
                             mese: new Date().getMonth() + 1,
                             contabilizzata: true,
+                            budget: true,
                             visualizzare: true,
                             cartaCredito: false,
                             webapp: false,
@@ -480,6 +489,7 @@
                                                 newRow.tipoConto = row['TP_CONTO'];
                                                 newRow.conto = row['CONTO'];
                                                 newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
+                                                newRow.budget = row['BUDGET'] === 'SI' ? true : false;
                                                 newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
                                                 newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
                                                 newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
