@@ -13,17 +13,17 @@
 
         var srvc = {
             gridBudget: {
-                /* columnVirtualizationThreshold: 100,
+                columnVirtualizationThreshold: 100,
                 minRowsToShow: 23,
                 enableSorting: false,
                 enableFiltering: false,
-                enableColumnMenus: false, */
+                enableColumnMenus: false,
                 cellEditableCondition: checkEditableCondition,
-                /* showGridFooter: false,
+                showGridFooter: false,
                 showColumnFooter: true,
                 enablePinning: true,
                 hidePinLeft: false,
-                hidePinRight: false, */
+                hidePinRight: false, 
                 columnDefs: [{
                     name: 'IDAMB',
                     displayName: 'ID AMB',
