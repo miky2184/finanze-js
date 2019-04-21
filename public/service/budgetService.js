@@ -1,16 +1,16 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval',  '$strings', 'uiGridConstants', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, $rootScope) {      
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, $rootScope) {
         var scope = $rootScope.$new();
-        
-         var editableCondition = function editableCondition(rowEntity, colDef) {
-                return false;
-            };
-        
+
+        var editableCondition = function editableCondition(rowEntity, colDef) {
+            return false;
+        };
+
         var checkEditableCondition = function checkEditableCondition(scope) {
-                return editableCondition(scope.row.entity, scope.col.colDef);
-            };     
-        
+            return editableCondition(scope.row.entity, scope.col.colDef);
+        };
+
         var srvc = {
             gridBudget: {
                 columnVirtualizationThreshold: 100,
@@ -21,37 +21,45 @@
                 cellEditableCondition: checkEditableCondition,
                 showGridFooter: false,
                 showColumnFooter: true,
-                enablePinning:true, hidePinLeft: true, hidePinRight: false,
+                enablePinning: true,
+                hidePinLeft: true,
+                hidePinRight: false,
                 columnDefs: [{
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: '3%', pinnedLeft:true
+                    width: '3%',
+                    pinnedLeft: true
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: '3%', pinnedLeft:true
+                    width: '3%',
+                    pinnedLeft: true
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: '3%', pinnedLeft:true
+                    width: '3%',
+                    pinnedLeft: true
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: '7%', pinnedLeft:true
+                    width: '7%',
+                    pinnedLeft: true
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
-                    width: '8%', pinnedLeft:true
+                    width: '8%',
+                    pinnedLeft: true
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: '12%', pinnedLeft:true
+                    width: '12%',
+                    pinnedLeft: true
                 }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
@@ -78,7 +86,8 @@
                             }
                         }
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum, pinnedLeft:true
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    pinnedLeft: true
                 }, {
                     name: 'TOT_ANNO',
                     displayName: 'Spese Anno',
@@ -105,7 +114,8 @@
                             }
                         }
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum, pinnedLeft:true
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    pinnedLeft: true
                 }, {
                     name: 'BUDG_GEN',
                     displayName: 'Budget GEN',
@@ -812,12 +822,14 @@
                 var dto = {};
                 dto.tipoconto = pivot.tipoConto;
                 dto.anno = pivot.year;
-                return $http.post($strings.REST.SERVER+'/budget', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridBudget.data = resp.data;
 
                         if (srvc.gridBudget && srvc.gridBudget.gridApi) {
-                            $interval(srvc.gridBudget.gridApi.core.handleWindowResize, 100, 10);
+                            $interval(function () {
+                                srvc.gridBudget.gridApi.core.handleWindowResize();
+                            }, 500, 10);
                         }
 
                     }
