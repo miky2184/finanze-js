@@ -15,7 +15,6 @@
             gridBudget: {
                 columnVirtualizationThreshold: 100,
                 minRowsToShow: 23,
-                selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableFiltering: false,
                 enableColumnMenus: false,
