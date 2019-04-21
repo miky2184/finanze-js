@@ -22,44 +22,44 @@
                 showGridFooter: false,
                 showColumnFooter: true,
                 enablePinning: true,
-                hidePinLeft: true,
+                hidePinLeft: false,
                 hidePinRight: false,
                 columnDefs: [{
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
                     width: '3%',
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
                     width: '3%',
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
                     width: '3%',
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
                     width: '7%',
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
                     width: '8%',
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
                     width: '12%',
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
@@ -87,7 +87,7 @@
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'TOT_ANNO',
                     displayName: 'Spese Anno',
@@ -115,7 +115,7 @@
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
-                    pinnedLeft: true
+                    pinnedLeft: false
                 }, {
                     name: 'BUDG_GEN',
                     displayName: 'Budget GEN',
