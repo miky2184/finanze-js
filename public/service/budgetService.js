@@ -28,43 +28,43 @@
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: 50,
+                    width: 45,
                     pinnedLeft: false
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: 50,
+                    width: 45,
                     pinnedLeft: false
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: 50,
+                    width: 45,
                     pinnedLeft: false
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: 150,
+                    width: 120,
                     pinnedLeft: false
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
-                    width: 150,
+                    width: 165,
                     pinnedLeft: false
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: 150,
+                    width: 165,
                     pinnedLeft: false
                 }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
                     field: 'BUDG_TOT_ANNO',
-                    width: 120,
+                    width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -92,7 +92,7 @@
                     name: 'TOT_ANNO',
                     displayName: 'Spese Anno',
                     field: 'TOT_ANNO',
-                    width: 120,
+                    width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
