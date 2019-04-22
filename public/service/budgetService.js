@@ -1,24 +1,14 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, $rootScope) {
-        var scope = $rootScope.$new();
-
-        /* var editableCondition = function editableCondition(rowEntity, colDef) {
-            return false;
-        };
-
-        var checkEditableCondition = function checkEditableCondition(scope) {
-            return editableCondition(scope.row.entity, scope.col.colDef);
-        }; */
-
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
+        
         var srvc = {
             gridBudget: {
                 columnVirtualizationThreshold: 32,
                 minRowsToShow: 23,
                 enableSorting: false,
-                enableFiltering: false,
+                enableFiltering: true,
                 enableColumnMenus: false,
-             //   cellEditableCondition: checkEditableCondition,
                 showColumnFooter: true,
                 enablePinning: true,
                 columnDefs: [{
@@ -810,7 +800,7 @@
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 }],
-                data: [],
+                data: dataService.data.dataBudget,
                 onRegisterApi: function (gridApi) {
                     srvc.gridBudget.gridApi = gridApi;
                     srvc.gridBudget.gridApi.core.handleWindowResize(); 
@@ -822,7 +812,8 @@
                 dto.anno = pivot.year;
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
-                        srvc.gridBudget.data = resp.data;
+                        // srvc.gridBudget.data = resp.data;
+                        dataService.data.dataBudget = resp.data;
                     }
                 });
             }
