@@ -3,57 +3,60 @@
     angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, $rootScope) {
         var scope = $rootScope.$new();
 
-        var editableCondition = function editableCondition(rowEntity, colDef) {
+        /* var editableCondition = function editableCondition(rowEntity, colDef) {
             return false;
         };
 
         var checkEditableCondition = function checkEditableCondition(scope) {
             return editableCondition(scope.row.entity, scope.col.colDef);
-        };
+        }; */
 
         var srvc = {
             gridBudget: {
-                columnVirtualizationThreshold: 100,
+                columnVirtualizationThreshold: 32,
                 minRowsToShow: 23,
                 enableSorting: false,
                 enableFiltering: false,
                 enableColumnMenus: false,
-                cellEditableCondition: checkEditableCondition,
-                showGridFooter: false,
+             //   cellEditableCondition: checkEditableCondition,
                 showColumnFooter: true,
                 enablePinning: true,
-                hidePinLeft: false,
-                hidePinRight: false, 
                 columnDefs: [{
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: 50
+                    width: 50,
+                    pinnedLeft: true
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: 50
+                    width: 50,
+                    pinnedLeft: true
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: 50
+                    width: 50,
+                    pinnedLeft: true
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: 120
+                    width: 120,
+                    pinnedLeft: true
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
-                    width: 165
+                    width: 165,
+                    pinnedLeft: true
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: 165
+                    width: 165,
+                    pinnedLeft: true
                 }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
@@ -80,7 +83,8 @@
                             }
                         }
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    pinnedLeft: true
                 }, {
                     name: 'TOT_ANNO',
                     displayName: 'Spese Anno',
