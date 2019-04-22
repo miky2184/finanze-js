@@ -248,7 +248,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    width: 35,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
@@ -256,7 +256,7 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    width: 35,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
@@ -264,7 +264,7 @@
                 },{
                     field: 'budget',
                     displayName: ' ',
-                    width: 35,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-btc',
@@ -272,7 +272,7 @@
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    width: 35,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
@@ -280,7 +280,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    width: 35,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
@@ -301,11 +301,11 @@
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 45
+                    width: 60
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 40
+                    width: 60
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
