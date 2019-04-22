@@ -125,9 +125,8 @@
             data: [],
             onRegisterApi: function (gridApi) {
                 srvc.gridOptionPivotAnno.gridApi = gridApi;
-                $timeout(function () {
-                    srvc.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
-                }, 250);
+                srvc.gridOptionPivotAnno.gridApi.core.handleWindowResize();
+                srvc.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
             }
         },
         loadPivotAnno : function (year, tipoConto) {
@@ -377,10 +376,6 @@
             }
             pivotData.shift();
             srvc.gridOptionPivotAnno.data = pivotData;
-            $interval(srvc.gridOptionPivotAnno.gridApi.core.handleWindowResize, 100, 10);
-            $timeout(function () {
-                srvc.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
-            }, 250);
         }
         };
         return srvc;

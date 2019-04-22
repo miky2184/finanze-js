@@ -28,9 +28,9 @@
                     }
                 }).finally(function (fn) {
                     modalService.hideWaitingModal();
-                    if (dataService.data.alerts.length == 0) {
+                    /* if (dataService.data.alerts.length == 0) {
                         $interval(listaMovimentiService.gridOptions.gridApi.core.handleWindowResize, 100, 10);
-                    }
+                    } */
                 });
             },
             salva: function salva() {

@@ -57,6 +57,7 @@
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridReportMese.gridApi = gridApi;
+                    srvc.gridReportMese.gridApi.core.handleWindowResize();
                 }
             },
             loadReportMese: function (pivot) {
@@ -72,9 +73,6 @@
                             }
                             return d;
                         });
-                        if (srvc.gridReportMese && srvc.gridReportMese.gridApi) {
-                            $interval(srvc.gridReportMese.gridApi.core.handleWindowResize, 100, 10);
-                        }
                     }
                 });
             }

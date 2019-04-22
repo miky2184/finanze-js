@@ -48,6 +48,7 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsAmazon.gridApi = gridApi;
                     gridApi.selection.on.rowSelectionChanged(scope, srvc.onSelectASIN);
+                    srvc.gridOptionsAmazon.gridApi.core.handleWindowResize();
                 }
             },
             amazon: {},
@@ -83,7 +84,6 @@
                     });
 
                     srvc.gridOptionsAmazon.data = dataAmazon;
-                    $interval(srvc.gridOptionsAmazon.gridApi.core.handleWindowResize, 100, 10);
                 });
             }      
         };

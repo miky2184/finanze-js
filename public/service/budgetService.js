@@ -826,13 +826,6 @@
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridBudget.data = resp.data;
-
-                        /* if (srvc.gridBudget && srvc.gridBudget.gridApi) {
-                            $interval(function () {
-                                srvc.gridBudget.gridApi.core.handleWindowResize();
-                            }, 500, 10);
-                        } */
-
                     }
                 });
             }

@@ -147,6 +147,7 @@
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsClassifica.gridApi = gridApi;
+                    srvc.gridOptionsClassifica.gridApi.core.handleWindowResize();
                 }
             },
             
@@ -185,6 +186,7 @@
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsScontriDiretti.gridApi = gridApi;
+                    srvc.gridOptionsScontriDiretti.gridApi.core.handleWindowResize();
                 }
             },
             gridOptionsNextGame: {
@@ -297,6 +299,8 @@
                     srvc.gridOptionsNextGame.gridApi = gridApi;                    
                     srvc.gridOptionsNextGame.gridApi.selection.on.rowSelectionChanged(scope, srvc.doSelection);
                     gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditFunction);
+                    srvc.gridOptionsNextGame.gridApi.core.handleWindowResize();
+                    
                 }
             },
             afterCellEditFunction: function (rowEntity, colDef, newValue, oldValue) {
@@ -385,7 +389,6 @@
                         });
                     }
                     srvc.gridOptionsClassifica.data = dataMatchAnalysis;
-                    $interval(srvc.gridOptionsClassifica.gridApi.core.handleWindowResize, 100, 10);
                     var dataLastFiveGame = [];
                     return $http.post($strings.REST.SERVER+'/lastfivegame', season.value).then(function (resp) {
                         if (resp.data.length > 0) {
@@ -541,7 +544,6 @@
                                 });
                             }
                             srvc.gridOptionsNextGame.data = dataNextGame;
-                            $interval(srvc.gridOptionsNextGame.gridApi.core.handleWindowResize, 100, 10);
                         });
                     });
                 });
