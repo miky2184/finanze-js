@@ -28,38 +28,32 @@
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: 50,
-                    pinnedLeft: true
+                    width: 50
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: 50,
-                    pinnedLeft: true
+                    width: 50
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: 50,
-                    pinnedLeft: true
+                    width: 50
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'AMBITO',
-                    width: 120,
-                    pinnedLeft: false
+                    width: 120
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
                     field: 'CATEGORIA',
-                    width: 165,
-                    pinnedLeft: false
+                    width: 165
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: 165,
-                    pinnedLeft: false
+                    width: 165
                 }, {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
@@ -86,8 +80,7 @@
                             }
                         }
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    pinnedLeft: false
+                    aggregationType: uiGridConstants.aggregationTypes.sum
                 }, {
                     name: 'TOT_ANNO',
                     displayName: 'Spese Anno',
@@ -115,7 +108,7 @@
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
-                    pinnedLeft: false
+                    pinnedLeft: true
                 }, {
                     name: 'BUDG_GEN',
                     displayName: 'Budget GEN',
