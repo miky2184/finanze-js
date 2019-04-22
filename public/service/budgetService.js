@@ -23,7 +23,7 @@
                 showColumnFooter: true,
                 enablePinning: true,
                 hidePinLeft: false,
-                hidePinRight: true, 
+                hidePinRight: false, 
                 columnDefs: [{
                     name: 'IDAMB',
                     displayName: 'ID AMB',
