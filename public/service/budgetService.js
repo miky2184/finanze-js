@@ -35,13 +35,13 @@
                     displayName: 'ID CAT',
                     field: 'IDCAT',
                     width: 50,
-                    pinnedLeft: false
+                    pinnedLeft: true
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
                     width: 50,
-                    pinnedLeft: false
+                    pinnedLeft: true
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
