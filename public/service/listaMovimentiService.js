@@ -248,7 +248,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    width: 70,
+                    width: 80,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
@@ -256,23 +256,23 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    width: 70,
+                    width: 80,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
                     headerCellClass: 'icon visualizzare'
-                },{
+                },/* {
                     field: 'budget',
                     displayName: ' ',
-                    width: 70,
+                    width: 80,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-btc',
                     headerCellClass: 'icon flagbudget'
-                }, {
+                }, */ {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    width: 70,
+                    width: 80,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
@@ -280,7 +280,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    width: 70,
+                    width: 80,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
@@ -290,7 +290,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    width: 120,
+                    width: 100,
                     cellTooltip: true,
                     cellClass: 'text-right',
                     type: 'number'
