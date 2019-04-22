@@ -800,7 +800,7 @@
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 }],
-                data: dataService.data.dataBudget,
+                data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridBudget.gridApi = gridApi;
                     srvc.gridBudget.gridApi.core.handleWindowResize(); 
@@ -812,8 +812,7 @@
                 dto.anno = pivot.year;
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
-                        // srvc.gridBudget.data = resp.data;
-                        dataService.data.dataBudget = resp.data;
+                        srvc.gridBudget.data = resp.data;
                     }
                 });
             }
