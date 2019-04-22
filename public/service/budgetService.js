@@ -15,19 +15,19 @@
                     name: 'IDAMB',
                     displayName: 'ID AMB',
                     field: 'IDAMB',
-                    width: 50,
+                    width: 60,
                     pinnedLeft: true
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
                     field: 'IDCAT',
-                    width: 50,
+                    width: 60,
                     pinnedLeft: true
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
                     field: 'IDSOT',
-                    width: 50,
+                    width: 60,
                     pinnedLeft: true
                 }, {
                     name: 'AMBITO',
