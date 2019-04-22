@@ -15,7 +15,7 @@
             gridBudget: {
                 columnVirtualizationThreshold: 100,
                 minRowsToShow: 23,
-                enableSorting: true,
+                enableSorting: false,
                 enableFiltering: false,
                 enableColumnMenus: false,
                 cellEditableCondition: checkEditableCondition,
@@ -29,7 +29,7 @@
                     displayName: 'ID AMB',
                     field: 'IDAMB',
                     width: 50,
-                    pinnedLeft: false
+                    pinnedLeft: true
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
