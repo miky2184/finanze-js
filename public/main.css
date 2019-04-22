@@ -3,6 +3,10 @@
     height: auto;
 }
 
+.gridHeightHeader  .ui-grid-header-cell {
+  height: 60px;
+}
+
 .btnMargin {
     margin-right: 2px
 }
