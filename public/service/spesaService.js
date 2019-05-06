@@ -217,6 +217,7 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsSpesa.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                    srvc.gridOptionsSpesa.gridApi.core.handleWindowResize();
                 }
             },
             loadSpesa: function () {
@@ -254,7 +255,6 @@
                                 srvc.gridOptionsSpesa.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownReparto;
                                 srvc.gridOptionsSpesa.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownSottoreparto;
                                 srvc.gridOptionsSpesa.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownFamiglia;
-                                $interval(srvc.gridOptionsSpesa.gridApi.core.handleWindowResize, 100, 10);
                                 settingsSpesaService.loadSettingsSpesa();
                             });
                         });

@@ -546,6 +546,7 @@
                     onRegisterApi: function (gridApi) {
                         srvc.gridOptionsSalary.gridApi = gridApi;
                         gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditSalaryFunction);
+                        srvc.gridOptionsSalary.gridApi.core.handleWindowResize();
                     }
                 },
                 loadWork: function () {
@@ -604,7 +605,6 @@
                                     srvc.ricalcola(obj, salaryData);
                                 });
                                 srvc.gridOptionsSalary.data = salaryData;
-                                $interval(srvc.gridOptionsSalary.gridApi.core.handleWindowResize, 200, 10);
                             });
                         });
                     });

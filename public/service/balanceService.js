@@ -42,6 +42,7 @@
             data: [],
             onRegisterApi: function (gridApi) {
                 srvc.gridOptionsBalance.gridApi = gridApi;
+                srvc.gridOptionsBalance.gridApi.core.handleWindowResize();
             }
         },         
         gridOptionsAvere : {
@@ -70,6 +71,7 @@
             data: [],
             onRegisterApi: function (gridApi) {
                 srvc.gridOptionsAvere.gridApi = gridApi;
+                srvc.gridOptionsAvere.gridApi.core.handleWindowResize();
             }
         },
             loadBalance : function () {
@@ -119,8 +121,6 @@
                 }
             }
             srvc.gridOptionsAvere.data = avere;
-            $interval(srvc.gridOptionsBalance.gridApi.core.handleWindowResize, 100, 10);
-            $interval(srvc.gridOptionsAvere.gridApi.core.handleWindowResize, 100, 10);
         }
         };
         return srvc;

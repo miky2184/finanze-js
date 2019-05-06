@@ -204,6 +204,7 @@
                 }],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsPandathinaikos.gridApi = gridApi;
+                    srvc.gridOptionsPandathinaikos.gridApi.core.handleWindowResize();
                 }
             },
             loadFantaRosa: function (id) {
@@ -229,7 +230,6 @@
                         });
                         break;
                 }
-                $interval(srvc.gridOptionsPandathinaikos.gridApi.core.handleWindowResize, 100, 10);
             }
         };
         return srvc;
