@@ -95,16 +95,16 @@
                         <div ng-include="'view/balance.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Budget" md-on-select="loadBudget()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/budget.html'"></div>
-                    </md-content>
-                </md-tab>
-                <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-show="admin()">
+                <md-tab label="Settings" md-on-select="refreshGridSettings()" ng-show="admin()">
                     <md-content class="md-padding">
                         <div ng-include="'view/settings.html'"></div>
                     </md-content>
                 </md-tab>
+                <md-tab label="Budget" md-on-select="loadBudget()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/budget.html'"></div>
+                    </md-content>
+                </md-tab>                
                 <md-tab label="Spesa">
                     <md-content class="md-padding">
                         <div ng-include="'view/spesa.html'"></div>
@@ -120,19 +120,19 @@
                         <div ng-include="'view/settingsSpesa.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Report Mensile" md-on-select="loadReportMese()">
+                <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
                     <md-content class="md-padding">
                         <div ng-include="'view/reportMensile.html'"></div>
                     </md-content>
-                </md-tab>
-                <md-tab label="Pivot Mese" md-on-select="loadPivotMese(pivot.year)">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/pivotMese.html'"></div>
-                    </md-content>
-                </md-tab>
+                </md-tab>                
                 <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno(pivot.year, 1)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotAnno.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Andamento Mese" md-on-select="loadPivotMese(pivot.year)">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/pivotMese.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Andamento Annuo" md-on-select="loadAndamentoAnnuo()">
