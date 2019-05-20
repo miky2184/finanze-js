@@ -3,13 +3,13 @@
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
     }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', 'pivotSpesaService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService, pivotSpesaService) {
-        
+
         $scope.triggerChar = 9;
         $scope.separatorChar = 13;
         $scope.triggerCallback = function () {
             $scope.$apply();
         };
-        $scope.scanCallback = function (word) {            
+        $scope.scanCallback = function (word) {
             $scope.$apply();
         };
 
@@ -35,11 +35,11 @@
 
         /* BUTTON */
         $scope.actionButtons = [];
-        $scope.actionButtons.push(listaMovimentiService.exportBtn);
+        // $scope.actionButtons.push(listaMovimentiService.exportBtn);
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);
-        $scope.actionButtons.push(listaMovimentiService.refreshBtn);    
+        $scope.actionButtons.push(listaMovimentiService.refreshBtn);
 
         $scope.saveButtons = [];
         $scope.saveButtons.push(commonService.saveBtn);
@@ -237,7 +237,7 @@
         $scope.gridOptionsFamiglia = settingsSpesaService.gridOptionsFamiglia;
         $scope.gridOptionsReprSott = settingsSpesaService.gridOptionsReprSott;
         $scope.gridOptionsSottFamg = settingsSpesaService.gridOptionsSottFamg;
-        
+
         /*********************
             TAB PIVOT SPESA
         *********************/
