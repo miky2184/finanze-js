@@ -105,7 +105,7 @@
                         <div ng-include="'view/budget.html'"></div>
                     </md-content>
                 </md-tab>                
-                <md-tab label="Spesa">
+               <!-- <md-tab label="Spesa">
                     <md-content class="md-padding">
                         <div ng-include="'view/spesa.html'"></div>
                     </md-content>
@@ -119,7 +119,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/settingsSpesa.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab> 
                 <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
                     <md-content class="md-padding">
                         <div ng-include="'view/reportMensile.html'"></div>
@@ -129,7 +129,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotAnno.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab> -->
                 <md-tab label="Andamento Mese" md-on-select="loadPivotMese(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotMese.html'"></div>
@@ -155,9 +155,14 @@
                         <div ng-include="'view/matchAnalysis.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Fantacalcio">
+               <!-- <md-tab label="Fantacalcio">
                     <md-content class="md-padding">
                         <div ng-include="'view/fantacalcio.html'"></div>
+                    </md-content>
+                </md-tab> -->
+                <md-tab label="Password" md-on-select="loadPassword()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/password.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Amazon" md-on-select="loadAmazonData()">
