@@ -249,10 +249,10 @@
         /*********************
             TAB PASSWORD
         *********************/
+        $scope.gridOptionsPassword = passwordService.gridOptions;
         $scope.loadPassword = function () {
             return passwordService.loadPassword();
-        };
-        $scope.gridOptionsPassword = passwordService.gridOptions;
+        };        
 
     }]).filter('griddropdown', function () {
         return function (input, context) {
