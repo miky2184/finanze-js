@@ -3,7 +3,7 @@
     angular.module('myApp').factory('passwordService', ['modalService', '$http', '$interval', 'dataService', '$rootScope', 'settingsSpesaService', '$strings', function (modalService, $http, $interval, dataService, $rootScope, settingsSpesaService, $strings) {
        
         var srvc = {
-            gridOptionsa: {
+            gridOptions: {
                 minRowsToShow: 21,
                 enableFiltering: true,
                 enableRowSelection: true,
@@ -43,7 +43,7 @@
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    srvc.gridOptionsPivotSpesa.gridApi = gridApi;                    
+                    srvc.gridOptions.gridApi = gridApi;                    
                 }
             },
             loadPassword: function () {
