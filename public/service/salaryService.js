@@ -558,6 +558,7 @@
                                 var salaryData = [];
                                 resp.data.forEach(function (obj) {
                                     var x = {};
+                                    x.id = obj['ID'];
                                     x.data = obj['DATA'];
                                     x.anno = new Date(x.data).getFullYear();
                                     x.mese = new Date(x.data).getMonth() + 1;
