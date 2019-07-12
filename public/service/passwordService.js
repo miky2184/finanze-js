@@ -33,7 +33,7 @@
                     displayName: 'URL',
                     field: 'URL',
                     type: 'text',
-                    width: 120 
+                    width: 350 
                 }, {
                     name: 'NOTE',
                     displayName: 'Note',
