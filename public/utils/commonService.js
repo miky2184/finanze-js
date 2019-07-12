@@ -65,7 +65,7 @@
                 dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
                     return row.dirty;
                 });
-                dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
+                /* dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
                     return row.dirty && !(row.newRow && row.deleted);
                 });
                 dto.settingsSpesa.reparti = dataService.data.dropdownReparto.filter(function (r) {
@@ -82,7 +82,7 @@
                 });
                 dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
                     return sf.dirty;
-                });
+                }); */
                 if (dataService.data.dirty) {
                     var modalSavingInstance = $uibModal.open({
                         size: 'sm',
