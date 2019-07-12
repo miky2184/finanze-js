@@ -16,7 +16,7 @@
                     width: '20%'
             }, {
                     name: 'contoComune',
-                    displayName: 'Conto Comune',
+                    displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contoComune',
                     width: '*',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -24,7 +24,7 @@
                     cellFilter: 'currency',
             }, {
                     name: 'contoPersonale',
-                    displayName: 'Conto Personale',
+                    displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contoPersonale',
                     width: '*',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -32,7 +32,7 @@
                     cellFilter: 'currency'
             }, {
                     name: 'contoDaniela',
-                    displayName: 'Conto Daniela',
+                    displayName: $strings.CONTO.CONTO_DANIELA,
                     field: 'contoDaniela',
                     width: '*',
                     aggregationType: uiGridConstants.aggregationTypes.sum,

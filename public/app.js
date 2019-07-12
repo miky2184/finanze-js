@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'pivotMeseService', 'settingsSpesaService', 'pivotSpesaService', 'passwordService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, pivotMeseService, settingsSpesaService, pivotSpesaService, passwordService) {
+    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'andamentoMeseService', 'settingsSpesaService', 'pivotSpesaService', 'passwordService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, andamentoMeseService, settingsSpesaService, pivotSpesaService, passwordService) {
 
         $scope.triggerChar = 9;
         $scope.separatorChar = 13;
@@ -80,6 +80,9 @@
         }, {
             "tipoConto": 2,
             "label": $strings.CONTO.CONTO_PERSONALE
+        }, {
+            "tipoConto": 3,
+            "label": $strings.CONTO.CONTO_DANIELA
         }];
         $scope.pivot = {
             year: new Date().getFullYear(),
@@ -135,9 +138,9 @@
         /*********************
           TAB PIVOT MESE
          *********************/
-        $scope.gridOptionPivotMese = pivotMeseService.gridOptionPivotMese;
+        $scope.gridOptionPivotMese = andamentoMeseService.gridOptionPivotMese;
         $scope.loadPivotMese = function () {
-            pivotMeseService.loadPivotMese($scope.pivot.year);
+            andamentoMeseService.loadPivotMese($scope.pivot.year);
             $scope.dataGrafico = dataService.data.dataGrafico;
             $scope.optionsGrafico = dataService.data.optionsGrafico;
         };
