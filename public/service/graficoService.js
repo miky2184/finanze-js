@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, $strings) {        
-        var srvc = {            
-           loadGrafico: function (year) {
-               dataService.data.optionsGrafico = {
+    angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, $strings) {
+        var srvc = {
+            loadGrafico: function (year) {
+                dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
                         height: 720,
@@ -33,88 +33,111 @@
                         yAxis: {
                             axisLabel: 'Totale (€)'
                         },
-                    callback: function(chart) {
-      $timeout(function() {
-        d3.selectAll('.nvtooltip').style('opacity', 0);
-      }, 100);
-                    }
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
                     }
                 };
-            var dto = {};
-            dto.anno = year;
-            return $http.post($strings.REST.SERVER+'/graph', dto).then(function (resp) {                
-                var labels = [];
-                var dataGrafico = [{
-                    key: 'Conto Comune',
-                    values: [],
-                    color: '#ff7f0e'
+                var dto = {};
+                dto.anno = year;
+                return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
+                    var labels = [];
+                    var dataGrafico = [{
+                        key: 'Conto Comune',
+                        values: [],
+                        color: '#ffff00'
                 }, {
-                    key: 'Conto Personale',
-                    values: [],
-                    color: '#7777ff'
+                        key: 'Conto Personale',
+                        values: [],
+                        color: '#0000ff'
+                }, {
+                        key: 'Conto Daniela',
+                        values: [],
+                        color: '#ff0000'
                 }];
-                var data = resp.data;
-                data = resp.data.map(function (d) {
-                    var tmp = {};
-                    var dateVal = d['DATA_VAL'];
-                    var dateLong = new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset());
-                    if (labels.indexOf(dateLong) < 0) {
-                        labels.push(dateLong);
-                    }
-                    tmp.data = dateLong;
-                    tmp.tipoConto = d['TP_CONTO'];
-                    tmp.importo = d['TOTALE'];
-                    return tmp;
-                });
-                var data = getDataGrafico(labels);
-                var oldImportPersonale = 0;
-                var oldImportoComune = 0;
+                    var data = resp.data;
+                    data = resp.data.map(function (d) {
+                        var tmp = {};
+                        var dateVal = d['DATA_VAL'];
+                        var dateLong = new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset());
+                        if (labels.indexOf(dateLong) < 0) {
+                            labels.push(dateLong);
+                        }
+                        tmp.data = dateLong;
+                        tmp.tipoConto = d['TP_CONTO'];
+                        tmp.importo = d['TOTALE'];
+                        return tmp;
+                    });
+                    var data = getDataGrafico(labels);
+                    var oldImportPersonale = 0;
+                    var oldImportoComune = 0;
+                    var oldImportoDaniela = 0;
 
-                function getDataGrafico(labels) {
-                    labels.forEach(function (l) {
-                        var dataCC = [];
-                        dataCC.push(l);
-                        if (data.filter(function (d) {
-                                return d.tipoConto === 1 && d.data === l;
-                            }).length > 0) {
-                            dataCC.push(data.filter(function (d) {
-                                return d.tipoConto === 1 && d.data === l;
-                            })[0].importo);
-                            oldImportoComune = data.filter(function (d) {
-                                return d.tipoConto === 1 && d.data === l;
-                            })[0].importo;
-                        } else {
-                            dataCC.push(oldImportoComune);
-                        }
-                        dataGrafico[0].values.push(dataCC);
-                        var dataCP = [];
-                        dataCP.push(l);
-                        if (data.filter(function (d) {
-                                return d.tipoConto === 2 && d.data === l;
-                            }).length > 0) {
-                            dataCP.push(data.filter(function (d) {
-                                return d.tipoConto === 2 && d.data === l;
-                            })[0].importo);
-                            oldImportPersonale = data.filter(function (d) {
-                                return d.tipoConto === 2 && d.data === l;
-                            })[0].importo;
-                        } else {
-                            dataCP.push(oldImportPersonale);
-                        }
-                        dataGrafico[1].values.push(dataCP);
-                    });
-                    dataService.data.dataGrafico = dataGrafico.map(function (series) {
-                        series.values = series.values.map(function (d) {
-                            return {
-                                x: d[0],
-                                y: d[1]
-                            };
+                    function getDataGrafico(labels) {
+                        labels.forEach(function (l) {
+                            var dataCC = [];
+                            dataCC.push(l);
+                            if (data.filter(function (d) {
+                                    return d.tipoConto === 1 && d.data === l;
+                                }).length > 0) {
+                                dataCC.push(data.filter(function (d) {
+                                    return d.tipoConto === 1 && d.data === l;
+                                })[0].importo);
+                                oldImportoComune = data.filter(function (d) {
+                                    return d.tipoConto === 1 && d.data === l;
+                                })[0].importo;
+                            } else {
+                                dataCC.push(oldImportoComune);
+                            }
+                            dataGrafico[0].values.push(dataCC);
+                            var dataCP = [];
+                            dataCP.push(l);
+                            if (data.filter(function (d) {
+                                    return d.tipoConto === 2 && d.data === l;
+                                }).length > 0) {
+                                dataCP.push(data.filter(function (d) {
+                                    return d.tipoConto === 2 && d.data === l;
+                                })[0].importo);
+                                oldImportPersonale = data.filter(function (d) {
+                                    return d.tipoConto === 2 && d.data === l;
+                                })[0].importo;
+                            } else {
+                                dataCP.push(oldImportPersonale);
+                            }
+                            dataGrafico[1].values.push(dataCP);
+
+                            var dataCD = [];
+                            dataCD.push(l);
+                            if (data.filter(function (d) {
+                                    return d.tipoConto === 3 && d.data === l;
+                                }).length > 0) {
+                                dataCD.push(data.filter(function (d) {
+                                    return d.tipoConto === 3 && d.data === l;
+                                })[0].importo);
+                                oldImportPersonale = data.filter(function (d) {
+                                    return d.tipoConto === 3 && d.data === l;
+                                })[0].importo;
+                            } else {
+                                dataCD.push(oldImportPersonale);
+                            }
+                            dataGrafico[2].values.push(dataCD);
+
+
                         });
-                        return series;
-                    });
-                };
-            });
-        }
+                        dataService.data.dataGrafico = dataGrafico.map(function (series) {
+                            series.values = series.values.map(function (d) {
+                                return {
+                                    x: d[0],
+                                    y: d[1]
+                                };
+                            });
+                            return series;
+                        });
+                    };
+                });
+            }
         };
         return srvc;
     }]);
