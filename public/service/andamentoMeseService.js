@@ -17,12 +17,12 @@
                     name: 'mese',
                     displayName: 'Mese',
                     field: 'mese',
-                    width: '30%'
+                    width: '16%'
             }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '35%',
+                    width: '28%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -30,7 +30,7 @@
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '35%',
+                    width: '28%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -38,7 +38,7 @@
                     name: 'contodaniela',
                     displayName: $strings.CONTO.CONTO_DANIELA,
                     field: 'contodaniela',
-                    width: '35%',
+                    width: '28%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
