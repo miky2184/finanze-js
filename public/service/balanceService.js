@@ -1,127 +1,98 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('balanceService', ['modalService', '$http', '$interval', 'dataService', 'uiGridConstants', 'listaMovimentiService', function (modalService, $http, $interval, dataService, uiGridConstants, listaMovimentiService) {        
+    angular.module('myApp').factory('balanceService', ['modalService', '$http', '$interval', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $interval, dataService, uiGridConstants, listaMovimentiService, $strings) {
         var srvc = {
             gridOptionsBalance: {
-            columnVirtualizationThreshold: 100,
-            showGridFooter: false,
-            showColumnFooter: true,
-            minRowsToShow: 23,
-            enableFiltering: false,
-            selectionRowHeaderWidth: 35,
-            columnDefs: [{
-                name: 'conto',
-                displayName: 'Conto',
-                field: 'conto',
-                width: '20%'
+                columnVirtualizationThreshold: 100,
+                showGridFooter: false,
+                showColumnFooter: true,
+                minRowsToShow: 23,
+                enableFiltering: false,
+                selectionRowHeaderWidth: 35,
+                columnDefs: [{
+                    name: 'conto',
+                    displayName: 'Conto',
+                    field: 'conto',
+                    width: '20%'
             }, {
-                name: 'contoComune',
-                displayName: 'Conto Comune',
-                field: 'contoComune',
-                width: '*',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency',
+                    name: 'contoComune',
+                    displayName: 'Conto Comune',
+                    field: 'contoComune',
+                    width: '*',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
             }, {
-                name: 'contoPersonale',
-                displayName: 'Conto Personale',
-                field: 'contoPersonale',
-                width: '*',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency'
+                    name: 'contoPersonale',
+                    displayName: 'Conto Personale',
+                    field: 'contoPersonale',
+                    width: '*',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
             }, {
-                name: 'totale',
-                displayName: 'Totale',
-                field: 'totale',
-                width: '*',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency'
+                    name: 'contoDaniela',
+                    displayName: 'Conto Daniela',
+                    field: 'contoDaniela',
+                    width: '*',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
+            }, {
+                    name: 'totale',
+                    displayName: 'Totale',
+                    field: 'totale',
+                    width: '*',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
             }],
-            data: [],
-            onRegisterApi: function (gridApi) {
-                srvc.gridOptionsBalance.gridApi = gridApi;
-                srvc.gridOptionsBalance.gridApi.core.handleWindowResize();
-            }
-        },         
-        gridOptionsAvere : {
-            columnVirtualizationThreshold: 100,
-            showGridFooter: false,
-            showColumnFooter: true,
-            minRowsToShow: 23,
-            enableFiltering: false,
-            selectionRowHeaderWidth: 35,
-            columnDefs: [{
-                field: 'dataVal',
-                cellFilter: 'date:\'yyyy-MM-dd\''
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridOptionsBalance.gridApi = gridApi;
+                    srvc.gridOptionsBalance.gridApi.core.handleWindowResize();
+                }
+            },
+            gridOptionsAvere: {
+                columnVirtualizationThreshold: 100,
+                showGridFooter: false,
+                showColumnFooter: true,
+                minRowsToShow: 23,
+                enableFiltering: false,
+                selectionRowHeaderWidth: 35,
+                columnDefs: [{
+                    field: 'DESCRIZIONE',
+                     displayName: 'DA'
             }, {
-                field: 'beneficiario'
+                    field: 'contoComune',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
             }, {
-                field: 'contoComune',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency'
+                    field: 'contoPersonale',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
             }, {
-                field: 'contoPersonale',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency'
+                    field: 'contoDaniela',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
             }],
-            data: [],
-            onRegisterApi: function (gridApi) {
-                srvc.gridOptionsAvere.gridApi = gridApi;
-                srvc.gridOptionsAvere.gridApi.core.handleWindowResize();
-            }
-        },
-            loadBalance : function () {
-            var balanceData = angular.copy(listaMovimentiService.gridOptions.data);
-            var balance = [];
-            dataService.data.editDropDownContoArray.forEach(function (row) {
-                var newConto = {
-                    "conto": row.label
-                };
-                var importoContoComune = 0;
-                var importoContoPersonale = 0;
-                for (var x = 0; x < balanceData.length; x++) {
-                    if (balanceData[x].conto === row.conto) {
-                        if (balanceData[x].contabilizzata) {
-                            if (balanceData[x].tipoConto === 1) {
-                                importoContoComune = importoContoComune + balanceData[x].importo;
-                            } else {
-                                importoContoPersonale = importoContoPersonale + balanceData[x].importo;
-                            }
-                        }
-                    }
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridOptionsAvere.gridApi = gridApi;
+                    srvc.gridOptionsAvere.gridApi.core.handleWindowResize();
                 }
-                newConto.contoComune = importoContoComune;
-                newConto.contoPersonale = importoContoPersonale;
-                newConto.totale = importoContoComune + importoContoPersonale;
-                balance.push(newConto);
-            });
-            srvc.gridOptionsBalance.data = balance;
-            var avere = [];
-            for (var x = 0; x < balanceData.length; x++) {
-                if (balanceData[x].conto === 4) {
-                    var newAvere = {};
-                    if (dataService.data.dropdownBeneficiario.filter(function (ben) {
-                            return balanceData[x].beneficiario === ben.beneficiario;
-                        })[0]) {
-                        newAvere.beneficiario = dataService.data.dropdownBeneficiario.filter(function (ben) {
-                            return balanceData[x].beneficiario === ben.beneficiario;
-                        })[0].label;
-                    }
-                    if (balanceData[x].tipoConto === 1) {
-                        newAvere.contoComune = balanceData[x].importo;
-                    } else {
-                        newAvere.contoPersonale = balanceData[x].importo;
-                    }
-                    newAvere.dataVal = balanceData[x].data;
-                    avere.push(newAvere);
-                }
+            },
+            loadBalance: function () {
+                return $http.get($strings.REST.SERVER + '/saldo').then(function (resp) {
+                    srvc.gridOptionsBalance.data = resp.data;
+                    return $http.get($strings.REST.SERVER + '/saldoavere').then(function (resp) {
+                        srvc.gridOptionsAvere.data = resp.data;
+                    });
+                });
             }
-            srvc.gridOptionsAvere.data = avere;
-        }
         };
         return srvc;
     }]);
