@@ -45,17 +45,17 @@
                 return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
                     var labels = [];
                     var dataGrafico = [{
-                        key: 'Conto Comune',
+                        key: $strings.CONTO.CONTO_COMUNE,
                         values: [],
-                        color: '#ffff00'
+                        color: $strings.RGB.CONTO_COMUNE
                 }, {
-                        key: 'Conto Personale',
+                        key: $strings.CONTO.CONTO_PERSONALE,
                         values: [],
-                        color: '#0000ff'
+                        color: $strings.RGB.CONTO_PERSONALE
                 }, {
-                        key: 'Conto Daniela',
+                        key: $strings.CONTO.CONTO_DANIELA,
                         values: [],
-                        color: '#ff0000'
+                        color: $strings.RGB.CONTO_DANIELA
                 }];
                     var data = resp.data;
                     data = resp.data.map(function (d) {
