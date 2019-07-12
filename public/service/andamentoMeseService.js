@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoMeseService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, utilService) {
+    angular.module('myApp').factory('andamentoMeseService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, utilService, $strings) {
         var pivotData = [];
         var srvc = {
             gridOptionPivotMese: {
