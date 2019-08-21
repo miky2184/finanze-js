@@ -184,15 +184,15 @@
         $scope.loadMatchAnalysis = function () {
             return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
         };
-         $scope.loadDivisions = function () {
-            return $http.get($strings.REST.SERVER + '/divisions').then(function (resp) {
+        var dto = {};
+        $scope.loadDivisions = function () {
+            return $http.post($strings.REST.SERVER + '/divisions', dto).then(function (resp) {
                 $scope.divisions = resp.data;
             });
-        };
-        var dto = {};
+        };        
         dto.division = $scope.division.value;
         $scope.loadSeasons = function () {
-            return $http.get($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
+            return $http.post($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
                 $scope.seasons = resp.data;
             });
         };
