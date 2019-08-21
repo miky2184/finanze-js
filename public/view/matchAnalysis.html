@@ -1,7 +1,15 @@
 <div layout="column">
     <div flex="5" layout="row" layout-align="center center">
-        <div flex="20" layout="column">
-            <md-select placeholder="Season" ng-model="season.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadSeasons()" style="min-width: 200px;" ng-change="loadMatchAnalysis(season, giornata)">
+        <div flex="20" layout="column">            
+            <md-select placeholder="Division" ng-model="division.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadDivisions()" style="min-width: 200px;" ng-change="loadMatchAnalysis(division, season, giornata)">
+                <md-option ng-value="division" ng-repeat="division in divisions">{{division.name}}</md-option>
+            </md-select>
+        </div>
+        <div flex="10" layout="column">
+            <span> - </span>
+        </div>
+        <div flex="20" layout="column">            
+            <md-select placeholder="Season" ng-model="season.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadSeasons()" style="min-width: 200px;" ng-change="loadMatchAnalysis(division, season, giornata)">
                 <md-option ng-value="season" ng-repeat="season in seasons">{{season.name}}</md-option>
             </md-select>
         </div>
@@ -9,7 +17,7 @@
             <span> - </span>
         </div>
         <div flex="20" layout="column">
-            <md-select placeholder="Giornata" ng-model="giornata.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadGiornate()" style="min-width: 200px;" ng-change="loadMatchAnalysis(season, giornata)">
+            <md-select placeholder="Giornata" ng-model="giornata.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadGiornate()" style="min-width: 200px;" ng-change="loadMatchAnalysis(division, season, giornata)">
                 <md-option ng-value="giornata" ng-repeat="giornata in giornate">{{giornata.name}}</md-option>
             </md-select>
         </div>

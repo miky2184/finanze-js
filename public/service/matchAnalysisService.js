@@ -334,9 +334,13 @@
                     });
                 }
             },
-            loadMatchAnalysis: function (season, giornata) {
-                var dataMatchAnalysis = [];
-                return $http.post($strings.REST.SERVER+'/classifica', season.value).then(function (resp) {
+            loadMatchAnalysis: function (division, season, giornata) {
+                var dataMatchAnalysis = [];        
+                var dto = {
+                   name : season.value,
+                division    : division.value
+                };
+                return $http.post($strings.REST.SERVER+'/classifica', dto ).then(function (resp) {
                     var pos = 1;
                     if (resp.data.length > 0) {
                         resp.data.map(function (obj) {
@@ -390,7 +394,11 @@
                     }
                     srvc.gridOptionsClassifica.data = dataMatchAnalysis;
                     var dataLastFiveGame = [];
-                    return $http.post($strings.REST.SERVER+'/lastfivegame', season.value).then(function (resp) {
+                    var dto = {
+                   name : season.value,
+                division    : division.value
+                };
+                    return $http.post($strings.REST.SERVER+'/lastfivegame', dto).then(function (resp) {
                         if (resp.data.length > 0) {
                             resp.data.map(function (obj) {
                                 var tmp = {};
@@ -441,7 +449,9 @@
                         }
                         var dto = {};
                         dto.idSeason = season.value.id;
-                        dto.idGiornata = giornata.value.id;
+                        dto.idGiornata = giornata.value.id;                   
+                   dto.name = season.value;
+                dto.division = division.value;
                         return $http.post($strings.REST.SERVER+'/nextgame', dto).then(function (resp) {
                             var dataNextGame = [];
                             if (resp.data.length > 0) {

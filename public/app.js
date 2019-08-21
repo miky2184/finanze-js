@@ -50,7 +50,9 @@
         $scope.callbackGrafico = function (scope, element) {
             dataService.data.apiGrafico = scope.api;
         };
-
+        
+        $scope.division = {};
+        $scope.division.value = {};
         $scope.season = {};
         $scope.season.value = {};
         $scope.giornata = {};
@@ -66,8 +68,9 @@
             name: $strings.FANTACALCIO.FANTAMARELLI
         }, {
             id: 3,
-            name: $strings.FANTACALCIO.FANTABOMBOLACCI
+            name: $strings.FANTACALCIO.FANTABOMBOLACCI        
         }];
+        $scope.divisions = [];
         $scope.seasons = [];
         $scope.giornate = [];
         $scope.scontriDiretti = {};
@@ -179,7 +182,17 @@
         $scope.gridOptionsScontriDiretti = matchAnalysisService.gridOptionsScontriDiretti;
         $scope.gridOptionsNextGame = matchAnalysisService.gridOptionsNextGame;
         $scope.loadMatchAnalysis = function () {
-            return matchAnalysisService.loadMatchAnalysis($scope.season, $scope.giornata);
+            return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
+        };
+         $scope.loadDivisions = function () {
+            return $http.get($strings.REST.SERVER + '/divisions').then(function (resp) {
+                $scope.divisions = resp.data.map(function (tmp) {
+                    var obj = {};
+                    obj.id = tmp.id;
+                    obj.name = tmp.name;
+                    return obj;
+                });
+            });
         };
         $scope.loadSeasons = function () {
             return $http.get($strings.REST.SERVER + '/seasons').then(function (resp) {
