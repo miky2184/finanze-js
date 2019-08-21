@@ -189,15 +189,16 @@
             return $http.post($strings.REST.SERVER + '/divisions', dto).then(function (resp) {
                 $scope.divisions = resp.data;
             });
-        };        
-        dto.division = $scope.division.value.id;
-        $scope.loadSeasons = function () {
+        };                
+        $scope.loadSeasons = function (division) {
+            dto.division = division.value.id;
             return $http.post($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
                 $scope.seasons = resp.data;
             });
-        };
-         dto.id = $scope.season.value;
-        $scope.loadGiornate = function () {
+        };         
+        $scope.loadGiornate = function (division, season) {
+            dto.division = division.value.id;
+            dto.id = season.value;
             return $http.post($strings.REST.SERVER + '/giornate', dto ).then(function (resp) {
                 $scope.giornate = resp.data;
             });
