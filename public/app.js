@@ -190,7 +190,7 @@
                 $scope.divisions = resp.data;
             });
         };        
-        dto.division = $scope.division.value;
+        dto.division = $scope.division.value.id;
         $scope.loadSeasons = function () {
             return $http.post($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
                 $scope.seasons = resp.data;
