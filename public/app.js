@@ -196,9 +196,8 @@
                 $scope.seasons = resp.data;
             });
         };         
-        $scope.loadGiornate = function (division, season) {
-            dto.division = division.value.id;
-            dto.id = season.value;
+        $scope.loadGiornate = function (division, season) {            
+            dto.id = season.value.id;
             return $http.post($strings.REST.SERVER + '/giornate', dto ).then(function (resp) {
                 $scope.giornate = resp.data;
             });
