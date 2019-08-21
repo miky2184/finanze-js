@@ -338,7 +338,7 @@
                 var dataMatchAnalysis = [];        
                 var dto = {
                    name : season.value,
-                division    : division.value
+                division    : division.value.id
                 };
                 return $http.post($strings.REST.SERVER+'/classifica', dto ).then(function (resp) {
                     var pos = 1;
@@ -396,7 +396,7 @@
                     var dataLastFiveGame = [];
                     var dto = {
                    name : season.value,
-                division    : division.value
+                division    : division.value.id
                 };
                     return $http.post($strings.REST.SERVER+'/lastfivegame', dto).then(function (resp) {
                         if (resp.data.length > 0) {
@@ -451,7 +451,7 @@
                         dto.idSeason = season.value.id;
                         dto.idGiornata = giornata.value.id;                   
                    dto.name = season.value;
-                dto.division = division.value;
+                dto.division = division.value.id;
                         return $http.post($strings.REST.SERVER+'/nextgame', dto).then(function (resp) {
                             var dataNextGame = [];
                             if (resp.data.length > 0) {
