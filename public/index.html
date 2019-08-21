@@ -57,6 +57,7 @@
     <script type="text/javascript" src="service/settingsSpesaService.js"></script>
     <script type="text/javascript" src="service/pivotSpesaService.js"></script>
     <script type="text/javascript" src="service/passwordService.js"></script>
+    <script type="text/javascript" src="service/predmatchService.js"></script>
 </head>
 
 <body ng-controller="MainController" class="textapp" md-no-ink >
@@ -154,6 +155,11 @@
                 <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis(season, giornata)">
                     <md-content class="md-padding">
                         <div ng-include="'view/matchAnalysis.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="PredMatch" md-on-select="loadPredMatch()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/predmatch.html'"></div>
                     </md-content>
                 </md-tab>
                <!-- <md-tab label="Fantacalcio">
