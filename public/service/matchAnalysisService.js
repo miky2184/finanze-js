@@ -337,9 +337,9 @@
             loadMatchAnalysis: function (division, season, giornata) {
                 var dataMatchAnalysis = [];        
                 var dto = {
-                   name : season.value,
-                division    : division.value.id
-                };
+                   name : season.value.id,
+                   division    : division.value.id
+                };                
                 return $http.post($strings.REST.SERVER+'/classifica', dto ).then(function (resp) {
                     var pos = 1;
                     if (resp.data.length > 0) {
@@ -393,11 +393,7 @@
                         });
                     }
                     srvc.gridOptionsClassifica.data = dataMatchAnalysis;
-                    var dataLastFiveGame = [];
-                    var dto = {
-                   name : season.value,
-                division    : division.value.id
-                };
+                    var dataLastFiveGame = [];                    
                     return $http.post($strings.REST.SERVER+'/lastfivegame', dto).then(function (resp) {
                         if (resp.data.length > 0) {
                             resp.data.map(function (obj) {
@@ -446,12 +442,9 @@
                                 dataLastFiveGame.push(tmp);
                                 return tmp;
                             });
-                        }
-                        var dto = {};
+                        }                        
                         dto.idSeason = season.value.id;
-                        dto.idGiornata = giornata.value.id;                   
-                   dto.name = season.value;
-                dto.division = division.value.id;
+                        dto.idGiornata = giornata.value.id;                                   
                         return $http.post($strings.REST.SERVER+'/nextgame', dto).then(function (resp) {
                             var dataNextGame = [];
                             if (resp.data.length > 0) {
