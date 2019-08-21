@@ -186,32 +186,20 @@
         };
          $scope.loadDivisions = function () {
             return $http.get($strings.REST.SERVER + '/divisions').then(function (resp) {
-                $scope.divisions = resp.data.map(function (tmp) {
-                    var obj = {};
-                    obj.id = tmp.id;
-                    obj.name = tmp.name;
-                    return obj;
-                });
+                $scope.divisions = resp.data;
             });
         };
+        var dto = {};
+        dto.division = $scope.division.value;
         $scope.loadSeasons = function () {
-            return $http.get($strings.REST.SERVER + '/seasons').then(function (resp) {
-                $scope.seasons = resp.data.map(function (tmp) {
-                    var obj = {};
-                    obj.id = tmp.id;
-                    obj.name = tmp.name;
-                    return obj;
-                });
+            return $http.get($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
+                $scope.seasons = resp.data;
             });
         };
+         dto.id = $scope.season.value;
         $scope.loadGiornate = function () {
-            return $http.post($strings.REST.SERVER + '/giornate', $scope.season.value).then(function (resp) {
-                $scope.giornate = resp.data.map(function (tmp) {
-                    var obj = {};
-                    obj.id = tmp.id;
-                    obj.name = tmp.name;
-                    return obj;
-                });
+            return $http.post($strings.REST.SERVER + '/giornate', dto ).then(function (resp) {
+                $scope.giornate = resp.data;
             });
         };
         $scope.scontriDiretti = matchAnalysisService.scontriDiretti;
