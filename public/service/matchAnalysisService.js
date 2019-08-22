@@ -456,6 +456,7 @@
                             if (resp.data.length > 0) {
                                 resp.data.map(function (obj) {
                                     var tmp = {};
+                                    tmp.division = division.value.id;
                                     tmp.season = season.value.id;
                                     tmp.giornata = giornata.value.id;  
                                     tmp.giornNext = obj['GIORNATA'];
