@@ -72,6 +72,7 @@
         }];
         $scope.divisions = [];
         $scope.seasons = [];
+        $scope.seasonsPreMatch = [];
         $scope.giornate = [];
         $scope.scontriDiretti = {};
         $scope.years = [2019, 2018, 2017, 2016, 2015, 2014, 2013];
@@ -184,6 +185,9 @@
         $scope.loadMatchAnalysis = function () {
             return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
         };
+        $scope.loadPredMatch = function () {
+            return predmatchService.loadPredMatch($scope.season);
+        };
         var dto = {};
         $scope.loadDivisions = function () {
             return $http.post($strings.REST.SERVER + '/divisions', dto).then(function (resp) {
@@ -195,7 +199,12 @@
             return $http.post($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
                 $scope.seasons = resp.data;
             });
-        };         
+        };   
+        $scope.loadSeasonsPreMatch = function () {            
+            return $http.post($strings.REST.SERVER + '/seasonspre', dto ).then(function (resp) {
+                $scope.seasonsPreMatch = resp.data;
+            });
+        };  
         $scope.loadGiornate = function (division, season) {            
             dto.id = season.value.id;
             return $http.post($strings.REST.SERVER + '/giornate', dto ).then(function (resp) {
