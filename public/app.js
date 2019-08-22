@@ -185,8 +185,8 @@
         $scope.loadMatchAnalysis = function () {
             return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
         };
-        $scope.loadPredMatch = function () {
-            return predmatchService.loadPredMatch($scope.season);
+        $scope.loadPredMatch = function (season) {            
+            return predmatchService.loadPredMatch(season);
         };
         var dto = {};
         $scope.loadDivisions = function () {
