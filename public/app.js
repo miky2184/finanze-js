@@ -184,10 +184,7 @@
         $scope.gridOptionsNextGame = matchAnalysisService.gridOptionsNextGame;
         $scope.loadMatchAnalysis = function () {
             return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
-        };
-        $scope.loadPredMatch = function (season) {            
-            return predmatchService.loadPredMatch(season);
-        };
+        };        
         var dto = {};
         $scope.loadDivisions = function () {
             return $http.post($strings.REST.SERVER + '/divisions', dto).then(function (resp) {
@@ -216,10 +213,10 @@
         /*********************
             TAB PREDMATCH
          *********************/
-        
-        $scope.loadPredMatch =  function (){
-            return predmatchService.loadPredMatch();
-        }
+        $scope.loadPredMatch = function (season) {            
+            return predmatchService.loadPredMatch(season);
+        };        
+        $scope.gridOptionsPredMatch = predmatchService.gridOptionsPredMatch;
 
         /*********************
             TAB FANTACALCIO
