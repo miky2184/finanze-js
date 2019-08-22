@@ -459,7 +459,7 @@
                                     tmp.season = season.value.id;
                                     tmp.giornata = giornata.value.id;  
                                     tmp.giornNext = obj['GIORNATA'];
-                                    tmp.dataGame = obj['DATA_GAME'];
+                                    tmp.dataGame = obj['DATA_GAME'].substr(0, 10);
                                     tmp.dataGameNext = obj['DATA_GAME'].substr(0, 10);
                                     tmp.idHome = obj['ID_HOME'];
                                     tmp.squadraCasa = obj['TEAM_HOME'];
