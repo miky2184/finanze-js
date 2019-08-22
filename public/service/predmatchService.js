@@ -17,44 +17,44 @@
                     name: 'DATA_GAME',
                     displayName: 'DATA',
                     field: 'DATA_GAME',
-                    width: 35,
+                    width: 120,
                     pinnedLeft: true
                 }, {
                     name: 'GIORNATA',
                     displayName: 'GIORNATA',
                     field: 'GIORNATA',
-                    width: 120,
+                    width: 35,
                     pinnedLeft: true
                 }, {
                     name: 'CHAMPIONSHIP',
                     displayName: 'DIV',
                     field: 'CHAMPIONSHIP',
-                    width: 35
+                    width: 70
                 }, {
                     name: 'HOME',
                     displayName: 'HOME',
                     field: 'HOME',
-                    width: 35
+                    width: 200
                 }, {
                     name: 'AWAY',
                     displayName: 'AWAY',
                     field: 'AWAY',
-                    width: 35
+                    width: 200
                 }, {
                     name: 'PERC_1',
                     displayName: '%1',
                     field: 'PERC_1',
-                    width: 35
+                    width: 50
                 }, {
                     name: 'PERC_X',
                     displayName: '%X',
                     field: 'PERC_X',
-                    width: 35
+                    width: 50
                 }, {
                     name: 'PERC_2',
                     displayName: '%2',
                     field: 'PERC_2',
-                    width: 35
+                    width: 50
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
