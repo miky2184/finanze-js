@@ -21,9 +21,9 @@
                     pinnedLeft: true
                 }, {
                     name: 'GIORNATA',
-                    displayName: 'GIORNATA',
+                    displayName: 'G.',
                     field: 'GIORNATA',
-                    width: 35,
+                    width: 50,
                     pinnedLeft: true
                 }, {
                     name: 'CHAMPIONSHIP',
@@ -67,7 +67,10 @@
                     season: season.value.id
                 };
                 return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
-                    srvc.gridOptionsPredMatch.data = resp.data;
+                    srvc.gridOptionsPredMatch.data = resp.data.map(function(r){
+                        r['DATA_GAME'] = r['DATA_GAME'].substr(0, 10);
+                        return r;
+                    });
                 });
             }
         };
