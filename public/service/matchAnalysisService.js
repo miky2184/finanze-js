@@ -153,6 +153,11 @@
             
             gridOptionsScontriDiretti: {
                 columnDefs: [{
+                    name: 'division',
+                    displayName: 'DIV',
+                    field: 'division',
+                    width: 60
+                },{
                     name: 'SEASON',
                     displayName: 'Season',
                     field: 'SEASON',
@@ -174,12 +179,12 @@
                     width: 60
                 }, {
                     name: 'SCORE_HOME',
-                    displayName: ' ',
+                    displayName: 'FTHG',
                     field: 'SCORE_HOME',
                     width: 60
                 }, {
                     name: 'SCORE_AWAY',
-                    displayName: ' ',
+                    displayName: 'FTAG',
                     field: 'SCORE_AWAY',
                     width: 60
                 }],
@@ -200,7 +205,14 @@
                 cellEditableCondition: checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 multiSelect: false,
-                columnDefs: [{
+                columnDefs: [
+                    {
+                    name: 'dataGame',
+                    displayName: 'DATA',
+                    field: 'dataGame',
+                    width: 120,
+                    pinnedLeft: true
+                },{
                     name: 'squadraCasa',
                     displayName: 'CASA',
                     field: 'squadraCasa',
@@ -214,13 +226,13 @@
                     pinnedLeft: true
                 }, {
                     name: 'golCasa',
-                    displayName: ' ',
+                    displayName: 'FTHG',
                     field: 'golCasa',
                     width: 35,
                     pinnedLeft: true
                 }, {
                     name: 'golTrasferta',
-                    displayName: ' ',
+                    displayName: 'FTAG',
                     field: 'golTrasferta',
                     width: 35,
                     pinnedLeft: true
@@ -322,11 +334,6 @@
                     return $http.post($strings.REST.SERVER+'/scontriDiretti', match).then(function (resp) {
                         if (resp.data && resp.data.length > 0) {
                             srvc.gridOptionsScontriDiretti.data = resp.data;                            
-                            srvc.scontriDiretti.squadraHome = resp.data[0]['HOME_DESC'];
-                            srvc.scontriDiretti.squadraAway = resp.data[0]['AWAY_DESC'];
-                            srvc.scontriDiretti.vinte = resp.data[0]['WIN'];
-                            srvc.scontriDiretti.pareggiate = resp.data[0]['DRAW'];
-                            srvc.scontriDiretti.perse = resp.data[0]['LOSS'];
                         } else {
                             srvc.gridOptionsScontriDiretti.data = [];
                             srvc.scontriDiretti = {};
@@ -452,6 +459,7 @@
                                     tmp.season = season.value.id;
                                     tmp.giornata = giornata.value.id;  
                                     tmp.giornNext = obj['GIORNATA'];
+                                    tmp.dataGame = obj['DATA_GAME'];
                                     tmp.dataGameNext = obj['DATA_GAME'].substr(0, 10);
                                     tmp.idHome = obj['ID_HOME'];
                                     tmp.squadraCasa = obj['TEAM_HOME'];

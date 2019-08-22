@@ -28,9 +28,9 @@
             <div flex layout="row" id="grid1" ui-grid="gridOptionsClassifica"  ui-grid-pinning ui-grid-auto-resize></div>
         </div>
         <div flex="50" layout="column">
-            <p class="table-header"><strong>STAGIONE: {{season.value.name}} - GIORNATA: {{giornNext}} del {{dataGameNext}}</strong></p>
+            <p class="table-header"><strong>STAGIONE: {{season.value.name}} - GIORNATA: {{giornata.value.id}}</strong></p>
             <div flex="60" layout="row" id="grid3" ui-grid="gridOptionsNextGame"  ui-grid-selection  ui-grid-edit  ui-grid-pinning ui-grid-auto-resize></div>
-            <p class="table-header"><strong>STORICO SCONTRO DIRETTI -- {{scontriDiretti.squadraHome}} - {{scontriDiretti.squadraAway}}: {{scontriDiretti.vinte}}V - {{scontriDiretti.pareggiate}}N - {{scontriDiretti.perse}}P </strong></p>
+            <p class="table-header"><strong>STORICO SCONTRO DIRETTI</strong></p>
             <div flex="40" layout="row" id="grid3" ui-grid="gridOptionsScontriDiretti"  ui-grid-pinning ui-grid-auto-resize></div>
         </div>
     </div>
