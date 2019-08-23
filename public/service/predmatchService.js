@@ -89,7 +89,7 @@
 
                     var divisions = resp.data.map(function (e) {
                         e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
-                        return e.entity['CHAMPIONSHIP'];
+                        return e['CHAMPIONSHIP'];
                     }).filter(srvc.distinct);
 
                     divisions.forEach(function (div) {
