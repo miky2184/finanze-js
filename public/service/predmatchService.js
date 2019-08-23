@@ -11,10 +11,10 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 minRowsToShow: 22,
-                enableFiltering: false,
+                enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
-                enableColumnMenus: false,
+                enableColumnMenus: true,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [
                     {
