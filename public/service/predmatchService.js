@@ -46,7 +46,7 @@
                     field: 'PERC_1',
                     width: 50,
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var  = grid.rows.map(function (e) {
+                        var prova = grid.rows.map(function (e) {
                             return e.entity['PERC_1'];
                         });                        
                     }
