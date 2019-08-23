@@ -44,7 +44,12 @@
                     name: 'PERC_1',
                     displayName: '%1',
                     field: 'PERC_1',
-                    width: 50
+                    width: 50,
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        var  = grid.rows.map(function (e) {
+                            return e.entity['PERC_1'];
+                        });                        
+                    }
                 }, {
                     name: 'PERC_X',
                     displayName: '%X',
