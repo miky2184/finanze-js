@@ -82,6 +82,9 @@
                 }
             },
             loadPredMatch: function (season) {
+                if (!season){
+                    return;
+                }
                 var dto = {
                     season: season.value.id
                 };
