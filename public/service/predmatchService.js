@@ -13,8 +13,9 @@
                 minRowsToShow: 22,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
-                enableSorting: false,
-                enableColumnMenus: true,
+                enableSorting: true,
+                enableGridMenu: true,
+                enableColumnMenus: false,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [
                     {
