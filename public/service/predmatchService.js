@@ -74,6 +74,36 @@
                                 return 'best-bet';
                             }
                         }
+                }, {
+                        name: 'PERC_GG',
+                        displayName: '%GG',
+                        field: 'PERC_GG',
+                        width: 50,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestGg) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_O1',
+                        displayName: '%O1.5',
+                        field: 'PERC_O1',
+                        width: 50,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestO1) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_O2',
+                        displayName: '%O2.5',
+                        field: 'PERC_O2',
+                        width: 50,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestO2) {
+                                return 'best-bet';
+                            }
+                        }
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -82,7 +112,7 @@
                 }
             },
             loadPredMatch: function (season) {
-                if (!season){
+                if (!season) {
                     return;
                 }
                 var dto = {
@@ -105,16 +135,37 @@
                         var isWin = false;
                         var isDraw = false;
                         var isLoss = false;
+                        var isGg = false;
+                        var isO1 = false;
+                        var isO2 = false;
                         for (var i = 0; i < matchesForDivision.length; i++) {
                             var win = false;
                             var draw = false;
                             var loss = false;
-                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2']) {
+                            var gg = false;
+                            var o1 = false;
+                            var o2 = false;
+                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2'] &&
+                                && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_GG'] &&
+                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O1'] &&
+                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O2']) {
                                 win = true;
-                            } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2']) {
+                            } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2'] &&
+                                matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_GG'] &&
+                                matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_O1'] &&
+                                matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_O2']) {
                                 draw = true;
-                            } else {
+                            } else if (matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_GG'] &&
+                                matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_O1'] &&
+                                matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_O2']) {
                                 loss = true;
+                            } else if (matchesForDivision[i]['PERC_GG'] >= matchesForDivision[i]['PERC_O1'] &&
+                                matchesForDivision[i]['PERC_GG'] >= matchesForDivision[i]['PERC_O2']) {
+                                gg = true;
+                            } else if (matchesForDivision[i]['PERC_O1'] >= matchesForDivision[i]['PERC_O2']) {
+                                o1 = true;
+                            } else {
+                                o2 = true;
                             }
 
                             if (win) {
@@ -124,6 +175,9 @@
                                     isWin = true;
                                     isDraw = false;
                                     isLoss = false;
+                                    isGg = false;
+                                    isO1 = false;
+                                    isO2 = false;
                                 }
                             } else if (draw) {
                                 if (matchesForDivision[i]['PERC_X'] > bestValue) {
@@ -132,6 +186,9 @@
                                     isWin = false;
                                     isDraw = true;
                                     isLoss = false;
+                                    isGg = false;
+                                    isO1 = false;
+                                    isO2 = false;
                                 }
                             } else if (loss) {
                                 if (matchesForDivision[i]['PERC_2'] > bestValue) {
@@ -140,6 +197,42 @@
                                     isWin = false;
                                     isDraw = false;
                                     isLoss = true;
+                                    isGg = false;
+                                    isO1 = false;
+                                    isO2 = false;
+                                }
+                            } else if (gg) {
+                                if (matchesForDivision[i]['PERC_GG'] > bestValue) {
+                                    bestValue = matchesForDivision[i]['PERC_GG'];
+                                    bestRow = i;
+                                    isWin = false;
+                                    isDraw = false;
+                                    isLoss = false;
+                                    isGg = true;
+                                    isO1 = false;
+                                    isO2 = false;
+                                }
+                            } else if (o1) {
+                                if (matchesForDivision[i]['PERC_O1'] > bestValue) {
+                                    bestValue = matchesForDivision[i]['PERC_O1'];
+                                    bestRow = i;
+                                    isWin = false;
+                                    isDraw = false;
+                                    isLoss = false;
+                                    isGg = false;
+                                    isO1 = true;
+                                    isO2 = false;
+                                }
+                            } else if (o2) {
+                                if (matchesForDivision[i]['PERC_O2'] > bestValue) {
+                                    bestValue = matchesForDivision[i]['PERC_O2'];
+                                    bestRow = i;
+                                    isWin = false;
+                                    isDraw = false;
+                                    isLoss = false;
+                                    isGg = false;
+                                    isO1 = false;
+                                    isO2 = true;
                                 }
                             }
                         }
@@ -150,6 +243,12 @@
                             matchesForDivision[bestRow].bestDraw = true;
                         } else if (isLoss) {
                             matchesForDivision[bestRow].bestLoss = true;
+                        } else if (isGg) {
+                            matchesForDivision[bestRow].bestGg = true;
+                        } else if (isO1) {
+                            matchesForDivision[bestRow].bestO1 = true;
+                        } else if (isO2) {
+                            matchesForDivision[bestRow].bestO2 = true;
                         }
 
                     });
