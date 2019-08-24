@@ -49,7 +49,7 @@
                         name: 'PERC_1',
                         displayName: '%1',
                         field: 'PERC_1',
-                        width: 50,
+                        width: 60,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestWin) {
                                 return 'best-bet';
@@ -59,7 +59,7 @@
                         name: 'PERC_X',
                         displayName: '%X',
                         field: 'PERC_X',
-                        width: 50,
+                        width: 60,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestDraw) {
                                 return 'best-bet';
@@ -69,7 +69,7 @@
                         name: 'PERC_2',
                         displayName: '%2',
                         field: 'PERC_2',
-                        width: 50,
+                        width: 60,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestLoss) {
                                 return 'best-bet';
@@ -79,7 +79,7 @@
                         name: 'PERC_GG',
                         displayName: '%GG',
                         field: 'PERC_GG',
-                        width: 50,
+                        width: 60,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestGg) {
                                 return 'best-bet';
@@ -89,7 +89,7 @@
                         name: 'PERC_O1',
                         displayName: '%O1.5',
                         field: 'PERC_O1',
-                        width: 50,
+                        width: 60,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO1) {
                                 return 'best-bet';
@@ -99,7 +99,7 @@
                         name: 'PERC_O2',
                         displayName: '%O2.5',
                         field: 'PERC_O2',
-                        width: 50,
+                        width: 60,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO2) {
                                 return 'best-bet';
@@ -146,7 +146,7 @@
                             var gg = false;
                             var o1 = false;
                             var o2 = false;
-                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && 
+                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] &&
                                 matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2'] &&
                                 matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_GG'] &&
                                 matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O1'] &&
