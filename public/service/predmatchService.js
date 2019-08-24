@@ -89,7 +89,7 @@
                         name: 'PERC_O1',
                         displayName: '%O1.5',
                         field: 'PERC_O1',
-                        width: 60,
+                        width: 70,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO1) {
                                 return 'best-bet';
@@ -99,7 +99,7 @@
                         name: 'PERC_O2',
                         displayName: '%O2.5',
                         field: 'PERC_O2',
-                        width: 60,
+                        width: 70,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO2) {
                                 return 'best-bet';
