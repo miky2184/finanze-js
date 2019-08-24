@@ -145,8 +145,9 @@
                             var gg = false;
                             var o1 = false;
                             var o2 = false;
-                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2'] &&
-                                && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_GG'] &&
+                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && 
+                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2'] &&
+                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_GG'] &&
                                 matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O1'] &&
                                 matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O2']) {
                                 win = true;
