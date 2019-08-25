@@ -121,16 +121,7 @@
                 };
                 return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
 
-                    var divisions = resp.data.map(function (e) {
-                        e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
-                        return e['CHAMPIONSHIP'];
-                    }).filter(srvc.distinct);
-
-                    divisions.forEach(function (div) {
-                        var matchesForDivision = resp.data.filter(function (m) {
-                            return m['CHAMPIONSHIP'] === div;
-                        })
-
+                    function bestBetAll(matchesForDivision) {
                         var bestRow = -1;
                         var bestValue = -1;
                         var isWin = false;
@@ -237,21 +228,90 @@
                                     isO2 = true;
                                 }
                             }
-                        }
 
-                        if (isWin) {
-                            matchesForDivision[bestRow].bestWin = true;
-                        } else if (isDraw) {
-                            matchesForDivision[bestRow].bestDraw = true;
-                        } else if (isLoss) {
-                            matchesForDivision[bestRow].bestLoss = true;
-                        } else if (isGg) {
-                            matchesForDivision[bestRow].bestGg = true;
-                        } else if (isO1) {
-                            matchesForDivision[bestRow].bestO1 = true;
-                        } else if (isO2) {
-                            matchesForDivision[bestRow].bestO2 = true;
+                            if (isWin) {
+                                matchesForDivision[bestRow].bestWin = true;
+                            } else if (isDraw) {
+                                matchesForDivision[bestRow].bestDraw = true;
+                            } else if (isLoss) {
+                                matchesForDivision[bestRow].bestLoss = true;
+                            } else if (isGg) {
+                                matchesForDivision[bestRow].bestGg = true;
+                            } else if (isO1) {
+                                matchesForDivision[bestRow].bestO1 = true;
+                            } else if (isO2) {
+                                matchesForDivision[bestRow].bestO2 = true;
+                            }
                         }
+                    }
+
+                    function bestBet1X2(matchesForDivision) {
+                        var isWin = false;
+                        var isDraw = false;
+                        var isLoss = false;
+                        var bestRow = -1;
+                        var bestValue = -1;
+                        for (var i = 0; i < matchesForDivision.length; i++) {
+                            var win = false;
+                            var draw = false;
+                            var loss = false;
+                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2']) {
+                                win = true;
+                            } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2']) {
+                                draw = true;
+                            } else {
+                                loss = true;
+                            }
+
+                            if (win) {
+                                if (matchesForDivision[i]['PERC_1'] > bestValue && (!matchesForDivision[i].bestGg || !matchesForDivision[i].bestO1 || !matchesForDivision[i].bestO2)) {
+                                    bestValue = matchesForDivision[i]['PERC_1'];
+                                    bestRow = i;
+                                    isWin = true;
+                                    isDraw = false;
+                                    isLoss = false;
+
+                                }
+                            } else if (draw) {
+                                if (matchesForDivision[i]['PERC_X'] > bestValue && (!matchesForDivision[i].bestGg || !matchesForDivision[i].bestO1 || !matchesForDivision[i].bestO2)) {
+                                    bestValue = matchesForDivision[i]['PERC_X'];
+                                    bestRow = i;
+                                    isWin = false;
+                                    isDraw = true;
+                                    isLoss = false;
+                                }
+                            } else if (loss) {
+                                if (matchesForDivision[i]['PERC_2'] > bestValue && (!matchesForDivision[i].bestGg || !matchesForDivision[i].bestO1 || !matchesForDivision[i].bestO2)) {
+                                    bestValue = matchesForDivision[i]['PERC_2'];
+                                    bestRow = i;
+                                    isWin = false;
+                                    isDraw = false;
+                                    isLoss = true;
+                                }
+                            }
+
+                            if (isWin) {
+                                matchesForDivision[bestRow].bestWin = true;
+                            } else if (isDraw) {
+                                matchesForDivision[bestRow].bestDraw = true;
+                            } else if (isLoss) {
+                                matchesForDivision[bestRow].bestLoss = true;
+                            }
+                        }
+                    }
+
+                    var divisions = resp.data.map(function (e) {
+                        e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
+                        return e['CHAMPIONSHIP'];
+                    }).filter(srvc.distinct);
+
+                    divisions.forEach(function (div) {
+                        var matchesForDivision = resp.data.filter(function (m) {
+                            return m['CHAMPIONSHIP'] === div;
+                        })
+
+                        bestBetAll(matchesForDivision);
+                        bestBet1X2(matchesForDivision);
 
                     });
 
