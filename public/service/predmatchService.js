@@ -56,17 +56,20 @@
                         name: 'division',
                         displayName: 'DIV',
                         field: 'division',
-                        width: 70
+                        width: 70,
+                        pinnedLeft: true
                 }, {
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 200
+                        width: 200,
+                        pinnedLeft: true
                 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 200
+                        width: 200,
+                        pinnedLeft: true
                 }, {
                         name: 'golCasa',
                         displayName: 'FTHG',
