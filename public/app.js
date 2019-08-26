@@ -52,9 +52,9 @@
         };
         
         $scope.division = {};
-        $scope.division.value = {};
+        $scope.division.value = {id:'ITA'};
         $scope.season = {};
-        $scope.season.value = {};
+        $scope.season.value = {id:1920};
         $scope.giornata = {};
         $scope.giornata.value = {};
         $scope.fanta = {};
