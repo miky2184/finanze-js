@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService) {
         var srvc = {
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti();/*.then(function (f) {
@@ -63,6 +63,9 @@
                     return row.dirty;
                 });
                 dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
+                    return row.dirty;
+                });
+                dto.risultati = predmatchService.gridOptionsPredMatch.data.filter(function (row) {
                     return row.dirty;
                 });
                 /* dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {

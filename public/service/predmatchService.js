@@ -3,9 +3,30 @@
     angular.module('myApp').factory('predmatchService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'dataService', '$strings', function (modalService, $http, $interval, $rootScope, utilService, dataService, $strings) {
         var scope = $rootScope.$new();
 
+        var editableCondition = function editableCondition(rowEntity, colDef) {
+            if (rowEntity.giocata) {
+                return false;
+            }
+            if (colDef.name === 'golCasa' || colDef.name === 'golTrasferta' || colDef.name === 'giocata') {
+                return true;
+            }
+            return false;
+        };
+
+        var checkEditableCondition = function checkEditableCondition(scope) {
+            return editableCondition(scope.row.entity, scope.col.colDef);
+        };
+
         var srvc = {
             distinct: function (value, index, self) {
                 return self.indexOf(value) === index;
+            },
+            afterCellEditFunction: function (rowEntity, colDef, newValue, oldValue) {
+                if (newValue === oldValue) {
+                    return;
+                }
+                rowEntity.dirty = true;
+                dataService.data.dirty = true;
             },
             gridOptionsPredMatch: {
                 columnVirtualizationThreshold: 100,
@@ -16,6 +37,7 @@
                 enableSorting: true,
                 enableGridMenu: true,
                 enableColumnMenus: false,
+                cellEditableCondition: checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [
                     {
@@ -25,15 +47,15 @@
                         width: 120,
                         pinnedLeft: true
                 }, {
-                        name: 'GIORNATA',
+                        name: 'giornata',
                         displayName: 'G.',
-                        field: 'GIORNATA',
+                        field: 'giornata',
                         width: 50,
                         pinnedLeft: true
                 }, {
-                        name: 'CHAMPIONSHIP',
+                        name: 'division',
                         displayName: 'DIV',
-                        field: 'CHAMPIONSHIP',
+                        field: 'division',
                         width: 70
                 }, {
                         name: 'HOME',
@@ -45,6 +67,26 @@
                         displayName: 'AWAY',
                         field: 'AWAY',
                         width: 200
+                }, {
+                        name: 'golCasa',
+                        displayName: 'FTHG',
+                        field: 'golCasa',
+                        width: 50,
+                        pinnedLeft: true
+                }, {
+                        name: 'golTrasferta',
+                        displayName: 'FTAG',
+                        field: 'golTrasferta',
+                        width: 50,
+                        pinnedLeft: true
+                }, {
+                        name: 'giocata',
+                        displayName: 'Gioc.',
+                        field: 'giocata',
+                        width: 35,
+                        pinnedLeft: true,
+                        cellTemplate: 'templates/rows/checkboxIcon.html',
+                        buttonNgClass: 'fas fa-futbol'
                 }, {
                         name: 'PERC_1',
                         displayName: '%1',
@@ -110,6 +152,7 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsPredMatch.gridApi = gridApi;
                     srvc.gridOptionsPredMatch.gridApi.core.handleWindowResize();
+                    gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditFunction);
                 }
             },
             loadPredMatch: function (season) {
@@ -300,12 +343,12 @@
 
                     var divisions = resp.data.map(function (e) {
                         e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
-                        return e['CHAMPIONSHIP'];
+                        return e['division'];
                     }).filter(srvc.distinct);
 
                     divisions.forEach(function (div) {
                         var matchesForDivision = resp.data.filter(function (m) {
-                            return m['CHAMPIONSHIP'] === div;
+                            return m['division'] === div;
                         })
 
                         bestBetAll(matchesForDivision);
