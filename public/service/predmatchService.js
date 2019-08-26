@@ -228,20 +228,19 @@
                                     isO2 = true;
                                 }
                             }
-
-                            if (isWin) {
-                                matchesForDivision[bestRow].bestWin = true;
-                            } else if (isDraw) {
-                                matchesForDivision[bestRow].bestDraw = true;
-                            } else if (isLoss) {
-                                matchesForDivision[bestRow].bestLoss = true;
-                            } else if (isGg) {
-                                matchesForDivision[bestRow].bestGg = true;
-                            } else if (isO1) {
-                                matchesForDivision[bestRow].bestO1 = true;
-                            } else if (isO2) {
-                                matchesForDivision[bestRow].bestO2 = true;
-                            }
+                        }
+                        if (isWin) {
+                            matchesForDivision[bestRow].bestWin = true;
+                        } else if (isDraw) {
+                            matchesForDivision[bestRow].bestDraw = true;
+                        } else if (isLoss) {
+                            matchesForDivision[bestRow].bestLoss = true;
+                        } else if (isGg) {
+                            matchesForDivision[bestRow].bestGg = true;
+                        } else if (isO1) {
+                            matchesForDivision[bestRow].bestO1 = true;
+                        } else if (isO2) {
+                            matchesForDivision[bestRow].bestO2 = true;
                         }
                     }
 
@@ -289,14 +288,13 @@
                                     isLoss = true;
                                 }
                             }
-
-                            if (isWin) {
-                                matchesForDivision[bestRow].bestWin = true;
-                            } else if (isDraw) {
-                                matchesForDivision[bestRow].bestDraw = true;
-                            } else if (isLoss) {
-                                matchesForDivision[bestRow].bestLoss = true;
-                            }
+                        }
+                        if (isWin) {
+                            matchesForDivision[bestRow].bestWin = true;
+                        } else if (isDraw) {
+                            matchesForDivision[bestRow].bestDraw = true;
+                        } else if (isLoss) {
+                            matchesForDivision[bestRow].bestLoss = true;
                         }
                     }
 
