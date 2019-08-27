@@ -3,10 +3,7 @@
     angular.module('myApp').factory('predmatchService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'dataService', '$strings', function (modalService, $http, $interval, $rootScope, utilService, dataService, $strings) {
         var scope = $rootScope.$new();
 
-        var editableCondition = function editableCondition(rowEntity, colDef) {
-            if (rowEntity.giocata) {
-                return false;
-            }
+        var editableCondition = function editableCondition(rowEntity, colDef) {            
             if (colDef.name === 'golCasa' || colDef.name === 'golTrasferta' || colDef.name === 'giocata') {
                 return true;
             }
