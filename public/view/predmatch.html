@@ -1,4 +1,11 @@
-<div layout="column">    
+<div layout="column">
+    <div flex="5" layout="row" layout-align="center center">        
+        <div flex layout="column">            
+            <md-select placeholder="Season" ng-model="season.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadSeasonsPreMatch()" style="min-width: 200px;" ng-change="loadPredMatch(season)">
+                <md-option ng-value="season" ng-repeat="season in seasonsPreMatch">{{season.name}}</md-option>
+            </md-select>
+        </div>        
+    </div>
     <div flex layout="row">
         <div flex layout="column">
             <p class="table-header"><strong>PRED-MATCH</strong></p>
