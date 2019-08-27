@@ -64,7 +64,8 @@
                 });
                 dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
                     return row.dirty;
-                }) || predmatchService.gridOptionsPredMatch.data.filter(function (row) {
+                }) ;
+                dto.risultatipred = predmatchService.gridOptionsPredMatch.data.filter(function (row) {
                     return row.dirty;
                 });                
                 /* dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
