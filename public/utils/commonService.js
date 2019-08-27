@@ -64,10 +64,9 @@
                 });
                 dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
                     return row.dirty;
-                });
-                dto.risultati = predmatchService.gridOptionsPredMatch.data.filter(function (row) {
+                }) || predmatchService.gridOptionsPredMatch.data.filter(function (row) {
                     return row.dirty;
-                });
+                });                
                 /* dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
                     return row.dirty && !(row.newRow && row.deleted);
                 });
