@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "description": "MyFinance Web Application",
   "main": "server.js",
   "author": "@miky2184",
