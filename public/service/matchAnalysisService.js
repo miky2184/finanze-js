@@ -469,6 +469,7 @@
                                     tmp.golCasa = obj['SCORE_HOME'];
                                     tmp.golTrasferta = obj['SCORE_AWAY'];
                                     tmp.giocata = obj['GIOCATA'] === 'T' ? true : false;                                    
+                                    tmp.rinviata = obj['rinviata'] === 'T' ? true : false;
                                     var winTotPercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornata') * 100;
                                     var winHomePercHome = utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'vc') / utilService.extractMatchValue(dataMatchAnalysis, tmp.idHome, 'giornataHome') * 100;
                                     var winLastFiveHome = utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'vtot') / utilService.extractMatchValue(dataLastFiveGame, tmp.idHome, 'giornata') * 100;

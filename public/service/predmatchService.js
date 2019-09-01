@@ -83,10 +83,18 @@
                         name: 'giocata',
                         displayName: 'Gioc.',
                         field: 'giocata',
-                        width: 35,
+                        width: 50,
                         pinnedLeft: true,
                         cellTemplate: 'templates/rows/checkboxIcon.html',
                         buttonNgClass: 'fas fa-futbol'
+                },{
+                        name: 'rinviata',
+                        displayName: 'Rinv.',
+                        field: 'rinviata',
+                        width: 50,
+                        pinnedLeft: true,
+                        cellTemplate: 'templates/rows/checkboxIcon.html',
+                        buttonNgClass: 'fa fa-calendar'
                 }, {
                         name: 'PERC_1',
                         displayName: '%1',
@@ -162,7 +170,7 @@
                 var dto = {
                     season: season.value.id
                 };
-                return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {                    
 
                     function bestBetAll(matchesForDivision) {
                         var bestRow = -1;
@@ -343,6 +351,8 @@
 
                     var divisions = resp.data.map(function (e) {
                         e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
+                        e.giocata = e['GIOCATA'] === 'T' ? true : false;                                    
+                        e.rinviata = e['rinviata'] === 'T' ? true : false;
                         return e['division'];
                     }).filter(srvc.distinct);
 
