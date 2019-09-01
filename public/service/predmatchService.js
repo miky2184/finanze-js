@@ -351,7 +351,7 @@
 
                     var divisions = resp.data.map(function (e) {
                         e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
-                        e.giocata = e['GIOCATA'] === 'T' ? true : false;                                    
+                        e.giocata = e['giocata'] === 'T' ? true : false;                                    
                         e.rinviata = e['rinviata'] === 'T' ? true : false;
                         return e['division'];
                     }).filter(srvc.distinct);
