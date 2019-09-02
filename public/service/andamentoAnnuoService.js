@@ -32,13 +32,6 @@
                     width: '28%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
-                }, {
-                    name: 'contodaniela',
-                    displayName: $strings.CONTO.CONTO_DANIELA,
-                    field: 'contodaniela',
-                    width: '28%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -160,15 +153,6 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_PERSONALE
-            }, {
-                    key: $strings.CONTO.CONTO_DANIELA,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.value,
-                            'y': d.contodaniela
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_DANIELA
             }];
             }
         };

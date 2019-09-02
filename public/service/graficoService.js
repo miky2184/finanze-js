@@ -52,10 +52,6 @@
                         key: $strings.CONTO.CONTO_PERSONALE,
                         values: [],
                         color: $strings.RGB.CONTO_PERSONALE
-                }, {
-                        key: $strings.CONTO.CONTO_DANIELA,
-                        values: [],
-                        color: $strings.RGB.CONTO_DANIELA
                 }];
                     var data = resp.data;
                     data = resp.data.map(function (d) {

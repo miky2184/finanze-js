@@ -24,13 +24,11 @@
         },
         CONTO:{
             CONTO_COMUNE: "CONTO COMUNE",
-            CONTO_PERSONALE: "CONTO PERSONALE",
-            CONTO_DANIELA: "CONTO DANIELA"
+            CONTO_PERSONALE: "CONTO PERSONALE"
         },
         RGB:{
             CONTO_COMUNE: "#00bb00",
-            CONTO_PERSONALE: "#0000ff",
-            CONTO_DANIELA: "#ff0000"
+            CONTO_PERSONALE: "#0000ff"
         },
         REST:{
             SERVER: 'http://93.55.248.37:3001'

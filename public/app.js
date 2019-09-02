@@ -84,9 +84,6 @@
         }, {
             "tipoConto": 2,
             "label": $strings.CONTO.CONTO_PERSONALE
-        }, {
-            "tipoConto": 3,
-            "label": $strings.CONTO.CONTO_DANIELA
         }];
         $scope.pivot = {
             year: new Date().getFullYear(),
