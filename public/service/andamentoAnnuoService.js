@@ -64,10 +64,7 @@
                 });
                 var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
                     return obj.tipoConto === 2;
-                });
-                var dataContoDaniela = angular.copy(balanceData).filter(function (obj) {
-                    return obj.tipoConto === 3;
-                });
+                });               
                 pivotData = [];
                 years.forEach(function (year) {
                     var newRow = {};
@@ -82,12 +79,7 @@
                         if (obj.anno <= year) {
                             return obj.importo;
                         }
-                    })).reduce(utilService.add, 0);
-                    newRow.contodaniela = utilService.filterArray(dataContoDaniela.map(function (obj) {
-                        if (obj.anno <= year) {
-                            return obj.importo;
-                        }
-                    })).reduce(utilService.add, 0);
+                    })).reduce(utilService.add, 0);                    
                     pivotData.push(newRow);
                 });
                 srvc.gridOptionAndamentoAnnuo.data = pivotData;
