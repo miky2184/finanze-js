@@ -68,8 +68,7 @@
                     });
                     var data = getDataGrafico(labels);
                     var oldImportPersonale = 0;
-                    var oldImportoComune = 0;
-                    var oldImportoDaniela = 0;
+                    var oldImportoComune = 0;                    
 
                     function getDataGrafico(labels) {
                         labels.forEach(function (l) {
@@ -102,25 +101,7 @@
                             } else {
                                 dataCP.push(oldImportPersonale);
                             }
-                            dataGrafico[1].values.push(dataCP);
-
-                            var dataCD = [];
-                            dataCD.push(l);
-                            if (data.filter(function (d) {
-                                    return d.tipoConto === 3 && d.data === l;
-                                }).length > 0) {
-                                dataCD.push(data.filter(function (d) {
-                                    return d.tipoConto === 3 && d.data === l;
-                                })[0].importo);
-                                oldImportPersonale = data.filter(function (d) {
-                                    return d.tipoConto === 3 && d.data === l;
-                                })[0].importo;
-                            } else {
-                                dataCD.push(oldImportPersonale);
-                            }
-                            dataGrafico[2].values.push(dataCD);
-
-
+                            dataGrafico[1].values.push(dataCP);                        
                         });
                         dataService.data.dataGrafico = dataGrafico.map(function (series) {
                             series.values = series.values.map(function (d) {
