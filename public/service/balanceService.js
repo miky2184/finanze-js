@@ -31,14 +31,6 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
             }, {
-                    name: 'contoDaniela',
-                    displayName: $strings.CONTO.CONTO_DANIELA,
-                    field: 'contoDaniela',
-                    width: '*',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency'
-            }, {
                     name: 'totale',
                     displayName: 'Totale',
                     field: 'totale',
