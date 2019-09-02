@@ -87,10 +87,7 @@
                 });
                 var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
                     return obj.tipoConto === 2;
-                });
-                var dataContoDaniela = angular.copy(balanceData).filter(function (obj) {
-                    return obj.tipoConto === 3;
-                });
+                });                
                 pivotData = [];
                 months.forEach(function (month) {
                         var newRow = {};
@@ -105,12 +102,7 @@
                             if (obj.mese === month.value) {
                                 return obj.importo;
                             }
-                        })).reduce(utilService.add, 0);
-                        newRow.contodaniela = utilService.filterArray(dataContoDaniela.map(function (obj) {
-                            if (obj.mese === month.value) {
-                                return obj.importo;
-                            }
-                        })).reduce(utilService.add, 0);
+                        })).reduce(utilService.add, 0);                        
                         pivotData.push(newRow);
                     }),
                     srvc.gridOptionPivotMese.data = pivotData;

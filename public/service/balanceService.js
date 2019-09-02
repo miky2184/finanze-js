@@ -65,11 +65,6 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
-            }, {
-                    field: 'contoDaniela',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency'
             }],
                 data: [],
                 onRegisterApi: function (gridApi) {
