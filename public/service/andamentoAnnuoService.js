@@ -39,9 +39,8 @@
                     srvc.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize();
                 }
             },
-            loadAndamentoAnnuo: function () {                
-                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {
-                    dataService.data.optionsGrafico = {
+            loadAndamentoAnnuo: function () {   
+                dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
                         height: 720,
@@ -81,6 +80,7 @@
                         }
                     }
                 };
+                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {                    
                     pivotData = resp.data;
                     srvc.gridOptionAndamentoAnnuo.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico();
@@ -91,7 +91,7 @@
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
                         return {
-                            'x': d.value,
+                            'x': d.year,
                             'y': d.contocomune
                         };
                     }),
@@ -101,7 +101,7 @@
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
                         return {
-                            'x': d.value,
+                            'x': d.year,
                             'y': d.contopersonale
                         };
                     }),
