@@ -159,9 +159,10 @@
          *********************/
         $scope.gridOptionAndamentoAnnuo = andamentoAnnuoService.gridOptionAndamentoAnnuo;
         $scope.loadAndamentoAnnuo = function () {
-            andamentoAnnuoService.loadAndamentoAnnuo();
+            return andamentoAnnuoService.loadAndamentoAnnuo().then(function(resp){
             $scope.dataGrafico = dataService.data.dataGrafico;
-            $scope.optionsGrafico = dataService.data.optionsGrafico;
+            $scope.optionsGrafico = dataService.data.optionsGrafico;    
+            });            
         };
 
         /*********************
