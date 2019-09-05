@@ -40,49 +40,6 @@
                 }
             },
             loadAndamentoAnnuo: function () {
-                var lowest = Number.POSITIVE_INFINITY;
-                var highest = Number.NEGATIVE_INFINITY;
-                var tmp;
-                var dataTmp = angular.copy(listaMovimentiService.gridOptions.data);
-                for (var i = dataTmp.length - 1; i >= 0; i--) {
-                    tmp = dataTmp[i].anno;
-                    if (tmp < lowest) lowest = tmp;
-                    if (tmp > highest) highest = tmp;
-                }
-                var years = [];
-                years.push(lowest);
-                for (i = 1; i < highest - lowest; i++) {
-                    var y = lowest + i;
-                    years.push(y);
-                }
-                years.push(highest);
-                var balanceData = angular.copy(listaMovimentiService.gridOptions.data).filter(function (obj) {
-                    return obj.conto !== 4;
-                });
-                var dataContoComune = angular.copy(balanceData).filter(function (obj) {
-                    return obj.tipoConto === 1;
-                });
-                var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
-                    return obj.tipoConto === 2;
-                });               
-                pivotData = [];
-                years.forEach(function (year) {
-                    var newRow = {};
-                    newRow.value = year;
-                    newRow.year = year;
-                    newRow.contocomune = utilService.filterArray(dataContoComune.map(function (obj) {
-                        if (obj.anno <= year) {
-                            return obj.importo;
-                        }
-                    })).reduce(utilService.add, 0);
-                    newRow.contopersonale = utilService.filterArray(dataContoPersonale.map(function (obj) {
-                        if (obj.anno <= year) {
-                            return obj.importo;
-                        }
-                    })).reduce(utilService.add, 0);                    
-                    pivotData.push(newRow);
-                });
-                srvc.gridOptionAndamentoAnnuo.data = pivotData;
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
@@ -123,7 +80,11 @@
                         }
                     }
                 };
-                dataService.data.dataGrafico = srvc.dataGrafico();
+                return $http.get($strings.REST.SERVER + '/saldoavere').then(function (resp) {
+                    pivotData = resp.data;
+                    srvc.gridOptionAndamentoAnnuo.data = resp.data;
+                    dataService.data.dataGrafico = srvc.dataGrafico();
+                });
             },
             dataGrafico: function () {
                 return [{
