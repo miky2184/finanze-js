@@ -60,26 +60,24 @@
     <script type="text/javascript" src="service/predmatchService.js"></script>
 </head>
 
-<body ng-controller="MainController" class="textapp" md-no-ink >
+<body ng-controller="MainController" class="textapp" md-no-ink>
     <div layout="column" layout-align="center center" layout-fill ng-show="!logged()">
         <md-content layout-gt-sm="row" layout-padding="">
             <md-input-container>
                 <label>Username</label>
                 <input ng-model="username">
             </md-input-container>
-
             <md-input-container>
                 <label>Password</label>
                 <input ng-model="password" type="password">
             </md-input-container>
-            <!-- <div class="form-group"> -->
             <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="login()">
                 <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>
             </md-button>
             <div>
                 <script type="text/ng-template" id="alert.html">
                     <div ng-transclude></div>
-        </script>
+</script>
                 <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
             </div>
         </md-content>
@@ -106,27 +104,27 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/budget.html'"></div>
                     </md-content>
-                </md-tab>                
-               <!-- <md-tab label="Spesa">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/spesa.html'"></div>
-                    </md-content>
+                </md-tab>
+                <!-- <md-tab label="Spesa">
+                <md-content class="md-padding">
+                <div ng-include="'view/spesa.html'"></div>
+                </md-content>
                 </md-tab>
                 <md-tab label="Pivot Spesa" md-on-select="loadPivotSpesa()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/pivotspesa.html'"></div>
-                    </md-content>
+                <md-content class="md-padding">
+                <div ng-include="'view/pivotspesa.html'"></div>
+                </md-content>
                 </md-tab>
                 <md-tab label="Impostazioni Spesa">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/settingsSpesa.html'"></div>
-                    </md-content>
+                <md-content class="md-padding">
+                <div ng-include="'view/settingsSpesa.html'"></div>
+                </md-content>
                 </md-tab> -->
                 <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
                     <md-content class="md-padding">
                         <div ng-include="'view/reportMensile.html'"></div>
                     </md-content>
-                </md-tab>                
+                </md-tab>
                 <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno(pivot.year, 1)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotAnno.html'"></div>
@@ -162,10 +160,10 @@
                         <div ng-include="'view/predmatch.html'"></div>
                     </md-content>
                 </md-tab>
-               <!-- <md-tab label="Fantacalcio">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/fantacalcio.html'"></div>
-                    </md-content>
+                <!-- <md-tab label="Fantacalcio">
+                <md-content class="md-padding">
+                <div ng-include="'view/fantacalcio.html'"></div>
+                </md-content>
                 </md-tab> -->
                 <md-tab label="Password" md-on-select="loadPassword()">
                     <md-content class="md-padding">
@@ -183,7 +181,6 @@
             </div>
         </md-content>
     </div>
-
 </body>
 
 </html>

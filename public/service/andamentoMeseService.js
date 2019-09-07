@@ -43,7 +43,7 @@
             },
             loadPivotMese: function (year) {
                 var balanceData = angular.copy(listaMovimentiService.gridOptions.data).filter(function (obj) {
-                    return obj.anno === year && obj.visualizzare && obj.conto !== 4;
+                    return obj.anno === year && obj.conto !== 4;
                 });
                 var months = [{
                     value: 1,
