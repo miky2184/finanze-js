@@ -36,6 +36,9 @@
                 enableColumnMenus: false,
                 cellEditableCondition: checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                exporterCsvFilename: 'myFile.csv',   
+    exporterExcelFilename: 'PREDMATCH'+utilService.dateToString(new Date())+'.xlsx',
+    exporterExcelSheetName: 'PREDMATCH',
                 columnDefs: [
                     {
                         name: 'DATA_GAME',
