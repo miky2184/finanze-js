@@ -29,7 +29,7 @@
                             obj.impPrevNonArr = srvc.getImpPrevNonArr(obj, 'festivitaNonGoduta', numberValue);
                             break;
                         case 'competenzaBase':
-                            obj.stipendioLordo = obj.ggLavorativi * numberValue;
+                            // obj.stipendioLordo = obj.ggLavorativi * numberValue;
                             obj.retribuzioneOrdinaria = obj.ggLavorativi * numberValue;
                             obj.impPrevNonArr = srvc.getImpPrevNonArr(obj, 'competenzaBase', numberValue);
                             break;
@@ -147,9 +147,9 @@
                         cellClass: 'disable',
                         pinnedLeft: true
 }, {
-                        name: 'stipendioLordo',
+                        name: 'retribuzioneOrdinaria',
                         displayName: 'Stipendio Lordo',
-                        field: 'stipendioLordo',
+                        field: 'retribuzioneOrdinaria',
                         width: 100,
                         cellFilter: 'currency',
                         pinnedLeft: true,
@@ -612,7 +612,7 @@
                 },
                 ricalcola: function (obj, salaryData) {
                     obj.ggMese = utilService.ultimo(obj.mese, obj.anno);
-                    obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
+                    // obj.stipendioLordo = obj.ggLavorativi * obj.competenzaBase;
                     obj.retribuzioneOrdinaria = srvc.getRetribuzioneOrdinaria(obj);
                     obj.impPrevNonArr = srvc.getImpPrevNonArr(obj);
                     if (obj.mese === 12) {
