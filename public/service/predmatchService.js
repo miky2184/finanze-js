@@ -480,7 +480,7 @@
                             var isWin = false;
                             var isDraw = false;
                             var isLoss = false;
-                            var bestRow = -1;
+                            var bestRow = [];
                             var bestValue = -1;
                             for (var i = 0; i < matchesForDivision.length; i++) {
                                 var win = false;
