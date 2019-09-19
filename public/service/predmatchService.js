@@ -473,10 +473,17 @@
                         });
 
                         srvc.gridOptionsPredMatch.data = resp.data;
-                        response.data.map(function (bb) {
-                            bestBetAll([bb]);
-                            bestBet1X2([bb]);
-                        })
+                        
+                        divisions.forEach(function (div) {
+                            var matchesForDivision = response.data.filter(function (m) {
+                                return m['division'] === div;
+                            })
+
+                            bestBetAll(matchesForDivision);
+                            bestBet1X2(matchesForDivision);
+
+                        });
+                                                
                         srvc.gridOptionsBestBet.data = response.data;
 
                     });
