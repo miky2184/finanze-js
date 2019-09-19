@@ -216,6 +216,7 @@
         };        
         $scope.gridOptionsPredMatch = predmatchService.gridOptionsPredMatch;
         $scope.gridOptionsBestBet = predmatchService.gridOptionsBestBet;
+        $scope.gridOptionsBest10Bet = predmatchService.gridOptionsBest10Bet;        
 
         /*********************
             TAB FANTACALCIO
