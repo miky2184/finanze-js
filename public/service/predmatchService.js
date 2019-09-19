@@ -351,7 +351,7 @@
 
 
                         function bestBetAll(matchesForDivision) {
-                            var bestRow = -1;
+                            var bestRow = [];
                             var bestValue = -1;
                             var isWin = false;
                             var isDraw = false;
@@ -393,7 +393,7 @@
                                 if (win) {
                                     if (matchesForDivision[i]['PERC_1'] >= bestValue) {
                                         bestValue = matchesForDivision[i]['PERC_1'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = true;
                                         isDraw = false;
                                         isLoss = false;
@@ -404,7 +404,7 @@
                                 } else if (draw) {
                                     if (matchesForDivision[i]['PERC_X'] >= bestValue) {
                                         bestValue = matchesForDivision[i]['PERC_X'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = true;
                                         isLoss = false;
@@ -415,7 +415,7 @@
                                 } else if (loss) {
                                     if (matchesForDivision[i]['PERC_2'] >= bestValue) {
                                         bestValue = matchesForDivision[i]['PERC_2'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = false;
                                         isLoss = true;
@@ -426,7 +426,7 @@
                                 } else if (gg) {
                                     if (matchesForDivision[i]['PERC_GG'] >= bestValue) {
                                         bestValue = matchesForDivision[i]['PERC_GG'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = false;
                                         isLoss = false;
@@ -437,7 +437,7 @@
                                 } else if (o1) {
                                     if (matchesForDivision[i]['PERC_O1'] >= bestValue) {
                                         bestValue = matchesForDivision[i]['PERC_O1'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = false;
                                         isLoss = false;
@@ -448,7 +448,7 @@
                                 } else if (o2) {
                                     if (matchesForDivision[i]['PERC_O2'] >= bestValue) {
                                         bestValue = matchesForDivision[i]['PERC_O2'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = false;
                                         isLoss = false;
@@ -458,19 +458,22 @@
                                     }
                                 }
                             }
-                            if (isWin) {
-                                matchesForDivision[bestRow].bestWin = true;
+                            
+                            bestRow.forEach(function(k){
+                              if (isWin) {
+                                matchesForDivision[k].bestWin = true;
                             } else if (isDraw) {
-                                matchesForDivision[bestRow].bestDraw = true;
+                                matchesForDivision[k].bestDraw = true;
                             } else if (isLoss) {
-                                matchesForDivision[bestRow].bestLoss = true;
+                                matchesForDivision[k].bestLoss = true;
                             } else if (isGg) {
-                                matchesForDivision[bestRow].bestGg = true;
+                                matchesForDivision[k].bestGg = true;
                             } else if (isO1) {
-                                matchesForDivision[bestRow].bestO1 = true;
+                                matchesForDivision[k].bestO1 = true;
                             } else if (isO2) {
-                                matchesForDivision[bestRow].bestO2 = true;
-                            }
+                                matchesForDivision[k].bestO2 = true;
+                            }  
+                            });                                                      
                         }
 
                         function bestBet1X2(matchesForDivision) {
@@ -494,7 +497,7 @@
                                 if (win) {
                                     if (matchesForDivision[i]['PERC_1'] >= bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
                                         bestValue = matchesForDivision[i]['PERC_1'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = true;
                                         isDraw = false;
                                         isLoss = false;
@@ -503,7 +506,7 @@
                                 } else if (draw) {
                                     if (matchesForDivision[i]['PERC_X'] >= bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
                                         bestValue = matchesForDivision[i]['PERC_X'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = true;
                                         isLoss = false;
@@ -511,20 +514,22 @@
                                 } else if (loss) {
                                     if (matchesForDivision[i]['PERC_2'] >= bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
                                         bestValue = matchesForDivision[i]['PERC_2'];
-                                        bestRow = i;
+                                        bestRow.push(i);
                                         isWin = false;
                                         isDraw = false;
                                         isLoss = true;
                                     }
                                 }
                             }
+                            bestRow.forEach(function(k){
                             if (isWin) {
-                                matchesForDivision[bestRow].bestWin = true;
+                                matchesForDivision[k].bestWin = true;
                             } else if (isDraw) {
-                                matchesForDivision[bestRow].bestDraw = true;
+                                matchesForDivision[k].bestDraw = true;
                             } else if (isLoss) {
-                                matchesForDivision[bestRow].bestLoss = true;
+                                matchesForDivision[k].bestLoss = true;
                             }
+                                });
                         }
 
                         var divisions = resp.data.map(function (e) {
@@ -552,6 +557,15 @@
                             })
 
                             bestBetAll(matchesForDivision);
+                            bestBet1X2(matchesForDivision);
+
+                        });
+                            
+                            divisions.forEach(function (div) {
+                            var matchesForDivision = respo.data.filter(function (m) {
+                                return m['CHAMPIONSHIP'] === div;
+                            })
+                           
                             bestBet1X2(matchesForDivision);
 
                         });
