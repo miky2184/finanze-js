@@ -3,7 +3,7 @@
     angular.module('myApp').factory('predmatchService', ['modalService', '$http', '$interval', '$rootScope', 'utilService', 'dataService', '$strings', function (modalService, $http, $interval, $rootScope, utilService, dataService, $strings) {
         var scope = $rootScope.$new();
 
-        var editableCondition = function editableCondition(rowEntity, colDef) {            
+        var editableCondition = function editableCondition(rowEntity, colDef) {
             if (colDef.name === 'golCasa' || colDef.name === 'golTrasferta' || colDef.name === 'giocata') {
                 return true;
             }
@@ -36,9 +36,9 @@
                 enableColumnMenus: false,
                 cellEditableCondition: checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
-                exporterCsvFilename: 'myFile.csv',   
-    exporterExcelFilename: 'PREDMATCH'+utilService.dateToString(new Date())+'.xlsx',
-    exporterExcelSheetName: 'PREDMATCH',
+                exporterCsvFilename: 'myFile.csv',
+                exporterExcelFilename: 'PREDMATCH' + utilService.dateToString(new Date()) + '.xlsx',
+                exporterExcelSheetName: 'PREDMATCH',
                 columnDefs: [
                     {
                         name: 'DATA_GAME',
@@ -90,7 +90,7 @@
                         pinnedLeft: true,
                         cellTemplate: 'templates/rows/checkboxIcon.html',
                         buttonNgClass: 'fas fa-futbol'
-                },{
+                }, {
                         name: 'rinviata',
                         displayName: 'Rinv.',
                         field: 'rinviata',
@@ -177,9 +177,9 @@
                 enableColumnMenus: false,
                 cellEditableCondition: checkEditableCondition,
                 rowTemplate: 'templates/rows/deletableRow.html',
-                exporterCsvFilename: 'myFile.csv',   
-    exporterExcelFilename: 'PREDMATCH'+utilService.dateToString(new Date())+'.xlsx',
-    exporterExcelSheetName: 'PREDMATCH',
+                exporterCsvFilename: 'myFile.csv',
+                exporterExcelFilename: 'PREDMATCH' + utilService.dateToString(new Date()) + '.xlsx',
+                exporterExcelSheetName: 'PREDMATCH',
                 columnDefs: [
                     {
                         name: 'CHAMPIONSHIP',
@@ -274,209 +274,211 @@
                     season: season.value.id
                 };
                 return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
-                    
-                     return $http.get($strings.REST.SERVER + '/bestbet').then(function (response) {
-                                            
 
-                    function bestBetAll(matchesForDivision) {
-                        var bestRow = -1;
-                        var bestValue = -1;
-                        var isWin = false;
-                        var isDraw = false;
-                        var isLoss = false;
-                        var isGg = false;
-                        var isO1 = false;
-                        var isO2 = false;
-                        for (var i = 0; i < matchesForDivision.length; i++) {
-                            var win = false;
-                            var draw = false;
-                            var loss = false;
-                            var gg = false;
-                            var o1 = false;
-                            var o2 = false;
-                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] &&
-                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2'] &&
-                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_GG'] &&
-                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O1'] &&
-                                matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O2']) {
-                                win = true;
-                            } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2'] &&
-                                matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_GG'] &&
-                                matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_O1'] &&
-                                matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_O2']) {
-                                draw = true;
-                            } else if (matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_GG'] &&
-                                matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_O1'] &&
-                                matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_O2']) {
-                                loss = true;
-                            } else if (matchesForDivision[i]['PERC_GG'] >= matchesForDivision[i]['PERC_O1'] &&
-                                matchesForDivision[i]['PERC_GG'] >= matchesForDivision[i]['PERC_O2']) {
-                                gg = true;
-                            } else if (matchesForDivision[i]['PERC_O1'] >= matchesForDivision[i]['PERC_O2']) {
-                                o1 = true;
-                            } else {
-                                o2 = true;
-                            }
+                    return $http.get($strings.REST.SERVER + '/bestbet').then(function (response) {
 
-                            if (win) {
-                                if (matchesForDivision[i]['PERC_1'] > bestValue) {
-                                    bestValue = matchesForDivision[i]['PERC_1'];
-                                    bestRow = i;
-                                    isWin = true;
-                                    isDraw = false;
-                                    isLoss = false;
-                                    isGg = false;
-                                    isO1 = false;
-                                    isO2 = false;
-                                }
-                            } else if (draw) {
-                                if (matchesForDivision[i]['PERC_X'] > bestValue) {
-                                    bestValue = matchesForDivision[i]['PERC_X'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = true;
-                                    isLoss = false;
-                                    isGg = false;
-                                    isO1 = false;
-                                    isO2 = false;
-                                }
-                            } else if (loss) {
-                                if (matchesForDivision[i]['PERC_2'] > bestValue) {
-                                    bestValue = matchesForDivision[i]['PERC_2'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = false;
-                                    isLoss = true;
-                                    isGg = false;
-                                    isO1 = false;
-                                    isO2 = false;
-                                }
-                            } else if (gg) {
-                                if (matchesForDivision[i]['PERC_GG'] > bestValue) {
-                                    bestValue = matchesForDivision[i]['PERC_GG'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = false;
-                                    isLoss = false;
-                                    isGg = true;
-                                    isO1 = false;
-                                    isO2 = false;
-                                }
-                            } else if (o1) {
-                                if (matchesForDivision[i]['PERC_O1'] > bestValue) {
-                                    bestValue = matchesForDivision[i]['PERC_O1'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = false;
-                                    isLoss = false;
-                                    isGg = false;
-                                    isO1 = true;
-                                    isO2 = false;
-                                }
-                            } else if (o2) {
-                                if (matchesForDivision[i]['PERC_O2'] > bestValue) {
-                                    bestValue = matchesForDivision[i]['PERC_O2'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = false;
-                                    isLoss = false;
-                                    isGg = false;
-                                    isO1 = false;
-                                    isO2 = true;
-                                }
-                            }
-                        }
-                        if (isWin) {
-                            matchesForDivision[bestRow].bestWin = true;
-                        } else if (isDraw) {
-                            matchesForDivision[bestRow].bestDraw = true;
-                        } else if (isLoss) {
-                            matchesForDivision[bestRow].bestLoss = true;
-                        } else if (isGg) {
-                            matchesForDivision[bestRow].bestGg = true;
-                        } else if (isO1) {
-                            matchesForDivision[bestRow].bestO1 = true;
-                        } else if (isO2) {
-                            matchesForDivision[bestRow].bestO2 = true;
-                        }
-                    }
 
-                    function bestBet1X2(matchesForDivision) {
-                        var isWin = false;
-                        var isDraw = false;
-                        var isLoss = false;
-                        var bestRow = -1;
-                        var bestValue = -1;
-                        for (var i = 0; i < matchesForDivision.length; i++) {
-                            var win = false;
-                            var draw = false;
-                            var loss = false;
-                            if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2']) {
-                                win = true;
-                            } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2']) {
-                                draw = true;
-                            } else {
-                                loss = true;
-                            }
-
-                            if (win) {
-                                if (matchesForDivision[i]['PERC_1'] > bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
-                                    bestValue = matchesForDivision[i]['PERC_1'];
-                                    bestRow = i;
-                                    isWin = true;
-                                    isDraw = false;
-                                    isLoss = false;
-
+                        function bestBetAll(matchesForDivision) {
+                            var bestRow = -1;
+                            var bestValue = -1;
+                            var isWin = false;
+                            var isDraw = false;
+                            var isLoss = false;
+                            var isGg = false;
+                            var isO1 = false;
+                            var isO2 = false;
+                            for (var i = 0; i < matchesForDivision.length; i++) {
+                                var win = false;
+                                var draw = false;
+                                var loss = false;
+                                var gg = false;
+                                var o1 = false;
+                                var o2 = false;
+                                if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] &&
+                                    matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2'] &&
+                                    matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_GG'] &&
+                                    matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O1'] &&
+                                    matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_O2']) {
+                                    win = true;
+                                } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2'] &&
+                                    matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_GG'] &&
+                                    matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_O1'] &&
+                                    matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_O2']) {
+                                    draw = true;
+                                } else if (matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_GG'] &&
+                                    matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_O1'] &&
+                                    matchesForDivision[i]['PERC_2'] >= matchesForDivision[i]['PERC_O2']) {
+                                    loss = true;
+                                } else if (matchesForDivision[i]['PERC_GG'] >= matchesForDivision[i]['PERC_O1'] &&
+                                    matchesForDivision[i]['PERC_GG'] >= matchesForDivision[i]['PERC_O2']) {
+                                    gg = true;
+                                } else if (matchesForDivision[i]['PERC_O1'] >= matchesForDivision[i]['PERC_O2']) {
+                                    o1 = true;
+                                } else {
+                                    o2 = true;
                                 }
-                            } else if (draw) {
-                                if (matchesForDivision[i]['PERC_X'] > bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
-                                    bestValue = matchesForDivision[i]['PERC_X'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = true;
-                                    isLoss = false;
-                                }
-                            } else if (loss) {
-                                if (matchesForDivision[i]['PERC_2'] > bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
-                                    bestValue = matchesForDivision[i]['PERC_2'];
-                                    bestRow = i;
-                                    isWin = false;
-                                    isDraw = false;
-                                    isLoss = true;
+
+                                if (win) {
+                                    if (matchesForDivision[i]['PERC_1'] > bestValue) {
+                                        bestValue = matchesForDivision[i]['PERC_1'];
+                                        bestRow = i;
+                                        isWin = true;
+                                        isDraw = false;
+                                        isLoss = false;
+                                        isGg = false;
+                                        isO1 = false;
+                                        isO2 = false;
+                                    }
+                                } else if (draw) {
+                                    if (matchesForDivision[i]['PERC_X'] > bestValue) {
+                                        bestValue = matchesForDivision[i]['PERC_X'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = true;
+                                        isLoss = false;
+                                        isGg = false;
+                                        isO1 = false;
+                                        isO2 = false;
+                                    }
+                                } else if (loss) {
+                                    if (matchesForDivision[i]['PERC_2'] > bestValue) {
+                                        bestValue = matchesForDivision[i]['PERC_2'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = false;
+                                        isLoss = true;
+                                        isGg = false;
+                                        isO1 = false;
+                                        isO2 = false;
+                                    }
+                                } else if (gg) {
+                                    if (matchesForDivision[i]['PERC_GG'] > bestValue) {
+                                        bestValue = matchesForDivision[i]['PERC_GG'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = false;
+                                        isLoss = false;
+                                        isGg = true;
+                                        isO1 = false;
+                                        isO2 = false;
+                                    }
+                                } else if (o1) {
+                                    if (matchesForDivision[i]['PERC_O1'] > bestValue) {
+                                        bestValue = matchesForDivision[i]['PERC_O1'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = false;
+                                        isLoss = false;
+                                        isGg = false;
+                                        isO1 = true;
+                                        isO2 = false;
+                                    }
+                                } else if (o2) {
+                                    if (matchesForDivision[i]['PERC_O2'] > bestValue) {
+                                        bestValue = matchesForDivision[i]['PERC_O2'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = false;
+                                        isLoss = false;
+                                        isGg = false;
+                                        isO1 = false;
+                                        isO2 = true;
+                                    }
                                 }
                             }
+                            if (isWin) {
+                                matchesForDivision[bestRow].bestWin = true;
+                            } else if (isDraw) {
+                                matchesForDivision[bestRow].bestDraw = true;
+                            } else if (isLoss) {
+                                matchesForDivision[bestRow].bestLoss = true;
+                            } else if (isGg) {
+                                matchesForDivision[bestRow].bestGg = true;
+                            } else if (isO1) {
+                                matchesForDivision[bestRow].bestO1 = true;
+                            } else if (isO2) {
+                                matchesForDivision[bestRow].bestO2 = true;
+                            }
                         }
-                        if (isWin) {
-                            matchesForDivision[bestRow].bestWin = true;
-                        } else if (isDraw) {
-                            matchesForDivision[bestRow].bestDraw = true;
-                        } else if (isLoss) {
-                            matchesForDivision[bestRow].bestLoss = true;
+
+                        function bestBet1X2(matchesForDivision) {
+                            var isWin = false;
+                            var isDraw = false;
+                            var isLoss = false;
+                            var bestRow = -1;
+                            var bestValue = -1;
+                            for (var i = 0; i < matchesForDivision.length; i++) {
+                                var win = false;
+                                var draw = false;
+                                var loss = false;
+                                if (matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_X'] && matchesForDivision[i]['PERC_1'] >= matchesForDivision[i]['PERC_2']) {
+                                    win = true;
+                                } else if (matchesForDivision[i]['PERC_X'] >= matchesForDivision[i]['PERC_2']) {
+                                    draw = true;
+                                } else {
+                                    loss = true;
+                                }
+
+                                if (win) {
+                                    if (matchesForDivision[i]['PERC_1'] > bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
+                                        bestValue = matchesForDivision[i]['PERC_1'];
+                                        bestRow = i;
+                                        isWin = true;
+                                        isDraw = false;
+                                        isLoss = false;
+
+                                    }
+                                } else if (draw) {
+                                    if (matchesForDivision[i]['PERC_X'] > bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
+                                        bestValue = matchesForDivision[i]['PERC_X'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = true;
+                                        isLoss = false;
+                                    }
+                                } else if (loss) {
+                                    if (matchesForDivision[i]['PERC_2'] > bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
+                                        bestValue = matchesForDivision[i]['PERC_2'];
+                                        bestRow = i;
+                                        isWin = false;
+                                        isDraw = false;
+                                        isLoss = true;
+                                    }
+                                }
+                            }
+                            if (isWin) {
+                                matchesForDivision[bestRow].bestWin = true;
+                            } else if (isDraw) {
+                                matchesForDivision[bestRow].bestDraw = true;
+                            } else if (isLoss) {
+                                matchesForDivision[bestRow].bestLoss = true;
+                            }
                         }
-                    }
 
-                    var divisions = resp.data.map(function (e) {
-                        e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
-                        e.giocata = e['giocata'] === 'T' ? true : false;                                    
-                        e.rinviata = e['rinviata'] === 'T' ? true : false;
-                        return e['division'];
-                    }).filter(srvc.distinct);
+                        var divisions = resp.data.map(function (e) {
+                            e['DATA_GAME'] = e['DATA_GAME'].substr(0, 10);
+                            e.giocata = e['giocata'] === 'T' ? true : false;
+                            e.rinviata = e['rinviata'] === 'T' ? true : false;
+                            return e['division'];
+                        }).filter(srvc.distinct);
 
-                    divisions.forEach(function (div) {
-                        var matchesForDivision = resp.data.filter(function (m) {
-                            return m['division'] === div;
+                        divisions.forEach(function (div) {
+                            var matchesForDivision = resp.data.filter(function (m) {
+                                return m['division'] === div;
+                            })
+
+                            bestBetAll(matchesForDivision);
+                            bestBet1X2(matchesForDivision);
+
+                        });
+
+                        srvc.gridOptionsPredMatch.data = resp.data;
+                        response.data.map(function (bb) {
+                            bestBetAll([bb]);
+                            bestBet1X2([bb]);
                         })
+                        srvc.gridOptionsBestBet.data = response.data;
 
-                        bestBetAll(matchesForDivision);
-                        bestBet1X2(matchesForDivision);
-
-                    });
-
-                    srvc.gridOptionsPredMatch.data = resp.data;
-                    bestBetAll(response.data);
-                    bestBet1X2(response.data);
-                    srvc.gridOptionsBestBet.data = response.data;
-                    
                     });
                 });
             }
