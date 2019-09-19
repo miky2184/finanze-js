@@ -391,7 +391,12 @@
                                     if (win) {
                                         if (matchesForDivision[i]['PERC_1'] >= bestValue) {
                                             bestValue = matchesForDivision[i]['PERC_1'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_1'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }                                            
                                             isWin = true;
                                             isDraw = false;
                                             isLoss = false;
@@ -402,7 +407,12 @@
                                     } else if (draw) {
                                         if (matchesForDivision[i]['PERC_X'] >= bestValue) {
                                             bestValue = matchesForDivision[i]['PERC_X'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_X'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = true;
                                             isLoss = false;
@@ -413,7 +423,12 @@
                                     } else if (loss) {
                                         if (matchesForDivision[i]['PERC_2'] >= bestValue) {
                                             bestValue = matchesForDivision[i]['PERC_2'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_2'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = false;
                                             isLoss = true;
@@ -424,7 +439,12 @@
                                     } else if (gg) {
                                         if (matchesForDivision[i]['PERC_GG'] >= bestValue) {
                                             bestValue = matchesForDivision[i]['PERC_GG'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_GG'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = false;
                                             isLoss = false;
@@ -435,7 +455,12 @@
                                     } else if (o1) {
                                         if (matchesForDivision[i]['PERC_O1'] >= bestValue) {
                                             bestValue = matchesForDivision[i]['PERC_O1'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_O1'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = false;
                                             isLoss = false;
@@ -446,7 +471,12 @@
                                     } else if (o2) {
                                         if (matchesForDivision[i]['PERC_O2'] >= bestValue) {
                                             bestValue = matchesForDivision[i]['PERC_O2'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_O2'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = false;
                                             isLoss = false;
@@ -494,7 +524,12 @@
                                     if (win) {
                                         if (matchesForDivision[i]['PERC_1'] >= bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
                                             bestValue = matchesForDivision[i]['PERC_1'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_1'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = true;
                                             isDraw = false;
                                             isLoss = false;
@@ -503,7 +538,12 @@
                                     } else if (draw) {
                                         if (matchesForDivision[i]['PERC_X'] >= bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
                                             bestValue = matchesForDivision[i]['PERC_X'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_X'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = true;
                                             isLoss = false;
@@ -511,7 +551,12 @@
                                     } else if (loss) {
                                         if (matchesForDivision[i]['PERC_2'] >= bestValue && !(matchesForDivision[i].bestGg || matchesForDivision[i].bestO1 || matchesForDivision[i].bestO2)) {
                                             bestValue = matchesForDivision[i]['PERC_2'];
-                                            bestRow.push(i);
+                                            if(matchesForDivision[i]['PERC_2'] === bestValue){
+                                                bestRow.push(i);    
+                                            } else {
+                                                bestRow = [];
+                                                bestRow.push(i);
+                                            }
                                             isWin = false;
                                             isDraw = false;
                                             isLoss = true;
