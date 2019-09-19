@@ -275,7 +275,7 @@
                 };
                 return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
                     
-                     return $http.post($strings.REST.SERVER + '/bestbet', dto).then(function (response) {
+                     return $http.get($strings.REST.SERVER + '/bestbet').then(function (response) {
                                             
 
                     function bestBetAll(matchesForDivision) {
