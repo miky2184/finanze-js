@@ -28,7 +28,7 @@
             gridOptionsPredMatch: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
-                minRowsToShow: 30,
+                minRowsToShow: 27,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: true,
@@ -169,7 +169,7 @@
             gridOptionsBestBet: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
-                minRowsToShow: 20,
+                minRowsToShow: 15,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: true,
@@ -269,7 +269,7 @@
             gridOptionsBest10Bet: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
-                minRowsToShow: 20,
+                minRowsToShow: 12,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: true,
