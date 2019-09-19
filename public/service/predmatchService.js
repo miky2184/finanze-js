@@ -572,7 +572,19 @@
                                         matchesForDivision[k].bestLoss = true;
                                     }
                                 });
-                            }     
+                            }    
+                            
+                            function bet1X2(matches) {                                
+                                for (var i = 0; i < matches.length; i++) {                                    
+                                    if (matches[i]['PERC_1'] >= matches[i]['PERC_X'] && matches[i]['PERC_1'] >= matches[i]['PERC_2']) {
+                                        matches[i].bestWin = true;
+                                    } else if (matches[i]['PERC_X'] >= matches[i]['PERC_2']) {
+                                        matches[i].bestDraw = true;
+                                    } else {
+                                        matches[i].bestLoss = true;
+                                    }      
+                                }
+                            }   
                             
                             var bestRow = [];
                             
@@ -602,14 +614,8 @@
                                 bestRow = [];
                                 bestBet1X2(matchesForDivision);
                             });
-                            
-                            divisions.forEach(function (div) {
-                                bestRow = [];
-                                var matchesForDivision = respo.data.filter(function (m) {
-                                    return m['CHAMPIONSHIP'] === div;
-                                })
-                                bestBet1X2(matchesForDivision);
-                            });
+                                                        
+                            bet1X2(respo.data);                            
                             
                             srvc.gridOptionsPredMatch.data = resp.data;
                             srvc.gridOptionsBestBet.data = response.data;
