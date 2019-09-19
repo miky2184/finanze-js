@@ -476,7 +476,7 @@
                         
                         divisions.forEach(function (div) {
                             var matchesForDivision = response.data.filter(function (m) {
-                                return m['division'] === div;
+                                return m['CHAMPIONSHIP'] === div;
                             })
 
                             bestBetAll(matchesForDivision);
