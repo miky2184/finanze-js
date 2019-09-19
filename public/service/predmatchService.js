@@ -166,6 +166,106 @@
                     gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditFunction);
                 }
             },
+            gridOptionsBestBet: {
+                columnVirtualizationThreshold: 100,
+                showGridFooter: false,
+                minRowsToShow: 22,
+                enableFiltering: true,
+                selectionRowHeaderWidth: 35,
+                enableSorting: true,
+                enableGridMenu: true,
+                enableColumnMenus: false,
+                cellEditableCondition: checkEditableCondition,
+                rowTemplate: 'templates/rows/deletableRow.html',
+                exporterCsvFilename: 'myFile.csv',   
+    exporterExcelFilename: 'PREDMATCH'+utilService.dateToString(new Date())+'.xlsx',
+    exporterExcelSheetName: 'PREDMATCH',
+                columnDefs: [
+                    {
+                        name: 'CHAMPIONSHIP',
+                        displayName: 'DIV',
+                        field: 'CHAMPIONSHIP',
+                        width: 70,
+                        pinnedLeft: true
+                }, {
+                        name: 'HOME',
+                        displayName: 'HOME',
+                        field: 'HOME',
+                        width: 200,
+                        pinnedLeft: true
+                }, {
+                        name: 'AWAY',
+                        displayName: 'AWAY',
+                        field: 'AWAY',
+                        width: 200,
+                        pinnedLeft: true
+                }, {
+                        name: 'PERC_1',
+                        displayName: '%1',
+                        field: 'PERC_1',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestWin) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_X',
+                        displayName: '%X',
+                        field: 'PERC_X',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestDraw) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_2',
+                        displayName: '%2',
+                        field: 'PERC_2',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestLoss) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_GG',
+                        displayName: '%GG',
+                        field: 'PERC_GG',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestGg) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_O1',
+                        displayName: '%O1.5',
+                        field: 'PERC_O1',
+                        width: 70,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestO1) {
+                                return 'best-bet';
+                            }
+                        }
+                }, {
+                        name: 'PERC_O2',
+                        displayName: '%O2.5',
+                        field: 'PERC_O2',
+                        width: 70,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.bestO2) {
+                                return 'best-bet';
+                            }
+                        }
+                }],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridOptionsBestBet.gridApi = gridApi;
+                    srvc.gridOptionsBestBet.gridApi.core.handleWindowResize();
+                }
+            },
             loadPredMatch: function (season) {
                 if (!season) {
                     return;
@@ -173,7 +273,10 @@
                 var dto = {
                     season: season.value.id
                 };
-                return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {                    
+                return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
+                    
+                     return $http.post($strings.REST.SERVER + '/bestbet', dto).then(function (response) {
+                                            
 
                     function bestBetAll(matchesForDivision) {
                         var bestRow = -1;
@@ -370,6 +473,11 @@
                     });
 
                     srvc.gridOptionsPredMatch.data = resp.data;
+                    bestBetAll(response.data);
+                    bestBet1X2(response.data);
+                    srvc.gridOptionsBestBet.data = response.data;
+                    
+                    });
                 });
             }
         };
