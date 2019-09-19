@@ -544,6 +544,7 @@
                                     return m['division'] === div;
                                 })
                                 bestBetAll(matchesForDivision);
+                                bestRow = [];
                                 bestBet1X2(matchesForDivision);
                             });                            
                             
@@ -553,6 +554,7 @@
                                     return m['CHAMPIONSHIP'] === div;
                                 })
                                 bestBetAll(matchesForDivision);
+                                bestRow = [];
                                 bestBet1X2(matchesForDivision);
                             });
                             
