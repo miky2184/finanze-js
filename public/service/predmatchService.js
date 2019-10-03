@@ -99,6 +99,36 @@
                         cellTemplate: 'templates/rows/checkboxIcon.html',
                         buttonNgClass: 'fa fa-calendar'
 }, {
+                        name: 'PRON_1X2',
+                        displayName: '1X2',
+                        field: 'PRON_1X2',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.fl1x2) {
+                                return 'best-bet';
+                            }
+                        }
+}, {
+                        name: 'PERC_1X2',
+                        displayName: '%1X2',
+                        field: 'PERC_1X2',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.fl1x2) {
+                                return 'best-bet';
+                            }
+                        }
+}, {
+                        name: 'PERC_OVER',
+                        displayName: '%OVER',
+                        field: 'PERC_OVER',
+                        width: 60,
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            if (row.entity.flOver) {
+                                return 'best-bet';
+                            }
+                        }
+}, {
                         name: 'PERC_1',
                         displayName: '%1',
                         field: 'PERC_1',
