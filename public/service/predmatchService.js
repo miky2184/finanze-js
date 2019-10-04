@@ -44,7 +44,7 @@
                         name: 'DATA_GAME',
                         displayName: 'DATA',
                         field: 'DATA_GAME',
-                        width: 120,
+                        width: '*',
                         pinnedLeft: true
 }, {
                         name: 'giornata',
