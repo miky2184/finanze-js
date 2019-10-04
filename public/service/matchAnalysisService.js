@@ -381,10 +381,10 @@
                 var cliccata = row.entity;
                 if (cliccata) {
                     var match = {
-                        idHome: cliccata.idHome,
-                        idAway: cliccata.idAway,
-                        season: cliccata.season,
-                        giornata: cliccata['GIORNATA']
+                        idHome: cliccata['ID_HOME'],
+                        idAway: cliccata['ID_AWAY'],                        
+                        giornata: cliccata['GIORNATA'],
+                        season: cliccata['SEASON']
                     }
                     return $http.post($strings.REST.SERVER+'/scontriDiretti', match).then(function (resp) {
                         if (resp.data && resp.data.length > 0) {
