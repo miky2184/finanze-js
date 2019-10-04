@@ -152,6 +152,7 @@
             },
             
             gridOptionsPartitePrecedenti:{
+                minRowsToShow: 5,
                 columnDefs: [{
                     name: 'GIORNATA',
                     displayName: 'Giornata',
@@ -161,12 +162,12 @@
                     name: 'THH',
                     displayName: 'SQD1 HOME',
                     field: 'THH',
-                    width: 55
+                    width: 120
                 }, {
                     name: 'TAH',
                     displayName: 'SQD2 HOME',
                     field: 'TAH',
-                    width: 50
+                    width: 120
                 }, {
                     name: 'SHH',
                     displayName: '',
@@ -181,12 +182,12 @@
                     name: 'THA',
                     displayName: 'SQD1 AWAY',
                     field: 'THA',
-                    width: 50
+                    width: 120
                 }, {
                     name: 'TAA',
                     displayName: 'SQD2 AWAY',
                     field: 'TAA',
-                    width: 50
+                    width: 120
                 }, {
                     name: 'SHA',
                     displayName: '',
