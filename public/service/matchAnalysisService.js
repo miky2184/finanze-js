@@ -400,7 +400,8 @@
                             srvc.scontriDiretti = {};
                         }
                     });
-                }
+                });
+                }                                                                                          
             },
             loadMatchAnalysis: function (division, season, giornata) {
                 var dataMatchAnalysis = [];        
