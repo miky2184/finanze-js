@@ -151,6 +151,60 @@
                 }
             },
             
+            gridOptionsPartitePrecedenti:{
+                columnDefs: [{
+                    name: 'GIORNATA',
+                    displayName: 'Giornata',
+                    field: 'GIORNATA',
+                    width: 40
+                },{
+                    name: 'THH',
+                    displayName: 'SQD1 HOME',
+                    field: 'THH',
+                    width: 55
+                }, {
+                    name: 'TAH',
+                    displayName: 'SQD2 HOME',
+                    field: 'TAH',
+                    width: 50
+                }, {
+                    name: 'SHH',
+                    displayName: '',
+                    field: 'SHH',
+                    width: 55
+                }, {
+                    name: 'SAH',
+                    displayName: '',
+                    field: 'SAH',
+                    width: 55
+                }, {
+                    name: 'THA',
+                    displayName: 'SQD1 AWAY',
+                    field: 'THA',
+                    width: 50
+                }, {
+                    name: 'TAA',
+                    displayName: 'SQD2 AWAY',
+                    field: 'TAA',
+                    width: 50
+                }, {
+                    name: 'SHA',
+                    displayName: '',
+                    field: 'SHA',
+                    width: 50
+                }, {
+                    name: 'SAA',
+                    displayName: '',
+                    field: 'SAA',
+                    width: 50
+                }],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridOptionsPartitePrecedenti.gridApi = gridApi;
+                    srvc.gridOptionsPartitePrecedenti.gridApi.core.handleWindowResize();
+                }
+            },
+            
             gridOptionsScontriDiretti: {
                 columnDefs: [{
                     name: 'division',
@@ -207,103 +261,103 @@
                 multiSelect: false,
                 columnDefs: [
                     {
-                    name: 'dataGame',
+                    name: 'DATA_GAME',
                     displayName: 'DATA',
-                    field: 'dataGame',
+                    field: 'DATA_GAME',
                     width: 85,
                     pinnedLeft: true
                 },{
-                    name: 'squadraCasa',
+                    name: 'TEAM_HOME',
                     displayName: 'CASA',
-                    field: 'squadraCasa',
+                    field: 'TEAM_HOME',
                     width: 110,
                     pinnedLeft: true
                 }, {
-                    name: 'squadraTrasferta',
+                    name: 'TEAM_AWAY',
                     displayName: 'TRASFERTA',
-                    field: 'squadraTrasferta',
+                    field: 'TEAM_AWAY',
                     width: 110,
                     pinnedLeft: true
                 }, {
-                    name: 'golCasa',
+                    name: 'SCORE_HOME',
                     displayName: 'FTHG',
-                    field: 'golCasa',
+                    field: 'SCORE_HOME',
                     width: 40,
                     pinnedLeft: true
                 }, {
-                    name: 'golTrasferta',
+                    name: 'SCORE_AWAY',
                     displayName: 'FTAG',
-                    field: 'golTrasferta',
+                    field: 'SCORE_AWAY',
                     width: 40,
                     pinnedLeft: true
                 }, {
-                    name: 'giocata',
+                    name: 'GIOCATA',
                     displayName: 'Gioc.',
-                    field: 'giocata',
+                    field: 'GIOCATA',
                     width: 35,
                     pinnedLeft: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-futbol'
                 }, {
-                    name: 'percWin',
+                    name: 'PERC_1',
                     displayName: '%1',
-                    field: 'percWin',
+                    field: 'PERC_1',
                     width: 55,
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var winarray = grid.rows.map(function (e) {
-                            return e.entity.percWin;
+                            return e.entity['PERC_1'];
                         });
                         var percWinTot = 0;
                         winarray.forEach(function (match) {
                             percWinTot = percWinTot + match;
                         });
-                        if (row.entity.percWin > row.entity.percDraw && row.entity.percWin > row.entity.percLoss && row.entity.percWin > (percWinTot / winarray.length)) {
+                        if (row.entity['PERC_1'] > row.entity['PERC_X'] && row.entity['PERC_1'] > row.entity['PERC_2'] && row.entity['PERC_1'] > (percWinTot / winarray.length)) {
                             return 'best-bet';
                         }
                     }
                 }, {
-                    name: 'percDraw',
+                    name: 'PERC_X',
                     displayName: '%X',
-                    field: 'percDraw',
+                    field: 'PERC_X',
                     width: 55,
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var drawarray = grid.rows.map(function (e) {
-                            return e.entity.percDraw;
+                            return e.entity['PERC_X'];
                         });
                         var percDrawTot = 0;
                         drawarray.forEach(function (match) {
                             percDrawTot = percDrawTot + match;
                         });
-                        if (row.entity.percWin < row.entity.percDraw && row.entity.percDraw > row.entity.percLoss && row.entity.percDraw > (percDrawTot / drawarray.length)) {
+                        if (row.entity['PERC_1'] < row.entity['PERC_X'] && row.entity['PERC_X'] > row.entity['PERC_2'] && row.entity['PERC_X'] > (percDrawTot / drawarray.length)) {
                             return 'best-bet';
                         }
                     }
                 }, {
-                    name: 'percLoss',
+                    name: 'PERC_2',
                     displayName: '%2',
-                    field: 'percLoss',
+                    field: 'PERC_2',
                     width: 55,
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         var lossarray = grid.rows.map(function (e) {
-                            return e.entity.percLoss;
+                            return e.entity['PERC_2'];
                         });
                         var percLossTot = 0;
                         lossarray.forEach(function (match) {
                             percLossTot = percLossTot + match;
                         });
-                        if (row.entity.percLoss > row.entity.percDraw && row.entity.percWin < row.entity.percLoss && row.entity.percLoss > (percLossTot / lossarray.length)) {
+                        if (row.entity['PERC_2'] > row.entity['PERC_X'] && row.entity['PERC_1'] < row.entity['PERC_2'] && row.entity['PERC_2'] > (percLossTot / lossarray.length)) {
                             return 'best-bet';
                         }
                     }
                 }, {
-                    name: 'percgg',
-                    displayName: '%GG',
-                    field: 'percgg',
+                    name: 'PRON_1X2',
+                    displayName: '1X2',
+                    field: 'PRON_1X2',
                     width: 55
                 }, {
-                    name: 'percO2',
-                    displayName: '%O2.5',
-                    field: 'percO2',
+                    name: 'PERC_OVER',
+                    displayName: '%OVER',
+                    field: 'PERC_OVER',
                     width: 55
                 }],
                 data: [],
@@ -336,6 +390,13 @@
                             srvc.gridOptionsScontriDiretti.data = resp.data;                            
                         } else {
                             srvc.gridOptionsScontriDiretti.data = [];
+                            srvc.scontriDiretti = {};
+                        }
+                        return $http.post($strings.REST.SERVER+'/scontriDiretti', match).then(function (resp) {
+                            if (resp.data && resp.data.length > 0) {
+                            srvc.gridOptionsPartitePrecedenti.data = resp.data;                            
+                        } else {
+                            srvc.gridOptionsPartitePrecedenti.data = [];
                             srvc.scontriDiretti = {};
                         }
                     });
@@ -400,8 +461,9 @@
                         });
                     }
                     srvc.gridOptionsClassifica.data = dataMatchAnalysis;
+                                        
                     var dataLastFiveGame = [];                    
-                    return $http.post($strings.REST.SERVER+'/lastfivegame', dto).then(function (resp) {
+                    /* return $http.post($strings.REST.SERVER+'/lastfivegame', dto).then(function (resp) {
                         if (resp.data.length > 0) {
                             resp.data.map(function (obj) {
                                 var tmp = {};
@@ -449,10 +511,10 @@
                                 dataLastFiveGame.push(tmp);
                                 return tmp;
                             });
-                        }                        
+                        }              */          
                         dto.giornata = giornata.value.id;                                   
                         return $http.post($strings.REST.SERVER+'/nextgame', dto).then(function (resp) {
-                            var dataNextGame = [];
+                            /* var dataNextGame = [];
                             if (resp.data.length > 0) {
                                 resp.data.map(function (obj) {
                                     var tmp = {};
@@ -554,10 +616,11 @@
                                     dataNextGame.push(tmp);
                                     return tmp;
                                 });
-                            }
-                            srvc.gridOptionsNextGame.data = dataNextGame;
+                            } 
+                            srvc.gridOptionsNextGame.data = dataNextGame; */
+                            srvc.gridOptionsNextGame.data = resp.data;
                         });
-                    });
+                  //  });
                 });
             }            
         };

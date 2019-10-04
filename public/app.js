@@ -179,6 +179,7 @@
          *********************/
         $scope.gridOptionsClassifica = matchAnalysisService.gridOptionsClassifica;
         $scope.gridOptionsScontriDiretti = matchAnalysisService.gridOptionsScontriDiretti;
+        $scope.gridOptionsPartitePrecedenti = matchAnalysisService.gridOptionsPartitePrecedenti;
         $scope.gridOptionsNextGame = matchAnalysisService.gridOptionsNextGame;
         $scope.loadMatchAnalysis = function () {
             return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
