@@ -383,7 +383,8 @@
                     var match = {
                         idHome: cliccata.idHome,
                         idAway: cliccata.idAway,
-                        season: cliccata.season
+                        season: cliccata.season,
+                        giornata: cliccata['GIORNATA']
                     }
                     return $http.post($strings.REST.SERVER+'/scontriDiretti', match).then(function (resp) {
                         if (resp.data && resp.data.length > 0) {
@@ -392,7 +393,7 @@
                             srvc.gridOptionsScontriDiretti.data = [];
                             srvc.scontriDiretti = {};
                         }
-                        return $http.post($strings.REST.SERVER+'/scontriDiretti', match).then(function (resp) {
+                        return $http.post($strings.REST.SERVER+'/partitePrecedenti', match).then(function (resp) {
                             if (resp.data && resp.data.length > 0) {
                             srvc.gridOptionsPartitePrecedenti.data = resp.data;                            
                         } else {
