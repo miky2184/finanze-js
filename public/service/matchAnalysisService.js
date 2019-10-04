@@ -36,113 +36,113 @@
                     name: 'team',
                     displayName: 'SQUADRA',
                     field: 'team',
-                    width: 165,
+                    width: 120,
                     pinnedLeft: true
                 }, {
                     name: 'punti',
                     displayName: 'PT',
                     field: 'punti',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'giornata',
                     displayName: '#G',
                     field: 'giornata',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'vtot',
                     displayName: 'V',
                     field: 'vtot',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'ptot',
                     displayName: 'N',
                     field: 'ptot',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'stot',
                     displayName: 'P',
                     field: 'stot',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'gf',
                     displayName: 'GF',
                     field: 'gf',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'gs',
                     displayName: 'GS',
                     field: 'gs',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'puntic',
                     displayName: 'PTH',
                     field: 'puntic',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'giornataHome',
                     displayName: '#GH',
                     field: 'giornataHome',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'vc',
                     displayName: 'VH',
                     field: 'vc',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'pc',
                     displayName: 'NH',
                     field: 'pc',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'sc',
                     displayName: 'PH',
                     field: 'sc',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'gfc',
                     displayName: 'GFH',
                     field: 'gfc',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'gsc',
                     displayName: 'GSH',
                     field: 'gsc',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'puntit',
                     displayName: 'PTA',
                     field: 'puntit',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'giornataAway',
                     displayName: '#GA',
                     field: 'giornataAway',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'vt',
                     displayName: 'VA',
                     field: 'vt',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'pt',
                     displayName: 'NA',
                     field: 'pt',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'st',
                     displayName: 'PA',
                     field: 'st',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'gft',
                     displayName: 'GFA',
                     field: 'gft',
-                    width: 48
+                    width: 45
                 }, {
                     name: 'gst',
                     displayName: 'GSA',
                     field: 'gst',
-                    width: 48
+                    width: 45
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -156,37 +156,37 @@
                     name: 'division',
                     displayName: 'DIV',
                     field: 'division',
-                    width: 60
+                    width: 40
                 },{
                     name: 'SEASON',
                     displayName: 'Season',
                     field: 'SEASON',
-                    width: 60
+                    width: 55
                 }, {
                     name: 'GIORNATA',
                     displayName: 'Giornata',
                     field: 'GIORNATA',
-                    width: 60
+                    width: 50
                 }, {
                     name: 'HOME_DESC',
                     displayName: 'Home',
                     field: 'HOME_DESC',
-                    width: 60
+                    width: 55
                 }, {
                     name: 'AWAY_DESC',
                     displayName: 'Away',
                     field: 'AWAY_DESC',
-                    width: 60
+                    width: 55
                 }, {
                     name: 'SCORE_HOME',
                     displayName: 'FTHG',
                     field: 'SCORE_HOME',
-                    width: 60
+                    width: 50
                 }, {
                     name: 'SCORE_AWAY',
                     displayName: 'FTAG',
                     field: 'SCORE_AWAY',
-                    width: 60
+                    width: 50
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -210,7 +210,7 @@
                     name: 'dataGame',
                     displayName: 'DATA',
                     field: 'dataGame',
-                    width: 100,
+                    width: 85,
                     pinnedLeft: true
                 },{
                     name: 'squadraCasa',
@@ -228,13 +228,13 @@
                     name: 'golCasa',
                     displayName: 'FTHG',
                     field: 'golCasa',
-                    width: 48,
+                    width: 40,
                     pinnedLeft: true
                 }, {
                     name: 'golTrasferta',
                     displayName: 'FTAG',
                     field: 'golTrasferta',
-                    width: 48,
+                    width: 40,
                     pinnedLeft: true
                 }, {
                     name: 'giocata',
