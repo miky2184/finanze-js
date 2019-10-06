@@ -55,7 +55,13 @@
                 columnDefs: [{
                     field: 'DESCRIZIONE',
                      displayName: 'DA'
-            }, {
+            },{
+                field: 'INFO',
+                 displayName: 'INFO'
+        },{
+            field: 'DATA_VAL',
+             displayName: 'DATA'
+    }, {
                     field: 'contoComune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
