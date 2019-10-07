@@ -54,23 +54,28 @@
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{
                     field: 'DESCRIZIONE',
-                     displayName: 'DA'
+                     displayName: 'DA',
+                    width: '25%'
             },{
                 field: 'INFO',
-                 displayName: 'INFO'
+                 displayName: 'INFO',
+                    width: '35%'
         },{
             field: 'DATA_VAL',
-             displayName: 'DATA'
+             displayName: 'DATA',
+                    width:'10%'
     }, {
                     field: 'contoComune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency'
+                    cellFilter: 'currency',
+                    width: '15%'
             }, {
                     field: 'contoPersonale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency'
+                    cellFilter: 'currency',
+                    width: '15%'
             }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -82,7 +87,10 @@
                 return $http.get($strings.REST.SERVER + '/saldo').then(function (resp) {
                     srvc.gridOptionsBalance.data = resp.data;
                     return $http.get($strings.REST.SERVER + '/saldoavere').then(function (resp) {
-                        srvc.gridOptionsAvere.data = resp.data;
+                        srvc.gridOptionsAvere.data = resp.data.map(function(obj){
+                            obj['DATA_VAL'] = obj['DATA_VAL'].substr(0, 10);
+                            return obj;
+                        });
                     });
                 });
             }
