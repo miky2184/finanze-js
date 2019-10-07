@@ -7,7 +7,7 @@
                 showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 23,
-                enableFiltering: false,
+                enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{
                     name: 'conto',
@@ -50,7 +50,7 @@
                 showGridFooter: false,
                 showColumnFooter: true,
                 minRowsToShow: 23,
-                enableFiltering: false,
+                enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{
                     field: 'DESCRIZIONE',
