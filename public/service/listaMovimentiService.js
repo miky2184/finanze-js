@@ -140,7 +140,7 @@
                     name: 'sottocategoria',
                     displayName: 'Sottocategoria',
                     field: 'sottocategoria',
-                    width: 200,
+                    width: 220,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
@@ -171,7 +171,7 @@
                     name: 'beneficiario',
                     displayName: 'Beneficiario',
                     field: 'beneficiario',
-                    width: 200,
+                    width: 240,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'beneficiario',
                     editDropdownValueLabel: 'label',
@@ -248,7 +248,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    width: 80,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
@@ -256,7 +256,7 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    width: 80,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
@@ -272,7 +272,7 @@
                 }, */ {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    width: 80,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
@@ -280,7 +280,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    width: 80,
+                    width: 70,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
@@ -290,7 +290,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    width: 100,
+                    width: 120,
                     cellTooltip: true,
                     cellClass: 'text-right',
                     type: 'number'
@@ -301,11 +301,11 @@
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 60
+                    width: 50
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 60
+                    width: 50
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
