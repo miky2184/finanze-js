@@ -262,22 +262,16 @@
                 multiSelect: false,
                 columnDefs: [
                     {
-                    name: 'DATA_GAME',
-                    displayName: 'DATA',
-                    field: 'DATA_GAME',
-                    width: 85,
-                    pinnedLeft: true
-                },{
                     name: 'TEAM_HOME',
                     displayName: 'CASA',
                     field: 'TEAM_HOME',
-                    width: 110,
+                    width: 150,
                     pinnedLeft: true
                 }, {
                     name: 'TEAM_AWAY',
                     displayName: 'TRASFERTA',
                     field: 'TEAM_AWAY',
-                    width: 110,
+                    width: 150,
                     pinnedLeft: true
                 }, {
                     name: 'SCORE_HOME',
@@ -295,7 +289,7 @@
                     name: 'GIOCATA',
                     displayName: 'Gioc.',
                     field: 'GIOCATA',
-                    width: 35,
+                    width: 40,
                     pinnedLeft: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-futbol'
