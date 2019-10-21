@@ -615,7 +615,10 @@
                                 });
                             } 
                             srvc.gridOptionsNextGame.data = dataNextGame; */
-                            srvc.gridOptionsNextGame.data = resp.data;
+                            srvc.gridOptionsNextGame.data = resp.data.map(function(f){
+                                f['GIOCATA'] = f['GIOCATA'] === 'T' ? true : false;
+                                return f;
+                            });
                         });
                   //  });
                 });
