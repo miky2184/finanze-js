@@ -16,7 +16,7 @@
                     }
                     obj.dirty = true;
                     dataService.data.dirty = true;
-                    var numberValue = Number(newValue);
+                    /* var numberValue = Number(newValue);
                     switch (colDef.name) {
                         case 'ggLavorativi':
                             obj.retribuzioneOrdinaria = numberValue * obj.competenzaBase;
@@ -114,7 +114,7 @@
                         default:
                             break;
                     }
-                    srvc.ricalcola(obj, angular.copy(srvc.gridOptionsSalary.data));
+                    srvc.ricalcola(obj, angular.copy(srvc.gridOptionsSalary.data)); */
                 },
                 gridOptionsSalary: {
                     columnVirtualizationThreshold: 100,
@@ -545,7 +545,7 @@
                     data: [],
                     onRegisterApi: function (gridApi) {
                         srvc.gridOptionsSalary.gridApi = gridApi;
-                        // gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditSalaryFunction);
+                        gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditSalaryFunction);
                         srvc.gridOptionsSalary.gridApi.core.handleWindowResize();
                     }
                 },
