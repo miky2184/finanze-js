@@ -3,7 +3,7 @@
     angular.module('myApp')
 
         .factory('salaryService', ['dataService', 'uiGridConstants', 'utilService', '$rootScope', '$http', '$interval', '$strings', function (dataService, uiGridConstants, utilService, $rootScope, $http, $interval, $strings) {
-            // var scope = $rootScope.$new();
+            var scope = $rootScope.$new();
             var aliquote = [];
             var aliquoteMese = [];
             var srvc = {
