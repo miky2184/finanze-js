@@ -438,7 +438,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA";
+                    return !dataService.data.admin;
                 },
                 label: 'Refreshs'
             },
