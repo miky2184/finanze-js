@@ -142,7 +142,7 @@
                         name: 'data',
                         displayName: 'Data',
                         field: 'data',
-                        width: 100,
+                        width: 120,
                         cellFilter: 'date:\'yyyy-MM-dd\'',
                         cellClass: 'disable',
                         pinnedLeft: true
@@ -150,11 +150,12 @@
                         name: 'retribuzioneOrdinaria',
                         displayName: 'Stipendio Lordo',
                         field: 'retribuzioneOrdinaria',
-                        width: 100,
+                        width: 120,
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                        footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.avg
 }, {
                         name: 'retribuzioneOrdinaria',
@@ -163,7 +164,7 @@
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
-                        width: 100
+                        width: 120
 }, {
                         name: 'totaleRitenute',
                         displayName: 'Totale Ritenute',
@@ -171,7 +172,8 @@
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
-                        width: 100,
+                        width: 120,
+                        footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'totaleCompetenze',
@@ -180,166 +182,178 @@
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
-                        width: 100,
+                        width: 120,
+                        footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'stipendioNetto',
                         displayName: 'Stipendio Netto',
                         field: 'stipendioNetto',
-                        width: 100,
+                        width: 120,
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable-green',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'ggLavorativi',
                         displayName: 'Giorni INPS',
                         field: 'ggLavorativi',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'ggDetrazioni',
                         displayName: 'Giorni Detrazioni',
                         field: 'ggDetrazioni',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'festivitaNonGoduta',
                         displayName: 'Festività Non Goduta',
                         field: 'festivitaNonGoduta',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'competenzaBase',
                         displayName: 'Competenza Base',
                         field: 'competenzaBase',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'liqRol',
                         displayName: 'Ore ROL Liquidate',
                         field: 'liqRol',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compRol',
                         displayName: 'Compenso ROL',
                         field: 'compRol',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'straordinario25',
                         displayName: 'Str. 25%',
                         field: 'straordinario25',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compStraordinario25',
                         displayName: 'Comp. Str. 25%',
                         field: 'compStraordinario25',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'maggiorazione25',
                         displayName: 'Magg. Str. 25%',
                         field: 'maggiorazione25',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compMaggiorazione25',
                         displayName: 'Comp. Magg. Str. 25%',
                         field: 'compMaggiorazione25',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'straordinario30',
                         displayName: 'Str. 30%',
                         field: 'straordinario30',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compStraordinario30',
                         displayName: 'Comp. Str. 30%',
                         field: 'compStraordinario30',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'maggiorazione30',
                         displayName: 'Magg. Str. 30%',
                         field: 'maggiorazione30',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compMaggiorazione30',
                         displayName: 'Comp. Magg. Str. 30%',
                         field: 'compMaggiorazione30',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'straordinario50',
                         displayName: 'Str. 50%',
                         field: 'straordinario50',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compStraordinario50',
                         displayName: 'Comp. Str. 50%',
                         field: 'compStraordinario50',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'maggiorazione50',
                         displayName: 'Magg. Str. 50%',
                         field: 'maggiorazione50',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compMaggiorazione50',
                         displayName: 'Comp. Magg. Str. 50%',
                         field: 'compMaggiorazione50',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'maggiorazione55',
                         displayName: 'Magg. Str. 55%',
                         field: 'maggiorazione55',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compMaggiorazione55',
                         displayName: 'Comp. Magg. Str. 55%',
                         field: 'compMaggiorazione55',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'maggiorazione60',
                         displayName: 'Magg. Str. 60%',
                         field: 'maggiorazione60',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'compMaggiorazione60',
                         displayName: 'Comp. Magg. Str. 60%',
                         field: 'compMaggiorazione60',
                         cellClass: 'text-right',
-                        width: 100
+                        width: 120
 }, {
                         name: 'erogazioneSpeciale',
                         displayName: 'Erogazione Speciale',
                         field: 'erogazioneSpeciale',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'contributoSindacale',
@@ -347,7 +361,8 @@
                         field: 'contributoSindacale',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'periquativo',
@@ -355,7 +370,8 @@
                         field: 'periquativo',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'settetrenta',
@@ -363,7 +379,8 @@
                         field: 'settetrenta',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'premiInNatura',
@@ -371,69 +388,78 @@
                         field: 'premiInNatura',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'impPrevNonArr',
                         displayName: 'Imponibile Previdenziale NON Arrotondato',
                         field: 'impPrevNonArr',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'impPrevArr',
                         displayName: 'Imponibile Previdenziale Arrotondato',
                         field: 'impPrevArr',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'imponibilePrevistoAnnuo',
                         displayName: 'Imponibile Previsto Annuo',
                         field: 'imponibilePrevistoAnnuo',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
-                        enableCellEdit: false
+                        enableCellEdit: false,
+                            footerCellFilter: 'number:2',
+                        aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'ritenuteMeseInps',
                         displayName: 'Ritenute Mese INPS',
                         field: 'ritenuteMeseInps',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'imponibileFiscaleMese',
                         displayName: 'Imponibile Fiscale Mese',
                         field: 'imponibileFiscaleMese',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'ritenutaFiscaleMeseLorda',
                         displayName: 'Ritenuta Fiscale Mese lorda',
                         field: 'ritenutaFiscaleMeseLorda',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'detrazioniImposta',
                         displayName: 'Detrazioni Imposta',
                         field: 'detrazioniImposta',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'detrazioneConiuge',
@@ -441,7 +467,8 @@
                         field: 'detrazioneConiuge',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'detrazioneFigli',
@@ -449,25 +476,28 @@
                         field: 'detrazioneFigli',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'ritenutaFiscaleMeseNetta',
                         displayName: 'Ritenuta Fiscale Mese Netta',
                         field: 'ritenutaFiscaleMeseNetta',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'bonusRenzi',
                         displayName: 'Bonus DL 66 del 24/04/2014',
                         field: 'bonusRenzi',
                         cellFilter: 'currency',
-                        width: 100,
+                        width: 120,
                         cellClass: 'disable',
                         enableCellEdit: false,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'conguaglio',
@@ -475,7 +505,8 @@
                         field: 'conguaglio',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'conguaglioRenzi',
@@ -483,7 +514,8 @@
                         field: 'conguaglioRenzi',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'conguaglioDebito',
@@ -491,7 +523,8 @@
                         field: 'conguaglioDebito',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'conguaglioDebitoRenzi',
@@ -499,7 +532,8 @@
                         field: 'conguaglioDebitoRenzi',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'addizionaleComunaleVariabile',
@@ -507,7 +541,8 @@
                         field: 'addizionaleComunaleVariabile',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'addizionaleComunaleVariabileAcconto',
@@ -515,7 +550,8 @@
                         field: 'addizionaleComunaleVariabileAcconto',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'addizionaleRegionaleFissa',
@@ -523,7 +559,8 @@
                         field: 'addizionaleRegionaleFissa',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'addizionaleRegionaleVariabile',
@@ -531,7 +568,8 @@
                         field: 'addizionaleRegionaleVariabile',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
                         name: 'abbonamentoAnnualeAtm',
@@ -539,7 +577,8 @@
                         field: 'abbonamentoAnnualeAtm',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
-                        width: 100,
+                        width: 120,
+                            footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }],
                     data: [],
