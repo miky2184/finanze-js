@@ -3,7 +3,7 @@
     angular.module('myApp')
 
         .factory('salaryService', ['dataService', 'uiGridConstants', 'utilService', '$rootScope', '$http', '$interval', '$strings', function (dataService, uiGridConstants, utilService, $rootScope, $http, $interval, $strings) {
-            var scope = $rootScope.$new();
+            // var scope = $rootScope.$new();
             var aliquote = [];
             var aliquoteMese = [];
             var srvc = {
@@ -545,12 +545,15 @@
                     data: [],
                     onRegisterApi: function (gridApi) {
                         srvc.gridOptionsSalary.gridApi = gridApi;
-                        gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditSalaryFunction);
+                        // gridApi.edit.on.afterCellEdit(scope, srvc.afterCellEditSalaryFunction);
                         srvc.gridOptionsSalary.gridApi.core.handleWindowResize();
                     }
                 },
                 loadWork: function () {
-                    return $http.get($strings.REST.SERVER+'/aliquote').then(function (response) {
+                    return $http.get($strings.REST.SERVER+'/salarynew').then(function (response) {
+                        srvc.gridOptionsSalary.data = response.data;
+                            });                        
+                    /* return $http.get($strings.REST.SERVER+'/aliquote').then(function (response) {
                         aliquote = response.data;
                         return $http.get($strings.REST.SERVER+'/aliquoteMese').then(function (response) {
                             aliquoteMese = response.data;
@@ -608,7 +611,7 @@
                                 srvc.gridOptionsSalary.data = salaryData;
                             });
                         });
-                    });
+                    }); */
                 },
                 ricalcola: function (obj, salaryData) {
                     obj.ggMese = utilService.ultimo(obj.mese, obj.anno);
