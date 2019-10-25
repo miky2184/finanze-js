@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -377,7 +377,7 @@
                     }
                 },
                 disabled: function () {
-                    return !dataService.data.admin;
+                    return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Add'
             },
@@ -394,7 +394,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function () {
-                    return !dataService.data.admin;
+                    return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Delete'
             },
@@ -415,7 +415,7 @@
                     }
                 },
                 disabled: function () {
-                    return !dataService.data.admin;
+                    return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Copy'
             },
@@ -431,10 +431,14 @@
                         return spesaService.loadSpesa().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
+                    } else if (maschera === "SA"){
+                        return salaryService.loadWork().finally(function (f) {
+                            modalService.hideWaitingModal();
+                        });
                     }
                 },
                 disabled: function () {
-                    return !dataService.data.admin;
+                    return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Refreshs'
             },

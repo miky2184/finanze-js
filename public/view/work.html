@@ -1,1 +1,8 @@
-<div id="gridS" ui-grid="gridOptionsSalary" class="myGrid" ui-grid-cellnav ui-grid-edit  ui-grid-pinning  ui-grid-auto-resize></div>
+<div layout="column" class="listaMovimenti">
+  <div flex layout="row" id="grid1" ui-grid="gridOptionsSalary" ui-grid-cellnav ui-grid-edit  ui-grid-pinning  ui-grid-auto-resize></div>
+  <div flex layout="row" layout-align="start end">
+    <md-button aria-label="{{button.label}}" layout="column" ng-repeat="button in actionButtons" class="md-fab md-mini md-primary" style='margin-left: 0px;'  ng-click="button.listener(gridOptions, 'SA')" ng-disabled="button.disabled('SA')">
+      <md-icon md-svg-src="{{button.src}}"></md-icon>
+    </md-button>
+  </div>
+</div>
