@@ -376,7 +376,7 @@
                         });
                     }
                 },
-                disabled: function () {
+                disabled: function (maschera) {
                     return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Add'
@@ -393,7 +393,7 @@
                     }
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
-                disabled: function () {
+                disabled: function (maschera) {
                     return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Delete'
@@ -414,7 +414,7 @@
                         gridOptions.gridApi.selection.clearSelectedRows();
                     }
                 },
-                disabled: function () {
+                disabled: function (maschera) {
                     return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Copy'
@@ -437,7 +437,7 @@
                         });
                     }
                 },
-                disabled: function () {
+                disabled: function (maschera) {
                     return !dataService.data.admin || maschera === "SA";
                 },
                 label: 'Refreshs'
