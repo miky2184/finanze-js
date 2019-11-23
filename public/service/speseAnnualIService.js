@@ -45,7 +45,7 @@
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
                     field: 'SOTTOCATEGORIA',
-                    width: 165,
+                    width: '*',
                     pinnedLeft: true
                 }, {
                     name: 'TOTALE_2015',
@@ -54,6 +54,7 @@
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 }, {
                     name: 'TOTALE_2016',
@@ -62,6 +63,7 @@
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
                     name: 'TOTALE_2017',
@@ -70,6 +72,7 @@
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
                     name: 'TOTALE_2018',
@@ -86,6 +89,7 @@
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
                     name: 'TOTALE_2020',
@@ -94,6 +98,7 @@
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },],
                 data: [],
