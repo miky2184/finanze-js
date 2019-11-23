@@ -58,6 +58,7 @@
     <script type="text/javascript" src="service/pivotSpesaService.js"></script>
     <script type="text/javascript" src="service/passwordService.js"></script>
     <script type="text/javascript" src="service/predmatchService.js"></script>
+    <script type="text/javascript" src="service/speseAnnualIService.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
@@ -111,7 +112,12 @@
                         <div ng-include="'view/budget.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Spesa">
+                <md-tab label="Spese Annue" md-on-select="loadSpeseAnnue()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/speseAnnue.html'"></div>
+                    </md-content>
+                </md-tab>
+               <!-- <md-tab label="Spesa">
                 <md-content class="md-padding">
                 <div ng-include="'view/spesa.html'"></div>
                 </md-content>
@@ -135,7 +141,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotAnno.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab> -->
                 <md-tab label="Andamento Mese" md-on-select="loadPivotMese(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotMese.html'"></div>
