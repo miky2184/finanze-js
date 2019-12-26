@@ -261,7 +261,7 @@
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
                     headerCellClass: 'icon visualizzare'
-                },/* {
+                }, {
                     field: 'budget',
                     displayName: ' ',
                     width: 80,
@@ -269,7 +269,7 @@
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-btc',
                     headerCellClass: 'icon flagbudget'
-                }, */ {
+                }, {
                     field: 'cartaCredito',
                     displayName: ' ',
                     width: 70,
