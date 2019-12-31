@@ -340,30 +340,35 @@ label-settings {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f3cd";
+    margin-left: 26px;
 }
 
 .contabilizzata::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f24e";
+    margin-left: 26px;
 }
 
 .flagbudget::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f032";
+    margin-left: 26px;
 }
 
 .visualizzare::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f06e";
+    margin-left: 26px;
 }
 
 .cartacredito::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f09d";
+    margin-left: 26px;
 }
 
 .fissa::before {
