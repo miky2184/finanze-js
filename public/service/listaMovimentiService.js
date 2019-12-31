@@ -301,11 +301,11 @@
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 50
+                    width: 60
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 50
+                    width: 60
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
