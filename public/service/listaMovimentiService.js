@@ -109,7 +109,7 @@
                     name: 'categoria',
                     displayName: 'Categoria',
                     field: 'categoria',
-                    width: 150,
+                    width: 220,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
@@ -290,7 +290,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    width: 120,
+                    width: 130,
                     cellTooltip: true,
                     cellClass: 'text-right',
                     type: 'number'
