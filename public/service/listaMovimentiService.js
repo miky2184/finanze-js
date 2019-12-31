@@ -248,7 +248,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    width: 70,
+                    width: '*',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
@@ -256,7 +256,7 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    width: 70,
+                    width: '*',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
@@ -264,7 +264,7 @@
                 }, {
                     field: 'budget',
                     displayName: ' ',
-                    width: 80,
+                    width: '*',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-bold',
@@ -272,7 +272,7 @@
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    width: 70,
+                    width: '*',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
@@ -280,7 +280,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    width: 70,
+                    width: '*',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
