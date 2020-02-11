@@ -56,7 +56,7 @@
             },
             loadPassword: function () {
                 return $http.get($strings.REST.SERVER+'/password').then(function (resp) {
-                    srvc.gridOptions.data = resp.data;
+                    srvc.gridOptionsPassword.data = resp.data;
                 });
             }
         };
