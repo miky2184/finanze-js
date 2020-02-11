@@ -50,7 +50,7 @@
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    srvc.gridOptions.gridApi = gridApi;       
+                    srvc.gridOptionsPassword.gridApi = gridApi;       
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
                 }
             },
