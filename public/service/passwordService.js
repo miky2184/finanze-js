@@ -1,9 +1,16 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('passwordService', ['modalService', '$http', '$interval', 'dataService', '$rootScope', 'settingsSpesaService', '$strings', function (modalService, $http, $interval, dataService, $rootScope, settingsSpesaService, $strings) {
-       
+        var scope = $rootScope.$new();
+        var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+            dataService.data.dirty = true;
+            rowEntity.dirty = true;            
+        };
         var srvc = {
-            gridOptions: {
+            gridOptionsPassword: {
                 minRowsToShow: 21,
                 enableFiltering: true,
                 enableRowSelection: true,
@@ -43,7 +50,8 @@
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    srvc.gridOptions.gridApi = gridApi;                    
+                    srvc.gridOptions.gridApi = gridApi;       
+                    gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
                 }
             },
             loadPassword: function () {

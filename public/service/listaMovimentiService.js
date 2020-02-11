@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -373,11 +373,21 @@
                             pesoGrammi: 0,
                             prezzo: 0,
                             prezzoAlKilo: 0
+                        })
+                    } else if (maschera === "PW") {
+                        gridOptions.data.unshift({
+                            newRow: true,                            
+                            dirty: true,
+                            SITE:'',
+                            USER:'',
+                            PWD:'',
+                            URL:'',
+                            NOTE:''                            
                         });
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA";
+                    return !dataService.data.admin || maschera === "SA" || maschera === "PW";
                 },
                 label: 'Add'
             },
@@ -394,7 +404,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW";
                 },
                 label: 'Delete'
             },
@@ -433,6 +443,10 @@
                         });
                     } else if (maschera === "SA"){
                         return salaryService.loadWork().finally(function (f) {
+                            modalService.hideWaitingModal();
+                        });
+                    } else if (maschera === "PW"){
+                        return passwordService.loadPassword().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
                     }

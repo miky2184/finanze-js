@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', 'passwordService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService, passwordService) {
         var srvc = {
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti();/*.then(function (f) {
@@ -86,6 +86,9 @@
                 dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
                     return sf.dirty;
                 }); */
+                dto.passwords = passwordService.gridOptionsPassword.data.filter(function(pwd){
+                    return pwd.dirty;
+                });
                 if (dataService.data.dirty) {
                     var modalSavingInstance = $uibModal.open({
                         size: 'sm',
