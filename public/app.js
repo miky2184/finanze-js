@@ -276,7 +276,7 @@
         /*********************
             TAB PASSWORD
         *********************/
-        $scope.gridOptionsPassword = passwordService.gridOptions;
+        $scope.gridOptionsPassword = passwordService.gridOptionsPassword;
         $scope.loadPassword = function () {
             return passwordService.loadPassword();
         };        
