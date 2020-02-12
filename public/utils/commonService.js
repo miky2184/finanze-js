@@ -98,7 +98,9 @@
                     });
                     return $http.post($strings.REST.SERVER + '/save', dto).then(function (resp) {
                         return srvc.loadData().then(function (resp) {
-                            settingsService.loadSettings()
+                            settingsService.loadSettings().then(function (resp){
+                                passwordService.loadPassword();
+                            })
                         });
                     }).finally(function (fn) {
                         dataService.data.dirty = false;
