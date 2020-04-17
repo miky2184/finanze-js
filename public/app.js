@@ -288,16 +288,15 @@
             var idField = fieldLevel.editDropdownIdLabel;
             var valueField = fieldLevel.editDropdownValueLabel;
             var initial = context.row ? context.row.entity[context.col.field] : context.entity[context.col.field];
+            var retValue = initial || input
             if (map) {
                 for (var i = 0; i < map.length; i++) {
                     if (map[i][idField] === input) {
-                        return map[i][valueField];
+                        retValue = map[i][valueField];
                     }
                 }
-            } else if (initial) {
-                return initial;
-            }
-            return input;
+            } 
+            return retValue;
         };
     }).filter('to_trusted', ['$sce', function ($sce) {
         return function (text) {
