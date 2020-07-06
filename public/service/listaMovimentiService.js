@@ -171,7 +171,7 @@
                     name: 'beneficiario',
                     displayName: 'Beneficiario',
                     field: 'beneficiario',
-                    width: 240,
+                    width: 200,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'beneficiario',
                     editDropdownValueLabel: 'label',
@@ -297,7 +297,7 @@
                 }, {
                     field: 'info',
                     cellTooltip: true,
-                    width: '*'
+                    width: 350
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
@@ -305,7 +305,7 @@
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 60
+                    width: '*'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
