@@ -100,10 +100,10 @@
           TAB BILANCIO
          *********************/
         $scope.gridOptionsBalance = balanceService.gridOptionsBalance;
+        $scope.gridOptionsAvere = balanceService.gridOptionsAvere;
         $scope.loadBalance = function () {
             return balanceService.loadBalance();
         };
-        $scope.gridOptionsAvere = balanceService.gridOptionsAvere;
 
         /*********************
            TAB PIVOT ANNO
@@ -212,12 +212,12 @@
         /*********************
             TAB PREDMATCH
          *********************/
-        $scope.loadPredMatch = function (season) {            
-            return predmatchService.loadPredMatch(season);
-        };        
         $scope.gridOptionsPredMatch = predmatchService.gridOptionsPredMatch;
         $scope.gridOptionsBestBet = predmatchService.gridOptionsBestBet;
-        $scope.gridOptionsBest10Bet = predmatchService.gridOptionsBest10Bet;        
+        $scope.gridOptionsBest10Bet = predmatchService.gridOptionsBest10Bet;       
+        $scope.loadPredMatch = function () {            
+            return predmatchService.loadPredMatch();
+        };                 
 
         /*********************
             TAB FANTACALCIO

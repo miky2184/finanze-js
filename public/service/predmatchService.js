@@ -44,31 +44,31 @@
                         name: 'DATA_GAME',
                         displayName: 'DATA',
                         field: 'DATA_GAME',
-                        width: '*',
+                        width: 100,
                         pinnedLeft: true
 }, {
                         name: 'giornata',
                         displayName: 'G.',
                         field: 'giornata',
-                        width: 50,
+                        width: 40,
                         pinnedLeft: true
 }, {
                         name: 'division',
                         displayName: 'DIV',
                         field: 'division',
-                        width: 70,
+                        width: 50,
                         pinnedLeft: true
 }, {
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 200,
+                        width: 160,
                         pinnedLeft: true
 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 200,
+                        width: 160,
                         pinnedLeft: true
 }, {
                         name: 'golCasa',
@@ -221,13 +221,13 @@
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 200,
+                        width: 160,
                         pinnedLeft: true
 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 200,
+                        width: 160,
                         pinnedLeft: true
 }, {
                         name: 'PERC_1',
@@ -321,13 +321,13 @@
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 200,
+                        width: 160,
                         pinnedLeft: true
 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 200,
+                        width: 160,
                         pinnedLeft: true
 }, {
                         name: 'PERC_1',
@@ -366,13 +366,10 @@
                     srvc.gridOptionsBest10Bet.gridApi.core.handleWindowResize();
                 }
             },
-            loadPredMatch: function (season) {
-                if (!season) {
-                    return;
-                }
-                var dto = {
-                    season: season.value.id
-                };
+            loadPredMatch: function () {
+
+                var dto = {}
+                                
                 return $http.post($strings.REST.SERVER + '/predmatch', dto).then(function (resp) {
 
                     return $http.get($strings.REST.SERVER + '/bestbet').then(function (response) {

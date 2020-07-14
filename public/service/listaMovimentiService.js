@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', 'predmatchService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService, predmatchService) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -312,38 +312,7 @@
                     srvc.gridOptions.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
                 }
-            },
-            exportBtn: {
-                src: 'images/baseline-get_app-24px.svg',
-                listener: function (gridOptions, maschera) {
-                    if (maschera === "LM") {
-                        return $http.get($strings.REST.SERVER + '/export', {
-                            responseType: 'arraybuffer'
-                        }).then(function (result) {
-                            var blob = new Blob([result.data], {
-                                type: result.headers()['content-type']
-                            });
-                            var alink = angular.element('<a/>');
-                            var link = alink[0];
-                            link.href = window.URL.createObjectURL(blob);
-                            link.download = 'ListaMovimenti_' + utilService.dateToString(new Date()) + '.xlsx';
-                            link.target = '_blank';
-
-                            var evt = document.createEvent('MouseEvents');
-                            evt.initMouseEvent('click', true, true, window,
-                                0, 0, 0, 0, 0, false, false, false, false, 0, null);
-
-                            link.dispatchEvent(evt);
-
-                            return result;
-                        });
-                    }
-                },
-                disabled: function () {
-                    return !dataService.data.admin;
-                },
-                label: 'Export'
-            },
+            },            
             addBtn: {
                 src: 'images/baseline-add_circle_outline-24px.svg',
                 listener: function (gridOptions, maschera) {
@@ -387,7 +356,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA";
+                    return !dataService.data.admin || maschera === "SA" || maschera=="PM";
                 },
                 label: 'Add'
             },
@@ -404,7 +373,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA";
+                    return !dataService.data.admin || maschera === "SA" || maschera =="PM";
                 },
                 label: 'Delete'
             },
@@ -425,7 +394,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM";
                 },
                 label: 'Copy'
             },
@@ -447,6 +416,10 @@
                         });
                     } else if (maschera === "PW"){
                         return passwordService.loadPassword().finally(function (f) {
+                            modalService.hideWaitingModal();
+                        });
+                    } else if (maschera === "PM"){
+                        return predmatchService.loadPredMatch().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
                     }

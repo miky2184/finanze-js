@@ -1,21 +1,19 @@
-<div layout="column">
-    <div flex="5" layout="row" layout-align="center center">        
-        <div flex layout="column">            
-            <md-select placeholder="Season" ng-model="season.value" ng-model-options="{trackBy: $value.id}" md-on-open="loadSeasonsPreMatch()" style="min-width: 200px;" ng-change="loadPredMatch(season)">
-                <md-option ng-value="season" ng-repeat="season in seasonsPreMatch">{{season.name}}</md-option>
-            </md-select>
-        </div>        
-    </div>
+<div layout="column">    
     <div flex layout="row">
-        <div flex="60" layout="column">
+        <div flex="65" layout="column">
             <p class="table-header"><strong>PRED-MATCH</strong></p>
             <div flex layout="row" id="grid1" ui-grid="gridOptionsPredMatch"  ui-grid-pinning ui-grid-edit ui-grid-exporter ui-grid-auto-resize></div>
         </div>     
-        <div flex="40" layout="column">
+        <div flex="35" layout="column">
             <p class="table-header"><strong>BEST 10 BET</strong></p>
             <div flex="40" layout="row" id="grid1" ui-grid="gridOptionsBest10Bet"  ui-grid-pinning ui-grid-exporter ui-grid-auto-resize></div>
             <p class="table-header"><strong>BEST DIV BET</strong></p>
             <div flex="60" layout="row" id="grid3" ui-grid="gridOptionsBestBet"  ui-grid-pinning ui-grid-exporter ui-grid-auto-resize></div>                        
         </div>  
+    </div>
+    <div flex layout="row" layout-align="start end">
+        <md-button aria-label="{{button.label}}" layout="column" ng-repeat="button in actionButtons" class="md-fab md-mini md-primary" style='margin-left: 0px;'  ng-click="button.listener(gridOptions, 'PM')" ng-disabled="button.disabled('PM')">
+          <md-icon md-svg-src="{{button.src}}"></md-icon>
+        </md-button>
     </div>
 </div>
