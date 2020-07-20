@@ -9,7 +9,22 @@
             rowEntity.dirty = true;
             dataService.data.dirty = true;
         };
-        var srvc = {            
+        var srvc = {   
+            gridOptionsSupermercato: {
+                minRowsToShow: 10,
+                enableFiltering: true,
+                enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+                rowTemplate: 'templates/rows/deletableRow.html',
+                columnDefs: [{
+                    field: 'label',
+                    displayName: 'Supermercato'
+                }],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridOptionsSupermercato.gridApi = gridApi;
+                    gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                }
+            },         
             gridOptionsReparto: {
                 minRowsToShow: 10,
                 enableFiltering: true,
@@ -183,6 +198,9 @@
                 }
             },
             loadSettingsSpesa: function () {
+                srvc.gridOptionsSupermercato.data = dataService.data.dropdownSupermercato.filter(function (j) {
+                    return j.supermecato !== "";
+                });
                 srvc.gridOptionsReparto.data = dataService.data.dropdownReparto.filter(function (j) {
                     return j.reparto !== "";
                 });
@@ -210,6 +228,7 @@
                 $interval(srvc.gridOptionsFamiglia.gridApi.core.handleWindowResize, 100, 10);
                 $interval(srvc.gridOptionsReprSott.gridApi.core.handleWindowResize, 100, 10);
                 $interval(srvc.gridOptionsSottFamg.gridApi.core.handleWindowResize, 100, 10);
+                $interval(srvc.gridOptionsSupermercato.gridApi.core.handleWindowResize, 100, 10);
             }
         };
         return srvc;

@@ -180,7 +180,7 @@
                     displayName: 'Descrizione Referenza',
                     field: 'descrizione',
                     type: 'text',
-                    width: 300                    
+                    width: '*'                    
                 }, {
                     name: 'prezzo',
                     displayName: 'Prezzo Acqs.',
@@ -207,11 +207,33 @@
                     type: 'number',
                     width: 50
                 }, {
-                    name: 'negozio',
-                    displayName: 'Negozio',
-                    field: 'negozio',
-                    type: 'text',
-                    width: '*'
+                    name: 'supermercato',
+                    displayName: 'Supermercato',
+                    field: 'supermercato',
+                    width: 300,
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
+                    editDropdownIdLabel: 'supermercato',
+                    editDropdownValueLabel: 'label',
+                    cellFilter: 'griddropdown:this',
+                    editDropdownOptionsFunction: function (rowEntity, colDef) {
+                        return colDef.editDropdownOptionsArray.filter(function (a) {
+                            return !a.deleted;
+                        });
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownSupermercato) {
+                                var cell = dataService.data.dropdownSupermercato.filter(function (mkt) {
+                                    return mkt.supermercato === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -245,18 +267,28 @@
                                 });
                             }
                             dataService.data.dropdownFamiglia = resp.data;
-                            return $http.get($strings.REST.SERVER+'/spesa').then(function (resp) {
-                                resp.data.map(function(r){
-                                   r.peso = r.peso === 'T' ? true : false;
-                                   return r;
+                            return $http.get($strings.REST.SERVER+'/supermercato').then(function (resp){
+                                if (resp.data){
+                                    resp.data.unshift({
+                                        "supermercato":"",
+                                        "label":""
+                                    });
+                                }
+                                dataService.data.dropdownSupermercato = resp.data;
+                                return $http.get($strings.REST.SERVER+'/spesa').then(function (resp) {
+                                    resp.data.map(function(r){
+                                       r.peso = r.peso === 'T' ? true : false;
+                                       return r;
+                                    });
+                                    dataService.data.backupDataSpesa = angular.copy(resp.data);
+                                    srvc.gridOptionsSpesa.data = resp.data;
+                                    srvc.gridOptionsSpesa.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownReparto;
+                                    srvc.gridOptionsSpesa.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownSottoreparto;
+                                    srvc.gridOptionsSpesa.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownFamiglia;
+                                    srvc.gridOptionsSpesa.columnDefs[10].editDropdownOptionsArray = dataService.data.dropdownSupermercato;
+                                    settingsSpesaService.loadSettingsSpesa();
                                 });
-                                dataService.data.backupDataSpesa = angular.copy(resp.data);
-                                srvc.gridOptionsSpesa.data = resp.data;
-                                srvc.gridOptionsSpesa.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownReparto;
-                                srvc.gridOptionsSpesa.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownSottoreparto;
-                                srvc.gridOptionsSpesa.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownFamiglia;
-                                settingsSpesaService.loadSettingsSpesa();
-                            });
+                            })                            
                         });
                     });
                 });

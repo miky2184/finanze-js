@@ -264,6 +264,7 @@
         $scope.gridOptionsFamiglia = settingsSpesaService.gridOptionsFamiglia;
         $scope.gridOptionsReprSott = settingsSpesaService.gridOptionsReprSott;
         $scope.gridOptionsSottFamg = settingsSpesaService.gridOptionsSottFamg;
+        $scope.gridOptionsSupermercato = settingsSpesaService.gridOptionsSupermercato;
 
         /*********************
             TAB PIVOT SPESA
