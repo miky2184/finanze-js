@@ -262,34 +262,34 @@
                 multiSelect: false,
                 columnDefs: [
                     {
-                    name: 'TEAM_HOME',
+                    name: 'HOME',
                     displayName: 'CASA',
-                    field: 'TEAM_HOME',
-                    width: 150,
+                    field: 'HOME',
+                    width: 145,
                     pinnedLeft: true
                 }, {
-                    name: 'TEAM_AWAY',
+                    name: 'AWAY',
                     displayName: 'TRASFERTA',
-                    field: 'TEAM_AWAY',
-                    width: 150,
+                    field: 'AWAY',
+                    width: 145,
                     pinnedLeft: true
                 }, {
                     name: 'golCasa',
                     displayName: 'FTHG',
                     field: 'golCasa',
-                    width: 40,
+                    width: 45,
                     pinnedLeft: true
                 }, {
                     name: 'golTrasferta',
                     displayName: 'FTAG',
                     field: 'golTrasferta',
-                    width: 40,
+                    width: 45,
                     pinnedLeft: true
                 }, {
                     name: 'giocata',
                     displayName: 'Gioc.',
                     field: 'giocata',
-                    width: 40,
+                    width: 45,
                     pinnedLeft: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-futbol'
@@ -348,11 +348,6 @@
                     name: 'PRON_1X2',
                     displayName: '1X2',
                     field: 'PRON_1X2',
-                    width: 55
-                }, {
-                    name: 'PERC_OVER',
-                    displayName: '%OVER',
-                    field: 'PERC_OVER',
                     width: 55
                 }],
                 data: [],
@@ -462,7 +457,7 @@
                     var dataLastFiveGame = [];                    
                         if (giornata && giornata.value && giornata.value.id) {
                             dto.giornata = giornata.value.id;                                   
-                            return $http.post($strings.REST.SERVER+'/nextgame', dto).then(function (resp) {                            
+                            return $http.post($strings.REST.SERVER+'/nextmatch', dto).then(function (resp) {                            
                                 srvc.gridOptionsNextGame.data = resp.data.map(function(f){
                                     f['giocata'] = f['giocata'] === 'T' ? true : false;
                                     return f;

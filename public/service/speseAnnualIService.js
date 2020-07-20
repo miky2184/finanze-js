@@ -100,7 +100,16 @@
                     cellFilter: 'currency',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                },],
+                },{
+                    name: 'TOTALE_2021',
+                    displayName: '2021',
+                    field: 'TOTALE_2021',
+                    width: 130,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: 'text-right',
+                    aggregationType: uiGridConstants.aggregationTypes.sum
+                }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridSpeseAnnuali.gridApi = gridApi;

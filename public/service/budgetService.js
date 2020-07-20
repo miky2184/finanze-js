@@ -47,7 +47,36 @@
                     field: 'SOTTOCATEGORIA',
                     width: 165,
                     pinnedLeft: true
-                }, {
+                }, 
+                {
+                    name: 'PERC_BUDG',
+                    displayName: '%',
+                    field: 'PERC_BUDG',
+                    width: 50,
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity['TOT_ANNO'] !== null && row.entity['TOT_ANNO'] !== 0) {
+                            if (row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.GREEN) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.LIGHT_GREEN) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.YELLOW) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.BUDGET.ORANGE) {
+                                return 'venticinqperc';
+                            } else {
+                                if (row.entity['TOT_ANNO'] < 0) {
+                                    return 'zeroperc';
+                                } else {
+                                    return 'centoperc';
+                                }
+                            }
+                        }
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.avg,
+                    pinnedLeft: true
+                },
+
+                {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
                     field: 'BUDG_TOT_ANNO',

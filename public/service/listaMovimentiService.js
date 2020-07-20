@@ -467,7 +467,7 @@
                                     dataService.data.editDropDownTipoContoArray = response.data;
                                     return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
                                         dataService.data.editDropDownContoArray = response.data;
-                                        return $http.get($strings.REST.SERVER + '/all').then(function (response) {
+                                        return $http.get($strings.REST.SERVER + '/listaMovimenti').then(function (response) {
                                             var resultsData = [];
                                             response.data.forEach(function (row) {
                                                 var newRow = {};

@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+        integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link href="/node_modules/angular-ui-grid/ui-grid.css" type="text/css" rel="stylesheet">
     <link href="/main.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/node_modules/nvd3/build/nv.d3.css">
@@ -78,14 +79,16 @@
                 <label>Password</label>
                 <input ng-model="password" type="password">
             </md-input-container>
-            <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini" ng-click="login()">
+            <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini"
+                ng-click="login()">
                 <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>
             </md-button>
             <div>
                 <script type="text/ng-template" id="alert.html">
                     <div ng-transclude></div>
 </script>
-                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
+                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}
+                </div>
             </div>
         </md-content>
     </div>
@@ -117,22 +120,7 @@
                         <div ng-include="'view/speseAnnue.html'"></div>
                     </md-content>
                 </md-tab>
-               <!-- <md-tab label="Spesa">
-                <md-content class="md-padding">
-                <div ng-include="'view/spesa.html'"></div>
-                </md-content>
-                </md-tab>
-                <md-tab label="Pivot Spesa" md-on-select="loadPivotSpesa()">
-                <md-content class="md-padding">
-                <div ng-include="'view/pivotspesa.html'"></div>
-                </md-content>
-                </md-tab>
-                <md-tab label="Impostazioni Spesa">
-                <md-content class="md-padding">
-                <div ng-include="'view/settingsSpesa.html'"></div>
-                </md-content>
-                </md-tab>
-                <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
+                <!-- <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
                     <md-content class="md-padding">
                         <div ng-include="'view/reportMensile.html'"></div>
                     </md-content>
@@ -162,7 +150,7 @@
                         <div ng-include="'view/work.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis(season, giornata)">
+                <!-- <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis(season, giornata)">
                     <md-content class="md-padding">
                         <div ng-include="'view/matchAnalysis.html'"></div>
                     </md-content>
@@ -171,7 +159,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/predmatch.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab> -->
                 <!-- <md-tab label="Fantacalcio">
                 <md-content class="md-padding">
                 <div ng-include="'view/fantacalcio.html'"></div>
@@ -182,14 +170,31 @@
                         <div ng-include="'view/password.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Amazon" md-on-select="loadAmazonData()">
+                <!--   <md-tab label="Amazon" md-on-select="loadAmazonData()">
                     <md-content class="md-padding">
                         <div ng-include="'view/amazon.html'"></div>
+                    </md-content>
+                </md-tab> -->
+                <md-tab label="Spesa">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/spesa.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Pivot Spesa" md-on-select="loadPivotSpesa()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/pivotspesa.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Impostazioni Spesa">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/settingsSpesa.html'"></div>
                     </md-content>
                 </md-tab>
             </md-tabs>
             <div layout="row" layout-align="end end">
-                <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons" layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">{{button.label}}</md-button>
+                <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons"
+                    layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">
+                    {{button.label}}</md-button>
             </div>
         </md-content>
     </div>

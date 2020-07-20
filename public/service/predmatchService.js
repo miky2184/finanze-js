@@ -28,7 +28,7 @@
             gridOptionsPredMatch: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
-                minRowsToShow: 27,
+                minRowsToShow: 25,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: true,
@@ -50,43 +50,43 @@
                         name: 'giornata',
                         displayName: 'G.',
                         field: 'giornata',
-                        width: 40,
+                        width: 45,
                         pinnedLeft: true
 }, {
                         name: 'division',
                         displayName: 'DIV',
                         field: 'division',
-                        width: 50,
+                        width: 45,
                         pinnedLeft: true
 }, {
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 160,
+                        width: 150,
                         pinnedLeft: true
 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 160,
+                        width: 150,
                         pinnedLeft: true
 }, {
                         name: 'golCasa',
                         displayName: 'FTHG',
                         field: 'golCasa',
-                        width: 50,
+                        width: 45,
                         pinnedLeft: true
 }, {
                         name: 'golTrasferta',
                         displayName: 'FTAG',
                         field: 'golTrasferta',
-                        width: 50,
+                        width: 45,
                         pinnedLeft: true
 }, {
                         name: 'giocata',
                         displayName: 'Gioc.',
                         field: 'giocata',
-                        width: 50,
+                        width: 45,
                         pinnedLeft: true,
                         cellTemplate: 'templates/rows/checkboxIcon.html',
                         buttonNgClass: 'fas fa-futbol'
@@ -94,7 +94,7 @@
                         name: 'rinviata',
                         displayName: 'Rinv.',
                         field: 'rinviata',
-                        width: 50,
+                        width: 45,
                         pinnedLeft: true,
                         cellTemplate: 'templates/rows/checkboxIcon.html',
                         buttonNgClass: 'fa fa-calendar'
@@ -102,7 +102,7 @@
                         name: 'PRON_1X2',
                         displayName: '1X2',
                         field: 'PRON_1X2',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.fl1x2) {
                                 return 'best-bet';
@@ -112,27 +112,37 @@
                         name: 'PERC_1X2',
                         displayName: '%1X2',
                         field: 'PERC_1X2',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.fl1x2) {
                                 return 'best-bet';
                             }
                         }
 }, {
+    name: 'PERC_BET',
+    displayName: '%BET',
+    field: 'PERC_BET',
+    width: 45,
+    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+        if (row.entity.fl1x2) {
+            return 'best-bet';
+        }
+    }
+},/* {
                         name: 'PERC_OVER',
                         displayName: '%OVER',
                         field: 'PERC_OVER',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.flOver) {
                                 return 'best-bet';
                             }
                         }
-}, {
+}, */ {
                         name: 'PERC_1',
                         displayName: '%1',
                         field: 'PERC_1',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestWin) {
                                 return 'best-bet';
@@ -142,7 +152,7 @@
                         name: 'PERC_X',
                         displayName: '%X',
                         field: 'PERC_X',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestDraw) {
                                 return 'best-bet';
@@ -152,7 +162,7 @@
                         name: 'PERC_2',
                         displayName: '%2',
                         field: 'PERC_2',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestLoss) {
                                 return 'best-bet';
@@ -162,7 +172,7 @@
                         name: 'PERC_GG',
                         displayName: '%GG',
                         field: 'PERC_GG',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestGg) {
                                 return 'best-bet';
@@ -170,9 +180,9 @@
                         }
 }, {
                         name: 'PERC_O1',
-                        displayName: '%O1.5',
+                        displayName: '%O1',
                         field: 'PERC_O1',
-                        width: 70,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO1) {
                                 return 'best-bet';
@@ -180,14 +190,54 @@
                         }
 }, {
                         name: 'PERC_O2',
-                        displayName: '%O2.5',
+                        displayName: '%O2',
                         field: 'PERC_O2',
-                        width: 70,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO2) {
                                 return 'best-bet';
                             }
                         }
+} ,{
+    name: 'BET_1',
+    displayName: '1',
+    field: 'BET_1',
+    width: 45
+}, {
+    name: 'BET_X',
+    displayName: 'X',
+    field: 'BET_X',
+    width: 45
+} ,{
+    name: 'BET_2',
+    displayName: '2',
+    field: 'BET_2',
+    width: 45
+},{
+    name: 'BET_1X',
+    displayName: '1X',
+    field: 'BET_1X',
+    width: 45
+} ,{
+    name: 'BET_12',
+    displayName: '12',
+    field: 'BET_12',
+    width: 45
+} ,{
+    name: 'BET_X2',
+    displayName: 'X2',
+    field: 'BET_X2',
+    width: 45
+} , {
+    name: 'BET_O2',
+    displayName: 'O2',
+    field: 'BET_O2',
+    width: 45
+}, {
+    name: 'BET_U2',
+    displayName: 'U2',
+    field: 'BET_U2',
+    width: 45
 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -199,7 +249,7 @@
             gridOptionsBestBet: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
-                minRowsToShow: 15,
+                minRowsToShow: 14,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: true,
@@ -215,25 +265,25 @@
                         name: 'CHAMPIONSHIP',
                         displayName: 'DIV',
                         field: 'CHAMPIONSHIP',
-                        width: 70,
+                        width: 45,
                         pinnedLeft: true
 }, {
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 160,
+                        width: 150,
                         pinnedLeft: true
 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 160,
+                        width: 150,
                         pinnedLeft: true
 }, {
                         name: 'PERC_1',
                         displayName: '%1',
                         field: 'PERC_1',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestWin) {
                                 return 'best-bet';
@@ -243,7 +293,7 @@
                         name: 'PERC_X',
                         displayName: '%X',
                         field: 'PERC_X',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestDraw) {
                                 return 'best-bet';
@@ -253,7 +303,7 @@
                         name: 'PERC_2',
                         displayName: '%2',
                         field: 'PERC_2',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestLoss) {
                                 return 'best-bet';
@@ -263,7 +313,7 @@
                         name: 'PERC_GG',
                         displayName: '%GG',
                         field: 'PERC_GG',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestGg) {
                                 return 'best-bet';
@@ -271,9 +321,9 @@
                         }
 }, {
                         name: 'PERC_O1',
-                        displayName: '%O1.5',
+                        displayName: '%O1',
                         field: 'PERC_O1',
-                        width: 70,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO1) {
                                 return 'best-bet';
@@ -281,9 +331,9 @@
                         }
 }, {
                         name: 'PERC_O2',
-                        displayName: '%O2.5',
+                        displayName: '%O2',
                         field: 'PERC_O2',
-                        width: 70,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestO2) {
                                 return 'best-bet';
@@ -299,7 +349,7 @@
             gridOptionsBest10Bet: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
-                minRowsToShow: 12,
+                minRowsToShow: 10,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 enableSorting: true,
@@ -315,25 +365,25 @@
                         name: 'CHAMPIONSHIP',
                         displayName: 'DIV',
                         field: 'CHAMPIONSHIP',
-                        width: 70,
+                        width: 45,
                         pinnedLeft: true
 }, {
                         name: 'HOME',
                         displayName: 'HOME',
                         field: 'HOME',
-                        width: 160,
+                        width: 150,
                         pinnedLeft: true
 }, {
                         name: 'AWAY',
                         displayName: 'AWAY',
                         field: 'AWAY',
-                        width: 160,
+                        width: 150,
                         pinnedLeft: true
 }, {
                         name: 'PERC_1',
                         displayName: '%1',
                         field: 'PERC_1',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestWin) {
                                 return 'best-bet';
@@ -343,7 +393,7 @@
                         name: 'PERC_X',
                         displayName: '%X',
                         field: 'PERC_X',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestDraw) {
                                 return 'best-bet';
@@ -353,7 +403,7 @@
                         name: 'PERC_2',
                         displayName: '%2',
                         field: 'PERC_2',
-                        width: 60,
+                        width: 45,
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             if (row.entity.bestLoss) {
                                 return 'best-bet';
