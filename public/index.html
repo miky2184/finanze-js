@@ -60,6 +60,7 @@
     <script type="text/javascript" src="service/passwordService.js"></script>
     <script type="text/javascript" src="service/predmatchService.js"></script>
     <script type="text/javascript" src="service/speseAnnualIService.js"></script>
+    <script type="text/javascript" src="service/extraBudgetService.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/pdfmake.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
@@ -113,6 +114,11 @@
                 <md-tab label="Budget" md-on-select="loadBudget()">
                     <md-content class="md-padding">
                         <div ng-include="'view/budget.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Extra Budget" md-on-select="loadExtraBudget()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/extraBudget.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Spese Annue" md-on-select="loadSpeseAnnue()">
@@ -175,7 +181,7 @@
                         <div ng-include="'view/amazon.html'"></div>
                     </md-content>
                 </md-tab> -->
-                <md-tab label="Spesa">
+               <!-- <md-tab label="Spesa">
                     <md-content class="md-padding">
                         <div ng-include="'view/spesa.html'"></div>
                     </md-content>
@@ -189,7 +195,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/settingsSpesa.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab> -->
             </md-tabs>
             <div layout="row" layout-align="end end">
                 <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons"

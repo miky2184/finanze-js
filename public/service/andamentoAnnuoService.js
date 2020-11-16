@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('andamentoAnnuoService', ['modalService', '$http', '$timeout', '$strings', 'uiGridConstants', 'listaMovimentiService', 'utilService', 'dataService', function (modalService, $http, $timeout, $strings, uiGridConstants, listaMovimentiService, utilService, dataService) {
-        var pivotData = [];
+        var pivotData = [];        
         var srvc = {
             gridOptionAndamentoAnnuo: {
                 columnVirtualizationThreshold: 100,
@@ -14,9 +14,9 @@
                 enableSorting: false,
                 enableColumnMenus: false,
                 columnDefs: [{
-                    name: 'year',
+                    name: 'anno',
                     displayName: 'Anno',
-                    field: 'year',
+                    field: 'anno',
                     width: '16%'
                 }, {
                     name: 'contocomune',
@@ -80,10 +80,10 @@
                         }
                     }
                 };
-                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {                    
+                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {                                        
                     pivotData = resp.data;
                     srvc.gridOptionAndamentoAnnuo.data = resp.data;
-                    dataService.data.dataGrafico = srvc.dataGrafico();
+                    dataService.data.dataGrafico = srvc.dataGrafico(resp.data);
                 });
             },
             dataGrafico: function () {
@@ -91,7 +91,7 @@
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
                         return {
-                            'x': d.year,
+                            'x': d.anno,
                             'y': d.contocomune
                         };
                     }),
@@ -101,7 +101,7 @@
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
                         return {
-                            'x': d.year,
+                            'x': d.anno,
                             'y': d.contopersonale
                         };
                     }),

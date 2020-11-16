@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('speseAnnualiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
+    angular.module('myApp').factory('extraBudgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
         
         var srvc = {
             getPerc: function(perc){
@@ -19,7 +19,7 @@
                         return 'text-right'
                 }
             },
-            gridSpeseAnnuali: {
+            gridExtraBudget: {
                 columnVirtualizationThreshold: 32,
                 minRowsToShow: 23,
                 enableSorting: false,
@@ -193,16 +193,16 @@
                 }*/],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    srvc.gridSpeseAnnuali.gridApi = gridApi;
-                    srvc.gridSpeseAnnuali.gridApi.core.handleWindowResize(); 
+                    srvc.gridExtraBudget.gridApi = gridApi;
+                    srvc.gridExtraBudget.gridApi.core.handleWindowResize(); 
                 }
             },
-            loadSpeseAnnue: function (pivot) {
+            loadExtraBudget: function (pivot) {
                 var dto = {};
                 dto.tipoconto = pivot.tipoConto;
-                return $http.post($strings.REST.SERVER + '/speseAnnue', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/extraBudget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
-                        srvc.gridSpeseAnnuali.data = resp.data;
+                        srvc.gridExtraBudget.data = resp.data;
                     }
                 });
             }

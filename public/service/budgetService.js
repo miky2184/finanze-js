@@ -70,9 +70,10 @@
                                     return 'centoperc';
                                 }
                             }
+                        } else {
+                            return 'text-right';
                         }
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.avg,
+                    },                    
                     pinnedLeft: true
                 },
 
@@ -100,6 +101,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -128,6 +131,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -158,6 +163,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -187,6 +194,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -216,6 +225,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -245,6 +256,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -274,6 +287,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -303,6 +318,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -332,6 +349,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -361,6 +380,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -390,6 +411,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -419,6 +442,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -448,6 +473,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -477,6 +504,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -506,6 +535,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -535,6 +566,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -564,6 +597,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -593,6 +628,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -622,6 +659,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -651,6 +690,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -680,6 +721,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -709,6 +752,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -738,6 +783,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -767,6 +814,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -796,6 +845,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
@@ -825,6 +876,8 @@
                                     return 'centoperc';
                                 }
                             }
+                        }else {
+                            return 'text-right';
                         }
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('andamentoMeseService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, utilService, $strings) {
-        var pivotData = [];
+        var pivotData = [];        
         var srvc = {
             gridOptionPivotMese: {
                 columnVirtualizationThreshold: 100,
@@ -14,15 +14,15 @@
                 enableSorting: false,
                 enableColumnMenus: false,
                 columnDefs: [{
-                    name: 'mese',
+                    name: 'nome_mese',
                     displayName: 'Mese',
-                    field: 'mese',
-                    width: '16%'
+                    field: 'nome_mese',
+                    width: '34%'
             }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '28%',
+                    width: '33%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -30,7 +30,7 @@
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '28%',
+                    width: '33%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -42,70 +42,6 @@
                 }
             },
             loadPivotMese: function (year) {
-                var balanceData = angular.copy(listaMovimentiService.gridOptions.data).filter(function (obj) {
-                    return obj.anno === year && obj.conto !== 4;
-                });
-                var months = [{
-                    value: 1,
-                    mese: 'Gennaio'
-            }, {
-                    value: 2,
-                    mese: 'Febbraio'
-            }, {
-                    value: 3,
-                    mese: 'Marzo'
-            }, {
-                    value: 4,
-                    mese: 'Aprile'
-            }, {
-                    value: 5,
-                    mese: 'Maggio'
-            }, {
-                    value: 6,
-                    mese: 'Giugno'
-            }, {
-                    value: 7,
-                    mese: 'Luglio'
-            }, {
-                    value: 8,
-                    mese: 'Agosto'
-            }, {
-                    value: 9,
-                    mese: 'Settembre'
-            }, {
-                    value: 10,
-                    mese: 'Ottobre'
-            }, {
-                    value: 11,
-                    mese: 'Novembre'
-            }, {
-                    value: 12,
-                    mese: 'Dicembre'
-            }];
-                var dataContoComune = angular.copy(balanceData).filter(function (obj) {
-                    return obj.tipoConto === 1;
-                });
-                var dataContoPersonale = angular.copy(balanceData).filter(function (obj) {
-                    return obj.tipoConto === 2;
-                });                
-                pivotData = [];
-                months.forEach(function (month) {
-                        var newRow = {};
-                        newRow.value = month.value;
-                        newRow.mese = month.mese;
-                        newRow.contocomune = utilService.filterArray(dataContoComune.map(function (obj) {
-                            if (obj.mese === month.value) {
-                                return obj.importo;
-                            }
-                        })).reduce(utilService.add, 0);
-                        newRow.contopersonale = utilService.filterArray(dataContoPersonale.map(function (obj) {
-                            if (obj.mese === month.value) {
-                                return obj.importo;
-                            }
-                        })).reduce(utilService.add, 0);                        
-                        pivotData.push(newRow);
-                    }),
-                    srvc.gridOptionPivotMese.data = pivotData;
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
@@ -129,8 +65,8 @@
                         useInteractiveGuideline: true,
                         xAxis: {
                             axisLabel: 'Month',
-                            tickFormat: function (d) {
-                                return d3.time.format('%B')(new Date(year, d - 1, 1));
+                            tickFormat: function (d) {                                
+                                return d3.time.format('%B')(new Date(year, d-1, 1));
                             }
                         },
                         yAxis: {
@@ -146,14 +82,20 @@
                         }
                     }
                 };
-                dataService.data.dataGrafico = srvc.dataGrafico();
+                var dto = {};
+                dto.anno = year;
+                return $http.post($strings.REST.SERVER + '/andamentoMensile', dto).then(function (resp) {      
+                    pivotData = resp.data;                                  
+                    srvc.gridOptionPivotMese.data = resp.data;
+                    dataService.data.dataGrafico = srvc.dataGrafico();
+                });                
             },
             dataGrafico: function dataGrafico() {
                 return [{
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
                         return {
-                            'x': d.value,
+                            'x': d.mese,
                             'y': d.contocomune
                         };
                     }),
@@ -163,7 +105,7 @@
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
                         return {
-                            'x': d.value,
+                            'x': d.mese,
                             'y': d.contopersonale
                         };
                     }),

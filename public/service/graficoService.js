@@ -1,7 +1,30 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, $strings) {
+        var pivotData = [];        
         var srvc = {
+            dataGrafico: function dataGrafico() {
+                return [{
+                    key: $strings.CONTO.CONTO_COMUNE,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': new Date(d.data_val).setMinutes(new Date(d.data_val).getMinutes() - new Date(d.data_val).getTimezoneOffset()),
+                            'y': d.contocomune
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_COMUNE,
+                    area: true
+            }, {
+                    key: $strings.CONTO.CONTO_PERSONALE,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': new Date(d.data_val).setMinutes(new Date(d.data_val).getMinutes() - new Date(d.data_val).getTimezoneOffset()),
+                            'y': d.contopersonale
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_PERSONALE
+            }];
+            },
             loadGrafico: function (year) {
                 dataService.data.optionsGrafico = {
                     chart: {
@@ -31,7 +54,10 @@
                             }
                         },
                         yAxis: {
-                            axisLabel: 'Totale (€)'
+                            axisLabel: 'Totale (€)',
+                            tickFormat: function (d) {
+                                return d3.round(d, 0) +"€";
+                            }
                         },
                         callback: function (chart) {
                             $timeout(function () {
@@ -43,76 +69,8 @@
                 var dto = {};
                 dto.anno = year;
                 return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
-                    var labels = [];
-                    var dataGrafico = [{
-                        key: $strings.CONTO.CONTO_COMUNE,
-                        values: [],
-                        color: $strings.RGB.CONTO_COMUNE
-                }, {
-                        key: $strings.CONTO.CONTO_PERSONALE,
-                        values: [],
-                        color: $strings.RGB.CONTO_PERSONALE
-                }];
-                    var data = resp.data;
-                    data = resp.data.map(function (d) {
-                        var tmp = {};
-                        var dateVal = d['DATA_VAL'];
-                        var dateLong = new Date(dateVal).setMinutes(new Date(dateVal).getMinutes() - new Date(dateVal).getTimezoneOffset());
-                        if (labels.indexOf(dateLong) < 0) {
-                            labels.push(dateLong);
-                        }
-                        tmp.data = dateLong;
-                        tmp.tipoConto = d['TP_CONTO'];
-                        tmp.importo = d['TOTALE'];
-                        return tmp;
-                    });
-                    var data = getDataGrafico(labels);
-                    var oldImportPersonale = 0;
-                    var oldImportoComune = 0;                    
-
-                    function getDataGrafico(labels) {
-                        labels.forEach(function (l) {
-                            var dataCC = [];
-                            dataCC.push(l);
-                            if (data.filter(function (d) {
-                                    return d.tipoConto === 1 && d.data === l;
-                                }).length > 0) {
-                                dataCC.push(data.filter(function (d) {
-                                    return d.tipoConto === 1 && d.data === l;
-                                })[0].importo);
-                                oldImportoComune = data.filter(function (d) {
-                                    return d.tipoConto === 1 && d.data === l;
-                                })[0].importo;
-                            } else {
-                                dataCC.push(oldImportoComune);
-                            }
-                            dataGrafico[0].values.push(dataCC);
-                            var dataCP = [];
-                            dataCP.push(l);
-                            if (data.filter(function (d) {
-                                    return d.tipoConto === 2 && d.data === l;
-                                }).length > 0) {
-                                dataCP.push(data.filter(function (d) {
-                                    return d.tipoConto === 2 && d.data === l;
-                                })[0].importo);
-                                oldImportPersonale = data.filter(function (d) {
-                                    return d.tipoConto === 2 && d.data === l;
-                                })[0].importo;
-                            } else {
-                                dataCP.push(oldImportPersonale);
-                            }
-                            dataGrafico[1].values.push(dataCP);                        
-                        });
-                        dataService.data.dataGrafico = dataGrafico.map(function (series) {
-                            series.values = series.values.map(function (d) {
-                                return {
-                                    x: d[0],
-                                    y: d[1]
-                                };
-                            });
-                            return series;
-                        });
-                    };
+                    pivotData = resp.data;                                                      
+                    dataService.data.dataGrafico = srvc.dataGrafico();                    
                 });
             }
         };

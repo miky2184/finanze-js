@@ -3,9 +3,9 @@
     angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', 'passwordService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService, passwordService) {
         var srvc = {
             loadData: function () {
-                return listaMovimentiService.loadListaMovimenti().then(function (f) {
+                return listaMovimentiService.loadListaMovimenti();/*.then(function (f) {
                     return spesaService.loadSpesa();
-                }); 
+                }); */
             },
             login: function (datiAccesso) {
                 dataService.data.alerts = [];
@@ -82,10 +82,10 @@
                 });
                 dto.settingsSpesa.reprsott = settingsSpesaService.gridOptionsReprSott.data.filter(function (rs) {
                     return rs.dirty;
-                });
+                }); */
                 dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
                     return sf.dirty;
-                }); */
+                }); 
                 dto.passwords = passwordService.gridOptionsPassword.data.filter(function(pwd){
                     return pwd.dirty;
                 });
