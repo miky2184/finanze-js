@@ -109,7 +109,7 @@
                     name: 'categoria',
                     displayName: 'Categoria',
                     field: 'categoria',
-                    width: 220,
+                    width: 230,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
@@ -140,7 +140,7 @@
                     name: 'sottocategoria',
                     displayName: 'Sottocategoria',
                     field: 'sottocategoria',
-                    width: 220,
+                    width: 230,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
@@ -171,7 +171,7 @@
                     name: 'beneficiario',
                     displayName: 'Beneficiario',
                     field: 'beneficiario',
-                    width: 200,
+                    width: 230,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'beneficiario',
                     editDropdownValueLabel: 'label',
@@ -197,7 +197,7 @@
                     name: 'tipoConto',
                     displayName: 'Tipo Conto',
                     field: 'tipoConto',
-                    width: 160,
+                    width: 155,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'tipoConto',
                     editDropdownValueLabel: 'label',
@@ -223,7 +223,7 @@
                     field: 'conto',
                     name: 'conto',
                     displayName: 'Conto',
-                    width: 160,
+                    width: 155,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'conto',
                     editDropdownValueLabel: 'label',
@@ -248,7 +248,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    width: 52,
+                    width: 50,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
@@ -256,7 +256,7 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    width: 52,
+                    width: 50,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
@@ -264,7 +264,7 @@
                 }, {
                     field: 'budget',
                     displayName: ' ',
-                    width: 52,
+                    width: 50,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-bold',
@@ -272,7 +272,7 @@
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    width: 52,
+                    width: 50,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
@@ -280,7 +280,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    width: 52,
+                    width: 50,
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
@@ -297,15 +297,15 @@
                 }, {
                     field: 'info',
                     cellTooltip: true,
-                    width: 350
+                    width: '*'
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 60
+                    width: 50
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: '*'
+                    width: 50
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {

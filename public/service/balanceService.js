@@ -31,6 +31,14 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
             }, {
+                name: 'contoMarianna',
+                displayName: 'CONTO MARIANNA',
+                field: 'contoMarianna',
+                width: '*',
+                aggregationType: uiGridConstants.aggregationTypes.sum,
+                footerCellFilter: 'currency',
+                cellFilter: 'currency'
+        }, {
                     name: 'totale',
                     displayName: 'Totale',
                     field: 'totale',
@@ -69,14 +77,20 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    width: '15%'
+                    width: '10%'
             }, {
                     field: 'contoPersonale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    width: '15%'
-            }],
+                    width: '10%'
+            }, {
+                field: 'contoMarianna',
+                aggregationType: uiGridConstants.aggregationTypes.sum,
+                footerCellFilter: 'currency',
+                cellFilter: 'currency',
+                width: '10s%'
+        }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsAvere.gridApi = gridApi;
