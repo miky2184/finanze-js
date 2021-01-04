@@ -74,9 +74,17 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                     field: 'data',
-                    width: 90,
+                    width: 100,
                     type: 'date',
-                    cellFilter: 'date:\'yyyy-MM-dd\''
+                    cellFilter: 'date:\'yyyy-MM-dd\'',
+                    filter:{
+                        condition: function (searchTerm, cellValue, row, column) {   
+                            //searchTerm = searchTerm.replaceAll('\\','');
+                            searchTerm = searchTerm.replace(/\\/g, '');
+                            var searchDate = new Date(searchTerm);
+                            return cellValue <= searchDate;                            
+                        }
+                    }
                 }, {
                     name: 'ambito',
                     displayName: 'Ambito',
