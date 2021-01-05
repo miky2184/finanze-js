@@ -297,7 +297,7 @@
                     field: 'importo',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency',
+                            cellFilter: 'currency',
                     width: 130,
                     cellTooltip: true,
                     cellClass: 'text-right',

@@ -123,9 +123,11 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return colDef.editDropdownOptionsArray.filter(function (a) {
-                            return a.reparto === rowEntity.reparto && !a.deleted;
-                        });
+                        if (rowEntity.reparto){
+                            return dataService.data.dropdownSottoreparto.filter(function (obj) {
+                                return obj.reparto === rowEntity.reparto && !obj.deleted;
+                            });
+                        }                        
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {
@@ -151,9 +153,11 @@
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return colDef.editDropdownOptionsArray.filter(function (a) {
-                            return a.sottoreparto === rowEntity.sottoreparto && !a.deleted;
-                        });
+                        if (rowEntity.sottoreparto){
+                            return dataService.data.dropdownFamiglia.filter(function (obj) {
+                                return obj.sottoreparto === rowEntity.sottoreparto && !obj.deleted;
+                            });
+                        }                        
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {
