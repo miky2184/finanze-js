@@ -61,10 +61,10 @@
                         });
                     break; */
                 case 'prezzo':
-                    rowEntity.prezzoAlKilo = Math.round(((1000 / rowEntity.pesoGrammi) * newValue) * 100) / 100;
+                    rowEntity.prezzoAlKilo = Math.round((newValue/rowEntity.pesoGrammi) * 100) / 100;
                     break;
                 case 'pesoGrammi':
-                    rowEntity.prezzoAlKilo = Math.round(((1000 / newValue) * rowEntity.prezzo) * 100) / 100;
+                    rowEntity.prezzoAlKilo = Math.round((rowEntity.prezzo/newValue) * 100) / 100;
                     break;
                 default:
                     break;
@@ -117,7 +117,7 @@
                     name: 'sottoreparto',
                     displayName: 'Sottoreparto',
                     field: 'sottoreparto',
-                    width: 300,
+                    width: 200,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottoreparto',
                     editDropdownValueLabel: 'label',
@@ -147,7 +147,7 @@
                     name: 'famiglia',
                     displayName: 'Famiglia',
                     field: 'famiglia',
-                    width: 300,
+                    width: 200,
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'famiglia',
                     editDropdownValueLabel: 'label',
@@ -178,43 +178,48 @@
                     displayName: 'EAN',
                     field: 'EAN',
                     type: 'text',
-                    width: 120 
+                    width: 130 
                 }, {
                     name: 'descrizione',
                     displayName: 'Descrizione Referenza',
                     field: 'descrizione',
                     type: 'text',
-                    width: '*'                    
+                    width: 320                    
                 }, {
                     name: 'prezzo',
                     displayName: 'Prezzo Acqs.',
                     field: 'prezzo',
                     type: 'number',
-                    width: 50
-                }, {
-                    name: 'peso',
-                    displayName: 'Peso/Pezzi',
-                    field: 'peso',                    
-                    width: 80,
-                    cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fas fa-balance-scale'
-                }, {
+                    cellFilter: 'currency',
+                    cellClass: 'text-right',
+                    width: 80
+                },{
                     name: 'pesoGrammi',
                     displayName: 'gr.',
                     field: 'pesoGrammi',
                     type: 'number',
+                    cellClass: 'text-right',
                     width: 80
                 }, {
                     name: 'prezzoAlKilo',
                     displayName: 'Prezzo al Kg',
                     field: 'prezzoAlKilo',
                     type: 'number',
-                    width: 50
+                    cellFilter: 'currency',
+                    cellClass: 'text-right',
+                    width: 80
+                }, {
+                    name: 'peso',
+                    displayName: 'Peso/Pezzi',
+                    field: 'peso',                    
+                    width: 80,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',                    
+                    buttonNgClass: 'fas fa-balance-scale'
                 }, {
                     name: 'supermercato',
                     displayName: 'Supermercato',
                     field: 'supermercato',
-                    width: 300,
+                    width: '*',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'supermercato',
                     editDropdownValueLabel: 'label',

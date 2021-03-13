@@ -3,9 +3,9 @@
     angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', 'passwordService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService, passwordService) {
         var srvc = {
             loadData: function () {
-                return listaMovimentiService.loadListaMovimenti().then(function (f) {
+                return listaMovimentiService.loadListaMovimenti();/*.then(function (f) {
                     return spesaService.loadSpesa();
-                }); 
+                }); */
             },
             login: function (datiAccesso) {
                 dataService.data.alerts = [];
@@ -62,7 +62,7 @@
                 dto.salary = salaryService.gridOptionsSalary.data.filter(function (row) {
                     return row.dirty;
                 });
-                dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
+                /*dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
                     return row.dirty;
                 }) ;
                 dto.risultatipred = predmatchService.gridOptionsPredMatch.data.filter(function (row) {
@@ -85,7 +85,7 @@
                 });
                 dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
                     return sf.dirty;
-                });                 
+                });*/
                 dto.passwords = passwordService.gridOptionsPassword.data.filter(function(pwd){
                     return pwd.dirty;
                 });

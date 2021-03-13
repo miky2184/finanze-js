@@ -297,7 +297,7 @@
                     field: 'importo',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                            cellFilter: 'currency',
+                    cellFilter: 'currency',
                     width: 130,
                     cellTooltip: true,
                     cellClass: 'text-right',
@@ -349,7 +349,8 @@
                             peso: false,
                             pesoGrammi: 0,
                             prezzo: 0,
-                            prezzoAlKilo: 0
+                            prezzoAlKilo: 0,
+                            supermercato: 1
                         })
                     } else if (maschera === "PW") {
                         gridOptions.data.unshift({
