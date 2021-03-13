@@ -28,13 +28,13 @@
                     displayName: 'Username.',
                     field: 'USER',
                     type: 'text',
-                    width: 250 
+                    width: 260 
                 },{
                     name: 'PWD',
                     displayName: 'Password',
                     field: 'PWD',
                     type: 'text',
-                    width: 250 
+                    width: 260 
                 },{
                     name: 'URL',
                     displayName: 'URL',

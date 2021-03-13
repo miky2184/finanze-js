@@ -27,7 +27,7 @@
                         name: 'anno',
                         displayName: 'Anno',
                         field: 'anno',
-                        width: 50,
+                        width: 70,
                         pinnedLeft: true,
                         cellClass: 'disable',
                         enableCellEdit: false
