@@ -90,6 +90,17 @@
                             footerCellFilter: 'number:2',
                         aggregationType: uiGridConstants.aggregationTypes.sum
 }, {
+    name: 'partecipazioneAzioni',
+    displayName: 'PARTEC. AZIONI',
+    field: 'partecipazioneAzioni',
+    width: 120,
+    cellFilter: 'currency',
+    pinnedLeft: true,
+    cellClass: 'disable',
+    enableCellEdit: false,
+        footerCellFilter: 'number:2',
+    aggregationType: uiGridConstants.aggregationTypes.sum
+},{
                         name: 'ggLavorativi',
                         displayName: 'Giorni INPS',
                         field: 'ggLavorativi',

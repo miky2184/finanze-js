@@ -12,10 +12,10 @@
                 ANNULLA_MSG: 'Ci sono delle modifiche pending non salvate, sei sicuro di voler annullare??'
             },
             BUDGET: {
-                GREEN: 60,
-                LIGHT_GREEN: 10,
-                YELLOW: 5,
-                ORANGE: -1
+                GREEN: 90,
+                LIGHT_GREEN: 60,
+                YELLOW: 30,
+                ORANGE: 0
             },
         FANTACALCIO:{
          FANTAFIGHETTINO: "FANTAFIGHETTINO",
