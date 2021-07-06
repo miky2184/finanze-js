@@ -74,7 +74,7 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                     field: 'data',
-                    width: 100,
+                    width: 130,
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
                     filter:{
