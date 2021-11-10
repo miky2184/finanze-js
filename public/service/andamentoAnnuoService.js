@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('andamentoAnnuoService', ['modalService', '$http', '$timeout', '$strings', 'uiGridConstants', 'listaMovimentiService', 'utilService', 'dataService', function (modalService, $http, $timeout, $strings, uiGridConstants, listaMovimentiService, utilService, dataService) {
-        var pivotData = [];        
+        var pivotData = [];
         var srvc = {
             gridOptionAndamentoAnnuo: {
                 columnVirtualizationThreshold: 100,
@@ -17,19 +17,19 @@
                     name: 'anno',
                     displayName: 'Anno',
                     field: 'anno',
-                    width: '16%'
+                    width: '20%'
                 }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '28%',
+                    width: '40%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '28%',
+                    width: '40%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }],
@@ -39,7 +39,7 @@
                     srvc.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize();
                 }
             },
-            loadAndamentoAnnuo: function () {   
+            loadAndamentoAnnuo: function () {
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
@@ -80,7 +80,7 @@
                         }
                     }
                 };
-                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {                                        
+                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {
                     pivotData = resp.data;
                     srvc.gridOptionAndamentoAnnuo.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico(resp.data);
