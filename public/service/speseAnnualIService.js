@@ -136,7 +136,7 @@
                         }
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                }/*,{
+                },{
                     name: 'TOTALE_2022',
                     displayName: '2022',
                     field: 'TOTALE_2022',
@@ -172,7 +172,7 @@
                     cellFilter: 'currency',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                }*/],
+                }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridSpeseAnnuali.gridApi = gridApi;
