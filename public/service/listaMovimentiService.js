@@ -496,8 +496,8 @@
                                                 newRow.fissa = row['FISSA'] === 'SI' ? true : false;
                                                 newRow.importo = row['VALUE'];
                                                 newRow.info = row['INFO'];
-                                                newRow.anno = new Date(row['DATA_VAL']).getFullYear();
-                                                newRow.mese = new Date(row['DATA_VAL']).getMonth() + 1;
+                                                newRow.anno = String(new Date(row['DATA_VAL']).getFullYear());
+                                                newRow.mese = String(new Date(row['DATA_VAL']).getMonth() + 1).padStart(2, '0');
                                                 return resultsData.push(newRow);
                                             });
                                             dataService.data.backupData = angular.copy(resultsData);
