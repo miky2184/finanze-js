@@ -67,7 +67,7 @@
                     name: 'TOTALE_2017',
                     displayName: '2017',
                     field: 'TOTALE_2017',
-                    width: 150  ,
+                    width: 130  ,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: 'text-right',                    
@@ -76,7 +76,7 @@
                     name: 'TOTALE_2018',
                     displayName: '2018',
                     field: 'TOTALE_2018',
-                    width: 150,
+                    width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -92,7 +92,7 @@
                     name: 'TOTALE_2019',
                     displayName: '2019',
                     field: 'TOTALE_2019',
-                    width: 150,
+                    width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -108,7 +108,7 @@
                     name: 'TOTALE_2020',
                     displayName: '2020',
                     field: 'TOTALE_2020',
-                    width: 150,
+                    width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -124,7 +124,7 @@
                     name: 'TOTALE_2021',
                     displayName: '2021',
                     field: 'TOTALE_2021',
-                    width: 150,
+                    width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
