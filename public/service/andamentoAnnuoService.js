@@ -119,7 +119,8 @@
                             'y': d.contopersonale
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE
+                    color: $strings.RGB.CONTO_PERSONALE,
+                    area: true
             }, {
                 key: $strings.CONTO.CONTO_MARIANNA,
                 values: pivotData.map(function (d) {
@@ -128,7 +129,8 @@
                         'y': d.contomarianna
                     };
                 }),
-                color: $strings.RGB.CONTO_MARIANNA
+                color: $strings.RGB.CONTO_MARIANNA,
+                area: true
         }, {
             key: $strings.CONTO.CONTO_TOTALE,
             values: pivotData.map(function (d) {

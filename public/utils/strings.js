@@ -30,7 +30,7 @@
         },
         RGB:{
             CONTO_COMUNE: "#ffff00",
-            CONTO_PERSONALE: "#0000ff",
+            CONTO_PERSONALE: "#1E90FF",
             CONTO_MARIANNA: "#ff69B4",
             CONTO_TOTALE: "#00bb00"
         },
