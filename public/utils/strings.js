@@ -24,14 +24,18 @@
         },
         CONTO:{
             CONTO_COMUNE: "CONTO COMUNE",
-            CONTO_PERSONALE: "CONTO PERSONALE"
+            CONTO_PERSONALE: "CONTO PERSONALE",
+            CONTO_MARIANNA: "CONTO MARIANNA",
+            CONTO_TOTALE: "CONTO TOTALE"
         },
         RGB:{
-            CONTO_COMUNE: "#00bb00",
-            CONTO_PERSONALE: "#0000ff"
+            CONTO_COMUNE: "#ffff00",
+            CONTO_PERSONALE: "#0000ff",
+            CONTO_MARIANNA: "#ff69B4",
+            CONTO_TOTALE: "#00bb00"
         },
         REST:{
-            SERVER: 'http://93.55.248.37:3001'
+            SERVER: 'http://miky2184.info:3001'
         }
         });
 })();

@@ -22,14 +22,28 @@
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '40%',
+                    width: '20%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '40%',
+                    width: '20%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
+                },{
+                    name: 'contomarianna',
+                    displayName: $strings.CONTO.CONTO_MARIANNA,
+                    field: 'contomarianna',
+                    width: '20%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
+                },{
+                    name: 'contototale',
+                    displayName: $strings.CONTO.CONTO_TOTALE,
+                    field: 'contototale',
+                    width: '20%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }],
@@ -106,7 +120,25 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_PERSONALE
-            }];
+            }, {
+                key: $strings.CONTO.CONTO_MARIANNA,
+                values: pivotData.map(function (d) {
+                    return {
+                        'x': d.anno,
+                        'y': d.contomarianna
+                    };
+                }),
+                color: $strings.RGB.CONTO_MARIANNA
+        }, {
+            key: $strings.CONTO.CONTO_TOTALE,
+            values: pivotData.map(function (d) {
+                return {
+                    'x': d.anno,
+                    'y': d.contototale
+                };
+            }),
+            color: $strings.RGB.CONTO_TOTALE
+    }];
             }
         };
         return srvc;
