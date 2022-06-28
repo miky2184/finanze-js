@@ -35,7 +35,7 @@
             CONTO_TOTALE: "#00bb00"
         },
         REST:{
-            SERVER: 'http://miky2184.info:3001'
+            SERVER: 'http://miky2184.ddns.net:3001'
         }
         });
 })();
