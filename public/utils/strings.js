@@ -12,10 +12,10 @@
                 ANNULLA_MSG: 'Ci sono delle modifiche pending non salvate, sei sicuro di voler annullare??'
             },
             BUDGET: {
-                GREEN: 90,
-                LIGHT_GREEN: 60,
-                YELLOW: 30,
-                ORANGE: 0
+                GREEN: 10,
+                LIGHT_GREEN: 0,
+                YELLOW: -1,
+                ORANGE: -10
             },
         FANTACALCIO:{
          FANTAFIGHETTINO: "FANTAFIGHETTINO",
@@ -24,14 +24,18 @@
         },
         CONTO:{
             CONTO_COMUNE: "CONTO COMUNE",
-            CONTO_PERSONALE: "CONTO PERSONALE"
+            CONTO_PERSONALE: "CONTO PERSONALE",
+            CONTO_MARIANNA: "CONTO MARIANNA",
+            CONTO_TOTALE: "CONTO TOTALE"
         },
         RGB:{
-            CONTO_COMUNE: "#00bb00",
-            CONTO_PERSONALE: "#0000ff"
+            CONTO_COMUNE: "#ffff00",
+            CONTO_PERSONALE: "#1E90FF",
+            CONTO_MARIANNA: "#ff69B4",
+            CONTO_TOTALE: "#00bb00"
         },
         REST:{
-            SERVER: 'http://93.55.248.37:3001'
+            SERVER: 'http://miky2184.info:3001'
         }
         });
 })();
