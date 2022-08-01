@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
-        
+
         var srvc = {
             gridBudget: {
                 columnVirtualizationThreshold: 32,
@@ -47,7 +47,7 @@
                     field: 'SOTTOCATEGORIA',
                     width: 165,
                     pinnedLeft: true
-                }, 
+                },
                 {
                     name: 'PERC_BUDG',
                     displayName: '%',
@@ -69,15 +69,41 @@
                         } else {
                             return 'text-right';
                         }
-                    },                    
+                    },
                     pinnedLeft: true
                 },
-
                 {
                     name: 'BUDG_TOT_ANNO',
                     displayName: 'Budget Anno',
                     field: 'BUDG_TOT_ANNO',
-                    width: 130,
+                    width: 125,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        if (row.entity['TOT_ANNO'] !== null && row.entity['TOT_ANNO'] !== 0) {
+                            if (row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.GREEN) {
+                                return 'centoperc';
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.LIGHT_GREEN) {
+                                return 'settcinqueperc';
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.LIGHT_GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.YELLOW) {
+                                return 'cinquantaperc';
+                            } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.BUDGET.ORANGE) {
+                                return 'venticinqperc';
+                            } else {
+                                return 'zeroperc';
+                            }
+                        }else {
+                            return 'text-right';
+                        }
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    pinnedLeft: true
+                },
+                {
+                    name: 'TOT_ANNO',
+                    displayName: 'Spese Anno',
+                    field: 'TOT_ANNO',
+                    width: 125,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -100,15 +126,15 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     pinnedLeft: true
                 }, {
-                    name: 'TOT_ANNO',
-                    displayName: 'Spese Anno',
-                    field: 'TOT_ANNO',
-                    width: 130,
+                    name: 'PREV_FINO_ANNO',
+                    displayName: 'Previsione Fine Anno',
+                    field: 'PREV_FINO_ANNO',
+                    width: 125,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOT_ANNO'] !== null && row.entity['TOT_ANNO'] !== 0) {
-                            if (row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.GREEN) { 
+                            if (row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.GREEN) {
                                 return 'centoperc';
                             } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.GREEN && row.entity['PERC_RIM_ANNO'] >= $strings.BUDGET.LIGHT_GREEN) {
                                 return 'settcinqueperc';
@@ -116,8 +142,8 @@
                                 return 'cinquantaperc';
                             } else if (row.entity['PERC_RIM_ANNO'] < $strings.BUDGET.YELLOW && row.entity['PERC_RIM_ANNO'] > $strings.BUDGET.ORANGE) {
                                 return 'venticinqperc';
-                            } else {                               
-                                return 'zeroperc';                                
+                            } else {
+                                return 'zeroperc';
                             }
                         }else {
                             return 'text-right';
@@ -125,7 +151,7 @@
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     pinnedLeft: true
-                }, {
+                },{
                     name: 'BUDG_GEN',
                     displayName: 'Budget GEN',
                     field: 'BUDG_GEN',
@@ -873,7 +899,7 @@
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridBudget.gridApi = gridApi;
-                    srvc.gridBudget.gridApi.core.handleWindowResize(); 
+                    srvc.gridBudget.gridApi.core.handleWindowResize();
                 }
             },
             loadBudget: function (pivot) {
