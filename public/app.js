@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner', 'ui.grid.exporter']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'andamentoMeseService', 'settingsSpesaService', 'pivotSpesaService', 'passwordService', 'predmatchService', 'speseAnnualiService', 'extraBudgetService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, andamentoMeseService, settingsSpesaService, pivotSpesaService, passwordService, predmatchService, speseAnnualiService, extraBudgetService) {
+    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'andamentoMeseService', 'settingsSpesaService', 'pivotSpesaService', 'passwordService', 'predmatchService', 'speseAnnualiService', 'extraBudgetService', 'andamentoAnnuoPersonaleService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, andamentoMeseService, settingsSpesaService, pivotSpesaService, passwordService, predmatchService, speseAnnualiService, extraBudgetService, andamentoAnnuoPersonaleService) {
 
         $scope.triggerChar = 9;
         $scope.separatorChar = 13;
@@ -169,9 +169,9 @@
         /*********************
           TAB ANDAMENTO ANNUO PERSONALE
          *********************/
-          $scope.gridOptionAndamentoAnnuoPersonale = andamentoAnnuoService.gridOptionAndamentoAnnuoPersonale;
+          $scope.gridOptionAndamentoAnnuoPersonale = andamentoAnnuoPersonaleService.gridOptionAndamentoAnnuoPersonale;
           $scope.loadAndamentoAnnuoPersonale = function () {
-              return andamentoAnnuoService.loadAndamentoAnnuoPersonale().then(function(resp){
+              return andamentoAnnuoPersonaleService.loadAndamentoAnnuoPersonale().then(function(resp){
                   $scope.dataGrafico = dataService.data.dataGrafico;
                   $scope.optionsGrafico = dataService.data.optionsGrafico;    
               });            

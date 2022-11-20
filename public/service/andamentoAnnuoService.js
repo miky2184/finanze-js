@@ -26,13 +26,6 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }, {
-                    name: 'contopersonale',
-                    displayName: $strings.CONTO.CONTO_PERSONALE,
-                    field: 'contopersonale',
-                    width: '20%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency'
-                },{
                     name: 'contomarianna',
                     displayName: $strings.CONTO.CONTO_MARIANNA,
                     field: 'contomarianna',
@@ -110,16 +103,6 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_COMUNE,
-                    area: true
-            }, {
-                    key: $strings.CONTO.CONTO_PERSONALE,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.anno,
-                            'y': d.contopersonale
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_PERSONALE,
                     area: true
             }, {
                 key: $strings.CONTO.CONTO_MARIANNA,
