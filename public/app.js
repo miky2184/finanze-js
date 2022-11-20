@@ -167,6 +167,17 @@
         };
 
         /*********************
+          TAB ANDAMENTO ANNUO PERSONALE
+         *********************/
+          $scope.gridOptionAndamentoAnnuoPersonale = andamentoAnnuoService.gridOptionAndamentoAnnuoPersonale;
+          $scope.loadAndamentoAnnuoPersonale = function () {
+              return andamentoAnnuoService.loadAndamentoAnnuoPersonale().then(function(resp){
+                  $scope.dataGrafico = dataService.data.dataGrafico;
+                  $scope.optionsGrafico = dataService.data.optionsGrafico;    
+              });            
+          };
+
+        /*********************
             TAB AMAZON
         *********************/
         $scope.gridOptionsAmazon = amazonService.gridOptionsAmazon;

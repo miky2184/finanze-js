@@ -146,6 +146,11 @@
                         <div ng-include="'view/andamentoAnnuo.html'"></div>
                     </md-content>
                 </md-tab>
+                <md-tab label="Andamento Annuo Personale" md-on-select="loadAndamentoAnnuoPersonale()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/andamentoAnnuoPersonale.html'"></div>
+                    </md-content>
+                </md-tab>
                 <md-tab label="Grafico" md-on-select="loadGrafico(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/graph.html'"></div>
