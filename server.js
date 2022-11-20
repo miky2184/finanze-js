@@ -13,7 +13,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
 app.get('*', function(req, res) {
-        res.sendFile('index.html');
+        res.sendFile(__dirname + '/index.html');
     });
 
 app.listen(port, function () {
