@@ -17,26 +17,26 @@
                     name: 'anno',
                     displayName: 'Anno',
                     field: 'anno',
-                    width: '20%'
+                    width: '25%'
                 }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '20%',
+                    width: '25%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }, {
                     name: 'contomarianna',
                     displayName: $strings.CONTO.CONTO_MARIANNA,
                     field: 'contomarianna',
-                    width: '20%',
+                    width: '25%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 },{
                     name: 'contototale',
                     displayName: $strings.CONTO.CONTO_TOTALE,
                     field: 'contototale',
-                    width: '20%',
+                    width: '25%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }],

@@ -22,14 +22,14 @@
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '20%',
+                    width: '40%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 },{
                     name: 'contototale',
                     displayName: $strings.CONTO.CONTO_TOTALE,
                     field: 'contototale',
-                    width: '20%',
+                    width: '40%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }],
