@@ -305,7 +305,7 @@
                 }, {
                     field: 'info',
                     cellTooltip: true,
-                    width: 200
+                    width: '*', minWidth: 200
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
