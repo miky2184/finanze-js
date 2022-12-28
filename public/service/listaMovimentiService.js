@@ -305,7 +305,12 @@
                 }, {
                     field: 'info',
                     cellTooltip: true,
-                    width: '*', minWidth: 200
+                    width: '*', minWidth: 200,
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                            
+                                var cell = cellValue;
+                        }
+                    }
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
