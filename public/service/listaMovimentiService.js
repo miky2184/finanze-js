@@ -301,22 +301,14 @@
                     width: 130,
                     cellTooltip: true,
                     cellClass: 'text-right',
-                    type: 'number',
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
-                    }
+                    type: 'number'
                 }, {
                     field: 'info',
                     cellTooltip: true,
                     width: '*', minWidth: 200,
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
+                            if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
                                 return true;
                             } 
                             return false;
@@ -325,27 +317,11 @@
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 50,
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
-                    }
+                    width: 50
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 50,
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
-                    }
+                    width: 50
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
