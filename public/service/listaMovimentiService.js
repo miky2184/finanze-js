@@ -301,24 +301,51 @@
                     width: 130,
                     cellTooltip: true,
                     cellClass: 'text-right',
-                    type: 'number'
+                    type: 'number',
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue.match(searchTerm.toUpperCase()) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
+                    }
                 }, {
                     field: 'info',
                     cellTooltip: true,
                     width: '*', minWidth: 200,
                     filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                            
-                                var cell = cellValue;
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue.match(searchTerm.toUpperCase()) != null){
+                                return true;
+                            } 
+                            return false;
                         }
                     }
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 50
+                    width: 50,
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue.match(searchTerm.toUpperCase()) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
+                    }
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 50
+                    width: 50,
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue.match(searchTerm.toUpperCase()) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
+                    }
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
