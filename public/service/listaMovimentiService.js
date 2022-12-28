@@ -304,7 +304,7 @@
                     type: 'number',
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
+                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
                                 return true;
                             } 
                             return false;
@@ -316,7 +316,7 @@
                     width: '*', minWidth: 200,
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
+                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
                                 return true;
                             } 
                             return false;
@@ -328,7 +328,7 @@
                     width: 50,
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
+                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
                                 return true;
                             } 
                             return false;
@@ -340,7 +340,7 @@
                     width: 50,
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
+                            if (cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
                                 return true;
                             } 
                             return false;
