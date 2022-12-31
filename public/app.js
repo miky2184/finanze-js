@@ -133,8 +133,10 @@
             return graficoService.loadGrafico($scope.pivot.year).then(function (fn) {
                 $scope.dataGrafico = dataService.data.dataGrafico;
                 $scope.optionsGrafico = dataService.data.optionsGrafico;
-                $scope.dataGraficoPie = dataService.data.dataGraficoPie;
-                $scope.optionsGraficoPie = dataService.data.optionsGraficoPie;
+                return graficoService.loadGraficoPie($scope.pivot.year).then(function (fn) {                
+                    $scope.dataGraficoPie = dataService.data.dataGraficoPie;
+                    $scope.optionsGraficoPie = dataService.data.optionsGraficoPie;
+                });         
             });
         };
 

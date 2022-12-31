@@ -4,6 +4,9 @@
         var pivotData = [];     
         var pivotDataPie = [];        
         var srvc = {
+            dataGraficoPie: function dataGraficoPie(){
+                return pivotDataPie;
+            },
             dataGrafico: function dataGrafico() {
                 return [{
                     key: $strings.CONTO.CONTO_COMUNE,
@@ -27,43 +30,10 @@
             }];
             },
             loadGrafico: function (year) {
-                dataService.data.optionsGraficoPie = {                    
-                    chart: {
-                        type: 'pieChart',
-                        height: 720,
-                        showLabels: true,
-                        duration: 5,
-                        labelThreshold: 0.01,
-                        labelSunbeamLayout: true,
-                        x: function (d) {
-                            if (d) {
-                                return d.x;
-                            }
-                        },
-                        y: function (d) {
-                            if (d) {
-                                return d.y;
-                            }
-                        },
-                        legend: {
-                            margin: {
-                                top: 5,
-                                right: 35,
-                                bottom: 5,
-                                left: 0
-                            }
-                        },
-                        callback: function (chart) {
-                            $timeout(function () {
-                                d3.selectAll('.nvtooltip').style('opacity', 0);
-                            }, 100);
-                        }
-                    }                      
-                };
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
-                        height: 720,
+                        height: 1000,
                         margin: {
                             top: 20,
                             right: 20,
@@ -101,13 +71,43 @@
                     }
                 };
                 var dto = {};
-                dto.anno = year;
+                dto.anno = year;                
+                return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
+                    pivotData = resp.data;                                                      
+                    dataService.data.dataGrafico = srvc.dataGrafico();
+                });                                    
+            },
+            loadGraficoPie: function (year){
+                dataService.data.optionsGraficoPie = {                    
+                    chart: {
+                        type: 'pieChart',
+                        height: 500,
+                        showLabels: true,
+                        duration: 5,
+                        labelThreshold: 0.01,
+                        labelSunbeamLayout: true,
+                        x: function(d){return d.key;},
+                        y: function(d){return d.y;},
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
+                var dto = {};
+                dto.anno = year;     
                 return $http.post($strings.REST.SERVER + '/pie', dto).then(function (resp) {
                     pivotDataPie = resp.data;
-                    return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
-                        pivotData = resp.data;                                                      
-                        dataService.data.dataGrafico = srvc.dataGrafico();                                        
-                    });                    
+                    dataService.data.dataGraficoPie = srvc.dataGraficoPie();
                 });
             }
         };

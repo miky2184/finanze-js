@@ -1,15 +1,15 @@
 <div layout="column">
     <div flex="5" layout="row">
         <div flex="10" layout="column">
-            <select name="yearSelect" id="yearSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadGrafico(pivot.year)"> </select>
+            <select name="yearSelect" id="yearSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadGrafico(pivot.year)  && loadGraficoPie(pivot.year)"> </select>
         </div>
     </div>
     <div flex="95" layout="row">
         <div flex=50 layout="column">
             <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3>
         </div>
-        <div flex=50 layout="column">
-            <nvd3 options="optionsGraficoPie" data="dataGraficoPie" api="apiGrafico" on-ready="callbackGrafico"></nvd3>
+        <div flex=50 layout="column">                       
+            <nvd3 options="optionsGraficoPie" data="dataGraficoPie" />                            
         </div>
     </div>
 </div>
