@@ -5,8 +5,11 @@
         </div>
     </div>
     <div flex="95" layout="row">
-        <div flex layout="column">
+        <div flex=50 layout="column">
             <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3>
+        </div>
+        <div flex=50 layout="column">
+            <nvd3 options="optionsGraficoPie" data="dataGraficoPie" api="apiGrafico" on-ready="callbackGrafico"></nvd3>
         </div>
     </div>
 </div>

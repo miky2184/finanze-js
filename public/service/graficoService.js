@@ -1,7 +1,8 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, $strings) {
-        var pivotData = [];        
+        var pivotData = [];     
+        var pivotDataPie = [];        
         var srvc = {
             dataGrafico: function dataGrafico() {
                 return [{
@@ -26,6 +27,39 @@
             }];
             },
             loadGrafico: function (year) {
+                dataService.data.optionsGraficoPie = {                    
+                    chart: {
+                        type: 'pieChart',
+                        height: 720,
+                        showLabels: true,
+                        duration: 5,
+                        labelThreshold: 0.01,
+                        labelSunbeamLayout: true,
+                        x: function (d) {
+                            if (d) {
+                                return d.x;
+                            }
+                        },
+                        y: function (d) {
+                            if (d) {
+                                return d.y;
+                            }
+                        },
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
@@ -68,9 +102,12 @@
                 };
                 var dto = {};
                 dto.anno = year;
-                return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
-                    pivotData = resp.data;                                                      
-                    dataService.data.dataGrafico = srvc.dataGrafico();                    
+                return $http.post($strings.REST.SERVER + '/pie', dto).then(function (resp) {
+                    pivotDataPie = resp.data;
+                    return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
+                        pivotData = resp.data;                                                      
+                        dataService.data.dataGrafico = srvc.dataGrafico();                                        
+                    });                    
                 });
             }
         };

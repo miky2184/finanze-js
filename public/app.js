@@ -49,7 +49,7 @@
         /* API GRAFICI */
         $scope.callbackGrafico = function (scope, element) {
             dataService.data.apiGrafico = scope.api;
-        };
+        };        
         
         $scope.division = {};
         $scope.division.value = {id:'ITA'};
@@ -133,6 +133,8 @@
             return graficoService.loadGrafico($scope.pivot.year).then(function (fn) {
                 $scope.dataGrafico = dataService.data.dataGrafico;
                 $scope.optionsGrafico = dataService.data.optionsGrafico;
+                $scope.dataGraficoPie = dataService.data.dataGraficoPie;
+                $scope.optionsGraficoPie = dataService.data.optionsGraficoPie;
             });
         };
 
