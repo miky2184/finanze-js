@@ -136,7 +136,19 @@
                 return graficoService.loadGraficoPie($scope.pivot.year).then(function (fn) {                
                     $scope.dataGraficoPie = dataService.data.dataGraficoPie;
                     $scope.optionsGraficoPie = dataService.data.optionsGraficoPie;
-                });         
+                    return graficoService.loadGraficoPieCategoria($scope.pivot.year).then(function (fn) {                
+                        $scope.dataGraficoPieCategoria = dataService.data.dataGraficoPieCategoria;
+                        $scope.optionsGraficoPieCategoria = dataService.data.optionsGraficoPieCategoria;
+                        return graficoService.loadGraficoPiePersonale($scope.pivot.year).then(function (fn) {                
+                            $scope.dataGraficoPiePersonale = dataService.data.dataGraficoPiePersonale;
+                            $scope.optionsGraficoPiePersonale = dataService.data.optionsGraficoPiePersonale;
+                            return graficoService.loadGraficoPiePersonaleCategoria($scope.pivot.year).then(function (fn) {                
+                                $scope.dataGraficoPiePersonaleCategoria = dataService.data.dataGraficoPiePersonaleCategoria;
+                                $scope.optionsGraficoPiePersonaleCategoria = dataService.data.optionsGraficoPiePersonaleCategoria;
+                            });
+                        });
+                    });
+                });
             });
         };
 

@@ -8,8 +8,23 @@
         <div flex=50 layout="column">
             <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3>
         </div>
-        <div flex=50 layout="column">                       
-            <nvd3 options="optionsGraficoPie" data="dataGraficoPie" />                            
+        <div flex=50 layout="column">
+            <div flex=50 layout="row">
+                <div flex=50 layout="column">
+                    <nvd3 options="optionsGraficoPieCategoria" data="dataGraficoPieCategoria" />                            
+                </div>
+                <div flex=50 layout="column">
+                    <nvd3 options="optionsGraficoPie" data="dataGraficoPie" />                            
+                </div>
+            </div>
+            <div flex=50 layout="row">
+                <div flex=50 layout="column">
+                    <nvd3 options="optionsGraficoPiePersonaleCategoria" data="dataGraficoPiePersonaleCategoria" />
+                </div>
+                <div flex=50 layout="column">
+                    <nvd3 options="optionsGraficoPiePersonale" data="dataGraficoPiePersonale" />                    
+                </div>
+            </div>            
         </div>
     </div>
 </div>

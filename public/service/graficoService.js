@@ -2,10 +2,22 @@
     'use strict';
     angular.module('myApp').factory('graficoService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, $strings) {
         var pivotData = [];     
-        var pivotDataPie = [];        
+        var pivotDataPie = [];
+        var pivotDataPieCategoria = [];
+        var pivotDataPiePersonale = [];
+        var pivotDataPiePersonaleCategoria = [];        
         var srvc = {
             dataGraficoPie: function dataGraficoPie(){
                 return pivotDataPie;
+            },
+            dataGraficoPieCategoria : function dataGraficoPie(){
+                return pivotDataPieCategoria;
+            },
+            dataGraficoPiePersonale: function dataGraficoPie(){
+                return pivotDataPiePersonale;
+            },
+            dataGraficoPiePersonaleCategoria: function dataGraficoPie(){
+                return pivotDataPiePersonaleCategoria;
             },
             dataGrafico: function dataGrafico() {
                 return [{
@@ -109,7 +121,106 @@
                     pivotDataPie = resp.data;
                     dataService.data.dataGraficoPie = srvc.dataGraficoPie();
                 });
-            }
+            },
+            loadGraficoPieCategoria: function (year){
+                dataService.data.optionsGraficoPieCategoria = {                    
+                    chart: {
+                        type: 'pieChart',
+                        height: 500,
+                        showLabels: true,
+                        duration: 5,
+                        labelThreshold: 0.01,
+                        labelSunbeamLayout: true,
+                        x: function(d){return d.key;},
+                        y: function(d){return d.y;},
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
+                var dto = {};
+                dto.anno = year;     
+                return $http.post($strings.REST.SERVER + '/pieCategoria', dto).then(function (resp) {
+                    pivotDataPie = resp.data;
+                    dataService.data.dataGraficoPie = srvc.dataGraficoPieCategoria();
+                });
+            },
+            loadGraficoPiePersonale: function (year){
+                dataService.data.optionsGraficoPiePersonale = {                    
+                    chart: {
+                        type: 'pieChart',
+                        height: 500,
+                        showLabels: true,
+                        duration: 5,
+                        labelThreshold: 0.01,
+                        labelSunbeamLayout: true,
+                        x: function(d){return d.key;},
+                        y: function(d){return d.y;},
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
+                var dto = {};
+                dto.anno = year;     
+                return $http.post($strings.REST.SERVER + '/piePersonale', dto).then(function (resp) {
+                    pivotDataPiePersonale = resp.data;
+                    dataService.data.dataGraficoPiePersonale = srvc.dataGraficoPiePersonale();
+                });
+            } ,
+            loadGraficoPiePersonaleCategoria: function (year){
+                dataService.data.optionsGraficoPiePersonaleCategoria= {                    
+                    chart: {
+                        type: 'pieChart',
+                        height: 500,
+                        showLabels: true,
+                        duration: 5,
+                        labelThreshold: 0.01,
+                        labelSunbeamLayout: true,
+                        x: function(d){return d.key;},
+                        y: function(d){return d.y;},
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
+                var dto = {};
+                dto.anno = year;     
+                return $http.post($strings.REST.SERVER + '/piePersonaleCategoria', dto).then(function (resp) {
+                    pivotDataPiePersonaleCategoria = resp.data;
+                    dataService.data.dataGraficoPiePersonaleCategoria = srvc.dataGraficoPiePersonaleCategoria();
+                });
+            }           
         };
         return srvc;
     }]);
