@@ -69,7 +69,7 @@
                  displayName: 'INFO',
                     width: '35%'
         },{
-            field: 'DATA_VAL',
+            field: 'dataAvere',
              displayName: 'DATA',
                     width:'10%'
     }, {

@@ -5,7 +5,8 @@
         var pivotDataPie = [];
         var pivotDataPieCategoria = [];
         var pivotDataPiePersonale = [];
-        var pivotDataPiePersonaleCategoria = [];        
+        var pivotDataPiePersonaleCategoria = [];
+        var pivotDataGraficoSpesoTotalePerAnno = [];
         var srvc = {
             dataGraficoPie: function dataGraficoPie(){
                 return pivotDataPie;
@@ -18,6 +19,9 @@
             },
             dataGraficoPiePersonaleCategoria: function dataGraficoPiePersonaleCategoria(){
                 return pivotDataPiePersonaleCategoria;
+            },
+            dataGraficoSpesoTotalePerAnno: function dataGraficoSpesoTotalePerAnno(){
+                return pivotDataGraficoSpesoTotalePerAnno;
             },
             dataGrafico: function dataGrafico() {
                 return [{
@@ -45,7 +49,7 @@
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
-                        height: 1000,
+                        height: 500,
                         margin: {
                             top: 20,
                             right: 20,
@@ -219,6 +223,48 @@
                 return $http.post($strings.REST.SERVER + '/piePersonaleCategoria', dto).then(function (resp) {
                     pivotDataPiePersonaleCategoria = resp.data;
                     dataService.data.dataGraficoPiePersonaleCategoria = srvc.dataGraficoPiePersonaleCategoria();
+                });
+            },
+            loadGraficoSpesoTotalePerAnno: function (year){
+                dataService.data.optionsGraficoSpesoTotalePerAnno= {                    
+                    chart: {
+                        type: 'multiBarHorizontalChart',
+                        height: 500,
+                        showControls: false,
+                        showValues: true,
+                        duration: 500,                       
+                        x: function(d){return d.label;},
+                        y: function(d){return d.value;},
+                        xAxis: {
+                            axisLabel: 'Year',
+                            showMaxMin: false
+                        },
+                        yAxis: {
+                            axisLabel: 'Values',
+                            tickFormat: function(d){
+                                return d3.format(',.2f')(d);
+                            }
+                        },
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
+                var dto = {};
+                dto.anno = year;     
+                return $http.get($strings.REST.SERVER + '/spesoTotalePerAnno').then(function (resp) {
+                    pivotDataGraficoSpesoTotalePerAnno = JSON.parse(resp.data[0]['spesoTotalePerAnno'].replaceAll('\\"', '"').replaceAll('["', '[').replaceAll('"]',']'));
+                    dataService.data.dataGraficoSpesoTotalePerAnno = srvc.dataGraficoSpesoTotalePerAnno();
                 });
             }           
         };

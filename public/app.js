@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner', 'ui.grid.exporter']).config(['$mdThemingProvider', function ($mdThemingProvider) {
+    angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
     }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'andamentoMeseService', 'settingsSpesaService', 'pivotSpesaService', 'passwordService', 'predmatchService', 'speseAnnualiService', 'extraBudgetService', 'andamentoAnnuoPersonaleService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, andamentoMeseService, settingsSpesaService, pivotSpesaService, passwordService, predmatchService, speseAnnualiService, extraBudgetService, andamentoAnnuoPersonaleService) {
 
@@ -145,6 +145,10 @@
                             return graficoService.loadGraficoPiePersonaleCategoria($scope.pivot.year).then(function (fn) {                
                                 $scope.dataGraficoPiePersonaleCategoria = dataService.data.dataGraficoPiePersonaleCategoria;
                                 $scope.optionsGraficoPiePersonaleCategoria = dataService.data.optionsGraficoPiePersonaleCategoria;
+                                return graficoService.loadGraficoSpesoTotalePerAnno().then(function(fn){
+                                    $scope.dataGraficoSpesoTotalePerAnno = dataService.data.dataGraficoSpesoTotalePerAnno;
+                                    $scope.optionsGraficoSpesoTotalePerAnno = dataService.data.optionsGraficoSpesoTotalePerAnno;
+                                });
                             });
                         });
                     });
@@ -320,20 +324,22 @@
 
     }]).filter('griddropdown', function () {
         return function (input, context) {
-            var fieldLevel = !context.editDropdownOptionsArray ? context.col.colDef : context;
-            var map = fieldLevel.editDropdownOptionsArray;
-            var idField = fieldLevel.editDropdownIdLabel;
-            var valueField = fieldLevel.editDropdownValueLabel;
-            var initial = context.row ? context.row.entity[context.col.field] : context.entity[context.col.field];
-            var retValue = initial || input
-            if (map) {
-                for (var i = 0; i < map.length; i++) {
-                    if (map[i][idField] === input) {
-                        retValue = map[i][valueField];
+            if (context != 'this'){
+                var fieldLevel = !context.editDropdownOptionsArray ? context.col.colDef : context;
+                var map = fieldLevel.editDropdownOptionsArray;
+                var idField = fieldLevel.editDropdownIdLabel;
+                var valueField = fieldLevel.editDropdownValueLabel;
+                var initial = context.row ? context.row.entity[context.col.field] : context.entity[context.col.field];
+                var retValue = initial || input
+                if (map) {
+                    for (var i = 0; i < map.length; i++) {
+                        if (map[i][idField] === input) {
+                            retValue = map[i][valueField];
+                        }
                     }
                 }
-            } 
-            return retValue;
+                return retValue;
+            }            
         };
     }).filter('to_trusted', ['$sce', function ($sce) {
         return function (text) {
