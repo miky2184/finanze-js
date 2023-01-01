@@ -10,13 +10,13 @@
             dataGraficoPie: function dataGraficoPie(){
                 return pivotDataPie;
             },
-            dataGraficoPieCategoria : function dataGraficoPie(){
+            dataGraficoPieCategoria : function dataGraficoPieCategoria(){
                 return pivotDataPieCategoria;
             },
-            dataGraficoPiePersonale: function dataGraficoPie(){
+            dataGraficoPiePersonale: function dataGraficoPiePersonale(){
                 return pivotDataPiePersonale;
             },
-            dataGraficoPiePersonaleCategoria: function dataGraficoPie(){
+            dataGraficoPiePersonaleCategoria: function dataGraficoPiePersonaleCategoria(){
                 return pivotDataPiePersonaleCategoria;
             },
             dataGrafico: function dataGrafico() {
@@ -151,8 +151,8 @@
                 var dto = {};
                 dto.anno = year;     
                 return $http.post($strings.REST.SERVER + '/pieCategoria', dto).then(function (resp) {
-                    pivotDataPie = resp.data;
-                    dataService.data.dataGraficoPie = srvc.dataGraficoPieCategoria();
+                    pivotDataPieCategoria = resp.data;
+                    dataService.data.dataGraficoPieCategoria = srvc.dataGraficoPieCategoria();
                 });
             },
             loadGraficoPiePersonale: function (year){

@@ -101,10 +101,7 @@
                 return $http.get($strings.REST.SERVER + '/saldo').then(function (resp) {
                     srvc.gridOptionsBalance.data = resp.data;
                     return $http.get($strings.REST.SERVER + '/saldoavere').then(function (resp) {
-                        srvc.gridOptionsAvere.data = resp.data.map(function(obj){
-                            obj['DATA_VAL'] = obj['DATA_VAL'].substr(0, 10);
-                            return obj;
-                        });
+                        srvc.gridOptionsAvere.data = resp.data;
                     });
                 });
             }
