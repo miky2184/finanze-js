@@ -109,8 +109,10 @@
                         });
                     },
                     filter: {
+                        placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownAmbito) {
+                                if (searchTerm != 'null'){
                                 var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
                                     return ambito.ambito === cellValue;
                                 });
@@ -118,6 +120,8 @@
                                     return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
                                 } else {
                                     return false;
+                                } } else {
+                                    return cellValue == null || cellValue == 0;             
                                 }
                             }
                         }
@@ -140,8 +144,10 @@
                         return [];
                     },
                     filter: {
+                        placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownCategoria) {
+                                if (searchTerm != 'null'){
                                 var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
                                     return categoria.categoria === cellValue;
                                 });
@@ -150,6 +156,9 @@
                                 } else {
                                     return false;
                                 }
+                            } else {
+                                return cellValue == null || cellValue == 0;             
+                            }
                             }
                         }
                     }
@@ -169,18 +178,23 @@
                             });
                         }
                         return [];
-                    },
+                    },                    
                     filter: {
+                        placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownSottocategoria) {
-                                var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
-                                    return sottocategoria.sottocategoria === cellValue;
-                                });
-                                if (cell && cell.length > 0) {
-                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                                } else {
-                                    return false;
-                                }
+                                if (searchTerm != 'null'){
+                                    var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
+                                        return sottocategoria.sottocategoria === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }               
+                    } else {
+                        return cellValue == null || cellValue == 0;             
+                    }  
                             }
                         }
                     }
