@@ -71,7 +71,9 @@
         },{
             field: 'dataAvere',
              displayName: 'DATA',
-                    width:'10%'
+                    width:'10%',
+                    type: 'date', 
+                    cellFilter: 'date:\'yyyy-MM-dd\''
     }, {
                     field: 'contoComune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -89,7 +91,7 @@
                 aggregationType: uiGridConstants.aggregationTypes.sum,
                 footerCellFilter: 'currency',
                 cellFilter: 'currency',
-                width: '10s%'
+                width: '10%'
         }],
                 data: [],
                 onRegisterApi: function (gridApi) {

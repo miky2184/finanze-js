@@ -65,7 +65,7 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 showColumnFooter: true,
-                minRowsToShow: 21,
+                minRowsToShow: 23,
                 enableFiltering: true,
                 enableRowSelection: true,
                 enableSelectAll: true,
@@ -74,22 +74,31 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                     field: 'data',
-                    width: 130,
+                    width: '5%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
-                    filter:{
+                    filters:[{
+                        placeholder: 'less than',
                         condition: function (searchTerm, cellValue, row, column) {   
                             //searchTerm = searchTerm.replaceAll('\\','');
                             searchTerm = searchTerm.replace(/\\/g, '');
                             var searchDate = new Date(searchTerm);
-                            return cellValue <= searchDate;                            
+                            return cellValue < searchDate;                            
+                        }                      
+                    },{
+                        placeholder: 'greather than',
+                        condition: function (searchTerm, cellValue, row, column) {   
+                            //searchTerm = searchTerm.replaceAll('\\','');
+                            searchTerm = searchTerm.replace(/\\/g, '');
+                            var searchDate = new Date(searchTerm);
+                            return cellValue >= searchDate;                            
                         }
-                    }
+                        }  ]
                 }, {
                     name: 'ambito',
                     displayName: 'Ambito',
                     field: 'ambito',
-                    width: 100,
+                    width: '5%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
@@ -117,7 +126,7 @@
                     name: 'categoria',
                     displayName: 'Categoria',
                     field: 'categoria',
-                    width: 230,
+                    width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
@@ -148,7 +157,7 @@
                     name: 'sottocategoria',
                     displayName: 'Sottocategoria',
                     field: 'sottocategoria',
-                    width: 230,
+                    width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
@@ -179,7 +188,7 @@
                     name: 'beneficiario',
                     displayName: 'Beneficiario',
                     field: 'beneficiario',
-                    width: 230,
+                    width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'beneficiario',
                     editDropdownValueLabel: 'label',
@@ -205,7 +214,7 @@
                     name: 'tipoConto',
                     displayName: 'Tipo Conto',
                     field: 'tipoConto',
-                    width: 155,
+                    width: '8%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'tipoConto',
                     editDropdownValueLabel: 'label',
@@ -231,7 +240,7 @@
                     field: 'conto',
                     name: 'conto',
                     displayName: 'Conto',
-                    width: 155,
+                    width: '8%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'conto',
                     editDropdownValueLabel: 'label',
@@ -256,7 +265,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    width: 50,
+                    width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
@@ -264,7 +273,7 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    width: 50,
+                    width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
@@ -272,7 +281,7 @@
                 }, {
                     field: 'budget',
                     displayName: ' ',
-                    width: 50,
+                    width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-bold',
@@ -280,7 +289,7 @@
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    width: 50,
+                    width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
@@ -288,7 +297,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    width: 50,
+                    width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
@@ -298,14 +307,24 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    width: 130,
+                    width: '7%',
                     cellTooltip: true,
                     cellClass: 'text-right',
-                    type: 'number'
+                    type: 'number',
+                    filters: [
+                        {
+                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                          placeholder: 'greater than'
+                        },
+                        {
+                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                          placeholder: 'less than'
+                        }
+                      ]
                 }, {
                     field: 'info',
                     cellTooltip: true,
-                    width: '*', minWidth: 200,
+                    width: '15%',
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
                             if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
@@ -317,11 +336,33 @@
                 }, {
                     field: 'anno',
                     diplayName: 'Anno',
-                    width: 50
+                    width: '3%',
+                    type: 'number',
+                    filters: [
+                        {
+                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                          placeholder: 'greater than'
+                        },
+                        {
+                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                          placeholder: 'less than'
+                        }
+                      ]
                 }, {
                     field: 'mese',
                     diplayName: 'Mese',
-                    width: 50
+                    width: '3%',
+                    type: 'number',
+                    filters: [
+                        {
+                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                          placeholder: 'greater than'
+                        },
+                        {
+                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                          placeholder: 'less than'
+                        }
+                      ]
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
