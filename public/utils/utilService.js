@@ -93,8 +93,8 @@
          max: function max(array){
              var max = 0;
              array.forEach(function(obj){
-                 if (obj > max){
-                     max = obj;
+                 if (Number(obj) > max){
+                     max = Number(obj);
                  }
              });
              return Number(max);

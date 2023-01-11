@@ -105,7 +105,9 @@
                     'y': d.contototale
                 };
             }),
-            color: $strings.RGB.CONTO_TOTALE
+            color: $strings.RGB.CONTO_TOTALE,
+            strokeWidth: 2,
+            classed: 'dashed'
     }];
             }
         };

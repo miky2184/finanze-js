@@ -109,7 +109,7 @@
                             'y': d.contopersonale
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE
+                    color: $strings.RGB.CONTO_PERSONALE                    
             }];
             }
         }

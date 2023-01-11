@@ -93,7 +93,8 @@
                     field: 'label'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso'
+                    displayName: 'In Uso',
+                    type: 'number'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -112,7 +113,8 @@
                     field: 'label'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso'
+                    displayName: 'In Uso',
+                    type: 'number'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -131,7 +133,8 @@
                     field: 'label'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso'
+                    displayName: 'In Uso',
+                    type: 'number'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -150,7 +153,8 @@
                     field: 'label'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso'
+                    displayName: 'In Uso',
+                    type: 'number'
                 }],
                 data: [],
                 isRowSelectable: function (row) {

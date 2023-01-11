@@ -552,12 +552,11 @@
                                                 newRow.beneficiario = row['beneficiario'];
                                                 newRow.tipoconto = row['tp_conto'];                                                
                                                 newRow.conto = row['conto'];
-                                                newRow.contabilizzata = row['fl_cont'] === 'SI' ? true : false;
-                                                newRow.budget = row['budget'] === 'SI' ? true : false;
-                                                newRow.visualizzare = row['fl_visl'] === 'SI' ? true : false;
-                                                newRow.cartaCredito = row['fl_cc'] === 'SI' ? true : false;
-                                                newRow.webapp = row['webapp'] === 'SI' ? true : false;
-                                                newRow.fissa = row['fissa'] === 'SI' ? true : false;
+                                                newRow.contabilizzata = row['fl_cont'];
+                                                newRow.budget = row['budget'];
+                                                newRow.visualizzare = row['fl_visl'];
+                                                newRow.cartaCredito = row['fl_cc'];
+                                                newRow.webapp = row['webapp'];                                                
                                                 newRow.importo = row['value'];
                                                 newRow.info = row['info'];
                                                 newRow.anno = String(new Date(row['data_val']).getFullYear());

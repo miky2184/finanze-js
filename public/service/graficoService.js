@@ -29,7 +29,7 @@
                     values: pivotData.map(function (d) {
                         return {
                             'x': new Date(d.data_val).setMinutes(new Date(d.data_val).getMinutes() - new Date(d.data_val).getTimezoneOffset()),
-                            'y': d.contocomune
+                            'y': new Number(d.contocomune)
                         };
                     }),
                     color: $strings.RGB.CONTO_COMUNE,
@@ -39,17 +39,17 @@
                     values: pivotData.map(function (d) {
                         return {
                             'x': new Date(d.data_val).setMinutes(new Date(d.data_val).getMinutes() - new Date(d.data_val).getTimezoneOffset()),
-                            'y': d.contopersonale
+                            'y': new Number(d.contopersonale)
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE
+                    color: $strings.RGB.CONTO_PERSONALE                    
             }];
             },
             loadGrafico: function (year) {
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
-                        height: 500,
+                        height: 500,                        
                         margin: {
                             top: 20,
                             right: 20,
