@@ -1,11 +1,9 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', 'passwordService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService, passwordService) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', 'passwordService', 'budgetService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService, passwordService, budgetService) {
         var srvc = {
             loadData: function () {
-                return listaMovimentiService.loadListaMovimenti();/*.then(function (f) {
-                    return spesaService.loadSpesa();
-                }); */
+                return listaMovimentiService.loadListaMovimenti();
             },
             login: function (datiAccesso) {
                 dataService.data.alerts = [];
@@ -125,6 +123,7 @@
                         promise.then(function () {
                             listaMovimentiService.gridOptions.data = angular.copy(dataService.data.backupData);
                             spesaService.gridOptionsSpesa.data = angular.copy(dataService.data.backupDataSpesa);
+                            budgetService.gridDefBudget.data = angular.copy(dataService.data.backupDataDefBudget);
                             dataService.data.dirty = false;
                             deferred.resolve();
                         }, function () {

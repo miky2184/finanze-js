@@ -85,11 +85,7 @@
             "tipoconto": 2,
             "label": $strings.CONTO.CONTO_PERSONALE
         }];
-        $scope.pivot = {
-            year: new Date().getFullYear(),
-            month: new Date().getMonth() + 1,
-            tipoconto: 1
-        };
+        $scope.pivot = $strings.PIVOT;
 
         /*********************************
             TAB LISTA MOVIMENTI
@@ -273,6 +269,14 @@
         $scope.gridBudget = budgetService.gridBudget;
         $scope.loadBudget = function () {
             return budgetService.loadBudget($scope.pivot);
+        };
+
+        /*********************
+            TAB DEF BUDGET
+        *********************/
+        $scope.gridDefBudget = budgetService.gridDefBudget;
+        $scope.loadDefBudget = function () {
+            return budgetService.loadDefBudget($scope.pivot);
         };
 
         /*********************

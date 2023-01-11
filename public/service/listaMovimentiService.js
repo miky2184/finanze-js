@@ -426,6 +426,11 @@
                             URL:'',
                             NOTE:''                            
                         });
+                    } else  if (maschera === "DB") {
+                        gridOptions.data.unshift({
+                            newRow: true,
+                            dirty: true
+                        });
                     }
                 },
                 disabled: function (maschera) {
@@ -498,7 +503,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin;
+                    return !dataService.data.admin || maschera=="DB";
                 },
                 label: 'Refreshs'
             },

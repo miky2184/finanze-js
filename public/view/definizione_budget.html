@@ -1,0 +1,16 @@
+<div layout="column" class="listaMovimenti">
+    <div flex layout="row">
+        <label for="contoSelect">Seleziona una tipologia di conto:</label>
+        <select name="contoSelect" id="repeatCnSelect" ng-options="tipoConto.tipoconto as tipoConto.label for tipoConto in conti" ng-model="pivot.tipoconto" ng-change="loadDefBudget()">
+        </select>
+        <label for="yearSelect"> Seleziona un anno: </label>
+        <select name="yearSelect" id="repeatYSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadDefBudget()">
+        </select>
+    </div>
+    <div flex layout="row" id="gridDefBudget" ui-grid="gridDefBudget"  ui-grid-selection ui-grid-cellnav ui-grid-edit ui-grid-auto-resize></div>
+    <div flex layout="row" layout-align="start end">
+      <md-button aria-label="{{button.label}}" layout="column" ng-repeat="button in actionButtons" class="md-fab md-mini md-primary" style='margin-left: 0px;'  ng-click="button.listener(gridDefBudget, 'DB')" ng-disabled="button.disabled('DB')">
+        <md-icon md-svg-src="{{button.src}}"></md-icon>
+      </md-button>
+    </div>
+  </div>

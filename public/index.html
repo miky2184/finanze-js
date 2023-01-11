@@ -111,6 +111,11 @@
                         <div ng-include="'view/settings.html'"></div>
                     </md-content>
                 </md-tab>
+                <md-tab label="Definizione Budget" md-on-select="loadDefBudget()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/definizione_budget.html'"></div>
+                    </md-content>
+                </md-tab> 
                 <md-tab label="Budget" md-on-select="loadBudget()">
                     <md-content class="md-padding">
                         <div ng-include="'view/budget.html'"></div>

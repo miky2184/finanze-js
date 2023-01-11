@@ -1,8 +1,206 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope) {
+        var scope = $rootScope.$new();
+
+        var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+            dataService.data.dirty = true;
+            rowEntity.dirty = true;
+            var newSett = {};
+            var oldSett = {};
+            switch (colDef.name) {
+                case 'ambito':
+                    newSett = dataService.data.dropdownAmbito.filter(function (a) {
+                        return a[colDef.name] === newValue;
+                    })[0];
+                    oldSett = dataService.data.dropdownAmbito.filter(function (a) {
+                        return a[colDef.name] === oldValue;
+                    })[0];
+                    rowEntity.categoria = null;
+                    rowEntity.sottocategoria = null;
+                    break;
+                case 'categoria':
+                    newSett = dataService.data.dropdownCategoria.filter(function (a) {
+                        return a[colDef.name] === newValue;
+                    })[0];
+                    oldSett = dataService.data.dropdownCategoria.filter(function (a) {
+                        return a[colDef.name] === oldValue;
+                    })[0];
+                    rowEntity.sottocategoria = null;
+                    break;
+                case 'sottocategoria':
+                    newSett = dataService.data.dropdownSottocategoria.filter(function (a) {
+                        return a[colDef.name] === newValue;
+                    })[0];
+                    oldSett = dataService.data.dropdownSottocategoria.filter(function (a) {
+                        return a[colDef.name] === oldValue;
+                    })[0];
+                    break;                
+                default:
+                    break;
+            }
+            if (newSett) {
+                newSett.used = newSett.used + 1;
+            }
+            if (oldSett) {
+                oldSett.used += -1;
+            }
+        };
 
         var srvc = {
+            gridDefBudget: {
+                columnVirtualizationThreshold: 100,
+                showGridFooter: false,
+                showColumnFooter: true,
+                minRowsToShow: 23,
+                enableFiltering: true,
+                enableRowSelection: true,
+                enableSelectAll: true,
+                selectionRowHeaderWidth: 35,
+                rowTemplate: 'templates/rows/deletableRow.html',
+                enableColumnMenus: false,
+                columnDefs: [{name: 'nome_mese',displayName: 'Mese', field: 'nome_mese',  width: '10%',filter: {
+                    condition: function (searchTerm, cellValue, row, column) {                                                            
+                        if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
+                            return true;
+                        } 
+                        return false;
+                    }
+                }},{
+                    name: 'ambito',
+                    displayName: 'Ambito',
+                    field: 'ambito',
+                    width: '10%',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
+                    editDropdownIdLabel: 'ambito',
+                    editDropdownValueLabel: 'label',
+                    cellFilter: 'griddropdown:this',
+                    editDropdownOptionsFunction: function (rowEntity, colDef) {
+                        return dataService.data.dropdownAmbito.filter(function (a) {
+                            return !a.deleted;
+                        });
+                    },
+                    filter: {
+                        placeholder: 'like',
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownAmbito) {
+                                if (searchTerm != 'null'){
+                                var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
+                                    return ambito.ambito === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                } } else {
+                                    return cellValue == null || cellValue == 0;             
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    name: 'categoria',
+                    displayName: 'Categoria',
+                    field: 'categoria',
+                    width: '10%',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
+                    editDropdownIdLabel: 'categoria',
+                    editDropdownValueLabel: 'label',
+                    cellFilter: 'griddropdown:this',
+                    editDropdownOptionsFunction: function (rowEntity, colDef) {
+                        if (rowEntity.ambito) {
+                            return dataService.data.dropdownCategoria.filter(function (obj) {
+                                return obj.ambito === rowEntity.ambito && !obj.deleted;
+                            });
+                        }
+                        return [];
+                    },
+                    filter: {
+                        placeholder: 'like',
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownCategoria) {
+                                if (searchTerm != 'null'){
+                                var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
+                                    return categoria.categoria === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            } else {
+                                return cellValue == null || cellValue == 0;             
+                            }
+                            }
+                        }
+                    }
+                }, {
+                    name: 'sottocategoria',
+                    displayName: 'Sottocategoria',
+                    field: 'sottocategoria',
+                    width: '10%',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
+                    editDropdownIdLabel: 'sottocategoria',
+                    editDropdownValueLabel: 'label',
+                    cellFilter: 'griddropdown:this',
+                    editDropdownOptionsFunction: function (rowEntity, colDef) {
+                        if (rowEntity.categoria) {
+                            return dataService.data.dropdownSottocategoria.filter(function (obj) {
+                                return obj.categoria === rowEntity.categoria && !obj.deleted;
+                            });
+                        }
+                        return [];
+                    },                    
+                    filter: {
+                        placeholder: 'like',
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownSottocategoria) {
+                                if (searchTerm != 'null'){
+                                    var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
+                                        return sottocategoria.sottocategoria === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }               
+                    } else {
+                        return cellValue == null || cellValue == 0;             
+                    }  
+                            }
+                        }
+                    }
+                },{name: 'budget',displayName: 'Budget', field: 'budget',  width: '*',type: 'number', cellClass: 'text-right', aggregationType: uiGridConstants.aggregationTypes.sum,
+                filters: [
+                    {
+                      condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                      placeholder: 'greater than'
+                    },
+                    {
+                      condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                      placeholder: 'less than'
+                    }
+                  ]},{name: 'mese',displayName: 'Mese', field: 'mese',  width: '10%',type: 'number', cellClass: 'text-right',
+                filters: [
+                    {
+                      condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                      placeholder: 'greater than'
+                    },
+                    {
+                      condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                      placeholder: 'less than'
+                    }
+                  ]}],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridDefBudget.gridApi = gridApi;
+                    srvc.gridDefBudget.gridApi.core.handleWindowResize();
+                    gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                }
+            },
             gridBudget: {
                 columnVirtualizationThreshold: 32,
                 minRowsToShow: 23,
@@ -1217,6 +1415,24 @@
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridBudget.data = resp.data;
+                    }
+                });
+            },
+            loadDefBudget: function(pivot){
+                var dto = {};
+                dto.tipoconto = (pivot || $strings.PIVOT).tipoconto;
+                dto.anno = (pivot || $strings.PIVOT).year;
+                return $http.post($strings.REST.SERVER + '/defbudget', dto).then(function (resp) {
+                    if (resp.data && resp.data.length > 0) {                                                
+                        resp.data.forEach(function (row) {
+                            row['budget'] = new Number(row['budget']);
+                            row['mese'] = new Number(row['mese']);
+                        });
+                        srvc.gridDefBudget.data = resp.data;
+                        dataService.data.backupDataDefBudget = angular.copy(resp.data);
+                        srvc.gridDefBudget.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito;
+                        srvc.gridDefBudget.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                        srvc.gridDefBudget.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;                        
                     }
                 });
             }

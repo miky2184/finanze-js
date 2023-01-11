@@ -36,6 +36,11 @@
         },
         REST:{
             SERVER: 'http://miky2184.ddns.net:3001'
+        },
+        PIVOT: {
+            year: new Date().getFullYear(),
+            month: new Date().getMonth() + 1,
+            tipoconto: 1
         }
         });
 })();
