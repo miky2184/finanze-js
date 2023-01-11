@@ -2,6 +2,7 @@
     'use strict';
     angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', 'predmatchService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService, predmatchService) {
         var scope = $rootScope.$new();
+
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
@@ -225,12 +226,12 @@
                         }
                     }
                 }, {
-                    name: 'tipoConto',
+                    name: 'tipoconto',
                     displayName: 'Tipo Conto',
-                    field: 'tipoConto',
+                    field: 'tipoconto',
                     width: '8%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownIdLabel: 'tipoConto',
+                    editDropdownIdLabel: 'tipoconto',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function () {
@@ -240,7 +241,7 @@
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.editDropDownTipoContoArray) {
                                 var cell = dataService.data.editDropDownTipoContoArray.filter(function (tipoConto) {
-                                    return tipoConto.tipoConto === cellValue;
+                                    return tipoConto.tipoconto === cellValue;
                                 });
                                 if (cell && cell.length > 0) {
                                     return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
@@ -543,24 +544,24 @@
                                             var resultsData = [];
                                             response.data.forEach(function (row) {
                                                 var newRow = {};
-                                                newRow.id = row['ID'];
-                                                newRow.data = new Date(row['DATA_VAL']);
-                                                newRow.ambito = row['AMBITO'];
-                                                newRow.categoria = row['CATEGORIA'];
-                                                newRow.sottocategoria = row['SOTTOCATEGORIA'];
-                                                newRow.beneficiario = row['BENEFICIARIO'];
-                                                newRow.tipoConto = row['TP_CONTO'];
-                                                newRow.conto = row['CONTO'];
-                                                newRow.contabilizzata = row['FL_CONT'] === 'SI' ? true : false;
-                                                newRow.budget = row['BUDGET'] === 'SI' ? true : false;
-                                                newRow.visualizzare = row['FL_VISL'] === 'SI' ? true : false;
-                                                newRow.cartaCredito = row['FL_CC'] === 'SI' ? true : false;
-                                                newRow.webapp = row['WEBAPP'] === 'SI' ? true : false;
-                                                newRow.fissa = row['FISSA'] === 'SI' ? true : false;
-                                                newRow.importo = row['VALUE'];
-                                                newRow.info = row['INFO'];
-                                                newRow.anno = String(new Date(row['DATA_VAL']).getFullYear());
-                                                newRow.mese = String(new Date(row['DATA_VAL']).getMonth() + 1).padStart(2, '0');
+                                                newRow.id = row['id'];
+                                                newRow.data = new Date(row['data_val']);
+                                                newRow.ambito = row['ambito'];
+                                                newRow.categoria = row['categoria'];
+                                                newRow.sottocategoria = row['sottocategoria'];
+                                                newRow.beneficiario = row['beneficiario'];
+                                                newRow.tipoconto = row['tp_conto'];                                                
+                                                newRow.conto = row['conto'];
+                                                newRow.contabilizzata = row['fl_cont'] === 'SI' ? true : false;
+                                                newRow.budget = row['budget'] === 'SI' ? true : false;
+                                                newRow.visualizzare = row['fl_visl'] === 'SI' ? true : false;
+                                                newRow.cartaCredito = row['fl_cc'] === 'SI' ? true : false;
+                                                newRow.webapp = row['webapp'] === 'SI' ? true : false;
+                                                newRow.fissa = row['fissa'] === 'SI' ? true : false;
+                                                newRow.importo = row['value'];
+                                                newRow.info = row['info'];
+                                                newRow.anno = String(new Date(row['data_val']).getFullYear());
+                                                newRow.mese = String(new Date(row['data_val']).getMonth() + 1).padStart(2, '0');
                                                 return resultsData.push(newRow);
                                             });
                                             dataService.data.backupData = angular.copy(resultsData);

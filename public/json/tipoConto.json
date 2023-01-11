@@ -1,7 +1,10 @@
 [{
-    "tipoConto": 1,
+    "tipoconto": 1,
     "label": "CONTO COMUNE"
 }, {
-    "tipoConto": 2,
+    "tipoconto": 2,
     "label": "CONTO PERSONALE"
+}, {
+    "tipoconto": 4,
+    "label": "CONTO MARIANNA"
 }]

@@ -338,43 +338,44 @@ label-settings {
 
 .webapp::before {
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-weight: 700;
     content: "\f3cd";
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .contabilizzata::before {
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-weight: 700;
     content: "\f24e";
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .flagbudget::before {
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-weight: 700;
     content: "\f032";
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .visualizzare::before {
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-weight: 700;
     content: "\f06e";
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .cartacredito::before {
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-weight: 700;
     content: "\f09d";
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .fissa::before {
     font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-weight: 700;
     content: "\f02e";
+    margin-left: 12px;
 }
 
 .centoperc {

@@ -131,7 +131,7 @@
         },
         loadPivotAnno : function (year, tipoConto) {
             var balanceData = angular.copy(listaMovimentiService.gridOptions.data).filter(function (obj) {
-                return obj.anno === year && obj.tipoConto === tipoConto && obj.contabilizzata;
+                return obj.anno === year && obj.tipoconto === tipoConto && obj.contabilizzata;
             });
             var pivotData = [];
             balanceData = utilService.sortByKey(balanceData, 'sottocategoria');

@@ -12,8 +12,8 @@
                 return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {
                     modalService.showSearchingModal();
                     if (resp.data && resp.data.length === 1) {
-                        dataService.data.descName = resp.data[0]['NAME'];
-                        dataService.data.admin = resp.data[0]['PROFILE'] === 'admn' ? true : false;
+                        dataService.data.descName = resp.data[0]['name'];
+                        dataService.data.admin = resp.data[0]['profile'] === 'admn' ? true : false;
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {

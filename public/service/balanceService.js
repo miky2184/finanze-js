@@ -15,26 +15,26 @@
                     field: 'conto',
                     width: '20%'
             }, {
-                    name: 'contoComune',
+                    name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
-                    field: 'contoComune',
-                    width: '*',
+                    field: 'contocomune',
+                    width: '20%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
             }, {
-                    name: 'contoPersonale',
+                    name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
-                    field: 'contoPersonale',
-                    width: '*',
+                    field: 'contopersonale',
+                    width: '20%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
             }, {
-                name: 'contoMarianna',
+                name: 'contomarianna',
                 displayName: 'CONTO MARIANNA',
-                field: 'contoMarianna',
-                width: '*',
+                field: 'contomarianna',
+                width: '20%',
                 aggregationType: uiGridConstants.aggregationTypes.sum,
                 footerCellFilter: 'currency',
                 cellFilter: 'currency'
@@ -42,7 +42,7 @@
                     name: 'totale',
                     displayName: 'Totale',
                     field: 'totale',
-                    width: '*',
+                    width: '20%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -61,33 +61,33 @@
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{
-                    field: 'DESCRIZIONE',
+                    field: 'descrizione',
                      displayName: 'DA',
                     width: '25%'
             },{
-                field: 'INFO',
+                field: 'info',
                  displayName: 'INFO',
                     width: '35%'
         },{
-            field: 'dataAvere',
+            field: 'dataavere',
              displayName: 'DATA',
                     width:'10%',
                     type: 'date', 
                     cellFilter: 'date:\'yyyy-MM-dd\''
     }, {
-                    field: 'contoComune',
+                    field: 'contocomune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     width: '10%'
             }, {
-                    field: 'contoPersonale',
+                    field: 'contopersonale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     width: '10%'
             }, {
-                field: 'contoMarianna',
+                field: 'contomarianna',
                 aggregationType: uiGridConstants.aggregationTypes.sum,
                 footerCellFilter: 'currency',
                 cellFilter: 'currency',

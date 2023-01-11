@@ -263,7 +263,7 @@
                 var dto = {};
                 dto.anno = year;     
                 return $http.get($strings.REST.SERVER + '/spesoTotalePerAnno').then(function (resp) {
-                    pivotDataGraficoSpesoTotalePerAnno = JSON.parse(resp.data[0]['spesoTotalePerAnno'].replaceAll('\\"', '"').replaceAll('["', '[').replaceAll('"]',']'));
+                    pivotDataGraficoSpesoTotalePerAnno = resp.data[0]['spesototaleperanno'];
                     dataService.data.dataGraficoSpesoTotalePerAnno = srvc.dataGraficoSpesoTotalePerAnno();
                 });
             }           

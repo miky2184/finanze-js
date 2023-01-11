@@ -30,43 +30,43 @@
                 columnDefs: [{
                     name: 'IDAMB',
                     displayName: 'ID AMB',
-                    field: 'IDAMB',
+                    field: 'idamb',
                     width: 80,
                     pinnedLeft: true
                 }, {
                     name: 'IDCAT',
                     displayName: 'ID CAT',
-                    field: 'IDCAT',
+                    field: 'idcat',
                     width: 80,
                     pinnedLeft: true
                 }, {
                     name: 'IDSOT',
                     displayName: 'ID SOT',
-                    field: 'IDSOT',
+                    field: 'idsot',
                     width: 80,
                     pinnedLeft: true
                 }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
-                    field: 'AMBITO',
+                    field: 'ambito',
                     width: 165,
                     pinnedLeft: true
                 }, {
                     name: 'CATEGORIA',
                     displayName: 'Categoria',
-                    field: 'CATEGORIA',
+                    field: 'categoria',
                     width: 165,
                     pinnedLeft: true
                 }, {
                     name: 'SOTTOCATEGORIA',
                     displayName: 'Sottocategoria',
-                    field: 'SOTTOCATEGORIA',
+                    field: 'sottocategoria',
                     width: '*',
                     pinnedLeft: true
                 }, {
                     name: 'TOTALE_2017',
                     displayName: '2017',
-                    field: 'TOTALE_2017',
+                    field: 'totale_2017',
                     width: 130  ,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -75,7 +75,7 @@
                 },{
                     name: 'TOTALE_2018',
                     displayName: '2018',
-                    field: 'TOTALE_2018',
+                    field: 'totale_2018',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -91,7 +91,7 @@
                 },{
                     name: 'TOTALE_2019',
                     displayName: '2019',
-                    field: 'TOTALE_2019',
+                    field: 'totale_2019',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -107,7 +107,7 @@
                 },{
                     name: 'TOTALE_2020',
                     displayName: '2020',
-                    field: 'TOTALE_2020',
+                    field: 'totale_2020',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -123,7 +123,7 @@
                 },{
                     name: 'TOTALE_2021',
                     displayName: '2021',
-                    field: 'TOTALE_2021',
+                    field: 'totale_2021',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -139,7 +139,7 @@
                 },{
                     name: 'TOTALE_2022',
                     displayName: '2022',
-                    field: 'TOTALE_2022',
+                    field: 'totale_2022',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -155,7 +155,7 @@
                 },{
                     name: 'TOTALE_2023',
                     displayName: '2023',
-                    field: 'TOTALE_2023',
+                    field: 'totale_2023',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -171,7 +171,7 @@
                 },{
                     name: 'TOTALE_2024',
                     displayName: '2024',
-                    field: 'TOTALE_2024',
+                    field: 'totale_2024',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -180,7 +180,7 @@
                 },{
                     name: 'TOTALE_2025',
                     displayName: '2025',
-                    field: 'TOTALE_2025',
+                    field: 'totale_2025',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -195,7 +195,7 @@
             },
             loadSpeseAnnue: function (pivot) {
                 var dto = {};
-                dto.tipoconto = pivot.tipoConto;
+                dto.tipoconto = pivot.tipoconto;
                 return $http.post($strings.REST.SERVER + '/speseAnnue', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridSpeseAnnuali.data = resp.data;

@@ -20,31 +20,31 @@
                 columnDefs: [{
                     name: 'SITE',
                     displayName: 'Nome Sito.',
-                    field: 'SITE',
+                    field: 'site',
                     type: 'text',
                     width: 250 
                 },{
                     name: 'USER',
                     displayName: 'Username.',
-                    field: 'USER',
+                    field: 'user',
                     type: 'text',
                     width: 260 
                 },{
                     name: 'PWD',
                     displayName: 'Password',
-                    field: 'PWD',
+                    field: 'pwd',
                     type: 'text',
                     width: 260 
                 },{
                     name: 'URL',
                     displayName: 'URL',
-                    field: 'URL',
+                    field: 'url',
                     type: 'text',
                     width: 350 
                 }, {
                     name: 'NOTE',
                     displayName: 'Note',
-                    field: 'NOTE',
+                    field: 'note',
                     type: 'text',
                     width: '*'                    
                 }],

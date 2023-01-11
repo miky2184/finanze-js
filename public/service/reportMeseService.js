@@ -13,7 +13,7 @@
                 columnDefs: [{
                     name: 'DESC_AMB',
                     displayName: 'Ambito',
-                    field: 'DESC_AMB',
+                    field: 'desc_amb',
                     width: '10%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
@@ -23,7 +23,7 @@
                 }, {
                     name: 'DESC_CAT',
                     displayName: 'Categoria',
-                    field: 'DESC_CAT',
+                    field: 'desc_cat',
                     width: '10%',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
@@ -33,7 +33,7 @@
                 }, {
                     name: 'DESC_SOT',
                     displayName: 'Sottocategoria',
-                    field: 'DESC_SOT',
+                    field: 'desc_sot',
                     width: '*',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity.padre) {
@@ -43,7 +43,7 @@
                 }, {
                     name: 'TOTALE',
                     displayName: 'TOT. MESE',
-                    field: 'TOTALE',
+                    field: 'totale',
                     width: '10%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
@@ -62,7 +62,7 @@
             },
             loadReportMese: function (pivot) {
                 var dto = {};
-                dto.tipoconto = pivot.tipoConto;
+                dto.tipoconto = pivot.tipoconto;
                 dto.mese = pivot.month;
                 dto.anno = pivot.year;
                 return $http.post($strings.REST.SERVER+'/reportmese', dto).then(function (resp) {
