@@ -174,6 +174,8 @@
                         }
                     }
                 },{name: 'budget',displayName: 'Budget', field: 'budget',  width: '*',type: 'number', cellClass: 'text-right', aggregationType: uiGridConstants.aggregationTypes.sum,
+                footerCellFilter: 'currency',
+                cellFilter: 'currency',
                 filters: [
                     {
                       condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -1425,8 +1427,8 @@
                 return $http.post($strings.REST.SERVER + '/defbudget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {                                                
                         resp.data.forEach(function (row) {
-                            row['budget'] = new Number(row['budget']);
-                            row['mese'] = new Number(row['mese']);
+                            row['budget'] = Number(row['budget']);
+                            row['mese'] = Number(row['mese']);
                         });
                         srvc.gridDefBudget.data = resp.data;
                         dataService.data.backupDataDefBudget = angular.copy(resp.data);

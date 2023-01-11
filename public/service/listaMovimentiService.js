@@ -420,16 +420,20 @@
                         gridOptions.data.unshift({
                             newRow: true,                            
                             dirty: true,
-                            SITE:'',
-                            USER:'',
-                            PWD:'',
-                            URL:'',
-                            NOTE:''                            
+                            site:'',
+                            user:'',
+                            pwd:'',
+                            url:'',
+                            note:''                            
                         });
                     } else  if (maschera === "DB") {
                         gridOptions.data.unshift({
                             newRow: true,
-                            dirty: true
+                            dirty: true,
+                            anno: $strings.PIVOT.year,
+                            mese: 1,
+                            tp_conto: $strings.PIVOT.tipoconto,
+                            budget: 0
                         });
                     }
                 },

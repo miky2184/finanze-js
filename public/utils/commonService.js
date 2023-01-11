@@ -84,6 +84,9 @@
                 dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
                     return sf.dirty;
                 });*/
+                dto.budget = budgetService.gridDefBudget.data.filter(function(row){
+                    return row.dirty && !(row.newRow && row.deleted);;
+                });
                 dto.passwords = passwordService.gridOptionsPassword.data.filter(function(pwd){
                     return pwd.dirty;
                 });
