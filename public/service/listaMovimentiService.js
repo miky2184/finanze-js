@@ -342,7 +342,7 @@
                     width: '15%',
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
+                            if (cellValue != undefined && cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
                                 return true;
                             } 
                             return false;
@@ -566,7 +566,7 @@
                                                 newRow.visualizzare = row['fl_visl'];
                                                 newRow.cartaCredito = row['fl_cc'];
                                                 newRow.webapp = row['webapp'];                                                
-                                                newRow.importo = row['value'];
+                                                newRow.importo = Number(row['value']);
                                                 newRow.info = row['info'];
                                                 newRow.anno = String(new Date(row['data_val']).getFullYear());
                                                 newRow.mese = String(new Date(row['data_val']).getMonth() + 1).padStart(2, '0');
