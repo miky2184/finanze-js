@@ -342,7 +342,7 @@
                     width: '15%',
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue != undefined && cellValue.match(searchTermn.match(new RegExp(searchTerm.toUpperCase()))) != null){
+                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.toUpperCase())) != null){
                                 return true;
                             } 
                             return false;
