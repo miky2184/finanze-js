@@ -1006,9 +1006,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionale_comunale_Variabile',
+                        name: 'add_comunale_variabile',
                         displayName: 'ADD COMN VAR',
-                        field: 'addizionale_comunale_variabile',
+                        field: 'add_comunale_variabile',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1026,9 +1026,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionale_comunale_variabile_acconto',
+                        name: 'add_comunale_variabile_acc',
                         displayName: 'ADD COMN VAR ACC',
-                        field: 'addizionale_comunale_variabile_acconto',
+                        field: 'add_comunale_variabile_acc',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1046,9 +1046,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionale_regionale_fissa',
+                        name: 'add_regionale_fissa',
                         displayName: 'ADD REG FISSA',
-                        field: 'addizionale_regionale_fissa',
+                        field: 'add_regionale_fissa',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1066,9 +1066,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionale_regionale_variabile',
+                        name: 'add_regionale_variabile',
                         displayName: 'ADD REG VAR',
-                        field: 'addizionale_regionale_variabile',
+                        field: 'add_regionale_variabile',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1086,9 +1086,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'abbonamento_annuale_atm',
+                        name: 'abbonamento_atm',
                         displayName: 'ABB ATM',
-                        field: 'abbonamento_annuale_atm',
+                        field: 'abbonamento_atm',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
