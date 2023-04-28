@@ -70,9 +70,9 @@
                         cellClass: 'disable',
                         pinnedLeft: true
 }, */{
-                        name: 'retribuzioneOrdinaria',
+                        name: 'retribuzione_ordinaria',
                         displayName: 'RETRIBUZIONE',
-                        field: 'retribuzioneordinaria',
+                        field: 'retribuzione_ordinaria',
                         width: '7%',
                         cellFilter: 'currency',
                         pinnedLeft: true,
@@ -92,9 +92,9 @@
                         }
                       ]
 },  {
-                        name: 'totaleRitenute',
+                        name: 'totale_ritenute',
                         displayName: 'TRATTENUTE',
-                        field: 'totaleritenute',
+                        field: 'totale_ritenute',
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
@@ -113,9 +113,9 @@
                         }
                       ]
 }, {
-                        name: 'totaleCompetenze',
+                        name: 'totale_competenze',
                         displayName: 'COMPETENZE',
-                        field: 'totalecompetenze',
+                        field: 'totale_competenze',
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
@@ -134,7 +134,7 @@
                         }
                       ]
 }, {
-                        name: 'stipendioNetto',
+                        name: 'stipendionetto',
                         displayName: 'NETTO',
                         field: 'stipendionetto',
                         width: '7%',
@@ -156,7 +156,7 @@
                         }
                       ]
 }, {
-    name: 'partecipazioneAzioni',
+    name: 'partecipazioneazioni',
     displayName: 'PARTEC. AZIONI',
     field: 'partecipazioneazioni',
     width: '7%',
@@ -177,22 +177,10 @@ filters: [
       placeholder: 'less than'
     }
   ]
-},/*{
-                        name: 'ggLavorativi',
-                        displayName: 'Giorni INPS',
-                        field: 'gglavorativi',
-                        cellClass: 'text-right',
-                        width: 120
-}, {
-                        name: 'ggDetrazioni',
-                        displayName: 'Giorni Detr.',
-                        field: 'ggdetrazioni',
-                        cellClass: 'text-right',
-                        width: 120
-},*/ {
-                        name: 'festivitaNonGoduta',
+},{
+                        name: 'festivita_non_goduta',
                         displayName: 'FEST NON GODUTA',
-                        field: 'festivitanongoduta',
+                        field: 'festivita_non_goduta',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -207,9 +195,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'competenzaBase',
+                        name: 'competenza_base',
                         displayName: 'RETR. GG',
-                        field: 'competenzabase',
+                        field: 'competenza_base',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -241,9 +229,9 @@ filters: [
   }
 ]
 }, {
-                        name: 'liqrol',
+                        name: 'liq_rol',
                         displayName: 'ORE ROL LIQ',
-                        field: 'liqrol',
+                        field: 'liq_rol',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -260,9 +248,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'comprol',
+                        name: 'comp_rol',
                         displayName: 'COMP ROL',
-                        field: 'comprol',
+                        field: 'comp_rol',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -277,9 +265,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'straordinario25',
+                        name: 'straordinario__25',
                         displayName: 'STR.25%',
-                        field: 'straordinario25',
+                        field: 'straordinario__25',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -295,10 +283,10 @@ filters: [
                           placeholder: 'less than'
                         }
                       ]
-}, {
-                        name: 'compstraordinario25',
+}, {                          
+                        name: 'comp_straordinario_25',
                         displayName: 'COMP.STR.25%',
-                        field: 'compstraordinario25',
+                        field: 'comp_straordinario_25',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -313,9 +301,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'maggiorazione25',
+                        name: 'maggiorazione_25',
                         displayName: 'MAGG.STR.25%',
-                        field: 'maggiorazione25',
+                        field: 'maggiorazione_25',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -332,9 +320,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compmaggiorazione25',
+                        name: 'comp_maggiorazione_25',
                         displayName: 'COMP.MAGG.STR.25%',
-                        field: 'compmaggiorazione25',
+                        field: 'comp_maggiorazione_25',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -349,9 +337,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'straordinario30',
+                        name: 'straordinario_30',
                         displayName: 'STR.30%',
-                        field: 'straordinario30',
+                        field: 'straordinario_30',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -368,9 +356,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compstraordinario30',
+                        name: 'comp_straordinario_30',
                         displayName: 'COMP.STR.30%',
-                        field: 'compstraordinario30',
+                        field: 'comp_straordinario_30',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -385,9 +373,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'maggiorazione30',
+                        name: 'maggiorazione_30',
                         displayName: 'MAGG.STR.30%',
-                        field: 'maggiorazione30',
+                        field: 'maggiorazione_30',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -404,9 +392,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compmaggiorazione30',
+                        name: 'comp_maggiorazione__30',
                         displayName: 'COMP.MAGG.STR.30%',
-                        field: 'compmaggiorazione30',
+                        field: 'comp_maggiorazione__30',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -421,9 +409,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'straordinario50',
+                        name: 'straordinario_50',
                         displayName: 'STR.50%',
-                        field: 'straordinario50',
+                        field: 'straordinario_50',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -440,9 +428,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compstraordinario50',
+                        name: 'comp_straordinario_50',
                         displayName: 'COMP.STR.50%',
-                        field: 'compstraordinario50',
+                        field: 'comp_straordinario_50',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -457,9 +445,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'maggiorazione50',
+                        name: 'maggiorazione_50',
                         displayName: 'MAGG.STR.50%',
-                        field: 'maggiorazione50',
+                        field: 'maggiorazione_50',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -476,9 +464,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compmaggiorazione50',
+                        name: 'comp_maggiorazione__50',
                         displayName: 'COMP.MAGG.STR.50%',
-                        field: 'compmaggiorazione50',
+                        field: 'comp_maggiorazione__50',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -493,9 +481,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'maggiorazione55',
+                        name: 'maggiorazione_55',
                         displayName: 'MAGG.STR.55%',
-                        field: 'maggiorazione55',
+                        field: 'maggiorazione_55',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -512,9 +500,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compmaggiorazione55',
+                        name: 'comp_maggiorazione__55',
                         displayName: 'COMP.MAGG.STR.55%',
-                        field: 'compmaggiorazione55',
+                        field: 'comp_maggiorazione__55',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -529,9 +517,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'maggiorazione60',
+                        name: 'maggiorazione_60',
                         displayName: 'MAGG.STR.60%',
-                        field: 'maggiorazione60',
+                        field: 'maggiorazione_60',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
@@ -548,9 +536,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'compmaggiorazione60',
+                        name: 'comp_maggiorazione__60',
                         displayName: 'COMP.MAGG.STR.60%',
-                        field: 'compmaggiorazione60',
+                        field: 'comp_maggiorazione__60',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -565,9 +553,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'erogazioneSpeciale',
+                        name: 'erogazione_speciale',
                         displayName: 'Erogazione Speciale',
-                        field: 'erogazionespeciale',
+                        field: 'erogazione_speciale',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -585,9 +573,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'contributoSindacale',
+                        name: 'contributo_sindacale',
                         displayName: 'Contributo Sindacale',
-                        field: 'contributosindacale',
+                        field: 'contributo_sindacale',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -645,9 +633,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'premiinnatura',
+                        name: 'premi_in_natura',
                         displayName: 'Premi In Natura',
-                        field: 'premiinnatura',
+                        field: 'premi_in_natura',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -665,9 +653,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'impprevnonarr',
+                        name: 'imp_prev_non_arr',
                         displayName: 'IMP PREV NON ARR',
-                        field: 'impprevnonarr',
+                        field: 'imp_prev_non_arr',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -686,9 +674,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'impprevarr',
+                        name: 'imp_prev_arr',
                         displayName: 'IMP PREV ARR',
-                        field: 'impprevarr',
+                        field: 'imp_prev_arr',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -707,9 +695,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'imponibileprevistoannuo',
+                        name: 'imponibile_previsto_annuo',
                         displayName: 'IMP PREVISTO ANNUO',
-                        field: 'imponibileprevistoannuo',
+                        field: 'imponibile_previsto_annuo',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -728,9 +716,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'ritenutemeseinps',
+                        name: 'ritenute_mese_inps',
                         displayName: 'TRATT PREV INPS',
-                        field: 'ritenutemeseinps',
+                        field: 'ritenute_mese_inps',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -749,9 +737,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'imponibilefiscalemese',
+                        name: 'imponibile_fiscale_mese',
                         displayName: 'Imponibile Fiscale Mese',
-                        field: 'imponibilefiscalemese',
+                        field: 'imponibile_fiscale_mese',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -770,9 +758,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'ritenutaFiscaleMeseLorda',
+                        name: 'ritenuta_fiscale_mese_lorda',
                         displayName: 'RIT FISC MESE LORDA',
-                        field: 'ritenutafiscalemeselorda',
+                        field: 'ritenuta_fiscale_mese_lorda',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -791,9 +779,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'detrazioniImposta',
+                        name: 'detrazioni_imposta',
                         displayName: 'DETR LAV DIP',
-                        field: 'detrazioniimposta',
+                        field: 'detrazioni_imposta',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -812,9 +800,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'detrazioneConiuge',
+                        name: 'detrazione_coniuge',
                         displayName: 'Detrazione Coniuge',
-                        field: 'detrazioneconiuge',
+                        field: 'detrazione_coniuge',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -833,9 +821,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'detrazioneFigli',
+                        name: 'detrazione_figli',
                         displayName: 'Detrazione Figli',
-                        field: 'detrazionefigli',
+                        field: 'detrazione_figli',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         cellClass: 'disable',
@@ -875,9 +863,9 @@ filters: [
             }
           ]
 }, {
-            name: 'detrazioneCuneo',
+            name: 'detrazione_cuneo',
             displayName: 'Detrazione Cuneo Fiscale',
-            field: 'detrazionecuneo',
+            field: 'detrazione_cuneo',
             cellFilter: 'currency',
             cellClass: 'text-right',
             width: '7%',
@@ -896,9 +884,9 @@ filters: [
             }
           ]
         },{
-                        name: 'ritenutaFiscaleMeseNetta',
+                        name: 'ritenuta_fiscale_mese_netta',
                         displayName: 'RIT FISC MESE NETTA',
-                        field: 'ritenutafiscalemesenetta',
+                        field: 'ritenuta_fiscale_mese_netta',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -917,9 +905,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'bonusRenzi',
+                        name: 'bonus_renzi',
                         displayName: 'BONUS RENZI',
-                        field: 'bonusrenzi',
+                        field: 'bonus_renzi',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -958,9 +946,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'conguaglioRenzi',
+                        name: 'conguaglio_renzi',
                         displayName: 'CONG CRE RENZI',
-                        field: 'conguagliorenzi',
+                        field: 'conguaglio_renzi',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -978,9 +966,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'conguaglioDebito',
+                        name: 'conguaglio_debito',
                         displayName: 'CONG DEB',
-                        field: 'conguagliodebito',
+                        field: 'conguaglio_debito',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -998,9 +986,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'conguaglioDebitoRenzi',
+                        name: 'conguaglio_debito_renzi',
                         displayName: 'CONG DEB RENZI',
-                        field: 'conguagliodebitorenzi',
+                        field: 'conguaglio_debito_renzi',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1018,9 +1006,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionaleComunaleVariabile',
+                        name: 'addizionale_comunale_Variabile',
                         displayName: 'ADD COMN VAR',
-                        field: 'addizionalecomunalevariabile',
+                        field: 'addizionale_comunale_variabile',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1038,9 +1026,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionaleComunaleVariabileAcconto',
+                        name: 'addizionale_comunale_variabile_acconto',
                         displayName: 'ADD COMN VAR ACC',
-                        field: 'addizionalecomunalevariabileacconto',
+                        field: 'addizionale_comunale_variabile_acconto',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1058,9 +1046,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionaleRegionaleFissa',
+                        name: 'addizionale_regionale_fissa',
                         displayName: 'ADD REG FISSA',
-                        field: 'addizionaleregionalefissa',
+                        field: 'addizionale_regionale_fissa',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1078,9 +1066,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'addizionaleRegionaleVariabile',
+                        name: 'addizionale_regionale_variabile',
                         displayName: 'ADD REG VAR',
-                        field: 'addizionaleregionalevariabile',
+                        field: 'addizionale_regionale_variabile',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
@@ -1098,9 +1086,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'abbonamentoannualeatm',
+                        name: 'abbonamento_annuale_atm',
                         displayName: 'ABB ATM',
-                        field: 'abbonamentoannualeatm',
+                        field: 'abbonamento_annuale_atm',
                         cellFilter: 'currency',
                         cellClass: 'text-right',
                         width: '7%',
