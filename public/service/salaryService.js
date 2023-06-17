@@ -265,9 +265,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'straordinario__25',
+                        name: 'straordinario_25',
                         displayName: 'STR.25%',
-                        field: 'straordinario__25',
+                        field: 'straordinario_25',
                         cellClass: 'text-right',
                         width: '7%',
                             footerCellFilter: 'number:2',
