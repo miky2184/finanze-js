@@ -10,6 +10,7 @@
     "body-parser": "1.9.2",
     "excel-builder": "^2.0.3",
     "express": "4.10.1",
+    "fontawesome-free": "^1.0.4",
     "jszip": "^2.6.1",
     "lodash": "^4.17.15",
     "method-override": "2.3.10",
