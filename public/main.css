@@ -336,6 +336,13 @@ label-settings {
     margin: 10px;
 }
 
+.check::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f00c";
+    margin-left: 12px;
+}
+
 .webapp::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 700;

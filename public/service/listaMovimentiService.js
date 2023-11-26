@@ -318,6 +318,14 @@
                     buttonNgClass: 'fab fa-telegram-plane',
                     headerCellClass: 'icon webapp'
                 }, {
+                    field: 'check',
+                    displayName: ' ',
+                    width: '3%',
+                    cellTooltip: true,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fab fa-check',
+                    headerCellClass: 'icon webapp'
+                }, {
                     field: 'importo',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
@@ -568,6 +576,7 @@
                                                 newRow.webapp = row['webapp'];                                                
                                                 newRow.importo = Number(row['value']);
                                                 newRow.info = row['info'];
+                                                newRow.check = row['check_spesa'];
                                                 newRow.anno = String(new Date(row['data_val']).getFullYear());
                                                 newRow.mese = String(new Date(row['data_val']).getMonth() + 1).padStart(2, '0');
                                                 return resultsData.push(newRow);
