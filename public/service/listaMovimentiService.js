@@ -323,7 +323,7 @@
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fab fa-check',
+                    buttonNgClass: 'fas fa-check-double',
                     headerCellClass: 'icon check'
                 }, {
                     field: 'importo',
