@@ -324,7 +324,7 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-check',
-                    headerCellClass: 'icon webapp'
+                    headerCellClass: 'icon check'
                 }, {
                     field: 'importo',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
