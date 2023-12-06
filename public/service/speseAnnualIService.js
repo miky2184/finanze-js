@@ -160,8 +160,8 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2023'] < 0 && row.entity['TOTALE_2022'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2023'])-Math.abs(row.entity['TOTALE_2022']))/Math.abs(row.entity['TOTALE_2023'])*100;
+                        if (row.entity['TOTALE_2024'] < 0 && row.entity['TOTALE_2023'] != 0 ) {
+                            var perc = (Math.abs(row.entity['TOTALE_2024'])-Math.abs(row.entity['TOTALE_2023']))/Math.abs(row.entity['TOTALE_2024'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
