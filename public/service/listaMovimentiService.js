@@ -392,7 +392,29 @@
                     srvc.gridOptions.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
                 }
-            },            
+            },
+            addOneYearBtn: {
+                src: 'images/one_year.svg',
+                listener: function (gridOptions, maschera) {
+                    if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
+                        gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
+                            var copyRow = angular.copy(row);
+                            copyRow.data = copyRow.data.setFullYear(copyRow.data.getFullYear()+1);
+                            copyRow.data = new Date(copyRow.data);
+                            copyRow.newRow = true;
+                            copyRow.deleted = false;
+                            copyRow.dirty = true;
+                            dataService.data.dirty = true;
+                            gridOptions.data.unshift(copyRow);
+                        });
+                        gridOptions.gridApi.selection.clearSelectedRows();
+                    }
+                },
+                disabled: function (maschera) {
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM";
+                },
+                label: 'Add 1 Year'
+            },          
             addBtn: {
                 src: 'images/baseline-add_circle_outline-24px.svg',
                 listener: function (gridOptions, maschera) {

@@ -40,6 +40,7 @@
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);
         $scope.actionButtons.push(listaMovimentiService.refreshBtn);
+        $scope.actionButtons.push(listaMovimentiService.addOneYearBtn);
 
         $scope.saveButtons = [];
         $scope.saveButtons.push(commonService.saveBtn);
