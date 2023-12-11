@@ -392,9 +392,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'comp_maggiorazione__30',
+                        name: 'comp_maggiorazione_30',
                         displayName: 'COMP.MAGG.STR.30%',
-                        field: 'comp_maggiorazione__30',
+                        field: 'comp_maggiorazione_30',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -464,9 +464,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'comp_maggiorazione__50',
+                        name: 'comp_maggiorazione_50',
                         displayName: 'COMP.MAGG.STR.50%',
-                        field: 'comp_maggiorazione__50',
+                        field: 'comp_maggiorazione_50',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -500,9 +500,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'comp_maggiorazione__55',
+                        name: 'comp_maggiorazione_55',
                         displayName: 'COMP.MAGG.STR.55%',
-                        field: 'comp_maggiorazione__55',
+                        field: 'comp_maggiorazione_55',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -536,9 +536,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'comp_maggiorazione__60',
+                        name: 'comp_maggiorazione_60',
                         displayName: 'COMP.MAGG.STR.60%',
-                        field: 'comp_maggiorazione__60',
+                        field: 'comp_maggiorazione_60',
                         cellClass: 'text-right',
                         width: '7%',
                         type: 'number',
@@ -572,7 +572,7 @@ filters: [
                           placeholder: 'less than'
                         }
                       ]
-}, {
+}, /*{
                         name: 'contributo_sindacale',
                         displayName: 'Contributo Sindacale',
                         field: 'contributo_sindacale',
@@ -592,7 +592,7 @@ filters: [
                           placeholder: 'less than'
                         }
                       ]
-}, {
+}, */ {
                         name: 'periquativo',
                         displayName: 'Periquativo',
                         field: 'periquativo',
@@ -778,7 +778,7 @@ filters: [
                           placeholder: 'less than'
                         }
                       ]
-}, {
+}, /*{
                         name: 'detrazioni_imposta',
                         displayName: 'DETR LAV DIP',
                         field: 'detrazioni_imposta',
@@ -799,7 +799,7 @@ filters: [
                           placeholder: 'less than'
                         }
                       ]
-}, {
+}, */ {
                         name: 'detrazione_coniuge',
                         displayName: 'Detrazione Coniuge',
                         field: 'detrazione_coniuge',
@@ -862,7 +862,7 @@ filters: [
               placeholder: 'less than'
             }
           ]
-}, {
+}, /* {
             name: 'detrazione_cuneo',
             displayName: 'Detrazione Cuneo Fiscale',
             field: 'detrazione_cuneo',
@@ -883,7 +883,7 @@ filters: [
               placeholder: 'less than'
             }
           ]
-        },{
+        },*/{
                         name: 'ritenuta_fiscale_mese_netta',
                         displayName: 'RIT FISC MESE NETTA',
                         field: 'ritenuta_fiscale_mese_netta',
