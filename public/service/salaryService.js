@@ -92,9 +92,9 @@
                         }
                       ]
 },  {
-                        name: 'totale_ritenute',
-                        displayName: 'TRATTENUTE',
-                        field: 'totale_ritenute',
+                        name: 'totale_trattenute',
+                        displayName: 'TOTALE TRATTENUTE',
+                        field: 'totale_trattenute',
                         cellFilter: 'currency',
                         pinnedLeft: true,
                         cellClass: 'disable',
@@ -114,7 +114,7 @@
                       ]
 }, {
                         name: 'totale_competenze',
-                        displayName: 'COMPETENZE',
+                        displayName: 'TOTALE COMPETENZE',
                         field: 'totale_competenze',
                         cellFilter: 'currency',
                         pinnedLeft: true,
@@ -716,9 +716,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'ritenute_mese_inps',
-                        displayName: 'TRATT PREV INPS',
-                        field: 'ritenute_mese_inps',
+                        name: 'trattenute_mese_inps',
+                        displayName: 'CTR DIP INPS',
+                        field: 'trattenute_mese_inps',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -737,9 +737,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'imponibile_fiscale_mese',
-                        displayName: 'Imponibile Fiscale Mese',
-                        field: 'imponibile_fiscale_mese',
+                        name: 'imponibili',
+                        displayName: 'IMPONIBILI',
+                        field: 'imponibili',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -758,9 +758,9 @@ filters: [
                         }
                       ]
 }, {
-                        name: 'ritenuta_fiscale_mese_lorda',
-                        displayName: 'RIT FISC MESE LORDA',
-                        field: 'ritenuta_fiscale_mese_lorda',
+                        name: 'imposta_lorda',
+                        displayName: 'IMPOSTA LORDA',
+                        field: 'imposta_lorda',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
@@ -884,9 +884,9 @@ filters: [
             }
           ]
         },*/{
-                        name: 'ritenuta_fiscale_mese_netta',
-                        displayName: 'RIT FISC MESE NETTA',
-                        field: 'ritenuta_fiscale_mese_netta',
+                        name: 'imposta_netta',
+                        displayName: 'Imposta Netta',
+                        field: 'imposta_netta',
                         cellFilter: 'currency',
                         width: '7%',
                         cellClass: 'disable',
