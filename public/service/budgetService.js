@@ -294,7 +294,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return getPerc(row.entity, 'tot_anno', 'perc_rim_anno');                        
+                        return srvc.getPerc(row.entity, 'tot_anno', 'perc_rim_anno');                        
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     type: 'number',
@@ -318,7 +318,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return getPerc(row.entity, 'tot_anno', 'perc_rim_anno');
+                        return srvc.getPerc(row.entity, 'tot_anno', 'perc_rim_anno');
                     },
                     type: 'number',
                     filters: [
@@ -341,7 +341,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return getPerc(row.entity, 'tot_anno', 'perc_rim_anno');
+                        return srvc.getPerc(row.entity, 'tot_anno', 'perc_rim_anno');
                     },
                     type: 'number',
                     filters: [
@@ -367,7 +367,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
-                            return getPerc(row.entity, 'gen', 'perc_rim_gen');
+                            return srvc.getPerc(row.entity, 'gen', 'perc_rim_gen');
                         }else {
                             return 'text-right';
                         }
@@ -395,7 +395,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
-                            return getPerc(row.entity, 'gen', 'perc_rim_gen');
+                            return srvc.getPerc(row.entity, 'gen', 'perc_rim_gen');
                         }else {
                             return 'text-right';
                         }
@@ -423,7 +423,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
-                            return getPerc(row.entity, 'feb', 'perc_rim_feb');
+                            return srvc.getPerc(row.entity, 'feb', 'perc_rim_feb');
                         }else {
                             return 'text-right';
                         }
@@ -451,7 +451,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
-                            return getPerc(row.entity, 'feb', 'perc_rim_feb');
+                            return srvc.getPerc(row.entity, 'feb', 'perc_rim_feb');
                         }else {
                             return 'text-right';
                         }
