@@ -5,15 +5,15 @@
         var srvc = {
             getPerc: function(perc){
                 switch (true){
-                    case perc < 0:
+                    case perc >= 0:
                         return 'centoperc';                                    
-                    case perc >= 0 && perc < 25:
+                    case perc < 0 && perc >= -25:
                         return 'settcinqueperc';
-                    case perc >= 25 && perc < 50:
+                    case perc < -25 && perc >= -50:
                         return 'cinquantaperc';
-                    case perc >= 50 && perc < 100:
+                    case perc < -50 && perc >= -100:
                         return 'venticinqperc';
-                    case perc >= 100:
+                    case perc < -100:
                         return 'zeroperc';
                     default:
                         return 'text-right'
