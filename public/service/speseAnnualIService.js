@@ -154,8 +154,7 @@
                     name: '2022-2023',
                     displayName: '2022-2023',
                     field: '2022-2023',
-                    width: 130,                    
-                    cellFilter: 'percentage',
+                    width: 130,                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
                         return srvc.getPerc(row.entity['2022-2023']);                        
                     }                    
