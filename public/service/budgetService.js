@@ -53,9 +53,9 @@
         var srvc = {
             getPerc: function(r, attr, rim){
                 if (r[attr] !== null && r[attr] !== 0) {
-                    if (r[rim] < $strings.BUDGET.GREEN && r[rim] >= $strings.BUDGET.LIGHT_GREEN) {
+                    if (r[rim] >= $strings.BUDGET.GREEN) {
                         return 'green';
-                    } else if (r[rim] < $strings.BUDGET.LIGHT_GREEN && r[rim] >= $strings.BUDGET.YELLOW) {
+                    } else if (r[rim] < $strings.BUDGET.GREEN && r[rim] >= $strings.BUDGET.YELLOW) {
                         return 'yellow';
                     } else if (r[rim] < $strings.BUDGET.YELLOW && r[rim] > $strings.BUDGET.ORANGE) {
                         return 'orange';
