@@ -57,7 +57,7 @@
                         return 'green';
                     } else if (r[rim] < $strings.BUDGET.GREEN && r[rim] >= $strings.BUDGET.LIGHT_GREEN) {
                         return 'yellow';
-                    } else if (r[rim] < $strings.BUDGET.LIGHT_GREEN&& r[rim] >= $strings.BUDGET.YELLOW) {
+                    } else if (r[rim] < $strings.BUDGET.LIGHT_GREEN && r[rim] >= $strings.BUDGET.YELLOW) {
                         return 'orange';
                     } else if (r[rim] < $strings.BUDGET.YELLOW && r[rim] > $strings.BUDGET.ORANGE) {
                         return 'red';
