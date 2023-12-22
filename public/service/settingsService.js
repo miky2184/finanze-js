@@ -95,7 +95,7 @@
                     width: '15%'
                 },{
                     field: 'label',
-                    width: '50%'
+                    width: '*'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
@@ -121,7 +121,7 @@
                     width: '15%'
                 },{
                     field: 'label',
-                    width: '50%'
+                    width: '*'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
@@ -147,7 +147,7 @@
                     width: '15%'
                 },{
                     field: 'label',
-                    width: '50%'
+                    width: '*'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
@@ -173,7 +173,7 @@
                     width: '15%'
                 },{
                     field: 'label',
-                    width: '50%'
+                    width: '*'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
