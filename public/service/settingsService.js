@@ -92,15 +92,15 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'ambito',
-                    width: '10%'
+                    width: '15%'
                 },{
                     field: 'label',
-                    width: '60%'
+                    width: '50%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
                     type: 'number',
-                    width: '30%'
+                    width: '35%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -118,15 +118,15 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'categoria',
-                    width: '10%'
+                    width: '15%'
                 },{
                     field: 'label',
-                    width: '60%'
+                    width: '50%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
                     type: 'number',
-                    width: '30%'
+                    width: '35%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -144,15 +144,15 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'sottocategoria',
-                    width: '10%'
+                    width: '15%'
                 },{
                     field: 'label',
-                    width: '60%'
+                    width: '50%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
                     type: 'number',
-                    width: '30%'
+                    width: '35%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -170,15 +170,15 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'beneficiario',
-                    width: '10%'
+                    width: '15%'
                 },{
                     field: 'label',
-                    width: '60%'
+                    width: '50%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
                     type: 'number',
-                    width: '30%'
+                    width: '35%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
