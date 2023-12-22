@@ -532,7 +532,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera=="DB";
+                    return !dataService.data.admin;
                 },
                 label: 'Refreshs'
             },
