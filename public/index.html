@@ -127,12 +127,7 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/extraBudget.html'"></div>
                     </md-content>
-                </md-tab> -->
-                <md-tab label="Pivot Spese" md-on-select="loadSpeseAnnue()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/speseAnnue.html'"></div>
-                    </md-content>
-                </md-tab>
+                </md-tab> -->                
                 <!-- <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
                     <md-content class="md-padding">
                         <div ng-include="'view/reportMensile.html'"></div>
@@ -158,7 +153,12 @@
                         <div ng-include="'view/andamentoAnnuoPersonale.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Grafico" md-on-select="loadGrafico(pivot.year)">
+                <md-tab label="Report Spesato" md-on-select="loadSpeseAnnue()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/speseAnnue.html'"></div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Dashboard Spesato" md-on-select="loadGrafico(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/graph.html'"></div>
                     </md-content>
