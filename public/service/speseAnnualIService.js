@@ -135,6 +135,17 @@
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
+                    name: '2022-2023',
+                    displayName: '2022-2023',
+                    field: '2022-2023',
+                    width: 130,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
+                        return srvc.getPerc(row.entity['2022-2023']);                        
+                    }, 
+                    aggregationType: uiGridConstants.aggregationTypes.sum
+                },{
                     name: '2023',
                     displayName: '2023',
                     field: '2023',
