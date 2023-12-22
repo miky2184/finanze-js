@@ -6,13 +6,13 @@
             getPerc: function(perc){
                 switch (true){                  
                     case perc >= 25:
-                        return 'green';
-                    case perc > 0 && perc < 25:
-                        return 'yellow';
-                    case perc < 0 && perc > -25:
-                        return 'orange';
-                    case perc <= -25:
                         return 'red';
+                    case perc > 0 && perc < 25:
+                        return 'orange';
+                    case perc < 0 && perc > -25:
+                        return 'yellow';
+                    case perc <= -25:
+                        return 'green';
                     default:
                         return 'text-right'
                 }
