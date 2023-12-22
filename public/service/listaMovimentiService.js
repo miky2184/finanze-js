@@ -347,7 +347,7 @@
                 }, {
                     field: 'info',
                     cellTooltip: true,
-                    width: '15%',
+                    width: '*',
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
                             if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){

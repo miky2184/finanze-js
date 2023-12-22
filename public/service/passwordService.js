@@ -22,31 +22,31 @@
                     displayName: 'Nome Sito.',
                     field: 'site',
                     type: 'text',
-                    width: 250 
+                    width: '20%' 
                 },{
                     name: 'USER',
                     displayName: 'Username.',
                     field: 'user',
                     type: 'text',
-                    width: 260 
+                    width: '20%' 
                 },{
                     name: 'PWD',
                     displayName: 'Password',
                     field: 'pwd',
                     type: 'text',
-                    width: 260 
+                    width: '20%'  
                 },{
                     name: 'URL',
                     displayName: 'URL',
                     field: 'url',
                     type: 'text',
-                    width: 350 
+                    width: '20%' 
                 }, {
                     name: 'NOTE',
                     displayName: 'Note',
                     field: 'note',
                     type: 'text',
-                    width: '*'                    
+                    width: '20%'                    
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {

@@ -227,24 +227,6 @@
                 showColumnFooter: true,
                 enablePinning: true,
                 columnDefs: [{
-                    name: 'idamb',
-                    displayName: 'AMB',
-                    field: 'idamb',
-                    width: '2%',
-                    pinnedLeft: true
-                }, {
-                    name: 'idcat',
-                    displayName: 'CAT',
-                    field: 'idcat',
-                    width: '2%',
-                    pinnedLeft: true
-                }, {
-                    name: 'idsot',
-                    displayName: 'SOT',
-                    field: 'idsot',
-                    width: '2%',
-                    pinnedLeft: true
-                }, {
                     name: 'ambito',
                     displayName: 'Ambito',
                     field: 'ambito',
