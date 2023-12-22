@@ -4,23 +4,15 @@
         
         var srvc = {
             getPerc: function(perc){
-                switch (true){
-                    case perc >= 75:
-                        return 'centoperc';
-                    case perc >= 50 && perc < 75:
-                        return 'settcinqueperc';
-                    case perc >= 25 && perc < 50:
-                        return 'cinquantaperc';
+                switch (true){                  
+                    case perc >= 25:
+                        return 'green';
                     case perc > 0 && perc < 25:
-                        return 'venticinqueperc';
+                        return 'yellow';
                     case perc < 0 && perc > -25:
-                        return 'zeroperc';
-                    case perc <= -25 && perc > -50:
-                        return 'menocinquantaperc';
-                    case perc <= -50 && perc > -75:
-                        return 'menosettcinqueperc';
-                    case perc <= -75:
-                        return 'menocentoperc';
+                        return 'orange';
+                    case perc <= -25:
+                        return 'red';
                     default:
                         return 'text-right'
                 }
