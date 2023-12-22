@@ -142,12 +142,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['2024'] < 0 && row.entity['2023'] != 0 ) {
-                            var perc = (Math.abs(row.entity['2024'])-Math.abs(row.entity['2023']))/Math.abs(row.entity['2024'])*100;
-                            return srvc.getPerc(perc);
-                        } else {
-                            return 'text-right';
-                        }
+                        return srvc.getPerc(row.entity['2022-2023']);
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
@@ -156,7 +151,7 @@
                     field: '2022-2023',
                     width: 130,                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2022-2023']);                        
+                        return srvc.getPerc(row.entity['2022-2023']);
                     }                    
                 },{
                     name: '2024',
@@ -165,17 +160,18 @@
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-                    cellClass: 'text-right',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getPerc(row.entity['2023-2024']);
+                    }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: '2025',
-                    displayName: '2025',
-                    field: '2025',
-                    width: 130,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: 'text-right',
-                    aggregationType: uiGridConstants.aggregationTypes.sum
+                    name: '2023-2024',
+                    displayName: '2023-2024',
+                    field: '2023-2024',
+                    width: 130,                                        
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
+                        return srvc.getPerc(row.entity['2023-2024']);                        
+                    }                    
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
