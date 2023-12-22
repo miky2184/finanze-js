@@ -51,15 +51,15 @@
         };
 
         var srvc = {
-            getPerc: function(r, attr){
+            getPerc: function(r, attr, rim){
                 if (r[attr] !== null && r[attr] !== 0) {
-                    if (r[rim_anno] >= $strings.BUDGET.GREEN) {
+                    if (r[rim] >= $strings.BUDGET.GREEN) {
                         return 'green';
-                    } else if (r[rim_anno] < $strings.BUDGET.GREEN && r[rim_anno] >= $strings.BUDGET.LIGHT_GREEN) {
+                    } else if (r[rim] < $strings.BUDGET.GREEN && r[rim] >= $strings.BUDGET.LIGHT_GREEN) {
                         return 'yellow';
-                    } else if (r[rim_anno] < $strings.BUDGET.LIGHT_GREEN&& r[rim_anno] >= $strings.BUDGET.YELLOW) {
+                    } else if (r[rim] < $strings.BUDGET.LIGHT_GREEN&& r[rim] >= $strings.BUDGET.YELLOW) {
                         return 'orange';
-                    } else if (r[rim_anno] < $strings.BUDGET.YELLOW && r[rim_anno] > $strings.BUDGET.ORANGE) {
+                    } else if (r[rim] < $strings.BUDGET.YELLOW && r[rim] > $strings.BUDGET.ORANGE) {
                         return 'red';
                     } else {
                         return 'text-right';
