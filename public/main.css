@@ -386,50 +386,50 @@ label-settings {
 }
 
 .centoperc {
-    background-color: rgba(0, 128, 0, 0.4) !important;
+    background-color: rgba(0, 120, 0, 0.6) !important;
     font-weight: bold;
     color: white;
     text-align: right;
 }
 
 .settcinqueperc {
-    background-color: rgba(0, 191, 0, 0.4) !important;
+    background-color: rgba(0, 170, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
 
 .cinquantaperc {
-    background-color: rgba(0, 255, 0, 0.4) !important;
+    background-color: rgba(0, 210, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
 
 .venticinqueperc {
-    background-color: rgba(255, 255, 0, 0.4) !important;
+    background-color: rgba(0, 255, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
 
 .zeroperc {
-    background-color: rgba(255, 128, 0, 0.4) !important;
+    background-color: rgba(255, 0, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
 
 .menocinquantaperc {
-    background-color: rgba(255, 0, 0, 0.4) !important;
+    background-color: rgba(210, 0, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
 
 .menosettcinqueperc {
-    background-color: rgba(191, 0, 0, 0.4) !important;
+    background-color: rgba(170, 0, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
 
 .menocentoperc {
-    background-color: rgba(128, 0, 0, 0.4) !important;
+    background-color: rgba(128, 0, 0, 0.6) !important;
     font-weight: bold;
     text-align: right;
 }
