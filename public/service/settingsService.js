@@ -91,8 +91,8 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'ambito',
                     diplayName: 'ID',
+                    field: 'ambito',                    
                     width: '15%'
                 },{
                     field: 'label',
@@ -118,8 +118,8 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'categoria',
                     diplayName: 'ID',
+                    field: 'categoria',                    
                     width: '15%'
                 },{
                     field: 'label',
@@ -145,8 +145,8 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'sottocategoria',
                     diplayName: 'ID',
+                    field: 'sottocategoria',                    
                     width: '15%'
                 },{
                     field: 'label',
@@ -172,8 +172,8 @@
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'beneficiario',
                     diplayName: 'ID',
+                    field: 'beneficiario',                    
                     width: '15%'
                 },{
                     field: 'label',
