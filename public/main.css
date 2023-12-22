@@ -386,7 +386,7 @@ label-settings {
 }
 
 .green {
-    background-color: rgba(0, 255, 0, 0.6) !important;
+    background-color: rgba(0, 128, 0, 0.6) !important;
     font-weight: bold;
     color: white;
     text-align: right;
@@ -405,7 +405,7 @@ label-settings {
 }
 
 .red {
-    background-color: rgba(255, 0, 0, 0.6) !important;
+    background-color: rgba(128, 0, 0, 0.6) !important;
     font-weight: bold;
     color: white;
     text-align: right;
