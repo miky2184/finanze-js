@@ -28,24 +28,6 @@
                 showColumnFooter: true,
                 enablePinning: true,
                 columnDefs: [{
-                    name: 'IDAMB',
-                    displayName: 'ID AMB',
-                    field: 'idamb',
-                    width: 80,
-                    pinnedLeft: true
-                }, {
-                    name: 'IDCAT',
-                    displayName: 'ID CAT',
-                    field: 'idcat',
-                    width: 80,
-                    pinnedLeft: true
-                }, {
-                    name: 'IDSOT',
-                    displayName: 'ID SOT',
-                    field: 'idsot',
-                    width: 80,
-                    pinnedLeft: true
-                }, {
                     name: 'AMBITO',
                     displayName: 'Ambito',
                     field: 'ambito',
@@ -64,24 +46,24 @@
                     width: '*',
                     pinnedLeft: true
                 }, {
-                    name: 'TOTALE_2017',
+                    name: '2017',
                     displayName: '2017',
-                    field: 'totale_2017',
+                    field: '2017',
                     width: 130  ,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: 'text-right',                    
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2018',
+                    name: '2018',
                     displayName: '2018',
-                    field: 'totale_2018',
+                    field: '2018',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2018'] < 0 && row.entity['TOTALE_2017'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2018'])-Math.abs(row.entity['TOTALE_2017']))/Math.abs(row.entity['TOTALE_2018'])*100;
+                        if (row.entity['2018'] < 0 && row.entity['2017'] != 0 ) {
+                            var perc = (Math.abs(row.entity['2018'])-Math.abs(row.entity['2017']))/Math.abs(row.entity['2018'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
@@ -89,15 +71,15 @@
                     },                    
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2019',
+                    name: '2019',
                     displayName: '2019',
-                    field: 'totale_2019',
+                    field: '2019',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2019'] < 0 && row.entity['TOTALE_2018'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2019'])-Math.abs(row.entity['TOTALE_2018']))/Math.abs(row.entity['TOTALE_2019'])*100;
+                        if (row.entity['2019'] < 0 && row.entity['2018'] != 0 ) {
+                            var perc = (Math.abs(row.entity['2019'])-Math.abs(row.entity['2018']))/Math.abs(row.entity['2019'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
@@ -105,15 +87,15 @@
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2020',
+                    name: '2020',
                     displayName: '2020',
-                    field: 'totale_2020',
+                    field: '2020',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2020'] < 0 && row.entity['TOTALE_2019'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2020'])-Math.abs(row.entity['TOTALE_2019']))/Math.abs(row.entity['TOTALE_2020'])*100;
+                        if (row.entity['2020'] < 0 && row.entity['2019'] != 0 ) {
+                            var perc = (Math.abs(row.entity['2020'])-Math.abs(row.entity['2019']))/Math.abs(row.entity['2020'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
@@ -121,15 +103,15 @@
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2021',
+                    name: '2021',
                     displayName: '2021',
-                    field: 'totale_2021',
+                    field: '2021',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2021'] < 0 && row.entity['TOTALE_2020'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2021'])-Math.abs(row.entity['TOTALE_2020']))/Math.abs(row.entity['TOTALE_2021'])*100;
+                        if (row.entity['2021'] < 0 && row.entity['2020'] != 0 ) {
+                            var perc = (Math.abs(row.entity['2021'])-Math.abs(row.entity['2020']))/Math.abs(row.entity['2021'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
@@ -137,15 +119,15 @@
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2022',
+                    name: '2022',
                     displayName: '2022',
-                    field: 'totale_2022',
+                    field: '2022',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2022'] < 0 && row.entity['TOTALE_2021'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2022'])-Math.abs(row.entity['TOTALE_2021']))/Math.abs(row.entity['TOTALE_2022'])*100;
+                        if (row.entity['2022'] < 0 && row.entity['2021'] != 0 ) {
+                            var perc = (Math.abs(row.entity['2022'])-Math.abs(row.entity['2021']))/Math.abs(row.entity['2022'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
@@ -153,15 +135,15 @@
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2023',
+                    name: '2023',
                     displayName: '2023',
-                    field: 'totale_2023',
+                    field: '2023',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        if (row.entity['TOTALE_2024'] < 0 && row.entity['TOTALE_2023'] != 0 ) {
-                            var perc = (Math.abs(row.entity['TOTALE_2024'])-Math.abs(row.entity['TOTALE_2023']))/Math.abs(row.entity['TOTALE_2024'])*100;
+                        if (row.entity['2024'] < 0 && row.entity['2023'] != 0 ) {
+                            var perc = (Math.abs(row.entity['2024'])-Math.abs(row.entity['2023']))/Math.abs(row.entity['2024'])*100;
                             return srvc.getPerc(perc);
                         } else {
                             return 'text-right';
@@ -169,18 +151,18 @@
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2024',
+                    name: '2024',
                     displayName: '2024',
-                    field: 'totale_2024',
+                    field: '2024',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
-                    name: 'TOTALE_2025',
+                    name: '2025',
                     displayName: '2025',
-                    field: 'totale_2025',
+                    field: '2025',
                     width: 130,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
