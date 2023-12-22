@@ -91,13 +91,16 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'ambito'
+                    field: 'ambito',
+                    width: '10%'
                 },{
-                    field: 'label'
+                    field: 'label',
+                    width: '60%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
-                    type: 'number'
+                    type: 'number',
+                    width: '30%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -114,13 +117,16 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'categoria'
+                    field: 'categoria',
+                    width: '10%'
                 },{
-                    field: 'label'
+                    field: 'label',
+                    width: '60%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
-                    type: 'number'
+                    type: 'number',
+                    width: '30%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -137,13 +143,16 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'sottocategoria'
+                    field: 'sottocategoria',
+                    width: '10%'
                 },{
-                    field: 'label'
+                    field: 'label',
+                    width: '60%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
-                    type: 'number'
+                    type: 'number',
+                    width: '30%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
@@ -160,13 +169,16 @@
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: true,
                 columnDefs: [{
-                    field: 'beneficiario'
+                    field: 'beneficiario',
+                    width: '10%'
                 },{
-                    field: 'label'
+                    field: 'label',
+                    width: '60%'
                 }, {
                     field: 'used',
                     displayName: 'In Uso',
-                    type: 'number'
+                    type: 'number',
+                    width: '30%'
                 }],
                 data: [],
                 isRowSelectable: function (row) {
