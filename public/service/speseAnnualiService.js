@@ -12,7 +12,7 @@
                     case perc >= 25 && perc < 50:
                         return 'cinquantaperc';
                     case perc > 0 && perc < 25:
-                        return 'zeroperc';
+                        return 'venticinqueperc';
                     case perc < 0 && perc > -25:
                         return 'zeroperc';
                     case perc <= -25 && perc > -50:
