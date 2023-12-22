@@ -91,6 +91,7 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
+                    name: 'ID',
                     diplayName: 'ID',
                     field: 'ambito',                    
                     width: '15%'
