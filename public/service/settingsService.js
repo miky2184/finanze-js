@@ -94,7 +94,7 @@
                     name: 'ID',
                     diplayName: 'ID',
                     field: 'ambito',                    
-                    width: '15%'
+                    width: '10%'
                 },{
                     field: 'label',
                     width: '*'
@@ -119,9 +119,10 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
+                    name: 'ID',
                     diplayName: 'ID',
                     field: 'categoria',                    
-                    width: '15%'
+                    width: '10%'
                 },{
                     field: 'label',
                     width: '*'
@@ -146,9 +147,10 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
                 columnDefs: [{
+                    name: 'ID',
                     diplayName: 'ID',
                     field: 'sottocategoria',                    
-                    width: '15%'
+                    width: '10%'
                 },{
                     field: 'label',
                     width: '*'
@@ -173,9 +175,10 @@
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: true,
                 columnDefs: [{
+                    name: 'ID',
                     diplayName: 'ID',
                     field: 'beneficiario',                    
-                    width: '15%'
+                    width: '10%'
                 },{
                     field: 'label',
                     width: '*'
