@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', 'predmatchService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService, predmatchService) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', 'predmatchService', 'budgetService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService, predmatchService, budgetService) {
         var scope = $rootScope.$new();
 
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
@@ -411,7 +411,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM" || maschera == "DB";
                 },
                 label: 'Add 1 Year'
             },          
@@ -456,19 +456,10 @@
                             url:'',
                             note:''                            
                         });
-                    } else  if (maschera === "DB") {
-                        gridOptions.data.unshift({
-                            newRow: true,
-                            dirty: true,
-                            anno: $strings.PIVOT.year,
-                            mese: 1,
-                            tp_conto: $strings.PIVOT.tipoconto,
-                            budget: 0
-                        });
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera=="PM";
+                    return !dataService.data.admin || maschera === "SA" || maschera=="PM" || maschera == "DB";
                 },
                 label: 'Add'
             },
@@ -485,7 +476,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera =="PM";
+                    return !dataService.data.admin || maschera === "SA" || maschera =="PM" || maschera == "DB";
                 },
                 label: 'Delete'
             },
@@ -506,7 +497,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM" || maschera == "DB";
                 },
                 label: 'Copy'
             },
@@ -532,6 +523,10 @@
                         });
                     } else if (maschera === "PM"){
                         return predmatchService.loadPredMatch().finally(function (f) {
+                            modalService.hideWaitingModal();
+                        });
+                    } else if (maschera === "DB"){
+                        return budgetService.loadDefBudget().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
                     }

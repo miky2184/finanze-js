@@ -201,6 +201,7 @@
                 minRowsToShow: 9,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
                     name: 'ambito',
                     displayName: 'Ambito',
@@ -234,6 +235,7 @@
                 minRowsToShow: 9,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
                     name: 'categoria',
                     displayName: 'Categoria',
