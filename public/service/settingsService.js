@@ -89,7 +89,10 @@
                 minRowsToShow: 10,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
+                    field: 'ambito'
+                },{
                     field: 'label'
                 }, {
                     field: 'used',
@@ -109,7 +112,10 @@
                 minRowsToShow: 10,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
+                    field: 'categoria'
+                },{
                     field: 'label'
                 }, {
                     field: 'used',
@@ -129,7 +135,10 @@
                 minRowsToShow: 10,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
+                    field: 'sottocategoria'
+                },{
                     field: 'label'
                 }, {
                     field: 'used',
@@ -149,7 +158,10 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 minRowsToShow: 10,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+                enableFiltering: true,
                 columnDefs: [{
+                    field: 'beneficiario'
+                },{
                     field: 'label'
                 }, {
                     field: 'used',
