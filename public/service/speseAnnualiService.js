@@ -5,16 +5,22 @@
         var srvc = {
             getPerc: function(perc){
                 switch (true){
-                    case perc >= 0:
-                        return 'centoperc';                                    
-                    case perc < 0 && perc > -25:
+                    case perc >= 75:
+                        return 'centoperc';
+                    case perc >= 50 && perc < 75:
                         return 'settcinqueperc';
-                    case perc <= -25 && perc > -50:
+                    case perc >= 25 && perc < 50:
                         return 'cinquantaperc';
-                    case perc <= -50 && perc > -75:
-                        return 'venticinqperc';
-                    case perc <= -75:
+                    case perc > 0 && perc < 25:
                         return 'zeroperc';
+                    case perc < 0 && perc > -25:
+                        return 'zeroperc';
+                    case perc <= -25 && perc > -50:
+                        return 'menocinquantaperc';
+                    case perc <= -50 && perc > -75:
+                        return 'menosettcinqueperc';
+                    case perc <= -75:
+                        return 'menocentoperc';
                     default:
                         return 'text-right'
                 }
@@ -46,15 +52,6 @@
                     width: '*',
                     pinnedLeft: true
                 }, {
-                    name: '2017',
-                    displayName: '2017',
-                    field: '2017',
-                    width: 130  ,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: 'text-right',                    
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                },{
                     name: '2018',
                     displayName: '2018',
                     field: '2018',
@@ -149,7 +146,7 @@
                     name: '2022-2023',
                     displayName: '2022-2023',
                     field: '2022-2023',
-                    width: 130,                                        
+                    width: 100,                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
                         return srvc.getPerc(row.entity['2022-2023']);
                     }                    
@@ -168,7 +165,7 @@
                     name: '2023-2024',
                     displayName: '2023-2024',
                     field: '2023-2024',
-                    width: 130,                                        
+                    width: 100,                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
                         return srvc.getPerc(row.entity['2023-2024']);                        
                     }                    
