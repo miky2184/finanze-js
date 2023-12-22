@@ -92,6 +92,7 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'ambito',
+                    diplayName: 'ID',
                     width: '15%'
                 },{
                     field: 'label',
@@ -118,6 +119,7 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'categoria',
+                    diplayName: 'ID',
                     width: '15%'
                 },{
                     field: 'label',
@@ -144,6 +146,7 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'sottocategoria',
+                    diplayName: 'ID',
                     width: '15%'
                 },{
                     field: 'label',
@@ -170,6 +173,7 @@
                 enableFiltering: true,
                 columnDefs: [{
                     field: 'beneficiario',
+                    diplayName: 'ID',
                     width: '15%'
                 },{
                     field: 'label',
