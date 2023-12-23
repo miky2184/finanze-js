@@ -340,7 +340,7 @@
                     name: 'budg_gen',
                     displayName: 'Budget GEN',
                     field: 'budg_gen',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -368,7 +368,7 @@
                     name: 'gen',
                     displayName: 'Spese GEN',
                     field: 'gen',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -396,7 +396,7 @@
                     name: 'budg_feb',
                     displayName: 'Budget FEB',
                     field: 'budg_feb',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -424,7 +424,7 @@
                     name: 'feb',
                     displayName: 'Spese FEB',
                     field: 'feb',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -452,7 +452,7 @@
                     name: 'budg_mar',
                     displayName: 'Budget MAR',
                     field: 'budg_mar',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -480,7 +480,7 @@
                     name: 'mar',
                     displayName: 'Spese MAR',
                     field: 'mar',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -508,7 +508,7 @@
                     name: 'budg_apr',
                     displayName: 'Budget APR',
                     field: 'budg_apr',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -536,7 +536,7 @@
                     name: 'apr',
                     displayName: 'Spese APR',
                     field: 'apr',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -564,7 +564,7 @@
                     name: 'budg_mag',
                     displayName: 'Budget MAG',
                     field: 'budg_mag',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -592,7 +592,7 @@
                     name: 'mag',
                     displayName: 'Spese MAG',
                     field: 'mag',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -620,7 +620,7 @@
                     name: 'budg_giu',
                     displayName: 'Budget GIU',
                     field: 'budg_giu',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -648,7 +648,7 @@
                     name: 'giu',
                     displayName: 'Spese GIU',
                     field: 'giu',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -676,7 +676,7 @@
                     name: 'budg_lug',
                     displayName: 'Budget LUG',
                     field: 'budg_lug',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -704,7 +704,7 @@
                     name: 'lug',
                     displayName: 'Spese LUG',
                     field: 'lug',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -732,7 +732,7 @@
                     name: 'budg_ago',
                     displayName: 'Budget AGO',
                     field: 'budg_ago',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -760,7 +760,7 @@
                     name: 'ago',
                     displayName: 'Spese AGO',
                     field: 'ago',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -788,7 +788,7 @@
                     name: 'budg_sett',
                     displayName: 'Budget SETT',
                     field: 'budg_sett',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -816,7 +816,7 @@
                     name: 'sett',
                     displayName: 'Spese SETT',
                     field: 'sett',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -844,7 +844,7 @@
                     name: 'budg_ott',
                     displayName: 'Budget OTT',
                     field: 'budg_ott',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -872,7 +872,7 @@
                     name: 'ott',
                     displayName: 'Spese OTT',
                     field: 'ott',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -900,7 +900,7 @@
                     name: 'budg_nov',
                     displayName: 'Budget NOV',
                     field: 'budg_nov',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -928,7 +928,7 @@
                     name: 'nov',
                     displayName: 'Spese NOV',
                     field: 'nov',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -956,7 +956,7 @@
                     name: 'budg_dic',
                     displayName: 'Budget DIC',
                     field: 'budg_dic',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -984,7 +984,7 @@
                     name: 'dic',
                     displayName: 'Spese DIC',
                     field: 'dic',
-                    width: '6%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
