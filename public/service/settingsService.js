@@ -201,7 +201,6 @@
                 minRowsToShow: 9,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
-                enableFiltering: true,
                 columnDefs: [{
                     name: 'ambito',
                     displayName: 'Ambito',
@@ -212,14 +211,6 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
-                    },
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
                     }
                 }, {
                     name: 'categoria',
@@ -231,14 +222,6 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
-                    },
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
                     }
                 }],
                 data: [],
@@ -250,8 +233,7 @@
             gridOptionsCatSott: {
                 minRowsToShow: 9,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
-                rowTemplate: 'templates/rows/deletableRow.html',
-                enableFiltering: true,
+                rowTemplate: 'templates/rows/deletableRow.html',                
                 columnDefs: [{
                     name: 'categoria',
                     displayName: 'Categoria',
@@ -262,14 +244,6 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
-                    },
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
                     }
                 }, {
                     name: 'sottocategoria',
@@ -281,14 +255,6 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
-                    },
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
-                                return true;
-                            } 
-                            return false;
-                        }
                     }
                 }],
                 data: [],
