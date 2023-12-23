@@ -215,7 +215,7 @@
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
                                 return true;
                             } 
                             return false;
@@ -234,7 +234,7 @@
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
                                 return true;
                             } 
                             return false;
@@ -265,7 +265,7 @@
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
                                 return true;
                             } 
                             return false;
@@ -284,7 +284,7 @@
                     },
                     filter: {
                         condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                            if (row != undefined && row.entity['label'] != undefined && row.entity['label'].match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
                                 return true;
                             } 
                             return false;
