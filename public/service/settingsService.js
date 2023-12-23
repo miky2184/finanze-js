@@ -212,6 +212,14 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
                     }
                 }, {
                     name: 'categoria',
@@ -223,6 +231,14 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
                     }
                 }],
                 data: [],
@@ -246,6 +262,14 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
                     }
                 }, {
                     name: 'sottocategoria',
@@ -257,6 +281,14 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {                                                            
+                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                                return true;
+                            } 
+                            return false;
+                        }
                     }
                 }],
                 data: [],
