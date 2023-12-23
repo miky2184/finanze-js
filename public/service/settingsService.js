@@ -20,11 +20,11 @@
                     newSetting.deleted = false;
                     if (settings) {
                         newSetting['label'] = '';
-                        newSetting[type] = utilService.max(gridOptions.data.filter(function (j) {
+                        /*newSetting[type] = utilService.max(gridOptions.data.filter(function (j) {
                             return j[type] !== "null" && !isNaN(j[type]);
                         }).map(function (obj) {
                             return obj[type];
-                        })) + 1;
+                        })) + 1;*/
                         newSetting.used = 0;
                         if (type === 'ambito') {
                             dataService.data.dropdownAmbito.unshift(newSetting);
