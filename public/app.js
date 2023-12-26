@@ -107,7 +107,7 @@
          *********************/
         $scope.gridOptionPivotAnno = pivotAnnoService.gridOptionPivotAnno;
         $scope.loadPivotAnno = function () {
-            return pivotAnnoService.loadPivotAnno($scope.pivot.year, $scope.pivot.tipoconto);
+            return pivotAnnoService.loadPivotAnno($scope.pivot.year, $scope.pivot.tipo_conto);
         };
 
         /*********************
