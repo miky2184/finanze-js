@@ -39,6 +39,13 @@
                     width: '25%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
+                },{
+                    name: 'contopersonale',
+                    displayName: $strings.CONTO.CONTO_PERSONALE,
+                    field: 'contopersonale',
+                    width: '25%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -123,8 +130,7 @@
                 };
             }),
             color: $strings.RGB.CONTO_TOTALE,
-            strokeWidth: 2,
-            classed: 'dashed'
+            area: true
     },{
         key: $strings.CONTO.CONTO_PERSONALE,
         values: pivotData.map(function (d) {
