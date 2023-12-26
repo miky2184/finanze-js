@@ -102,6 +102,16 @@
             },
             dataGrafico: function () {
                 return [{
+                    key: $strings.CONTO.CONTO_TOTALE,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': d.anno,
+                            'y': d.contototale
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_TOTALE,
+                    area: true
+            },{
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
                         return {
@@ -121,17 +131,7 @@
                 }),
                 color: $strings.RGB.CONTO_MARIANNA,
                 area: true
-        }, {
-            key: $strings.CONTO.CONTO_TOTALE,
-            values: pivotData.map(function (d) {
-                return {
-                    'x': d.anno,
-                    'y': d.contototale
-                };
-            }),
-            color: $strings.RGB.CONTO_TOTALE,
-            area: true
-    },{
+        },{
         key: $strings.CONTO.CONTO_PERSONALE,
         values: pivotData.map(function (d) {
             return {
