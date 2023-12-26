@@ -125,7 +125,17 @@
             color: $strings.RGB.CONTO_TOTALE,
             strokeWidth: 2,
             classed: 'dashed'
-    }];
+    },{
+        key: $strings.CONTO.CONTO_PERSONALE,
+        values: pivotData.map(function (d) {
+            return {
+                'x': d.anno,
+                'y': d.contopersonale
+            };
+        }),
+        color: $strings.RGB.CONTO_PERSONALE,
+        area: true
+}];
             }
         };
         return srvc;

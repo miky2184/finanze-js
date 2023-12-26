@@ -138,21 +138,21 @@
                         <div ng-include="'view/pivotAnno.html'"></div>
                     </md-content>
                 </md-tab> -->
-                <md-tab label="Speso Mese/Anno" md-on-select="loadPivotMese(pivot.year)">
+                <md-tab label="Spesato Mese" md-on-select="loadPivotMese(pivot.year)">
                     <md-content class="md-padding">
                         <div ng-include="'view/pivotMese.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Patrimonio Annuo" md-on-select="loadAndamentoAnnuo()">
+                <md-tab label="Spesato Annuo" md-on-select="loadAndamentoAnnuo()">
                     <md-content class="md-padding">
                         <div ng-include="'view/andamentoAnnuo.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Patrimonio Annuo Personale" md-on-select="loadAndamentoAnnuoPersonale()">
+                <!-- <md-tab label="Patrimonio Annuo Personale" md-on-select="loadAndamentoAnnuoPersonale()">
                     <md-content class="md-padding">
                         <div ng-include="'view/andamentoAnnuoPersonale.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab> -->
                 <md-tab label="Report Spesato" md-on-select="loadSpeseAnnue()">
                     <md-content class="md-padding">
                         <div ng-include="'view/speseAnnue.html'"></div>

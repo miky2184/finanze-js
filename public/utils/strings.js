@@ -24,15 +24,15 @@
         },
         CONTO:{
             CONTO_COMUNE: "CONTO COMUNE",
-            CONTO_PERSONALE: "CONTO PERSONALE",
+            CONTO_PERSONALE: "CONTO MIKY",
             CONTO_MARIANNA: "CONTO MARIANNA",
             CONTO_TOTALE: "CONTO TOTALE"
         },
         RGB:{
-            CONTO_COMUNE: "#1F77B4",
-            CONTO_PERSONALE: "#FF7F0E",
-            CONTO_MARIANNA: "#AEC7E8",
-            CONTO_TOTALE: "#00bb00"
+            CONTO_COMUNE: "#9b59b6",
+            CONTO_PERSONALE: "#3498db",
+            CONTO_MARIANNA: "#f39c12",
+            CONTO_TOTALE: "#2ecc71"
         },
         REST:{
             SERVER: 'http://miky2184.ddns.net:3001'
