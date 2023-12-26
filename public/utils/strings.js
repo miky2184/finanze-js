@@ -24,7 +24,7 @@
         },
         CONTO:{
             CONTO_COMUNE: "CONTO COMUNE",
-            CONTO_PERSONALE: "CONTO MIKY",
+            CONTO_PERSONALE: "CONTO PERSONALE",
             CONTO_MARIANNA: "CONTO MARIANNA",
             CONTO_TOTALE: "CONTO TOTALE"
         },
