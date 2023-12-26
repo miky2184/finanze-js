@@ -190,7 +190,7 @@
                 var dto = {};
                 dto.anno = year;
                 dto.tipo_conto = 2;
-                return $http.post($strings.REST.SERVER + '/categoria_sottocategora', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/categoria_sottocategoria', dto).then(function (resp) {
                     pivotDataPiePersonale = resp.data;
                     dataService.data.dataGraficoPiePersonale = srvc.dataGraficoPiePersonale();
                 });
