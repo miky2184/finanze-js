@@ -1050,6 +1050,8 @@
                         srvc.gridDefBudget.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito;
                         srvc.gridDefBudget.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                         srvc.gridDefBudget.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;                        
+                    } else {
+                        srvc.gridDefBudget.data = [];   
                     }
                 });
             }
