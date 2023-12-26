@@ -97,7 +97,7 @@
                         backdrop: false,
                         keyboard: false
                     });
-                    return $http.post($strings.REST.SERVER + '/save', dto).then(function (resp) {
+                    return $http.post($strings.REST.SERVER + '/salva', dto).then(function (resp) {
                         return srvc.loadData().then(function (resp) {
                             settingsService.loadSettings();
                             passwordService.loadPassword();

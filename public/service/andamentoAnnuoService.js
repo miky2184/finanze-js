@@ -87,7 +87,7 @@
                         }
                     }
                 };
-                return $http.get($strings.REST.SERVER + '/andamentoAnnuo').then(function (resp) {
+                return $http.get($strings.REST.SERVER + '/andamento_annuo').then(function (resp) {
                     pivotData = resp.data;
                     srvc.gridOptionAndamentoAnnuo.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico(resp.data);

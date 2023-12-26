@@ -102,7 +102,7 @@
             loadBalance: function () {
                 return $http.get($strings.REST.SERVER + '/saldo').then(function (resp) {
                     srvc.gridOptionsBalance.data = resp.data;
-                    return $http.get($strings.REST.SERVER + '/saldoavere').then(function (resp) {
+                    return $http.get($strings.REST.SERVER + '/dare_avere').then(function (resp) {
                         srvc.gridOptionsAvere.data = resp.data;
                     });
                 });

@@ -1114,7 +1114,7 @@ filters: [
                     }
                 },
                 loadWork: function () {
-                    return $http.get($strings.REST.SERVER+'/salary').then(function (response) {
+                    return $http.get($strings.REST.SERVER+'/stipendio').then(function (response) {
                         srvc.gridOptionsSalary.data = response.data;
                             });                                            
                 }                

@@ -186,7 +186,7 @@
             loadSpeseAnnue: function (pivot) {
                 var dto = {};
                 dto.tipoconto = pivot.tipoconto;
-                return $http.post($strings.REST.SERVER + '/speseAnnue', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/spese_annue', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridSpeseAnnuali.data = resp.data;
                     }

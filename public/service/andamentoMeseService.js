@@ -84,7 +84,7 @@
                 };
                 var dto = {};
                 dto.anno = year;
-                return $http.post($strings.REST.SERVER + '/andamentoMensile', dto).then(function (resp) {      
+                return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {      
                     pivotData = resp.data;                                  
                     srvc.gridOptionPivotMese.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico();

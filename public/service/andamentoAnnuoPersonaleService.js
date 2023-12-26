@@ -80,7 +80,7 @@
                         }
                     }
                 };
-                return $http.get($strings.REST.SERVER + '/andamentoAnnuoPersonale').then(function (resp) {
+                return $http.get($strings.REST.SERVER + '/andamento_annuo_personale').then(function (resp) {
                     pivotData = resp.data;
                     srvc.gridOptionAndamentoAnnuoPersonale.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico(resp.data);

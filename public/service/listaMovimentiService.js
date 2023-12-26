@@ -570,11 +570,11 @@
                                     });
                                 }
                                 dataService.data.dropdownBeneficiario = response.data;
-                                return $http.get($strings.REST.SERVER + '/tipoConto').then(function (response) {
+                                return $http.get($strings.REST.SERVER + '/tipo_conto').then(function (response) {
                                     dataService.data.editDropDownTipoContoArray = response.data;
                                     return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
                                         dataService.data.editDropDownContoArray = response.data;
-                                        return $http.get($strings.REST.SERVER + '/listaMovimenti').then(function (response) {
+                                        return $http.get($strings.REST.SERVER + '/lista_movimenti').then(function (response) {
                                             var resultsData = [];
                                             response.data.forEach(function (row) {
                                                 var newRow = {};

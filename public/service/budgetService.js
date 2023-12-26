@@ -77,14 +77,26 @@
                 selectionRowHeaderWidth: 35,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableColumnMenus: false,
-                columnDefs: [{name: 'nome_mese',displayName: 'Mese', field: 'nome_mese',  width: '10%',filter: {
-                    condition: function (searchTerm, cellValue, row, column) {                                                            
-                        if (cellValue.match(searchTerm.replaceAll('\\','').toUpperCase()) != null){
-                            return true;
-                        } 
-                        return false;
-                    }
-                }},{
+                columnDefs: [
+                    {
+                        name: 'mese',
+                        displayName: 'Mese', 
+                        field: 'mese',  
+                        width: '10%',
+                        type: 'number', 
+                        cellClass: 'text-right',
+                        filters: [
+                            {
+                            condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                            placeholder: 'greater than'
+                            },
+                            {
+                            condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                            placeholder: 'less than'
+                            }
+                        ]
+                    },
+                    {
                     name: 'ambito',
                     displayName: 'Ambito',
                     field: 'ambito',
@@ -188,29 +200,27 @@
                             }
                         }
                     }
-                },{name: 'budget',displayName: 'Budget', field: 'budget',  width: '*',type: 'number', cellClass: 'text-right', aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency',
-                filters: [
-                    {
-                      condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                      placeholder: 'greater than'
-                    },
-                    {
-                      condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                      placeholder: 'less than'
-                    }
-                  ]},{name: 'mese',displayName: 'Mese', field: 'mese',  width: '10%',type: 'number', cellClass: 'text-right',
-                filters: [
-                    {
-                      condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                      placeholder: 'greater than'
-                    },
-                    {
-                      condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                      placeholder: 'less than'
-                    }
-                  ]}],
+                },{
+                    name: 'budget',
+                    displayName: 'Budget', 
+                    field: 'budget',  
+                    width: '*',
+                    type: 'number', 
+                    cellClass: 'text-right', 
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    filters: [
+                        {
+                        condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                        placeholder: 'greater than'
+                        },
+                        {
+                        condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                        placeholder: 'less than'
+                        }
+                    ]}                    
+                ],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridDefBudget.gridApi = gridApi;
@@ -1029,7 +1039,7 @@
                 var dto = {};
                 dto.tipoconto = (pivot || $strings.PIVOT).tipoconto;
                 dto.anno = (pivot || $strings.PIVOT).year;
-                return $http.post($strings.REST.SERVER + '/defbudget', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/definizione_budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {                                                
                         resp.data.forEach(function (row) {
                             row['budget'] = Number(row['budget']);

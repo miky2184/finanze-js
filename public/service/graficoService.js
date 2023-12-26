@@ -88,7 +88,7 @@
                 };
                 var dto = {};
                 dto.anno = year;                
-                return $http.post($strings.REST.SERVER + '/graph', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/totale_in_data', dto).then(function (resp) {
                     pivotData = resp.data;                                                      
                     dataService.data.dataGrafico = srvc.dataGrafico();
                 });                                    
@@ -120,8 +120,9 @@
                     }                      
                 };
                 var dto = {};
-                dto.anno = year;     
-                return $http.post($strings.REST.SERVER + '/pie', dto).then(function (resp) {
+                dto.anno = year;
+                dto.tipo_conto = 1;
+                return $http.post($strings.REST.SERVER + '/categoria_sottocategoria', dto).then(function (resp) {
                     pivotDataPie = resp.data;
                     dataService.data.dataGraficoPie = srvc.dataGraficoPie();
                 });
@@ -154,7 +155,8 @@
                 };
                 var dto = {};
                 dto.anno = year;     
-                return $http.post($strings.REST.SERVER + '/pieCategoria', dto).then(function (resp) {
+                dto.tipo_conto = 1;
+                return $http.post($strings.REST.SERVER + '/ambito_categoria', dto).then(function (resp) {
                     pivotDataPieCategoria = resp.data;
                     dataService.data.dataGraficoPieCategoria = srvc.dataGraficoPieCategoria();
                 });
@@ -186,8 +188,9 @@
                     }                      
                 };
                 var dto = {};
-                dto.anno = year;     
-                return $http.post($strings.REST.SERVER + '/piePersonale', dto).then(function (resp) {
+                dto.anno = year;
+                dto.tipo_conto = 2;
+                return $http.post($strings.REST.SERVER + '/categoria_sottocategora', dto).then(function (resp) {
                     pivotDataPiePersonale = resp.data;
                     dataService.data.dataGraficoPiePersonale = srvc.dataGraficoPiePersonale();
                 });
@@ -220,7 +223,8 @@
                 };
                 var dto = {};
                 dto.anno = year;     
-                return $http.post($strings.REST.SERVER + '/piePersonaleCategoria', dto).then(function (resp) {
+                dto.tipo_conto = 2;
+                return $http.post($strings.REST.SERVER + '/ambito_categoria', dto).then(function (resp) {
                     pivotDataPiePersonaleCategoria = resp.data;
                     dataService.data.dataGraficoPiePersonaleCategoria = srvc.dataGraficoPiePersonaleCategoria();
                 });
@@ -262,7 +266,7 @@
                 };
                 var dto = {};
                 dto.anno = year;     
-                return $http.get($strings.REST.SERVER + '/spesoTotalePerAnno').then(function (resp) {
+                return $http.get($strings.REST.SERVER + '/totale_per_anno').then(function (resp) {
                     pivotDataGraficoSpesoTotalePerAnno = resp.data[0]['spesototaleperanno'];
                     dataService.data.dataGraficoSpesoTotalePerAnno = srvc.dataGraficoSpesoTotalePerAnno();
                 });
