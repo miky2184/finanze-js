@@ -147,6 +147,7 @@
 
 .textapp {
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: #fafafa !important;
 }
 
 .disable {
