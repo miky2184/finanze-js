@@ -62,7 +62,7 @@
             },
             loadReportMese: function (pivot) {
                 var dto = {};
-                dto.tipoconto = pivot.tipoconto;
+                dto.tipo_conto = pivot.tipo_conto;
                 dto.mese = pivot.month;
                 dto.anno = pivot.year;
                 return $http.post($strings.REST.SERVER+'/reportmese', dto).then(function (resp) {

@@ -1027,7 +1027,7 @@
             },
             loadBudget: function (pivot) {
                 var dto = {};
-                dto.tipoconto = pivot.tipoconto;
+                dto.tipo_conto = pivot.tipo_conto;
                 dto.anno = pivot.year;
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
@@ -1037,7 +1037,7 @@
             },
             loadDefBudget: function(pivot){
                 var dto = {};
-                dto.tipoconto = (pivot || $strings.PIVOT).tipoconto;
+                dto.tipo_conto = (pivot || $strings.PIVOT).tipo_conto;
                 dto.anno = (pivot || $strings.PIVOT).year;
                 return $http.post($strings.REST.SERVER + '/definizione_budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {                                                

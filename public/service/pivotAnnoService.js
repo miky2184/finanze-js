@@ -129,9 +129,9 @@
                 srvc.gridOptionPivotAnno.gridApi.treeBase.expandAllRows();
             }
         },
-        loadPivotAnno : function (year, tipoConto) {
+        loadPivotAnno : function (year, tipo_conto) {
             var balanceData = angular.copy(listaMovimentiService.gridOptions.data).filter(function (obj) {
-                return obj.anno === year && obj.tipoconto === tipoConto && obj.contabilizzata;
+                return obj.anno === year && obj.tipo_conto === tipo_conto && obj.contabilizzata;
             });
             var pivotData = [];
             balanceData = utilService.sortByKey(balanceData, 'sottocategoria');

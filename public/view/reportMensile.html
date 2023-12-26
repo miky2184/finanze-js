@@ -1,6 +1,6 @@
 <div>
   <label for="contoSelect">Seleziona una tipologia di conto:</label>
-  <select name="contoSelect" id="repeatCnSelect" ng-options="tipoConto.tipoConto as tipoConto.label for tipoConto in conti" ng-model="pivot.tipoConto" ng-change="loadReportMese()">
+  <select name="contoSelect" id="repeatCnSelect" ng-options="tipoConto.tipo_conto as tipoConto.label for tipoConto in conti" ng-model="pivot.tipo_conto" ng-change="loadReportMese()">
 </select>
    <label for="yearSelect"> Seleziona un anno: </label>
   <select name="yearSelect" id="repeatYSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadReportMese()">  

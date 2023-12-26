@@ -199,7 +199,7 @@
             },
             loadExtraBudget: function (pivot) {
                 var dto = {};
-                dto.tipoconto = pivot.tipoconto;
+                dto.tipo_conto = pivot.tipo_conto;
                 return $http.post($strings.REST.SERVER + '/extraBudget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridExtraBudget.data = resp.data;

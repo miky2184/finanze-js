@@ -226,12 +226,12 @@
                         }
                     }
                 }, {
-                    name: 'tipoconto',
+                    name: 'tipo_conto',
                     displayName: 'Tipo Conto',
-                    field: 'tipoconto',
+                    field: 'tipo_conto',
                     width: '7%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownIdLabel: 'tipoconto',
+                    editDropdownIdLabel: 'tipo_conto',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function () {
@@ -241,7 +241,7 @@
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.editDropDownTipoContoArray) {
                                 var cell = dataService.data.editDropDownTipoContoArray.filter(function (tipoConto) {
-                                    return tipoConto.tipoconto === cellValue;
+                                    return tipoConto.tipo_conto === cellValue;
                                 });
                                 if (cell && cell.length > 0) {
                                     return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
@@ -584,7 +584,7 @@
                                                 newRow.categoria = row['categoria'];
                                                 newRow.sottocategoria = row['sottocategoria'];
                                                 newRow.beneficiario = row['beneficiario'];
-                                                newRow.tipoconto = row['tp_conto'];                                                
+                                                newRow.tipo_conto = row['tp_conto'];                                                
                                                 newRow.conto = row['conto'];
                                                 newRow.contabilizzata = row['fl_cont'];
                                                 newRow.budget = row['budget'];

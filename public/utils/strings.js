@@ -40,7 +40,7 @@
         PIVOT: {
             year: new Date().getFullYear(),
             month: new Date().getMonth() + 1,
-            tipoconto: 1
+            tipo_conto: 1
         }
         });
 })();
