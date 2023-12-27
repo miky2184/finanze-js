@@ -29,10 +29,10 @@
             CONTO_TOTALE: "CONTO TOTALE"
         },
         RGB:{
-            CONTO_COMUNE: "#9b59b6",
-            CONTO_PERSONALE: "#3498db",
-            CONTO_MARIANNA: "#f39c12",
-            CONTO_TOTALE: "#2ecc71"
+            CONTO_COMUNE: "#ff78b0",
+            CONTO_PERSONALE: "#5078b0",
+            CONTO_MARIANNA: "#46ff80",
+            CONTO_TOTALE: "#808080"
         },
         REST:{
             SERVER: 'http://miky2184.ddns.net:3001'
