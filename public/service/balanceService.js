@@ -19,6 +19,7 @@
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'conto_comune',
                     width: '20%',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -27,6 +28,7 @@
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'conto_personale',
                     width: '20%',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -35,6 +37,7 @@
                 displayName: $strings.CONTO.CONTO_MARIANNA,
                 field: 'conto_marianna',
                 width: '20%',
+                cellClass: 'text-right',
                 aggregationType: uiGridConstants.aggregationTypes.sum,
                 footerCellFilter: 'currency',
                 cellFilter: 'currency'
@@ -43,6 +46,7 @@
                     displayName: 'TOTALE',
                     field: 'totale',
                     width: '20%',
+                    cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -71,10 +75,12 @@
         },{
             field: 'anno',
             diplayName: 'ANNO',
+            cellClass: 'text-center',
             width: '7%'            
         }, {
             field: 'mese',
             diplayName: 'MESE',
+            cellClass: 'text-center',
             width: '7%',            
         }, {
             diplayName: 'CONTO COMUNE',
@@ -82,6 +88,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     width: '12%'
             }, {
                 diplayName: 'CONTO PERSONALE',
@@ -89,6 +96,7 @@
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
+                    cellClass: 'text-right',
                     width: '12%'
             }, {
                 diplayName: 'CONTO MARIANNA',
@@ -96,6 +104,7 @@
                 aggregationType: uiGridConstants.aggregationTypes.sum,
                 footerCellFilter: 'currency',
                 cellFilter: 'currency',
+                cellClass: 'text-right',
                 width: '12%'
         }],
                 data: [],

@@ -14,7 +14,7 @@
                     case perc <= -25:
                         return 'green';
                     default:
-                        return 'text-center'
+                        return 'text-right'
                 }
             },
             gridSpeseAnnuali: {
