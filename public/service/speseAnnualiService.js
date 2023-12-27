@@ -5,7 +5,7 @@
         var srvc = {
             getClass: function (perc) {
                 switch (true) {
-                    case perc >= 25:
+                    case perc < 0:
                         return 'red';
                     default:
                         return 'text-right'
