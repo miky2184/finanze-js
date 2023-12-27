@@ -4,12 +4,10 @@
 
         var srvc = {
             getClass: function (perc) {
-                switch (true) {
-                    case perc > 5:
-                        return 'red';
-                    default:
-                        return 'text-right'
+                if (perc > 5){
+                    return 'red';
                 }
+                return 'text-right';                
             },
             gridSpeseAnnuali: {
                 columnVirtualizationThreshold: 32,
