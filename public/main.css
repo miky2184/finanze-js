@@ -390,28 +390,28 @@ label-settings {
     background-color: rgba(0, 0, 255, 0.5) !important;
     font-weight: bold;
     color: black;
-    text-align: right;
+    text-align: center;
 }
 
 .marianna {
     background-color: rgba(0, 255, 0, 0.5) !important;
     font-weight: bold;
     color: black;
-    text-align: right;
+    text-align: center;
 }
 
 .comune {
     background-color: rgba(255, 0, 0, 0.5) !important;
     font-weight: bold;
     color: black;
-    text-align: right;
+    text-align: center;
 }
 
 .totale {
     background-color: rgba(128, 128, 128, 0.5) !important;
     font-weight: bold;
     color: black;
-    text-align: right;
+    text-align: center;
 }
 
 .green {
@@ -438,7 +438,7 @@ label-settings {
 .red {
     background-color: rgba(190, 0, 0, 0.6) !important;
     font-weight: bold;
-    color: black;
+    color: white;
     text-align: right;
 }
 

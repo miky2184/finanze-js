@@ -27,19 +27,19 @@
                 enablePinning: true,
                 columnDefs: [{
                     name: 'AMBITO',
-                    displayName: 'Ambito',
+                    displayName: 'AMBITO',
                     field: 'ambito',
                     width: '*',
                     pinnedLeft: true
                 }, {
                     name: 'CATEGORIA',
-                    displayName: 'Categoria',
+                    displayName: 'CATEGORIA',
                     field: 'categoria',
                     width: '*',
                     pinnedLeft: true
                 }, {
                     name: 'SOTTOCATEGORIA',
-                    displayName: 'Sottocategoria',
+                    displayName: 'SOTTOCATEGORIA',
                     field: 'sottocategoria',
                     width: '*',
                     pinnedLeft: true
