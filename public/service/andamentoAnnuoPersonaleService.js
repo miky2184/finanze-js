@@ -95,8 +95,7 @@
                             'y': d.contopersonale
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE,
-                    area: true
+                    color: $strings.RGB.CONTO_PERSONALE
             }, {
             key: $strings.CONTO.CONTO_TOTALE,
             values: pivotData.map(function (d) {

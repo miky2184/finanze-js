@@ -99,8 +99,7 @@
                             'y': d.contocomune
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE,
-                    area: true
+                    color: $strings.RGB.CONTO_COMUNE                    
             }, {
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {

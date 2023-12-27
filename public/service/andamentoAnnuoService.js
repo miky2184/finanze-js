@@ -109,8 +109,7 @@
                             'y': d.contototale
                         };
                     }),
-                    color: $strings.RGB.CONTO_TOTALE,
-                    area: true
+                    color: $strings.RGB.CONTO_TOTALE
             },{
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
@@ -119,8 +118,7 @@
                             'y': d.contocomune
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE,
-                    area: true
+                    color: $strings.RGB.CONTO_COMUNE
             }, {
                 key: $strings.CONTO.CONTO_MARIANNA,
                 values: pivotData.map(function (d) {
@@ -129,8 +127,7 @@
                         'y': d.contomarianna
                     };
                 }),
-                color: $strings.RGB.CONTO_MARIANNA,
-                area: true
+                color: $strings.RGB.CONTO_MARIANNA
         },{
         key: $strings.CONTO.CONTO_PERSONALE,
         values: pivotData.map(function (d) {
@@ -139,8 +136,7 @@
                 'y': d.contopersonale
             };
         }),
-        color: $strings.RGB.CONTO_PERSONALE,
-        area: true
+        color: $strings.RGB.CONTO_PERSONALE
 }];
             }
         };
