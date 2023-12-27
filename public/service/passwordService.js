@@ -7,7 +7,7 @@
                 return;
             }
             dataService.data.dirty = true;
-            rowEntity.dirty = true;            
+            rowEntity.dirty = true;
         };
         var srvc = {
             gridOptionsPassword: {
@@ -19,43 +19,48 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                     name: 'SITE',
-                    displayName: 'Nome Sito.',
+                    displayName: 'SITO',
                     field: 'site',
                     type: 'text',
-                    width: '20%' 
-                },{
+                    headerCellClass: 'text-center',
+                    width: '20%'
+                }, {
                     name: 'USER',
-                    displayName: 'Username.',
+                    displayName: 'USERNAME',
                     field: 'user',
                     type: 'text',
-                    width: '20%' 
-                },{
+                    headerCellClass: 'text-center',
+                    width: '20%'
+                }, {
                     name: 'PWD',
-                    displayName: 'Password',
+                    displayName: 'PASSWORD',
                     field: 'pwd',
                     type: 'text',
-                    width: '20%'  
-                },{
+                    headerCellClass: 'text-center',
+                    width: '20%'
+                }, {
                     name: 'URL',
                     displayName: 'URL',
                     field: 'url',
                     type: 'text',
-                    width: '20%' 
+                    headerCellClass: 'text-center',
+                    width: '20%'
                 }, {
                     name: 'NOTE',
                     displayName: 'Note',
                     field: 'note',
                     type: 'text',
-                    width: '20%'                    
+                    headerCellClass: 'text-center',
+                    width: '20%'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
-                    srvc.gridOptionsPassword.gridApi = gridApi;       
+                    srvc.gridOptionsPassword.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
                 }
             },
             loadPassword: function () {
-                return $http.get($strings.REST.SERVER+'/password').then(function (resp) {
+                return $http.get($strings.REST.SERVER + '/password').then(function (resp) {
                     srvc.gridOptionsPassword.data = resp.data;
                 });
             }

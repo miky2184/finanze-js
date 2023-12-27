@@ -87,15 +87,19 @@
                 enableFiltering: true,
                 columnDefs: [{
                     name: 'ID',
-                    diplayName: 'ID',
-                    field: 'ambito',                    
+                    displayName: 'ID',
+                    headerCellClass: 'text-center',
+                    field: 'ambito',
                     width: '10%'
-                },{
+                }, {
                     field: 'label',
+                    displayName: 'AMBITO',
+                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso',
+                    displayName: '#FREQ',
+                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -116,15 +120,19 @@
                 enableFiltering: true,
                 columnDefs: [{
                     name: 'ID',
-                    diplayName: 'ID',
-                    field: 'categoria',                    
+                    displayName: 'ID',
+                    headerCellClass: 'text-center',
+                    field: 'categoria',
                     width: '10%'
-                },{
+                }, {
                     field: 'label',
+                    displayName: 'CATEGORIA',
+                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso',
+                    displayName: '#FREQ',
+                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -145,15 +153,19 @@
                 enableFiltering: true,
                 columnDefs: [{
                     name: 'ID',
-                    diplayName: 'ID',
-                    field: 'sottocategoria',                    
+                    displayName: 'ID',
+                    headerCellClass: 'text-center',
+                    field: 'sottocategoria',
                     width: '10%'
-                },{
+                }, {
                     field: 'label',
+                    displayName: 'SOTTOCATEGORIA',
+                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso',
+                    displayName: '#FREQ',
+                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -174,15 +186,19 @@
                 enableFiltering: true,
                 columnDefs: [{
                     name: 'ID',
-                    diplayName: 'ID',
-                    field: 'beneficiario',                    
+                    displayName: 'ID',
+                    headerCellClass: 'text-center',
+                    field: 'beneficiario',
                     width: '10%'
-                },{
+                }, {
                     field: 'label',
+                    displayName: 'BENEFICIARIO',
+                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
-                    displayName: 'In Uso',
+                    displayName: '#FREQ',
+                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -202,7 +218,8 @@
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
                     name: 'ambito',
-                    displayName: 'Ambito',
+                    displayName: 'AMBITO',
+                    headerCellClass: 'text-center',
                     field: 'ambito',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
@@ -213,7 +230,8 @@
                     }
                 }, {
                     name: 'categoria',
-                    displayName: 'Categoria',
+                    displayName: 'CATEGORIA',
+                    headerCellClass: 'text-center',
                     field: 'categoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
@@ -232,10 +250,11 @@
             gridOptionsCatSott: {
                 minRowsToShow: 9,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
-                rowTemplate: 'templates/rows/deletableRow.html',                
+                rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
                     name: 'categoria',
-                    displayName: 'Categoria',
+                    displayName: 'CATEGORIA',
+                    headerCellClass: 'text-center',
                     field: 'categoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
@@ -246,7 +265,8 @@
                     }
                 }, {
                     name: 'sottocategoria',
-                    displayName: 'Sottocategoria',
+                    displayName: 'SOTTOCATEGORIA',
+                    headerCellClass: 'text-center',
                     field: 'sottocategoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',

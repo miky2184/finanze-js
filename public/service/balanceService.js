@@ -12,45 +12,50 @@
                 columnDefs: [{
                     name: 'conto',
                     displayName: 'CONTO',
+                    headerCellClass: 'text-center',
                     field: 'conto',
                     width: '20%'
-            }, {
+                }, {
                     name: 'conto_comune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
+                    headerCellClass: 'text-center',
                     field: 'conto_comune',
                     width: '20%',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
-            }, {
+                }, {
                     name: 'conto_personale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
+                    headerCellClass: 'text-center',
                     field: 'conto_personale',
                     width: '20%',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
-            }, {
-                name: 'conto_marianna',
-                displayName: $strings.CONTO.CONTO_MARIANNA,
-                field: 'conto_marianna',
-                width: '20%',
-                cellClass: 'text-right',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency'
-        }, {
+                }, {
+                    name: 'conto_marianna',
+                    displayName: $strings.CONTO.CONTO_MARIANNA,
+                    headerCellClass: 'text-center',
+                    field: 'conto_marianna',
+                    width: '20%',
+                    cellClass: 'text-right',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency'
+                }, {
                     name: 'totale',
                     displayName: 'TOTALE',
+                    headerCellClass: 'text-center',
                     field: 'totale',
                     width: '20%',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
-            }],
+                }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsBalance.gridApi = gridApi;
@@ -66,47 +71,54 @@
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{
                     field: 'beneficiario',
-                     displayName: 'DA/A',
+                    displayName: 'DA/A',
+                    headerCellClass: 'text-center',
                     width: '14%'
-            },{
-                field: 'info',
-                 displayName: 'INFO',
+                }, {
+                    field: 'info',
+                    displayName: 'INFO',
+                    headerCellClass: 'text-center',
                     width: '*'
-        },{
-            field: 'anno',
-            diplayName: 'ANNO',
-            cellClass: 'text-center',
-            width: '7%'            
-        }, {
-            field: 'mese',
-            diplayName: 'MESE',
-            cellClass: 'text-center',
-            width: '7%',            
-        }, {
-            diplayName: 'CONTO COMUNE',
+                }, {
+                    field: 'anno',
+                    displayName: 'ANNO',
+                    headerCellClass: 'text-center',
+                    cellClass: 'text-center',
+                    width: '7%'
+                }, {
+                    field: 'mese',
+                    displayName: 'MESE',
+                    headerCellClass: 'text-center',
+                    cellClass: 'text-center',
+                    width: '7%',
+                }, {
+                    displayName: 'CONTO COMUNE',
+                    headerCellClass: 'text-center',
                     field: 'conto_comune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: 'text-right',
                     width: '12%'
-            }, {
-                diplayName: 'CONTO PERSONALE',
+                }, {
+                    displayName: 'CONTO PERSONALE',
+                    headerCellClass: 'text-center',
                     field: 'conto_personale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: 'text-right',
                     width: '12%'
-            }, {
-                diplayName: 'CONTO MARIANNA',
-                field: 'conto_marianna',
-                aggregationType: uiGridConstants.aggregationTypes.sum,
-                footerCellFilter: 'currency',
-                cellFilter: 'currency',
-                cellClass: 'text-right',
-                width: '12%'
-        }],
+                }, {
+                    displayName: 'CONTO MARIANNA',
+                    headerCellClass: 'text-center',
+                    field: 'conto_marianna',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: 'text-right',
+                    width: '12%'
+                }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsAvere.gridApi = gridApi;

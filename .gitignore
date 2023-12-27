@@ -13,5 +13,7 @@ public/utils/.AppleDouble/*
 public/json/.AppleDouble/*
 public/templates/modal/.AppleDouble/*
 public/images/.AppleDouble/*
-
 public/share/*
+public/.vscode/
+public/jsconfig.json
+public/service/dist/

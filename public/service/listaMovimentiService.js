@@ -75,29 +75,32 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                     field: 'data',
+                    displayName: 'DATA',
+                    headerCellClass: 'text-center',
                     width: '5%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
-                    filters:[{
+                    filters: [{
                         placeholder: 'less than',
-                        condition: function (searchTerm, cellValue, row, column) {   
+                        condition: function (searchTerm, cellValue, row, column) {
                             //searchTerm = searchTerm.replaceAll('\\','');
                             searchTerm = searchTerm.replace(/\\/g, '');
                             var searchDate = new Date(searchTerm);
-                            return cellValue < searchDate;                            
-                        }                      
-                    },{
-                        placeholder: 'greather than',
-                        condition: function (searchTerm, cellValue, row, column) {   
-                            //searchTerm = searchTerm.replaceAll('\\','');
-                            searchTerm = searchTerm.replace(/\\/g, '');
-                            var searchDate = new Date(searchTerm);
-                            return cellValue >= searchDate;                            
+                            return cellValue < searchDate;
                         }
-                        }  ]
+                    }, {
+                        placeholder: 'greather than',
+                        condition: function (searchTerm, cellValue, row, column) {
+                            //searchTerm = searchTerm.replaceAll('\\','');
+                            searchTerm = searchTerm.replace(/\\/g, '');
+                            var searchDate = new Date(searchTerm);
+                            return cellValue >= searchDate;
+                        }
+                    }]
                 }, {
                     name: 'ambito',
-                    displayName: 'Ambito',
+                    displayName: 'AMBITO',
+                    headerCellClass: 'text-center',
                     field: 'ambito',
                     width: '5%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -113,23 +116,25 @@
                         placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownAmbito) {
-                                if (searchTerm != 'null'){
-                                var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
-                                    return ambito.ambito === cellValue;
-                                });
-                                if (cell && cell.length > 0) {
-                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                if (searchTerm != 'null') {
+                                    var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
+                                        return ambito.ambito === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }
                                 } else {
-                                    return false;
-                                } } else {
-                                    return cellValue == null || cellValue == 0;             
+                                    return cellValue == null || cellValue == 0;
                                 }
                             }
                         }
                     }
                 }, {
                     name: 'categoria',
-                    displayName: 'Categoria',
+                    displayName: 'CATEGORIA',
+                    headerCellClass: 'text-center',
                     field: 'categoria',
                     width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -148,24 +153,25 @@
                         placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownCategoria) {
-                                if (searchTerm != 'null'){
-                                var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
-                                    return categoria.categoria === cellValue;
-                                });
-                                if (cell && cell.length > 0) {
-                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                if (searchTerm != 'null') {
+                                    var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
+                                        return categoria.categoria === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }
                                 } else {
-                                    return false;
+                                    return cellValue == null || cellValue == 0;
                                 }
-                            } else {
-                                return cellValue == null || cellValue == 0;             
-                            }
                             }
                         }
                     }
                 }, {
                     name: 'sottocategoria',
-                    displayName: 'Sottocategoria',
+                    displayName: 'SOTTOCATEGORIA',
+                    headerCellClass: 'text-center',
                     field: 'sottocategoria',
                     width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -179,12 +185,12 @@
                             });
                         }
                         return [];
-                    },                    
+                    },
                     filter: {
                         placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownSottocategoria) {
-                                if (searchTerm != 'null'){
+                                if (searchTerm != 'null') {
                                     var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
                                         return sottocategoria.sottocategoria === cellValue;
                                     });
@@ -192,16 +198,17 @@
                                         return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
                                     } else {
                                         return false;
-                                    }               
-                    } else {
-                        return cellValue == null || cellValue == 0;             
-                    }  
+                                    }
+                                } else {
+                                    return cellValue == null || cellValue == 0;
+                                }
                             }
                         }
                     }
                 }, {
                     name: 'beneficiario',
-                    displayName: 'Beneficiario',
+                    displayName: 'BENEFICIARIO',
+                    headerCellClass: 'text-center',
                     field: 'beneficiario',
                     width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -227,7 +234,8 @@
                     }
                 }, {
                     name: 'tipo_conto',
-                    displayName: 'Tipo Conto',
+                    displayName: 'CONTO',
+                    headerCellClass: 'text-center',
                     field: 'tipo_conto',
                     width: '7%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -254,7 +262,8 @@
                 }, {
                     field: 'conto',
                     name: 'conto',
-                    displayName: 'Conto',
+                    displayName: 'TIPO CONTO',
+                    headerCellClass: 'text-center',
                     width: '7%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'conto',
@@ -280,6 +289,7 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -288,6 +298,7 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -296,6 +307,7 @@
                 }, {
                     field: 'budget',
                     displayName: ' ',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -304,6 +316,7 @@
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -312,6 +325,7 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -320,6 +334,7 @@
                 }, {
                     field: 'check',
                     displayName: ' ',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -327,6 +342,8 @@
                     headerCellClass: 'icon check'
                 }, {
                     field: 'importo',
+                    displayName: 'IMPORTO',
+                    headerCellClass: 'text-center',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -334,58 +351,59 @@
                     cellTooltip: true,
                     cellClass: 'text-right',
                     type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                    filters: [{
+                            condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                            placeholder: 'greater than'
                         },
                         {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
+                            condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                            placeholder: 'less than'
                         }
-                      ]
+                    ]
                 }, {
                     field: 'info',
+                    displayName: 'INFO',
+                    headerCellClass: 'text-center',
                     cellTooltip: true,
                     width: '*',
                     filter: {
-                        condition: function (searchTerm, cellValue, row, column) {                                                            
-                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null){
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (cellValue != undefined && cellValue.match(new RegExp(searchTerm.replaceAll('\\', ''), 'i')) != null) {
                                 return true;
-                            } 
+                            }
                             return false;
                         }
                     }
                 }, {
                     field: 'anno',
-                    diplayName: 'Anno',
+                    displayName: 'YYYY',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                    filters: [{
+                            condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                            placeholder: 'greater than'
                         },
                         {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
+                            condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                            placeholder: 'less than'
                         }
-                      ]
+                    ]
                 }, {
                     field: 'mese',
-                    diplayName: 'Mese',
+                    displayName: 'MM',
+                    headerCellClass: 'text-center',
                     width: '3%',
                     type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                    filters: [{
+                            condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                            placeholder: 'greater than'
                         },
                         {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
+                            condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                            placeholder: 'less than'
                         }
-                      ]
+                    ]
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -399,7 +417,7 @@
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
                             var copyRow = angular.copy(row);
-                            copyRow.data = copyRow.data.setFullYear(copyRow.data.getFullYear()+1);
+                            copyRow.data = copyRow.data.setFullYear(copyRow.data.getFullYear() + 1);
                             copyRow.data = new Date(copyRow.data);
                             copyRow.newRow = true;
                             copyRow.deleted = false;
@@ -411,10 +429,10 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera == "PM" || maschera == "DB";
                 },
                 label: 'Add 1 Year'
-            },          
+            },
             addBtn: {
                 src: 'images/baseline-add_circle_outline-24px.svg',
                 listener: function (gridOptions, maschera) {
@@ -448,18 +466,18 @@
                         })
                     } else if (maschera === "PW") {
                         gridOptions.data.unshift({
-                            newRow: true,                            
+                            newRow: true,
                             dirty: true,
-                            site:'',
-                            user:'',
-                            pwd:'',
-                            url:'',
-                            note:''                            
+                            site: '',
+                            user: '',
+                            pwd: '',
+                            url: '',
+                            note: ''
                         });
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera=="PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PM" || maschera == "DB";
                 },
                 label: 'Add'
             },
@@ -476,7 +494,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera =="PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PM" || maschera == "DB";
                 },
                 label: 'Delete'
             },
@@ -497,7 +515,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera =="PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera == "PM" || maschera == "DB";
                 },
                 label: 'Copy'
             },
@@ -513,19 +531,19 @@
                         return spesaService.loadSpesa().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
-                    } else if (maschera === "SA"){
+                    } else if (maschera === "SA") {
                         return salaryService.loadWork().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
-                    } else if (maschera === "PW"){
+                    } else if (maschera === "PW") {
                         return passwordService.loadPassword().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
-                    } else if (maschera === "PM"){
+                    } else if (maschera === "PM") {
                         return predmatchService.loadPredMatch().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
-                    } else if (maschera === "DB"){
+                    } else if (maschera === "DB") {
                         return budgetService.loadDefBudget().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
@@ -584,13 +602,13 @@
                                                 newRow.categoria = row['categoria'];
                                                 newRow.sottocategoria = row['sottocategoria'];
                                                 newRow.beneficiario = row['beneficiario'];
-                                                newRow.tipo_conto = row['tp_conto'];                                                
+                                                newRow.tipo_conto = row['tp_conto'];
                                                 newRow.conto = row['conto'];
                                                 newRow.contabilizzata = row['fl_cont'];
                                                 newRow.budget = row['budget'];
                                                 newRow.visualizzare = row['fl_visl'];
                                                 newRow.cartaCredito = row['fl_cc'];
-                                                newRow.webapp = row['webapp'];                                                
+                                                newRow.webapp = row['webapp'];
                                                 newRow.importo = Number(row['value']);
                                                 newRow.info = row['info'];
                                                 newRow.check = row['check_spesa'];

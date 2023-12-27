@@ -4,9 +4,6 @@
         var scope = $rootScope.$new();
         
         var editableCondition = function editableCondition(rowEntity, colDef) {
-                /* if (rowEntity.giocata && new Date(rowEntity.dataGameNext) < new Date()) {
-                    return false;
-                } */
                 if (colDef.name === 'golCasa' || colDef.name === 'golTrasferta') {
                     return true;
                 }

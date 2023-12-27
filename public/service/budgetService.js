@@ -38,7 +38,7 @@
                     oldSett = dataService.data.dropdownSottocategoria.filter(function (a) {
                         return a[colDef.name] === oldValue;
                     })[0];
-                    break;                
+                    break;
                 default:
                     break;
             }
@@ -51,10 +51,10 @@
         };
 
         var srvc = {
-            dataGraficoPieBudget : function dataGraficoPieBudget(){
+            dataGraficoPieBudget: function dataGraficoPieBudget() {
                 return pivotDataPieBudget;
             },
-            getClass: function(r, attr, rim){
+            getClass: function (r, attr, rim) {
                 if (r[attr] !== null && r[attr] !== 0) {
                     if (r[rim] >= $strings.BUDGET.GREEN) {
                         return 'green';
@@ -80,149 +80,153 @@
                 selectionRowHeaderWidth: 35,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableColumnMenus: false,
-                columnDefs: [
-                    {
+                columnDefs: [{
                         name: 'mese',
-                        displayName: 'Mese', 
-                        field: 'mese',  
+                        displayName: 'MM',
+                        headerCellClass: 'text-center',
+                        field: 'mese',
                         width: '10%',
-                        type: 'number', 
+                        type: 'number',
                         cellClass: 'text-right',
-                        filters: [
-                            {
-                            condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                            placeholder: 'greater than'
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
                             },
                             {
-                            condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                            placeholder: 'less than'
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
                             }
                         ]
                     },
                     {
-                    name: 'ambito',
-                    displayName: 'Ambito',
-                    field: 'ambito',
-                    width: '20%',
-                    editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownIdLabel: 'ambito',
-                    editDropdownValueLabel: 'label',
-                    cellFilter: 'griddropdown:this',
-                    editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        return dataService.data.dropdownAmbito.filter(function (a) {
-                            return !a.deleted;
-                        });
-                    },
-                    filter: {
-                        placeholder: 'like',
-                        condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.dropdownAmbito) {
-                                if (searchTerm != 'null'){
-                                var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
-                                    return ambito.ambito === cellValue;
-                                });
-                                if (cell && cell.length > 0) {
-                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                                } else {
-                                    return false;
-                                } } else {
-                                    return cellValue == null || cellValue == 0;             
-                                }
-                            }
-                        }
-                    }
-                }, {
-                    name: 'categoria',
-                    displayName: 'Categoria',
-                    field: 'categoria',
-                    width: '20%',
-                    editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownIdLabel: 'categoria',
-                    editDropdownValueLabel: 'label',
-                    cellFilter: 'griddropdown:this',
-                    editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        if (rowEntity.ambito) {
-                            return dataService.data.dropdownCategoria.filter(function (obj) {
-                                return obj.ambito === rowEntity.ambito && !obj.deleted;
+                        name: 'ambito',
+                        displayName: 'AMBITO',
+                        headerCellClass: 'text-center',
+                        field: 'ambito',
+                        width: '20%',
+                        editableCellTemplate: 'ui-grid/dropdownEditor',
+                        editDropdownIdLabel: 'ambito',
+                        editDropdownValueLabel: 'label',
+                        cellFilter: 'griddropdown:this',
+                        editDropdownOptionsFunction: function (rowEntity, colDef) {
+                            return dataService.data.dropdownAmbito.filter(function (a) {
+                                return !a.deleted;
                             });
-                        }
-                        return [];
-                    },
-                    filter: {
-                        placeholder: 'like',
-                        condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.dropdownCategoria) {
-                                if (searchTerm != 'null'){
-                                var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
-                                    return categoria.categoria === cellValue;
-                                });
-                                if (cell && cell.length > 0) {
-                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                                } else {
-                                    return false;
-                                }
-                            } else {
-                                return cellValue == null || cellValue == 0;             
-                            }
-                            }
-                        }
-                    }
-                }, {
-                    name: 'sottocategoria',
-                    displayName: 'Sottocategoria',
-                    field: 'sottocategoria',
-                    width: '20%',
-                    editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownIdLabel: 'sottocategoria',
-                    editDropdownValueLabel: 'label',
-                    cellFilter: 'griddropdown:this',
-                    editDropdownOptionsFunction: function (rowEntity, colDef) {
-                        if (rowEntity.categoria) {
-                            return dataService.data.dropdownSottocategoria.filter(function (obj) {
-                                return obj.categoria === rowEntity.categoria && !obj.deleted;
-                            });
-                        }
-                        return [];
-                    },                    
-                    filter: {
-                        placeholder: 'like',
-                        condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.dropdownSottocategoria) {
-                                if (searchTerm != 'null'){
-                                    var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
-                                        return sottocategoria.sottocategoria === cellValue;
-                                    });
-                                    if (cell && cell.length > 0) {
-                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                                    } else {
-                                        return false;
-                                    }               
-                    } else {
-                        return cellValue == null || cellValue == 0;             
-                    }  
-                            }
-                        }
-                    }
-                },{
-                    name: 'budget',
-                    displayName: 'Budget', 
-                    field: 'budget',  
-                    width: '*',
-                    type: 'number', 
-                    cellClass: 'text-right', 
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    filters: [
-                        {
-                        condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                        placeholder: 'greater than'
                         },
-                        {
-                        condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                        placeholder: 'less than'
+                        filter: {
+                            placeholder: 'like',
+                            condition: function (searchTerm, cellValue, row, column) {
+                                if (dataService.data.dropdownAmbito) {
+                                    if (searchTerm != 'null') {
+                                        var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
+                                            return ambito.ambito === cellValue;
+                                        });
+                                        if (cell && cell.length > 0) {
+                                            return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else {
+                                        return cellValue == null || cellValue == 0;
+                                    }
+                                }
+                            }
                         }
-                    ]}                    
+                    }, {
+                        name: 'categoria',
+                        displayName: 'CATEGORIA',
+                        headerCellClass: 'text-center',
+                        field: 'categoria',
+                        width: '20%',
+                        editableCellTemplate: 'ui-grid/dropdownEditor',
+                        editDropdownIdLabel: 'categoria',
+                        editDropdownValueLabel: 'label',
+                        cellFilter: 'griddropdown:this',
+                        editDropdownOptionsFunction: function (rowEntity, colDef) {
+                            if (rowEntity.ambito) {
+                                return dataService.data.dropdownCategoria.filter(function (obj) {
+                                    return obj.ambito === rowEntity.ambito && !obj.deleted;
+                                });
+                            }
+                            return [];
+                        },
+                        filter: {
+                            placeholder: 'like',
+                            condition: function (searchTerm, cellValue, row, column) {
+                                if (dataService.data.dropdownCategoria) {
+                                    if (searchTerm != 'null') {
+                                        var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
+                                            return categoria.categoria === cellValue;
+                                        });
+                                        if (cell && cell.length > 0) {
+                                            return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else {
+                                        return cellValue == null || cellValue == 0;
+                                    }
+                                }
+                            }
+                        }
+                    }, {
+                        name: 'sottocategoria',
+                        displayName: 'SOTTOCATEGORIA',
+                        headerCellClass: 'text-center',
+                        field: 'sottocategoria',
+                        width: '20%',
+                        editableCellTemplate: 'ui-grid/dropdownEditor',
+                        editDropdownIdLabel: 'sottocategoria',
+                        editDropdownValueLabel: 'label',
+                        cellFilter: 'griddropdown:this',
+                        editDropdownOptionsFunction: function (rowEntity, colDef) {
+                            if (rowEntity.categoria) {
+                                return dataService.data.dropdownSottocategoria.filter(function (obj) {
+                                    return obj.categoria === rowEntity.categoria && !obj.deleted;
+                                });
+                            }
+                            return [];
+                        },
+                        filter: {
+                            placeholder: 'like',
+                            condition: function (searchTerm, cellValue, row, column) {
+                                if (dataService.data.dropdownSottocategoria) {
+                                    if (searchTerm != 'null') {
+                                        var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
+                                            return sottocategoria.sottocategoria === cellValue;
+                                        });
+                                        if (cell && cell.length > 0) {
+                                            return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                        } else {
+                                            return false;
+                                        }
+                                    } else {
+                                        return cellValue == null || cellValue == 0;
+                                    }
+                                }
+                            }
+                        }
+                    }, {
+                        name: 'budget',
+                        displayName: 'BUDGET',
+                        headerCellClass: 'text-center',
+                        field: 'budget',
+                        width: '*',
+                        type: 'number',
+                        cellClass: 'text-right',
+                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ]
+                    }
                 ],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -240,788 +244,792 @@
                 showColumnFooter: true,
                 enablePinning: true,
                 columnDefs: [{
-                    name: 'ambito',
-                    displayName: 'Ambito',
-                    field: 'ambito',
-                    width: '5%',
-                    pinnedLeft: true
-                }, {
-                    name: 'categoria',
-                    displayName: 'Categoria',
-                    field: 'categoria',
-                    width: '8%',
-                    pinnedLeft: true
-                }, {
-                    name: 'sottocategoria',
-                    displayName: 'Sottocategoria',
-                    field: 'sottocategoria',
-                    width: '8%',
-                    pinnedLeft: true
-                },
-                {
-                    name: 'perc_budg',
-                    displayName: '%',
-                    field: 'perc_budg',
-                    width: '2%',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        
+                        name: 'ambito',
+                        displayName: 'AMBITO',
+                        headerCellClass: 'text-center',
+                        field: 'ambito',
+                        width: '5%',
+                        pinnedLeft: true
+                    }, {
+                        name: 'categoria',
+                        displayName: 'CATEGORIA',
+                        headerCellClass: 'text-center',
+                        field: 'categoria',
+                        width: '8%',
+                        pinnedLeft: true
+                    }, {
+                        name: 'sottocategoria',
+                        displayName: 'SOTTOCATEGORIA',
+                        headerCellClass: 'text-center',
+                        field: 'sottocategoria',
+                        width: '8%',
+                        pinnedLeft: true
                     },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                    {
+                        name: 'perc_budg',
+                        displayName: '%',
+                        headerCellClass: 'text-center',
+                        field: 'perc_budg',
+                        width: '2%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    pinnedLeft: true
-                },
-                {
-                    name: 'budg_tot_anno',
-                    displayName: 'Budget Anno',
-                    field: 'budg_tot_anno',
-                    width: '5%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');                        
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        pinnedLeft: true
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                    {
+                        name: 'budg_tot_anno',
+                        displayName: 'BUDGET ANNO',
+                        headerCellClass: 'text-center',
+                        field: 'budg_tot_anno',
+                        width: '5%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    pinnedLeft: true
-                },
-                {
-                    name: 'tot_anno',
-                    displayName: 'Spese Anno',
-                    field: 'tot_anno',
-                    width: '5%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
+                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        pinnedLeft: true
                     },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                    {
+                        name: 'tot_anno',
+                        displayName: 'SPESE ANNO',
+                        headerCellClass: 'text-center',
+                        field: 'tot_anno',
+                        width: '5%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    pinnedLeft: true
-                }, {
-                    name: 'prev_fino_anno',
-                    displayName: 'Prev. Fine Anno',
-                    field: 'prev_fino_anno',
-                    width: '5%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                        pinnedLeft: true
+                    }, {
+                        name: 'prev_fino_anno',
+                        displayName: 'PREV. FINE ANNO',
+                        headerCellClass: 'text-center',
+                        field: 'prev_fino_anno',
+                        width: '5%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    pinnedLeft: true
-                },{
-                    name: 'budg_gen',
-                    displayName: 'Budget GEN',
-                    field: 'budg_gen',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
-                            return srvc.getClass(row.entity, 'gen', 'perc_rim_gen');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                        pinnedLeft: true
+                    }, {
+                        name: 'budg_gen',
+                        displayName: 'BUDGET GEN',
+                        headerCellClass: 'text-center',
+                        field: 'budg_gen',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
+                                return srvc.getClass(row.entity, 'gen', 'perc_rim_gen');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'gen',
-                    displayName: 'Spese GEN',
-                    field: 'gen',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
-                            return srvc.getClass(row.entity, 'gen', 'perc_rim_gen');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'gen',
+                        displayName: 'SPESE GEN',
+                        headerCellClass: 'text-center',
+                        field: 'gen',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
+                                return srvc.getClass(row.entity, 'gen', 'perc_rim_gen');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_feb',
-                    displayName: 'Budget FEB',
-                    field: 'budg_feb',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
-                            return srvc.getClass(row.entity, 'feb', 'perc_rim_feb');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_feb',
+                        displayName: 'BUDGET FEB',
+                        headerCellClass: 'text-center',
+                        field: 'budg_feb',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
+                                return srvc.getClass(row.entity, 'feb', 'perc_rim_feb');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'feb',
-                    displayName: 'Spese FEB',
-                    field: 'feb',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
-                            return srvc.getClass(row.entity, 'feb', 'perc_rim_feb');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'feb',
+                        displayName: 'SPESE FEB',
+                        headerCellClass: 'text-center',
+                        field: 'feb',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
+                                return srvc.getClass(row.entity, 'feb', 'perc_rim_feb');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_mar',
-                    displayName: 'Budget MAR',
-                    field: 'budg_mar',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['mar'] !== null && row.entity['mar'] !== 0 || 3 < n) {
-                            return srvc.getClass(row.entity, 'mar', 'perc_rim_mar');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_mar',
+                        displayName: 'BUDGET MAR',
+                        headerCellClass: 'text-center',
+                        field: 'budg_mar',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['mar'] !== null && row.entity['mar'] !== 0 || 3 < n) {
+                                return srvc.getClass(row.entity, 'mar', 'perc_rim_mar');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'mar',
-                    displayName: 'Spese MAR',
-                    field: 'mar',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['mar'] !== null && row.entity['mar'] !== 0 || 3 < n) {
-                            return srvc.getClass(row.entity, 'mar', 'perc_rim_mar');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'mar',
+                        displayName: 'SPESE MAR',
+                        headerCellClass: 'text-center',
+                        field: 'mar',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['mar'] !== null && row.entity['mar'] !== 0 || 3 < n) {
+                                return srvc.getClass(row.entity, 'mar', 'perc_rim_mar');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_apr',
-                    displayName: 'Budget APR',
-                    field: 'budg_apr',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['apr'] !== null && row.entity['apr'] !== 0 || 4 < n) {
-                            return srvc.getClass(row.entity, 'apr', 'perc_rim_apr');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_apr',
+                        displayName: 'BUDGET APR',
+                        headerCellClass: 'text-center',
+                        field: 'budg_apr',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['apr'] !== null && row.entity['apr'] !== 0 || 4 < n) {
+                                return srvc.getClass(row.entity, 'apr', 'perc_rim_apr');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'apr',
-                    displayName: 'Spese APR',
-                    field: 'apr',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['apr'] !== null && row.entity['apr'] !== 0 || 4 < n) {
-                            return srvc.getClass(row.entity, 'apr', 'perc_rim_apr');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'apr',
+                        displayName: 'SPESE APR',
+                        headerCellClass: 'text-center',
+                        field: 'apr',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['apr'] !== null && row.entity['apr'] !== 0 || 4 < n) {
+                                return srvc.getClass(row.entity, 'apr', 'perc_rim_apr');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_mag',
-                    displayName: 'Budget MAG',
-                    field: 'budg_mag',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['tot_anno'] !== null && row.entity['mag'] !== 0 || 5 < n) {
-                            return srvc.getClass(row.entity, 'mag', 'perc_rim_mag');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_mag',
+                        displayName: 'BUDGET MAG',
+                        headerCellClass: 'text-center',
+                        field: 'budg_mag',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['tot_anno'] !== null && row.entity['mag'] !== 0 || 5 < n) {
+                                return srvc.getClass(row.entity, 'mag', 'perc_rim_mag');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'mag',
-                    displayName: 'Spese MAG',
-                    field: 'mag',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['mag'] !== null && row.entity['mag'] !== 0 || 5 < n) {
-                            return srvc.getClass(row.entity, 'mag', 'perc_rim_mag');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'mag',
+                        displayName: 'SPESE MAG',
+                        headerCellClass: 'text-center',
+                        field: 'mag',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['mag'] !== null && row.entity['mag'] !== 0 || 5 < n) {
+                                return srvc.getClass(row.entity, 'mag', 'perc_rim_mag');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_giu',
-                    displayName: 'Budget GIU',
-                    field: 'budg_giu',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['giu'] !== null && row.entity['giu'] !== 0 || 6 < n) {
-                            return srvc.getClass(row.entity, 'giu', 'perc_rim_giu');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_giu',
+                        displayName: 'BUDGET GIU',
+                        headerCellClass: 'text-center',
+                        field: 'budg_giu',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['giu'] !== null && row.entity['giu'] !== 0 || 6 < n) {
+                                return srvc.getClass(row.entity, 'giu', 'perc_rim_giu');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'giu',
-                    displayName: 'Spese GIU',
-                    field: 'giu',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['giu'] !== null && row.entity['giu'] !== 0 || 6 < n) {
-                            return srvc.getClass(row.entity, 'giu', 'perc_rim_giu');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'giu',
+                        displayName: 'SPESE GIU',
+                        headerCellClass: 'text-center',
+                        field: 'giu',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['giu'] !== null && row.entity['giu'] !== 0 || 6 < n) {
+                                return srvc.getClass(row.entity, 'giu', 'perc_rim_giu');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_lug',
-                    displayName: 'Budget LUG',
-                    field: 'budg_lug',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['lug'] !== null && row.entity['lug'] !== 0 || 7 < n) {
-                            return srvc.getClass(row.entity, 'lug', 'perc_rim_lug');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_lug',
+                        displayName: 'BUDGET LUG',
+                        headerCellClass: 'text-center',
+                        field: 'budg_lug',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['lug'] !== null && row.entity['lug'] !== 0 || 7 < n) {
+                                return srvc.getClass(row.entity, 'lug', 'perc_rim_lug');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'lug',
-                    displayName: 'Spese LUG',
-                    field: 'lug',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['lug'] !== null && row.entity['lug'] !== 0 || 7 < n) {
-                            return srvc.getClass(row.entity, 'lug', 'perc_rim_lug');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'lug',
+                        displayName: 'SPESE LUG',
+                        headerCellClass: 'text-center',
+                        field: 'lug',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['lug'] !== null && row.entity['lug'] !== 0 || 7 < n) {
+                                return srvc.getClass(row.entity, 'lug', 'perc_rim_lug');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_ago',
-                    displayName: 'Budget AGO',
-                    field: 'budg_ago',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['ago'] !== null && row.entity['ago'] !== 0 || 8 < n) {
-                            return srvc.getClass(row.entity, 'ago', 'perc_rim_ago');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_ago',
+                        displayName: 'BUDGET AGO',
+                        headerCellClass: 'text-center',
+                        field: 'budg_ago',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['ago'] !== null && row.entity['ago'] !== 0 || 8 < n) {
+                                return srvc.getClass(row.entity, 'ago', 'perc_rim_ago');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'ago',
-                    displayName: 'Spese AGO',
-                    field: 'ago',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['ago'] !== null && row.entity['ago'] !== 0 || 8 < n) {
-                            return srvc.getClass(row.entity, 'ago', 'perc_rim_ago');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'ago',
+                        displayName: 'SPESE AGO',
+                        headerCellClass: 'text-center',
+                        field: 'ago',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['ago'] !== null && row.entity['ago'] !== 0 || 8 < n) {
+                                return srvc.getClass(row.entity, 'ago', 'perc_rim_ago');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_sett',
-                    displayName: 'Budget SETT',
-                    field: 'budg_sett',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['sett'] !== null && row.entity['sett'] !== 0 || 9 < n) {
-                            return srvc.getClass(row.entity, 'sett', 'perc_rim_sett');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_sett',
+                        displayName: 'BUDGET SETT',
+                        headerCellClass: 'text-center',
+                        field: 'budg_sett',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['sett'] !== null && row.entity['sett'] !== 0 || 9 < n) {
+                                return srvc.getClass(row.entity, 'sett', 'perc_rim_sett');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'sett',
-                    displayName: 'Spese SETT',
-                    field: 'sett',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['sett'] !== null && row.entity['sett'] !== 0 || 9 < n) {
-                            return srvc.getClass(row.entity, 'sett', 'perc_rim_sett');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'sett',
+                        displayName: 'SPESE SETT',
+                        headerCellClass: 'text-center',
+                        field: 'sett',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['sett'] !== null && row.entity['sett'] !== 0 || 9 < n) {
+                                return srvc.getClass(row.entity, 'sett', 'perc_rim_sett');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_ott',
-                    displayName: 'Budget OTT',
-                    field: 'budg_ott',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['ott'] !== null && row.entity['ott'] !== 0 || 10 < n) {
-                            return srvc.getClass(row.entity, 'ott', 'perc_rim_ott');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_ott',
+                        displayName: 'BUDGET OTT',
+                        headerCellClass: 'text-center',
+                        field: 'budg_ott',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['ott'] !== null && row.entity['ott'] !== 0 || 10 < n) {
+                                return srvc.getClass(row.entity, 'ott', 'perc_rim_ott');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'ott',
-                    displayName: 'Spese OTT',
-                    field: 'ott',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['ott'] !== null && row.entity['ott'] !== 0 || 10 < n) {
-                            return srvc.getClass(row.entity, 'ott', 'perc_rim_ott');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'ott',
+                        displayName: 'SPESE OTT',
+                        headerCellClass: 'text-center',
+                        field: 'ott',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['ott'] !== null && row.entity['ott'] !== 0 || 10 < n) {
+                                return srvc.getClass(row.entity, 'ott', 'perc_rim_ott');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_nov',
-                    displayName: 'Budget NOV',
-                    field: 'budg_nov',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['nov'] !== null && row.entity['nov'] !== 0 || 11 < n) {
-                            return srvc.getClass(row.entity, 'nov', 'perc_rim_nov');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_nov',
+                        displayName: 'BUDGET NOV',
+                        headerCellClass: 'text-center',
+                        field: 'budg_nov',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['nov'] !== null && row.entity['nov'] !== 0 || 11 < n) {
+                                return srvc.getClass(row.entity, 'nov', 'perc_rim_nov');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'nov',
-                    displayName: 'Spese NOV',
-                    field: 'nov',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['nov'] !== null && row.entity['nov'] !== 0 || 11 < n) {
-                            return srvc.getClass(row.entity, 'nov', 'perc_rim_nov');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'nov',
+                        displayName: 'SPESE NOV',
+                        headerCellClass: 'text-center',
+                        field: 'nov',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['nov'] !== null && row.entity['nov'] !== 0 || 11 < n) {
+                                return srvc.getClass(row.entity, 'nov', 'perc_rim_nov');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'budg_dic',
-                    displayName: 'Budget DIC',
-                    field: 'budg_dic',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['dic'] !== null && row.entity['dic'] !== 0 || 12 < n) {
-                            return srvc.getClass(row.entity, 'dic', 'perc_rim_dic');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'budg_dic',
+                        displayName: 'BUDGET DIC',
+                        headerCellClass: 'text-center',
+                        field: 'budg_dic',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['dic'] !== null && row.entity['dic'] !== 0 || 12 < n) {
+                                return srvc.getClass(row.entity, 'dic', 'perc_rim_dic');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: 'dic',
-                    displayName: 'Spese DIC',
-                    field: 'dic',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        var d = new Date();
-                        var n = d.getMonth();
-                        if (row.entity['dic'] !== null && row.entity['dic'] !== 0 || 12 < n) {
-                            return srvc.getClass(row.entity, 'dic', 'perc_rim_dic');
-                        }else {
-                            return 'text-right';
-                        }
-                    },
-                    type: 'number',
-                    filters: [
-                        {
-                          condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                          placeholder: 'greater than'
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }, {
+                        name: 'dic',
+                        displayName: 'SPESE DIC',
+                        headerCellClass: 'text-center',
+                        field: 'dic',
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var d = new Date();
+                            var n = d.getMonth();
+                            if (row.entity['dic'] !== null && row.entity['dic'] !== 0 || 12 < n) {
+                                return srvc.getClass(row.entity, 'dic', 'perc_rim_dic');
+                            } else {
+                                return 'text-right';
+                            }
                         },
-                        {
-                          condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                          placeholder: 'less than'
-                        }
-                      ],
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }],
+                        type: 'number',
+                        filters: [{
+                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
+                                placeholder: 'greater than'
+                            },
+                            {
+                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
+                                placeholder: 'less than'
+                            }
+                        ],
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    }
+                ],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridBudget.gridApi = gridApi;
@@ -1038,12 +1046,12 @@
                     }
                 });
             },
-            loadDefBudget: function(pivot){
+            loadDefBudget: function (pivot) {
                 var dto = {};
                 dto.tipo_conto = (pivot || $strings.PIVOT).tipo_conto;
                 dto.anno = (pivot || $strings.PIVOT).year;
                 return $http.post($strings.REST.SERVER + '/definizione_budget', dto).then(function (resp) {
-                    if (resp.data && resp.data.length > 0) {                                                
+                    if (resp.data && resp.data.length > 0) {
                         resp.data.forEach(function (row) {
                             row['budget'] = Number(row['budget']);
                             row['mese'] = Number(row['mese']);
@@ -1052,14 +1060,14 @@
                         dataService.data.backupDataDefBudget = angular.copy(resp.data);
                         srvc.gridDefBudget.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito;
                         srvc.gridDefBudget.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
-                        srvc.gridDefBudget.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;                        
+                        srvc.gridDefBudget.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
                     } else {
-                        srvc.gridDefBudget.data = [];   
+                        srvc.gridDefBudget.data = [];
                     }
                 });
             },
-            loadGraficoBudget: function(pivot){
-                dataService.data.optionsGraficoPieBudget = {                    
+            loadGraficoBudget: function (pivot) {
+                dataService.data.optionsGraficoPieBudget = {
                     chart: {
                         type: 'pieChart',
                         height: 1000,
@@ -1067,8 +1075,12 @@
                         duration: 5,
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,
-                        x: function(d){return d.key;},
-                        y: function(d){return d.y;},
+                        x: function (d) {
+                            return d.key;
+                        },
+                        y: function (d) {
+                            return d.y;
+                        },
                         legend: {
                             margin: {
                                 top: 5,
@@ -1082,7 +1094,7 @@
                                 d3.selectAll('.nvtooltip').style('opacity', 0);
                             }, 100);
                         }
-                    }                      
+                    }
                 };
                 var dto = {};
                 dto.tipo_conto = (pivot || $strings.PIVOT).tipo_conto;
