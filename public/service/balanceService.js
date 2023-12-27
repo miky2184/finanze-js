@@ -63,7 +63,7 @@
                 columnDefs: [{
                     field: 'beneficiario',
                      displayName: 'DA/A',
-                    width: '20%'
+                    width: '14%'
             },{
                 field: 'info',
                  displayName: 'INFO',
@@ -71,11 +71,11 @@
         },{
             field: 'anno',
             diplayName: 'ANNO',
-            width: '4%'            
+            width: '7%'            
         }, {
             field: 'mese',
             diplayName: 'MESE',
-            width: '4%',            
+            width: '7%',            
         }, {
             diplayName: 'CONTO COMUNE',
                     field: 'conto_comune',
