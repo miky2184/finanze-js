@@ -417,26 +417,28 @@ label-settings {
 .green {
     background-color: rgba(0, 128, 0, 0.6) !important;
     font-weight: bold;
-    color: white;
+    color: black;
     text-align: right;
 }
 
 .yellow {
     background-color: rgba(255, 255, 0, 0.6) !important;    
     font-weight: bold;
+    color: black;
     text-align: right;
 }
 
 .orange {
     background-color: rgba(255, 128, 0, 0.6) !important;    
     font-weight: bold;    
+    color: black;
     text-align: right;
 }
 
 .red {
     background-color: rgba(190, 0, 0, 0.6) !important;
     font-weight: bold;
-    color: white;
+    color: black;
     text-align: right;
 }
 

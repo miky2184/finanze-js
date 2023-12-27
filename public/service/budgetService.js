@@ -56,11 +56,7 @@
             },
             getClass: function (r, attr, rim) {
                 if (r[attr] !== null && r[attr] !== 0) {
-                    if (r[rim] >= $strings.BUDGET.GREEN) {
-                        return 'green';
-                    } else if (r[rim] < $strings.BUDGET.GREEN && r[rim] >= $strings.BUDGET.YELLOW) {
-                        return 'yellow';
-                    } else if (r[rim] < $strings.BUDGET.YELLOW && r[rim] > $strings.BUDGET.ORANGE) {
+                    if (r[rim] < $strings.BUDGET.YELLOW && r[rim] > $strings.BUDGET.ORANGE) {
                         return 'orange';
                     } else {
                         return 'red';
@@ -338,7 +334,7 @@
                         displayName: 'PREV. FINE ANNO',
                         headerCellClass: 'text-center',
                         field: 'prev_fino_anno',
-                        width: '5%',
+                        width: '7%',
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
