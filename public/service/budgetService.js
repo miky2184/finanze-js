@@ -1061,7 +1061,8 @@
             loadGraficoBudget: function(pivot){
                 dataService.data.optionsGraficoPieBudget = {                    
                     chart: {
-                        type: 'pieChart',                        
+                        type: 'pieChart',
+                        height: 1000,
                         showLabels: true,
                         duration: 5,
                         labelThreshold: 0.01,
