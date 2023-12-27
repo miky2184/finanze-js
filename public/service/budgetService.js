@@ -204,7 +204,7 @@
                     name: 'budget',
                     displayName: 'Budget', 
                     field: 'budget',  
-                    width: '30%',
+                    width: '*',
                     type: 'number', 
                     cellClass: 'text-right', 
                     aggregationType: uiGridConstants.aggregationTypes.sum,
