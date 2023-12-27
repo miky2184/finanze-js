@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope) {
         var scope = $rootScope.$new();
-
+        var pivotDataPieBudget = [];
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
@@ -51,6 +51,9 @@
         };
 
         var srvc = {
+            dataGraficoPieBudget : function dataGraficoPieBudget(){
+                return pivotDataPieBudget;
+            },
             getPerc: function(r, attr, rim){
                 if (r[attr] !== null && r[attr] !== 0) {
                     if (r[rim] >= $strings.BUDGET.GREEN) {
@@ -1053,6 +1056,40 @@
                     } else {
                         srvc.gridDefBudget.data = [];   
                     }
+                });
+            },
+            loadGraficoBudget: function(pivot){
+                dataService.data.optionsGraficoPieBudget = {                    
+                    chart: {
+                        type: 'pieChart',
+                        height: 500,
+                        showLabels: true,
+                        duration: 5,
+                        labelThreshold: 0.01,
+                        labelSunbeamLayout: true,
+                        x: function(d){return d.key;},
+                        y: function(d){return d.y;},
+                        legend: {
+                            margin: {
+                                top: 5,
+                                right: 35,
+                                bottom: 5,
+                                left: 0
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }                      
+                };
+                var dto = {};
+                dto.tipo_conto = (pivot || $strings.PIVOT).tipo_conto;
+                dto.anno = (pivot || $strings.PIVOT).year;
+                return $http.post($strings.REST.SERVER + '/budget_annuo', dto).then(function (resp) {
+                    pivotDataPieBudget = resp.data;
+                    dataService.data.dataGraficoPieBudget = srvc.dataGraficoPieBudget();
                 });
             }
         };

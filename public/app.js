@@ -277,7 +277,12 @@
         *********************/
         $scope.gridDefBudget = budgetService.gridDefBudget;
         $scope.loadDefBudget = function () {
-            return budgetService.loadDefBudget($scope.pivot);
+            return budgetService.loadDefBudget($scope.pivot).then(function (fn) {                
+                return budgetService.loadGraficoBudget($scope.pivot).then(function (fn) {                
+                    $scope.dataGraficoPieBudget = dataService.data.dataGraficoPieBudget;
+                    $scope.optionsGraficoPieBudget = dataService.data.optionsGraficoPieBudget;                   
+                });
+            });
         };
 
         /*********************
