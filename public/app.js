@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$http', '$strings', 'commonService', 'spesaService', 'budgetService', 'reportMeseService', 'fantacalcioService', 'matchAnalysisService', 'amazonService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'pivotAnnoService', 'graficoService', 'andamentoMeseService', 'settingsSpesaService', 'pivotSpesaService', 'passwordService', 'predmatchService', 'speseAnnualiService', 'extraBudgetService', 'andamentoAnnuoPersonaleService', function ($scope, $http, $strings, commonService, spesaService, budgetService, reportMeseService, fantacalcioService, matchAnalysisService, amazonService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, pivotAnnoService, graficoService, andamentoMeseService, settingsSpesaService, pivotSpesaService, passwordService, predmatchService, speseAnnualiService, extraBudgetService, andamentoAnnuoPersonaleService) {
+    }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
 
         $scope.triggerChar = 9;
         $scope.separatorChar = 13;
@@ -103,14 +103,6 @@
         };
 
         /*********************
-           TAB PIVOT ANNO
-         *********************/
-        $scope.gridOptionPivotAnno = pivotAnnoService.gridOptionPivotAnno;
-        $scope.loadPivotAnno = function () {
-            return pivotAnnoService.loadPivotAnno($scope.pivot.year, $scope.pivot.tipo_conto);
-        };
-
-        /*********************
           TAB SETTINGS
          *********************/
         $scope.settingButtons = [];
@@ -184,87 +176,6 @@
         };
 
         /*********************
-          TAB ANDAMENTO ANNUO PERSONALE
-         *********************/
-          $scope.gridOptionAndamentoAnnuoPersonale = andamentoAnnuoPersonaleService.gridOptionAndamentoAnnuoPersonale;
-          $scope.loadAndamentoAnnuoPersonale = function () {
-              return andamentoAnnuoPersonaleService.loadAndamentoAnnuoPersonale().then(function(resp){
-                  $scope.dataGrafico = dataService.data.dataGrafico;
-                  $scope.optionsGrafico = dataService.data.optionsGrafico;    
-              });            
-          };
-
-        /*********************
-            TAB AMAZON
-        *********************/
-        $scope.gridOptionsAmazon = amazonService.gridOptionsAmazon;
-        $scope.loadAmazonData = function () {
-            return amazonService.loadAmazonData();
-        };
-        $scope.amazon = amazonService.amazon;
-
-        /*********************
-          TAB MATCH ANALYSIS
-         *********************/
-        $scope.gridOptionsClassifica = matchAnalysisService.gridOptionsClassifica;
-        $scope.gridOptionsScontriDiretti = matchAnalysisService.gridOptionsScontriDiretti;
-        $scope.gridOptionsPartitePrecedenti = matchAnalysisService.gridOptionsPartitePrecedenti;
-        $scope.gridOptionsNextGame = matchAnalysisService.gridOptionsNextGame;
-        $scope.loadMatchAnalysis = function () {
-            return matchAnalysisService.loadMatchAnalysis($scope.division, $scope.season, $scope.giornata);
-        };        
-        var dto = {};
-        $scope.loadDivisions = function () {
-            return $http.post($strings.REST.SERVER + '/divisions', dto).then(function (resp) {
-                $scope.divisions = resp.data;
-            });
-        };                
-        $scope.loadSeasons = function (division) {
-            dto.division = division.value.id;
-            return $http.post($strings.REST.SERVER + '/seasons', dto ).then(function (resp) {
-                $scope.seasons = resp.data;
-            });
-        };   
-        $scope.loadSeasonsPreMatch = function () {            
-            return $http.post($strings.REST.SERVER + '/seasonspre', dto ).then(function (resp) {
-                $scope.seasonsPreMatch = resp.data;
-            });
-        };  
-        $scope.loadGiornate = function (division, season) {            
-            dto.id = season.value.id;
-            return $http.post($strings.REST.SERVER + '/giornate', dto ).then(function (resp) {
-                $scope.giornate = resp.data;
-            });
-        };
-        $scope.scontriDiretti = matchAnalysisService.scontriDiretti;
-        
-        /*********************
-            TAB PREDMATCH
-         *********************/
-        $scope.gridOptionsPredMatch = predmatchService.gridOptionsPredMatch;
-        $scope.gridOptionsBestBet = predmatchService.gridOptionsBestBet;
-        $scope.gridOptionsBest10Bet = predmatchService.gridOptionsBest10Bet;       
-        $scope.loadPredMatch = function () {            
-            return predmatchService.loadPredMatch();
-        };                 
-
-        /*********************
-            TAB FANTACALCIO
-        *********************/
-        $scope.gridOptionsPandathinaikos = fantacalcioService.gridOptionsPandathinaikos;
-        $scope.loadFantaRosa = function () {
-            return fantacalcioService.loadFantaRosa($scope.fanta.value.id);
-        };
-
-        /*********************
-           TAB REPORT MESE
-        *********************/
-        $scope.gridReportMese = reportMeseService.gridReportMese;
-        $scope.loadReportMese = function () {
-            return reportMeseService.loadReportMese($scope.pivot);
-        };
-
-        /*********************
             TAB BUDGET
         *********************/
         $scope.gridBudget = budgetService.gridBudget;
@@ -293,37 +204,6 @@
            return speseAnnualiService.loadSpeseAnnue($scope.pivot);
        };
 
-       /*********************
-            TAB EXTRA BUDGET
-        *********************/
-       $scope.gridExtraBudget = extraBudgetService.gridExtraBudget;
-       $scope.loadExtraBudget = function () {
-           return extraBudgetService.loadExtraBudget($scope.pivot);
-       };
-
-        /*********************
-            TAB SPESA
-        *********************/
-        $scope.gridOptionsSpesa = spesaService.gridOptionsSpesa;
-
-        /*********************
-            TAB SETTINGS SPESA
-        *********************/
-        $scope.gridOptionsReparto = settingsSpesaService.gridOptionsReparto;
-        $scope.gridOptionsSottoreparto = settingsSpesaService.gridOptionsSottoreparto;
-        $scope.gridOptionsFamiglia = settingsSpesaService.gridOptionsFamiglia;
-        $scope.gridOptionsReprSott = settingsSpesaService.gridOptionsReprSott;
-        $scope.gridOptionsSottFamg = settingsSpesaService.gridOptionsSottFamg;
-        $scope.gridOptionsSupermercato = settingsSpesaService.gridOptionsSupermercato;
-
-        /*********************
-            TAB PIVOT SPESA
-        *********************/
-        $scope.gridOptionsPivotSpesa = pivotSpesaService.gridOptionsPivotSpesa;
-        $scope.loadPivotSpesa = function () {
-            return pivotSpesaService.loadPivotSpesa();
-        };
-        
         /*********************
             TAB PASSWORD
         *********************/

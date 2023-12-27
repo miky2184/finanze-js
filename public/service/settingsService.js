@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', 'utilService', function (dataService, $rootScope, $interval, uiGridConstants, utilService) {
+    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', function (dataService, $rootScope, $interval, uiGridConstants) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function afterCellEditFunction(rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {

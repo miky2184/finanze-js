@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoAnnuoService', ['modalService', '$http', '$timeout', '$strings', 'uiGridConstants', 'listaMovimentiService', 'utilService', 'dataService', function (modalService, $http, $timeout, $strings, uiGridConstants, listaMovimentiService, utilService, dataService) {
+    angular.module('myApp').factory('andamentoAnnuoService', ['$http', '$timeout', '$strings', 'uiGridConstants', 'dataService', function ($http, $timeout, $strings, uiGridConstants, dataService) {
         var pivotData = [];
         var srvc = {
             gridOptionAndamentoAnnuo: {
@@ -24,7 +24,7 @@
                     field: 'contocomune',
                     width: '20%',
                     footerCellFilter: 'currency',
-                    headerCellClass: 'comune', 
+                    headerCellClass: 'comune',
                     cellFilter: 'currency'
                 }, {
                     name: 'contomarianna',
@@ -34,7 +34,7 @@
                     headerCellClass: 'marianna',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
-                },{
+                }, {
                     name: 'contototale',
                     displayName: $strings.CONTO.CONTO_TOTALE,
                     field: 'contototale',
@@ -42,7 +42,7 @@
                     headerCellClass: 'totale',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
-                },{
+                }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
@@ -114,7 +114,7 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_TOTALE
-            },{
+                }, {
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
                         return {
@@ -123,25 +123,25 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_COMUNE
-            }, {
-                key: $strings.CONTO.CONTO_MARIANNA,
-                values: pivotData.map(function (d) {
-                    return {
-                        'x': d.anno,
-                        'y': d.contomarianna
-                    };
-                }),
-                color: $strings.RGB.CONTO_MARIANNA
-        },{
-        key: $strings.CONTO.CONTO_PERSONALE,
-        values: pivotData.map(function (d) {
-            return {
-                'x': d.anno,
-                'y': d.contopersonale
-            };
-        }),
-        color: $strings.RGB.CONTO_PERSONALE
-}];
+                }, {
+                    key: $strings.CONTO.CONTO_MARIANNA,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': d.anno,
+                            'y': d.contomarianna
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_MARIANNA
+                }, {
+                    key: $strings.CONTO.CONTO_PERSONALE,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': d.anno,
+                            'y': d.contopersonale
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_PERSONALE
+                }];
             }
         };
         return srvc;

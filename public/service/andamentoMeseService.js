@@ -1,10 +1,10 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoMeseService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, utilService, $strings) {
-        var pivotData = [];        
+    angular.module('myApp').factory('andamentoMeseService', ['$http', '$timeout', 'dataService', 'uiGridConstants', '$strings', function ($http, $timeout, dataService, uiGridConstants, $strings) {
+        var pivotData = [];
         var srvc = {
-            getClass: function(entity, field){
-                if (entity[field]<0){
+            getClass: function (entity, field) {
+                if (entity[field] < 0) {
                     return 'red';
                 }
                 return 'text-right';
@@ -24,7 +24,7 @@
                     displayName: 'Mese',
                     field: 'nome_mese',
                     width: '34%'
-            }, {
+                }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
@@ -34,9 +34,9 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, col.field);                        
+                        return srvc.getClass(row.entity, col.field);
                     }
-            }, {
+                }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
@@ -48,7 +48,7 @@
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         return srvc.getClass(row.entity, col.field);
                     }
-            }],
+                }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionPivotMese.gridApi = gridApi;
@@ -79,8 +79,8 @@
                         useInteractiveGuideline: true,
                         xAxis: {
                             axisLabel: 'Month',
-                            tickFormat: function (d) {                                
-                                return d3.time.format('%B')(new Date(year, d-1, 1));
+                            tickFormat: function (d) {
+                                return d3.time.format('%B')(new Date(year, d - 1, 1));
                             }
                         },
                         yAxis: {
@@ -98,11 +98,11 @@
                 };
                 var dto = {};
                 dto.anno = year;
-                return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {      
-                    pivotData = resp.data;                                  
+                return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {
+                    pivotData = resp.data;
                     srvc.gridOptionPivotMese.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico();
-                });                
+                });
             },
             dataGrafico: function dataGrafico() {
                 return [{
@@ -113,8 +113,8 @@
                             'y': d.contocomune
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE                    
-            }, {
+                    color: $strings.RGB.CONTO_COMUNE
+                }, {
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
                         return {
@@ -122,8 +122,8 @@
                             'y': d.contopersonale
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE                    
-            }];
+                    color: $strings.RGB.CONTO_PERSONALE
+                }];
             }
         }
         return srvc;

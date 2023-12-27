@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('passwordService', ['modalService', '$http', '$interval', 'dataService', '$rootScope', 'settingsSpesaService', '$strings', function (modalService, $http, $interval, dataService, $rootScope, settingsSpesaService, $strings) {
+    angular.module('myApp').factory('passwordService', ['modalService', '$http', '$interval', 'dataService', '$rootScope', '$strings', function (modalService, $http, $interval, dataService, $rootScope, $strings) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {

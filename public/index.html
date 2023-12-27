@@ -39,32 +39,20 @@
     <script src="node_modules/angular-barcode-scanner/dist/angular-barcode-scanner.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="utils/strings.js"></script>
-    <script type="text/javascript" src="utils/modalService.js"></script>
-    <script type="text/javascript" src="utils/utilService.js"></script>
+    <script type="text/javascript" src="utils/modalService.js"></script> 
     <script type="text/javascript" src="utils/commonService.js"></script>
-    <script type="text/javascript" src="utils/dataService.js"></script>
-    <script type="text/javascript" src="service/spesaService.js"></script>
-    <script type="text/javascript" src="service/budgetService.js"></script>
-    <script type="text/javascript" src="service/reportMeseService.js"></script>
-    <script type="text/javascript" src="service/fantacalcioService.js"></script>
-    <script type="text/javascript" src="service/matchAnalysisService.js"></script>
-    <script type="text/javascript" src="service/amazonService.js"></script>
+    <script type="text/javascript" src="utils/dataService.js"></script>    
+    <script type="text/javascript" src="service/budgetService.js"></script>    
     <script type="text/javascript" src="service/listaMovimentiService.js"></script>
-    <script type="text/javascript" src="service/andamentoAnnuoService.js"></script>
-    <script type="text/javascript" src="service/andamentoAnnuoPersonaleService.js"></script>
+    <script type="text/javascript" src="service/andamentoAnnuoService.js"></script>    
     <script type="text/javascript" src="service/settingsService.js"></script>
-    <script type="text/javascript" src="service/salaryService.js"></script>
-    <script type="text/javascript" src="service/pivotAnnoService.js"></script>
+    <script type="text/javascript" src="service/salaryService.js"></script>    
     <script type="text/javascript" src="service/andamentoMeseService.js"></script>
     <script type="text/javascript" src="service/graficoService.js"></script>
-    <script type="text/javascript" src="service/balanceService.js"></script>
-    <script type="text/javascript" src="service/settingsSpesaService.js"></script>
-    <script type="text/javascript" src="service/pivotSpesaService.js"></script>
-    <script type="text/javascript" src="service/passwordService.js"></script>
-    <script type="text/javascript" src="service/predmatchService.js"></script>
-    <script type="text/javascript" src="service/speseAnnualiService.js"></script>
-    <script type="text/javascript" src="service/extraBudgetService.js"></script>
-    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>    
+    <script type="text/javascript" src="service/balanceService.js"></script>    
+    <script type="text/javascript" src="service/passwordService.js"></script>    
+    <script type="text/javascript" src="service/speseAnnualiService.js"></script>    
+    <script src="http://ui-grid.info/docs/grunt-scripts/csv.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/lodash.min.js"></script>
     <script src="http://ui-grid.info/docs/grunt-scripts/jszip.min.js"></script>
@@ -89,9 +77,8 @@
             <div>
                 <script type="text/ng-template" id="alert.html">
                     <div ng-transclude></div>
-</script>
-                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}
-                </div>
+                </script>
+                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
             </div>
         </md-content>
     </div>
@@ -117,50 +104,30 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/definizione_budget.html'"></div>
                     </md-content>
-                </md-tab> 
+                </md-tab>
                 <md-tab label="Budget" md-on-select="loadBudget()">
                     <md-content class="md-padding">
                         <div ng-include="'view/budget.html'"></div>
                     </md-content>
-                </md-tab> 
-                <!-- <md-tab label="Extra Budget" md-on-select="loadExtraBudget()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/extraBudget.html'"></div>
-                    </md-content>
-                </md-tab> -->                
-                <!-- <md-tab label="Pivot Mensile" md-on-select="loadReportMese()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/reportMensile.html'"></div>
-                    </md-content>
                 </md-tab>
-                <md-tab label="Pivot Annuale" md-on-select="loadPivotAnno(pivot.year, 1)">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/pivotAnno.html'"></div>
-                    </md-content>
-                </md-tab> -->
                 <md-tab label="Spesato Mese" md-on-select="loadPivotMese(pivot.year)">
                     <md-content class="md-padding">
-                        <div ng-include="'view/pivotMese.html'"></div>
+                        <div ng-include="'view/spesato_mese.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Spesato Annuo" md-on-select="loadAndamentoAnnuo()">
                     <md-content class="md-padding">
-                        <div ng-include="'view/andamentoAnnuo.html'"></div>
+                        <div ng-include="'view/spesato_annuo.html'"></div>
                     </md-content>
                 </md-tab>
-                <!-- <md-tab label="Patrimonio Annuo Personale" md-on-select="loadAndamentoAnnuoPersonale()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/andamentoAnnuoPersonale.html'"></div>
-                    </md-content>
-                </md-tab> -->
                 <md-tab label="Report Spesato" md-on-select="loadSpeseAnnue()">
                     <md-content class="md-padding">
-                        <div ng-include="'view/speseAnnue.html'"></div>
+                        <div ng-include="'view/report_spesato.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Dashboard Spesato" md-on-select="loadGrafico(pivot.year)">
                     <md-content class="md-padding">
-                        <div ng-include="'view/graph.html'"></div>
+                        <div ng-include="'view/dashboard_spesato.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab label="Stipendio" md-on-select="loadWork()">
@@ -168,46 +135,11 @@
                         <div ng-include="'view/work.html'"></div>
                     </md-content>
                 </md-tab>
-                <!-- <md-tab label="Match Analysis" md-on-select="loadMatchAnalysis(season, giornata)">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/matchAnalysis.html'"></div>
-                    </md-content>
-                </md-tab>
-                <md-tab label="PredMatch" md-on-select="loadPredMatch()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/predmatch.html'"></div>
-                    </md-content>
-                </md-tab> -->
-                <!-- <md-tab label="Fantacalcio">
-                <md-content class="md-padding">
-                <div ng-include="'view/fantacalcio.html'"></div>
-                </md-content>
-                </md-tab> -->
                 <md-tab label="Password" md-on-select="loadPassword()">
                     <md-content class="md-padding">
                         <div ng-include="'view/password.html'"></div>
                     </md-content>
                 </md-tab>
-                <!--   <md-tab label="Amazon" md-on-select="loadAmazonData()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/amazon.html'"></div>
-                    </md-content>
-                </md-tab>
-                <md-tab label="Spesa">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/spesa.html'"></div>
-                    </md-content>
-                </md-tab> 
-                <md-tab label="Pivot Spesa" md-on-select="loadPivotSpesa()">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/pivotspesa.html'"></div>
-                    </md-content>
-                </md-tab>
-                <md-tab label="Impostazioni Spesa">
-                    <md-content class="md-padding">
-                        <div ng-include="'view/settingsSpesa.html'"></div>
-                    </md-content>
-                </md-tab>  -->
             </md-tabs>
             <div layout="row" layout-align="end end">
                 <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons"

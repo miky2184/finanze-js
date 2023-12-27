@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular.module('myApp')
-    .factory('salaryService', ['dataService', 'uiGridConstants', 'utilService', '$rootScope', '$http', '$interval', '$strings', function (dataService, uiGridConstants, utilService, $rootScope, $http, $interval, $strings) {
+    .factory('salaryService', ['dataService', 'uiGridConstants', '$rootScope', '$http', '$strings', function (dataService, uiGridConstants, $rootScope, $http, $strings) {
       var scope = $rootScope.$new();
       var aliquote = [];
       var aliquoteMese = [];

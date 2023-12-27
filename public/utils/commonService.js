@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('commonService', ['modalService', '$http', '$interval', 'dataService', 'listaMovimentiService', 'settingsService', 'matchAnalysisService', 'salaryService', '$uibModal', '$q', 'spesaService', 'settingsSpesaService', '$strings', 'predmatchService', 'passwordService', 'budgetService', function (modalService, $http, $interval, dataService, listaMovimentiService, settingsService, matchAnalysisService, salaryService, $uibModal, $q, spesaService, settingsSpesaService, $strings, predmatchService, passwordService, budgetService) {
+    angular.module('myApp').factory('commonService', ['modalService', '$http', 'dataService', 'listaMovimentiService', 'settingsService', 'salaryService', '$uibModal', '$q', '$strings', 'passwordService', 'budgetService', function (modalService, $http, dataService, listaMovimentiService, settingsService, salaryService, $uibModal, $q, $strings, passwordService, budgetService) {
         var srvc = {
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti();
@@ -97,8 +97,7 @@
                     if (dataService.data.dirty) {
                         var promise = modalService.showYesNoModal($strings.MODAL.WARNING, $strings.MODAL.ANNULLA_MSG, $strings.MODAL.OK, $strings.MODAL.ANNULLA);
                         promise.then(function () {
-                            listaMovimentiService.gridOptions.data = angular.copy(dataService.data.backupData);
-                            spesaService.gridOptionsSpesa.data = angular.copy(dataService.data.backupDataSpesa);
+                            listaMovimentiService.gridOptions.data = angular.copy(dataService.data.backupData);                            
                             budgetService.gridDefBudget.data = angular.copy(dataService.data.backupDataDefBudget);
                             dataService.data.dirty = false;
                             deferred.resolve();

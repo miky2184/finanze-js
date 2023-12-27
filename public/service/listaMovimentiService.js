@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'spesaService', 'utilService', 'salaryService', 'passwordService', 'predmatchService', 'budgetService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, spesaService, utilService, salaryService, passwordService, predmatchService, budgetService) {
+    angular.module('myApp').factory('listaMovimentiService', ['modalService', '$http', '$strings', 'uiGridConstants', 'dataService', '$rootScope', 'salaryService', 'passwordService', 'budgetService', function (modalService, $http, $strings, uiGridConstants, dataService, $rootScope, salaryService, passwordService, budgetService) {
         var scope = $rootScope.$new();
 
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
@@ -527,20 +527,12 @@
                         return srvc.loadListaMovimenti().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
-                    } else if (maschera === "SP") {
-                        return spesaService.loadSpesa().finally(function (f) {
-                            modalService.hideWaitingModal();
-                        });
                     } else if (maschera === "SA") {
                         return salaryService.loadWork().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
                     } else if (maschera === "PW") {
                         return passwordService.loadPassword().finally(function (f) {
-                            modalService.hideWaitingModal();
-                        });
-                    } else if (maschera === "PM") {
-                        return predmatchService.loadPredMatch().finally(function (f) {
                             modalService.hideWaitingModal();
                         });
                     } else if (maschera === "DB") {
