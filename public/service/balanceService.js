@@ -15,25 +15,25 @@
                     field: 'conto',
                     width: '20%'
             }, {
-                    name: 'contocomune',
+                    name: 'conto_comune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
-                    field: 'contocomune',
+                    field: 'conto_comune',
                     width: '20%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
             }, {
-                    name: 'contopersonale',
+                    name: 'conto_personale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
-                    field: 'contopersonale',
+                    field: 'conto_personale',
                     width: '20%',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
             }, {
-                name: 'contomarianna',
+                name: 'conto_marianna',
                 displayName: $strings.CONTO.CONTO_MARIANNA,
-                field: 'contomarianna',
+                field: 'conto_marianna',
                 width: '20%',
                 aggregationType: uiGridConstants.aggregationTypes.sum,
                 footerCellFilter: 'currency',
