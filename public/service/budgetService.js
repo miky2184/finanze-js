@@ -66,7 +66,7 @@
                         return 'red';
                     }
                 } else {
-                    return 'text-right';
+                    return 'text-center';
                 }
             },
             gridDefBudget: {

@@ -23,6 +23,7 @@
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
                     width: '33%',
+                    cellClass: '.comune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -31,6 +32,7 @@
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
                     width: '33%',
+                    cellClass: '.personale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'

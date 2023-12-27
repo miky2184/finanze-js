@@ -29,9 +29,9 @@
             CONTO_TOTALE: "CONTO TOTALE"
         },
         RGB:{
-            CONTO_COMUNE: "#ff78b0",
-            CONTO_PERSONALE: "#5078b0",
-            CONTO_MARIANNA: "#46ff80",
+            CONTO_COMUNE: "#ff0000",
+            CONTO_PERSONALE: "#0000ff",
+            CONTO_MARIANNA: "#00ff00",
             CONTO_TOTALE: "#808080"
         },
         REST:{
