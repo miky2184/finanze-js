@@ -24,14 +24,14 @@
                     field: 'contocomune',
                     width: '20%',
                     footerCellFilter: 'currency',
-                    cellClass: 'comune', 
+                    headerCellClass: 'comune', 
                     cellFilter: 'currency'
                 }, {
                     name: 'contomarianna',
                     displayName: $strings.CONTO.CONTO_MARIANNA,
                     field: 'contomarianna',
                     width: '20%',
-                    cellClass: 'marianna',
+                    headerCellClass: 'marianna',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 },{
@@ -39,7 +39,7 @@
                     displayName: $strings.CONTO.CONTO_TOTALE,
                     field: 'contototale',
                     width: '20%',
-                    cellClass: 'totale',
+                    headerCellClass: 'totale',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 },{
@@ -47,7 +47,7 @@
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
                     width: '20%',
-                    cellClass: 'personale',
+                    headerCellClass: 'personale',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }],

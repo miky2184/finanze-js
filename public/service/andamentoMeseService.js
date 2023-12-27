@@ -3,6 +3,12 @@
     angular.module('myApp').factory('andamentoMeseService', ['modalService', '$http', '$timeout', 'dataService', 'uiGridConstants', 'listaMovimentiService', 'utilService', '$strings', function (modalService, $http, $timeout, dataService, uiGridConstants, listaMovimentiService, utilService, $strings) {
         var pivotData = [];        
         var srvc = {
+            getClass: function(entity, field){
+                if (entity[field]<0){
+                    return 'red';
+                }
+                return 'text-right';
+            },
             gridOptionPivotMese: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
@@ -23,19 +29,25 @@
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
                     width: '33%',
-                    cellClass: 'comune',
+                    headerCellClass: 'comune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency'
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity, col.field);                        
+                    }
             }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
                     width: '33%',
-                    cellClass: 'personale',
+                    headerCellClass: 'personale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
-                    cellFilter: 'currency'
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity, col.field);
+                    }
             }],
                 data: [],
                 onRegisterApi: function (gridApi) {

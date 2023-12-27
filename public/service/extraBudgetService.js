@@ -3,7 +3,7 @@
     angular.module('myApp').factory('extraBudgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
         
         var srvc = {
-            getPerc: function(perc){
+            getClass: function(perc){
                 switch (true){
                     case perc < 0:
                         return 'centoperc';                                    
@@ -100,7 +100,7 @@
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOTALE_2018'] < 0 && row.entity['TOTALE_2017'] != 0 ) {
                             var perc = (Math.abs(row.entity['TOTALE_2018'])-Math.abs(row.entity['TOTALE_2017']))/Math.abs(row.entity['TOTALE_2017'])*100;
-                            return srvc.getPerc(perc);
+                            return srvc.getClass(perc);
                         } else {
                             return 'text-right';
                         }
@@ -116,7 +116,7 @@
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOTALE_2019'] < 0 && row.entity['TOTALE_2018'] != 0 ) {
                             var perc = (Math.abs(row.entity['TOTALE_2019'])-Math.abs(row.entity['TOTALE_2018']))/Math.abs(row.entity['TOTALE_2018'])*100;
-                            return srvc.getPerc(perc);
+                            return srvc.getClass(perc);
                         } else {
                             return 'text-right';
                         }
@@ -132,7 +132,7 @@
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOTALE_2020'] < 0 && row.entity['TOTALE_2019'] != 0 ) {
                             var perc = (Math.abs(row.entity['TOTALE_2020'])-Math.abs(row.entity['TOTALE_2019']))/Math.abs(row.entity['TOTALE_2019'])*100;
-                            return srvc.getPerc(perc);
+                            return srvc.getClass(perc);
                         } else {
                             return 'text-right';
                         }
@@ -148,7 +148,7 @@
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         if (row.entity['TOTALE_2021'] < 0 && row.entity['TOTALE_2020'] != 0 ) {
                             var perc = (Math.abs(row.entity['TOTALE_2021'])-Math.abs(row.entity['TOTALE_2020']))/Math.abs(row.entity['TOTALE_2020'])*100;
-                            return srvc.getPerc(perc);
+                            return srvc.getClass(perc);
                         } else {
                             return 'text-right';
                         }

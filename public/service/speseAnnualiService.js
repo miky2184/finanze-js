@@ -3,7 +3,7 @@
     angular.module('myApp').factory('speseAnnualiService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', function (modalService, $http, $interval, $strings, uiGridConstants, dataService) {
         
         var srvc = {
-            getPerc: function(perc){
+            getClass: function(perc){
                 switch (true){                  
                     case perc >= 25:
                         return 'red';
@@ -84,7 +84,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2020-2021']);
+                        return srvc.getClass(row.entity['2020-2021']);
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
@@ -93,7 +93,7 @@
                     field: '2020-2021',
                     width: '5%',                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2020-2021']);
+                        return srvc.getClass(row.entity['2020-2021']);
                     }                    
                 },{
                     name: '2022',
@@ -103,7 +103,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2021-2022']);
+                        return srvc.getClass(row.entity['2021-2022']);
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
@@ -112,7 +112,7 @@
                     field: '2021-2022',
                     width: '5%',                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2021-2022']);
+                        return srvc.getClass(row.entity['2021-2022']);
                     }                    
                 },{
                     name: '2023',
@@ -122,7 +122,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2022-2023']);
+                        return srvc.getClass(row.entity['2022-2023']);
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
@@ -131,7 +131,7 @@
                     field: '2022-2023',
                     width: '5%',                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2022-2023']);
+                        return srvc.getClass(row.entity['2022-2023']);
                     }                    
                 },{
                     name: '2024',
@@ -141,7 +141,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2023-2024']);
+                        return srvc.getClass(row.entity['2023-2024']);
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
                 },{
@@ -150,7 +150,7 @@
                     field: '2023-2024',
                     width: '5%',                                        
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2023-2024']);                        
+                        return srvc.getClass(row.entity['2023-2024']);                        
                     }                    
                 }],
                 data: [],

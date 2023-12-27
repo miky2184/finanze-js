@@ -54,7 +54,7 @@
             dataGraficoPieBudget : function dataGraficoPieBudget(){
                 return pivotDataPieBudget;
             },
-            getPerc: function(r, attr, rim){
+            getClass: function(r, attr, rim){
                 if (r[attr] !== null && r[attr] !== 0) {
                     if (r[rim] >= $strings.BUDGET.GREEN) {
                         return 'green';
@@ -287,7 +287,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity, 'tot_anno', 'perc_rim_anno');                        
+                        return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');                        
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     type: 'number',
@@ -311,7 +311,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity, 'tot_anno', 'perc_rim_anno');
+                        return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
                     },
                     type: 'number',
                     filters: [
@@ -334,7 +334,7 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity, 'tot_anno', 'perc_rim_anno');
+                        return srvc.getClass(row.entity, 'tot_anno', 'perc_rim_anno');
                     },
                     type: 'number',
                     filters: [
@@ -360,7 +360,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
-                            return srvc.getPerc(row.entity, 'gen', 'perc_rim_gen');
+                            return srvc.getClass(row.entity, 'gen', 'perc_rim_gen');
                         }else {
                             return 'text-right';
                         }
@@ -388,7 +388,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['gen'] !== null && row.entity['gen'] !== 0 || 1 < n) {
-                            return srvc.getPerc(row.entity, 'gen', 'perc_rim_gen');
+                            return srvc.getClass(row.entity, 'gen', 'perc_rim_gen');
                         }else {
                             return 'text-right';
                         }
@@ -416,7 +416,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
-                            return srvc.getPerc(row.entity, 'feb', 'perc_rim_feb');
+                            return srvc.getClass(row.entity, 'feb', 'perc_rim_feb');
                         }else {
                             return 'text-right';
                         }
@@ -444,7 +444,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['feb'] !== null && row.entity['feb'] !== 0 || 2 < n) {
-                            return srvc.getPerc(row.entity, 'feb', 'perc_rim_feb');
+                            return srvc.getClass(row.entity, 'feb', 'perc_rim_feb');
                         }else {
                             return 'text-right';
                         }
@@ -472,7 +472,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['mar'] !== null && row.entity['mar'] !== 0 || 3 < n) {
-                            return srvc.getPerc(row.entity, 'mar', 'perc_rim_mar');
+                            return srvc.getClass(row.entity, 'mar', 'perc_rim_mar');
                         }else {
                             return 'text-right';
                         }
@@ -500,7 +500,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['mar'] !== null && row.entity['mar'] !== 0 || 3 < n) {
-                            return srvc.getPerc(row.entity, 'mar', 'perc_rim_mar');
+                            return srvc.getClass(row.entity, 'mar', 'perc_rim_mar');
                         }else {
                             return 'text-right';
                         }
@@ -528,7 +528,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['apr'] !== null && row.entity['apr'] !== 0 || 4 < n) {
-                            return srvc.getPerc(row.entity, 'apr', 'perc_rim_apr');
+                            return srvc.getClass(row.entity, 'apr', 'perc_rim_apr');
                         }else {
                             return 'text-right';
                         }
@@ -556,7 +556,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['apr'] !== null && row.entity['apr'] !== 0 || 4 < n) {
-                            return srvc.getPerc(row.entity, 'apr', 'perc_rim_apr');
+                            return srvc.getClass(row.entity, 'apr', 'perc_rim_apr');
                         }else {
                             return 'text-right';
                         }
@@ -584,7 +584,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['tot_anno'] !== null && row.entity['mag'] !== 0 || 5 < n) {
-                            return srvc.getPerc(row.entity, 'mag', 'perc_rim_mag');
+                            return srvc.getClass(row.entity, 'mag', 'perc_rim_mag');
                         }else {
                             return 'text-right';
                         }
@@ -612,7 +612,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['mag'] !== null && row.entity['mag'] !== 0 || 5 < n) {
-                            return srvc.getPerc(row.entity, 'mag', 'perc_rim_mag');
+                            return srvc.getClass(row.entity, 'mag', 'perc_rim_mag');
                         }else {
                             return 'text-right';
                         }
@@ -640,7 +640,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['giu'] !== null && row.entity['giu'] !== 0 || 6 < n) {
-                            return srvc.getPerc(row.entity, 'giu', 'perc_rim_giu');
+                            return srvc.getClass(row.entity, 'giu', 'perc_rim_giu');
                         }else {
                             return 'text-right';
                         }
@@ -668,7 +668,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['giu'] !== null && row.entity['giu'] !== 0 || 6 < n) {
-                            return srvc.getPerc(row.entity, 'giu', 'perc_rim_giu');
+                            return srvc.getClass(row.entity, 'giu', 'perc_rim_giu');
                         }else {
                             return 'text-right';
                         }
@@ -696,7 +696,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['lug'] !== null && row.entity['lug'] !== 0 || 7 < n) {
-                            return srvc.getPerc(row.entity, 'lug', 'perc_rim_lug');
+                            return srvc.getClass(row.entity, 'lug', 'perc_rim_lug');
                         }else {
                             return 'text-right';
                         }
@@ -724,7 +724,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['lug'] !== null && row.entity['lug'] !== 0 || 7 < n) {
-                            return srvc.getPerc(row.entity, 'lug', 'perc_rim_lug');
+                            return srvc.getClass(row.entity, 'lug', 'perc_rim_lug');
                         }else {
                             return 'text-right';
                         }
@@ -752,7 +752,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['ago'] !== null && row.entity['ago'] !== 0 || 8 < n) {
-                            return srvc.getPerc(row.entity, 'ago', 'perc_rim_ago');
+                            return srvc.getClass(row.entity, 'ago', 'perc_rim_ago');
                         }else {
                             return 'text-right';
                         }
@@ -780,7 +780,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['ago'] !== null && row.entity['ago'] !== 0 || 8 < n) {
-                            return srvc.getPerc(row.entity, 'ago', 'perc_rim_ago');
+                            return srvc.getClass(row.entity, 'ago', 'perc_rim_ago');
                         }else {
                             return 'text-right';
                         }
@@ -808,7 +808,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['sett'] !== null && row.entity['sett'] !== 0 || 9 < n) {
-                            return srvc.getPerc(row.entity, 'sett', 'perc_rim_sett');
+                            return srvc.getClass(row.entity, 'sett', 'perc_rim_sett');
                         }else {
                             return 'text-right';
                         }
@@ -836,7 +836,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['sett'] !== null && row.entity['sett'] !== 0 || 9 < n) {
-                            return srvc.getPerc(row.entity, 'sett', 'perc_rim_sett');
+                            return srvc.getClass(row.entity, 'sett', 'perc_rim_sett');
                         }else {
                             return 'text-right';
                         }
@@ -864,7 +864,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['ott'] !== null && row.entity['ott'] !== 0 || 10 < n) {
-                            return srvc.getPerc(row.entity, 'ott', 'perc_rim_ott');
+                            return srvc.getClass(row.entity, 'ott', 'perc_rim_ott');
                         }else {
                             return 'text-right';
                         }
@@ -892,7 +892,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['ott'] !== null && row.entity['ott'] !== 0 || 10 < n) {
-                            return srvc.getPerc(row.entity, 'ott', 'perc_rim_ott');
+                            return srvc.getClass(row.entity, 'ott', 'perc_rim_ott');
                         }else {
                             return 'text-right';
                         }
@@ -920,7 +920,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['nov'] !== null && row.entity['nov'] !== 0 || 11 < n) {
-                            return srvc.getPerc(row.entity, 'nov', 'perc_rim_nov');
+                            return srvc.getClass(row.entity, 'nov', 'perc_rim_nov');
                         }else {
                             return 'text-right';
                         }
@@ -948,7 +948,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['nov'] !== null && row.entity['nov'] !== 0 || 11 < n) {
-                            return srvc.getPerc(row.entity, 'nov', 'perc_rim_nov');
+                            return srvc.getClass(row.entity, 'nov', 'perc_rim_nov');
                         }else {
                             return 'text-right';
                         }
@@ -976,7 +976,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['dic'] !== null && row.entity['dic'] !== 0 || 12 < n) {
-                            return srvc.getPerc(row.entity, 'dic', 'perc_rim_dic');
+                            return srvc.getClass(row.entity, 'dic', 'perc_rim_dic');
                         }else {
                             return 'text-right';
                         }
@@ -1004,7 +1004,7 @@
                         var d = new Date();
                         var n = d.getMonth();
                         if (row.entity['dic'] !== null && row.entity['dic'] !== 0 || 12 < n) {
-                            return srvc.getPerc(row.entity, 'dic', 'perc_rim_dic');
+                            return srvc.getClass(row.entity, 'dic', 'perc_rim_dic');
                         }else {
                             return 'text-right';
                         }
