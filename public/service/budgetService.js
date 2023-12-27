@@ -55,8 +55,8 @@
                 return pivotDataPieBudget;
             },
             getClass: function (row_entity, attr) {
-                if (row_entity[attr] > 100) {                    
-                    return 'red';            
+                if (row_entity[attr] > 100) {
+                    return 'red';
                 } else {
                     return 'text-right';
                 }
@@ -70,6 +70,9 @@
                 enableRowSelection: true,
                 enableSelectAll: true,
                 selectionRowHeaderWidth: 35,
+                cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                    return srvc.getClass(row.entity, 'perc_budg');
+                },
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableColumnMenus: false,
                 columnDefs: [{
@@ -78,6 +81,9 @@
                         headerCellClass: 'text-center',
                         field: 'mese',
                         width: '10%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         type: 'number',
                         cellClass: 'text-right',
                         filters: [{
@@ -96,6 +102,9 @@
                         headerCellClass: 'text-center',
                         field: 'ambito',
                         width: '20%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownIdLabel: 'ambito',
                         editDropdownValueLabel: 'label',
@@ -130,6 +139,9 @@
                         headerCellClass: 'text-center',
                         field: 'categoria',
                         width: '20%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownIdLabel: 'categoria',
                         editDropdownValueLabel: 'label',
@@ -167,6 +179,9 @@
                         headerCellClass: 'text-center',
                         field: 'sottocategoria',
                         width: '20%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownIdLabel: 'sottocategoria',
                         editDropdownValueLabel: 'label',
@@ -204,6 +219,9 @@
                         headerCellClass: 'text-center',
                         field: 'budget',
                         width: '*',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         type: 'number',
                         cellClass: 'text-right',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -239,11 +257,11 @@
                         name: 'ambito',
                         displayName: 'AMBITO',
                         headerCellClass: 'text-center',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                            
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
                         field: 'ambito',
                         width: '5%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         pinnedLeft: true
                     }, {
                         name: 'categoria',
@@ -251,20 +269,20 @@
                         headerCellClass: 'text-center',
                         field: 'categoria',
                         width: '8%',
-                        pinnedLeft: true,
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                            
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
-                        }
+                        },
+                        pinnedLeft: true
                     }, {
                         name: 'sottocategoria',
                         displayName: 'SOTTOCATEGORIA',
                         headerCellClass: 'text-center',
                         field: 'sottocategoria',
                         width: '8%',
-                        pinnedLeft: true,
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                            
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
-                        }
+                        },
+                        pinnedLeft: true
                     },
                     {
                         name: 'perc_budg',
@@ -272,6 +290,9 @@
                         headerCellClass: 'text-center',
                         field: 'perc_budg',
                         width: '2%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -290,6 +311,9 @@
                         headerCellClass: 'text-center',
                         field: 'budg_tot_anno',
                         width: '5%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -311,6 +335,9 @@
                         headerCellClass: 'text-center',
                         field: 'tot_anno',
                         width: '5%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
@@ -331,8 +358,11 @@
                         headerCellClass: 'text-center',
                         field: 'prev_fino_anno',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -351,6 +381,9 @@
                         headerCellClass: 'text-center',
                         field: 'budg_gen',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
@@ -370,8 +403,11 @@
                         headerCellClass: 'text-center',
                         field: 'gen',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -389,8 +425,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_feb',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -408,8 +447,11 @@
                         headerCellClass: 'text-center',
                         field: 'feb',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -427,8 +469,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_mar',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -446,8 +491,11 @@
                         headerCellClass: 'text-center',
                         field: 'mar',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -465,8 +513,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_apr',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -484,8 +535,11 @@
                         headerCellClass: 'text-center',
                         field: 'apr',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -503,8 +557,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_mag',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -522,8 +579,11 @@
                         headerCellClass: 'text-center',
                         field: 'mag',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -541,8 +601,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_giu',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -560,8 +623,11 @@
                         headerCellClass: 'text-center',
                         field: 'giu',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -579,8 +645,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_lug',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -598,8 +667,11 @@
                         headerCellClass: 'text-center',
                         field: 'lug',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -617,8 +689,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_ago',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -636,8 +711,11 @@
                         headerCellClass: 'text-center',
                         field: 'ago',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -655,8 +733,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_sett',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -674,8 +755,11 @@
                         headerCellClass: 'text-center',
                         field: 'sett',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -693,8 +777,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_ott',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -712,8 +799,11 @@
                         headerCellClass: 'text-center',
                         field: 'ott',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -731,8 +821,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_nov',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency', 
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -750,8 +843,11 @@
                         headerCellClass: 'text-center',
                         field: 'nov',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -769,8 +865,11 @@
                         headerCellClass: 'text-center',
                         field: 'budg_dic',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -788,8 +887,11 @@
                         headerCellClass: 'text-center',
                         field: 'dic',
                         width: '7%',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            return srvc.getClass(row.entity, 'perc_budg');
+                        },
                         footerCellFilter: 'currency',
-                        cellFilter: 'currency',                        
+                        cellFilter: 'currency',
                         type: 'number',
                         filters: [{
                                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
