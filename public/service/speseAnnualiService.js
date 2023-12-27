@@ -51,17 +51,9 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2017-2018']);
+                        return 0;
                     },                    
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                },{
-                    name: '2017-2018',
-                    displayName: '2017-2018',
-                    field: '2017-2018',
-                    width: '4%',                                        
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2017-2018']);
-                    }                    
                 },{
                     name: '2019',
                     displayName: '2019',
@@ -70,17 +62,9 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2018-2019']);
+                        return 0;
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                },{
-                    name: '2018-2019',
-                    displayName: '2018-2019',
-                    field: '2018-2019',
-                    width: '4%',                                        
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2018-2019']);
-                    }                    
                 },{
                     name: '2020',
                     displayName: '2020',
@@ -89,17 +73,9 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getPerc(row.entity['2019-2020']);
+                        return 0;
                     }, 
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                },{
-                    name: '2019-2020',
-                    displayName: '2019-2020',
-                    field: '2019-2020',
-                    width: '4%',                                        
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {                        
-                        return srvc.getPerc(row.entity['2019-2020']);
-                    }                    
                 },{
                     name: '2021',
                     displayName: '2021',

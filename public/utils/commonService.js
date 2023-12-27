@@ -26,9 +26,6 @@
                     }
                 }).finally(function (fn) {
                     modalService.hideWaitingModal();
-                    /* if (dataService.data.alerts.length == 0) {
-                        $interval(listaMovimentiService.gridOptions.gridApi.core.handleWindowResize, 100, 10);
-                    } */
                 });
             },
             salva: function salva() {
@@ -59,31 +56,7 @@
                 });
                 dto.salary = salaryService.gridOptionsSalary.data.filter(function (row) {
                     return row.dirty;
-                });
-                /*dto.risultati = matchAnalysisService.gridOptionsNextGame.data.filter(function (row) {
-                    return row.dirty;
-                }) ;
-                dto.risultatipred = predmatchService.gridOptionsPredMatch.data.filter(function (row) {
-                    return row.dirty;
                 });                
-                dto.spesa = spesaService.gridOptionsSpesa.data.filter(function (row) {
-                    return row.dirty && !(row.newRow && row.deleted);
-                });
-                dto.settingsSpesa.reparti = dataService.data.dropdownReparto.filter(function (r) {
-                    return r.dirty;
-                });
-                dto.settingsSpesa.sottoreparti = dataService.data.dropdownSottoreparto.filter(function (s) {
-                    return s.dirty;
-                });
-                dto.settingsSpesa.famiglie = dataService.data.dropdownFamiglia.filter(function (f) {
-                    return f.dirty;
-                });                
-                dto.settingsSpesa.reprsott = settingsSpesaService.gridOptionsReprSott.data.filter(function (rs) {
-                    return rs.dirty;
-                });
-                dto.settingsSpesa.sottfamg = settingsSpesaService.gridOptionsSottFamg.data.filter(function (sf) {
-                    return sf.dirty;
-                });*/
                 dto.budget = budgetService.gridDefBudget.data.filter(function(row){
                     return row.dirty && !(row.newRow && row.deleted);;
                 });
@@ -98,7 +71,7 @@
                         keyboard: false
                     });
                     return $http.post($strings.REST.SERVER + '/salva', dto).then(function (resp) {
-                        return srvc.loadData().then(function (resp) {
+                        return srvc.loadData().then(function(resp) {
                             settingsService.loadSettings();
                             passwordService.loadPassword();
                         });
