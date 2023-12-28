@@ -123,10 +123,8 @@
                 var dto = {};
                 dto.conto = pivot.conto;
                 dto.id_db = dataService.data.idDb;
-                return $http.post($strings.REST.SERVER + '/spese_annue', dto).then(function (resp) {
-                    if (resp.data && resp.data.length > 0) {
-                        srvc.gridSpeseAnnuali.data = resp.data;
-                    }
+                return $http.post($strings.REST.SERVER + '/spese_annue', dto).then(function (resp) {                    
+                    srvc.gridSpeseAnnuali.data = resp.data;                    
                 });
             }
         };

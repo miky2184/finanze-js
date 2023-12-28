@@ -893,10 +893,8 @@
                 dto.conto = pivot.conto;
                 dto.anno = pivot.year;
                 dto.id_db = dataService.data.idDb;
-                return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
-                    if (resp.data && resp.data.length > 0) {
-                        srvc.gridBudget.data = resp.data;
-                    }
+                return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {                    
+                    srvc.gridBudget.data = resp.data;
                 });
             },
             loadDefBudget: function (pivot) {
