@@ -549,7 +549,7 @@
             loadListaMovimenti: function (idDb) {
                 var dto = {};                                
                 dto.id_db = dataService.data.idDb;
-                return $http.get($strings.REST.SERVER + '/ambito').then(function (response) {
+                return $http.post($strings.REST.SERVER + '/ambito', dto).then(function (response) {
                     if (response.data) {
                         response.data.unshift({
                             "ambito": "null",
@@ -557,7 +557,7 @@
                         });
                     }
                     dataService.data.dropdownAmbito = response.data;
-                    return $http.get($strings.REST.SERVER + '/categoria').then(function (response) {
+                    return $http.post($strings.REST.SERVER + '/categoria', dto).then(function (response) {
                         if (response.data) {
                             response.data.unshift({
                                 "categoria": "null",
@@ -565,7 +565,7 @@
                             });
                         }
                         dataService.data.dropdownCategoria = response.data;
-                        return $http.get($strings.REST.SERVER + '/sottocategoria').then(function (response) {
+                        return $http.post($strings.REST.SERVER + '/sottocategoria', dto).then(function (response) {
                             if (response.data) {
                                 response.data.unshift({
                                     "sottocategoria": "null",
