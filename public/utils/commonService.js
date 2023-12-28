@@ -34,6 +34,7 @@
                 dto.settings = {};
                 dto.settingsSpesa = {};
                 dto.links = {};
+                dto.common = {};
                 dto.settings.ambiti = dataService.data.dropdownAmbito.filter(function (ambito) {
                     return ambito.dirty;
                 });
@@ -71,6 +72,7 @@
                         backdrop: false,
                         keyboard: false
                     });
+                    dto.common['id_db'] = dataService.data.idDb; 
                     return $http.post($strings.REST.SERVER + '/salva', dto).then(function (resp) {
                         return srvc.loadData().then(function(resp) {
                             settingsService.loadSettings();
