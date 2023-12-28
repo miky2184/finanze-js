@@ -387,30 +387,30 @@ label-settings {
 }
 
 .personale {
-    background-color: rgba(0, 0, 255, 0.5) !important;
+    background-color: rgb(0, 0, 255) !important;
     font-weight: bold;
-    color: black;
+    color: white;
     text-align: center;
 }
 
 .marianna {
-    background-color: rgba(0, 255, 0, 0.5) !important;
+    background-color: rgb(255, 171, 171) !important;
     font-weight: bold;
-    color: black;
+    color: white;
     text-align: center;
 }
 
 .comune {
-    background-color: rgba(255, 0, 0, 0.5) !important;
+    background-color: rgb(255, 171, 71) !important;
     font-weight: bold;
-    color: black;
+    color: white;
     text-align: center;
 }
 
 .totale {
-    background-color: rgba(128, 128, 128, 0.5) !important;
+    background-color: rgb(128, 128, 128) !important;
     font-weight: bold;
-    color: black;
+    color: white;
     text-align: center;
 }
 
