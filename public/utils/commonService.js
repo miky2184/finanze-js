@@ -3,7 +3,7 @@
     angular.module('myApp').factory('commonService', ['modalService', '$http', 'dataService', 'listaMovimentiService', 'settingsService', 'salaryService', '$uibModal', '$q', '$strings', 'passwordService', 'budgetService', function (modalService, $http, dataService, listaMovimentiService, settingsService, salaryService, $uibModal, $q, $strings, passwordService, budgetService) {
         var srvc = {
             loadData: function () {
-                return listaMovimentiService.loadListaMovimenti();
+                return listaMovimentiService.loadListaMovimenti(dataService.data.idDb);
             },
             login: function (datiAccesso) {
                 dataService.data.alerts = [];
@@ -12,6 +12,7 @@
                     if (resp.data && resp.data.length === 1) {
                         dataService.data.descName = resp.data[0]['name'];
                         dataService.data.admin = resp.data[0]['profile'] === 'admn' ? true : false;
+                        dataService.data.idDb = resp.data[0]['id_db'];
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {

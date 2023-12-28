@@ -523,8 +523,8 @@
                 src: 'images/baseline-refresh-24px.svg',
                 listener: function (gridOptions, maschera) {
                     modalService.showSearchingModal();
-                    if (maschera === "LM") {
-                        return srvc.loadListaMovimenti().finally(function (f) {
+                    if (maschera === "LM") {                        
+                        return srvc.loadListaMovimenti(dataService.data.idDb).finally(function (f) {
                             modalService.hideWaitingModal();
                         });
                     } else if (maschera === "SA") {
@@ -546,7 +546,7 @@
                 },
                 label: 'Refreshs'
             },
-            loadListaMovimenti: function () {
+            loadListaMovimenti: function (idDb) {
 
                 return $http.get($strings.REST.SERVER + '/ambito').then(function (response) {
                     if (response.data) {
@@ -584,7 +584,9 @@
                                     dataService.data.editDropDownTipoContoArray = response.data;
                                     return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
                                         dataService.data.editDropDownContoArray = response.data;
-                                        return $http.get($strings.REST.SERVER + '/lista_movimenti').then(function (response) {
+                                        var dto = {};
+                                        dto.id_db = dataService.data.idDb;
+                                        return $http.post($strings.REST.SERVER + '/lista_movimenti').then(function (response) {
                                             var resultsData = [];
                                             response.data.forEach(function (row) {
                                                 var newRow = {};
