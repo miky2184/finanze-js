@@ -547,7 +547,8 @@
                 label: 'Refreshs'
             },
             loadListaMovimenti: function (idDb) {
-
+                var dto = {};                                
+                dto.id_db = dataService.data.idDb;
                 return $http.get($strings.REST.SERVER + '/ambito').then(function (response) {
                     if (response.data) {
                         response.data.unshift({
@@ -580,9 +581,9 @@
                                     });
                                 }
                                 dataService.data.dropdownBeneficiario = response.data;
-                                return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
+                                return $http.post($strings.REST.SERVER + '/conto', dto).then(function (response) {
                                     dataService.data.editDropDownContoArray = response.data;
-                                    return $http.get($strings.REST.SERVER + '/tipo_conto').then(function (response) {
+                                    return $http.post($strings.REST.SERVER + '/tipo_conto', dto).then(function (response) {
                                         dataService.data.editDropDownTipoContoArray = response.data;
                                         var dto = {};
                                         dto.id_db = dataService.data.idDb;

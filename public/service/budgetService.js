@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope) {
+    angular.module('myApp').factory('budgetService', ['modalService', '$http', '$interval', '$strings', 'uiGridConstants', 'dataService', '$rootScope', '$timeout', function (modalService, $http, $interval, $strings, uiGridConstants, dataService, $rootScope, $timeout) {
         var scope = $rootScope.$new();
         var pivotDataPieBudget = [];
         var afterCellEditFunction = function (rowEntity, colDef, newValue, oldValue) {
@@ -892,6 +892,7 @@
                 var dto = {};
                 dto.conto = pivot.conto;
                 dto.anno = pivot.year;
+                dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         srvc.gridBudget.data = resp.data;
@@ -902,6 +903,7 @@
                 var dto = {};
                 dto.conto = (pivot || $strings.PIVOT).conto;
                 dto.anno = (pivot || $strings.PIVOT).year;
+                dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/definizione_budget', dto).then(function (resp) {
                     if (resp.data && resp.data.length > 0) {
                         resp.data.forEach(function (row) {
@@ -951,6 +953,7 @@
                 var dto = {};
                 dto.conto = (pivot || $strings.PIVOT).conto;
                 dto.anno = (pivot || $strings.PIVOT).year;
+                dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/budget_annuo', dto).then(function (resp) {
                     pivotDataPieBudget = resp.data;
                     dataService.data.dataGraficoPieBudget = srvc.dataGraficoPieBudget();

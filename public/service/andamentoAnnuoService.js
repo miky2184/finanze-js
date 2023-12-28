@@ -98,7 +98,9 @@
                         }
                     }
                 };
-                return $http.get($strings.REST.SERVER + '/andamento_annuo').then(function (resp) {
+                var dto = {};
+                dto.id_db = dataService.data.idDb;
+                return $http.post($strings.REST.SERVER + '/andamento_annuo', dto).then(function (resp) {
                     pivotData = resp.data;
                     srvc.gridOptionAndamentoAnnuo.data = resp.data;
                     dataService.data.dataGrafico = srvc.dataGrafico(resp.data);
