@@ -1,7 +1,7 @@
 <div layout="column" class="listaMovimenti">
     <div flex layout="row">
         <label for="contoSelect">Seleziona una tipologia di conto:</label>
-        <select name="contoSelect" id="repeatCnSelect" ng-options="tipoConto.tipo_conto as tipoConto.label for tipoConto in conti" ng-model="pivot.tipo_conto" ng-change="loadDefBudget()">
+        <select name="contoSelect" id="repeatCnSelect" ng-options="conto.conto as conto.label for conto in conti" ng-model="pivot.conto" ng-change="loadDefBudget()">
         </select>
         <label for="yearSelect"> Seleziona un anno: </label>
         <select name="yearSelect" id="repeatYSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadDefBudget()">

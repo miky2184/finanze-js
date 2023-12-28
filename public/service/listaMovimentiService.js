@@ -233,37 +233,10 @@
                         }
                     }
                 }, {
-                    name: 'tipo_conto',
+                    name: 'conto',
                     displayName: 'CONTO',
                     headerCellClass: 'text-center',
-                    field: 'tipo_conto',
-                    width: '7%',
-                    editableCellTemplate: 'ui-grid/dropdownEditor',
-                    editDropdownIdLabel: 'tipo_conto',
-                    editDropdownValueLabel: 'label',
-                    cellFilter: 'griddropdown:this',
-                    editDropdownOptionsFunction: function () {
-                        return dataService.data.editDropDownTipoContoArray;
-                    },
-                    filter: {
-                        condition: function (searchTerm, cellValue, row, column) {
-                            if (dataService.data.editDropDownTipoContoArray) {
-                                var cell = dataService.data.editDropDownTipoContoArray.filter(function (tipoConto) {
-                                    return tipoConto.tipo_conto === cellValue;
-                                });
-                                if (cell && cell.length > 0) {
-                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
-                                } else {
-                                    return false;
-                                }
-                            }
-                        }
-                    }
-                }, {
                     field: 'conto',
-                    name: 'conto',
-                    displayName: 'TIPO CONTO',
-                    headerCellClass: 'text-center',
                     width: '7%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'conto',
@@ -277,6 +250,33 @@
                             if (dataService.data.editDropDownContoArray) {
                                 var cell = dataService.data.editDropDownContoArray.filter(function (conto) {
                                     return conto.conto === cellValue;
+                                });
+                                if (cell && cell.length > 0) {
+                                    return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }, {
+                    field: 'tipo_conto',
+                    name: 'tipo_conto',
+                    displayName: 'TIPO CONTO',
+                    headerCellClass: 'text-center',
+                    width: '7%',
+                    editableCellTemplate: 'ui-grid/dropdownEditor',
+                    editDropdownIdLabel: 'tipo_conto',
+                    editDropdownValueLabel: 'label',
+                    cellFilter: 'griddropdown:this',
+                    editDropdownOptionsFunction: function () {
+                        return dataService.data.editDropDownTipoContoArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.editDropDownTipoContoArray) {
+                                var cell = dataService.data.editDropDownTipoContoArray.filter(function (tipo_conto) {
+                                    return tipo_conto.tipo_conto === cellValue;
                                 });
                                 if (cell && cell.length > 0) {
                                     return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
@@ -580,10 +580,10 @@
                                     });
                                 }
                                 dataService.data.dropdownBeneficiario = response.data;
-                                return $http.get($strings.REST.SERVER + '/tipo_conto').then(function (response) {
-                                    dataService.data.editDropDownTipoContoArray = response.data;
-                                    return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
-                                        dataService.data.editDropDownContoArray = response.data;
+                                return $http.get($strings.REST.SERVER + '/conto').then(function (response) {
+                                    dataService.data.editDropDownContoArray = response.data;
+                                    return $http.get($strings.REST.SERVER + '/tipo_conto').then(function (response) {
+                                        dataService.data.editDropDownTipoContoArray = response.data;
                                         var dto = {};
                                         dto.id_db = dataService.data.idDb;
                                         return $http.post($strings.REST.SERVER + '/lista_movimenti', dto).then(function (response) {
@@ -596,8 +596,8 @@
                                                 newRow.categoria = row['categoria'];
                                                 newRow.sottocategoria = row['sottocategoria'];
                                                 newRow.beneficiario = row['beneficiario'];
-                                                newRow.tipo_conto = row['tp_conto'];
                                                 newRow.conto = row['conto'];
+                                                newRow.tipo_conto = row['tipo_conto'];
                                                 newRow.contabilizzata = row['fl_cont'];
                                                 newRow.budget = row['budget'];
                                                 newRow.visualizzare = row['fl_visl'];
@@ -616,8 +616,8 @@
                                             srvc.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                                             srvc.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
                                             srvc.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
-                                            srvc.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
-                                            srvc.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
+                                            srvc.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
+                                            srvc.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
                                         });
                                     });
                                 });

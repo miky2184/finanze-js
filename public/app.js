@@ -83,10 +83,10 @@
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.alerts = [];
         $scope.conti = [{
-            "tipo_conto": 1,
+            "conto": 1,
             "label": $strings.CONTO.CONTO_COMUNE
         }, {
-            "tipo_conto": 2,
+            "conto": 2,
             "label": $strings.CONTO.CONTO_PERSONALE
         }];
         $scope.pivot = $strings.PIVOT;
