@@ -353,29 +353,6 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum,
                         pinnedLeft: true
                     }, {
-                        name: 'prev_fino_anno',
-                        displayName: 'PREV. FINE ANNO',
-                        headerCellClass: 'text-center',
-                        field: 'prev_fino_anno',
-                        width: '9%',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
-                        footerCellFilter: 'currency',
-                        cellFilter: 'currency',
-                        type: 'number',
-                        filters: [{
-                                condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
-                                placeholder: 'greater than'
-                            },
-                            {
-                                condition: uiGridConstants.filter.LESS_THAN_OR_EQUAL,
-                                placeholder: 'less than'
-                            }
-                        ],
-                        aggregationType: uiGridConstants.aggregationTypes.sum,
-                        pinnedLeft: true
-                    }, {
                         name: 'budg_gen',
                         displayName: 'BUDGET GEN',
                         headerCellClass: 'text-center',
