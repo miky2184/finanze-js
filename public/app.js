@@ -22,6 +22,9 @@
         $scope.admin = function () {
             return dataService.data.admin;
         };
+        $scope.idDb = function () {
+            return dataService.data.idDb;
+        };
 
         $scope.login = function () {
             var datiAccesso = {

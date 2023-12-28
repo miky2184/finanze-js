@@ -122,6 +122,7 @@
                             dataService.data.logged = false;
                             dataService.data.admin = false;
                             dataService.data.dirty = false;
+                            dataService.data.idDb = null;
                             deferred.resolve();
                         }, function () {
                             deferred.reject();
@@ -129,6 +130,7 @@
                     } else {
                         dataService.data.logged = false;
                         dataService.data.admin = false;
+                        dataService.data.idDb = null;
                     }
 
 
