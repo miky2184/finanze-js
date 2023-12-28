@@ -289,7 +289,7 @@
                         displayName: '%',
                         headerCellClass: 'text-center',
                         field: 'perc_budg',
-                        width: '2%',
+                        width: '3%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
