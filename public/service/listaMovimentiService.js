@@ -573,7 +573,7 @@
                                 });
                             }
                             dataService.data.dropdownSottocategoria = response.data;
-                            return $http.get($strings.REST.SERVER + '/beneficiario').then(function (response) {
+                            return $http.post($strings.REST.SERVER + '/beneficiario', dto).then(function (response) {
                                 if (response.data) {
                                     response.data.unshift({
                                         "beneficiario": "null",
