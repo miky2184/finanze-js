@@ -271,7 +271,7 @@
                 var dto = {};
                 dto.anno = year;     
                 dto.id_db = dataService.data.idDb;
-                return $http.get($strings.REST.SERVER + '/totale_per_anno', dto).then(function (resp) {
+                return $http.post($strings.REST.SERVER + '/totale_per_anno', dto).then(function (resp) {
                     pivotDataGraficoSpesoTotalePerAnno = resp.data[0]['spesototaleperanno'];
                     dataService.data.dataGraficoSpesoTotalePerAnno = srvc.dataGraficoSpesoTotalePerAnno();
                 });
