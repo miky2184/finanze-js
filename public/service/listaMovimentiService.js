@@ -586,7 +586,7 @@
                                         dataService.data.editDropDownContoArray = response.data;
                                         var dto = {};
                                         dto.id_db = dataService.data.idDb;
-                                        return $http.post($strings.REST.SERVER + '/lista_movimenti').then(function (response) {
+                                        return $http.post($strings.REST.SERVER + '/lista_movimenti', dto).then(function (response) {
                                             var resultsData = [];
                                             response.data.forEach(function (row) {
                                                 var newRow = {};
