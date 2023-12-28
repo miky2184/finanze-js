@@ -106,15 +106,6 @@
             },
             dataGrafico: function () {
                 return [{
-                    key: $strings.CONTO.CONTO_TOTALE,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.anno,
-                            'y': d.contototale
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_TOTALE
-                }, {
                     key: $strings.CONTO.CONTO_COMUNE,
                     values: pivotData.map(function (d) {
                         return {
@@ -122,7 +113,8 @@
                             'y': d.contocomune
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE
+                    color: $strings.RGB.CONTO_COMUNE,   
+                    strokeWidth: 2                 
                 }, {
                     key: $strings.CONTO.CONTO_MARIANNA,
                     values: pivotData.map(function (d) {
@@ -131,7 +123,8 @@
                             'y': d.contomarianna
                         };
                     }),
-                    color: $strings.RGB.CONTO_MARIANNA
+                    color: $strings.RGB.CONTO_MARIANNA,
+                    strokeWidth: 2
                 }, {
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
@@ -140,7 +133,9 @@
                             'y': d.contopersonale
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE
+                    color: $strings.RGB.CONTO_PERSONALE,
+                    strokeWidth: 2,
+                    classed: 'dashed'
                 }];
             }
         };

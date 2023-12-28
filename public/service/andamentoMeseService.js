@@ -113,7 +113,8 @@
                             'y': d.contocomune
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE
+                    color: $strings.RGB.CONTO_COMUNE,
+                    strokeWidth: 2
                 }, {
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
@@ -122,7 +123,9 @@
                             'y': d.contopersonale
                         };
                     }),
-                    color: $strings.RGB.CONTO_PERSONALE
+                    color: $strings.RGB.CONTO_PERSONALE,
+                    strokeWidth: 2,
+                    classed: 'dashed'
                 }];
             }
         }
