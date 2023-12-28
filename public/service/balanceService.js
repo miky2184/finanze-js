@@ -126,9 +126,11 @@
                 }
             },
             loadBalance: function () {
-                return $http.get($strings.REST.SERVER + '/saldo').then(function (resp) {
+                var dto = {};
+                dto.id_db = dataService.data.idDb;
+                return $http.post($strings.REST.SERVER + '/saldo', dto).then(function (resp) {
                     srvc.gridOptionsBalance.data = resp.data;
-                    return $http.get($strings.REST.SERVER + '/dare_avere').then(function (resp) {
+                    return $http.post($strings.REST.SERVER + '/dare_avere', dto).then(function (resp) {
                         srvc.gridOptionsAvere.data = resp.data;
                     });
                 });
