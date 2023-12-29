@@ -129,15 +129,13 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/dashboard_spesato.html'"></div>
                     </md-content>
-                </md-tab>
-                <div ng-show="enableSalaryPage()">
-                <md-tab label="Stipendio" md-on-select="loadWork()" ng-disabled="enableSalaryPage()">
+                </md-tab>                
+                <md-tab label="Stipendio" md-on-select="loadWork()" ng-disabled="disableSalaryPage()">
                     <md-content class="md-padding">
                         <div ng-include="'view/work.html'"></div>
                     </md-content>
-                </md-tab>
-                </div>
-                <md-tab label="Password" md-on-select="loadPassword()" ng-disabled="enablePasswordPage()">
+                </md-tab>                
+                <md-tab label="Password" md-on-select="loadPassword()" ng-disabled="disablePasswordPage()">
                     <md-content class="md-padding">
                         <div ng-include="'view/password.html'"></div>
                     </md-content>

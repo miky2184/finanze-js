@@ -17,11 +17,11 @@
         $scope.idDb = function () {
             return dataService.data.idDb;
         };
-        $scope.enablePasswordPage = function () {
-            return dataService.data.enablePasswordPage || false;
+        $scope.disablePasswordPage = function () {
+            return dataService.data.disablePasswordPage || true;
         };
-        $scope.enableSalaryPage = function () {
-            return dataService.data.enableSalaryPage || false;
+        $scope.disableSalaryPage = function () {
+            return dataService.data.disableSalaryPage || true;
         };
 
         $scope.login = function () {

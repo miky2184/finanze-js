@@ -9,12 +9,11 @@
                 dataService.data.alerts = [];
                 return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {
                     modalService.showSearchingModal();
-                    if (resp.data && resp.data.length === 1) {
-                        dataService.data.descName = resp.data[0]['name'];
-                        dataService.data.admin = resp.data[0]['profile'] === 'admn' ? true : false;
+                    if (resp.data && resp.data.length === 1) {                        
+                        dataService.data.admin = resp.data[0]['admin'];
                         dataService.data.idDb = resp.data[0]['id_db'];
-                        dataService.data.enablePasswordPage = resp.data[0]['password_page'];
-                        dataService.data.enableSalaryPage = resp.data[0]['salary_page'];
+                        dataService.data.enablePasswordPage = resp.data[0]['disable_password_page'];
+                        dataService.data.enableSalaryPage = resp.data[0]['disable_salary_page'];
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {
