@@ -12,7 +12,7 @@
             return dataService.data.logged;
         };
         $scope.admin = function () {
-            return dataService.data.admin;
+            return !dataService.data.admin;
         };
         $scope.idDb = function () {
             return dataService.data.idDb;
