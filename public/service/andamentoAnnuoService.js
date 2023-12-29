@@ -35,14 +35,6 @@
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
                 }, {
-                    name: 'contototale',
-                    displayName: $strings.CONTO.CONTO_TOTALE,
-                    field: 'contototale',
-                    width: '20%',
-                    headerCellClass: 'totale',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency'
-                }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
