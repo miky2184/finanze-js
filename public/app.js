@@ -61,6 +61,9 @@
         }, {
             "conto": 2,
             "label": $strings.CONTO.CONTO_PERSONALE
+        }, {
+            "conto": 3,
+            "label": $strings.CONTO.CONTO_MARIANNA
         }];
         $scope.pivot = $strings.PIVOT;
 
