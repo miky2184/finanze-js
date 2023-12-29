@@ -124,6 +124,7 @@
                 var dto = {};
                 dto.anno = year;
                 dto.conto = 1;
+                dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/categoria_sottocategoria', dto).then(function (resp) {
                     pivotDataPie = resp.data;
                     dataService.data.dataGraficoPie = srvc.dataGraficoPie();
@@ -193,6 +194,7 @@
                 var dto = {};
                 dto.anno = year;
                 dto.conto = 2;
+                dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/categoria_sottocategoria', dto).then(function (resp) {
                     pivotDataPiePersonale = resp.data;
                     dataService.data.dataGraficoPiePersonale = srvc.dataGraficoPiePersonale();
