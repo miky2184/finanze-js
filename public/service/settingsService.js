@@ -10,6 +10,9 @@
             dataService.data.dirty = true;
         };
         var srvc = {
+            canEdit: function () {
+                return false
+            },
             addSettingBtn: {
                 label: '+',
                 listener: function (gridOptions, type, settings) {
@@ -224,6 +227,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
+                    cellEditableCondition: srvc.canEdit,
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
@@ -236,6 +240,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
+                    cellEditableCondition: srvc.canEdit,
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
@@ -259,6 +264,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
+                    cellEditableCondition: srvc.canEdit,
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
@@ -271,6 +277,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
+                    cellEditableCondition: srvc.canEdit,
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
