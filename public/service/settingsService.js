@@ -227,7 +227,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
-                    cellEditableCondition: srvc.canEdit,
+                    cellEditableCondition: srvc.canEdit(),
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
@@ -240,7 +240,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
-                    cellEditableCondition: srvc.canEdit,
+                    cellEditableCondition: srvc.canEdit(),
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
@@ -264,7 +264,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
-                    cellEditableCondition: srvc.canEdit,
+                    cellEditableCondition: srvc.canEdit(),
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
@@ -277,7 +277,7 @@
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
-                    cellEditableCondition: srvc.canEdit,
+                    cellEditableCondition: srvc.canEdit(),
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
