@@ -17,12 +17,12 @@
                     name: 'anno',
                     displayName: 'ANNO',
                     field: 'anno',
-                    width: '20%'
+                    width: '25%'
                 }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '20%',
+                    width: '25%',
                     footerCellFilter: 'currency',
                     headerCellClass: 'comune',
                     cellFilter: 'currency'
@@ -30,7 +30,7 @@
                     name: 'contomarianna',
                     displayName: $strings.CONTO.CONTO_MARIANNA,
                     field: 'contomarianna',
-                    width: '20%',
+                    width: '25%',
                     headerCellClass: 'marianna',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -38,7 +38,7 @@
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '20%',
+                    width: '25%',
                     headerCellClass: 'personale',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency'
@@ -128,8 +128,7 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_PERSONALE,
-                    strokeWidth: 2,
-                    classed: 'dashed'
+                    strokeWidth: 2                    
                 }];
             }
         };
