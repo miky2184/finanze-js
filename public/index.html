@@ -94,12 +94,12 @@
                     <md-content class="md-padding">
                         <div ng-include="'view/balance.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab>                
                 <md-tab label="Impostazioni" md-on-select="refreshGridSettings()" ng-disabled="admin()">
                     <md-content class="md-padding">
                         <div ng-include="'view/settings.html'"></div>
                     </md-content>
-                </md-tab>
+                </md-tab>                
                 <md-tab label="Definizione Budget" md-on-select="loadDefBudget()">
                     <md-content class="md-padding">
                         <div ng-include="'view/definizione_budget.html'"></div>
@@ -130,11 +130,13 @@
                         <div ng-include="'view/dashboard_spesato.html'"></div>
                     </md-content>
                 </md-tab>
+                <div ng-show="enableSalaryPage()">
                 <md-tab label="Stipendio" md-on-select="loadWork()" ng-disabled="enableSalaryPage()">
                     <md-content class="md-padding">
                         <div ng-include="'view/work.html'"></div>
                     </md-content>
                 </md-tab>
+                </div>
                 <md-tab label="Password" md-on-select="loadPassword()" ng-disabled="enablePasswordPage()">
                     <md-content class="md-padding">
                         <div ng-include="'view/password.html'"></div>
