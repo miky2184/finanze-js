@@ -4,14 +4,6 @@
         $mdThemingProvider.theme('default');
     }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
 
-        $scope.triggerChar = 9;
-        $scope.separatorChar = 13;
-        $scope.triggerCallback = function () {
-            $scope.$apply();
-        };
-        $scope.scanCallback = function (word) {
-            $scope.$apply();
-        };
 
         /* PARAMETRI */
         /* LOGIN */
@@ -25,6 +17,12 @@
         $scope.idDb = function () {
             return dataService.data.idDb;
         };
+        $scope.enablePasswordPage = function () {
+            return dataService.data.enablePasswordPage;
+        };
+        $scope.enableSalaryPage = function () {
+            return dataService.data.enableSalaryPage;
+        };
 
         $scope.login = function () {
             var datiAccesso = {
@@ -37,8 +35,7 @@
         }
 
         /* BUTTON */
-        $scope.actionButtons = [];
-        // $scope.actionButtons.push(listaMovimentiService.exportBtn);
+        $scope.actionButtons = [];        
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);
@@ -54,31 +51,7 @@
         $scope.callbackGrafico = function (scope, element) {
             dataService.data.apiGrafico = scope.api;
         };        
-        
-        $scope.division = {};
-        $scope.division.value = {id:'ITA'};
-        $scope.season = {};
-        $scope.season.value = {id:1920};
-        $scope.giornata = {};
-        $scope.giornata.value = {};
-        $scope.fanta = {};
-        $scope.fanta.value = {};
-
-        $scope.fantacalcio = [{
-            id: 1,
-            name: $strings.FANTACALCIO.FANTAFIGHETTINO
-        }, {
-            id: 2,
-            name: $strings.FANTACALCIO.FANTAMARELLI
-        }, {
-            id: 3,
-            name: $strings.FANTACALCIO.FANTABOMBOLACCI        
-        }];
-        $scope.divisions = [];
-        $scope.seasons = [];
-        $scope.seasonsPreMatch = [];
-        $scope.giornate = [];
-        $scope.scontriDiretti = {};
+               
         $scope.years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013];
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.alerts = [];

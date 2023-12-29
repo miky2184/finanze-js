@@ -13,6 +13,8 @@
                         dataService.data.descName = resp.data[0]['name'];
                         dataService.data.admin = resp.data[0]['profile'] === 'admn' ? true : false;
                         dataService.data.idDb = resp.data[0]['id_db'];
+                        dataService.data.enablePasswordPage = resp.data[0]['password_page'];
+                        dataService.data.enableSalaryPage = resp.data[0]['salary_page'];
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {
