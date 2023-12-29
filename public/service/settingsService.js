@@ -228,7 +228,7 @@
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
                     cellEditableCondition: function(scope){
-                        return !scope.row.entity.newRow;
+                        return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
@@ -243,7 +243,7 @@
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
                     cellEditableCondition: function(scope){
-                        return !scope.row.entity.newRow;
+                        return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
@@ -269,7 +269,7 @@
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
                     cellEditableCondition: function(scope){
-                        return !scope.row.entity.newRow;
+                        return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
@@ -284,7 +284,7 @@
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
                     cellEditableCondition: function(scope){
-                        return !scope.row.entity.newRow;
+                        return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
