@@ -18,10 +18,10 @@
             return dataService.data.idDb;
         };
         $scope.disablePasswordPage = function () {
-            return dataService.data.disablePasswordPage || true;
+            return dataService.data.disablePasswordPage;
         };
         $scope.disableSalaryPage = function () {
-            return dataService.data.disableSalaryPage || true;
+            return dataService.data.disableSalaryPage;
         };
 
         $scope.login = function () {
