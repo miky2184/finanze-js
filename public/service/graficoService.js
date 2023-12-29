@@ -48,6 +48,10 @@
             },
             loadGrafico: function (year) {
                 dataService.data.optionsGrafico = {
+                    title: {
+                        enable: true,
+                        text: 'TOTALE ANNO'
+                    },
                     chart: {
                         type: 'lineChart',
                         height: 500,                        
@@ -96,7 +100,11 @@
                 });                                    
             },
             loadGraficoPie: function (year){
-                dataService.data.optionsGraficoPie = {                    
+                dataService.data.optionsGraficoPie = {   
+                    title: {
+                        enable: true,
+                        text: 'CONTO COMUNE SOTTOCATEGORIA'
+                    },                 
                     chart: {
                         type: 'pieChart',
                         height: 500,
@@ -131,7 +139,11 @@
                 });
             },
             loadGraficoPieCategoria: function (year){
-                dataService.data.optionsGraficoPieCategoria = {                    
+                dataService.data.optionsGraficoPieCategoria = { 
+                    title: {
+                        enable: true,
+                        text: 'CONTO COMUNE CATEGORIA'
+                    },                    
                     chart: {
                         type: 'pieChart',
                         height: 500,
@@ -166,7 +178,11 @@
                 });
             },
             loadGraficoPiePersonale: function (year){
-                dataService.data.optionsGraficoPiePersonale = {                    
+                dataService.data.optionsGraficoPiePersonale = {       
+                    title: {
+                        enable: true,
+                        text: 'CONTO PERSONALE SOTTOCATEGORIA'
+                    },              
                     chart: {
                         type: 'pieChart',
                         height: 500,
@@ -201,7 +217,11 @@
                 });
             } ,
             loadGraficoPiePersonaleCategoria: function (year){
-                dataService.data.optionsGraficoPiePersonaleCategoria= {                    
+                dataService.data.optionsGraficoPiePersonaleCategoria= {  
+                    title: {
+                        enable: true,
+                        text: 'CONTO PERSONALE CATEGORIA'
+                    },                   
                     chart: {
                         type: 'pieChart',
                         height: 500,
@@ -236,7 +256,11 @@
                 });
             },
             loadGraficoSpesoTotalePerAnno: function (year){
-                dataService.data.optionsGraficoSpesoTotalePerAnno= {                    
+                dataService.data.optionsGraficoSpesoTotalePerAnno= {
+                    title: {
+                        enable: true,
+                        text: 'TOTALE PER CONTO'
+                    },                
                     chart: {
                         type: 'multiBarHorizontalChart',
                         height: 500,
