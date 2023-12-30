@@ -1,72 +1,7 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoMeseService', ['$scope', '$http', '$timeout', 'dataService', 'uiGridConstants', '$strings', function ($scope, $http, $timeout, dataService, uiGridConstants, $strings) {
+    angular.module('myApp').factory('andamentoMeseService', ['$http', '$timeout', 'dataService', 'uiGridConstants', '$strings', function ($http, $timeout, dataService, uiGridConstants, $strings) {
         var pivotData = [];
-
-        $scope.optionsGrafico = {
-            chart: {
-                type: 'lineChart',
-                height: 720,
-                margin: {
-                    top: 20,
-                    right: 20,
-                    bottom: 60,
-                    left: 65
-                },
-                x: function (d) {
-                    if (d) {
-                        return d.x;
-                    }
-                },
-                y: function (d) {
-                    if (d) {
-                        return d.y;
-                    }
-                },
-                useInteractiveGuideline: true,
-                xAxis: {
-                    axisLabel: 'Month',
-                    tickFormat: function (d) {
-                        return d3.time.format('%B')(new Date(year, d - 1, 1));
-                    }
-                },
-                yAxis: {
-                    axisLabel: 'Totale (€)',
-                    tickFormat: function (d) {
-                        return d3.round(d, 2) + " €";
-                    }
-                },
-                callback: function (chart) {
-                    $timeout(function () {
-                        d3.selectAll('.nvtooltip').style('opacity', 0);
-                    }, 100);
-                }
-            }
-        };
-
-        $scope.dataGrafico = [{
-            key: $strings.CONTO.CONTO_COMUNE,
-            values: pivotData.map(function (d) {
-                return {
-                    'x': d.mese,
-                    'y': d.contocomune
-                };
-            }),
-            color: $strings.RGB.CONTO_COMUNE,
-            strokeWidth: 2
-        }, {
-            key: $strings.CONTO.CONTO_PERSONALE,
-            values: pivotData.map(function (d) {
-                return {
-                    'x': d.mese,
-                    'y': d.contopersonale
-                };
-            }),
-            color: $strings.RGB.CONTO_PERSONALE,
-            strokeWidth: 2,
-            classed: 'dashed'
-        }];
-
         var srvc = {
             getClass: function (entity, field) {
                 if (entity[field] < 0) {
@@ -120,15 +55,79 @@
                     srvc.gridOptionPivotMese.gridApi.core.handleWindowResize();
                 }
             },
-            loadPivotMese: function (year) {                
+            loadPivotMese: function (year) {
+                dataService.data.optionsGrafico = {
+                    chart: {
+                        type: 'lineChart',
+                        height: 720,
+                        margin: {
+                            top: 20,
+                            right: 20,
+                            bottom: 60,
+                            left: 65
+                        },
+                        x: function (d) {
+                            if (d) {
+                                return d.x;
+                            }
+                        },
+                        y: function (d) {
+                            if (d) {
+                                return d.y;
+                            }
+                        },
+                        useInteractiveGuideline: true,
+                        xAxis: {
+                            axisLabel: 'Month',
+                            tickFormat: function (d) {
+                                return d3.time.format('%B')(new Date(year, d - 1, 1));
+                            }
+                        },
+                        yAxis: {
+                            axisLabel: 'Totale (€)',
+                            tickFormat: function (d) {
+                                return d3.round(d, 2) + " €";
+                            }
+                        },
+                        callback: function (chart) {
+                            $timeout(function () {
+                                d3.selectAll('.nvtooltip').style('opacity', 0);
+                            }, 100);
+                        }
+                    }
+                };
                 var dto = {};
                 dto.anno = year;                
                 dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {
                     pivotData = resp.data;
-                    srvc.gridOptionPivotMese.data = resp.data; 
-                    $scope.api.refresh();                   
+                    srvc.gridOptionPivotMese.data = resp.data;
+                    dataService.data.dataGrafico = srvc.dataGrafico();
                 });
+            },
+            dataGrafico: function dataGrafico() {
+                return [{
+                    key: $strings.CONTO.CONTO_COMUNE,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': d.mese,
+                            'y': d.contocomune
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_COMUNE,
+                    strokeWidth: 2
+                }, {
+                    key: $strings.CONTO.CONTO_PERSONALE,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': d.mese,
+                            'y': d.contopersonale
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_PERSONALE,
+                    strokeWidth: 2,
+                    classed: 'dashed'
+                }];
             }
         }
         return srvc;
