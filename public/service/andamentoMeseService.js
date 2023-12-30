@@ -1,9 +1,9 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoMeseService', ['$http', '$timeout', 'dataService', 'uiGridConstants', '$strings', function ($http, $timeout, dataService, uiGridConstants, $strings) {
+    angular.module('myApp').factory('andamentoMeseService', ['$scope', '$http', '$timeout', 'dataService', 'uiGridConstants', '$strings', function ($scope, $http, $timeout, dataService, uiGridConstants, $strings) {
         var pivotData = [];
 
-        dataService.data.optionsGrafico = {
+        $scope.optionsGrafico = {
             chart: {
                 type: 'lineChart',
                 height: 720,
@@ -44,7 +44,7 @@
             }
         };
 
-        dataService.data.dataGrafico = [{
+        $scope.dataGrafico = [{
             key: $strings.CONTO.CONTO_COMUNE,
             values: pivotData.map(function (d) {
                 return {
@@ -126,7 +126,8 @@
                 dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {
                     pivotData = resp.data;
-                    srvc.gridOptionPivotMese.data = resp.data;                    
+                    srvc.gridOptionPivotMese.data = resp.data; 
+                    $scope.api.refresh();                   
                 });
             }
         }
