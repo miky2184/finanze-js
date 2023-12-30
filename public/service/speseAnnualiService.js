@@ -35,11 +35,48 @@
                     field: 'sottocategoria',
                     width: '10%',
                     pinnedLeft: true
-                }, {
+                }, 
+                {
+                    name: '2015',
+                    displayName: '2015',
+                    field: '2015',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return 'text-right';
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
+                },
+                {
+                    name: '2016',
+                    displayName: '2016',
+                    field: '2016',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity['2015-2016']);
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
+                },
+                {
+                    name: '2017',
+                    displayName: '2017',
+                    field: '2017',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity['2016-2017']);
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
+                },                
+                {
                     name: '2018',
                     displayName: '2018',
                     field: '2018',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -50,7 +87,7 @@
                     name: '2019',
                     displayName: '2019',
                     field: '2019',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -61,7 +98,7 @@
                     name: '2020',
                     displayName: '2020',
                     field: '2020',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -72,7 +109,7 @@
                     name: '2021',
                     displayName: '2021',
                     field: '2021',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -83,7 +120,7 @@
                     name: '2022',
                     displayName: '2022',
                     field: '2022',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -94,7 +131,7 @@
                     name: '2023',
                     displayName: '2023',
                     field: '2023',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -105,7 +142,7 @@
                     name: '2024',
                     displayName: '2024',
                     field: '2024',
-                    width: '10%',
+                    width: '7%',
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
