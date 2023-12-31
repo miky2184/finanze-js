@@ -330,7 +330,7 @@
                         displayName: 'BUDGET GEN',
                         headerCellClass: 'text-center',
                         field: 'budg_gen',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -343,7 +343,7 @@
                         displayName: 'SPESE GEN',
                         headerCellClass: 'text-center',
                         field: 'gen',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -356,7 +356,7 @@
                         displayName: 'BUDGET FEB',
                         headerCellClass: 'text-center',
                         field: 'budg_feb',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -369,7 +369,7 @@
                         displayName: 'SPESE FEB',
                         headerCellClass: 'text-center',
                         field: 'feb',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -382,7 +382,7 @@
                         displayName: 'BUDGET MAR',
                         headerCellClass: 'text-center',
                         field: 'budg_mar',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -395,7 +395,7 @@
                         displayName: 'SPESE MAR',
                         headerCellClass: 'text-center',
                         field: 'mar',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -408,7 +408,7 @@
                         displayName: 'BUDGET APR',
                         headerCellClass: 'text-center',
                         field: 'budg_apr',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -421,7 +421,7 @@
                         displayName: 'SPESE APR',
                         headerCellClass: 'text-center',
                         field: 'apr',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -434,7 +434,7 @@
                         displayName: 'BUDGET MAG',
                         headerCellClass: 'text-center',
                         field: 'budg_mag',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -447,7 +447,7 @@
                         displayName: 'SPESE MAG',
                         headerCellClass: 'text-center',
                         field: 'mag',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -460,7 +460,7 @@
                         displayName: 'BUDGET GIU',
                         headerCellClass: 'text-center',
                         field: 'budg_giu',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -473,7 +473,7 @@
                         displayName: 'SPESE GIU',
                         headerCellClass: 'text-center',
                         field: 'giu',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -486,7 +486,7 @@
                         displayName: 'BUDGET LUG',
                         headerCellClass: 'text-center',
                         field: 'budg_lug',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -499,7 +499,7 @@
                         displayName: 'SPESE LUG',
                         headerCellClass: 'text-center',
                         field: 'lug',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -512,7 +512,7 @@
                         displayName: 'BUDGET AGO',
                         headerCellClass: 'text-center',
                         field: 'budg_ago',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -525,7 +525,7 @@
                         displayName: 'SPESE AGO',
                         headerCellClass: 'text-center',
                         field: 'ago',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -538,7 +538,7 @@
                         displayName: 'BUDGET SETT',
                         headerCellClass: 'text-center',
                         field: 'budg_sett',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -551,7 +551,7 @@
                         displayName: 'SPESE SETT',
                         headerCellClass: 'text-center',
                         field: 'sett',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -564,7 +564,7 @@
                         displayName: 'BUDGET OTT',
                         headerCellClass: 'text-center',
                         field: 'budg_ott',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -577,7 +577,7 @@
                         displayName: 'SPESE OTT',
                         headerCellClass: 'text-center',
                         field: 'ott',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -590,7 +590,7 @@
                         displayName: 'BUDGET NOV',
                         headerCellClass: 'text-center',
                         field: 'budg_nov',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -603,7 +603,7 @@
                         displayName: 'SPESE NOV',
                         headerCellClass: 'text-center',
                         field: 'nov',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -616,7 +616,7 @@
                         displayName: 'BUDGET DIC',
                         headerCellClass: 'text-center',
                         field: 'budg_dic',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -629,7 +629,7 @@
                         displayName: 'SPESE DIC',
                         headerCellClass: 'text-center',
                         field: 'dic',
-                        width: '3%',
+                        width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -653,7 +653,21 @@
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {                    
                     srvc.gridBudget.data = resp.data;
 
-                    ccol = srvc.gridBudget.gridApi.grid.columns[0];
+                    srvc.gridBudget.gridApi.grid.columns[7].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[9].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[11].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[13].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[15].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[17].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[19].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[21].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[23].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[25].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[27].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[29].visible = false;
+
+                    srvc.gridBudget.gridApi.grid.refresh();
+
 
                 });
             },
