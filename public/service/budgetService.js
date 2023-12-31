@@ -57,7 +57,7 @@
             getClass: function (row_entity, attr, col) {
                 if (row_entity[attr] > 100) {
                     return 'red';
-                } else if (col.field.startsWith('BUDG')){
+                } else if (col.field.toLowerCase().startsWith('budg')){
                     return 'budget-col';
                 } else {
                     return 'text-right';
