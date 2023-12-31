@@ -653,18 +653,18 @@
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {                    
                     srvc.gridBudget.data = resp.data;
 
-                    srvc.gridBudget.gridApi.grid.columns[7].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[9].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[11].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[13].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[15].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[17].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[19].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[21].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[23].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[25].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[27].visible = false;
-                    srvc.gridBudget.gridApi.grid.columns[29].visible = false;
+                    srvc.gridBudget.gridApi.grid.columns[7].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[9].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[11].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[13].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[15].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[17].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[19].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[21].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[23].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[25].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[27].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[29].hideColumn();
 
                     srvc.gridBudget.gridApi.grid.notifyDataChange(uiGridConstants.dataChange.COLUMN);
 
