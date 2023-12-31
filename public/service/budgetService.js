@@ -313,7 +313,7 @@
                     },
                     {
                         name: 'tot_anno',
-                        displayName: 'SPESE ANNO',
+                        displayName: 'SPESO ANNO',
                         headerCellClass: 'text-center',
                         field: 'tot_anno',
                         width: '5%',
@@ -326,10 +326,10 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum,
                         pinnedLeft: true
                     }, {
-                        name: 'budg_gen',
-                        displayName: 'BUDGET GEN',
+                        name: 'gennaio',
+                        displayName: 'GENNAIO',
                         headerCellClass: 'text-center',
-                        field: 'budg_gen',
+                        field: 'gennaio',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -339,10 +339,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'gen',
-                        displayName: 'SPESE GEN',
+                        name: 'febbraio',
+                        displayName: 'FEBBRAIO',
                         headerCellClass: 'text-center',
-                        field: 'gen',
+                        field: 'febbraio',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -352,10 +352,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'budg_feb',
-                        displayName: 'BUDGET FEB',
+                        name: 'marzo',
+                        displayName: 'MARZO',
                         headerCellClass: 'text-center',
-                        field: 'budg_feb',
+                        field: 'marzo',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -365,10 +365,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'feb',
-                        displayName: 'SPESE FEB',
+                        name: 'aprile',
+                        displayName: 'APRILE',
                         headerCellClass: 'text-center',
-                        field: 'feb',
+                        field: 'aprile',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -378,10 +378,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'budg_mar',
-                        displayName: 'BUDGET MAR',
+                        name: 'maggio',
+                        displayName: 'MAGGIO',
                         headerCellClass: 'text-center',
-                        field: 'budg_mar',
+                        field: 'maggio',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -391,10 +391,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'mar',
-                        displayName: 'SPESE MAR',
+                        name: 'giugno',
+                        displayName: 'GIUGNO',
                         headerCellClass: 'text-center',
-                        field: 'mar',
+                        field: 'giugno',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -404,10 +404,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'budg_apr',
-                        displayName: 'BUDGET APR',
+                        name: 'luglio',
+                        displayName: 'LUGLIO',
                         headerCellClass: 'text-center',
-                        field: 'budg_apr',
+                        field: 'luglio',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
@@ -417,10 +417,10 @@
                         type: 'number',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
-                        name: 'apr',
-                        displayName: 'SPESE APR',
+                        name: 'agosto',
+                        displayName: 'agosto',
                         headerCellClass: 'text-center',
-                        field: 'apr',
+                        field: 'agosto',
                         width: '9%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
