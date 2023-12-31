@@ -681,7 +681,7 @@
                         11: 28  // Dicembre
                       };
 
-                    const currentMonth = new Date().getMonth();
+                    var currentMonth = new Date().getMonth();
 
                     if (pivot.year > new Date().getFullYear()){
                         currentMonth = 0;
@@ -691,7 +691,7 @@
                         currentMonth = 11;
                     }
 
-                    const desiredIndex = monthIndexMap[currentMonth];
+                    var desiredIndex = monthIndexMap[currentMonth];
                     
                     srvc.gridBudget.gridApi.grid.columns[desiredIndex].showColumn();
 
