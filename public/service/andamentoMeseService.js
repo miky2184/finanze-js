@@ -47,7 +47,8 @@
                     cellFilter: 'currency',
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         return srvc.getClass(row.entity, col.field);
-                    }, {
+                    }
+                }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
