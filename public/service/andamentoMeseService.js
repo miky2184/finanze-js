@@ -127,6 +127,16 @@
                     }),
                     color: $strings.RGB.CONTO_COMUNE,
                     strokeWidth: 2
+                },{
+                    key: $strings.CONTO.CONTO_MARIANNA,
+                    values: pivotData.map(function (d) {
+                        return {
+                            'x': d.mese,
+                            'y': d.contomarianna
+                        };
+                    }),
+                    color: $strings.RGB.CONTO_MARIANNA,
+                    strokeWidth: 2
                 }, {
                     key: $strings.CONTO.CONTO_PERSONALE,
                     values: pivotData.map(function (d) {
@@ -136,8 +146,7 @@
                         };
                     }),
                     color: $strings.RGB.CONTO_PERSONALE,
-                    strokeWidth: 2,
-                    classed: 'dashed'
+                    strokeWidth: 2
                 }];
             }
         }
