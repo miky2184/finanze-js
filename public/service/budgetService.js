@@ -652,6 +652,9 @@
                 dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {                    
                     srvc.gridBudget.data = resp.data;
+
+                    ccol = srvc.gridBudget.gridApi.grid.columns[0];
+
                 });
             },
             loadDefBudget: function (pivot) {
