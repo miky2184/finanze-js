@@ -652,19 +652,40 @@
                 dto.id_db = dataService.data.idDb;
                 return $http.post($strings.REST.SERVER + '/budget', dto).then(function (resp) {                    
                     srvc.gridBudget.data = resp.data;
+                                         
+                    srvc.gridBudget.gridApi.grid.columns[6].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[8].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[10].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[12].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[14].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[16].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[18].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[20].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[22].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[24].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[26].hideColumn();
+                    srvc.gridBudget.gridApi.grid.columns[28].hideColumn();
 
-                    srvc.gridBudget.gridApi.grid.columns[7].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[9].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[11].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[13].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[15].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[17].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[19].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[21].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[23].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[25].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[27].hideColumn();
-                    srvc.gridBudget.gridApi.grid.columns[29].hideColumn();
+                    const monthIndexMap = {
+                        0: 6,   // Gennaio
+                        1: 8,   // Febbraio
+                        2: 10,  // Marzo
+                        3: 12,  // Aprile
+                        4: 14,  // Maggio
+                        5: 16,  // Giugno
+                        6: 18,  // Luglio
+                        7: 20,  // Agosto
+                        8: 22,  // Settembre
+                        9: 24,  // Ottobre
+                        10: 26, // Novembre
+                        11: 28  // Dicembre
+                      };
+
+                    const currentMonth = new Date().getMonth();
+
+                    const desiredIndex = monthIndexMap[currentMonth];
+                    
+                    srvc.gridBudget.gridApi.grid.columns[desiredIndex].showColumn();
 
                     srvc.gridBudget.gridApi.grid.notifyDataChange(uiGridConstants.dataChange.COLUMN);
 
