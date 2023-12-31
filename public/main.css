@@ -151,7 +151,8 @@
 }
 
 .budget-col {
-    background-color: lightgray;
+    background-color: lightgray !important;
+    text-align: right;
 }
 
 .disable {
