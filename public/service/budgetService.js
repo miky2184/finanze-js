@@ -54,9 +54,11 @@
             dataGraficoPieBudget: function dataGraficoPieBudget() {
                 return pivotDataPieBudget;
             },
-            getClass: function (row_entity, attr) {
+            getClass: function (row_entity, attr, col) {
                 if (row_entity[attr] > 100) {
                     return 'red';
+                } else if (col.field.startsWith('BUDG')){
+                    return 'budget-col';
                 } else {
                     return 'text-right';
                 }
@@ -70,9 +72,6 @@
                 enableRowSelection: true,
                 enableSelectAll: true,
                 selectionRowHeaderWidth: 35,
-                cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                    return srvc.getClass(row.entity, 'perc_budg');
-                },
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableColumnMenus: false,
                 columnDefs: [{
@@ -81,9 +80,6 @@
                         headerCellClass: 'text-center',
                         field: 'mese',
                         width: '10%',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
                         type: 'number',
                         cellClass: 'text-right',
                         filters: [{
@@ -102,9 +98,6 @@
                         headerCellClass: 'text-center',
                         field: 'ambito',
                         width: '20%',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownIdLabel: 'ambito',
                         editDropdownValueLabel: 'label',
@@ -139,9 +132,6 @@
                         headerCellClass: 'text-center',
                         field: 'categoria',
                         width: '20%',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownIdLabel: 'categoria',
                         editDropdownValueLabel: 'label',
@@ -179,9 +169,6 @@
                         headerCellClass: 'text-center',
                         field: 'sottocategoria',
                         width: '20%',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
                         editableCellTemplate: 'ui-grid/dropdownEditor',
                         editDropdownIdLabel: 'sottocategoria',
                         editDropdownValueLabel: 'label',
@@ -219,9 +206,6 @@
                         headerCellClass: 'text-center',
                         field: 'budget',
                         width: '*',
-                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
-                        },
                         type: 'number',
                         cellClass: 'text-right',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
@@ -260,7 +244,7 @@
                         field: 'ambito',
                         width: '4%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         pinnedLeft: true
                     }, {
@@ -270,7 +254,7 @@
                         field: 'categoria',
                         width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         pinnedLeft: true
                     }, {
@@ -280,7 +264,7 @@
                         field: 'sottocategoria',
                         width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         pinnedLeft: true
                     },
@@ -291,7 +275,7 @@
                         field: 'perc_budg',
                         width: '3%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         type: 'number',   
                         pinnedLeft: true
@@ -303,7 +287,7 @@
                         field: 'budg_tot_anno',
                         width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -318,7 +302,7 @@
                         field: 'tot_anno',
                         width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -332,7 +316,7 @@
                         field: 'budg_gen',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -340,12 +324,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'gen',
-                        displayName: 'SPESE GEN',
+                        displayName: 'GEN',
                         headerCellClass: 'text-center',
                         field: 'gen',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -358,7 +342,7 @@
                         field: 'budg_feb',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -366,12 +350,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'feb',
-                        displayName: 'SPESE FEB',
+                        displayName: 'FEB',
                         headerCellClass: 'text-center',
                         field: 'feb',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -384,7 +368,7 @@
                         field: 'budg_mar',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -392,12 +376,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'mar',
-                        displayName: 'SPESE MAR',
+                        displayName: 'MAR',
                         headerCellClass: 'text-center',
                         field: 'mar',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -410,7 +394,7 @@
                         field: 'budg_apr',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -418,12 +402,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'apr',
-                        displayName: 'SPESE APR',
+                        displayName: 'APR',
                         headerCellClass: 'text-center',
                         field: 'apr',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -436,7 +420,7 @@
                         field: 'budg_mag',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -444,12 +428,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'mag',
-                        displayName: 'SPESE MAG',
+                        displayName: 'MAG',
                         headerCellClass: 'text-center',
                         field: 'mag',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -462,7 +446,7 @@
                         field: 'budg_giu',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -470,12 +454,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'giu',
-                        displayName: 'SPESE GIU',
+                        displayName: 'GIU',
                         headerCellClass: 'text-center',
                         field: 'giu',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -488,7 +472,7 @@
                         field: 'budg_lug',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -496,12 +480,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'lug',
-                        displayName: 'SPESE LUG',
+                        displayName: 'LUG',
                         headerCellClass: 'text-center',
                         field: 'lug',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -514,7 +498,7 @@
                         field: 'budg_ago',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -522,12 +506,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'ago',
-                        displayName: 'SPESE AGO',
+                        displayName: 'AGO',
                         headerCellClass: 'text-center',
                         field: 'ago',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -540,7 +524,7 @@
                         field: 'budg_sett',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -548,12 +532,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'sett',
-                        displayName: 'SPESE SETT',
+                        displayName: 'SETT',
                         headerCellClass: 'text-center',
                         field: 'sett',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -566,7 +550,7 @@
                         field: 'budg_ott',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -574,12 +558,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'ott',
-                        displayName: 'SPESE OTT',
+                        displayName: 'OTT',
                         headerCellClass: 'text-center',
                         field: 'ott',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -592,7 +576,7 @@
                         field: 'budg_nov',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -600,12 +584,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'nov',
-                        displayName: 'SPESE NOV',
+                        displayName: 'NOV',
                         headerCellClass: 'text-center',
                         field: 'nov',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -618,7 +602,7 @@
                         field: 'budg_dic',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -626,12 +610,12 @@
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'dic',
-                        displayName: 'SPESE DIC',
+                        displayName: 'DIC',
                         headerCellClass: 'text-center',
                         field: 'dic',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg');
+                            return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
