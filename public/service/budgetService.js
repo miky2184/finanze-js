@@ -258,7 +258,7 @@
                         displayName: 'AMBITO',
                         headerCellClass: 'text-center',
                         field: 'ambito',
-                        width: '6%',
+                        width: '4%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
