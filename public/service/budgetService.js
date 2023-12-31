@@ -683,6 +683,14 @@
 
                     const currentMonth = new Date().getMonth();
 
+                    if (pivot.year > new Date().getFullYear()){
+                        currentMonth = 0;
+                    }
+
+                    if (pivot.year < new Date().getFullYear()){
+                        currentMonth = 11;
+                    }
+
                     const desiredIndex = monthIndexMap[currentMonth];
                     
                     srvc.gridBudget.gridApi.grid.columns[desiredIndex].showColumn();
