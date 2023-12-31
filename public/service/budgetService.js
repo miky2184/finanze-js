@@ -258,7 +258,7 @@
                         displayName: 'AMBITO',
                         headerCellClass: 'text-center',
                         field: 'ambito',
-                        width: '5%',
+                        width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -268,7 +268,7 @@
                         displayName: 'CATEGORIA',
                         headerCellClass: 'text-center',
                         field: 'categoria',
-                        width: '5%',
+                        width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -278,7 +278,7 @@
                         displayName: 'SOTTOCATEGORIA',
                         headerCellClass: 'text-center',
                         field: 'sottocategoria',
-                        width: '5%',
+                        width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -301,7 +301,7 @@
                         displayName: 'BUDGET ANNO',
                         headerCellClass: 'text-center',
                         field: 'budg_tot_anno',
-                        width: '5%',
+                        width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
@@ -316,7 +316,7 @@
                         displayName: 'SPESO ANNO',
                         headerCellClass: 'text-center',
                         field: 'tot_anno',
-                        width: '5%',
+                        width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg');
                         },
