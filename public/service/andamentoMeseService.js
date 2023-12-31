@@ -23,12 +23,12 @@
                     name: 'nome_mese',
                     displayName: 'MM',
                     field: 'nome_mese',
-                    width: '34%'
+                    width: '25%'
                 }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '33%',
+                    width: '25%',
                     headerCellClass: 'comune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
@@ -36,11 +36,22 @@
                     cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                         return srvc.getClass(row.entity, col.field);
                     }
-                }, {
+                },{
+                    name: 'contomarianna',
+                    displayName: $strings.CONTO.CONTO_MARIANNA,
+                    field: 'contomarianna',
+                    width: '25%',
+                    headerCellClass: 'marianna',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity, col.field);
+                    }, {
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '33%',
+                    width: '25%',
                     headerCellClass: 'personale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',

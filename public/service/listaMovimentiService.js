@@ -82,16 +82,14 @@
                     cellFilter: 'date:\'yyyy-MM-dd\'',
                     filters: [{
                         placeholder: 'less than',
-                        condition: function (searchTerm, cellValue, row, column) {
-                            //searchTerm = searchTerm.replaceAll('\\','');
+                        condition: function (searchTerm, cellValue, row, column) {                            
                             searchTerm = searchTerm.replace(/\\/g, '');
                             var searchDate = new Date(searchTerm);
                             return cellValue < searchDate;
                         }
                     }, {
                         placeholder: 'greather than',
-                        condition: function (searchTerm, cellValue, row, column) {
-                            //searchTerm = searchTerm.replaceAll('\\','');
+                        condition: function (searchTerm, cellValue, row, column) {                            
                             searchTerm = searchTerm.replace(/\\/g, '');
                             var searchDate = new Date(searchTerm);
                             return cellValue >= searchDate;
