@@ -666,7 +666,7 @@
                     srvc.gridBudget.gridApi.grid.columns[27].visible = false;
                     srvc.gridBudget.gridApi.grid.columns[29].visible = false;
 
-                    srvc.gridBudget.gridApi.grid.refresh();
+                    srvc.gridBudget.gridApi.grid.notifyDataChange(uiGridConstants.dataChange.COLUMN);
 
 
                 });
