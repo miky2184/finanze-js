@@ -28,9 +28,9 @@
             CONTO_MARIANNA: "CONTO MARIANNA"            
         },
         RGB:{
-            CONTO_COMUNE: "#FFAB47",
-            CONTO_PERSONALE: "#0000ff",
-            CONTO_MARIANNA: "#FFABAB"
+            CONTO_COMUNE: "#A5D6A7",
+            CONTO_PERSONALE: "#81D4FA",
+            CONTO_MARIANNA: "#9FA8DA"
         },
         REST:{
             SERVER: 'http://miky2184.ddns.net:3001'

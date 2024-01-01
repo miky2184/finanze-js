@@ -132,7 +132,7 @@
             width: '7%',
             cellFilter: 'currency',
             pinnedLeft: true,
-            cellClass: 'disable-green',
+            cellClass: 'salary',
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
