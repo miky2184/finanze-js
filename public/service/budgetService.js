@@ -63,8 +63,8 @@
                     return 'text-right';
                 }
             },
-            getMonthClass: function(row_entity, attr, col) {
-                if (row_entity[col] < 0 && Math.abs(row_entity[col]) > row_entity['budg_'+col]){
+            getMonthClass: function(row_entity, col) {
+                if (row_entity[col.name] < 0 && Math.abs(row_entity[col.name]) > row_entity['budg_'+col.name]){
                     return 'red';
                 }                
             },
