@@ -63,6 +63,11 @@
                     return 'text-right';
                 }
             },
+            getMonthClass: function(row_entity, attr, col) {
+                if (row_entity[col] < 0 && Math.abs(row_entity[col]) > row_entity['budg_'+col]){
+                    return 'red';
+                }                
+            },
             gridDefBudget: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
@@ -329,7 +334,7 @@
                         field: 'gen',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
