@@ -63,8 +63,10 @@
                     return 'text-right';
                 }
             },
-            getMonthClass: function(row_entity, col) {
-                if (row_entity[col.name] < 0 && Math.abs(row_entity[col.name]) > row_entity['budg_'+col.name]){
+            getMonthClass: function(row_entity, col, month_number) {
+                var currentMonth = new Date().getMonth();
+
+                if (currentMonth == month_number && row_entity[col.name] < 0 && Math.abs(row_entity[col.name]) > row_entity['budg_'+col.name]){
                     return 'red';
                 }                
             },
@@ -334,7 +336,7 @@
                         field: 'gen',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 1) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -360,7 +362,7 @@
                         field: 'feb',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 2) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -386,7 +388,7 @@
                         field: 'mar',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 3) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -412,7 +414,7 @@
                         field: 'apr',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 4) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -438,7 +440,7 @@
                         field: 'mag',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 5) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -464,7 +466,7 @@
                         field: 'giu',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 6) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -490,7 +492,7 @@
                         field: 'lug',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 7) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -516,7 +518,7 @@
                         field: 'ago',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 8) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -542,7 +544,7 @@
                         field: 'sett',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 9) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -568,7 +570,7 @@
                         field: 'ott',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 10) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -594,7 +596,7 @@
                         field: 'nov',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 11) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
@@ -620,7 +622,7 @@
                         field: 'dic',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getMonthClass(row.entity, col) || srvc.getClass(row.entity, 'perc_budg', col);
+                            return srvc.getMonthClass(row.entity, col, 12) || srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
