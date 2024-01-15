@@ -64,7 +64,7 @@
                 }
             },
             getMonthClass: function(row_entity, col, month_number) {
-                var currentMonth = new Date().getMonth();
+                var currentMonth = new Date().getMonth() + 1;
 
                 if (currentMonth == month_number && row_entity[col.name] < 0 && Math.abs(row_entity[col.name]) > row_entity['budg_'+col.name]){
                     return 'red';
