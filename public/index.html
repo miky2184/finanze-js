@@ -140,6 +140,11 @@
                         <div ng-include="'view/password.html'"></div>
                     </md-content>
                 </md-tab>
+                <md-tab label="Dieta" ng-disabled="disablePasswordPage()">
+                    <md-content class="md-padding">
+                        <div ng-include="'view/dieta.html'"></div>
+                    </md-content>
+                </md-tab>
             </md-tabs>
             <div layout="row" layout-align="end end">
                 <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons"
