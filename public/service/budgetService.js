@@ -283,15 +283,15 @@
                         width: '3%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                              
-                            if (row.entity['stato_spesa'] = 0) {
+                            if (row.entity['stato_spesa'] == 0) {
                                 return 'green';
-                            } else if (row.entity['stato_spesa'] = 1){
+                            } else if (row.entity['stato_spesa'] == 1){
                                 return 'text-right';
-                            } else if (row.entity['stato_spesa'] = 2){
+                            } else if (row.entity['stato_spesa'] == 2){
                                 return 'yellow';
-                            } else if (row.entity['stato_spesa'] = 3){
+                            } else if (row.entity['stato_spesa'] == 3){
                                 return 'orange';
-                            } else if (row.entity['stato_spesa'] = 4){
+                            } else if (row.entity['stato_spesa'] == 4){
                                 return 'red';
                             }
 
