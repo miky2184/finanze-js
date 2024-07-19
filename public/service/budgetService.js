@@ -282,7 +282,20 @@
                         field: 'perc_budg',
                         width: '3%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                            return srvc.getClass(row.entity, 'perc_budg', col);
+                             
+                            if (row.entity['stato_spesa'] = 0) {
+                                return 'green';
+                            } else if (row.entity['stato_spesa'] = 1){
+                                return 'text-right';
+                            } else if (row.entity['stato_spesa'] = 2){
+                                return 'yellow';
+                            } else if (row.entity['stato_spesa'] = 3){
+                                return 'orange';
+                            } else if (row.entity['stato_spesa'] = 4){
+                                return 'red';
+                            }
+
+                            //return srvc.getClass(row.entity, 'perc_budg', col);
                         },
                         type: 'number',   
                         pinnedLeft: true
