@@ -149,6 +149,17 @@
                         return srvc.getClass(row.entity['2023-2024']);
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
+                }, {
+                    name: '2025',
+                    displayName: '2025',
+                    field: '2025',
+                    width: '7%',
+                    footerCellFilter: 'currency',
+                    cellFilter: 'currency',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity['2024-2025']);
+                    },
+                    aggregationType: uiGridConstants.aggregationTypes.sum
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
