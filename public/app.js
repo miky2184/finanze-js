@@ -78,6 +78,13 @@
         $scope.gridOptionsBalance = balanceService.gridOptionsBalance;
         $scope.gridOptionsAvere = balanceService.gridOptionsAvere;
         $scope.loadBalance = function () {
+
+            $timeout(() => {
+                if ($scope.gridOptionsBalance && $scope.gridOptionsBalance.gridApi) {
+                    $scope.gridOptionsBalance.gridApi.core.handleWindowResize();
+                }
+            }, 100); 
+
             return balanceService.loadBalance();
         };
 
@@ -101,29 +108,6 @@
                         $scope.gridOptions.gridApi.core.handleWindowResize();
                     }
                 }, 100);                
-            }
-
-            if (tabName === 'Settings') {
-                $timeout(() => {
-                    if ($scope.gridOptionsAmb && $scope.gridOptionsAmb.gridApi) {
-                        $scope.gridOptionsAmb.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsCat && $scope.gridOptionsCat.gridApi) {
-                        $scope.gridOptionsCat.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsSott && $scope.gridOptionsSott.gridApi) {
-                        $scope.gridOptionsSott.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsBen && $scope.gridOptionsBen.gridApi) {
-                        $scope.gridOptionsBen.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsAmbCat && $scope.gridOptionsAmbCat.gridApi) {
-                        $scope.gridOptionsAmbCat.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsCatSott && $scope.gridOptionsCatSott.gridApi) {
-                        $scope.gridOptionsCatSott.gridApi.core.handleWindowResize();
-                    }
-                }, 100);
             }
         };
 
