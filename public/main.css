@@ -1,3 +1,12 @@
+/* ====== Stili Generali ====== */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background: #fafafa !important;
+}
+
 .ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
     background-color: #ffdddd !important;
 }
@@ -84,11 +93,6 @@
     height: 720px;
     background-repeat: no-repeat;
     position: absolute;
-}
-
-.textapp {
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    background: #fafafa !important;
 }
 
 .budget-col {
