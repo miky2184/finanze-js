@@ -83,7 +83,7 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                         name: 'mese',
-                        displayName: 'MM',
+                        displayName: 'MESE',
                         headerCellClass: 'text-center',
                         field: 'mese',
                         width: '10%',

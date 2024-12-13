@@ -65,6 +65,18 @@ body {
     background-color: #f5b3c3 !important;
 }
 
+md-tab-label md-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+    color: #4c77af; /* Colore icona */
+}
+
+md-tab-label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 
 .text-right {
     text-align: right;

@@ -21,7 +21,7 @@
                 enableColumnMenus: false,
                 columnDefs: [{
                     name: 'nome_mese',
-                    displayName: 'MM',
+                    displayName: 'MESE',
                     field: 'nome_mese',
                     width: '25%'
                 }, {

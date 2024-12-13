@@ -43,7 +43,7 @@
             ]
           }, {
             name: 'mese',
-            displayName: 'MM',
+            displayName: 'MESE',
             field: 'mese',
             headerCellClass: 'text-center',
             width: '3%',

@@ -374,7 +374,7 @@
                     }
                 }, {
                     field: 'anno',
-                    displayName: 'YYYY',
+                    displayName: 'ANNO',
                     headerCellClass: 'text-center',
                     width: '3%',
                     type: 'number',
@@ -389,7 +389,7 @@
                     ]
                 }, {
                     field: 'mese',
-                    displayName: 'MM',
+                    displayName: 'MESE',
                     headerCellClass: 'text-center',
                     width: '3%',
                     type: 'number',
