@@ -113,6 +113,11 @@
                 },
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsAmb.gridApi = gridApi;
+                    if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                        srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                    } else {
+                        console.error("gridApi per Ambito non definito.");
+                    }
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
                 }
             },
@@ -323,12 +328,41 @@
                 srvc.refreshGridSettings();
             },
             refreshGridSettings: function () {
-                $interval(srvc.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
-                $interval(srvc.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
-                $interval(srvc.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
-                $interval(srvc.gridOptionsBen.gridApi.core.handleWindowResize, 100, 10);
-                $interval(srvc.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
-                $interval(srvc.gridOptionsCatSott.gridApi.core.handleWindowResize, 100, 10);
+                if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                    $interval(srvc.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
+                } else {
+                    console.warn("gridApi per Ambito non inizializzato.");
+                }
+            
+                if (srvc.gridOptionsCat.gridApi && srvc.gridOptionsCat.gridApi.core) {
+                    $interval(srvc.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
+                } else {
+                    console.warn("gridApi per Categoria non inizializzato.");
+                }
+            
+                if (srvc.gridOptionsSott.gridApi && srvc.gridOptionsSott.gridApi.core) {
+                    $interval(srvc.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
+                } else {
+                    console.warn("gridApi per Sottocategoria non inizializzato.");
+                }
+            
+                if (srvc.gridOptionsBen.gridApi && srvc.gridOptionsBen.gridApi.core) {
+                    $interval(srvc.gridOptionsBen.gridApi.core.handleWindowResize, 100, 10);
+                } else {
+                    console.warn("gridApi per Beneficiario non inizializzato.");
+                }
+            
+                if (srvc.gridOptionsAmbCat.gridApi && srvc.gridOptionsAmbCat.gridApi.core) {
+                    $interval(srvc.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
+                } else {
+                    console.warn("gridApi per Ambito-Categoria non inizializzato.");
+                }
+            
+                if (srvc.gridOptionsCatSott.gridApi && srvc.gridOptionsCatSott.gridApi.core) {
+                    $interval(srvc.gridOptionsCatSott.gridApi.core.handleWindowResize, 100, 10);
+                } else {
+                    console.warn("gridApi per Categoria-Sottocategoria non inizializzato.");
+                }
             }
         };
         return srvc;
