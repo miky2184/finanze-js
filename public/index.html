@@ -77,12 +77,14 @@
                 <script type="text/ng-template" id="alert.html">
                     <div ng-transclude></div>
                 </script>
-                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</div>
+                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">
+                    {{alert.msg}}
+                </div>
             </div>
         </md-content>
     </div>
-    <div layout="column" layout-align="center center" layout-fill ng-show="logged()">
-        <md-content layout-fill>
+    <div layout="column" layout-fill ng-show="logged()">
+        <md-content layout="column" flex>
             <md-tabs md-dynamic-height md-border-bottom md-no-disconnect>
                 <md-tab>
                     <md-tab-label>
@@ -172,18 +174,17 @@
                         <div ng-include="'view/password.html'"></div>
                     </md-tab-body>
                 </md-tab>
-            </md-tabs>
-            <div layout="row" layout-align="end end">
-                <md-button aria-label="{{button.label}}" class="md-raised modern-button" 
-                           ng-repeat="button in saveButtons"
-                           layout="row" layout-align="center center"
-                           ng-click="button.listener(gridOptions)" 
-                           ng-disabled="button.disabled()">
-                    <md-icon ng-if="button.icon" class="material-icons">{{button.icon}}</md-icon>
-                    <span>{{button.label}}</span>
-                </md-button>
-            </div>            
-        </md-content>
+            </md-tabs>         
+        </md-content> 
+        <footer layout="row" layout-align="end right" class="footer">
+            <md-button aria-label="{{button.label}}" class="md-raised modern-button"
+                ng-repeat="button in saveButtons"
+                ng-click="button.listener(gridOptions)" 
+                ng-disabled="button.disabled()">
+                <md-icon ng-if="button.icon" class="material-icons">{{button.icon}}</md-icon>
+                {{button.label}}
+            </md-button>
+        </footer>
     </div>
 </body>
 </html>
