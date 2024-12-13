@@ -130,6 +130,15 @@
                     }
                 }, 100);
             }
+
+            if (tabName === 'Budget') {
+                $timeout(() => {
+                    if ($scope.gridBudget && $scope.gridBudget.gridApi) {
+                        $scope.gridBudget.gridApi.core.handleWindowResize();
+                        return budgetService.loadBudget($scope.pivot);
+                    }
+                }, 100);   
+            }
         };
 
         /*********************
@@ -190,14 +199,6 @@
                 $scope.dataGrafico = dataService.data.dataGrafico;
                 $scope.optionsGrafico = dataService.data.optionsGrafico;    
             });            
-        };
-
-        /*********************
-            TAB BUDGET
-        *********************/
-        $scope.gridBudget = budgetService.gridBudget;
-        $scope.loadBudget = function () {
-            return budgetService.loadBudget($scope.pivot);
         };
 
         /*********************
