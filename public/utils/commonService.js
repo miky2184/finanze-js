@@ -16,9 +16,9 @@
                         dataService.data.disableSalaryPage = resp.data[0]['disable_salary_page'];
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
-                            /*if (dataService.data.admin) {
+                            if (dataService.data.admin) {
                                 settingsService.loadSettings();
-                            }*/
+                            }
                         });
                     } else {
                         dataService.data.alerts.push({
