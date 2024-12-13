@@ -1,9 +1,10 @@
-<div layout="column">
-    <div layout="row" layout-align="start center" class="filters">
-      <md-input-container class="md-block" flex="30">
+<div layout="column" style="height: 100%; padding: 16px;">
+  <!-- Filtro con selezioni -->
+  <div layout="row" layout-align="start center" class="filters" style="margin-bottom: 16px;">
+      <md-input-container class="md-block" flex="30" style="margin-right: 16px;">
           <label>Seleziona una tipologia di conto</label>
           <md-select ng-model="pivot.conto" ng-change="loadDefBudget()">
-              <md-option ng-repeat="conto in conti" value="{{conto.conto}}">
+              <md-option ng-repeat="conto in conti" ng-value="conto.conto">
                   {{conto.label}}
               </md-option>
           </md-select>
@@ -12,23 +13,43 @@
       <md-input-container class="md-block" flex="30">
           <label>Seleziona un anno</label>
           <md-select ng-model="pivot.year" ng-change="loadDefBudget()">
-              <md-option ng-repeat="year in years" value="{{year}}">
+              <md-option ng-repeat="year in years" ng-value="year">
                   {{year}}
               </md-option>
           </md-select>
       </md-input-container>
   </div>
-    <div layout="row">
-      <div flex=40 layout="column">
-        <div layout="row" id="gridDefBudget" ui-grid="gridDefBudget" ui-grid-selection ui-grid-cellnav ui-grid-edit ui-grid-auto-resize></div>      
-        <div flex layout="row">
-          <md-button aria-label="{{button.label}}" layout="column" ng-repeat="button in actionButtons" class="md-fab md-mini md-primary" style='margin-left: 0px;'  ng-click="button.listener(gridDefBudget, 'DB')" ng-disabled="button.disabled('DB')">
-            <md-icon md-svg-src="{{button.src}}"></md-icon>
-          </md-button>
-        </div>
-      </div>      
-      <div flex=60 layout="column">
-        <nvd3 options="optionsGraficoPieBudget" data="dataGraficoPieBudget" />      
-      </div>      
-    </div>    
+
+  <!-- Contenuto principale -->
+  <div layout="row" flex style="overflow: hidden;">
+      <!-- Griglia con pulsanti -->
+      <div flex="40" layout="column" style="margin-right: 16px; border-right: 1px solid #ddd; padding-right: 16px;">
+          <div id="gridDefBudget" 
+               ui-grid="gridDefBudget" 
+               ui-grid-selection 
+               ui-grid-cellnav 
+               ui-grid-edit 
+               ui-grid-auto-resize 
+               style="flex: 1; overflow: auto;">
+          </div>
+
+          <!-- Pulsanti relativi alla griglia -->
+          <div layout="row" layout-align="end center" style="margin-top: 16px;">
+              <md-button aria-label="{{button.label}}" 
+                         layout="column" 
+                         ng-repeat="button in actionButtons" 
+                         class="md-fab md-mini md-primary" 
+                         ng-click="button.listener(gridDefBudget, 'DB')" 
+                         ng-disabled="button.disabled('DB')" 
+                         style="margin-right: 8px;">
+                  <md-icon md-svg-src="{{button.src}}"></md-icon>
+              </md-button>
+          </div>
+      </div>
+
+      <!-- Grafico -->
+      <div flex="60" layout="column" layout-align="center center" style="padding-left: 16px;">
+          <nvd3 options="optionsGraficoPieBudget" data="dataGraficoPieBudget"></nvd3>
+      </div>
   </div>
+</div>

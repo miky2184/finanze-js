@@ -448,20 +448,6 @@
                             fissa: false,
                             dirty: true
                         });
-                    } else if (maschera === "SP") {
-                        gridOptions.data.unshift({
-                            newRow: true,
-                            dataSpesa: new Date(),
-                            dirty: true,
-                            reparto: 'XXX',
-                            sottoreparto: 'XXX',
-                            famiglia: 'XXX',
-                            peso: false,
-                            pesoGrammi: 0,
-                            prezzo: 0,
-                            prezzoAlKilo: 0,
-                            supermercato: 1
-                        })
                     } else if (maschera === "PW") {
                         gridOptions.data.unshift({
                             newRow: true,
