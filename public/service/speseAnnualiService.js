@@ -12,7 +12,7 @@
             generateYearColumns: function () {
                 var columns = [];
                 var currentYear = new Date().getFullYear();
-                var startYear = currentYear - 10; // 10 anni fa
+                var startYear = currentYear - 8; // 10 anni fa
                 var endYear = currentYear + 1; // Anno successivo
 
                 for (var year = startYear; year <= endYear; year++) {
