@@ -363,9 +363,9 @@
                 srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                 srvc.gridOptionsCatSott.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
                 // Ritarda il refresh per garantire che i gridApi siano pronti
-                $timeout(() => {
+                /*$timeout(() => {
                     srvc.refreshGridSettings();
-                }, 500);
+                }, 1000);*/
             },
             refreshGridSettings: function () {
                 const gridApis = [
