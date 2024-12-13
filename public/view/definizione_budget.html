@@ -1,21 +1,50 @@
-<div layout="column" class="listaMovimenti">
-    <div flex layout="row">
-        <label for="contoSelect">Seleziona una tipologia di conto:</label>
-        <select name="contoSelect" id="repeatCnSelect" ng-options="conto.conto as conto.label for conto in conti" ng-model="pivot.conto" ng-change="loadDefBudget()">
-        </select>
-        <label for="yearSelect"> Seleziona un anno: </label>
-        <select name="yearSelect" id="repeatYSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadDefBudget()">
-        </select>
-    </div>
-    <div layout="row">
-      <div flex="50" layout="column" id="gridDefBudget" ui-grid="gridDefBudget" ui-grid-selection ui-grid-cellnav ui-grid-edit ui-grid-auto-resize></div>      
-      <div flex=50 layout="column">
-        <nvd3 options="optionsGraficoPieBudget" data="dataGraficoPieBudget" />      
-      </div>      
-    </div>
-    <div flex layout="row" layout-align="start end">
-      <md-button aria-label="{{button.label}}" layout="column" ng-repeat="button in actionButtons" class="md-fab md-mini md-primary" style='margin-left: 0px;'  ng-click="button.listener(gridDefBudget, 'DB')" ng-disabled="button.disabled('DB')">
-        <md-icon md-svg-src="{{button.src}}"></md-icon>
-      </md-button>
-    </div>
+<div layout="column" class="listaMovimenti" style="height: 100%;">
+  <!-- Barra dei controlli -->
+  <div layout="row" layout-align="start center" style="padding: 16px; border-bottom: 1px solid #ccc;">
+      <div flex="50" layout="row" layout-align="start center">
+          <md-input-container>
+              <label>Tipologia di conto</label>
+              <md-select ng-model="pivot.conto" ng-change="loadDefBudget()">
+                  <md-option ng-value="conto.conto" ng-repeat="conto in conti">{{ conto.label }}</md-option>
+              </md-select>
+          </md-input-container>
+          <md-input-container style="margin-left: 16px;">
+              <label>Anno</label>
+              <md-select ng-model="pivot.year" ng-change="loadDefBudget()">
+                  <md-option ng-value="year" ng-repeat="year in years">{{ year }}</md-option>
+              </md-select>
+          </md-input-container>
+      </div>
   </div>
+
+  <!-- Contenuto principale: Griglia e Grafico -->
+  <div layout="row" flex style="overflow: hidden;">
+      <!-- Griglia con footer -->
+      <div flex="50" layout="column" style="padding: 16px;">
+          <div id="gridDefBudget" 
+               ui-grid="gridDefBudget" 
+               ui-grid-selection 
+               ui-grid-cellnav 
+               ui-grid-edit 
+               ui-grid-auto-resize 
+               style="flex: 1; overflow: auto;">
+          </div>
+          <!-- Footer relativo alla griglia -->
+          <div layout="row" layout-align="end center" style="padding: 8px; border-top: 1px solid #ccc;">
+              <md-button aria-label="{{button.label}}" 
+                         ng-repeat="button in actionButtons" 
+                         class="md-fab md-mini md-primary" 
+                         ng-click="button.listener(gridDefBudget, 'DB')" 
+                         ng-disabled="button.disabled('DB')" 
+                         style="margin-right: 8px;">
+                  <md-icon md-svg-src="{{button.src}}"></md-icon>
+              </md-button>
+          </div>
+      </div>
+
+      <!-- Grafico -->
+      <div flex="50" layout="column" layout-align="center center" style="padding: 16px; border-left: 1px solid #ccc;">
+          <nvd3 options="optionsGraficoPieBudget" data="dataGraficoPieBudget"></nvd3>
+      </div>
+  </div>
+</div>

@@ -77,8 +77,6 @@
                 minRowsToShow: 23,
                 enableFiltering: true,
                 enableRowSelection: true,
-                enableSelectAll: true,
-                selectionRowHeaderWidth: 35,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableColumnMenus: false,
                 columnDefs: [{
