@@ -7,26 +7,60 @@ body {
     background: #fafafa !important;
 }
 
+/* ====== Tabelle ====== */
+.ui-grid {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
   
-.ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
+  .ui-grid-header-cell {
+    background-color: var(--primary-color);
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 10px;
+  }
+  
+  .ui-grid-row:nth-child(odd) .ui-grid-cell {
+    background-color: #f9f9f9;
+  }
+  
+  .ui-grid-row:nth-child(even) .ui-grid-cell {
+    background-color: #ffffff;
+  }
+  
+  .ui-grid-cell {
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .ui-grid-row:hover .ui-grid-cell {
+    background-color: #e0f7fa;
+    transform: scale(1.01);
+  }
+  
+  .ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
     background-color: #ffdddd !important;
-}
-
-.ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
+  }
+  
+  .ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
     background-color: #f5d3d3 !important;
-}
+  }
+  
+  .ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
+    background-color: #ddffdd;
+  }
+  
+  .ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
+    background-color: #d3f5d3;
+  }
 
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell.delete {
     background-color: #f5b3c3 !important;
 }
 
-.ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
-    background-color: #ddffdd
-}
-
-.ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
-    background-color: #d3f5d3
-}
 
 .text-right {
     text-align: right;
