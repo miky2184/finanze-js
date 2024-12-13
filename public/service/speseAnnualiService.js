@@ -4,10 +4,34 @@
 
         var srvc = {
             getClass: function (perc) {
-                if (perc > 5){
+                if (perc > 5) {
                     return 'red';
                 }
-                return 'text-right';                
+                return 'text-right';
+            },
+            generateYearColumns: function () {
+                var columns = [];
+                var currentYear = new Date().getFullYear();
+                var startYear = currentYear - 10; // 10 anni fa
+                var endYear = currentYear + 1; // Anno successivo
+
+                for (var year = startYear; year <= endYear; year++) {
+                    columns.push({
+                        name: year.toString(),
+                        displayName: year.toString(),
+                        field: year.toString(),
+                        width: '7%',
+                        footerCellFilter: 'currency',
+                        cellFilter: 'currency',
+                        cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                            var diffField = `${year - 1}-${year}`;
+                            return srvc.getClass(row.entity[diffField]);
+                        },
+                        aggregationType: uiGridConstants.aggregationTypes.sum
+                    });
+                }
+
+                return columns;
             },
             gridSpeseAnnuali: {
                 columnVirtualizationThreshold: 32,
@@ -17,150 +41,29 @@
                 enableColumnMenus: false,
                 showColumnFooter: true,
                 enablePinning: true,
-                columnDefs: [{
-                    name: 'AMBITO',
-                    displayName: 'AMBITO',
-                    field: 'ambito',
-                    width: '10%',
-                    pinnedLeft: true
-                }, {
-                    name: 'CATEGORIA',
-                    displayName: 'CATEGORIA',
-                    field: 'categoria',
-                    width: '10%',
-                    pinnedLeft: true
-                }, {
-                    name: 'SOTTOCATEGORIA',
-                    displayName: 'SOTTOCATEGORIA',
-                    field: 'sottocategoria',
-                    width: '10%',
-                    pinnedLeft: true
-                }, 
-                /* {
-                    name: '2015',
-                    displayName: '2015',
-                    field: '2015',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return 'text-right';
+                columnDefs: [
+                    {
+                        name: 'AMBITO',
+                        displayName: 'AMBITO',
+                        field: 'ambito',
+                        width: '10%',
+                        pinnedLeft: true
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, */
-                {
-                    name: '2016',
-                    displayName: '2016',
-                    field: '2016',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2015-2016']);
+                    {
+                        name: 'CATEGORIA',
+                        displayName: 'CATEGORIA',
+                        field: 'categoria',
+                        width: '10%',
+                        pinnedLeft: true
                     },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                },
-                {
-                    name: '2017',
-                    displayName: '2017',
-                    field: '2017',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2016-2017']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                },                
-                {
-                    name: '2018',
-                    displayName: '2018',
-                    field: '2018',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2017-2018']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2019',
-                    displayName: '2019',
-                    field: '2019',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2018-2019']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2020',
-                    displayName: '2020',
-                    field: '2020',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2019-2020']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2021',
-                    displayName: '2021',
-                    field: '2021',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2020-2021']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2022',
-                    displayName: '2022',
-                    field: '2022',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2021-2022']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2023',
-                    displayName: '2023',
-                    field: '2023',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2022-2023']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2024',
-                    displayName: '2024',
-                    field: '2024',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2023-2024']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }, {
-                    name: '2025',
-                    displayName: '2025',
-                    field: '2025',
-                    width: '7%',
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity['2024-2025']);
-                    },
-                    aggregationType: uiGridConstants.aggregationTypes.sum
-                }],
+                    {
+                        name: 'SOTTOCATEGORIA',
+                        displayName: 'SOTTOCATEGORIA',
+                        field: 'sottocategoria',
+                        width: '10%',
+                        pinnedLeft: true
+                    }
+                ].concat([]), // Placeholder per le colonne dinamiche
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridSpeseAnnuali.gridApi = gridApi;
@@ -171,11 +74,19 @@
                 var dto = {};
                 dto.conto = pivot.conto;
                 dto.id_db = dataService.data.idDb;
-                return $http.post($strings.REST.SERVER + '/spese_annue', dto).then(function (resp) {                    
-                    srvc.gridSpeseAnnuali.data = resp.data;                    
+                return $http.post($strings.REST.SERVER + '/spese_annue', dto).then(function (resp) {
+                    srvc.gridSpeseAnnuali.data = resp.data;
                 });
+            },
+            initializeGrid: function () {
+                // Aggiorna le colonne dinamicamente
+                srvc.gridSpeseAnnuali.columnDefs = srvc.gridSpeseAnnuali.columnDefs.concat(srvc.generateYearColumns());
             }
         };
+
+        // Inizializza la griglia al caricamento del servizio
+        srvc.initializeGrid();
+
         return srvc;
     }]);
 })();
