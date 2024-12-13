@@ -36,7 +36,7 @@
                     width: '10%',
                     pinnedLeft: true
                 }, 
-                {
+                /* {
                     name: '2015',
                     displayName: '2015',
                     field: '2015',
@@ -47,7 +47,7 @@
                         return 'text-right';
                     },
                     aggregationType: uiGridConstants.aggregationTypes.sum
-                },
+                }, */
                 {
                     name: '2016',
                     displayName: '2016',
