@@ -90,26 +90,7 @@
                         <md-icon class="material-icons">list</md-icon> Lista Movimenti
                     </md-tab-label>
                     <md-content class="md-padding">
-                        <div layout="column" class="listaMovimenti">
-                            <div flex layout="row" id="grid1" 
-                                 ui-grid="gridOptions" 
-                                 ui-grid-selection 
-                                 ui-grid-cellnav 
-                                 ui-grid-edit 
-                                 ui-grid-auto-resize>
-                            </div>
-                            <div flex layout="row" layout-align="start end">
-                              <md-button aria-label="{{button.label}}" 
-                                         layout="column" 
-                                         ng-repeat="button in actionButtons" 
-                                         class="btn-modern md-fab md-mini md-primary" 
-                                         style='margin-left: 0px;'  
-                                         ng-click="button.listener(gridOptions, 'LM')" 
-                                         ng-disabled="button.disabled('LM')">
-                                <md-icon md-svg-src="{{button.src}}"></md-icon>
-                              </md-button>
-                            </div>
-                          </div>
+                        <div ng-include="'view/dettaglio.html'"></div>
                     </md-content>
                 </md-tab>
                 <md-tab md-on-select="loadBalance()">
@@ -120,14 +101,14 @@
                         <div ng-include="'view/balance.html'"></div>
                     </md-content>
                 </md-tab>
-                <!-- <md-tab md-on-select="refreshGridSettings()" ng-disabled="admin()">
+                <md-tab md-on-select="refreshGridSettings()" ng-disabled="admin()">
                     <md-tab-label>
                         <md-icon class="material-icons">settings</md-icon> Impostazioni
                     </md-tab-label>
                     <md-content class="md-padding">
                         <div ng-include="'view/settings.html'"></div>
                     </md-content>
-                </md-tab> -->
+                </md-tab>
                 <md-tab md-on-select="loadDefBudget()">
                     <md-tab-label>
                         <md-icon class="material-icons">attach_money</md-icon> Definizione Budget
