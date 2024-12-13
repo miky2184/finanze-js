@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$timeout', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $timeout, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
+    }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
 
 
         /* PARAMETRI */
@@ -35,7 +35,7 @@
         }
 
         /* BUTTON */
-        $scope.actionButtons = [];        
+        $scope.actionButtons = [];
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);
@@ -50,8 +50,8 @@
         /* API GRAFICI */
         $scope.callbackGrafico = function (scope, element) {
             dataService.data.apiGrafico = scope.api;
-        };        
-               
+        };
+
         $scope.years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013];
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.alerts = [];
@@ -78,13 +78,6 @@
         $scope.gridOptionsBalance = balanceService.gridOptionsBalance;
         $scope.gridOptionsAvere = balanceService.gridOptionsAvere;
         $scope.loadBalance = function () {
-
-            $timeout(() => {
-                if ($scope.gridOptionsBalance && $scope.gridOptionsBalance.gridApi) {
-                    $scope.gridOptionsBalance.gridApi.core.handleWindowResize();
-                }
-            }, 100); 
-
             return balanceService.loadBalance();
         };
 
@@ -100,41 +93,6 @@
         $scope.gridOptionsBen = settingsService.gridOptionsBen;
         $scope.gridOptionsAmbCat = settingsService.gridOptionsAmbCat;
         $scope.gridOptionsCatSott = settingsService.gridOptionsCatSott;
-        
-        $scope.selectedTabIndex = 0;
-
-        $scope.initializeGrid = function(tabName) {
-            console.log(`Inizializzazione della griglia per il tab: ${tabName}`);
-        
-            $timeout(() => {
-                if (tabName === 'ListaMovimenti' && $scope.gridOptions && $scope.gridOptions.gridApi) {
-                    $scope.gridOptions.gridApi.core.handleWindowResize();
-                }
-                if (tabName === 'Bilancio' && $scope.gridOptionsBalance && $scope.gridOptionsBalance.gridApi) {
-                    $scope.gridOptionsBalance.gridApi.core.handleWindowResize();
-                }
-                if (tabName === 'Settings') {
-                    if ($scope.gridOptionsAmb && $scope.gridOptionsAmb.gridApi) {
-                        $scope.gridOptionsAmb.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsCat && $scope.gridOptionsCat.gridApi) {
-                        $scope.gridOptionsCat.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsSott && $scope.gridOptionsSott.gridApi) {
-                        $scope.gridOptionsSott.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsBen && $scope.gridOptionsBen.gridApi) {
-                        $scope.gridOptionsBen.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsAmbCat && $scope.gridOptionsAmbCat.gridApi) {
-                        $scope.gridOptionsAmbCat.gridApi.core.handleWindowResize();
-                    }
-                    if ($scope.gridOptionsCatSott && $scope.gridOptionsCatSott.gridApi) {
-                        $scope.gridOptionsCatSott.gridApi.core.handleWindowResize();
-                    }
-                }
-            }, 100);
-        };        
 
         /*********************
           TAB GRAFICO
@@ -143,16 +101,16 @@
             return graficoService.loadGrafico($scope.pivot.year).then(function (fn) {
                 $scope.dataGrafico = dataService.data.dataGrafico;
                 $scope.optionsGrafico = dataService.data.optionsGrafico;
-                return graficoService.loadGraficoPie($scope.pivot.year).then(function (fn) {                
+                return graficoService.loadGraficoPie($scope.pivot.year).then(function (fn) {
                     $scope.dataGraficoPie = dataService.data.dataGraficoPie;
                     $scope.optionsGraficoPie = dataService.data.optionsGraficoPie;
-                    return graficoService.loadGraficoPieCategoria($scope.pivot.year).then(function (fn) {                
+                    return graficoService.loadGraficoPieCategoria($scope.pivot.year).then(function (fn) {
                         $scope.dataGraficoPieCategoria = dataService.data.dataGraficoPieCategoria;
                         $scope.optionsGraficoPieCategoria = dataService.data.optionsGraficoPieCategoria;
-                        return graficoService.loadGraficoPiePersonale($scope.pivot.year).then(function (fn) {                
+                        return graficoService.loadGraficoPiePersonale($scope.pivot.year).then(function (fn) {
                             $scope.dataGraficoPiePersonale = dataService.data.dataGraficoPiePersonale;
                             $scope.optionsGraficoPiePersonale = dataService.data.optionsGraficoPiePersonale;
-                            return graficoService.loadGraficoPiePersonaleCategoria($scope.pivot.year).then(function (fn) {                
+                            return graficoService.loadGraficoPiePersonaleCategoria($scope.pivot.year).then(function (fn) {
                                 $scope.dataGraficoPiePersonaleCategoria = dataService.data.dataGraficoPiePersonaleCategoria;
                                 $scope.optionsGraficoPiePersonaleCategoria = dataService.data.optionsGraficoPiePersonaleCategoria;
                                 return graficoService.loadGraficoSpesoTotalePerAnno().then(function(fn){
@@ -174,7 +132,7 @@
             return andamentoMeseService.loadPivotMese($scope.pivot.year).then(function(resp){
                 $scope.dataGrafico = dataService.data.dataGrafico;
                 $scope.optionsGrafico = dataService.data.optionsGrafico;
-            });            
+            });
         };
 
         /*********************
@@ -192,8 +150,16 @@
         $scope.loadAndamentoAnnuo = function () {
             return andamentoAnnuoService.loadAndamentoAnnuo().then(function(resp){
                 $scope.dataGrafico = dataService.data.dataGrafico;
-                $scope.optionsGrafico = dataService.data.optionsGrafico;    
-            });            
+                $scope.optionsGrafico = dataService.data.optionsGrafico;
+            });
+        };
+
+        /*********************
+            TAB BUDGET
+        *********************/
+        $scope.gridBudget = budgetService.gridBudget;
+        $scope.loadBudget = function () {
+            return budgetService.loadBudget($scope.pivot);
         };
 
         /*********************
@@ -201,10 +167,10 @@
         *********************/
         $scope.gridDefBudget = budgetService.gridDefBudget;
         $scope.loadDefBudget = function () {
-            return budgetService.loadDefBudget($scope.pivot).then(function (fn) {                
-                return budgetService.loadGraficoBudget($scope.pivot).then(function (fn) {                
+            return budgetService.loadDefBudget($scope.pivot).then(function (fn) {
+                return budgetService.loadGraficoBudget($scope.pivot).then(function (fn) {
                     $scope.dataGraficoPieBudget = dataService.data.dataGraficoPieBudget;
-                    $scope.optionsGraficoPieBudget = dataService.data.optionsGraficoPieBudget;                   
+                    $scope.optionsGraficoPieBudget = dataService.data.optionsGraficoPieBudget;
                 });
             });
         };
@@ -223,7 +189,7 @@
         $scope.gridOptionsPassword = passwordService.gridOptionsPassword;
         $scope.loadPassword = function () {
             return passwordService.loadPassword();
-        };        
+        };
 
     }]).filter('griddropdown', function () {
         return function (input, context) {
@@ -242,7 +208,7 @@
                     }
                 }
                 return retValue;
-            }            
+            }
         };
     }).filter('to_trusted', ['$sce', function ($sce) {
         return function (text) {

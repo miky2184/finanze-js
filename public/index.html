@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="it" ng-app="myApp" ng-strict-di>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,41 +83,8 @@
     </div>
     <div layout="column" layout-align="center center" layout-fill ng-show="logged()">
         <md-content layout-fill>
-            <md-tabs md-dynamic-height md-border-bottom md-no-disconnect md-selected="selectedTabIndex">
-                <!-- Lista Movimenti -->
+            <md-tabs md-dynamic-height md-border-bottom md-no-disconnect>
                 <md-tab>
-                    <md-tab-label>
-                        <md-icon class="material-icons">list</md-icon> Lista Movimenti
-                    </md-tab-label>
-                    <md-content class="md-padding" ng-if="selectedTabIndex === 0">
-                        <div ng-include="'view/dettaglio.html'" ng-init="initializeGrid('ListaMovimenti')"></div>
-                    </md-content>
-                </md-tab>
-            
-                <!-- Bilancio -->
-                <md-tab>
-                    <md-tab-label>
-                        <md-icon class="material-icons">account_balance</md-icon> Bilancio
-                    </md-tab-label>
-                    <md-content class="md-padding" ng-if="selectedTabIndex === 1">
-                        <div ng-include="'view/balance.html'" ng-init="initializeGrid('Bilancio')"></div>
-                    </md-content>
-                </md-tab>
-            
-                <!-- Impostazioni -->
-                <md-tab>
-                    <md-tab-label>
-                        <md-icon class="material-icons">settings</md-icon> Impostazioni
-                    </md-tab-label>
-                    <md-content class="md-padding" ng-if="selectedTabIndex === 2">
-                        <div ng-include="'view/settings.html'" ng-init="initializeGrid('Settings')"></div>
-                    </md-content>
-                </md-tab>
-            
-                <!-- Altri tab... -->
-            </md-tabs>
-            <!-- <md-tabs md-dynamic-height md-border-bottom md-no-disconnect>
-                <md-tab md-on-select="initializeGrid('ListaMovimenti')">
                     <md-tab-label>
                         <md-icon class="material-icons">list</md-icon> Lista Movimenti
                     </md-tab-label>
@@ -150,7 +116,7 @@
                         <div ng-include="'view/definizione_budget.html'"></div>
                     </md-content>
                 </md-tab>
-                <md-tab md-on-select="initializeGrid('Budget')">
+                <md-tab md-on-select="loadBudget()">
                     <md-tab-label>
                         <md-icon class="material-icons">pie_chart</md-icon> Budget
                     </md-tab-label>
@@ -206,7 +172,7 @@
                         <div ng-include="'view/password.html'"></div>
                     </md-content>
                 </md-tab>
-            </md-tabs> -->
+            </md-tabs>
             <div layout="row" layout-align="end end">
                 <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons"
                     layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">
@@ -215,5 +181,4 @@
         </md-content>
     </div>
 </body>
-
 </html>
