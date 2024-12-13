@@ -94,6 +94,16 @@
         $scope.gridOptionsAmbCat = settingsService.gridOptionsAmbCat;
         $scope.gridOptionsCatSott = settingsService.gridOptionsCatSott;
 
+        $scope.initializeGrid = function(tabName) {
+            if (tabName === 'ListaMovimenti') {
+                $timeout(() => {
+                    if ($scope.gridOptions && $scope.gridOptions.gridApi) {
+                        $scope.gridOptions.gridApi.core.handleWindowResize();
+                    }
+                }, 100);
+            }
+        };
+
         /*********************
           TAB GRAFICO
          *********************/
