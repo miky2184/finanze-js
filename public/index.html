@@ -86,21 +86,30 @@
         <md-content layout-fill>
             <md-tabs md-dynamic-height md-border-bottom md-no-disconnect md-selected="selectedTabIndex">
                 <!-- Lista Movimenti -->
-                <md-tab label="Lista Movimenti">
+                <md-tab>
+                    <md-tab-label>
+                        <md-icon class="material-icons">list</md-icon> Lista Movimenti
+                    </md-tab-label>
                     <md-content class="md-padding" ng-if="selectedTabIndex === 0">
                         <div ng-include="'view/dettaglio.html'" ng-init="initializeGrid('ListaMovimenti')"></div>
                     </md-content>
                 </md-tab>
             
                 <!-- Bilancio -->
-                <md-tab label="Bilancio">
+                <md-tab>
+                    <md-tab-label>
+                        <md-icon class="material-icons">account_balance</md-icon> Bilancio
+                    </md-tab-label>
                     <md-content class="md-padding" ng-if="selectedTabIndex === 1">
                         <div ng-include="'view/balance.html'" ng-init="initializeGrid('Bilancio')"></div>
                     </md-content>
                 </md-tab>
             
                 <!-- Impostazioni -->
-                <md-tab label="Impostazioni">
+                <md-tab>
+                    <md-tab-label>
+                        <md-icon class="material-icons">settings</md-icon> Impostazioni
+                    </md-tab-label>
                     <md-content class="md-padding" ng-if="selectedTabIndex === 2">
                         <div ng-include="'view/settings.html'" ng-init="initializeGrid('Settings')"></div>
                     </md-content>
