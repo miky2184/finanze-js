@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', function (dataService, $rootScope, $interval, uiGridConstants) {
+    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', '$timeout', function (dataService, $rootScope, $interval, uiGridConstants, $timeout) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function afterCellEditFunction(rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -362,7 +362,10 @@
                 });
                 srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                 srvc.gridOptionsCatSott.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
-                srvc.refreshGridSettings();
+                // Ritarda il refresh per garantire che i gridApi siano pronti
+                $timeout(() => {
+                    srvc.refreshGridSettings();
+                }, 500);
             },
             refreshGridSettings: function () {
                 const gridApis = [
