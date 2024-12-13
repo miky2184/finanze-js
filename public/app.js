@@ -107,7 +107,28 @@
                     if ($scope.gridOptions && $scope.gridOptions.gridApi) {
                         $scope.gridOptions.gridApi.core.handleWindowResize();
                     }
-                }, 100);                
+                }, 100);     
+                
+                $timeout(() => {
+                    if ($scope.gridOptionsAmb && $scope.gridOptionsAmb.gridApi) {
+                        $scope.gridOptionsAmb.gridApi.core.handleWindowResize();
+                    }
+                    if ($scope.gridOptionsCat && $scope.gridOptionsCat.gridApi) {
+                        $scope.gridOptionsCat.gridApi.core.handleWindowResize();
+                    }
+                    if ($scope.gridOptionsSott && $scope.gridOptionsSott.gridApi) {
+                        $scope.gridOptionsSott.gridApi.core.handleWindowResize();
+                    }
+                    if ($scope.gridOptionsBen && $scope.gridOptionsBen.gridApi) {
+                        $scope.gridOptionsBen.gridApi.core.handleWindowResize();
+                    }
+                    if ($scope.gridOptionsAmbCat && $scope.gridOptionsAmbCat.gridApi) {
+                        $scope.gridOptionsAmbCat.gridApi.core.handleWindowResize();
+                    }
+                    if ($scope.gridOptionsCatSott && $scope.gridOptionsCatSott.gridApi) {
+                        $scope.gridOptionsCatSott.gridApi.core.handleWindowResize();
+                    }
+                }, 100);
             }
         };
 
