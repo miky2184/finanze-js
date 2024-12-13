@@ -1,9 +1,23 @@
-<div>
-    <label for="contoSelect">Seleziona una tipologia di conto:</label>
-    <select name="contoSelect" id="repeatCnSelect" ng-options="conto.conto as conto.label for conto in conti" ng-model="pivot.conto" ng-change="loadBudget()">
-    </select>
-    <label for="yearSelect"> Seleziona un anno: </label>
-    <select name="yearSelect" id="repeatYSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadBudget()">
-    </select>
+<div layout="column" class="budget-container">
+    <div layout="row" layout-align="start center" class="filters">
+        <md-input-container class="md-block" flex="30">
+            <label>Seleziona una tipologia di conto</label>
+            <md-select ng-model="pivot.conto" ng-change="loadBudget()">
+                <md-option ng-repeat="conto in conti" value="{{conto.conto}}">
+                    {{conto.label}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex="30">
+            <label>Seleziona un anno</label>
+            <md-select ng-model="pivot.year" ng-change="loadBudget()">
+                <md-option ng-repeat="year in years" value="{{year}}">
+                    {{year}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <div id="gridBudget" ui-grid="gridBudget" ui-grid-pinning ui-grid-auto-resize flex></div>
 </div>
-<div id="gridBudget" ui-grid="gridBudget" ui-grid-pinning ui-grid-auto-resize></div>

@@ -455,3 +455,25 @@ label-settings {
     margin-right: 8px;
     font-size: 18px;
 }
+
+.budget-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.filters {
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Sfondo per l'area dei filtri */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+#gridBudget {
+    flex: 1;
+    margin: 10px 20px; /* Margini attorno alla griglia */
+    overflow: auto; /* Permette lo scrolling se necessario */
+    background: white; /* Sfondo bianco per la griglia */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px; /* Angoli arrotondati */
+}
