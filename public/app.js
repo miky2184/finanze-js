@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
+    }]).controller('MainController', ['$scope', '$timeout', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $timeout, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
 
 
         /* PARAMETRI */
