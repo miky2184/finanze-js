@@ -376,3 +376,53 @@ label-settings {
     color: white;
     text-align: right;
 }
+
+/* Stili generali per la tabella */
+.ui-grid {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .ui-grid-header-cell {
+    background-color: #4CAF50;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 10px;
+  }
+  
+  .ui-grid-row:nth-child(odd) .ui-grid-cell {
+    background-color: #f9f9f9;
+  }
+  
+  .ui-grid-row:nth-child(even) .ui-grid-cell {
+    background-color: #ffffff;
+  }
+  
+  .ui-grid-cell {
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .ui-grid-row:hover .ui-grid-cell {
+    background-color: #e0f7fa;
+    transform: scale(1.01);
+  }
+  
+  /* Bottoni nella tabella */
+  .ui-grid-cell button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ui-grid-cell button:hover {
+    background-color: #388E3C;
+  }
