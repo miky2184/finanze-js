@@ -100,16 +100,20 @@
         $scope.gridOptionsBen = settingsService.gridOptionsBen;
         $scope.gridOptionsAmbCat = settingsService.gridOptionsAmbCat;
         $scope.gridOptionsCatSott = settingsService.gridOptionsCatSott;
+        
+        $scope.selectedTabIndex = 0;
 
         $scope.initializeGrid = function(tabName) {
-            if (tabName === 'ListaMovimenti') {
-                $timeout(() => {
-                    if ($scope.gridOptions && $scope.gridOptions.gridApi) {
-                        $scope.gridOptions.gridApi.core.handleWindowResize();
-                    }
-                }, 100);     
-                
-                $timeout(() => {
+            console.log(`Inizializzazione della griglia per il tab: ${tabName}`);
+        
+            $timeout(() => {
+                if (tabName === 'ListaMovimenti' && $scope.gridOptions && $scope.gridOptions.gridApi) {
+                    $scope.gridOptions.gridApi.core.handleWindowResize();
+                }
+                if (tabName === 'Bilancio' && $scope.gridOptionsBalance && $scope.gridOptionsBalance.gridApi) {
+                    $scope.gridOptionsBalance.gridApi.core.handleWindowResize();
+                }
+                if (tabName === 'Settings') {
                     if ($scope.gridOptionsAmb && $scope.gridOptionsAmb.gridApi) {
                         $scope.gridOptionsAmb.gridApi.core.handleWindowResize();
                     }
@@ -128,18 +132,9 @@
                     if ($scope.gridOptionsCatSott && $scope.gridOptionsCatSott.gridApi) {
                         $scope.gridOptionsCatSott.gridApi.core.handleWindowResize();
                     }
-                }, 100);
-            }
-
-            if (tabName === 'Budget') {
-                $timeout(() => {
-                    if ($scope.gridBudget && $scope.gridBudget.gridApi) {
-                        $scope.gridBudget.gridApi.core.handleWindowResize();
-                        return budgetService.loadBudget($scope.pivot);
-                    }
-                }, 100);   
-            }
-        };
+                }
+            }, 100);
+        };        
 
         /*********************
           TAB GRAFICO
