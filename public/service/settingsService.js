@@ -110,15 +110,17 @@
                 data: [],
                 isRowSelectable: function (row) {
                     return row.entity.used <= 0;
-                },
+                },                
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsAmb.gridApi = gridApi;
-                    if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
-                        srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
-                    } else {
-                        console.error("gridApi per Ambito non definito.");
-                    }
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                
+                    // Chiamata al refresh quando il gridApi è disponibile
+                    $interval(() => {
+                        if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                            srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                        }
+                    }, 100, 1);
                 }
             },
             gridOptionsCat: {
@@ -152,7 +154,14 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsCat.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
-                }
+                
+                    // Chiamata al refresh quando il gridApi è disponibile
+                    $interval(() => {
+                        if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                            srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                        }
+                    }, 100, 1);
+                }               
             },
             gridOptionsSott: {
                 minRowsToShow: 10,
@@ -185,6 +194,13 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsSott.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                
+                    // Chiamata al refresh quando il gridApi è disponibile
+                    $interval(() => {
+                        if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                            srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                        }
+                    }, 100, 1);
                 }
             },
             gridOptionsBen: {
@@ -218,6 +234,13 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsBen.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                
+                    // Chiamata al refresh quando il gridApi è disponibile
+                    $interval(() => {
+                        if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                            srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                        }
+                    }, 100, 1);
                 }
             },
             gridOptionsAmbCat: {
@@ -259,7 +282,14 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsAmbCat.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
-                }
+                
+                    // Chiamata al refresh quando il gridApi è disponibile
+                    $interval(() => {
+                        if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                            srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                        }
+                    }, 100, 1);
+                }                
             },
             gridOptionsCatSott: {
                 minRowsToShow: 9,
@@ -300,7 +330,14 @@
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsCatSott.gridApi = gridApi;
                     gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
-                }
+                
+                    // Chiamata al refresh quando il gridApi è disponibile
+                    $interval(() => {
+                        if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
+                            srvc.gridOptionsAmb.gridApi.core.handleWindowResize();
+                        }
+                    }, 100, 1);
+                }                
             },
             loadSettings: function () {
                 srvc.gridOptionsAmb.data = dataService.data.dropdownAmbito.filter(function (j) {
@@ -328,41 +365,22 @@
                 srvc.refreshGridSettings();
             },
             refreshGridSettings: function () {
-                if (srvc.gridOptionsAmb.gridApi && srvc.gridOptionsAmb.gridApi.core) {
-                    $interval(srvc.gridOptionsAmb.gridApi.core.handleWindowResize, 100, 10);
-                } else {
-                    console.warn("gridApi per Ambito non inizializzato.");
-                }
+                const gridApis = [
+                    srvc.gridOptionsAmb.gridApi,
+                    srvc.gridOptionsCat.gridApi,
+                    srvc.gridOptionsSott.gridApi,
+                    srvc.gridOptionsBen.gridApi,
+                    srvc.gridOptionsAmbCat.gridApi,
+                    srvc.gridOptionsCatSott.gridApi
+                ];
             
-                if (srvc.gridOptionsCat.gridApi && srvc.gridOptionsCat.gridApi.core) {
-                    $interval(srvc.gridOptionsCat.gridApi.core.handleWindowResize, 100, 10);
-                } else {
-                    console.warn("gridApi per Categoria non inizializzato.");
-                }
-            
-                if (srvc.gridOptionsSott.gridApi && srvc.gridOptionsSott.gridApi.core) {
-                    $interval(srvc.gridOptionsSott.gridApi.core.handleWindowResize, 100, 10);
-                } else {
-                    console.warn("gridApi per Sottocategoria non inizializzato.");
-                }
-            
-                if (srvc.gridOptionsBen.gridApi && srvc.gridOptionsBen.gridApi.core) {
-                    $interval(srvc.gridOptionsBen.gridApi.core.handleWindowResize, 100, 10);
-                } else {
-                    console.warn("gridApi per Beneficiario non inizializzato.");
-                }
-            
-                if (srvc.gridOptionsAmbCat.gridApi && srvc.gridOptionsAmbCat.gridApi.core) {
-                    $interval(srvc.gridOptionsAmbCat.gridApi.core.handleWindowResize, 100, 10);
-                } else {
-                    console.warn("gridApi per Ambito-Categoria non inizializzato.");
-                }
-            
-                if (srvc.gridOptionsCatSott.gridApi && srvc.gridOptionsCatSott.gridApi.core) {
-                    $interval(srvc.gridOptionsCatSott.gridApi.core.handleWindowResize, 100, 10);
-                } else {
-                    console.warn("gridApi per Categoria-Sottocategoria non inizializzato.");
-                }
+                gridApis.forEach((gridApi, index) => {
+                    if (gridApi && gridApi.core) {
+                        $interval(gridApi.core.handleWindowResize, 100, 10);
+                    } else {
+                        console.warn(`gridApi non inizializzato per griglia ${index}`);
+                    }
+                });
             }
         };
         return srvc;
