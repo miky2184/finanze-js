@@ -12,49 +12,54 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .ui-grid-header-cell {
+}
+
+.ui-grid-header-cell {
     background-color: var(--primary-color);
     color: black;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.05em;
     padding: 10px;
-  }
-  
-  .ui-grid-row:nth-child(odd) .ui-grid-cell {
+}
+
+.ui-grid-header-cell-label {
+    white-space: normal;
+    font-size: 13px;
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell {
     background-color: #f9f9f9;
-  }
-  
-  .ui-grid-row:nth-child(even) .ui-grid-cell {
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell {
     background-color: #ffffff;
-  }
-  
-  .ui-grid-cell {
+}
+
+.ui-grid-cell {
     transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .ui-grid-row:hover .ui-grid-cell {
+}
+
+.ui-grid-row:hover .ui-grid-cell {
     background-color: #e0f7fa;
     transform: scale(1.01);
-  }
-  
-  .ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
     background-color: #ffdddd !important;
-  }
-  
-  .ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
     background-color: #f5d3d3 !important;
-  }
-  
-  .ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
     background-color: #ddffdd;
-  }
-  
-  .ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
     background-color: #d3f5d3;
-  }
+}
 
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell.delete {
     background-color: #f5b3c3 !important;
@@ -74,11 +79,6 @@ body {
     font-size: 18px;
     padding: 2px 8px;
     width: 2.2em;
-}
-
-.ui-grid-header-cell-label {
-    white-space: normal;
-    font-size: 10px;
 }
 
 .form-login {
@@ -362,28 +362,28 @@ label-settings {
 .personale {
     background-color: rgb(129, 212, 250) !important;
     font-weight: bold;
-    color: white;
+    color: black;
     text-align: center;
 }
 
 .marianna {
     background-color: rgb(206, 147, 216) !important;
     font-weight: bold;
-    color: white;
+    color: black;
     text-align: center;
 }
 
 .comune {
     background-color: rgb(165, 214, 167) !important;
     font-weight: bold;
-    color: white;
+    color: black;
     text-align: center;
 }
 
 .totale {
     background-color: rgb(128, 128, 128) !important;
     font-weight: bold;
-    color: white;
+    color: black;
     text-align: center;
 }
 
