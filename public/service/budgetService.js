@@ -252,8 +252,7 @@
                         width: '4%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg', col);
-                        },
-                        pinnedLeft: true
+                        }
                     }, {
                         name: 'categoria',
                         displayName: 'CATEGORIA',
@@ -262,8 +261,7 @@
                         width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg', col);
-                        },
-                        pinnedLeft: true
+                        }
                     }, {
                         name: 'sottocategoria',
                         displayName: 'SOTTOCATEGORIA',
@@ -272,8 +270,7 @@
                         width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
                             return srvc.getClass(row.entity, 'perc_budg', col);
-                        },
-                        pinnedLeft: true
+                        }
                     },
                     {
                         name: 'perc_budg',
@@ -297,8 +294,7 @@
 
                             //return srvc.getClass(row.entity, 'perc_budg', col);
                         },
-                        type: 'number',   
-                        pinnedLeft: true
+                        type: 'number'
                     },
                     {
                         name: 'budg_tot_anno',
@@ -312,8 +308,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
-                        type: 'number',     
-                        pinnedLeft: true
+                        type: 'number'
                     },
                     {
                         name: 'tot_anno',
@@ -327,8 +322,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
-                        aggregationType: uiGridConstants.aggregationTypes.sum,
-                        pinnedLeft: true
+                        aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_gen',
                         displayName: 'BUDGET GEN',
