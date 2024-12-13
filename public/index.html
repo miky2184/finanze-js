@@ -174,10 +174,15 @@
                 </md-tab>
             </md-tabs>
             <div layout="row" layout-align="end end">
-                <md-button aria-label="{{button.label}}" class="md-raised md-primary" ng-repeat="button in saveButtons"
-                    layout="column" ng-click="button.listener(gridOptions)" ng-disabled="button.disabled()">
-                    {{button.label}}</md-button>
-            </div>
+                <md-button aria-label="{{button.label}}" class="md-raised modern-button" 
+                           ng-repeat="button in saveButtons"
+                           layout="row" layout-align="center center"
+                           ng-click="button.listener(gridOptions)" 
+                           ng-disabled="button.disabled()">
+                    <md-icon ng-if="button.icon" class="material-icons">{{button.icon}}</md-icon>
+                    <span>{{button.label}}</span>
+                </md-button>
+            </div>            
         </md-content>
     </div>
 </body>

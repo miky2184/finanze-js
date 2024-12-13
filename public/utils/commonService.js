@@ -85,6 +85,7 @@
                     });
                 }
             },
+
             saveBtn: {
                 label: 'Salva',
                 listener: function () {
@@ -92,7 +93,8 @@
                 },
                 disabled: function () {
                     return !dataService.data.admin;
-                }
+                },
+                icon: 'save' 
             },
             cancelBtn: {
                 label: $strings.MODAL.ANNULLA,
@@ -112,7 +114,8 @@
                 },
                 disabled: function () {
                     return !dataService.data.admin;
-                }
+                },
+                icon: 'cancel'
             },
             exitBtn: {
                 label: 'Esci',
@@ -140,7 +143,8 @@
                 },
                 disabled: function () {
                     return !dataService.data.admin;
-                }
+                },
+                icon: 'exit_to_app'
             }
         };
         return srvc;
