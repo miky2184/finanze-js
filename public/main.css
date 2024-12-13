@@ -1,215 +1,378 @@
-/* ====== Stili Generali ====== */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--background-color, #ffffff);
-    color: var(--text-color, #000000);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    margin: 0;
-  }
-  
-  .container {
-    padding: 20px;
-  }
-  
-  /* ====== Tema Scuro ====== */
-  :root[data-theme="light"] {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --primary-color: #4CAF50;
-    --secondary-color: #81C784;
-  }
-  
-  :root[data-theme="dark"] {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --primary-color: #BB86FC;
-    --secondary-color: #3700B3;
-  }
-  
-  /* ====== Tabelle ====== */
-  .ui-grid {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .ui-grid-header-cell {
-    background-color: var(--primary-color);
-    color: white;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 10px;
-  }
-  
-  .ui-grid-row:nth-child(odd) .ui-grid-cell {
-    background-color: #f9f9f9;
-  }
-  
-  .ui-grid-row:nth-child(even) .ui-grid-cell {
-    background-color: #ffffff;
-  }
-  
-  .ui-grid-cell {
-    padding: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .ui-grid-row:hover .ui-grid-cell {
-    background-color: #e0f7fa;
-    transform: scale(1.01);
-  }
-  
-  .ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
+.ui-grid-row:nth-child(odd) .ui-grid-cell.deleted {
     background-color: #ffdddd !important;
-  }
-  
-  .ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.deleted {
     background-color: #f5d3d3 !important;
-  }
-  
-  .ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
-    background-color: #ddffdd;
-  }
-  
-  .ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
-    background-color: #d3f5d3;
-  }
-  
-  /* ====== Testo ====== */
-  .text-right {
+}
+
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell.delete {
+    background-color: #f5b3c3 !important;
+}
+
+.ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
+    background-color: #ddffdd
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
+    background-color: #d3f5d3
+}
+
+.text-right {
     text-align: right;
-  }
-  
-  .text-center {
+}
+
+.text-center {
     text-align: center;
-  }
-  
-  /* ====== Pulsanti Moderni ====== */
-  .btn-modern {
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-modern:hover {
-    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-    transform: translateY(-2px);
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* ====== Icone e Classi Specifiche ====== */
-  .icon::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    margin: 10px;
-  }
-  
-  .check::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f560";
-    margin-left: 12px;
-  }
-  
-  .webapp::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f3cd";
-    margin-left: 12px;
-  }
-  
-  .contabilizzata::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f24e";
-    margin-left: 12px;
-  }
-  
-  .flagbudget::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f032";
-    margin-left: 12px;
-  }
-  
-  .visualizzare::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f06e";
-    margin-left: 12px;
-  }
-  
-  .cartacredito::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f09d";
-    margin-left: 12px;
-  }
-  
-  .fissa::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 700;
-    content: "\f02e";
-    margin-left: 12px;
-  }
-  
-  /* ====== Tooltip ====== */
-  .ui-grid-cell-tooltip {
-    position: relative;
-  }
-  
-  .ui-grid-cell-tooltip:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+}
+
+.btn.btn-default.navbar-btn {
+    line-height: 1.42857;
+    font-size: 18px;
+    padding: 2px 8px;
+    width: 2.2em;
+}
+
+.ui-grid-header-cell-label {
+    white-space: normal;
+    font-size: 10px;
+}
+
+.form-login {
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.min-padding {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.min-padding-table {
+    padding: 0px;
+}
+
+.panel-footer {
+    padding: 6px;
+}
+
+.panel .panel-default {
+    margin-bottom: 4px;
+}
+
+.panel-heading {
     font-size: 12px;
-    white-space: nowrap;
-    z-index: 1000;
-  }
-  
-  /* ====== Sezioni ====== */
-  .listaMovimenti section {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px;
+    text-align: center;
+}
+
+.panel-body.min-padding {
+    padding: 0px 15px;
+}
+
+.homeimg {
+    background-image: url('images/home.png');
+    background-size: 1024px 720px;
+    width: 1024px;
+    height: 720px;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.textapp {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: #fafafa !important;
+}
+
+.budget-col {
+    background-color: lightgray !important;
+    text-align: right;
+}
+
+.disable {
+    background-color: #f3f3f3 !important;
+    text-align: right;
+}
+
+.salary {
+    background-color: #78909C !important;
+    text-align: right;
+    font-weight: bold;
+    color: white;
+}
+
+.md-button.md-fab.md-mini {
+    line-height: 4rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.md-button.md-fab.md-mini-mini {
+    line-height: 2rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.listaMovimenti section {
     background: #f7f7f7;
     border-radius: 3px;
     text-align: center;
     margin: 1em;
     position: relative !important;
     padding-bottom: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* ====== Responsive ====== */
-  @media (max-width: 768px) {
-    .ui-grid-cell {
-      font-size: 12px;
-      padding: 5px;
-    }
-  
-    .btn-modern {
-      padding: 8px 15px;
-      font-size: 14px;
-    }
-  }
+}
+
+.listaMovimenti md-content {
+    margin-right: 7px;
+}
+
+.listaMovimenti section .md-button {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+label-settings {
+    position: absolute;
+    bottom: 5px;
+    left: 7px;
+    font-size: 14px;
+    opacity: 0.54;
+    color: black;
+}
+
+.table-header {
+    margin: 0;
+    padding: 3px 0;
+    text-align: center;
+    background: gray;
+    color: white;
+}
+
+.a-button {
+    padding: 0;
+    vertical-align: middle;
+    border: 1px solid;
+    border-color: #adb1b8 #a2a6ac #8d9096;
+    text-align: center;
+    overflow: hidden;
+    text-decoration: none !important;
+    cursor: pointer;
+    display: inline-block;
+    background: #d8dde6;
+    background: #e7e9ec;
+    border-radius: 3px;
+}
+
+.a-button-text {
+    padding: 0px 10px 0px 11px;
+    text-align: center;
+    color: #111111;
+    font-size: 13px;
+    line-height: 29px;
+    display: block;
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    white-space: nowrap;
+    padding: 0 20px 0 39px;
+}
+
+.a-button-inner {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 29px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+    border-radius: 2px;
+}
+
+.a-button-input {
+    position: absolute;
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: white;
+    outline: 0;
+    border: 0;
+    overflow: visible;
+    cursor: pointer;
+    opacity: 0.01;
+    filter: alpha(opacity=1);
+}
+
+.a-button-primary {
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111111;
+    background: #f0c14b;
+}
+
+.a-button-primary .a-button-inner {
+    background: #f3d078;
+    background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7dfa5', endColorstr='#f0c14b', GradientType=0);
+    *zoom: 1;
+}
+
+.a-button-primary:hover .a-button-inner {
+    background: #f1c860;
+    background: -webkit-linear-gradient(top, #f5d78e, #eeb933);
+    background: linear-gradient(to bottom, #f5d78e, #eeb933);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5d78e', endColorstr='#eeb933', GradientType=0);
+    *zoom: 1;
+}
+
+.a-button-primary:active .a-button-inner {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    background-color: #f0c14b;
+    background-image: none;
+    filter: none;
+}
+
+.a-button-primary:hover {
+    border-color: #9c7e31 #90742d #786025;
+}
+
+.a-button-primary:active {
+    border-color: #a88734 #9c7e31 #9c7e31;
+}
+
+.a-icon-cart {
+    left: 2px;
+    top: 2px;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    background-position: -35px -5px;
+    background-image: url(http://g-ecx.images-amazon.com/images/G/01/amazonui/sprites/aui_sprite_0037-1x._V1_.png);
+    background-repeat: no-repeat;
+    background-size: 400px 600px;
+    -webkit-background-size: 400px 600px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.icon::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    margin: 10px;
+}
+
+.check::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f560";
+    margin-left: 12px;
+}
+
+.webapp::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f3cd";
+    margin-left: 12px;
+}
+
+.contabilizzata::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f24e";
+    margin-left: 12px;
+}
+
+.flagbudget::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f032";
+    margin-left: 12px;
+}
+
+.visualizzare::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f06e";
+    margin-left: 12px;
+}
+
+.cartacredito::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f09d";
+    margin-left: 12px;
+}
+
+.fissa::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    content: "\f02e";
+    margin-left: 12px;
+}
+
+.personale {
+    background-color: rgb(129, 212, 250) !important;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.marianna {
+    background-color: rgb(206, 147, 216) !important;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.comune {
+    background-color: rgb(165, 214, 167) !important;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.totale {
+    background-color: rgb(128, 128, 128) !important;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+.green {
+    background-color: rgba(0, 128, 0, 0.6) !important;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+}
+
+.yellow {
+    background-color: rgba(255, 255, 0, 0.6) !important;    
+    font-weight: bold;
+    color: black;
+    text-align: right;
+}
+
+.orange {
+    background-color: rgba(255, 128, 0, 0.6) !important;    
+    font-weight: bold;    
+    color: black;
+    text-align: right;
+}
+
+.red {
+    background-color: rgb(211, 47, 47) !important;
+    font-weight: bold;
+    color: white;
+    text-align: right;
+}
