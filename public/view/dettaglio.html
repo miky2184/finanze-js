@@ -7,11 +7,9 @@
        ui-grid-auto-resize>
   </div>
   <div flex layout="row" layout-align="start end">
-    <md-button aria-label="{{button.label}}" 
+    <md-button aria-label="{{button.label}}"   class="md-raised modern-button"
                layout="column" 
-               ng-repeat="button in actionButtons" 
-               class="btn-modern md-fab md-mini md-primary" 
-               style='margin-left: 0px;'  
+               ng-repeat="button in actionButtons"                
                ng-click="button.listener(gridOptions, 'LM')" 
                ng-disabled="button.disabled('LM')">
       <md-icon md-svg-src="{{button.src}}"></md-icon>
