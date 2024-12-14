@@ -284,7 +284,8 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
-                    headerCellClass: 'icon contabilizzata'
+                    headerCellClass: 'icon contabilizzata',
+                    cellClass: 'text-center'
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
@@ -292,7 +293,8 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-eye',
-                    headerCellClass: 'icon visualizzare'
+                    headerCellClass: 'icon visualizzare',
+                    cellClass: 'text-center'
                 }, {
                     field: 'budget',
                     displayName: ' ',
@@ -300,7 +302,8 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-bold',
-                    headerCellClass: 'icon flagbudget'
+                    headerCellClass: 'icon flagbudget',
+                    cellClass: 'text-center'
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
@@ -308,7 +311,8 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'far fa-credit-card',
-                    headerCellClass: 'icon cartacredito'
+                    headerCellClass: 'icon cartacredito',
+                    cellClass: 'text-center'
                 }, {
                     field: 'webapp',
                     displayName: ' ',
@@ -316,7 +320,8 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',
-                    headerCellClass: 'icon webapp'
+                    headerCellClass: 'icon webapp',
+                    cellClass: 'text-center'
                 }, {
                     field: 'check',
                     displayName: ' ',
@@ -324,7 +329,8 @@
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-check-double',
-                    headerCellClass: 'icon check'
+                    headerCellClass: 'icon check',
+                    cellClass: 'text-center'
                 }, {
                     field: 'importo',
                     displayName: 'IMPORTO',
@@ -362,6 +368,7 @@
                     displayName: 'ANNO',
                     width: '3%',
                     type: 'number',
+                    cellClass: 'text-center',
                     filters: [{
                             condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
                             placeholder: 'greater than'
@@ -376,6 +383,7 @@
                     displayName: 'MESE',
                     width: '3%',
                     type: 'number',
+                    cellClass: 'text-center',
                     filters: [{
                             condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
                             placeholder: 'greater than'
