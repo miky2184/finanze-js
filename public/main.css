@@ -490,9 +490,9 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -510,7 +510,7 @@ footer {
 .md-button.md-fab {
     width: auto;
     height: auto;
-    padding: 12px;
+    padding: 6px;
     border-radius: 50%; /* Per bottoni circolari */
 }
 
@@ -531,8 +531,8 @@ footer {
 
 /* Per pulsanti di grandi dimensioni */
 .md-button.large {
-    font-size: 16px;
-    padding: 16px 24px;
+    font-size: 12px;
+    padding: 12px 18px;
 }
 
 .md-button.large .material-icons {
