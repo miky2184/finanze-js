@@ -76,7 +76,6 @@
                 columnDefs: [{
                     field: 'data',
                     displayName: 'DATA',
-                    headerCellClass: 'text-center',
                     width: '5%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
@@ -98,7 +97,6 @@
                 }, {
                     name: 'ambito',
                     displayName: 'AMBITO',
-                    headerCellClass: 'text-center',
                     field: 'ambito',
                     width: '5%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -132,7 +130,6 @@
                 }, {
                     name: 'categoria',
                     displayName: 'CATEGORIA',
-                    headerCellClass: 'text-center',
                     field: 'categoria',
                     width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -169,7 +166,6 @@
                 }, {
                     name: 'sottocategoria',
                     displayName: 'SOTTOCATEGORIA',
-                    headerCellClass: 'text-center',
                     field: 'sottocategoria',
                     width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -206,7 +202,6 @@
                 }, {
                     name: 'beneficiario',
                     displayName: 'BENEFICIARIO',
-                    headerCellClass: 'text-center',
                     field: 'beneficiario',
                     width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -233,7 +228,6 @@
                 }, {
                     name: 'conto',
                     displayName: 'CONTO',
-                    headerCellClass: 'text-center',
                     field: 'conto',
                     width: '7%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -261,7 +255,6 @@
                     field: 'tipo_conto',
                     name: 'tipo_conto',
                     displayName: 'TIPO CONTO',
-                    headerCellClass: 'text-center',
                     width: '7%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'tipo_conto',
@@ -287,7 +280,6 @@
                 }, {
                     field: 'contabilizzata',
                     displayName: ' ',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -296,7 +288,6 @@
                 }, {
                     field: 'visualizzare',
                     displayName: ' ',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -305,7 +296,6 @@
                 }, {
                     field: 'budget',
                     displayName: ' ',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -314,7 +304,6 @@
                 }, {
                     field: 'cartaCredito',
                     displayName: ' ',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -323,7 +312,6 @@
                 }, {
                     field: 'webapp',
                     displayName: ' ',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -332,7 +320,6 @@
                 }, {
                     field: 'check',
                     displayName: ' ',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
@@ -341,7 +328,6 @@
                 }, {
                     field: 'importo',
                     displayName: 'IMPORTO',
-                    headerCellClass: 'text-center',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
                     cellFilter: 'currency',
@@ -361,7 +347,6 @@
                 }, {
                     field: 'info',
                     displayName: 'INFO',
-                    headerCellClass: 'text-center',
                     cellTooltip: true,
                     width: '*',
                     filter: {
@@ -375,7 +360,6 @@
                 }, {
                     field: 'anno',
                     displayName: 'ANNO',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     type: 'number',
                     filters: [{
@@ -390,7 +374,6 @@
                 }, {
                     field: 'mese',
                     displayName: 'MESE',
-                    headerCellClass: 'text-center',
                     width: '3%',
                     type: 'number',
                     filters: [{

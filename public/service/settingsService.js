@@ -91,18 +91,15 @@
                 columnDefs: [{
                     name: 'ID',
                     displayName: 'ID',
-                    headerCellClass: 'text-center',
                     field: 'ambito',
                     width: '10%'
                 }, {
                     field: 'label',
                     displayName: 'AMBITO',
-                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
                     displayName: '#FREQ',
-                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -131,18 +128,15 @@
                 columnDefs: [{
                     name: 'ID',
                     displayName: 'ID',
-                    headerCellClass: 'text-center',
                     field: 'categoria',
                     width: '10%'
                 }, {
                     field: 'label',
                     displayName: 'CATEGORIA',
-                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
                     displayName: '#FREQ',
-                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -171,18 +165,15 @@
                 columnDefs: [{
                     name: 'ID',
                     displayName: 'ID',
-                    headerCellClass: 'text-center',
                     field: 'sottocategoria',
                     width: '10%'
                 }, {
                     field: 'label',
                     displayName: 'SOTTOCATEGORIA',
-                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
                     displayName: '#FREQ',
-                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -211,18 +202,15 @@
                 columnDefs: [{
                     name: 'ID',
                     displayName: 'ID',
-                    headerCellClass: 'text-center',
                     field: 'beneficiario',
                     width: '10%'
                 }, {
                     field: 'label',
                     displayName: 'BENEFICIARIO',
-                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'used',
                     displayName: '#FREQ',
-                    headerCellClass: 'text-center',
                     type: 'number',
                     cellClass: 'text-right',
                     width: '35%'
@@ -250,7 +238,6 @@
                 columnDefs: [{
                     name: 'ambito',
                     displayName: 'AMBITO',
-                    headerCellClass: 'text-center',
                     field: 'ambito',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
@@ -265,7 +252,6 @@
                 }, {
                     name: 'categoria',
                     displayName: 'CATEGORIA',
-                    headerCellClass: 'text-center',
                     field: 'categoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
@@ -298,7 +284,6 @@
                 columnDefs: [{
                     name: 'categoria',
                     displayName: 'CATEGORIA',
-                    headerCellClass: 'text-center',
                     field: 'categoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
@@ -313,7 +298,6 @@
                 }, {
                     name: 'sottocategoria',
                     displayName: 'SOTTOCATEGORIA',
-                    headerCellClass: 'text-center',
                     field: 'sottocategoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',

@@ -1,4 +1,4 @@
-<div class="ui-grid-cell-contents text-center" title="TOOLTIP">
+<div title="TOOLTIP">
   <a ng-click="grid.api.edit.raise.beginCellEdit(row.entity, col.colDef); MODEL_COL_FIELD = !COL_FIELD; grid.api.edit.raise.afterCellEdit(row.entity, col.colDef, COL_FIELD, !COL_FIELD);" 
      href="#" ng-disabled="col.colDef.buttonDisabled(row.entity, col.colDef)" class="{{col.colDef.classCustom(row.entity, col.colDef)}}">
     <span class="fa fa-fw" ng-class="COL_FIELD ? 'fa-' + (col.colDef.checkedClass || 'check-square-o') : 'fa-'+ (col.colDef.uncheckedClass || 'square-o')" />

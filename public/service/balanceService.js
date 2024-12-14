@@ -12,13 +12,11 @@
                 columnDefs: [{
                     name: 'conto',
                     displayName: 'CONTO',
-                    headerCellClass: 'text-center',
                     field: 'conto',
                     width: '20%'
                 }, {
                     name: 'conto_comune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
-                    headerCellClass: 'text-center',
                     field: 'conto_comune',
                     width: '20%',
                     cellClass: 'text-right',
@@ -28,7 +26,6 @@
                 }, {
                     name: 'conto_personale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
-                    headerCellClass: 'text-center',
                     field: 'conto_personale',
                     width: '20%',
                     cellClass: 'text-right',
@@ -38,7 +35,6 @@
                 }, {
                     name: 'conto_marianna',
                     displayName: $strings.CONTO.CONTO_MARIANNA,
-                    headerCellClass: 'text-center',
                     field: 'conto_marianna',
                     width: '20%',
                     cellClass: 'text-right',
@@ -48,7 +44,6 @@
                 }, {
                     name: 'totale',
                     displayName: 'TOTALE',
-                    headerCellClass: 'text-center',
                     field: 'totale',
                     width: '20%',
                     cellClass: 'text-right',
@@ -72,28 +67,23 @@
                 columnDefs: [{
                     field: 'beneficiario',
                     displayName: 'DA/A',
-                    headerCellClass: 'text-center',
                     width: '14%'
                 }, {
                     field: 'info',
                     displayName: 'INFO',
-                    headerCellClass: 'text-center',
                     width: '*'
                 }, {
                     field: 'anno',
                     displayName: 'ANNO',
-                    headerCellClass: 'text-center',
                     cellClass: 'text-center',
                     width: '7%'
                 }, {
                     field: 'mese',
                     displayName: 'MESE',
-                    headerCellClass: 'text-center',
                     cellClass: 'text-center',
                     width: '7%',
                 }, {
                     displayName: 'CONTO COMUNE',
-                    headerCellClass: 'text-center',
                     field: 'conto_comune',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
@@ -102,7 +92,6 @@
                     width: '12%'
                 }, {
                     displayName: 'CONTO PERSONALE',
-                    headerCellClass: 'text-center',
                     field: 'conto_personale',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',
@@ -111,7 +100,6 @@
                     width: '12%'
                 }, {
                     displayName: 'CONTO MARIANNA',
-                    headerCellClass: 'text-center',
                     field: 'conto_marianna',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
                     footerCellFilter: 'currency',

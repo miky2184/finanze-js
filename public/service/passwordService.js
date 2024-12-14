@@ -22,35 +22,30 @@
                     displayName: 'SITO',
                     field: 'site',
                     type: 'text',
-                    headerCellClass: 'text-center',
                     width: '20%'
                 }, {
                     name: 'USER',
                     displayName: 'USERNAME',
                     field: 'user',
                     type: 'text',
-                    headerCellClass: 'text-center',
                     width: '20%'
                 }, {
                     name: 'PWD',
                     displayName: 'PASSWORD',
                     field: 'pwd',
                     type: 'text',
-                    headerCellClass: 'text-center',
                     width: '20%'
                 }, {
                     name: 'URL',
                     displayName: 'URL',
                     field: 'url',
                     type: 'text',
-                    headerCellClass: 'text-center',
                     width: '20%'
                 }, {
                     name: 'NOTE',
                     displayName: 'Note',
                     field: 'note',
                     type: 'text',
-                    headerCellClass: 'text-center',
                     width: '20%'
                 }],
                 data: [],

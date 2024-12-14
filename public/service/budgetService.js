@@ -82,7 +82,6 @@
                 columnDefs: [{
                         name: 'mese',
                         displayName: 'MESE',
-                        headerCellClass: 'text-center',
                         field: 'mese',
                         width: '10%',
                         type: 'number',
@@ -100,7 +99,6 @@
                     {
                         name: 'ambito',
                         displayName: 'AMBITO',
-                        headerCellClass: 'text-center',
                         field: 'ambito',
                         width: '20%',
                         editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -134,7 +132,6 @@
                     }, {
                         name: 'categoria',
                         displayName: 'CATEGORIA',
-                        headerCellClass: 'text-center',
                         field: 'categoria',
                         width: '20%',
                         editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -171,7 +168,6 @@
                     }, {
                         name: 'sottocategoria',
                         displayName: 'SOTTOCATEGORIA',
-                        headerCellClass: 'text-center',
                         field: 'sottocategoria',
                         width: '20%',
                         editableCellTemplate: 'ui-grid/dropdownEditor',
@@ -208,7 +204,6 @@
                     }, {
                         name: 'budget',
                         displayName: 'BUDGET',
-                        headerCellClass: 'text-center',
                         field: 'budget',
                         width: '*',
                         type: 'number',
@@ -245,7 +240,6 @@
                 columnDefs: [{
                         name: 'ambito',
                         displayName: 'AMBITO',
-                        headerCellClass: 'text-center',
                         field: 'ambito',
                         width: '4%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -254,7 +248,6 @@
                     }, {
                         name: 'categoria',
                         displayName: 'CATEGORIA',
-                        headerCellClass: 'text-center',
                         field: 'categoria',
                         width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -263,7 +256,6 @@
                     }, {
                         name: 'sottocategoria',
                         displayName: 'SOTTOCATEGORIA',
-                        headerCellClass: 'text-center',
                         field: 'sottocategoria',
                         width: '8%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -273,7 +265,6 @@
                     {
                         name: 'perc_budg',
                         displayName: '%',
-                        headerCellClass: 'text-center',
                         field: 'perc_budg',
                         width: '3%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -297,7 +288,6 @@
                     {
                         name: 'budg_tot_anno',
                         displayName: 'BUDGET ANNO',
-                        headerCellClass: 'text-center',
                         field: 'budg_tot_anno',
                         width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -311,7 +301,6 @@
                     {
                         name: 'tot_anno',
                         displayName: 'SPESO ANNO',
-                        headerCellClass: 'text-center',
                         field: 'tot_anno',
                         width: '6%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -324,7 +313,6 @@
                     }, {
                         name: 'budg_gen',
                         displayName: 'BUDGET GEN',
-                        headerCellClass: 'text-center',
                         field: 'budg_gen',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -337,7 +325,6 @@
                     }, {
                         name: 'gen',
                         displayName: 'GEN',
-                        headerCellClass: 'text-center',
                         field: 'gen',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -350,7 +337,6 @@
                     }, {
                         name: 'budg_feb',
                         displayName: 'BUDGET FEB',
-                        headerCellClass: 'text-center',
                         field: 'budg_feb',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -363,7 +349,6 @@
                     }, {
                         name: 'feb',
                         displayName: 'FEB',
-                        headerCellClass: 'text-center',
                         field: 'feb',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -376,7 +361,6 @@
                     }, {
                         name: 'budg_mar',
                         displayName: 'BUDGET MAR',
-                        headerCellClass: 'text-center',
                         field: 'budg_mar',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -389,7 +373,6 @@
                     }, {
                         name: 'mar',
                         displayName: 'MAR',
-                        headerCellClass: 'text-center',
                         field: 'mar',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -402,7 +385,6 @@
                     }, {
                         name: 'budg_apr',
                         displayName: 'BUDGET APR',
-                        headerCellClass: 'text-center',
                         field: 'budg_apr',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -415,7 +397,6 @@
                     }, {
                         name: 'apr',
                         displayName: 'APR',
-                        headerCellClass: 'text-center',
                         field: 'apr',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -428,7 +409,6 @@
                     }, {
                         name: 'budg_mag',
                         displayName: 'BUDGET MAG',
-                        headerCellClass: 'text-center',
                         field: 'budg_mag',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -441,7 +421,6 @@
                     }, {
                         name: 'mag',
                         displayName: 'MAG',
-                        headerCellClass: 'text-center',
                         field: 'mag',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -454,7 +433,6 @@
                     }, {
                         name: 'budg_giu',
                         displayName: 'BUDGET GIU',
-                        headerCellClass: 'text-center',
                         field: 'budg_giu',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -467,7 +445,6 @@
                     }, {
                         name: 'giu',
                         displayName: 'GIU',
-                        headerCellClass: 'text-center',
                         field: 'giu',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -480,7 +457,6 @@
                     }, {
                         name: 'budg_lug',
                         displayName: 'BUDGET LUG',
-                        headerCellClass: 'text-center',
                         field: 'budg_lug',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -493,7 +469,6 @@
                     }, {
                         name: 'lug',
                         displayName: 'LUG',
-                        headerCellClass: 'text-center',
                         field: 'lug',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -506,7 +481,6 @@
                     }, {
                         name: 'budg_ago',
                         displayName: 'BUDGET AGO',
-                        headerCellClass: 'text-center',
                         field: 'budg_ago',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -519,7 +493,6 @@
                     }, {
                         name: 'ago',
                         displayName: 'AGO',
-                        headerCellClass: 'text-center',
                         field: 'ago',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -532,7 +505,6 @@
                     }, {
                         name: 'budg_sett',
                         displayName: 'BUDGET SETT',
-                        headerCellClass: 'text-center',
                         field: 'budg_sett',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -545,7 +517,6 @@
                     }, {
                         name: 'sett',
                         displayName: 'SETT',
-                        headerCellClass: 'text-center',
                         field: 'sett',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -558,7 +529,6 @@
                     }, {
                         name: 'budg_ott',
                         displayName: 'BUDGET OTT',
-                        headerCellClass: 'text-center',
                         field: 'budg_ott',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -571,7 +541,6 @@
                     }, {
                         name: 'ott',
                         displayName: 'OTT',
-                        headerCellClass: 'text-center',
                         field: 'ott',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -584,7 +553,6 @@
                     }, {
                         name: 'budg_nov',
                         displayName: 'BUDGET NOV',
-                        headerCellClass: 'text-center',
                         field: 'budg_nov',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -597,7 +565,6 @@
                     }, {
                         name: 'nov',
                         displayName: 'NOV',
-                        headerCellClass: 'text-center',
                         field: 'nov',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -610,7 +577,6 @@
                     }, {
                         name: 'budg_dic',
                         displayName: 'BUDGET DIC',
-                        headerCellClass: 'text-center',
                         field: 'budg_dic',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
@@ -623,7 +589,6 @@
                     }, {
                         name: 'dic',
                         displayName: 'DIC',
-                        headerCellClass: 'text-center',
                         field: 'dic',
                         width: '5%',
                         cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
