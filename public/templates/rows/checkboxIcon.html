@@ -1,6 +1,7 @@
-<div title="TOOLTIP">
-	<a ng-click="grid.api.edit.raise.beginCellEdit(row.entity, col.colDef); MODEL_COL_FIELD = !COL_FIELD; grid.api.edit.raise.afterCellEdit(row.entity, col.colDef, COL_FIELD, !COL_FIELD);" href="#" 
-	ng-disable="col.colDef.buttonDisabled(row.entity, col.colDef)">
-	<span ng-class="row.entity[col.colDef.field] === true ? col.colDef.buttonNgClass : 'far fa-square'" />
+<div title="TOOLTIP" class="cell-content">
+	<a ng-click="grid.api.edit.raise.beginCellEdit(row.entity, col.colDef); MODEL_COL_FIELD = !COL_FIELD; grid.api.edit.raise.afterCellEdit(row.entity, col.colDef, COL_FIELD, !COL_FIELD);" 
+	   href="#" 
+	   ng-disable="col.colDef.buttonDisabled(row.entity, col.colDef)">
+	  <span ng-class="row.entity[col.colDef.field] === true ? col.colDef.buttonNgClass : 'far fa-square'"></span>
 	</a>
-</div>
+  </div>

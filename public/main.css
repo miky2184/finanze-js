@@ -653,3 +653,21 @@ footer {
     background-color: #c82333;
     transform: scale(1.05);
 }
+
+.cell-content {
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center;    /* Centra verticalmente */
+    height: 100%;           /* Assicura che l'altezza sia completa rispetto alla cella */
+    text-align: center;     /* Assicura l'allineamento del testo */
+  }
+  
+  /* Facoltativo: styling per il link e l'icona */
+  .cell-content a {
+    text-decoration: none;  /* Rimuove la sottolineatura dal link */
+    color: inherit;         /* Usa il colore ereditato */
+  }
+  
+  .cell-content span {
+    font-size: 1.2rem;      /* Dimensione personalizzata per l'icona */
+  }
