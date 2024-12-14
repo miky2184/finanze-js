@@ -560,3 +560,104 @@ footer {
     width: 2rem;
     height: 2rem;
 }
+
+/* Stile Generale del Modal */
+.popup-modal {
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff; /* Sfondo bianco per maggiore leggibilità */
+    color: #333333; /* Testo leggibile */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Header del Modal */
+.modal-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    background: linear-gradient(45deg, #4c77af, #87cefa);
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Corpo del Modal */
+.modal-body {
+    padding: 16px 24px;
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Footer del Modal */
+.modal-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 16px;
+    padding-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pulsanti */
+.btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+/* Stili specifici dei pulsanti */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+}
+
+/* Pulsanti con stato */
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}

@@ -1,24 +1,16 @@
 <div class="modal-header popup-modal">
-  {{title}}
+  <h3 class="modal-title">{{title}}</h3>
 </div>
 <div class="modal-body popup-modal">
   <p>{{text}}</p>
 </div>
 <div class="modal-footer text-center popup-modal">
-  <div class="btn-group btn-group-justified">
-    <div class="btn-group">
-      <button class="btn" ng-class="{
-                        'btn-default': !style, 
-                        'btn-warning': style==='warning', 
-                        'btn-danger': style==='error'
-                        }"  ng-click="$close()" id="yes-modal-btn">{{yes}}</button>
-    </div>
-    <div class="btn-group">
-      <button class="btn" ng-class="{
-                        'btn-default': !style, 
-                        'btn-warning': style==='warning', 
-                        'btn-danger': style==='error'
-                        }"  ng-click="$dismiss()" id="no-modal-btn">{{no}}</button>
-    </div>
+  <div class="btn-group">
+    <button class="btn btn-primary" ng-click="$close()" id="yes-modal-btn">
+      {{yes}}
+    </button>
+    <button class="btn btn-secondary" ng-click="$dismiss()" id="no-modal-btn">
+      {{no}}
+    </button>
   </div>
 </div>
