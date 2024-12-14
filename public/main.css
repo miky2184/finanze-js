@@ -494,3 +494,32 @@ footer {
     position: relative;
     z-index: 10;
 }
+
+/* Icone dei bottoni adattive */
+.md-button .material-icons {
+    font-size: calc(2.5vw); /* Dimensione dinamica basata sulla larghezza della finestra */
+}
+
+/* Dimensione minima e massima per evitare dimensioni estreme */
+.md-button .material-icons {
+    font-size: max(16px, min(calc(2.5vw), 48px)); /* Limita tra 16px e 48px */
+}
+
+/* Facoltativo: margini adattivi */
+.md-button {
+    margin: calc(0.5vw) calc(1vw); /* Margini dinamici basati sulla larghezza */
+}
+
+/* Icone più grandi nei display molto larghi */
+@media (min-width: 1200px) {
+    .md-button .material-icons {
+        font-size: 48px;
+    }
+}
+
+/* Icone più piccole nei display molto stretti */
+@media (max-width: 600px) {
+    .md-button .material-icons {
+        font-size: 24px;
+    }
+}
