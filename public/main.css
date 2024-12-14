@@ -161,17 +161,7 @@ md-tab-label {
     color: white;
 }
 
-.md-button.md-fab.md-mini {
-    line-height: 4rem;
-    width: 4rem;
-    height: 4rem;
-}
 
-.md-button.md-fab.md-mini-mini {
-    line-height: 2rem;
-    width: 2rem;
-    height: 2rem;
-}
 
 .listaMovimenti section {
     background: #f7f7f7;
@@ -186,7 +176,7 @@ md-tab-label {
     margin-right: 7px;
 }
 
-.listaMovimenti section .md-button {
+.listaMovimenti section {
     margin-top: 16px;
     margin-bottom: 16px;
 }
@@ -495,31 +485,78 @@ footer {
     z-index: 10;
 }
 
-/* Icone dei bottoni adattive */
-.md-button .material-icons {
-    font-size: calc(2.5vw); /* Dimensione dinamica basata sulla larghezza della finestra */
-}
-
-/* Dimensione minima e massima per evitare dimensioni estreme */
-.md-button .material-icons {
-    font-size: max(16px, min(calc(2.5vw), 48px)); /* Limita tra 16px e 48px */
-}
-
-/* Facoltativo: margini adattivi */
+/* ====== Correzione Bottoni con Icone ====== */
 .md-button {
-    margin: calc(0.5vw) calc(1vw); /* Margini dinamici basati sulla larghezza */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Impedisce alle icone di fuoriuscire */
 }
 
-/* Icone più grandi nei display molto larghi */
-@media (min-width: 1200px) {
-    .md-button .material-icons {
-        font-size: 48px;
-    }
+.md-button .material-icons {
+    font-size: 20px; /* Adatta la dimensione dell'icona */
+    margin-right: 8px; /* Spazio tra icona e testo */
+    vertical-align: middle; /* Centra l'icona rispetto al testo */
+    line-height: 1; /* Impedisce la fuoriuscita */
 }
 
-/* Icone più piccole nei display molto stretti */
-@media (max-width: 600px) {
-    .md-button .material-icons {
-        font-size: 24px;
-    }
+.md-button.md-fab {
+    width: auto;
+    height: auto;
+    padding: 12px;
+    border-radius: 50%; /* Per bottoni circolari */
+}
+
+.md-button.md-mini {
+    font-size: 12px;
+    padding: 8px;
+}
+
+.md-button:hover {
+    background-color: #e3f2fd; /* Cambia sfondo al passaggio del mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== Icone nei Bottoni Adattive ====== */
+.md-button .material-icons {
+    font-size: max(16px, min(calc(2.5vw), 32px)); /* Scala la dimensione dell'icona */
+}
+
+/* Per pulsanti di grandi dimensioni */
+.md-button.large {
+    font-size: 16px;
+    padding: 16px 24px;
+}
+
+.md-button.large .material-icons {
+    font-size: max(20px, min(calc(3vw), 40px)); /* Adatta l'icona ai bottoni grandi */
+}
+
+/* Pulsanti di dimensione ridotta */
+.md-button.small {
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+.md-button.small .material-icons {
+    font-size: 16px; /* Adatta l'icona ai bottoni piccoli */
+}
+
+.md-button.md-fab.md-mini {
+    line-height: 4rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.md-button.md-fab.md-mini-mini {
+    line-height: 2rem;
+    width: 2rem;
+    height: 2rem;
 }
