@@ -23,7 +23,7 @@
   <!-- Contenuto principale -->
   <div layout="row" flex style="overflow: hidden;">
       <!-- Griglia con pulsanti -->
-      <div flex="40" layout="column" style="margin-right: 16px; border-right: 1px solid #ddd; padding-right: 16px;">
+      <div flex="40" layout="column" style="margin-right: 16px; padding: 0 8px; border-right: 1px solid #ddd;">
           <div id="gridDefBudget" 
                ui-grid="gridDefBudget" 
                ui-grid-selection 
@@ -48,7 +48,7 @@
       </div>
 
       <!-- Grafico -->
-      <div flex="60" layout="column" style="padding-left: 16px;">
+      <div flex="60" layout="column" style="padding: 0 8px;">
           <nvd3 options="optionsGraficoPieBudget" data="dataGraficoPieBudget"></nvd3>
       </div>
   </div>
