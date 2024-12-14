@@ -59,132 +59,134 @@
 </head>
 
 <body ng-controller="MainController" md-no-ink>
-    <div layout="column" layout-align="center center" layout-fill ng-show="!logged()">
-        <md-content layout-gt-sm="row" layout-padding="">
-            <md-input-container>
-                <label>Username</label>
-                <input ng-model="username">
-            </md-input-container>
-            <md-input-container>
-                <label>Password</label>
-                <input ng-model="password" type="password">
-            </md-input-container>
-            <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini"
-                ng-click="login()">
-                <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>
-            </md-button>
-            <div>
-                <script type="text/ng-template" id="alert.html">
-                    <div ng-transclude></div>
-                </script>
-                <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">
-                    {{alert.msg}}
+    <div layout="column" layout-fill class="main-container">
+        <div layout="column" layout-align="center center" layout-fill ng-show="!logged()">
+            <md-content layout-gt-sm="row" layout-padding="">
+                <md-input-container>
+                    <label>Username</label>
+                    <input ng-model="username">
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="password" type="password">
+                </md-input-container>
+                <md-button aria-label="Login" class="md-primary md-icon-button toolbar-button md-fab md-mini"
+                    ng-click="login()">
+                    <md-icon md-svg-src="images/sharp-fingerprint-24px.svg"></md-icon>
+                </md-button>
+                <div>
+                    <script type="text/ng-template" id="alert.html">
+                        <div ng-transclude></div>
+                    </script>
+                    <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')">
+                        {{alert.msg}}
+                    </div>
                 </div>
-            </div>
-        </md-content>
-    </div>
-    <div layout="column" layout-fill ng-show="logged()">
-        <md-content layout="column" flex>
-            <md-tabs md-dynamic-height md-border-bottom md-no-disconnect>
-                <md-tab>
-                    <md-tab-label>
-                        <md-icon class="material-icons">list</md-icon> Lista Movimenti
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/dettaglio.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadBalance()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">account_balance</md-icon> Bilancio
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/balance.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="refreshGridSettings()" ng-disabled="admin()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">settings</md-icon> Impostazioni
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/settings.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadDefBudget()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">attach_money</md-icon> Definizione Budget
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/definizione_budget.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadBudget()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">pie_chart</md-icon> Budget
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/budget.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadPivotMese(pivot.year)">
-                    <md-tab-label>
-                        <md-icon class="material-icons">calendar_today</md-icon> Spesato Mese
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/spesato_mese.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadAndamentoAnnuo()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">bar_chart</md-icon> Spesato Annuo
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/spesato_annuo.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadSpeseAnnue()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">assessment</md-icon> Report Spesato
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/report_spesato.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadGrafico(pivot.year)">
-                    <md-tab-label>
-                        <md-icon class="material-icons">dashboard</md-icon> Dashboard Spesato
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/dashboard_spesato.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadWork()" ng-disabled="disableSalaryPage()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">work</md-icon> Stipendio
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/work.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab md-on-select="loadPassword()" ng-disabled="disablePasswordPage()">
-                    <md-tab-label>
-                        <md-icon class="material-icons">vpn_key</md-icon> Password
-                    </md-tab-label>
-                    <md-tab-body class="md-padding">
-                        <div ng-include="'view/password.html'"></div>
-                    </md-tab-body>
-                </md-tab>
-            </md-tabs>         
-        </md-content> 
-        <footer layout="row" layout-align="end right" class="footer">
-            <md-button aria-label="{{button.label}}" class="md-raised modern-button"
-                ng-repeat="button in saveButtons"
-                ng-click="button.listener(gridOptions)" 
-                ng-disabled="button.disabled()">
-                <md-icon ng-if="button.icon" class="material-icons">{{button.icon}}</md-icon>
-                {{button.label}}
-            </md-button>
-        </footer>
+            </md-content>
+        </div>
+        <div layout="column" layout-fill ng-show="logged()">
+            <md-content layout="column" flex>
+                <md-tabs md-dynamic-height md-border-bottom md-no-disconnect>
+                    <md-tab>
+                        <md-tab-label>
+                            <md-icon class="material-icons">list</md-icon> Lista Movimenti
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/dettaglio.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadBalance()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">account_balance</md-icon> Bilancio
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/balance.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="refreshGridSettings()" ng-disabled="admin()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">settings</md-icon> Impostazioni
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/settings.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadDefBudget()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">attach_money</md-icon> Definizione Budget
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/definizione_budget.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadBudget()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">pie_chart</md-icon> Budget
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/budget.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadPivotMese(pivot.year)">
+                        <md-tab-label>
+                            <md-icon class="material-icons">calendar_today</md-icon> Spesato Mese
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/spesato_mese.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadAndamentoAnnuo()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">bar_chart</md-icon> Spesato Annuo
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/spesato_annuo.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadSpeseAnnue()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">assessment</md-icon> Report Spesato
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/report_spesato.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadGrafico(pivot.year)">
+                        <md-tab-label>
+                            <md-icon class="material-icons">dashboard</md-icon> Dashboard Spesato
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/dashboard_spesato.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadWork()" ng-disabled="disableSalaryPage()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">work</md-icon> Stipendio
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/work.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab md-on-select="loadPassword()" ng-disabled="disablePasswordPage()">
+                        <md-tab-label>
+                            <md-icon class="material-icons">vpn_key</md-icon> Password
+                        </md-tab-label>
+                        <md-tab-body class="md-padding">
+                            <div ng-include="'view/password.html'"></div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>         
+            </md-content> 
+            <footer layout="row" layout-align="end right" class="footer">
+                <md-button aria-label="{{button.label}}" class="md-raised modern-button"
+                    ng-repeat="button in saveButtons"
+                    ng-click="button.listener(gridOptions)" 
+                    ng-disabled="button.disabled()">
+                    <md-icon ng-if="button.icon" class="material-icons">{{button.icon}}</md-icon>
+                    {{button.label}}
+                </md-button>
+            </footer>
+        </div>
     </div>
 </body>
 </html>
