@@ -85,7 +85,7 @@
             </md-content>
         </div>
         <div layout="column" layout-fill ng-show="logged()">
-            <md-content layout="column" flex>
+            <header layout="row" class="header-tabs">
                 <md-tabs md-dynamic-height md-border-bottom md-no-disconnect>
                     <md-tab>
                         <md-tab-label>
@@ -176,7 +176,7 @@
                         </md-tab-body>
                     </md-tab>
                 </md-tabs>         
-            </md-content> 
+            </header>
             <footer layout="row" layout-align="end right" class="footer">
                 <md-button aria-label="{{button.label}}" class="md-raised modern-button"
                     ng-repeat="button in saveButtons"
