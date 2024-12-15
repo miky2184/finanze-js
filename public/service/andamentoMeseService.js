@@ -13,7 +13,7 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 showColumnFooter: true,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: false,
                 selectionRowHeaderWidth: 35,

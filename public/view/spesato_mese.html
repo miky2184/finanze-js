@@ -1,8 +1,23 @@
-<div class="col-md-3"><label for="yearSelect"> Seleziona un anno: </label>
-  <select name="yearSelect" id="repeatSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadPivotMese(pivot.year)">  
-</select>
-  <div id="grid4" ui-grid="gridOptionPivotMese" ui-grid-auto-resize></div>
-</div>
-<div class="col-md-9">
- <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3> 
+<!-- Filtro con selezioni -->
+<div layout="column" class="budget-container">
+  <div layout="row" layout-align="start center" class="filters">
+    <md-input-container class="md-block" flex="30">
+        <label>Seleziona un anno</label>
+        <md-select ng-model="pivot.year" ng-change="loadPivotMese(pivot.year)">
+            <md-option ng-repeat="year in years" ng-value="year">
+                {{year}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+  </div>
+  <div layout="row" flex>
+      <div flex="40" layout="column" layout-padding>
+        <div flex layout="row">
+    <div flex id="gridPivotMese" ui-grid="gridOptionPivotMese" ui-grid-auto-resize></div>  
+  </div>
+  </div>
+    <div flex="60" layout="column">
+      <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3> 
+    </div>
+  </div>
 </div>

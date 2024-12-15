@@ -66,7 +66,7 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 showColumnFooter: true,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableFiltering: true,
                 enableRowSelection: true,
                 enableSelectAll: true,
@@ -401,7 +401,7 @@
                 }
             },
             addOneYearBtn: {
-                src: 'images/one_year.svg',
+                src: 'images/oneyear.svg',
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -423,7 +423,7 @@
                 label: 'Add 1 Year'
             },
             addBtn: {
-                src: 'images/baseline-add_circle_outline-24px.svg',
+                src: 'images/add.svg',
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
                         gridOptions.data.unshift({
@@ -457,7 +457,7 @@
                 label: 'Add'
             },
             deleteBtn: {
-                src: 'images/baseline-remove_circle_outline-24px.svg',
+                src: 'images/cancel.svg',
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -474,7 +474,7 @@
                 label: 'Delete'
             },
             copyBtn: {
-                src: 'images/baseline-file_copy-24px.svg',
+                src: 'images/copy.svg',
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -495,7 +495,7 @@
                 label: 'Copy'
             },
             refreshBtn: {
-                src: 'images/baseline-refresh-24px.svg',
+                src: 'images/sync.svg',
                 listener: function (gridOptions, maschera) {
                     modalService.showSearchingModal();
                     if (maschera === "LM") {                        

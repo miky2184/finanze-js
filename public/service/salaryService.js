@@ -18,7 +18,7 @@
         },
         gridOptionsSalary: {
           columnVirtualizationThreshold: 100,
-          minRowsToShow: 23,
+          minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
           showColumnFooter: true,
           enableFiltering: true,
           enableSorting: false,

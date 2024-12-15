@@ -35,7 +35,7 @@
             },
             gridSpeseAnnuali: {
                 columnVirtualizationThreshold: 32,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableSorting: false,
                 enableFiltering: true,
                 enableColumnMenus: false,

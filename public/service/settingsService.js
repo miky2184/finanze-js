@@ -15,6 +15,7 @@
             },
             addSettingBtn: {
                 label: '+',
+                src: 'images/add.svg',
                 listener: function (gridOptions, type, settings) {
                     dataService.data.dirty = true;
                     var newSetting = {};
@@ -70,6 +71,7 @@
             },
             deleteSettingBtn: {
                 label: '-',
+                src: 'images/cancel.svg',
                 listener: function (gridOptions, type) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -83,8 +85,7 @@
                     return !dataService.data.admin;
                 }
             },
-            gridOptionsAmb: {
-                minRowsToShow: 10,
+            gridOptionsAmb: {              
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
@@ -120,8 +121,7 @@
                     }, 100, 1);
                 }
             },
-            gridOptionsCat: {
-                minRowsToShow: 10,
+            gridOptionsCat: {                
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
@@ -157,8 +157,7 @@
                     }, 100, 1);
                 }               
             },
-            gridOptionsSott: {
-                minRowsToShow: 10,
+            gridOptionsSott: {                
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
@@ -195,8 +194,7 @@
                 }
             },
             gridOptionsBen: {
-                rowTemplate: 'templates/rows/deletableRow.html',
-                minRowsToShow: 10,
+                rowTemplate: 'templates/rows/deletableRow.html',                
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: true,
                 columnDefs: [{
@@ -231,8 +229,7 @@
                     }, 100, 1);
                 }
             },
-            gridOptionsAmbCat: {
-                minRowsToShow: 9,
+            gridOptionsAmbCat: {                
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
@@ -277,8 +274,7 @@
                     }, 100, 1);
                 }                
             },
-            gridOptionsCatSott: {
-                minRowsToShow: 9,
+            gridOptionsCatSott: {                
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{

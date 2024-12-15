@@ -6,7 +6,7 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 showColumnFooter: true,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{
@@ -61,7 +61,7 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 showColumnFooter: true,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableFiltering: true,
                 selectionRowHeaderWidth: 35,
                 columnDefs: [{

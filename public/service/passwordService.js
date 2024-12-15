@@ -11,7 +11,7 @@
         };
         var srvc = {
             gridOptionsPassword: {
-                minRowsToShow: 21,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableFiltering: true,
                 enableRowSelection: true,
                 enableSelectAll: true,

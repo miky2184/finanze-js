@@ -74,7 +74,7 @@
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
                 showColumnFooter: true,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableFiltering: true,
                 enableRowSelection: true,
                 rowTemplate: 'templates/rows/deletableRow.html',
@@ -231,7 +231,7 @@
             },
             gridBudget: {
                 columnVirtualizationThreshold: 32,
-                minRowsToShow: 23,
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW,
                 enableSorting: false,
                 enableFiltering: true,
                 enableColumnMenus: false,
