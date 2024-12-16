@@ -68,7 +68,7 @@
                 });
                 if (dataService.data.dirty) {
                     var modalSavingInstance = $uibModal.open({
-                        size: 'sm',
+                        size: 'lg',
                         templateUrl: 'templates/modal/savingModal.html',
                         backdrop: false,
                         keyboard: false

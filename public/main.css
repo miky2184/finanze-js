@@ -553,7 +553,7 @@ label-settings {
 /* Corpo del Modal */
 .modal-body {
     padding: 16px 24px;
-    font-size: 1rem;
+    font-size: 14px;
     color: #555555;
     line-height: 1.6;
     text-align: center;
@@ -572,7 +572,6 @@ label-settings {
 /* Pulsanti */
 .btn-group {
     display: flex;
-    gap: 12px;
 }
 
 .btn {

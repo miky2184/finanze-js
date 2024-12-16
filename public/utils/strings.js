@@ -10,8 +10,8 @@
                 OK: 'OK',
                 ANNULLA: 'ANNULLA',
                 WARNING: 'Attenzione',
-                EXIT_MSG: 'Ci sono delle modifiche pending non salvate, sei sicuro di voler uscire??',
-                ANNULLA_MSG: 'Ci sono delle modifiche pending non salvate, sei sicuro di voler annullare??'
+                EXIT_MSG: 'Ci sono modifiche non salvate in sospeso. Sei sicuro di voler uscire?',
+                ANNULLA_MSG: 'Ci sono modifiche non salvate in sospeso. Sei sicuro di voler annullare?'
             },
             BUDGET: {
                 GREEN: 25,

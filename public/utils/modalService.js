@@ -29,7 +29,7 @@
 
           srvc.waitingModal = $uibModal.open({
             templateUrl: 'templates/modal/waitingModal.html',
-            size: 'sm',
+            size: 'lg',
             scope: scope
           });
 
@@ -112,7 +112,7 @@
 
           var modal = $uibModal.open({
             templateUrl: 'templates/modal/yesNoModal.html',
-            size: 'sm',
+            size: 'lg',
             scope: scope,
             windowClass: style
           });
@@ -133,7 +133,7 @@
 
           var modal = $uibModal.open({
             templateUrl: 'templates/modal/yesNoCancelModal.html',
-            size: 'sm',
+            size: 'lg',
             scope: scope,
              windowClass: style
           });
@@ -157,7 +157,7 @@
             $log.debug('Progress modal in apertura');
             srvc.progressModal = $uibModal.open({
               templateUrl: 'templates/progressModal.html',
-              size: 'sm',
+              size: 'lg',
               scope: srvc.progressScope
             });
 
