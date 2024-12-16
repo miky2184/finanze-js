@@ -76,7 +76,7 @@
                 columnDefs: [{
                     field: 'data',
                     displayName: 'DATA',
-                    width: '5%',
+                    width: '4%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
                     cellClass: 'text-center',
@@ -99,7 +99,7 @@
                     name: 'ambito',
                     displayName: 'AMBITO',
                     field: 'ambito',
-                    width: '5%',
+                    width: '4%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
                     editDropdownValueLabel: 'label',
@@ -110,7 +110,6 @@
                         });
                     },
                     filter: {
-                        placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownAmbito) {
                                 if (searchTerm != 'null') {
@@ -132,7 +131,7 @@
                     name: 'categoria',
                     displayName: 'CATEGORIA',
                     field: 'categoria',
-                    width: '10%',
+                    width: '9%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
@@ -146,7 +145,6 @@
                         return [];
                     },
                     filter: {
-                        placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownCategoria) {
                                 if (searchTerm != 'null') {
@@ -168,7 +166,7 @@
                     name: 'sottocategoria',
                     displayName: 'SOTTOCATEGORIA',
                     field: 'sottocategoria',
-                    width: '10%',
+                    width: '9%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
@@ -182,7 +180,6 @@
                         return [];
                     },
                     filter: {
-                        placeholder: 'like',
                         condition: function (searchTerm, cellValue, row, column) {
                             if (dataService.data.dropdownSottocategoria) {
                                 if (searchTerm != 'null') {
@@ -235,6 +232,7 @@
                     editDropdownIdLabel: 'conto',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
+                    cellClass: 'text-center',
                     editDropdownOptionsFunction: function () {
                         return dataService.data.editDropDownContoArray;
                     },
@@ -261,6 +259,7 @@
                     editDropdownIdLabel: 'tipo_conto',
                     editDropdownValueLabel: 'label',
                     cellFilter: 'griddropdown:this',
+                    cellClass: 'text-center',
                     editDropdownOptionsFunction: function () {
                         return dataService.data.editDropDownTipoContoArray;
                     },
@@ -367,7 +366,7 @@
                 }, {
                     field: 'anno',
                     displayName: 'ANNO',
-                    width: '3%',
+                    width: '4%',
                     type: 'number',
                     cellClass: 'text-center',
                     filters: [{
@@ -382,7 +381,7 @@
                 }, {
                     field: 'mese',
                     displayName: 'MESE',
-                    width: '3%',
+                    width: '4%',
                     type: 'number',
                     cellClass: 'text-center',
                     filters: [{

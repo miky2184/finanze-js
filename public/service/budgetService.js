@@ -111,7 +111,6 @@
                             });
                         },
                         filter: {
-                            placeholder: 'like',
                             condition: function (searchTerm, cellValue, row, column) {
                                 if (dataService.data.dropdownAmbito) {
                                     if (searchTerm != 'null') {
@@ -147,7 +146,6 @@
                             return [];
                         },
                         filter: {
-                            placeholder: 'like',
                             condition: function (searchTerm, cellValue, row, column) {
                                 if (dataService.data.dropdownCategoria) {
                                     if (searchTerm != 'null') {
@@ -183,7 +181,6 @@
                             return [];
                         },
                         filter: {
-                            placeholder: 'like',
                             condition: function (searchTerm, cellValue, row, column) {
                                 if (dataService.data.dropdownSottocategoria) {
                                     if (searchTerm != 'null') {
