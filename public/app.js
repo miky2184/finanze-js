@@ -183,6 +183,14 @@
             });
         };
 
+        $scope.copyBudgetFromPreviousYear = function () {            
+            return budgetService.copyBudget($scope.pivot).then(function (response) {                
+                $scope.loadDefBudget(); // Ricarica il budget per l'anno corrente.
+            }).catch(function (error) {
+                alert('Errore durante la copia del budget.');
+            });            
+        };
+
         /*********************
             TAB SPESE ANNUE
         *********************/

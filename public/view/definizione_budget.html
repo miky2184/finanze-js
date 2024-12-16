@@ -1,24 +1,32 @@
 <div layout="column" class="budget-container">
   <!-- Filtro con selezioni -->
-  <div layout="row" layout-align="start center" class="filters">
-      <md-input-container class="md-block" flex="30">
-          <label>Seleziona una tipologia di conto</label>
-          <md-select ng-model="pivot.conto" ng-change="loadDefBudget()">
-              <md-option ng-repeat="conto in conti" ng-value="conto.conto">
-                  {{conto.label}}
-              </md-option>
-          </md-select>
-      </md-input-container>
+  <div layout="row" layout-align="start center" class="filters" style="gap: 16px;">
+        <!-- Seleziona Tipologia di Conto -->
+        <md-input-container class="md-block" flex="30">
+            <label>Seleziona una tipologia di conto</label>
+            <md-select ng-model="pivot.conto" ng-change="loadDefBudget()">
+                <md-option ng-repeat="conto in conti" ng-value="conto.conto">
+                    {{conto.label}}
+                </md-option>
+            </md-select>
+        </md-input-container>
 
-      <md-input-container class="md-block" flex="30">
-          <label>Seleziona un anno</label>
-          <md-select ng-model="pivot.year" ng-change="loadDefBudget()">
-              <md-option ng-repeat="year in years" ng-value="year">
-                  {{year}}
-              </md-option>
-          </md-select>
-      </md-input-container>
-  </div>
+        <!-- Seleziona Anno -->
+        <md-input-container class="md-block" flex="30">
+            <label>Seleziona un anno</label>
+            <md-select ng-model="pivot.year" ng-change="loadDefBudget()">
+                <md-option ng-repeat="year in years" ng-value="year">
+                    {{year}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+
+        <!-- Pulsante Copia Budget -->
+        <md-button class="md-icon-button md-primary" ng-click="copyBudgetFromPreviousYear()">
+            <md-icon md-svg-src="images/copy.svg"></md-icon>
+            <md-tooltip>Copia budget dall'anno precedente</md-tooltip>
+        </md-button>
+    </div>
 
   <!-- Contenuto principale -->
   <div layout="row" flex style="overflow: hidden;">
@@ -27,10 +35,8 @@
           <div id="gridDefBudget" 
                ui-grid="gridDefBudget" 
                ui-grid-selection 
-               ui-grid-cellnav 
                ui-grid-edit 
-               ui-grid-auto-resize 
-               style="flex: 1; overflow: auto;">
+               ui-grid-auto-resize>
           </div>
 
           <!-- Pulsanti relativi alla griglia -->

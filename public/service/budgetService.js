@@ -682,6 +682,17 @@
                     }
                 });
             },
+            copyBudget: function(pivot){
+                var dto = {};
+                dto.conto = (pivot || $strings.PIVOT).conto;
+                dto.anno = (pivot || $strings.PIVOT).year;
+                dto.id_db = dataService.data.idDb;
+                return $http.post($strings.REST.SERVER + '/copy_budget', dto).then(function (resp) {
+                    if (resp.data && resp.data.length > 0) {
+                        return resp.data;
+                    }
+                });
+            },
             loadGraficoBudget: function (pivot) {
                 dataService.data.optionsGraficoPieBudget = {
                     chart: {

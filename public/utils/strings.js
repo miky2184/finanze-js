@@ -3,6 +3,7 @@
     angular.module('myApp')
         .constant('$strings', {
         MIN_ROWS_TO_SHOW: 21,
+        MIN_ROWS_TO_SHOW_SETTINGS: 8,
         DATE_FORMAT: 'dd/MM/yyyy',
             MODAL: {
                 DEFAULT_WAITING_MESSAGE: 'Attendere prego...',

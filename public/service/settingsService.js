@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('settingsService', ['dataService', '$rootScope', '$interval', 'uiGridConstants', '$timeout', function (dataService, $rootScope, $interval, uiGridConstants, $timeout) {
+    angular.module('myApp').factory('settingsService', ['dataService', '$strings', '$rootScope', '$interval', 'uiGridConstants', '$timeout', function (dataService, $strings, $rootScope, $interval, uiGridConstants, $timeout) {
         var scope = $rootScope.$new();
         var afterCellEditFunction = function afterCellEditFunction(rowEntity, colDef, newValue, oldValue) {
             if (newValue === oldValue) {
@@ -86,6 +86,7 @@
                 }
             },
             gridOptionsAmb: {              
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
@@ -122,6 +123,7 @@
                 }
             },
             gridOptionsCat: {                
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
@@ -158,6 +160,7 @@
                 }               
             },
             gridOptionsSott: {                
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 enableFiltering: true,
@@ -194,6 +197,7 @@
                 }
             },
             gridOptionsBen: {
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,
                 rowTemplate: 'templates/rows/deletableRow.html',                
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 enableFiltering: true,
@@ -229,7 +233,8 @@
                     }, 100, 1);
                 }
             },
-            gridOptionsAmbCat: {                
+            gridOptionsAmbCat: {               
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS, 
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{
@@ -274,7 +279,8 @@
                     }, 100, 1);
                 }                
             },
-            gridOptionsCatSott: {                
+            gridOptionsCatSott: {    
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,            
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
                 columnDefs: [{

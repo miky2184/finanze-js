@@ -402,6 +402,7 @@
             },
             addOneYearBtn: {
                 src: 'images/oneyear.svg',
+                tooltip: "Duplica Riga (+1 anno)",
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -424,6 +425,7 @@
             },
             addBtn: {
                 src: 'images/add.svg',
+                tooltip: "Aggiungi Riga",
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
                         gridOptions.data.unshift({
@@ -458,6 +460,7 @@
             },
             deleteBtn: {
                 src: 'images/cancel.svg',
+                tooltip: "Cancella Riga",
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -475,6 +478,7 @@
             },
             copyBtn: {
                 src: 'images/copy.svg',
+                tooltip: "Duplica Riga",
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
@@ -496,6 +500,7 @@
             },
             refreshBtn: {
                 src: 'images/sync.svg',
+                tooltip: "Refresh Dati",
                 listener: function (gridOptions, maschera) {
                     modalService.showSearchingModal();
                     if (maschera === "LM") {                        
