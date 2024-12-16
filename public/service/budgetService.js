@@ -697,7 +697,7 @@
                 dataService.data.optionsGraficoPieBudget = {
                     chart: {
                         type: 'pieChart',
-                        height: 1000,
+                        height: null,
                         showLabels: true,
                         duration: 5,
                         labelThreshold: 0.01,

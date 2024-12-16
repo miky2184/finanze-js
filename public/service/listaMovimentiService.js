@@ -79,6 +79,7 @@
                     width: '5%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
+                    cellClass: 'text-center',
                     filters: [{
                         placeholder: 'less than',
                         condition: function (searchTerm, cellValue, row, column) {                            

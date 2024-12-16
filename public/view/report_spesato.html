@@ -1,6 +1,16 @@
-<div>
-    <label for="contoSelect">Seleziona una tipologia di conto:</label>
-    <select name="contoSelect" id="repeatCnSelect" ng-options="conto.conto as conto.label for conto in conti" ng-model="pivot.conto" ng-change="loadSpeseAnnue()">
-    </select>
+<div layout="column" class="grid-container">
+    <div layout="row" layout-align="start center" class="filters">
+        <md-input-container class="md-block" flex="30">
+            <label>Seleziona una tipologia di conto</label>
+            <md-select ng-model="pivot.conto" ng-change="loadSpeseAnnue()">
+                <md-option ng-repeat="conto in conti" value="{{conto.conto}}">
+                    {{conto.label}}
+                </md-option>
+            </md-select>
+        </md-input-container>        
+    </div>
+    <div flex layout="column" layout-padding>
+        <div flex layout="row">
+    <div id="gridSpeseAnnuali" ui-grid="gridSpeseAnnuali" ui-grid-auto-resize flex></div>
+        </div></div>
 </div>
-<div id="gridSpeseAnnuali" ui-grid="gridSpeseAnnuali" ui-grid-pinning ui-grid-auto-resize></div>

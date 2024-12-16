@@ -1,7 +1,5 @@
-<div layout="column" class="budget-container">
-  <!-- Filtro con selezioni -->
-  <div layout="row" layout-align="start center" class="filters" style="gap: 16px;">
-        <!-- Seleziona Tipologia di Conto -->
+<div layout="column" class="grid-container">
+    <div layout="row" layout-align="start center" class="filters">
         <md-input-container class="md-block" flex="30">
             <label>Seleziona una tipologia di conto</label>
             <md-select ng-model="pivot.conto" ng-change="loadDefBudget()">
@@ -29,18 +27,20 @@
     </div>
 
   <!-- Contenuto principale -->
-  <div layout="row" flex style="overflow: hidden;">
+  <div layout="row" flex>
       <!-- Griglia con pulsanti -->
-      <div flex="40" layout="column" style="margin-right: 16px; padding: 0 8px; border-right: 1px solid #ddd;">
-          <div id="gridDefBudget" 
+      <div flex="40" layout="column" layout-padding>
+        <div flex layout="row">
+          <div flex id="gridDefBudget" 
                ui-grid="gridDefBudget" 
                ui-grid-selection 
                ui-grid-edit 
                ui-grid-auto-resize>
           </div>
+        </div>
 
           <!-- Pulsanti relativi alla griglia -->
-          <div layout="row" layout-align="end center" style="margin-top: 16px;">
+          <div layout="row" layout-align="end center">
               <md-button aria-label="{{button.label}}" 
                          layout="column" 
                          ng-repeat="button in actionButtons" 
@@ -54,8 +54,8 @@
       </div>
 
       <!-- Grafico -->
-      <div flex="60" layout="column" style="padding: 0 8px;">
-          <nvd3 options="optionsGraficoPieBudget" data="dataGraficoPieBudget"></nvd3>
+      <div flex="60" layout="column" layout-padding>
+          <nvd3 flex options="optionsGraficoPieBudget" data="dataGraficoPieBudget" class="chart-container"></nvd3>
       </div>
   </div>
 </div> 

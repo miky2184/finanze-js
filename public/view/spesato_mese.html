@@ -1,5 +1,4 @@
-<!-- Filtro con selezioni -->
-<div layout="column" class="budget-container">
+<div layout="column" class="grid-container">
   <div layout="row" layout-align="start center" class="filters">
     <md-input-container class="md-block" flex="30">
         <label>Seleziona un anno</label>
@@ -17,7 +16,7 @@
   </div>
   </div>
     <div flex="60" layout="column">
-      <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3> 
+      <nvd3 options="optionsGrafico" class="chart-container" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3> 
     </div>
   </div>
 </div>

@@ -71,7 +71,7 @@
                 dataService.data.optionsGrafico = {
                     chart: {
                         type: 'lineChart',
-                        height: 720,
+                        height: null,
                         margin: {
                             top: 20,
                             right: 20,

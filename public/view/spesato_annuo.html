@@ -1,6 +1,12 @@
-<div class="col-md-3">
-  <div id="grid4" ui-grid="gridOptionAndamentoAnnuo" ui-grid-auto-resize></div>
-</div>
-<div class="col-md-9">
-  <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3>
+<div flex layout="row">
+  <section flex="25" layout="column" layout-padding>
+    <div flex layout="row">
+      <div flex id="grid4" ui-grid="gridOptionAndamentoAnnuo" ui-grid-auto-resize></div>
+    </div> 
+  </section>
+  <section flex="75" layout="column" layout-padding>
+    <div flex layout="row">
+      <nvd3 flex options="optionsGrafico" data="dataGrafico" api="apiGrafico" class="chart-container" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3>
+    </div> 
+  </section>
 </div>

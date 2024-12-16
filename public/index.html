@@ -129,15 +129,20 @@
                     </md-tab>
                     <md-tab md-on-select="onTabSelect(8); loadGrafico(pivot.year)">
                         <md-tab-label>
-                            <md-icon class="material-icons">dashboard</md-icon> Dashboard Spesato
+                            <md-icon class="material-icons">dashboard</md-icon> Dashboard Conti
                         </md-tab-label>                       
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(9); loadWork()" ng-disabled="disableSalaryPage()">
+                    <md-tab md-on-select="onTabSelect(9); loadGraficoCategorie(pivot.year)">
+                        <md-tab-label>
+                            <md-icon class="material-icons">dashboard</md-icon> Dashboard Categorie
+                        </md-tab-label>                       
+                    </md-tab>
+                    <md-tab md-on-select="onTabSelect(10); loadWork()" ng-disabled="disableSalaryPage()">
                         <md-tab-label>
                             <md-icon class="material-icons">work</md-icon> Stipendio
                         </md-tab-label>                       
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(10); loadPassword()" ng-disabled="disablePasswordPage()">
+                    <md-tab md-on-select="onTabSelect(11); loadPassword()" ng-disabled="disablePasswordPage()">
                         <md-tab-label>
                             <md-icon class="material-icons">vpn_key</md-icon> Password
                         </md-tab-label>                       
@@ -155,8 +160,9 @@
                 <div ng-include="'view/spesato_annuo.html'" ng-show="activeTab === 6"></div>
                 <div ng-include="'view/report_spesato.html'" ng-show="activeTab === 7"></div>
                 <div ng-include="'view/dashboard_spesato.html'" ng-show="activeTab === 8"></div>
-                <div ng-include="'view/work.html'" ng-show="activeTab === 9"></div>
-                <div ng-include="'view/password.html'" ng-show="activeTab === 10"></div>                
+                <div ng-include="'view/dashboard_categorie.html'" ng-show="activeTab === 9"></div>
+                <div ng-include="'view/work.html'" ng-show="activeTab === 10"></div>
+                <div ng-include="'view/password.html'" ng-show="activeTab === 11"></div>
             </content>
             <footer layout="row" layout-align="end right" class="footer">
                 <md-button aria-label="{{button.label}}" 

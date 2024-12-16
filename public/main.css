@@ -76,11 +76,6 @@ md-tab-label {
     justify-content: flex-start;
 }
 
-
-.text-right {
-    text-align: right;
-}
-
 .btn.btn-default.navbar-btn {
     line-height: 1.42857;
     font-size: 18px;
@@ -441,7 +436,7 @@ label-settings {
     font-size: 18px;
 }
 
-.budget-container {
+.grid-container {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -677,3 +672,10 @@ label-settings {
     padding: 16px;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.chart-container {
+    width: 100%; /* Larghezza del grafico */
+    height: 100%; /* Altezza adattiva */
+    display: flex;
+    align-items: stretch; /* Per assicurarsi che il contenitore riempia l'altezza */
+  }

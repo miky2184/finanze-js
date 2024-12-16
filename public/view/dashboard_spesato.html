@@ -1,35 +1,46 @@
-<div layout="column">
-    <div flex="5" layout="row">
-        <div flex="10" layout="column">
-            <select name="yearSelect" id="yearSelect" ng-options="year for year in years" ng-model="pivot.year" ng-change="loadGrafico(pivot.year)  && loadGraficoPie(pivot.year)"> </select>
-        </div>
+<div layout="column" class="grid-container">
+    <!-- Filtri -->
+    <div layout="row" layout-align="start center" class="filters">
+        <md-input-container class="md-block" flex="30">
+            <label>Seleziona un anno</label>
+            <md-select ng-model="pivot.year" ng-change="loadGrafico(pivot.year)">
+                <md-option ng-repeat="year in years" ng-value="year">
+                    {{year}}
+                </md-option>
+            </md-select>
+        </md-input-container>
     </div>
-    <div flex="95" layout="row">
-        <div flex=50 layout="column">
-            <div>
-            <nvd3 options="optionsGrafico" data="dataGrafico" api="apiGrafico" config="{deepWatchData: true, refreshDataOnly: false}"  on-ready="callbackGrafico"></nvd3>  
-        </div>                     
-        <div>
-            <nvd3 options="optionsGraficoSpesoTotalePerAnno" data="dataGraficoSpesoTotalePerAnno" />                            
+
+    <!-- Grafici principali -->
+    <div flex layout="row" layout-padding>        
+        <div flex layout="column" >
+            <md-card flex layout="column">
+                <md-card-header>
+                    <md-card-header-text>
+                      <span class="md-title">Andamento Annuo</span>                          
+                    </md-card-header-text>
+                  </md-card-header>
+                <md-card-content flex>
+                <nvd3 flex options="optionsGrafico" data="dataGrafico" api="apiGrafico" 
+                      config="{deepWatchData: true, refreshDataOnly: false}" 
+                      on-ready="callbackGrafico" class="chart-container">
+                </nvd3>
+            </md-card-content>
+            </md-card>
         </div>
-        </div>
-        <div flex=50 layout="column">
-            <div flex=50 layout="row">
-                <div flex=50 layout="column">
-                    <nvd3 options="optionsGraficoPieCategoria" data="dataGraficoPieCategoria" />                            
-                </div>
-                <div flex=50 layout="column">
-                    <nvd3 options="optionsGraficoPie" data="dataGraficoPie" />                            
-                </div>
-            </div>
-            <div flex=50 layout="row">
-                <div flex=50 layout="column">
-                    <nvd3 options="optionsGraficoPiePersonaleCategoria" data="dataGraficoPiePersonaleCategoria" />
-                </div>
-                <div flex=50 layout="column">
-                    <nvd3 options="optionsGraficoPiePersonale" data="dataGraficoPiePersonale" />                    
-                </div>
-            </div>            
-        </div>
+        <div flex layout="column" >
+            <md-card flex layout="column">
+                <md-card-header>
+                    <md-card-header-text>
+                      <span class="md-title">Totale Anni</span>                          
+                    </md-card-header-text>
+                  </md-card-header>
+                <md-card-content flex>
+                    <nvd3 flex options="optionsGraficoSpesoTotalePerAnno" 
+                        data="dataGraficoSpesoTotalePerAnno" class="chart-container">
+                    </nvd3>
+                </md-card-content>
+            </md-card>
+        </div>        
     </div>
 </div>

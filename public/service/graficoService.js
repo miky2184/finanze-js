@@ -48,13 +48,9 @@
             },
             loadGrafico: function (year) {
                 dataService.data.optionsGrafico = {
-                    title: {
-                        enable: true,
-                        text: 'TOTALE ANNO'
-                    },
                     chart: {
-                        type: 'lineChart',
-                        height: 500,                        
+                        type: 'lineChart',  
+                        height: 650,                        
                         margin: {
                             top: 20,
                             right: 20,
@@ -100,14 +96,11 @@
                 });                                    
             },
             loadGraficoPie: function (year){
-                dataService.data.optionsGraficoPie = {   
-                    title: {
-                        enable: true,
-                        text: 'CONTO COMUNE SOTTOCATEGORIA'
-                    },                 
+                dataService.data.optionsGraficoPie = {                  
                     chart: {
                         type: 'pieChart',
-                        height: 500,
+                        donut: true,
+                        height: 650,
                         showLabels: true,
                         duration: 5,
                         labelThreshold: 0.01,
@@ -139,16 +132,13 @@
                 });
             },
             loadGraficoPieCategoria: function (year){
-                dataService.data.optionsGraficoPieCategoria = { 
-                    title: {
-                        enable: true,
-                        text: 'CONTO COMUNE CATEGORIA'
-                    },                    
+                dataService.data.optionsGraficoPieCategoria = {                   
                     chart: {
                         type: 'pieChart',
-                        height: 500,
+                        donut: true,
+                        height: 650,
                         showLabels: true,
-                        duration: 5,
+                        duration: 5,                        
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,
                         x: function(d){return d.key;},
@@ -178,14 +168,11 @@
                 });
             },
             loadGraficoPiePersonale: function (year){
-                dataService.data.optionsGraficoPiePersonale = {       
-                    title: {
-                        enable: true,
-                        text: 'CONTO PERSONALE SOTTOCATEGORIA'
-                    },              
+                dataService.data.optionsGraficoPiePersonale = {               
                     chart: {
-                        type: 'pieChart',
-                        height: 500,
+                        type: 'pieChart',                        
+                        donut: true,
+                        height: 650,
                         showLabels: true,
                         duration: 5,
                         labelThreshold: 0.01,
@@ -217,14 +204,11 @@
                 });
             } ,
             loadGraficoPiePersonaleCategoria: function (year){
-                dataService.data.optionsGraficoPiePersonaleCategoria= {  
-                    title: {
-                        enable: true,
-                        text: 'CONTO PERSONALE CATEGORIA'
-                    },                   
+                dataService.data.optionsGraficoPiePersonaleCategoria= {                    
                     chart: {
                         type: 'pieChart',
-                        height: 500,
+                        donut: true,
+                        height: 650,
                         showLabels: true,
                         duration: 5,
                         labelThreshold: 0.01,
@@ -256,14 +240,10 @@
                 });
             },
             loadGraficoSpesoTotalePerAnno: function (year){
-                dataService.data.optionsGraficoSpesoTotalePerAnno= {
-                    title: {
-                        enable: true,
-                        text: 'TOTALE PER CONTO'
-                    },                
+                dataService.data.optionsGraficoSpesoTotalePerAnno= {             
                     chart: {
                         type: 'multiBarHorizontalChart',
-                        height: 500,
+                        height: 650,
                         showControls: false,
                         showValues: true,
                         duration: 500,                       
