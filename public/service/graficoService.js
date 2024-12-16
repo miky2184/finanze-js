@@ -102,19 +102,12 @@
                         donut: true,
                         height: 650,
                         showLabels: true,
+                        showLegend: false,
                         duration: 5,
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,
                         x: function(d){return d.key;},
                         y: function(d){return d.y;},
-                        legend: {
-                            margin: {
-                                top: 5,
-                                right: 35,
-                                bottom: 5,
-                                left: 0
-                            }
-                        },
                         callback: function (chart) {
                             $timeout(function () {
                                 d3.selectAll('.nvtooltip').style('opacity', 0);
@@ -138,6 +131,7 @@
                         donut: true,
                         height: 650,
                         showLabels: true,
+                        showLegend: false,
                         duration: 5,                        
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,
@@ -174,6 +168,7 @@
                         donut: true,
                         height: 650,
                         showLabels: true,
+                        showLegend: false,
                         duration: 5,
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,
@@ -210,6 +205,7 @@
                         donut: true,
                         height: 650,
                         showLabels: true,
+                        showLegend: false,
                         duration: 5,
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,

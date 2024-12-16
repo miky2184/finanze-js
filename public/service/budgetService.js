@@ -699,6 +699,7 @@
                         type: 'pieChart',
                         height: null,
                         showLabels: true,
+                        showLegend: false,
                         duration: 5,
                         labelThreshold: 0.01,
                         labelSunbeamLayout: true,
