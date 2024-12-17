@@ -24,7 +24,7 @@
           enableSorting: false,
           columnDefs: [{
             name: 'anno',
-            displayName: 'YYYY',
+            displayName: 'ANNO',
             field: 'anno',
             width: '3%',
             pinnedLeft: true,

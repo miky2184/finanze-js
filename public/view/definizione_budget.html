@@ -40,17 +40,17 @@
         </div>
 
           <!-- Pulsanti relativi alla griglia -->
-          <div layout="row" layout-align="end center">
-              <md-button aria-label="{{button.label}}" 
+          <div layout="row" layout-align="start end">
+              <md-button aria-label="{{button.label}}" class="md-icon-button"
                          layout="column" 
                          ng-repeat="button in actionButtons" 
                          class="md-fab md-mini md-primary" 
                          ng-click="button.listener(gridDefBudget, 'DB')" 
-                         ng-disabled="button.disabled('DB')" 
-                         style="margin-right: 8px;">
+                         ng-disabled="button.disabled('DB')">
                   <md-icon md-svg-src="{{button.src}}"></md-icon>
+                  <md-tooltip>{{button.tooltip}}</md-tooltip>
               </md-button>
-          </div>
+          </div>          
       </div>
 
       <!-- Grafico -->

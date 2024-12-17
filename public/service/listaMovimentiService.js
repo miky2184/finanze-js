@@ -398,22 +398,24 @@
                 src: 'images/oneyear.svg',
                 tooltip: "Duplica Riga (+1 anno)",
                 listener: function (gridOptions, maschera) {
-                    if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
-                        gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
-                            var copyRow = angular.copy(row);
-                            copyRow.data = copyRow.data.setFullYear(copyRow.data.getFullYear() + 1);
-                            copyRow.data = new Date(copyRow.data);
-                            copyRow.newRow = true;
-                            copyRow.deleted = false;
-                            copyRow.dirty = true;
-                            dataService.data.dirty = true;
-                            gridOptions.data.unshift(copyRow);
-                        });
-                        gridOptions.gridApi.selection.clearSelectedRows();
+                    if (maschera === "LM") {
+                        if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
+                            gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
+                                var copyRow = angular.copy(row);
+                                copyRow.data = copyRow.data.setFullYear(copyRow.data.getFullYear() + 1);
+                                copyRow.data = new Date(copyRow.data);
+                                copyRow.newRow = true;
+                                copyRow.deleted = false;
+                                copyRow.dirty = true;
+                                dataService.data.dirty = true;
+                                gridOptions.data.unshift(copyRow);
+                            });
+                            gridOptions.gridApi.selection.clearSelectedRows();
+                        }
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera == "PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera == "PW" || maschera == "DB";
                 },
                 label: 'Add 1 Year'
             },
@@ -459,7 +461,7 @@
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PM";
+                    return !dataService.data.admin;
                 },
                 label: 'Add'
             },
@@ -477,7 +479,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PM";
+                    return !dataService.data.admin;
                 },
                 label: 'Delete'
             },
@@ -485,21 +487,23 @@
                 src: 'images/copy.svg',
                 tooltip: "Duplica Riga",
                 listener: function (gridOptions, maschera) {
-                    if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
-                        gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
-                            var copyRow = angular.copy(row);
-                            copyRow.data = new Date();
-                            copyRow.newRow = true;
-                            copyRow.deleted = false;
-                            copyRow.dirty = true;
-                            dataService.data.dirty = true;
-                            gridOptions.data.unshift(copyRow);
-                        });
-                        gridOptions.gridApi.selection.clearSelectedRows();
-                    }
+                    if (maschera === "LM"){
+                        if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
+                            gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
+                                var copyRow = angular.copy(row);
+                                copyRow.data = new Date();
+                                copyRow.newRow = true;
+                                copyRow.deleted = false;
+                                copyRow.dirty = true;
+                                dataService.data.dirty = true;
+                                gridOptions.data.unshift(copyRow);
+                            });
+                            gridOptions.gridApi.selection.clearSelectedRows();
+                        }
+                    }                    
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PW" || maschera == "PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera == "PW" || maschera == "DB";
                 },
                 label: 'Copy'
             },
@@ -529,7 +533,7 @@
                 disabled: function (maschera) {
                     return !dataService.data.admin;
                 },
-                label: 'Refreshs'
+                label: 'Refresh'
             },
             loadListaMovimenti: function (idDb) {
                 var dto = {};                                
