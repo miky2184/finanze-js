@@ -86,7 +86,57 @@
                     });
                 }
             },
-
+            print: function print(){                
+                var content = document.querySelector('content'); // Seleziona il contenuto
+                var doc = new window.jspdf.jsPDF({
+                    orientation: 'l', // Portrait
+                    unit: 'mm',
+                    format: 'a4' // Formato A4
+                });
+        
+                // Parametri per la pagina A4
+                var pageWidth = 297; // Larghezza A4 in mm
+                var pageHeight = 210; // Altezza A4 in mm
+                var margin = 5; // Margine per il PDF
+                var contentWidth = pageWidth - margin * 2; // Larghezza effettiva
+                var contentHeight = pageHeight - margin * 2; // Altezza effettiva
+        
+                // Cattura con html2canvas
+                window.html2canvas(content, {
+                    scale: 3, // Risoluzione migliorata per un PDF più chiaro
+                    useCORS: true, // Supporto per risorse esterne
+                    windowWidth: content.scrollWidth // Cattura larghezza completa
+                }).then(function (canvas) {
+                    var imgData = canvas.toDataURL('image/png'); // Converte l'immagine in PNG
+                    var imgWidth = canvas.width * 0.264583; // Converte pixel in mm (1px = 0.264583mm)
+                    var imgHeight = canvas.height * 0.264583;
+        
+                    var ratio = imgWidth / imgHeight; // Rapporto di aspetto
+                    var adjustedWidth = contentWidth; 
+                    var adjustedHeight = adjustedWidth / ratio;
+        
+                    // Se l'immagine è troppo alta per una pagina, ridimensiona proporzionalmente
+                    if (adjustedHeight > contentHeight) {
+                        adjustedHeight = contentHeight;
+                        adjustedWidth = adjustedHeight * ratio;
+                    }
+        
+                    // Aggiunge l'immagine al PDF, centrata
+                    doc.addImage(imgData, 'PNG', margin, margin, adjustedWidth, adjustedHeight);
+        
+                    doc.save('contenuto.pdf'); // Salva il PDF
+                });                
+            },
+            printBtn:{
+                label: 'Print',
+                listener: function () {
+                    return srvc.print();
+                },
+                disabled: function () {
+                    return !dataService.data.admin;
+                },
+                icon: 'print' 
+            },
             saveBtn: {
                 label: 'Salva',
                 listener: function () {

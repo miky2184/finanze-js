@@ -11,7 +11,7 @@
     // Cambia il tab attivo
     $scope.changeTab = function (index) {
         $scope.activeTab = index;
-    };
+    };    
 
         /* PARAMETRI */
         /* LOGIN */
@@ -51,9 +51,10 @@
         $scope.actionButtons.push(listaMovimentiService.addOneYearBtn);
 
         $scope.saveButtons = [];
+        $scope.saveButtons.push(commonService.printBtn);
         $scope.saveButtons.push(commonService.saveBtn);
         $scope.saveButtons.push(commonService.cancelBtn);
-        $scope.saveButtons.push(commonService.exitBtn);
+        $scope.saveButtons.push(commonService.exitBtn);        
 
         /* API GRAFICI */
         $scope.callbackGrafico = function (scope, element) {
