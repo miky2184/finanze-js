@@ -237,19 +237,38 @@
                 minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS, 
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
                     name: 'ambito',
                     displayName: 'AMBITO',
                     field: 'ambito',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'ambito',
-                    editDropdownValueLabel: 'label',
+                    editDropdownValueLabel: 'label',                    
                     cellEditableCondition: function(scope){
                         return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownAmbito) {
+                                if (searchTerm != 'null') {
+                                    var cell = dataService.data.dropdownAmbito.filter(function (ambito) {
+                                        return ambito.ambito === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    return cellValue == null || cellValue == 0;
+                                }
+                            }
+                        }
                     }
                 }, {
                     name: 'categoria',
@@ -257,13 +276,31 @@
                     field: 'categoria',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
-                    editDropdownValueLabel: 'label',
+                    editDropdownValueLabel: 'label',                    
                     cellEditableCondition: function(scope){
                         return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownCategoria) {
+                                if (searchTerm != 'null') {
+                                    var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
+                                        return categoria.categoria === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    return cellValue == null || cellValue == 0;
+                                }
+                            }
+                        }
                     }
                 }],
                 data: [],
@@ -283,10 +320,12 @@
                 minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,            
                 enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
                 rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
                 columnDefs: [{
                     name: 'categoria',
                     displayName: 'CATEGORIA',
                     field: 'categoria',
+                    width: '45%',                    
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'categoria',
                     editDropdownValueLabel: 'label',
@@ -296,21 +335,66 @@
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownCategoria) {
+                                if (searchTerm != 'null') {
+                                    var cell = dataService.data.dropdownCategoria.filter(function (categoria) {
+                                        return categoria.categoria === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    return cellValue == null || cellValue == 0;
+                                }
+                            }
+                        }
                     }
                 }, {
                     name: 'sottocategoria',
                     displayName: 'SOTTOCATEGORIA',
                     field: 'sottocategoria',
+                    width: '45%',                    
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
-                    editDropdownValueLabel: 'label',
+                    editDropdownValueLabel: 'label',                    
                     cellEditableCondition: function(scope){
                         return scope.row.entity.newRow || false;
                       },
                     cellFilter: 'griddropdown:this',
                     editDropdownOptionsFunction: function (rowEntity, colDef) {
                         return colDef.editDropdownOptionsArray;
+                    },
+                    filter: {
+                        condition: function (searchTerm, cellValue, row, column) {
+                            if (dataService.data.dropdownSottocategoria) {
+                                if (searchTerm != 'null') {
+                                    var cell = dataService.data.dropdownSottocategoria.filter(function (sottocategoria) {
+                                        return sottocategoria.sottocategoria === cellValue;
+                                    });
+                                    if (cell && cell.length > 0) {
+                                        return cell[0].label.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+                                    } else {
+                                        return false;
+                                    }
+                                } else {
+                                    return cellValue == null || cellValue == 0;
+                                }
+                            }
+                        }
                     }
+                }, {
+                    field: 'budget',
+                    displayName: '💰',
+                    width: '*',
+                    cellTooltip: true,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fas fa-bold',                                        
+                    cellClass: 'text-center'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {

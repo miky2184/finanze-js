@@ -5,8 +5,7 @@ html, body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
-    padding: 0;
-    line-height: 1.6;
+    padding: 0;    
     background: #fafafa !important;
 }
 
@@ -17,10 +16,11 @@ html, body {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.ui-grid-header-cell {    
+
+.ui-grid-header-cell {
+    text-align: center !important; /* Forza il centramento orizzontale */
+    height: 100%;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-align: center;
 }
 
 .ui-grid-header-cell-label {
@@ -76,8 +76,7 @@ md-tab-label {
     justify-content: flex-start;
 }
 
-.btn.btn-default.navbar-btn {
-    line-height: 1.42857;
+.btn.btn-default.navbar-btn {    
     font-size: 18px;
     padding: 2px 8px;
     width: 2.2em;

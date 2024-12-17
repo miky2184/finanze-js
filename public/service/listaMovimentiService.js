@@ -279,57 +279,51 @@
                     }
                 }, {
                     field: 'contabilizzata',
-                    displayName: ' ',
+                    displayName: '⚖️',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-balance-scale',
-                    headerCellClass: 'icon contabilizzata',
                     cellClass: 'text-center'
                 }, {
                     field: 'visualizzare',
-                    displayName: ' ',
+                    displayName: '👁️',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fas fa-eye',
-                    headerCellClass: 'icon visualizzare',
+                    buttonNgClass: 'fas fa-eye',                                        
                     cellClass: 'text-center'
                 }, {
                     field: 'budget',
-                    displayName: ' ',
+                    displayName: '💰',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fas fa-bold',
-                    headerCellClass: 'icon flagbudget',
+                    buttonNgClass: 'fas fa-bold',                                        
                     cellClass: 'text-center'
                 }, {
                     field: 'cartaCredito',
-                    displayName: ' ',
+                    displayName: '💳',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'far fa-credit-card',
-                    headerCellClass: 'icon cartacredito',
+                    buttonNgClass: 'far fa-credit-card',                                        
                     cellClass: 'text-center'
                 }, {
                     field: 'webapp',
-                    displayName: ' ',
+                    displayName: '🚀',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fab fa-telegram-plane',
-                    headerCellClass: 'icon webapp',
+                    buttonNgClass: 'fab fa-telegram-plane',                                        
                     cellClass: 'text-center'
                 }, {
                     field: 'check',
-                    displayName: ' ',
+                    displayName: '✔️',
                     width: '3%',
                     cellTooltip: true,
                     cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fas fa-check-double',
-                    headerCellClass: 'icon check',
+                    buttonNgClass: 'fas fa-check-double',                                        
                     cellClass: 'text-center'
                 }, {
                     field: 'importo',
