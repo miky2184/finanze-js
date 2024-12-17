@@ -451,10 +451,21 @@
                             url: '',
                             note: ''
                         });
+                    } else if (maschera === "DB") {
+                        gridOptions.data.unshift({
+                            newRow: true,
+                            dirty: true,
+                            budget: undefined,
+                            ambito: undefined,
+                            categoria: undefined,
+                            sottocategoria: undefined,
+                            conto: undefined,
+                            mese: undefined
+                        });
                     }
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PM";
                 },
                 label: 'Add'
             },
@@ -472,7 +483,7 @@
                     gridOptions.gridApi.selection.clearSelectedRows();
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera === "SA" || maschera == "PM" || maschera == "DB";
+                    return !dataService.data.admin || maschera === "SA" || maschera == "PM";
                 },
                 label: 'Delete'
             },
