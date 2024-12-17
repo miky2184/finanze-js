@@ -78,6 +78,7 @@
                         return srvc.loadData().then(function(resp) {
                             settingsService.loadSettings();
                             passwordService.loadPassword();
+                            budgetService.loadDefBudget();
                         });
                     }).finally(function (fn) {
                         dataService.data.dirty = false;
