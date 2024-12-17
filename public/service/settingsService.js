@@ -18,10 +18,11 @@
                 src: 'images/add.svg',
                 listener: function (gridOptions, type, settings) {
                     dataService.data.dirty = true;
-                    var newSetting = {};
+                    var newSetting = {};                    
                     newSetting.newRow = true;
                     newSetting.dirty = true;
                     newSetting.deleted = false;
+                    newSetting.budget = true;
                     if (settings) {
                         newSetting['label'] = '';
                         newSetting.used = 0;
@@ -45,22 +46,7 @@
                             srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (x) {
                                 return x[type] != "null";
                             });
-                        } else if (type === 'reparto') {
-                            dataService.data.dropdownReparto.unshift(newSetting);
-                            gridOptions.data = dataService.data.dropdownReparto.filter(function (j) {
-                                return j.reparto !== "";
-                            });
-                        } else if (type === 'sottoreparto') {
-                            dataService.data.dropdownSottoreparto.unshift(newSetting);
-                            gridOptions.data = dataService.data.dropdownSottoreparto.filter(function (j) {
-                                return j.sottoreparto !== "";
-                            });
-                        } else if (type === 'famiglia') {
-                            dataService.data.dropdownFamiglia.unshift(newSetting);
-                            gridOptions.data = dataService.data.dropdownFamiglia.filter(function (j) {
-                                return j.famiglia !== "";
-                            });
-                        }
+                        } 
                     } else {
                         gridOptions.data.unshift(newSetting);
                     }

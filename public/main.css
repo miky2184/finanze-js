@@ -677,3 +677,13 @@ label-settings {
     display: flex;
     align-items: stretch; /* Per assicurarsi che il contenitore riempia l'altezza */
   }
+
+
+  .md-button[disabled], 
+  .md-button.ng-disabled {
+      opacity: 0.5; /* Riduce l'opacità per dare l'effetto disabilitato */
+      cursor: not-allowed; /* Cambia il cursore per indicare l'inattività */
+      pointer-events: none; /* Disabilita completamente l'interazione */
+      background-color: #ccc !important; /* Sfondo grigiato */
+      color: #888 !important; /* Testo più chiaro */
+  } 

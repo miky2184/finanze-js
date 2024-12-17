@@ -500,10 +500,23 @@
                             });
                             gridOptions.gridApi.selection.clearSelectedRows();
                         }
-                    }                    
+                    } else if (maschera == "DB"){                        
+                        if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
+                            gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
+                                var copyRow = angular.copy(row);   
+                                copyRow.id = -1;                             
+                                copyRow.newRow = true;
+                                copyRow.deleted = false;
+                                copyRow.dirty = true;
+                                dataService.data.dirty = true;
+                                gridOptions.data.unshift(copyRow);
+                            });
+                            gridOptions.gridApi.selection.clearSelectedRows();
+                        }                        
+                    }                   
                 },
                 disabled: function (maschera) {
-                    return !dataService.data.admin || maschera == "PW" || maschera == "DB";
+                    return !dataService.data.admin || maschera == "PW";
                 },
                 label: 'Copy'
             },
