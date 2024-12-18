@@ -402,9 +402,14 @@
                 srvc.gridOptionsCat.data = dataService.data.dropdownCategoria.filter(function (j) {
                     return j.categoria !== "null";
                 });
-                srvc.gridOptionsSott.data = dataService.data.dropdownSottocategoria.filter(function (j) {
-                    return j.sottocategoria !== "null";
-                });
+                srvc.gridOptionsSott.data = dataService.data.dropdownSottocategoria
+                .filter(j => j.sottocategoria !== "null") // Rimuovi i valori null
+                .reduce((acc, current) => {
+                    if (!acc.some(item => item.sottocategoria === current.sottocategoria)) {
+                        acc.push(current);
+                    }
+                    return acc;
+                }, []);
                 srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (j) {
                     return j.beneficiario !== "null";
                 });
