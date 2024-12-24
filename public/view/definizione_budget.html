@@ -3,7 +3,7 @@
         <md-input-container class="md-block" flex="30">
             <label>Seleziona una tipologia di conto</label>
             <md-select ng-model="pivot.conto" ng-change="loadDefBudget()">
-                <md-option ng-repeat="conto in conti" ng-value="conto.conto">
+                <md-option ng-repeat="tipo_conto in conti" ng-value="conto.conto">
                     {{conto.label}}
                 </md-option>
             </md-select>
