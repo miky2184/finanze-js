@@ -17,13 +17,13 @@
                     name: 'anno',
                     displayName: 'ANNO',
                     field: 'anno',
-                    width: '25%',
+                    width: '*',
                     cellClass: 'text-center'
                 }, {
                     name: 'contocomune',
                     displayName: $strings.CONTO.CONTO_COMUNE,
                     field: 'contocomune',
-                    width: '25%',                    
+                    width: '27%',                    
                     headerCellClass: 'comune',
                     cellFilter: 'currency',
                     cellClass: 'text-right'
@@ -31,7 +31,7 @@
                     name: 'contomarianna',
                     displayName: $strings.CONTO.CONTO_MARIANNA,
                     field: 'contomarianna',
-                    width: '25%',
+                    width: '27%',
                     headerCellClass: 'marianna',                    
                     cellFilter: 'currency',
                     cellClass: 'text-right'
@@ -39,7 +39,7 @@
                     name: 'contopersonale',
                     displayName: $strings.CONTO.CONTO_PERSONALE,
                     field: 'contopersonale',
-                    width: '25%',
+                    width: '27%',
                     headerCellClass: 'personale',                    
                     cellFilter: 'currency',
                     cellClass: 'text-right'
