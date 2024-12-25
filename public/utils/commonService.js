@@ -8,7 +8,7 @@
             login: function (datiAccesso) {
                 dataService.data.alerts = [];
                 return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {
-                    modalService.showSearchingModal();
+                    modalService.showModal('Login in corso...');
                     if (resp.data && resp.data.length === 1) {                        
                         dataService.data.admin = resp.data[0]['admin'];
                         dataService.data.idDb = resp.data[0]['id_db'];
@@ -17,7 +17,9 @@
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {
-                                settingsService.loadSettings();
+                                if (settingsService.loadSettings()){
+                                    modalService.hideModal();
+                                };
                             }
                         });
                     } else {
@@ -26,9 +28,9 @@
                             type: 'danger'
                         });
                     }
-                }).finally(function (fn) {
-                    modalService.hideWaitingModal();
-                });
+                })/*.finally(function (fn) {
+                    modalService.hideModal();
+                })*/;
             },
             salva: function salva() {
                 var dto = {};
@@ -67,12 +69,7 @@
                     return pwd.dirty;
                 });
                 if (dataService.data.dirty) {
-                    var modalSavingInstance = $uibModal.open({
-                        size: 'lg',
-                        templateUrl: 'templates/modal/savingModal.html',
-                        backdrop: false,
-                        keyboard: false
-                    });
+                    modalService.showModal('Salvataggio in corso...', 'Sto salvando le tue modifiche...!!!');
                     dto.common['id_db'] = dataService.data.idDb; 
                     return $http.post($strings.REST.SERVER + '/salva', dto).then(function (resp) {
                         return srvc.loadData().then(function(resp) {
@@ -82,7 +79,7 @@
                         });
                     }).finally(function (fn) {
                         dataService.data.dirty = false;
-                        modalSavingInstance.close();
+                        modalService.hideModal();
                     });
                 }
             },

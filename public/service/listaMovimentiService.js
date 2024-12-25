@@ -524,22 +524,22 @@
                 src: 'images/sync.svg',
                 tooltip: "Refresh Dati",
                 listener: function (gridOptions, maschera) {
-                    modalService.showSearchingModal();
+                    modalService.showModal('Ricerca in corso...');
                     if (maschera === "LM") {                        
                         return srvc.loadListaMovimenti(dataService.data.idDb).finally(function (f) {
-                            modalService.hideWaitingModal();
+                            modalService.hideModal();
                         });
                     } else if (maschera === "SA") {
                         return salaryService.loadWork().finally(function (f) {
-                            modalService.hideWaitingModal();
+                            modalService.hideModal();
                         });
                     } else if (maschera === "PW") {
                         return passwordService.loadPassword().finally(function (f) {
-                            modalService.hideWaitingModal();
+                            modalService.hideModal();
                         });
                     } else if (maschera === "DB") {
                         return budgetService.loadDefBudget().finally(function (f) {
-                            modalService.hideWaitingModal();
+                            modalService.hideModal();
                         });
                     }
                 },

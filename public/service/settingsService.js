@@ -423,6 +423,7 @@
                 });
                 srvc.gridOptionsCatSott.columnDefs[0].editDropdownOptionsArray = dataService.data.dropdownCategoria;
                 srvc.gridOptionsCatSott.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
+                return true;
             },
             refreshGridSettings: function () {
                 const gridApis = [
