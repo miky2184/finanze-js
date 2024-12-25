@@ -18,7 +18,6 @@
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {
                                 settingsService.loadSettings();
-                                modalService.hideWaitingModal();
                             }
                         });
                     } else {
@@ -27,9 +26,9 @@
                             type: 'danger'
                         });
                     }
-                })/*.finally(function (fn) {
+                }).finally(function (fn) {
                     modalService.hideWaitingModal();
-                })*/;
+                });
             },
             salva: function salva() {
                 var dto = {};
