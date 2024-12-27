@@ -6,12 +6,12 @@
         
 
         // Inizializza il tab attivo
-    $scope.activeTab = 0;
+        $scope.activeTab = 0;
 
-    // Cambia il tab attivo
-    $scope.changeTab = function (index) {
-        $scope.activeTab = index;
-    };    
+        // Cambia il tab attivo
+        $scope.changeTab = function (index) {
+            $scope.activeTab = index;
+        };
 
         /* PARAMETRI */
         /* LOGIN */
@@ -26,10 +26,10 @@
             return dataService.data.idDb;
         };
         $scope.disablePasswordPage = function () {
-            return dataService.data.disablePasswordPage;
+            return !dataService.data.disablePasswordPage;
         };
         $scope.disableSalaryPage = function () {
-            return dataService.data.disableSalaryPage;
+            return !dataService.data.disableSalaryPage;
         };
 
         $scope.login = function () {
@@ -93,6 +93,7 @@
         $scope.gridOptionsBen = settingsService.gridOptionsBen;
         $scope.gridOptionsAmbCat = settingsService.gridOptionsAmbCat;
         $scope.gridOptionsCatSott = settingsService.gridOptionsCatSott;
+        $scope.gridOptionsConto = settingsService.gridOptionsConto;
 
         /*********************
           TAB GRAFICO

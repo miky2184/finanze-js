@@ -27,7 +27,8 @@
                             var diffField = `${year - 1}-${year}`;
                             return srvc.getClass(row.entity[diffField]);
                         },
-                        aggregationType: uiGridConstants.aggregationTypes.sum
+                        aggregationType: uiGridConstants.aggregationTypes.sum,
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>'
                     });
                 }
 

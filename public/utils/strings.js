@@ -13,17 +13,17 @@
                 ANNULLA_MSG: 'Ci sono modifiche non salvate in sospeso. Sei sicuro di voler annullare?'
             },
             CONTO:{
-                CONTO_COMUNE: "CONTO COMUNE",
-                CONTO_PERSONALE: "CONTO PERSONALE",
-                CONTO_MARIANNA: "CONTO MARIANNA"            
+                CONTO_1: "CONTO COMUNE",
+                CONTO_2: "CONTO PERSONALE",
+                CONTO_3: "CONTO MARIANNA"            
             },
             RGB:{
-                CONTO_COMUNE: "#A5D6A7",
-                CONTO_PERSONALE: "#81D4FA",
-                CONTO_MARIANNA: "#9FA8DA"
+                CONTO_1: "#A5D6A7",
+                CONTO_2: "#81D4FA",
+                CONTO_3: "#9FA8DA"
             },
             REST:{
-                SERVER: 'http://miky2184.ddns.net:3001'
+                SERVER: 'http://127.0.0.1:8000' // 'http://miky2184.ddns.net:3001'
             },
             PIVOT: {
                 year: new Date().getFullYear(),

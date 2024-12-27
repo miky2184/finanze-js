@@ -6,7 +6,7 @@
         <div id="gridAmb" ui-grid="gridOptionsAmb" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center" flex="10">
-        <md-button ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsAmb, 'ambito', true)" ng-disabled="button.disabled()">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsAmb, 'ambito', true)" ng-disabled="button.disabled()">
           <md-icon md-svg-src="{{button.src}}"></md-icon>
         </md-button>
       </md-card-actions>
@@ -18,7 +18,7 @@
         <div id="gridCat" ui-grid="gridOptionsCat" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center" flex="10">
-        <md-button ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsCat, 'categoria', true)" ng-disabled="button.disabled()">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsCat, 'categoria', true)" ng-disabled="button.disabled()">
           <md-icon md-svg-src="{{button.src}}"></md-icon>
         </md-button>
       </md-card-actions>
@@ -30,7 +30,7 @@
         <div id="gridSott" ui-grid="gridOptionsSott" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center" flex="10">
-        <md-button ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsSott, 'sottocategoria', true)" ng-disabled="button.disabled()">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsSott, 'sottocategoria', true)" ng-disabled="button.disabled()">
           <md-icon md-svg-src="{{button.src}}"></md-icon>
         </md-button>
       </md-card-actions>
@@ -42,7 +42,7 @@
         <div id="gridBen" ui-grid="gridOptionsBen" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center" flex="10">
-        <md-button ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsBen, 'beneficiario', true)" ng-disabled="button.disabled()">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsBen, 'beneficiario', true)" ng-disabled="button.disabled()">
           <md-icon md-svg-src="{{button.src}}"></md-icon>
         </md-button>
       </md-card-actions>
@@ -51,27 +51,40 @@
 
   <div layout="row" layout-margin style="gap: 16px;">
     <!-- Card Ambito-Categoria -->
-    <md-card flex="50" layout="column" flex="40">
+    <md-card flex="35" layout="column" flex="40">
       <md-card-content flex>
         <div id="gridAmbCat" ui-grid="gridOptionsAmbCat" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center" flex="10">
-        <md-button ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsAmbCat, 'ambcat', false)" ng-disabled="button.disabled()">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsAmbCat, 'ambcat', false)" ng-disabled="button.disabled()">
           <md-icon md-svg-src="{{button.src}}"></md-icon>
         </md-button>
       </md-card-actions>
     </md-card>
 
     <!-- Card Categoria-Sottocategoria -->
-    <md-card flex="50" layout="column" flex="40">
+    <md-card flex="35" layout="column" flex="40">
       <md-card-content flex>
         <div id="gridCatSott" ui-grid="gridOptionsCatSott" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
       </md-card-content>
       <md-card-actions layout="row" layout-align="end center" flex="10">
-        <md-button ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsCatSott, 'catsott', false)" ng-disabled="button.disabled()">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsCatSott, 'catsott', false)" ng-disabled="button.disabled()">
           <md-icon md-svg-src="{{button.src}}"></md-icon>
         </md-button>
       </md-card-actions>
     </md-card>
+
+    <!-- Card Conti -->
+    <md-card flex="30" layout="column" flex="40">
+      <md-card-content flex>
+        <div id="gridConti" ui-grid="gridOptionsConto" ui-grid-selection ui-grid-edit ui-grid-auto-resize></div>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center" flex="10">
+        <md-button aria-label="{{button.label}}" ng-repeat="button in settingButtons" class="md-icon-button" ng-click="button.listener(gridOptionsConto, 'conto', false)" ng-disabled="button.disabled()">
+          <md-icon md-svg-src="{{button.src}}"></md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card>
+
   </div>
 </div>

@@ -21,8 +21,7 @@
                     var newSetting = {};                    
                     newSetting.newRow = true;
                     newSetting.dirty = true;
-                    newSetting.deleted = false;
-                    newSetting.budget = true;
+                    newSetting.deleted = false;                    
                     if (settings) {
                         newSetting['label'] = '';
                         newSetting.used = 0;
@@ -37,6 +36,7 @@
                                 return x[type] != "null";
                             });
                         } else if (type === 'sottocategoria') {
+                            newSetting.budget = true;
                             dataService.data.dropdownSottocategoria.unshift(newSetting);
                             srvc.gridOptionsSott.data = dataService.data.dropdownSottocategoria.filter(function (x) {
                                 return x[type] != "null";
@@ -46,7 +46,12 @@
                             srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (x) {
                                 return x[type] != "null";
                             });
-                        } 
+                        }  else if (type === 'conto') {
+                            dataService.data.settingsConto.unshift(newSetting);
+                            srvc.gridOptionsConto.data = dataService.data.settingsConto.filter(function (x) {
+                                return x[type] != "null";
+                            });
+                        }
                     } else {
                         gridOptions.data.unshift(newSetting);
                     }
@@ -395,6 +400,28 @@
                     }, 100, 1);
                 }                
             },
+            gridOptionsConto: {    
+                minRowsToShow: $strings.MIN_ROWS_TO_SHOW_SETTINGS,            
+                enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
+                rowTemplate: 'templates/rows/deletableRow.html',
+                enableFiltering: true,
+                columnDefs: [{
+                    name: 'label',
+                    displayName: 'CONTO',
+                    field: 'label'                
+                }, {
+                    name: 'hex_color',
+                    displayName: 'HEX Color',
+                    field: 'hex_color',
+                    enableCellEdit: true, // Abilita l'editing
+                    editableCellTemplate: 'templates/rows/colorCellEditor.html'
+                  }],
+                data: [],
+                onRegisterApi: function (gridApi) {
+                    srvc.gridOptionsConto.gridApi = gridApi;
+                    gridApi.edit.on.afterCellEdit(scope, afterCellEditFunction);
+                }                
+            },
             loadSettings: function () {
                 srvc.gridOptionsAmb.data = dataService.data.dropdownAmbito.filter(function (j) {
                     return j.ambito !== "null";
@@ -413,6 +440,7 @@
                 srvc.gridOptionsBen.data = dataService.data.dropdownBeneficiario.filter(function (j) {
                     return j.beneficiario !== "null";
                 });
+                srvc.gridOptionsConto.data = dataService.data.settingsConto;
                 srvc.gridOptionsAmbCat.data = angular.copy(dataService.data.dropdownCategoria).filter(function (j) {
                     return j.categoria !== "null" && j.ambito !== null;
                 });
@@ -432,7 +460,8 @@
                     srvc.gridOptionsSott.gridApi,
                     srvc.gridOptionsBen.gridApi,
                     srvc.gridOptionsAmbCat.gridApi,
-                    srvc.gridOptionsCatSott.gridApi
+                    srvc.gridOptionsCatSott.gridApi,
+                    srvc.gridOptionsConto.gridApi
                 ];
             
                 gridApis.forEach((gridApi, index) => {

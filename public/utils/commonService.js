@@ -1,6 +1,24 @@
 (function () {
     'use strict';
     angular.module('myApp').factory('commonService', ['modalService', '$http', 'dataService', 'listaMovimentiService', 'settingsService', 'salaryService', '$uibModal', '$q', '$strings', 'passwordService', 'budgetService', function (modalService, $http, dataService, listaMovimentiService, settingsService, salaryService, $uibModal, $q, $strings, passwordService, budgetService) {
+        
+        function clearDataServiceData() {
+            for (var key in dataService.data) {
+                if (dataService.data.hasOwnProperty(key)) {
+                    // Se la proprietà è un oggetto o un array, lo resetto a un oggetto vuoto o un array vuoto
+                    if (typeof dataService.data[key] === 'object') {
+                        if (Array.isArray(dataService.data[key])) {
+                            dataService.data[key] = [];  // Se è un array, lo resetto come array vuoto
+                        } else {
+                            dataService.data[key] = {};  // Se è un oggetto, lo resetto come oggetto vuoto
+                        }
+                    } else {
+                        dataService.data[key] = null;  // Se non è un oggetto, lo resetto a null
+                    }
+                }
+            }
+        }
+        
         var srvc = {
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti(dataService.data.idDb);
@@ -67,6 +85,9 @@
                 });
                 dto.passwords = passwordService.gridOptionsPassword.data.filter(function(pwd){
                     return pwd.dirty;
+                });
+                dto.conto = settingsService.gridOptionsConto.data.filter(function(conto){
+                    return conto.dirty;
                 });
                 if (dataService.data.dirty) {
                     modalService.showModal('Salvataggio in corso...', 'Sto salvando le tue modifiche...!!!');
@@ -173,18 +194,13 @@
                     if (dataService.data.dirty) {
                         var promise = modalService.showYesNoModal($strings.MODAL.WARNING, $strings.MODAL.EXIT_MSG, $strings.MODAL.OK, $strings.MODAL.ANNULLA);
                         promise.then(function () {
-                            dataService.data.logged = false;
-                            dataService.data.admin = false;
-                            dataService.data.dirty = false;
-                            dataService.data.idDb = null;
+                            clearDataServiceData();
                             deferred.resolve();
                         }, function () {
                             deferred.reject();
                         });
                     } else {
-                        dataService.data.logged = false;
-                        dataService.data.admin = false;
-                        dataService.data.idDb = null;
+                        clearDataServiceData();
                     }
 
 

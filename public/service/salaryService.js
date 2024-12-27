@@ -89,6 +89,7 @@
             width: '7%',
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -109,6 +110,7 @@
             width: '7%',
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -130,6 +132,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -151,6 +154,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -216,7 +220,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -250,7 +253,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -284,7 +286,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -318,7 +319,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -352,7 +352,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -386,7 +385,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -420,7 +418,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -454,7 +451,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -488,7 +484,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -523,7 +518,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -542,7 +536,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -561,7 +554,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -580,7 +572,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -601,6 +592,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -621,6 +613,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -641,6 +634,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -661,6 +655,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -681,6 +676,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -701,6 +697,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -721,6 +718,7 @@
             cellClass: 'disable',
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -741,6 +739,7 @@
             width: '7%',
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -761,6 +760,7 @@
             cellClass: 'disable',
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -781,6 +781,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -801,6 +802,7 @@
             enableCellEdit: false,
             footerCellFilter: 'number:2',
             aggregationType: uiGridConstants.aggregationTypes.sum,
+            footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -819,7 +821,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -838,7 +839,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -857,7 +857,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -876,7 +875,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -895,7 +893,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -914,7 +911,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -933,7 +929,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -952,7 +947,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,
@@ -971,7 +965,6 @@
             cellClass: 'text-right',
             width: '7%',
             footerCellFilter: 'number:2',
-            aggregationType: uiGridConstants.aggregationTypes.sum,
             type: 'number',
             filters: [{
                 condition: uiGridConstants.filter.GREATER_THAN_OR_EQUAL,

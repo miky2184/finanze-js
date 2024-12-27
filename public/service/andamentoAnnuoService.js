@@ -1,7 +1,43 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoAnnuoService', ['$http', '$timeout', '$strings', 'uiGridConstants', 'dataService', function ($http, $timeout, $strings, uiGridConstants, dataService) {
-        var pivotData = [];
+    angular.module('myApp').factory('andamentoAnnuoService', ['$http', '$timeout', '$strings', 'uiGridConstants', 'dataService', function ($http, $timeout, $strings, uiGridConstants, dataService) {        
+
+        function parseResponse(data) {
+            const parsedData = [];
+            data.forEach(item => {
+                const row = { anno: item.anno };
+                item.conti.forEach(conto => {
+                    const [key, value] = Object.entries(conto)[0];
+                    row[key] = value;
+                });
+                parsedData.push(row);
+            });
+            return parsedData;
+        }
+        
+        function generateContoColumns() {
+            var columns = [];
+            var dimCols = 100 / (1 + dataService.data.conti.length); // Calcola la dimensione delle colonne in percentuale
+
+            dataService.data.conti.forEach(function (item) {
+                const key = Object.keys(item)[0]; // Estrae la chiave dinamica (es. "conto1")
+                const value = item[key]; // Ottiene il valore associato (es. { id: 1, label: ..., hex_color: ... })            
+
+                columns.push({
+                    name: key,
+                    displayName: value.label, // Usa "label" come displayName
+                    field: key,
+                    width: dimCols.toString() + '%',
+                    cellFilter: 'currency',
+                    cellClass: 'text-right',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>'
+                });
+            });
+            
+            return columns;
+        }
+
         var srvc = {
             gridOptionAndamentoAnnuo: {
                 columnVirtualizationThreshold: 100,
@@ -13,37 +49,7 @@
                 selectionRowHeaderWidth: 35,
                 enableSorting: false,
                 enableColumnMenus: false,
-                columnDefs: [{
-                    name: 'anno',
-                    displayName: 'ANNO',
-                    field: 'anno',
-                    width: '*',
-                    cellClass: 'text-center'
-                }, {
-                    name: 'contocomune',
-                    displayName: $strings.CONTO.CONTO_COMUNE,
-                    field: 'contocomune',
-                    width: '27%',                    
-                    headerCellClass: 'comune',
-                    cellFilter: 'currency',
-                    cellClass: 'text-right'
-                }, {
-                    name: 'contomarianna',
-                    displayName: $strings.CONTO.CONTO_MARIANNA,
-                    field: 'contomarianna',
-                    width: '27%',
-                    headerCellClass: 'marianna',                    
-                    cellFilter: 'currency',
-                    cellClass: 'text-right'
-                }, {
-                    name: 'contopersonale',
-                    displayName: $strings.CONTO.CONTO_PERSONALE,
-                    field: 'contopersonale',
-                    width: '27%',
-                    headerCellClass: 'personale',                    
-                    cellFilter: 'currency',
-                    cellClass: 'text-right'
-                }],
+                columnDefs: [],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionAndamentoAnnuo.gridApi = gridApi;
@@ -93,46 +99,65 @@
                 };
                 var dto = {};
                 dto.id_db = dataService.data.idDb;
-                return $http.post($strings.REST.SERVER + '/andamento_annuo', dto).then(function (resp) {
-                    pivotData = resp.data;
-                    srvc.gridOptionAndamentoAnnuo.data = resp.data;
-                    dataService.data.dataGrafico = srvc.dataGrafico(resp.data);
+                return $http.post($strings.REST.SERVER + '/andamento_annuo', dto).then(function (resp) {                    
+                    const pivotData = parseResponse(resp.data);
+
+                    // Reinizializza la griglia con i nuovi dati e colonne
+                    srvc.initializeGrid(pivotData);
+
+                    // Aggiorna il grafico con i nuovi dati
+                    dataService.data.dataGrafico = srvc.dataGrafico(pivotData);
+
+                    // Forza il ridimensionamento della griglia
+                    if (srvc.gridOptionAndamentoAnnuo.gridApi) {
+                        srvc.gridOptionAndamentoAnnuo.gridApi.core.handleWindowResize();
+                    }
                 });
             },
-            dataGrafico: function () {
-                return [{
-                    key: $strings.CONTO.CONTO_COMUNE,
-                    values: pivotData.map(function (d) {
+            dataGrafico: function (data) {
+                const datiGrafico = [];
+                dataService.data.conti.forEach(function (item) {
+                const key = Object.keys(item)[0]; // Estrae la chiave dinamica (es. "conto1")
+                const value = item[key]; 
+
+                datiGrafico.push({
+                    key: value.label,
+                    values: data.map(function (d) {
                         return {
                             'x': d.anno,
-                            'y': d.contocomune
+                            'y': d[key]
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE,   
+                    color: value.hex_color,   
                     strokeWidth: 2                 
-                }, {
-                    key: $strings.CONTO.CONTO_MARIANNA,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.anno,
-                            'y': d.contomarianna
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_MARIANNA,
-                    strokeWidth: 2
-                }, {
-                    key: $strings.CONTO.CONTO_PERSONALE,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.anno,
-                            'y': d.contopersonale
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_PERSONALE,
-                    strokeWidth: 2                    
-                }];
+                }
+                )});
+
+                return datiGrafico;                
+            },
+            initializeGrid: function (pivotData) {
+                // Genera nuove colonne dinamiche
+                const dynamicColumns = generateContoColumns();
+                
+                // Aggiungi le colonne dinamiche alle colonne esistenti
+                srvc.gridOptionAndamentoAnnuo.columnDefs = [{
+                    name: 'anno',
+                    displayName: 'ANNO',
+                    field: 'anno',
+                    width: '*',
+                    cellClass: 'text-center'
+                }].concat(dynamicColumns);
+            
+                // Forza l'aggiornamento della griglia
+                if (srvc.gridOptionAndamentoAnnuo.gridApi) {
+                    srvc.gridOptionAndamentoAnnuo.gridApi.core.notifyDataChange('column');
+                }
+            
+                // Imposta i dati aggiornati
+                srvc.gridOptionAndamentoAnnuo.data = pivotData || srvc.gridOptionAndamentoAnnuo.data;
             }
         };
+        
         return srvc;
     }]);
 })();

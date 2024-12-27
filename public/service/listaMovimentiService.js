@@ -329,7 +329,7 @@
                     field: 'importo',
                     displayName: 'IMPORTO',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                     cellFilter: 'currency',
                     width: '7%',
                     cellTooltip: true,
@@ -585,43 +585,60 @@
                                 dataService.data.dropdownBeneficiario = response.data;
                                 return $http.post($strings.REST.SERVER + '/conto', dto).then(function (response) {
                                     dataService.data.editDropDownContoArray = response.data;
-                                    return $http.post($strings.REST.SERVER + '/tipo_conto', dto).then(function (response) {
-                                        dataService.data.editDropDownTipoContoArray = response.data;
-                                        var dto = {};
-                                        dto.id_db = dataService.data.idDb;
-                                        return $http.post($strings.REST.SERVER + '/lista_movimenti', dto).then(function (response) {
-                                            var resultsData = [];
-                                            response.data.forEach(function (row) {
-                                                var newRow = {};
-                                                newRow.id = row['id'];
-                                                newRow.data = new Date(row['data_val']);
-                                                newRow.ambito = row['ambito'];
-                                                newRow.categoria = row['categoria'];
-                                                newRow.sottocategoria = row['sottocategoria'];
-                                                newRow.beneficiario = row['beneficiario'];
-                                                newRow.conto = row['conto'];
-                                                newRow.tipo_conto = row['tipo_conto'];
-                                                newRow.contabilizzata = row['fl_cont'];
-                                                newRow.budget = row['budget'];
-                                                newRow.visualizzare = row['fl_visl'];
-                                                newRow.cartaCredito = row['fl_cc'];
-                                                newRow.webapp = row['webapp'];
-                                                newRow.importo = Number(row['value']);
-                                                newRow.info = row['info'];
-                                                newRow.check = row['check_spesa'];
-                                                newRow.anno = String(new Date(row['data_val']).getFullYear());
-                                                newRow.mese = String(new Date(row['data_val']).getMonth() + 1).padStart(2, '0');
-                                                return resultsData.push(newRow);
-                                            });
-                                            dataService.data.backupData = angular.copy(resultsData);
-                                            srvc.gridOptions.data = resultsData;
-                                            srvc.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito;
-                                            srvc.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
-                                            srvc.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
-                                            srvc.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
-                                            srvc.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
-                                            srvc.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
+                                    return $http.post($strings.REST.SERVER + '/load_conti', dto).then(function (response) {
+                                        dataService.data.settingsConto = response.data;
+                                        const transformedData = [];                                        
+                                        response.data.forEach(function (conto) {
+                                            var row = { [conto.conto]: {
+                                                id: conto.id,
+                                                label: conto.label,
+                                                hex_color: conto.hex_color
+                                                }
+                                            };
+                                            transformedData.push(row);
                                         });
+                                        dataService.data.conti = transformedData;
+                                        /* return $http.post($strings.REST.SERVER + '/years', dto).then(function (response) {
+                                        dataService.data.years = response.data.map(item => item.anno); */
+                                            return $http.post($strings.REST.SERVER + '/tipo_conto', dto).then(function (response) {
+                                                dataService.data.editDropDownTipoContoArray = response.data;
+                                                var dto = {};
+                                                dto.id_db = dataService.data.idDb;
+                                                return $http.post($strings.REST.SERVER + '/lista_movimenti', dto).then(function (response) {
+                                                    var resultsData = [];
+                                                    response.data.forEach(function (row) {
+                                                        var newRow = {};
+                                                        newRow.id = row['id'];
+                                                        newRow.data = new Date(row['data_val']);
+                                                        newRow.ambito = row['ambito'];
+                                                        newRow.categoria = row['categoria'];
+                                                        newRow.sottocategoria = row['sottocategoria'];
+                                                        newRow.beneficiario = row['beneficiario'];
+                                                        newRow.conto = row['conto'];
+                                                        newRow.tipo_conto = row['tipo_conto'];
+                                                        newRow.contabilizzata = row['fl_cont'];
+                                                        newRow.budget = row['budget'];
+                                                        newRow.visualizzare = row['fl_visl'];
+                                                        newRow.cartaCredito = row['fl_cc'];
+                                                        newRow.webapp = row['webapp'];
+                                                        newRow.importo = Number(row['value']);
+                                                        newRow.info = row['info'];
+                                                        newRow.check = row['check_spesa'];
+                                                        newRow.anno = String(new Date(row['data_val']).getFullYear());
+                                                        newRow.mese = String(new Date(row['data_val']).getMonth() + 1).padStart(2, '0');
+                                                        return resultsData.push(newRow);
+                                                    });
+                                                    dataService.data.backupData = angular.copy(resultsData);
+                                                    srvc.gridOptions.data = resultsData;
+                                                    srvc.gridOptions.columnDefs[1].editDropdownOptionsArray = dataService.data.dropdownAmbito;
+                                                    srvc.gridOptions.columnDefs[2].editDropdownOptionsArray = dataService.data.dropdownCategoria;
+                                                    srvc.gridOptions.columnDefs[3].editDropdownOptionsArray = dataService.data.dropdownSottocategoria;
+                                                    srvc.gridOptions.columnDefs[4].editDropdownOptionsArray = dataService.data.dropdownBeneficiario;
+                                                    srvc.gridOptions.columnDefs[5].editDropdownOptionsArray = dataService.data.editDropDownContoArray;
+                                                    srvc.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
+                                                });
+                                            });
+                                        // });
                                     });
                                 });
                             });

@@ -7,7 +7,7 @@
         var srvc = {
             get data() {
                 return _data;
-            },
+            },            
             get commonData() {
                 return _commonData;
             },

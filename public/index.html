@@ -90,62 +90,62 @@
            <!-- <md-content layout="column" flex> -->
             <header layout="column" class="header">
                 <md-tabs md-dynamic-height md-border-bottom md-no-disconnect md-selected="activeTab">
-                    <md-tab md-on-select="onTabSelect(0)">
+                    <md-tab md-on-select="changeTab(0)">
                         <md-tab-label>
                             <md-icon class="material-icons">list</md-icon> Lista Movimenti
                         </md-tab-label>                        
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(1); loadBalance()">
+                    <md-tab md-on-select="changeTab(1); loadBalance()">
                         <md-tab-label>
                             <md-icon class="material-icons">account_balance</md-icon> Bilancio
                         </md-tab-label>        
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(2); refreshGridSettings()" ng-disabled="admin()">
+                    <md-tab md-on-select="changeTab(2); refreshGridSettings()" ng-disabled="admin()">
                         <md-tab-label>
                             <md-icon class="material-icons">settings</md-icon> Impostazioni
                         </md-tab-label>                   
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(3); loadDefBudget()">
+                    <md-tab md-on-select="changeTab(3); loadDefBudget()">
                         <md-tab-label>
                             <md-icon class="material-icons">attach_money</md-icon> Definizione Budget
                         </md-tab-label>
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(4); loadBudget()">
+                    <md-tab md-on-select="changeTab(4); loadBudget()">
                         <md-tab-label>
                             <md-icon class="material-icons">pie_chart</md-icon> Budget
                         </md-tab-label>
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(5); loadPivotMese(pivot.year)">
+                    <md-tab md-on-select="changeTab(5); loadPivotMese(pivot.year)">
                         <md-tab-label>
                             <md-icon class="material-icons">calendar_today</md-icon> Spesato Mese
                         </md-tab-label>                   
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(6); loadAndamentoAnnuo()">
+                    <md-tab md-on-select="changeTab(6); loadAndamentoAnnuo()">
                         <md-tab-label>
                             <md-icon class="material-icons">bar_chart</md-icon> Spesato Annuo
                         </md-tab-label>
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(7); loadSpeseAnnue()">
+                    <md-tab md-on-select="changeTab(7); loadSpeseAnnue()">
                         <md-tab-label>
                             <md-icon class="material-icons">assessment</md-icon> Report Spesato
                         </md-tab-label>
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(8); loadGrafico(pivot.year)">
+                    <md-tab md-on-select="changeTab(8); loadGrafico(pivot.year)">
                         <md-tab-label>
-                            <md-icon class="material-icons">dashboard</md-icon> Dashboard Conti
+                            <md-icon class="material-icons">dashboard</md-icon> Trend Conti
                         </md-tab-label>                       
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(9); loadGraficoCategorie(pivot.year)">
+                    <!-- <md-tab md-on-select="changeTab(9); loadGraficoCategorie(pivot.year)">
                         <md-tab-label>
                             <md-icon class="material-icons">dashboard</md-icon> Dashboard Categorie
                         </md-tab-label>                       
-                    </md-tab>
-                    <md-tab md-on-select="onTabSelect(10); loadWork()" ng-disabled="disableSalaryPage()">
+                    </md-tab> -->
+                    <md-tab md-on-select="changeTab(9); loadWork()" ng-if="disableSalaryPage()">
                         <md-tab-label>
                             <md-icon class="material-icons">work</md-icon> Stipendio
                         </md-tab-label>                       
                     </md-tab>
-                    <md-tab md-on-select="onTabSelect(11); loadPassword()" ng-disabled="disablePasswordPage()">
+                    <md-tab md-on-select="changeTab(10); loadPassword()" ng-if="disablePasswordPage()">
                         <md-tab-label>
                             <md-icon class="material-icons">vpn_key</md-icon> Password
                         </md-tab-label>                       
@@ -163,9 +163,9 @@
                 <div ng-include="'view/spesato_annuo.html'" ng-show="activeTab === 6"></div>
                 <div ng-include="'view/report_spesato.html'" ng-show="activeTab === 7"></div>
                 <div ng-include="'view/dashboard_spesato.html'" ng-show="activeTab === 8"></div>
-                <div ng-include="'view/dashboard_categorie.html'" ng-show="activeTab === 9"></div>
-                <div ng-include="'view/work.html'" ng-show="activeTab === 10"></div>
-                <div ng-include="'view/password.html'" ng-show="activeTab === 11"></div>
+                <!-- <div ng-include="'view/dashboard_categorie.html'" ng-show="activeTab === 9"></div> -->
+                <div ng-include="'view/work.html'" ng-show="activeTab === 9"></div>
+                <div ng-include="'view/password.html'" ng-show="activeTab === 10"></div>
             </content>
             <footer layout="row" layout-align="end right" class="footer">
                 <md-button aria-label="{{button.label}}" 

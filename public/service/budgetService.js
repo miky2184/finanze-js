@@ -206,6 +206,7 @@
                         type: 'number',
                         cellClass: 'text-right',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         filters: [{
@@ -293,6 +294,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         aggregationType: uiGridConstants.aggregationTypes.sum,
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         type: 'number'
                     },
                     {
@@ -306,6 +308,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_gen',
@@ -318,6 +321,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'gen',
@@ -330,6 +334,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_feb',
@@ -342,6 +347,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'feb',
@@ -354,6 +360,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_mar',
@@ -366,6 +373,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'mar',
@@ -378,6 +386,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_apr',
@@ -390,6 +399,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'apr',
@@ -402,6 +412,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_mag',
@@ -414,6 +425,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'mag',
@@ -426,6 +438,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_giu',
@@ -438,6 +451,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'giu',
@@ -450,6 +464,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_lug',
@@ -462,6 +477,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'lug',
@@ -474,6 +490,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_ago',
@@ -486,6 +503,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'ago',
@@ -498,6 +516,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_sett',
@@ -510,6 +529,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'sett',
@@ -522,6 +542,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_ott',
@@ -534,6 +555,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'ott',
@@ -546,6 +568,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_nov',
@@ -558,6 +581,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'nov',
@@ -570,6 +594,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'budg_dic',
@@ -582,6 +607,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }, {
                         name: 'dic',
@@ -594,6 +620,7 @@
                         footerCellFilter: 'currency',
                         cellFilter: 'currency',
                         type: 'number',
+                        footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
                         aggregationType: uiGridConstants.aggregationTypes.sum
                     }
                 ],

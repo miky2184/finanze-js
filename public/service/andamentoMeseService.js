@@ -1,7 +1,46 @@
 (function () {
     'use strict';
-    angular.module('myApp').factory('andamentoMeseService', ['$http', '$timeout', 'dataService', 'uiGridConstants', '$strings', function ($http, $timeout, dataService, uiGridConstants, $strings) {
-        var pivotData = [];
+    angular.module('myApp').factory('andamentoMeseService', ['$http', '$timeout', '$strings', 'uiGridConstants', 'dataService', function ($http, $timeout, $strings, uiGridConstants, dataService) {        
+
+        function parseResponse(data) {
+            const parsedData = [];
+            data.forEach(item => {
+                const row = { mese: item.mese, id: item.id };
+                item.conti.forEach(conto => {
+                    const [key, value] = Object.entries(conto)[0];
+                    row[key] = value;
+                });
+                parsedData.push(row);
+            });
+            return parsedData;
+        }
+        
+        function generateContoColumns() {
+            var columns = [];
+            var dimCols = 100 / (1 + dataService.data.conti.length); // Calcola la dimensione delle colonne in percentuale
+
+            dataService.data.conti.forEach(function (item) {
+                const key = Object.keys(item)[0]; // Estrae la chiave dinamica (es. "conto1")
+                const value = item[key]; // Ottiene il valore associato (es. { id: 1, label: ..., hex_color: ... })            
+
+                columns.push({
+                    name: key,
+                    displayName: value.label, // Usa "label" come displayName
+                    field: key,
+                    width: dimCols.toString() + '%',
+                    cellFilter: 'currency',
+                    cellClass: 'text-right',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>',
+                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
+                        return srvc.getClass(row.entity, col.field);
+                    }
+                });
+            });
+            
+            return columns;
+        }
+
         var srvc = {
             getClass: function (entity, field) {
                 if (entity[field] < 0) {
@@ -20,46 +59,10 @@
                 enableSorting: false,
                 enableColumnMenus: false,
                 columnDefs: [{
-                    name: 'nome_mese',
+                    name: 'mese',
                     displayName: 'MESE',
-                    field: 'nome_mese',
-                    width: '25%'
-                }, {
-                    name: 'contocomune',
-                    displayName: $strings.CONTO.CONTO_COMUNE,
-                    field: 'contocomune',
-                    width: '25%',
-                    headerCellClass: 'comune',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, col.field);
-                    }
-                },{
-                    name: 'contomarianna',
-                    displayName: $strings.CONTO.CONTO_MARIANNA,
-                    field: 'contomarianna',
-                    width: '25%',
-                    headerCellClass: 'marianna',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, col.field);
-                    }
-                }, {
-                    name: 'contopersonale',
-                    displayName: $strings.CONTO.CONTO_PERSONALE,
-                    field: 'contopersonale',
-                    width: '25%',
-                    headerCellClass: 'personale',
-                    aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellFilter: 'currency',
-                    cellFilter: 'currency',
-                    cellClass: function (grid, row, col, rowRenderIndex, colRenderIndex) {
-                        return srvc.getClass(row.entity, col.field);
-                    }
+                    field: 'mese',
+                    width: '*'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -111,46 +114,65 @@
                 var dto = {};
                 dto.anno = year;                
                 dto.id_db = dataService.data.idDb;
-                return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {
-                    pivotData = resp.data;
-                    srvc.gridOptionPivotMese.data = resp.data;
-                    dataService.data.dataGrafico = srvc.dataGrafico();
+                return $http.post($strings.REST.SERVER + '/andamento_mensile', dto).then(function (resp) {                    
+                    const pivotData = parseResponse(resp.data);
+
+                    // Reinizializza la griglia con i nuovi dati e colonne
+                    srvc.initializeGrid(pivotData);
+
+                    // Aggiorna il grafico con i nuovi dati
+                    dataService.data.dataGrafico = srvc.dataGrafico(pivotData);
+
+                    // Forza il ridimensionamento della griglia
+                    if (srvc.gridOptionPivotMese.gridApi) {
+                        srvc.gridOptionPivotMese.gridApi.core.handleWindowResize();
+                    }
                 });
             },
-            dataGrafico: function dataGrafico() {
-                return [{
-                    key: $strings.CONTO.CONTO_COMUNE,
-                    values: pivotData.map(function (d) {
+            dataGrafico: function (data) {
+                const datiGrafico = [];
+                dataService.data.conti.forEach(function (item) {
+                const key = Object.keys(item)[0]; // Estrae la chiave dinamica (es. "conto1")
+                const value = item[key]; 
+
+                datiGrafico.push({
+                    key: value.label,
+                    values: data.map(function (d) {
                         return {
-                            'x': d.mese,
-                            'y': d.contocomune
+                            'x': d.id,
+                            'y': d[key]
                         };
                     }),
-                    color: $strings.RGB.CONTO_COMUNE,
+                    color: value.hex_color,   
                     strokeWidth: 2
-                },{
-                    key: $strings.CONTO.CONTO_MARIANNA,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.mese,
-                            'y': d.contomarianna
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_MARIANNA,
-                    strokeWidth: 2
-                }, {
-                    key: $strings.CONTO.CONTO_PERSONALE,
-                    values: pivotData.map(function (d) {
-                        return {
-                            'x': d.mese,
-                            'y': d.contopersonale
-                        };
-                    }),
-                    color: $strings.RGB.CONTO_PERSONALE,
-                    strokeWidth: 2
-                }];
+                }
+                )});
+
+                return datiGrafico;                
+            },
+            initializeGrid: function (pivotData) {
+                // Genera nuove colonne dinamiche
+                const dynamicColumns = generateContoColumns();
+                
+                // Aggiungi le colonne dinamiche alle colonne esistenti
+                srvc.gridOptionPivotMese.columnDefs = [{
+                    name: 'mese',
+                    displayName: 'MESE',
+                    field: 'mese',
+                    width: '*',
+                    cellClass: 'text-center'
+                }].concat(dynamicColumns);
+            
+                // Forza l'aggiornamento della griglia
+                if (srvc.gridOptionPivotMese.gridApi) {
+                    srvc.gridOptionPivotMese.gridApi.core.notifyDataChange('column');
             }
+            
+                // Imposta i dati aggiornati
+                srvc.gridOptionPivotMese.data = pivotData || srvc.gridOptionPivotMese.data;
         }
+        };
+        
         return srvc;
     }]);
 })();
