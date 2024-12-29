@@ -41,18 +41,13 @@
                   username: $scope.username,
                   pwd: $scope.password
                 };
-                return commonService.login(datiAccesso);
-              })
-              .then(function (result) {
-                $scope.alerts = dataService.data.alerts;
-                $scope.conti = dataService.data.editDropDownContoArray;
-              })
-              .catch(function (err) {
-                console.error("Errore durante il login:", err);
-              })
-              .finally(function () {
-                console.log("login - hide modal");
-                modalService.hideModal();
+                return commonService.login(datiAccesso).then(function (result) {
+                    $scope.alerts = dataService.data.alerts;
+                    $scope.conti = dataService.data.editDropDownContoArray;
+                  }).finally(function () {
+                    console.log("login - hide modal");
+                    modalService.hideModal();
+                  });
               });
           };
 
