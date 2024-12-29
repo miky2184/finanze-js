@@ -33,10 +33,10 @@
         };
 
         $scope.login = function () {
-            console.log("login - show modal");
+            commonService.logWithTimestamp("login - show modal");
             modalService.showModal('Login in corso...') // Mostra il popup
               .then(function () {
-                console.log("Modal fully rendered, starting login");
+                commonService.logWithTimestamp("Modal fully rendered, starting login");
                 var datiAccesso = {
                   username: $scope.username,
                   pwd: $scope.password
@@ -45,7 +45,7 @@
                     $scope.alerts = dataService.data.alerts;
                     $scope.conti = dataService.data.editDropDownContoArray;
                   }).finally(function () {
-                    console.log("login - hide modal");
+                    commonService.logWithTimestamp("login - hide modal");
                     modalService.hideModal();
                   });
               });

@@ -20,6 +20,9 @@
         }
         
         var srvc = {
+            logWithTimestamp: function logWithTimestamp(message) {
+                console.log(`[${new Date().toISOString()}] ${message}`);
+            },
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti(dataService.data.idDb);
             },
