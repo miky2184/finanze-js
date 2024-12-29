@@ -34,19 +34,27 @@
 
         $scope.login = function () {
             console.log("login - show modal");
-            modalService.showModal('Login in corso...'); // Mostra il popup prima di iniziare
-            var datiAccesso = {
-                username: $scope.username,
-                pwd: $scope.password
-            };
-            return commonService.login(datiAccesso).then(function (result) {
+            modalService.showModal('Login in corso...') // Mostra il popup
+              .then(function () {
+                console.log("Modal fully rendered, starting login");
+                var datiAccesso = {
+                  username: $scope.username,
+                  pwd: $scope.password
+                };
+                return commonService.login(datiAccesso);
+              })
+              .then(function (result) {
                 $scope.alerts = dataService.data.alerts;
-                $scope.conti = dataService.data.editDropDownContoArray
-            }).finally(function (fn) {
-                modalService.hideModal();
+                $scope.conti = dataService.data.editDropDownContoArray;
+              })
+              .catch(function (err) {
+                console.error("Errore durante il login:", err);
+              })
+              .finally(function () {
                 console.log("login - hide modal");
-            });
-        }
+                modalService.hideModal();
+              });
+          };
 
         /* BUTTON */
         $scope.actionButtons = [];

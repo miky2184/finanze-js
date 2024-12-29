@@ -17,11 +17,11 @@
         if (modalService.waitingModal) {
           return; // Evita aperture multiple.
         }
-
+      
         var scope = $rootScope.$new(false);
         scope.text = text || $strings.MODAL.DEFAULT_WAITING_MESSAGE;
         scope.title = title;
-
+      
         modalService.waitingModal = $uibModal.open({
           templateUrl: 'templates/modal/waitingModal.html',
           size: 'lg',
@@ -30,24 +30,26 @@
       
         modalService.opening = true;
       
-        modalService.waitingModal.opened.then(function () {
-          modalService.opening = false;
-        });
+        return $timeout(function () {
+          modalService.waitingModal.opened.then(function () {
+            modalService.opening = false;
+            console.log("Modal fully opened");
+          });
+        }, 50); // Ritardo di 50ms per garantire il rendering
       };
        
       modalService.hideModal = function () {
         console.log("hideModal");
         if (!modalService.waitingModal || modalService.opening) {
-          // Se il modal non esiste o è ancora in fase di apertura, ignora la chiamata.
           return $q.resolve();
-        }       
-
+        }
+      
         return $timeout(function () {
-          //if (modalService.waitingModal) {
+          if (modalService.waitingModal) {
             modalService.waitingModal.close();
             delete modalService.waitingModal;
-          //}
-        }, 100);
+          }
+        }, 100); // Aspetta un breve intervallo prima di chiudere
       };
 
       modalService.showYesNoModal = function (title, text, yes, no, style) {
