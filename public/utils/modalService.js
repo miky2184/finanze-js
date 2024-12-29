@@ -9,11 +9,11 @@
       $uibModalProvider.options.keyboard = false;
     }])
 
-    .factory('modalService', ['$uibModal', '$strings', '$rootScope', '$timeout', '$q', 'commonService', function ($uibModal, $strings, $rootScope, $timeout, $q, commonService) {
+    .factory('modalService', ['$uibModal', '$strings', '$rootScope', '$timeout', '$q', 'loggingService', function ($uibModal, $strings, $rootScope, $timeout, $q, loggingService) {
       const modalService = {};
 
       modalService.showModal = function (title, text) {
-        commonService.logWithTimestamp("showModal - modalService.waitingModal: " + modalService.waitingModal);
+        loggingService.logWithTimestamp("showModal - modalService.waitingModal: " + modalService.waitingModal);
         if (modalService.waitingModal) {
           return; // Evita aperture multiple.
         }
@@ -33,13 +33,13 @@
         return $timeout(function () {
           modalService.waitingModal.opened.then(function () {
             modalService.opening = false;
-            commonService.logWithTimestamp("Modal fully opened");
+            loggingService.logWithTimestamp("Modal fully opened");
           });
         }, 1000); // Ritardo di 50ms per garantire il rendering
       };
        
       modalService.hideModal = function () {
-        commonService.logWithTimestamp("hideModal - modalService.waitingModal: " + modalService.waitingModal);
+        loggingService.logWithTimestamp("hideModal - modalService.waitingModal: " + modalService.waitingModal);
         if (!modalService.waitingModal || modalService.opening) {
           return $q.resolve();
         }
