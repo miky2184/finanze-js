@@ -2,7 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize', 'barcodeScanner']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService) {
+    }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', 'modalService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService, modalService) {
         
 
         // Inizializza il tab attivo
@@ -33,6 +33,7 @@
         };
 
         $scope.login = function () {
+            modalService.showModal('Login in corso...'); // Mostra il popup prima di iniziare
             var datiAccesso = {
                 username: $scope.username,
                 pwd: $scope.password
@@ -40,6 +41,8 @@
             return commonService.login(datiAccesso).then(function (result) {
                 $scope.alerts = dataService.data.alerts;
                 $scope.conti = dataService.data.editDropDownContoArray
+            }).finally(function (fn) {
+                modalService.hideModal();
             });
         }
 

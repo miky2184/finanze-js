@@ -23,9 +23,7 @@
             loadData: function () {
                 return listaMovimentiService.loadListaMovimenti(dataService.data.idDb);
             },
-            login: function (datiAccesso) {
-                modalService.showModal('Login in corso...'); // Mostra il popup prima di iniziare
-
+            login: function (datiAccesso) {                
                 dataService.data.alerts = [];
                 return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {                    
                     if (resp.data && resp.data.length === 1) {                        
@@ -45,8 +43,6 @@
                             type: 'danger'
                         });
                     }
-                }).finally(function (fn) {
-                    modalService.hideModal();
                 });
             },
             salva: function salva() {
