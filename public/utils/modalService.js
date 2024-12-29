@@ -13,6 +13,7 @@
       const modalService = {};
 
       modalService.showModal = function (title, text) {
+        console.log("showModal");
         if (modalService.waitingModal) {
           return; // Evita aperture multiple.
         }
@@ -35,7 +36,7 @@
       };
        
       modalService.hideModal = function () {
-
+        console.log("hideModal");
         if (!modalService.waitingModal || modalService.opening) {
           // Se il modal non esiste o è ancora in fase di apertura, ignora la chiamata.
           return $q.resolve();

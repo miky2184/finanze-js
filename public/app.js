@@ -33,6 +33,7 @@
         };
 
         $scope.login = function () {
+            console.log("login - show modal");
             modalService.showModal('Login in corso...'); // Mostra il popup prima di iniziare
             var datiAccesso = {
                 username: $scope.username,
@@ -43,6 +44,7 @@
                 $scope.conti = dataService.data.editDropDownContoArray
             }).finally(function (fn) {
                 modalService.hideModal();
+                console.log("login - hide modal");
             });
         }
 
