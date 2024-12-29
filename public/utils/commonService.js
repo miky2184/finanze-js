@@ -24,9 +24,10 @@
                 return listaMovimentiService.loadListaMovimenti(dataService.data.idDb);
             },
             login: function (datiAccesso) {
+                modalService.showModal('Login in corso...'); // Mostra il popup prima di iniziare
+
                 dataService.data.alerts = [];
-                return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {
-                    modalService.showModal('Login in corso...');
+                return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {                    
                     if (resp.data && resp.data.length === 1) {                        
                         dataService.data.admin = resp.data[0]['admin'];
                         dataService.data.idDb = resp.data[0]['id_db'];
@@ -35,9 +36,7 @@
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {
-                                if (settingsService.loadSettings()){
-                                    modalService.hideModal();
-                                };
+                                return settingsService.loadSettings();
                             }
                         });
                     } else {
@@ -46,9 +45,9 @@
                             type: 'danger'
                         });
                     }
-                })/*.finally(function (fn) {
+                }).finally(function (fn) {
                     modalService.hideModal();
-                })*/;
+                });
             },
             salva: function salva() {
                 var dto = {};
