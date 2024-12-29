@@ -43,11 +43,11 @@
         }       
 
         return $timeout(function () {
-          if (modalService.waitingModal) {
+          //if (modalService.waitingModal) {
             modalService.waitingModal.close();
             delete modalService.waitingModal;
-          }
-        });
+          //}
+        }, 100);
       };
 
       modalService.showYesNoModal = function (title, text, yes, no, style) {
