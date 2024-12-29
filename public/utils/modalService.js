@@ -35,7 +35,7 @@
             modalService.opening = false;
             console.log("Modal fully opened");
           });
-        }, 50); // Ritardo di 50ms per garantire il rendering
+        }, 1000); // Ritardo di 50ms per garantire il rendering
       };
        
       modalService.hideModal = function () {
