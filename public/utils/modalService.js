@@ -9,7 +9,7 @@
       $uibModalProvider.options.keyboard = false;
     }])
 
-    .factory('modalService', ['$uibModal', '$strings', '$rootScope', '$timeout', '$q', function ($uibModal, $strings, $rootScope, $timeout, $q) {
+    .factory('modalService', ['$uibModal', '$strings', '$rootScope', '$timeout', '$q', 'commonService', function ($uibModal, $strings, $rootScope, $timeout, $q, commonService) {
       const modalService = {};
 
       modalService.showModal = function (title, text) {
