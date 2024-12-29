@@ -15,7 +15,7 @@
       modalService.showModal = function (title, text) {
         loggingService.logWithTimestamp("showModal - modalService.waitingModal: " + modalService.waitingModal);
         if (modalService.waitingModal) {
-          return; // Evita aperture multiple.
+          return $q.resolve(); // Evita aperture multiple.
         }
       
         var scope = $rootScope.$new(false);
@@ -31,7 +31,7 @@
         modalService.opening = true;
       
         return $timeout(function () {
-          modalService.waitingModal.opened.then(function () {
+          return modalService.waitingModal.opened.then(function () {
             modalService.opening = false;
             loggingService.logWithTimestamp("Modal fully opened");
           });

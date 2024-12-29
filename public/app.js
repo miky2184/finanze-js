@@ -44,10 +44,10 @@
                 return commonService.login(datiAccesso).then(function (result) {
                     $scope.alerts = dataService.data.alerts;
                     $scope.conti = dataService.data.editDropDownContoArray;
-                  }).finally(function () {
-                    loggingService.logWithTimestamp("login - hide modal");
-                    modalService.hideModal();
                   });
+              }).finally(function () {
+                loggingService.logWithTimestamp("login - hide modal");
+                modalService.hideModal();
               });
           };
 
