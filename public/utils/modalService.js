@@ -13,7 +13,7 @@
       const modalService = {};
 
       modalService.showModal = function (title, text) {
-        loggingService.logWithTimestamp("showModal - modalService.waitingModal: " + modalService.waitingModal);
+        //loggingService.logWithTimestamp("showModal - modalService.waitingModal: " + modalService.waitingModal);
         if (modalService.waitingModal) {
           return $q.resolve(); // Evita aperture multiple.
         }
@@ -33,13 +33,13 @@
         return $timeout(function () {
           return modalService.waitingModal.opened.then(function () {
             modalService.opening = false;
-            loggingService.logWithTimestamp("Modal fully opened");
+            //loggingService.logWithTimestamp("Modal fully opened");
           });
         }, 500); // Ritardo di 50ms per garantire il rendering
       };
        
       modalService.hideModal = function () {
-        loggingService.logWithTimestamp("hideModal - modalService.waitingModal: " + modalService.waitingModal);
+        //loggingService.logWithTimestamp("hideModal - modalService.waitingModal: " + modalService.waitingModal);
         if (!modalService.waitingModal || modalService.opening) {
           return $q.resolve();
         }
