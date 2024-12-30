@@ -12,16 +12,6 @@
                 EXIT_MSG: 'Ci sono modifiche non salvate in sospeso. Sei sicuro di voler uscire?',
                 ANNULLA_MSG: 'Ci sono modifiche non salvate in sospeso. Sei sicuro di voler annullare?'
             },
-            CONTO:{
-                CONTO_1: "CONTO COMUNE",
-                CONTO_2: "CONTO PERSONALE",
-                CONTO_3: "CONTO MARIANNA"            
-            },
-            RGB:{
-                CONTO_1: "#A5D6A7",
-                CONTO_2: "#81D4FA",
-                CONTO_3: "#9FA8DA"
-            },
             REST:{
                 SERVER: 'http://miky2184.ddns.net:3001'
             },
