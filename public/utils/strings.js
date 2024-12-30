@@ -23,7 +23,7 @@
                 CONTO_3: "#9FA8DA"
             },
             REST:{
-                SERVER: 'http://127.0.0.1:8000' //'http://miky2184.ddns.net:3001'
+                SERVER: 'http://miky2184.ddns.net:3001'
             },
             PIVOT: {
                 year: new Date().getFullYear(),
