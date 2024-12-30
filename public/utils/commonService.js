@@ -3,6 +3,7 @@
     angular.module('myApp').factory('commonService', ['modalService', '$http', 'dataService', 'listaMovimentiService', 'settingsService', 'salaryService', '$uibModal', '$q', '$strings', 'passwordService', 'budgetService', function (modalService, $http, dataService, listaMovimentiService, settingsService, salaryService, $uibModal, $q, $strings, passwordService, budgetService) {
         
         function clearDataServiceData() {
+            localStorage.removeItem('jwtToken'); // Rimuove il token
             for (var key in dataService.data) {
                 if (dataService.data.hasOwnProperty(key)) {
                     // Se la proprietà è un oggetto o un array, lo resetto a un oggetto vuoto o un array vuoto
@@ -26,11 +27,12 @@
             login: function (datiAccesso) {                
                 dataService.data.alerts = [];
                 return $http.post($strings.REST.SERVER + '/login', datiAccesso).then(function (resp) {                    
-                    if (resp.data && resp.data.length === 1) {                        
-                        dataService.data.admin = resp.data[0]['admin'];
-                        dataService.data.idDb = resp.data[0]['id_db'];
-                        dataService.data.disablePasswordPage = resp.data[0]['disable_password_page'];
-                        dataService.data.disableSalaryPage = resp.data[0]['disable_salary_page'];
+                    if (resp.status === 200 && resp.data.access_token) {     
+                        localStorage.setItem('jwtToken', resp.data.access_token); // Salva il token                   
+                        dataService.data.admin = resp.data['res']['admin'];
+                        dataService.data.idDb = resp.data['res']['id_db'];
+                        dataService.data.disablePasswordPage = resp.data['res']['disable_password_page'];
+                        dataService.data.disableSalaryPage = resp.data['res']['disable_salary_page'];
                         dataService.data.logged = true;
                         return srvc.loadData().then(function (resp) {
                             if (dataService.data.admin) {
