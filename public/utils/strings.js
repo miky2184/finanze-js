@@ -13,7 +13,7 @@
                 ANNULLA_MSG: 'Ci sono modifiche non salvate in sospeso. Sei sicuro di voler annullare?'
             },
             REST:{
-                SERVER: 'http://miky2184.ddns.net:3001'
+                SERVER: 'https://miky2184.ddns.net:3001'
             },
             PIVOT: {
                 year: new Date().getFullYear(),
