@@ -11,7 +11,10 @@ app.use(methodOverride());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static(__dirname + '/public', {
+    maxAge: '1d', // Cache del browser per un giorno
+    etag: true, // Usa ETag per validare la cache
+}));
 
 app.get('*', function(req, res) {
         res.sendFile(__dirname + '/public/index.html');
