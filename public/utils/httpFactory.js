@@ -13,9 +13,10 @@
         },
         // Gestione degli errori di risposta
         responseError: function (rejection) {
-          if (rejection.status === 401) {
-            console.error('Non autorizzato: il token potrebbe essere scaduto o mancante.');
-            // Logica aggiuntiva: ad esempio, reindirizzare alla pagina di login
+          if (rejection.status === 401) {            
+            console.warn('Token scaduto. Ricarico la pagina per uscire.');
+            localStorage.removeItem('jwtToken'); // Rimuovi il token scaduto
+            window.location.reload(); // Ricarica la pagina
           }
           return $q.reject(rejection);
         }
