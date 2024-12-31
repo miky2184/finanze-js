@@ -132,21 +132,23 @@
             dataGrafico: function (data) {
                 const datiGrafico = [];
                 dataService.data.conti.forEach(function (item) {
-                const key = Object.keys(item)[0]; // Estrae la chiave dinamica (es. "conto1")
-                const value = item[key]; 
-
-                datiGrafico.push({
-                    key: value.label,
-                    values: data.map(function (d) {
-                        return {
-                            'x': d.id,
-                            'y': d[key]
-                        };
-                    }),
-                    color: value.hex_color,   
-                    strokeWidth: 2
-                }
-                )});
+                    const key = Object.keys(item)[0]; // Estrae la chiave dinamica (es. "conto1")
+                    const value = item[key]; 
+                    
+                    if (item[key].graph){
+                        datiGrafico.push({
+                            key: value.label,
+                            values: data.map(function (d) {
+                                return {
+                                    'x': d.id,
+                                    'y': d[key]
+                                };
+                            }),
+                            color: value.hex_color,   
+                            strokeWidth: 2
+                        });
+                    }
+                });
 
                 return datiGrafico;                
             },

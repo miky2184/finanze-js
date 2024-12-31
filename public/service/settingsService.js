@@ -411,11 +411,18 @@
                     field: 'label'                
                 }, {
                     name: 'hex_color',
-                    displayName: 'HEX Color',
+                    displayName: '🎨',
                     field: 'hex_color',
                     enableCellEdit: true, // Abilita l'editing
                     editableCellTemplate: 'templates/rows/colorCellEditor.html'
-                  }],
+                  },{
+                    field: 'graph',
+                    displayName: '📊',
+                    cellTooltip: true,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fas fa-chart-area',
+                    cellClass: 'text-center'
+                }],
                 data: [],
                 onRegisterApi: function (gridApi) {
                     srvc.gridOptionsConto.gridApi = gridApi;
