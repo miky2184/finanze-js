@@ -31,7 +31,7 @@
                     cellFilter: 'currency',
                     cellClass: 'text-right',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >Total: {{col.getAggregationValue() | number:2 }} €</div>'
+                    footerCellTemplate: '<div class="ui-grid-cell-contents text-right" >{{col.getAggregationValue() | number:2 }} €</div>'
                 });
             });
             
