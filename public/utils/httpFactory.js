@@ -13,7 +13,7 @@
         },
         // Gestione degli errori di risposta
         responseError: function (rejection) {
-          if (rejection.status === 401) {            
+          if (rejection.status === 401 || rejection.status === 403) {
             console.warn('Token scaduto. Ricarico la pagina per uscire.');
             localStorage.removeItem('jwtToken'); // Rimuovi il token scaduto
             window.location.reload(); // Ricarica la pagina
