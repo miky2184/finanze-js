@@ -598,8 +598,8 @@
                                             transformedData.push(row);
                                         });
                                         dataService.data.conti = transformedData;
-                                        /* return $http.post($strings.REST.SERVER + '/years', dto).then(function (response) {
-                                        dataService.data.years = response.data.map(item => item.anno); */
+                                         return $http.post($strings.REST.SERVER + '/years', dto).then(function (response) {
+                                            dataService.data.years = response.data.map(item => item.anno); 
                                             return $http.post($strings.REST.SERVER + '/tipo_conto', dto).then(function (response) {
                                                 dataService.data.editDropDownTipoContoArray = response.data;
                                                 var dto = {};
@@ -638,7 +638,7 @@
                                                     srvc.gridOptions.columnDefs[6].editDropdownOptionsArray = dataService.data.editDropDownTipoContoArray;
                                                 });
                                             });
-                                        // });
+                                         });
                                     });
                                 });
                             });

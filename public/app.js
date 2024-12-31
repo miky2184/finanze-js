@@ -47,6 +47,7 @@
                 return commonService.login(datiAccesso).then(function (result) {
                     $scope.alerts = dataService.data.alerts;
                     $scope.conti = dataService.data.editDropDownContoArray;
+                    $scope.years = dataService.data.years;
                   });
               }).finally(function () {
                 //loggingService.logWithTimestamp("login - hide modal");
@@ -73,7 +74,7 @@
             dataService.data.apiGrafico = scope.api;
         };
 
-        $scope.years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013];
+        //$scope.years = [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013];
         $scope.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         $scope.alerts = [];
         $scope.pivot = $strings.PIVOT;
