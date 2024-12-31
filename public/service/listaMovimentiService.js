@@ -599,7 +599,7 @@
                                             transformedData.push(row);
                                         });
                                         dataService.data.conti = transformedData;
-                                        dataService.data.editDropDownContoArray = transformedData.map(conto => ({
+                                        dataService.data.editDropDownContoArray = response.data.map(conto => ({
                                             conto: conto.id,
                                             label: conto.label
                                         }));
