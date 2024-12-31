@@ -583,21 +583,26 @@
                                     });
                                 }
                                 dataService.data.dropdownBeneficiario = response.data;
-                                return $http.post($strings.REST.SERVER + '/conto', dto).then(function (response) {
-                                    dataService.data.editDropDownContoArray = response.data;
-                                    return $http.post($strings.REST.SERVER + '/load_conti', dto).then(function (response) {
+                                /*return $http.post($strings.REST.SERVER + '/conto', dto).then(function (response) {
+                                    dataService.data.editDropDownContoArray = response.data;*/
+                                    return $http.post($strings.REST.SERVER + '/conto', dto).then(function (response) {
                                         dataService.data.settingsConto = response.data;
                                         const transformedData = [];                                        
                                         response.data.forEach(function (conto) {
                                             var row = { [conto.conto]: {
                                                 id: conto.id,
                                                 label: conto.label,
-                                                hex_color: conto.hex_color
+                                                hex_color: conto.hex_color,
+                                                graph: conto.graph
                                                 }
                                             };
                                             transformedData.push(row);
                                         });
                                         dataService.data.conti = transformedData;
+                                        dataService.data.editDropDownContoArray = transformedData.map(conto => ({
+                                            conto: conto.id,
+                                            label: conto.label
+                                        }));
                                          return $http.post($strings.REST.SERVER + '/years', dto).then(function (response) {
                                             dataService.data.years = response.data.map(item => item.anno); 
                                             return $http.post($strings.REST.SERVER + '/tipo_conto', dto).then(function (response) {
@@ -640,7 +645,7 @@
                                             });
                                          });
                                     });
-                                });
+                                //});
                             });
                         });
                     });
