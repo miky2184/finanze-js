@@ -414,7 +414,19 @@
                     displayName: '🎨',
                     field: 'hex_color',
                     enableCellEdit: true, // Abilita l'editing
-                    editableCellTemplate: 'templates/rows/colorCellEditor.html'
+                    cellTemplate: `
+        <div class="ui-grid-cell-contents" style="text-align:center;">
+            <div style="width: 100%; height: 30px; background-color: {{COL_FIELD}}; border: 1px solid #ddd; cursor: pointer;"></div>
+        </div>
+    `,
+    editableCellTemplate: `
+        <div class="ui-grid-cell-contents">
+            <input type="color" 
+                ng-model="MODEL_COL_FIELD" 
+                ng-change="$emit('uiGridEventEndCellEdit')"
+                style="width:100%; height:30px; border:none; cursor:pointer;">
+        </div>
+    `
                   },{
                     field: 'graph',
                     displayName: '📊',
