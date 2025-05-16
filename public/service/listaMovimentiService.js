@@ -446,7 +446,7 @@
                 label: 'Add 1 Year'
             },
             addBtn: {
-                src: 'images/add.svg',
+                src: 'fa-solid fa-plus fa-xl',
                 tooltip: "Aggiungi Riga",
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {

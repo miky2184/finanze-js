@@ -14,7 +14,8 @@
                ng-repeat="button in actionButtons"                
                ng-click="button.listener(gridOptions, 'LM')" 
                ng-disabled="button.disabled('LM')">
-      <md-icon md-svg-src="{{button.src}}"></md-icon>
+      <i class="{{button.src}}"></i>         
+      <!-- <md-icon md-svg-src=""></md-icon> -->
       <md-tooltip>{{button.tooltip}}</md-tooltip>
     </md-button>
   </div>
