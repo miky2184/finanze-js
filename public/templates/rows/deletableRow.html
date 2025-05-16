@@ -6,10 +6,10 @@
   class="ui-grid-cell"
   ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader, 
               'deleted': row.entity.deleted, 
-              'newRow': row.entity.newRow, 
+              'newRow': !row.entity.deleted && row.entity.newRow, 
               'massiveRow': row.entity.massiveRow,
-              'checkRow': row.entity.check,
-              'dirtyRow': row.entity.dirty && !row.entity.newRow
+              'checkRow': !row.entity.deleted && row.entity.check,
+              'dirtyRow': !row.entity.deleted && !row.entity.newRow && row.entity.dirty
             }"
   role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
   ui-grid-cell>
