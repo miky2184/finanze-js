@@ -245,5 +245,19 @@
         return function (text) {
             return $sce.trustAsHtml(text);
         };
-    }]);
+    }]).directive('lucideIcon', function () {
+            return {
+        restrict: 'E',
+        scope: {
+            name: '@',
+            size: '@',
+            class: '@'
+        },
+        link: function(scope, element) {
+            const icon = lucide.createElement(scope.name, { size: scope.size || '24' });
+            icon.classList.add(scope.class || '');
+            element[0].appendChild(icon);
+        }
+    };
+    });
 }());
