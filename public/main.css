@@ -53,11 +53,11 @@ html, body {
 }
 
 .ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
-    background-color: #d1f0f7 !important;
+    background-color: #d5f7d5 !important;
 }
 
 .ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
-    background-color: #b3e4f0 !important;
+    background-color: #c0f0c0 !important;
 }
 
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell.delete {
@@ -66,20 +66,20 @@ html, body {
 
 /* Dirty rows */
 .ui-grid-row:nth-child(odd) .ui-grid-cell.dirtyRow {
-    background-color: #fff5cc !important;
+    background-color: #d1f0f7 !important;
 }
 
 .ui-grid-row:nth-child(even) .ui-grid-cell.dirtyRow {
-    background-color: #fff0b3 !important;
+    background-color: #b3e4f0 !important;
 }
 
 /* Check rows */
 .ui-grid-row:nth-child(odd) .ui-grid-cell.checkRow {
-    background-color: #ffe8c2 !important;
+    background-color: #fff5cc !important;
 }
 
 .ui-grid-row:nth-child(even) .ui-grid-cell.checkRow {
-    background-color: #ffdca0 !important;
+    background-color: #fff0b3 !important;
 }
 
 md-tab-label md-icon {
