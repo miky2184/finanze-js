@@ -36,6 +36,7 @@
     <script src="node_modules/angular-nvd3/dist/angular-nvd3.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="utils/strings.js"></script>
     <script type="text/javascript" src="utils/modalService.js"></script> 
@@ -57,8 +58,7 @@
     <script type="text/javascript" src="//ui-grid.info/docs/grunt-scripts/vfs_fonts.js"></script>     -->
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/excel-builder/2.0.3/excel-builder.dist.min.js"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/excel-builder/2.0.3/excel-builder.dist.min.js"></script>    
 </head>
 
 <body ng-controller="MainController" md-no-ink>    
@@ -73,7 +73,7 @@
                     <input ng-model="password" type="password">
                 </md-input-container>
                 <md-button aria-label="Login" class="md-icon-button" ng-click="login()">
-                    <lucide-icon name="plus" size="24" icon-class="custom-class"></lucide-icon>
+                    <lucide-icon name="plus" size="20"></lucide-icon>
                 </md-button>
                 <div>
                     <script type="text/ng-template" id="alert.html">

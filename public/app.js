@@ -251,17 +251,17 @@
                 scope: {
                     name: '@',
                     size: '@',
-                    iconClass: '@' // meglio non usare 'class' (parola riservata)
+                    iconClass: '@' // meglio non usare 'class' direttamente per evitare conflitti
                 },
                 link: function(scope, element) {
-                    if (lucide && lucide.createElement) {
-                        const icon = lucide.createElement(scope.name, { size: scope.size || '24' });
+                    if (lucide && lucide.icons && lucide.icons[scope.name]) {
+                        const svg = lucide.icons[scope.name].toSvg({ size: scope.size || '24' });
+                        element[0].innerHTML = svg;
                         if (scope.iconClass) {
-                            icon.classList.add(scope.iconClass);
+                            element[0].firstChild.classList.add(scope.iconClass);
                         }
-                        element[0].appendChild(icon);
                     } else {
-                        console.error('Lucide non è caricato correttamente.');
+                        console.error('Lucide Icon non trovata o libreria non caricata correttamente:', scope.name);
                     }
                 }
             };
