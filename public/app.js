@@ -62,9 +62,23 @@
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);
-        $scope.actionButtons.push(listaMovimentiService.refreshBtn);
         $scope.actionButtons.push(listaMovimentiService.addOneYearBtn);
-
+        $scope.actionButtons.push(listaMovimentiService.refreshBtn);        
+        
+        $scope.actionButtons.push({
+    src: 'images/filter-remove.svg',
+    tooltip: "Rimuovi tutti i filtri",
+    listener: function (gridOptions, maschera) {
+        if (gridOptions && gridOptions.gridApi) {
+            gridOptions.gridApi.core.clearAllFilters();
+        }
+    },
+    disabled: function (maschera) {
+        // Disabilitiamo se i dati non sono dirty o se non esistono dati caricati
+        return !dataService.data.dirty || !gridOptions || !gridOptions.data || gridOptions.data.length === 0;
+    },
+    label: 'Clear Filters'
+});
 
         $scope.actionButtons.push({
             src: 'images/filter-check.svg',
