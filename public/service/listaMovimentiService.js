@@ -63,7 +63,7 @@
         };
         var srvc = {
             updateFilterPriority: function () {
-                listaMovimentiService.gridOptions.data.forEach(function (row) {
+                srvc.gridOptions.data.forEach(function (row) {
                     var checkActive = srvc.gridOptions.showOnlyCheck;
                     var dirtyActive = srvc.gridOptions.showOnlyDirty;
                     if (checkActive && dirtyActive) {
