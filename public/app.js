@@ -246,24 +246,26 @@
             return $sce.trustAsHtml(text);
         };
     }]).directive('lucideIcon', function () {
-            return {
-                restrict: 'E',
-                scope: {
-                    name: '@',
-                    size: '@',
-                    iconClass: '@' // meglio non usare 'class' direttamente per evitare conflitti
-                },
-                link: function(scope, element) {
-                    if (lucide && lucide.icons && lucide.icons[scope.name]) {
-                        const svg = lucide.icons[scope.name].toSvg({ size: scope.size || '24' });
-                        element[0].innerHTML = svg;
-                        if (scope.iconClass) {
-                            element[0].firstChild.classList.add(scope.iconClass);
+                return {
+                    restrict: 'E',
+                    scope: {
+                        name: '@',
+                        size: '@',
+                        iconClass: '@'
+                    },
+                    link: function(scope, element) {
+                        if (window.lucide && lucide[scope.name]) {
+                            // Usa la funzione per creare direttamente l'elemento SVG
+                            const svgElement = lucide[scope.name]({ size: parseInt(scope.size) || 24 });
+                            if (scope.iconClass) {
+                                svgElement.classList.add(scope.iconClass);
+                            }
+                            element[0].innerHTML = '';
+                            element[0].appendChild(svgElement);
+                        } else {
+                            console.error('Lucide Icon non trovata o libreria non caricata correttamente:', scope.name);
                         }
-                    } else {
-                        console.error('Lucide Icon non trovata o libreria non caricata correttamente:', scope.name);
                     }
-                }
-            };
+                };
     });
 }());
