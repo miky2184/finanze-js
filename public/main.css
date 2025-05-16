@@ -53,19 +53,33 @@ html, body {
 }
 
 .ui-grid-row:nth-child(odd) .ui-grid-cell.newRow {
-    background-color: #ddffdd;
+    background-color: #d1f0f7 !important;
 }
 
 .ui-grid-row:nth-child(even) .ui-grid-cell.newRow {
-    background-color: #d3f5d3;
+    background-color: #b3e4f0 !important;
 }
 
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell.delete {
     background-color: #f5b3c3 !important;
 }
 
-.highlight-check {
-    background-color: rgba(255, 255, 0, 0.3) !important;
+/* Dirty rows */
+.ui-grid-row:nth-child(odd) .ui-grid-cell.dirtyRow {
+    background-color: #fff5cc !important;
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.dirtyRow {
+    background-color: #fff0b3 !important;
+}
+
+/* Check rows */
+.ui-grid-row:nth-child(odd) .ui-grid-cell.checkRow {
+    background-color: #ffe8c2 !important;
+}
+
+.ui-grid-row:nth-child(even) .ui-grid-cell.checkRow {
+    background-color: #ffdca0 !important;
 }
 
 md-tab-label md-icon {

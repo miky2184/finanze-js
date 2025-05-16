@@ -6,7 +6,8 @@
               'deleted': row.entity.deleted, 
               'newRow': row.entity.newRow, 
               'massiveRow': row.entity.massiveRow,
-              'highlight-check': row.entity.check 
+              'checkRow': row.entity.check,
+              'dirtyRow': row.entity.dirty && !row.entity.newRow
             }"
   role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
   ui-grid-cell>
