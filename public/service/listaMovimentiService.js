@@ -629,8 +629,8 @@
                                                         newRow.importo = Number(row['value']);
                                                         newRow.info = row['info'];
                                                         newRow.check = row['check_spesa'];
-                                                        newRow.anno = String(new Date(row['data_val']).getFullYear());
-                                                        newRow.mese = String(new Date(row['data_val']).getMonth() + 1).padStart(2, '0');
+                                                        newRow.anno = new Date(row['data_val']).getFullYear();
+                                                        newRow.mese = new Date(row['data_val']).getMonth() + 1;
                                                         return resultsData.push(newRow);
                                                     });
                                                     dataService.data.backupData = angular.copy(resultsData);
