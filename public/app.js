@@ -247,17 +247,23 @@
         };
     }]).directive('lucideIcon', function () {
             return {
-        restrict: 'E',
-        scope: {
-            name: '@',
-            size: '@',
-            class: '@'
-        },
-        link: function(scope, element) {
-            const icon = lucide.createElement(scope.name, { size: scope.size || '24' });
-            icon.classList.add(scope.class || '');
-            element[0].appendChild(icon);
-        }
-    };
+                restrict: 'E',
+                scope: {
+                    name: '@',
+                    size: '@',
+                    iconClass: '@' // meglio non usare 'class' (parola riservata)
+                },
+                link: function(scope, element) {
+                    if (lucide && lucide.createElement) {
+                        const icon = lucide.createElement(scope.name, { size: scope.size || '24' });
+                        if (scope.iconClass) {
+                            icon.classList.add(scope.iconClass);
+                        }
+                        element[0].appendChild(icon);
+                    } else {
+                        console.error('Lucide non è caricato correttamente.');
+                    }
+                }
+            };
     });
 }());
