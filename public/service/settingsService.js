@@ -386,6 +386,14 @@
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fas fa-bold',                                        
                     cellClass: 'text-center'
+                }, {
+                    field: 'fissa',
+                    displayName: '🔒',
+                    width: '*',
+                    cellTooltip: true,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fas fa-lock',                                        
+                    cellClass: 'text-center'
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
