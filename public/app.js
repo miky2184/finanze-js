@@ -74,8 +74,7 @@
         }
     },
     disabled: function (maschera) {
-        // Disabilitiamo se i dati non sono dirty o se non esistono dati caricati
-        return !dataService.data.dirty || !gridOptions || !gridOptions.data || gridOptions.data.length === 0;
+        return false;
     },
     label: 'Clear Filters'
 });
