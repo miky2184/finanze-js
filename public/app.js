@@ -2,25 +2,7 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).directive('inlineSvg', ['$http', '$compile', function($http, $compile) {
-    return {
-        restrict: 'E',
-        scope: {
-            src: '@'
-        },
-        link: function(scope, element) {
-            if (!scope.src) return;
-            $http.get(scope.src, { cache: true }).then(function(response) {
-                // Inietta e compila l'SVG nel DOM AngularJS
-                var svgElement = angular.element(response.data);
-                element.empty().append(svgElement);
-                $compile(svgElement)(scope);
-            }).catch(function(err) {
-                console.error('Errore caricamento SVG:', scope.src, err);
-            });
-        }
-    };
-}]).config(['$httpProvider', function ($httpProvider) {
+    }]).config(['$httpProvider', function ($httpProvider) {
         // Aggiunge l'interceptor alle richieste HTTP
         $httpProvider.interceptors.push('authInterceptor');
       }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', 'modalService', 'loggingService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService, modalService, loggingService) {
