@@ -318,14 +318,6 @@
                     buttonNgClass: 'fab fa-telegram-plane',                                        
                     cellClass: 'text-center'
                 }, {
-                    field: 'check',
-                    displayName: '✔️',
-                    width: '3%',
-                    cellTooltip: true,
-                    cellTemplate: 'templates/rows/checkboxIcon.html',
-                    buttonNgClass: 'fas fa-check-double',                                        
-                    cellClass: 'text-center'
-                }, {
                     field: 'importo',
                     displayName: 'IMPORTO',
                     aggregationType: uiGridConstants.aggregationTypes.sum,

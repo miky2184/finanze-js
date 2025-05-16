@@ -64,6 +64,10 @@ html, body {
     background-color: #f5b3c3 !important;
 }
 
+.highlight-check {
+    background-color: rgba(255, 255, 0, 0.3) !important;
+}
+
 md-tab-label md-icon {
     margin-right: 8px;
     vertical-align: middle;
