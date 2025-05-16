@@ -2,7 +2,11 @@
     'use strict';
     angular.module('myApp', ['ngMaterial', 'ngMessages', 'ui.grid', 'ui.bootstrap', 'ui.grid.selection', 'ui.grid.cellNav', 'ui.grid.edit', 'ui.grid.exporter', 'ui.grid.treeView', 'nvd3', 'ui.grid.pinning', 'ui.grid.autoResize']).config(['$mdThemingProvider', function ($mdThemingProvider) {
         $mdThemingProvider.theme('default');
-    }]).config(['$httpProvider', function ($httpProvider) {
+    }]).config(['$mdIconProvider', function ($mdIconProvider) {
+      $mdIconProvider
+          .defaultIconSet('images/mdi.svg') // opzionale set generale
+          .icon('fingerprint', 'images/fingerprint.svg', 24);
+  }]).config(['$httpProvider', function ($httpProvider) {
         // Aggiunge l'interceptor alle richieste HTTP
         $httpProvider.interceptors.push('authInterceptor');
       }]).controller('MainController', ['$scope', '$strings', 'commonService', 'budgetService', 'dataService', 'listaMovimentiService', 'andamentoAnnuoService', 'settingsService', 'salaryService', 'balanceService', 'graficoService', 'andamentoMeseService', 'passwordService', 'speseAnnualiService', 'modalService', 'loggingService', function ($scope, $strings, commonService, budgetService, dataService, listaMovimentiService, andamentoAnnuoService, settingsService, salaryService, balanceService, graficoService, andamentoMeseService, passwordService, speseAnnualiService, modalService, loggingService) {
