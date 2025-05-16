@@ -1,5 +1,7 @@
  <div
   ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+    ng-if="(!$scope.showOnlyCheck || row.entity.check) &&
+         (!$scope.showOnlyDirty || row.entity.dirty)"
   ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
   class="ui-grid-cell"
   ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader, 

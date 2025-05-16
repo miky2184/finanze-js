@@ -67,56 +67,46 @@
         $scope.actionButtons.push(listaMovimentiService.refreshBtn);        
         
         $scope.actionButtons.push({
-    src: 'images/filter-remove.svg',
-    tooltip: "Rimuovi tutti i filtri",
-    listener: function (gridOptions, maschera) {
-        if (gridOptions && gridOptions.gridApi) {
-            gridOptions.gridApi.core.clearAllFilters();
-        }
-    },
-    disabled: function (maschera) {
-        return false;
-    },
-    label: 'Clear Filters'
-});
+            src: 'images/filter-remove.svg',
+            tooltip: "Rimuovi tutti i filtri",
+            listener: function (gridOptions, maschera) {
+                if (gridOptions && gridOptions.gridApi) {
+                    gridOptions.gridApi.core.clearAllFilters();
+                }
+            },
+            disabled: function (maschera) {
+                return false;
+            },
+            label: 'Clear Filters'
+        });
 
         $scope.actionButtons.push({
             src: 'images/filter-check.svg',
             tooltip: "Mostra solo Check",
             label: 'Check',
-            listener: function (gridOptions, maschera) {
-                if (!$scope.showOnlyCheck) {
-                    gridOptions.data = listaMovimentiService.gridOptions.data.filter(function (row) {
-                        return row.check === true;
-                    });
-                } else {
-                    gridOptions.data = angular.copy(listaMovimentiService.gridOptions.data);
-                }
+            listener: function () {
                 $scope.showOnlyCheck = !$scope.showOnlyCheck;
+                listaMovimentiService.gridOptions.gridApi.core.refresh();
             },
-            disabled: function (maschera) {
-                return dataService.data.dirty;
-            }
-        });
-
-              $scope.actionButtons.push({
-            src: 'images/filter-check.svg',
-            tooltip: "Mostra Dirty",
-            label: 'Dirty',
-            listener: function (gridOptions, maschera) {
-                if (!$scope.showOnlyDirty) {
-                    gridOptions.data = listaMovimentiService.gridOptions.data.filter(function (row) {
-                        return row.dirty === true;
-                    });
-                } else {
-                    gridOptions.data = angular.copy(listaMovimentiService.gridOptions.data);
-                }
-                $scope.showOnlyDirty = !$scope.showOnlyDirty;
-            },
-            disabled: function (maschera) {
+            disabled: function () {
                 return false;
             }
         });
+
+
+        $scope.actionButtons.push({
+            src: 'images/filter-check.svg',
+            tooltip: "Mostra solo Check",
+            label: 'Check',
+            listener: function () {
+                $scope.showOnlyDirty = !$scope.showOnlyDirty;
+                listaMovimentiService.gridOptions.gridApi.core.refresh();
+            },
+            disabled: function () {
+                return false;
+            }
+        });
+
 
         $scope.saveButtons = [];
         $scope.saveButtons.push(commonService.printBtn);
