@@ -548,6 +548,43 @@
                 },
                 label: 'Refresh'
             },
+            checkBtn: {
+                src: 'images/filter-check.svg',
+                tooltip: "Mostra solo Check",
+                label: 'Check',
+                listener: function (gridOptions, maschera) {
+                    gridOptions.showOnlyCheck = !gridOptions.showOnlyCheck;
+                    gridOptions.gridApi.core.refresh();
+                },
+                disabled: function (maschera) {
+                    return false;
+                }
+            },
+            dirtyBtn: {
+                src: 'images/filter-check.svg',
+                tooltip: "Mostra solo Dirty",
+                label: 'Dirty',
+                listener: function (gridOptions, maschera) {
+                    gridOptions.showOnlyDirty = !gridOptions.showOnlyDirty;
+                    gridOptions.gridApi.core.refresh();
+                },
+                disabled: function (maschera) {
+                    return false;
+                }
+            },
+            resetFilterBtn: {
+                 src: 'images/reset-filter.svg',
+                tooltip: "Rimuovi tutti i filtri Check e Dirty",
+                label: 'Reset Filtri',
+                listener: function (gridOptions, maschera) {
+                    gridOptions.showOnlyCheck = false;
+                    gridOptions.showOnlyDirty = false;
+                    gridOptions.gridApi.core.refresh();
+                },
+                disabled: function (maschera) {
+                    return false;
+                }
+            },
             loadListaMovimenti: function (idDb) {
                 var dto = {};                                
                 dto.id_db = dataService.data.idDb;

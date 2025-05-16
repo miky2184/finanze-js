@@ -56,9 +56,6 @@
           };
 
         /* BUTTON */
-        $scope.showOnlyCheck = false;
-        $scope.showOnlyDirty = false;
-
         $scope.actionButtons = [];
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
@@ -66,46 +63,9 @@
         $scope.actionButtons.push(listaMovimentiService.addOneYearBtn);
         $scope.actionButtons.push(listaMovimentiService.refreshBtn);        
         
-        $scope.actionButtons.push({
-            src: 'images/filter-remove.svg',
-            tooltip: "Rimuovi tutti i filtri",
-            listener: function (gridOptions, maschera) {
-                if (gridOptions && gridOptions.gridApi) {
-                    gridOptions.gridApi.core.clearAllFilters();
-                }
-            },
-            disabled: function (maschera) {
-                return false;
-            },
-            label: 'Clear Filters'
-        });
-
-        $scope.actionButtons.push({
-            src: 'images/filter-check.svg',
-            tooltip: "Mostra solo Check",
-            label: 'Check',
-            listener: function () {
-                $scope.showOnlyCheck = !$scope.showOnlyCheck;
-                listaMovimentiService.gridOptions.gridApi.core.refresh();
-            },
-            disabled: function () {
-                return false;
-            }
-        });
-
-
-        $scope.actionButtons.push({
-            src: 'images/filter-check.svg',
-            tooltip: "Mostra solo Check",
-            label: 'Check',
-            listener: function () {
-                $scope.showOnlyDirty = !$scope.showOnlyDirty;
-                listaMovimentiService.gridOptions.gridApi.core.refresh();
-            },
-            disabled: function () {
-                return false;
-            }
-        });
+        $scope.actionButtons.push(listaMovimentiService.resetFilterBtn);
+        $scope.actionButtons.push(listaMovimentiService.checkBtn);
+        $scope.actionButtons.push(listaMovimentiService.dirtyBtn);
 
 
         $scope.saveButtons = [];
@@ -128,6 +88,8 @@
             TAB LISTA MOVIMENTI
          *********************************/
         $scope.gridOptions = listaMovimentiService.gridOptions;
+        $scope.gridOptions.showOnlyCheck = false;
+        $scope.gridOptions.showOnlyDirty = false;
 
         /*********************
           TAB BILANCIO
