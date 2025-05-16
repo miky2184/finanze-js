@@ -317,6 +317,14 @@
                     cellTemplate: 'templates/rows/checkboxIcon.html',
                     buttonNgClass: 'fab fa-telegram-plane',                                        
                     cellClass: 'text-center'
+                },{
+                    field: 'fissa',
+                    displayName: '🔒',
+                    width: '3%',
+                    cellTooltip: true,
+                    cellTemplate: 'templates/rows/checkboxIcon.html',
+                    buttonNgClass: 'fas fa-lock',                                        
+                    cellClass: 'text-center'
                 }, {
                     field: 'importo',
                     displayName: 'IMPORTO',
@@ -621,6 +629,7 @@
                                                         newRow.importo = Number(row['value']);
                                                         newRow.info = row['info'];
                                                         newRow.check = row['check_spesa'];
+                                                        newRow.fissa = row['fissa'];
                                                         newRow.anno = new Date(row['data_val']).getFullYear();
                                                         newRow.mese = new Date(row['data_val']).getMonth() + 1;
                                                         return resultsData.push(newRow);
