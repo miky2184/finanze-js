@@ -57,6 +57,7 @@
 
         /* BUTTON */
         $scope.showOnlyCheck = false;
+        $scope.showOnlyDirty = false;
 
         $scope.actionButtons = [];
         $scope.actionButtons.push(listaMovimentiService.addBtn);
@@ -85,16 +86,35 @@
             label: 'Check',
             listener: function (gridOptions, maschera) {
                 if (!$scope.showOnlyCheck) {
-                    gridOptions.data = dataService.data.backupData.filter(function (row) {
+                    gridOptions.data = listaMovimentiService.gridOptions.data.filter(function (row) {
                         return row.check === true;
                     });
                 } else {
-                    gridOptions.data = angular.copy(dataService.data.backupData);
+                    gridOptions.data = angular.copy(listaMovimentiService.gridOptions.data);
                 }
                 $scope.showOnlyCheck = !$scope.showOnlyCheck;
             },
             disabled: function (maschera) {
                 return dataService.data.dirty;
+            }
+        });
+
+              $scope.actionButtons.push({
+            src: 'images/filter-check.svg',
+            tooltip: "Mostra Dirty",
+            label: 'Dirty',
+            listener: function (gridOptions, maschera) {
+                if (!$scope.showOnlyDirty) {
+                    gridOptions.data = listaMovimentiService.gridOptions.data.filter(function (row) {
+                        return row.dirty === true;
+                    });
+                } else {
+                    gridOptions.data = angular.copy(listaMovimentiService.gridOptions.data);
+                }
+                $scope.showOnlyDirty = !$scope.showOnlyDirty;
+            },
+            disabled: function (maschera) {
+                return false;
             }
         });
 
