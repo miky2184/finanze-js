@@ -245,27 +245,5 @@
         return function (text) {
             return $sce.trustAsHtml(text);
         };
-    }]).directive('lucideIcon', function () {
-                return {
-                    restrict: 'E',
-                    scope: {
-                        name: '@',
-                        size: '@',
-                        iconClass: '@'
-                    },
-                    link: function(scope, element) {
-                        if (window.lucide && lucide[scope.name]) {
-                            // Usa la funzione per creare direttamente l'elemento SVG
-                            const svgElement = lucide[scope.name]({ size: parseInt(scope.size) || 24 });
-                            if (scope.iconClass) {
-                                svgElement.classList.add(scope.iconClass);
-                            }
-                            element[0].innerHTML = '';
-                            element[0].appendChild(svgElement);
-                        } else {
-                            console.error('Lucide Icon non trovata o libreria non caricata correttamente:', scope.name);
-                        }
-                    }
-                };
-    });
+    }]);
 }());
