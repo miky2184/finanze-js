@@ -56,12 +56,34 @@
           };
 
         /* BUTTON */
+        $scope.showOnlyCheck = false;
+
         $scope.actionButtons = [];
         $scope.actionButtons.push(listaMovimentiService.addBtn);
         $scope.actionButtons.push(listaMovimentiService.deleteBtn);
         $scope.actionButtons.push(listaMovimentiService.copyBtn);
         $scope.actionButtons.push(listaMovimentiService.refreshBtn);
         $scope.actionButtons.push(listaMovimentiService.addOneYearBtn);
+
+
+        $scope.actionButtons.push({
+            src: 'images/filter-check.svg',
+            tooltip: "Mostra solo Check",
+            label: 'Check',
+            listener: function (gridOptions, maschera) {
+                if (!$scope.showOnlyCheck) {
+                    gridOptions.data = dataService.data.backupData.filter(function (row) {
+                        return row.check === true;
+                    });
+                } else {
+                    gridOptions.data = angular.copy(dataService.data.backupData);
+                }
+                $scope.showOnlyCheck = !$scope.showOnlyCheck;
+            },
+            disabled: function (maschera) {
+                return false;
+            }
+        });
 
         $scope.saveButtons = [];
         $scope.saveButtons.push(commonService.printBtn);
