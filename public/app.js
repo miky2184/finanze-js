@@ -81,7 +81,7 @@
                 $scope.showOnlyCheck = !$scope.showOnlyCheck;
             },
             disabled: function (maschera) {
-                return dataService.data.dirty == false; 
+                return dataService.data.dirty;
             }
         });
 
