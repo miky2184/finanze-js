@@ -62,6 +62,24 @@
             }
         };
         var srvc = {
+            updateFilterPriority: function () {
+                listaMovimentiService.gridOptions.data.forEach(function (row) {
+                    var checkActive = srvc.gridOptions.showOnlyCheck;
+                    var dirtyActive = srvc.gridOptions.showOnlyDirty;
+                    if (checkActive && dirtyActive) {
+                        if (row.check && row.dirty) row.filterPriority = 0;
+                        else if (row.check || row.dirty) row.filterPriority = 1;
+                        else row.filterPriority = 2;
+                    } else if (checkActive) {
+                        row.filterPriority = row.check ? 0 : 1;
+                    } else if (dirtyActive) {
+                        row.filterPriority = row.dirty ? 0 : 1;
+                    } else {
+                        row.filterPriority = 0;
+                    }
+                });
+                srvc.gridOptions.gridApi.core.notifyDataChange(uiGridConstants.dataChange.EDIT);
+            },
             gridOptions: {
                 columnVirtualizationThreshold: 100,
                 showGridFooter: false,
@@ -387,6 +405,14 @@
                             placeholder: 'less than'
                         }
                     ]
+                },{
+                    field: 'filterPriority',
+                    displayName: '',
+                    visible: false,
+                    enableSorting: true,
+                    sort: {
+                        direction: uiGridConstants.ASC
+                    }
                 }],
                 data: [],
                 onRegisterApi: function (gridApi) {
@@ -554,7 +580,7 @@
                 label: 'Check',
                 listener: function (gridOptions, maschera) {
                     gridOptions.showOnlyCheck = !gridOptions.showOnlyCheck;
-                    gridOptions.gridApi.core.refresh();
+                    srvc.updateFilterPriority();
                 },
                 disabled: function (maschera) {
                     return false;
@@ -566,7 +592,7 @@
                 label: 'Dirty',
                 listener: function (gridOptions, maschera) {
                     gridOptions.showOnlyDirty = !gridOptions.showOnlyDirty;
-                    gridOptions.gridApi.core.refresh();
+                    srvc.updateFilterPriority();
                 },
                 disabled: function (maschera) {
                     return false;
@@ -579,7 +605,7 @@
                 listener: function (gridOptions, maschera) {
                     gridOptions.showOnlyCheck = false;
                     gridOptions.showOnlyDirty = false;
-                    gridOptions.gridApi.core.refresh();
+                    srvc.updateFilterPriority();
                 },
                 disabled: function (maschera) {
                     return false;
