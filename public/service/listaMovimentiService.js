@@ -421,7 +421,7 @@
                 }
             },
             addOneYearBtn: {
-                src: 'images/oneyear.svg',
+                src: 'fa-solid fa-1 fa-xl',
                 tooltip: "Duplica Riga (+1 anno)",
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM") {
@@ -492,7 +492,7 @@
                 label: 'Add'
             },
             deleteBtn: {
-                src: 'images/cancel.svg',
+                src: 'fa-solid fa-eraser fa-xl',
                 tooltip: "Cancella Riga",
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
@@ -510,7 +510,7 @@
                 label: 'Delete'
             },
             copyBtn: {
-                src: 'images/copy.svg',
+                src: 'fa-solid fa-copy fa-xl',
                 tooltip: "Duplica Riga",
                 listener: function (gridOptions, maschera) {
                     if (maschera === "LM"){
@@ -547,7 +547,7 @@
                 label: 'Copy'
             },
             refreshBtn: {
-                src: 'images/sync.svg',
+                src: 'fa-solid fa-arrows-rotate fa-xl',
                 tooltip: "Refresh Dati",
                 listener: function (gridOptions, maschera) {
                     modalService.showModal('Ricerca in corso...');
@@ -575,7 +575,7 @@
                 label: 'Refresh'
             },
             checkBtn: {
-                src: 'images/filter-check.svg',
+                src: 'fa-solid fa-filter fa-xl',
                 tooltip: "Mostra solo Check",
                 label: 'Check',
                 listener: function (gridOptions, maschera) {
@@ -587,7 +587,7 @@
                 }
             },
             dirtyBtn: {
-                src: 'images/filter-check.svg',
+                src: 'fa-solid fa-user-pen fa-xl',
                 tooltip: "Mostra solo Dirty",
                 label: 'Dirty',
                 listener: function (gridOptions, maschera) {
@@ -599,7 +599,7 @@
                 }
             },
             resetFilterBtn: {
-                 src: 'images/reset-filter.svg',
+                 src: 'fa-solid fa-filter-circle-xmark fa-xl',
                 tooltip: "Rimuovi tutti i filtri Check e Dirty",
                 label: 'Reset Filtri',
                 listener: function (gridOptions, maschera) {
