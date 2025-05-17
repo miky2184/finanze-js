@@ -587,7 +587,7 @@
                 label: 'Refresh'
             },
             checkBtn: {
-                src: 'fa-solid fa-filter fa-xl',
+                src: 'fa-solid fa-magnifying-glass fa-xl',
                 tooltip: "Mostra solo Check",
                 label: 'Check',
                 listener: function (gridOptions, maschera) {
@@ -600,7 +600,7 @@
                 }
             },
             dirtyBtn: {
-                src: 'fa-solid fa-user-pen fa-xl',
+                src: 'fa-solid fa-pencil fa-xl',
                 tooltip: "Mostra solo Dirty",
                 label: 'Dirty',
                 listener: function (gridOptions, maschera) {
@@ -614,12 +614,12 @@
             },
             resetFilterBtn: {
                  src: 'fa-solid fa-filter-circle-xmark fa-xl',
-                tooltip: "Rimuovi tutti i filtri Check e Dirty",
+                tooltip: "Rimuovi tutti i filtri",
                 label: 'Reset Filtri',
                 listener: function (gridOptions, maschera) {
-                    gridOptions.showOnlyCheck = false;
-                    gridOptions.showOnlyDirty = false;
-                    srvc.updateFilterPriority();
+                    if (gridOptions && gridOptions.gridApi) {
+                        gridOptions.gridApi.core.clearAllFilters();
+                    }
                 },
                 disabled: function (maschera) {
                     return false;
