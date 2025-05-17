@@ -21,7 +21,7 @@
 
         <!-- Pulsante Copia Budget -->
         <md-button aria-label="Copia Anno precedente" class="md-icon-button md-primary" ng-click="copyBudgetFromPreviousYear()">
-            <md-icon md-svg-src="images/copy.svg"></md-icon>
+            <i class="fa-solid fa-copy fa-xl"></i>
             <md-tooltip>Copia budget dall'anno precedente</md-tooltip>
         </md-button>
     </div>
@@ -48,7 +48,7 @@
                          class="md-fab md-mini md-primary" 
                          ng-click="button.listener(gridDefBudget, 'DB')" 
                          ng-disabled="button.disabled('DB')">
-                  <md-icon md-svg-src="{{button.src}}"></md-icon>
+                  <i class="{{button.src}}"></i>                  
                   <md-tooltip>{{button.tooltip}}</md-tooltip>
               </md-button>
           </div>          

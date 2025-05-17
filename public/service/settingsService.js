@@ -15,7 +15,7 @@
             },
             addSettingBtn: {
                 label: '+',
-                src: 'images/add.svg',
+                src: 'fa-solid fa-plus fa-xl',
                 listener: function (gridOptions, type, settings) {
                     dataService.data.dirty = true;
                     var newSetting = {};                    
@@ -62,7 +62,7 @@
             },
             deleteSettingBtn: {
                 label: '-',
-                src: 'images/cancel.svg',
+                src: 'fa-solid fa-eraser fa-xl',
                 listener: function (gridOptions, type) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
