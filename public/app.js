@@ -90,6 +90,15 @@
         $scope.gridOptions = listaMovimentiService.gridOptions;
         $scope.gridOptions.showOnlyCheck = false;
         $scope.gridOptions.showOnlyDirty = false;
+        $scope.shouldHideRow = function(row) {
+            if ($scope.gridOptions.showOnlyCheck && !row.check) {
+                return true;
+            }
+            if ($scope.gridOptions.showOnlyDirty && !row.dirty) {
+                return true;
+            }
+            return false;
+        };
 
         /*********************
           TAB BILANCIO

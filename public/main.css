@@ -696,3 +696,7 @@ label-settings {
       background-color: #ccc !important; /* Sfondo grigiato */
       color: #888 !important; /* Testo più chiaro */
   } 
+
+ .hiddenRow {
+    display: none !important;
+} 

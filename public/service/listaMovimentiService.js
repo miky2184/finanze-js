@@ -62,6 +62,18 @@
             }
         };
         var srvc = {
+            orderCheckDirtyRows: function() {
+                let data = listaMovimentiService.gridOptions.data;
+                data.sort((a, b) => {
+                    if (a.deleted && !b.deleted) return -1;
+                    if (!a.deleted && b.deleted) return 1;
+                    if (a.check && !b.check) return -1;
+                    if (!a.check && b.check) return 1;
+                    if (a.dirty && !b.dirty) return -1;
+                    if (!a.dirty && b.dirty) return 1;
+                    return 0;
+                });
+            },
             updateFilterPriority: function () {
                 srvc.gridOptions.data.forEach(function (row) {
                     var checkActive = srvc.gridOptions.showOnlyCheck;
@@ -580,7 +592,8 @@
                 label: 'Check',
                 listener: function (gridOptions, maschera) {
                     gridOptions.showOnlyCheck = !gridOptions.showOnlyCheck;
-                    srvc.updateFilterPriority();
+                    srvc.orderCheckDirtyRows();
+                    gridOptions.gridApi.core.refresh();
                 },
                 disabled: function (maschera) {
                     return false;
@@ -592,7 +605,8 @@
                 label: 'Dirty',
                 listener: function (gridOptions, maschera) {
                     gridOptions.showOnlyDirty = !gridOptions.showOnlyDirty;
-                    srvc.updateFilterPriority();
+                    srvc.orderCheckDirtyRows();
+                    gridOptions.gridApi.core.refresh();
                 },
                 disabled: function (maschera) {
                     return false;

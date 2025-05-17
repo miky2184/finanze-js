@@ -1,7 +1,5 @@
  <div
   ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
-  ng-if="(!grid.appScope.gridOptions.showOnlyCheck || row.entity.check) &&
-         (!grid.appScope.gridOptions.showOnlyDirty || row.entity.dirty)"
   ui-grid-one-bind-id-grid="rowRenderIndex + '-' + col.uid + '-cell'"
   class="ui-grid-cell"
   ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader, 
@@ -9,7 +7,8 @@
               'newRow': !row.entity.deleted && row.entity.newRow, 
               'massiveRow': row.entity.massiveRow,
               'checkRow': !row.entity.deleted && row.entity.check,
-              'dirtyRow': !row.entity.deleted && !row.entity.newRow && row.entity.dirty
+              'dirtyRow': !row.entity.deleted && !row.entity.newRow && row.entity.dirty,
+              'hiddenRow': shouldHideRow(row.entity)
             }"
   role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
   ui-grid-cell>
