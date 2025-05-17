@@ -63,7 +63,7 @@
         };
         var srvc = {
             orderCheckDirtyRows: function() {
-                let data = listaMovimentiService.gridOptions.data;
+                let data = srvc.gridOptions.data;
                 data.sort((a, b) => {
                     if (a.deleted && !b.deleted) return -1;
                     if (!a.deleted && b.deleted) return 1;
