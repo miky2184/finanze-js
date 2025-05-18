@@ -10,20 +10,6 @@
 
         // Inizializza il tab attivo
         $scope.activeTab = 0;
-        
-        /*********************
-         *  TAB DASHBOARD
-         *********************/
-
-        $scope.dashboard = {
-            entrate: 0,
-            uscite: 0,
-            netto: 0,
-            check: 0,
-            dirty: 0,
-            new: 0,
-            deleted: 0
-        };
 
         // Cambia il tab attivo
         $scope.changeTab = function (index) {
@@ -244,18 +230,6 @@
         $scope.loadPassword = function () {
             return passwordService.loadPassword();
         };
-
-        /*
-        $scope.updateDashboard = function () {
-            var data = listaMovimentiService.gridOptions.data;
-            $scope.dashboard.entrate = _.sumBy(data, row => row.importo > 0 ? row.importo : 0);
-            $scope.dashboard.uscite = _.sumBy(data, row => row.importo < 0 ? row.importo : 0);
-            $scope.dashboard.netto = $scope.dashboard.entrate + $scope.dashboard.uscite;
-            $scope.dashboard.check = _.filter(data, {check: true}).length;
-            $scope.dashboard.dirty = _.filter(data, {dirty: true}).length;
-            $scope.dashboard.new = _.filter(data, {newRow: true}).length;
-            $scope.dashboard.deleted = _.filter(data, {deleted: true}).length;
-        }; */
 
 
     }]).filter('griddropdown', function () {
