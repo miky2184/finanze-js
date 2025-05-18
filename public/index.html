@@ -89,7 +89,7 @@
            <!-- <md-content layout="column" flex> -->
             <header layout="column" class="header">
                 <md-tabs md-dynamic-height md-border-bottom md-no-disconnect md-selected="activeTab">
-                    <md-tab md-on-select="changeTab(11); updateDashboard()" ng-if="admin()">
+                    <md-tab md-on-select="handleDashboardTab()" ng-if="admin()">
                         <md-tab-label>
                             <md-icon class="material-icons">dashboard</md-icon> Dashboard
                         </md-tab-label>

@@ -234,6 +234,11 @@
         /*********************
          *  TAB DASHBOARD
          *********************/
+        $scope.handleDashboardTab = function () {
+            $scope.changeTab(11);
+            $scope.updateDashboard(); // sicuro qui, in contesto Angular
+        };
+
         $scope.dashboard = {
             entrate: 0,
             uscite: 0,
