@@ -1,0 +1,22 @@
+<div layout="row" layout-wrap layout-align="start start" layout-padding>
+  <md-card flex="20" layout="column" class="dashboard-card md-primary">
+    <md-card-title><md-icon class="fas fa-coins"></md-icon> Entrate</md-card-title>
+    <md-card-content>{{dashboard.entrate | currency}}</md-card-content>
+  </md-card>
+  <md-card flex="20" layout="column" class="dashboard-card md-warn">
+    <md-card-title><md-icon class="fas fa-receipt"></md-icon> Uscite</md-card-title>
+    <md-card-content>{{dashboard.uscite | currency}}</md-card-content>
+  </md-card>
+  <md-card flex="20" layout="column" class="dashboard-card">
+    <md-card-title><md-icon class="fas fa-wallet"></md-icon> Saldo</md-card-title>
+    <md-card-content>{{dashboard.netto | currency}}</md-card-content>
+  </md-card>
+  <md-card flex="20" layout="column" class="dashboard-card">
+    <md-card-title><md-icon class="fas fa-check-circle"></md-icon> Check</md-card-title>
+    <md-card-content>{{dashboard.check}}</md-card-content>
+  </md-card>
+  <md-card flex="20" layout="column" class="dashboard-card">
+    <md-card-title><md-icon class="fas fa-pencil-alt"></md-icon> Modifiche</md-card-title>
+    <md-card-content>{{dashboard.dirty}}</md-card-content>
+  </md-card>
+</div>
