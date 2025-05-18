@@ -234,10 +234,6 @@
         /*********************
          *  TAB DASHBOARD
          *********************/
-        $scope.handleDashboardTab = function () {
-            $scope.changeTab(11);
-            $scope.updateDashboard(); // sicuro qui, in contesto Angular
-        };
 
         $scope.dashboard = {
             entrate: 0,
@@ -248,7 +244,7 @@
             new: 0,
             deleted: 0
         };
-
+        /*
         $scope.updateDashboard = function () {
             var data = listaMovimentiService.gridOptions.data;
             $scope.dashboard.entrate = _.sumBy(data, row => row.importo > 0 ? row.importo : 0);
@@ -258,7 +254,7 @@
             $scope.dashboard.dirty = _.filter(data, {dirty: true}).length;
             $scope.dashboard.new = _.filter(data, {newRow: true}).length;
             $scope.dashboard.deleted = _.filter(data, {deleted: true}).length;
-        };
+        }; */
 
 
     }]).filter('griddropdown', function () {
