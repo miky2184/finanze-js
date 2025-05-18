@@ -10,6 +10,20 @@
 
         // Inizializza il tab attivo
         $scope.activeTab = 0;
+        
+        /*********************
+         *  TAB DASHBOARD
+         *********************/
+
+        $scope.dashboard = {
+            entrate: 0,
+            uscite: 0,
+            netto: 0,
+            check: 0,
+            dirty: 0,
+            new: 0,
+            deleted: 0
+        };
 
         // Cambia il tab attivo
         $scope.changeTab = function (index) {
@@ -231,19 +245,6 @@
             return passwordService.loadPassword();
         };
 
-        /*********************
-         *  TAB DASHBOARD
-         *********************/
-
-        $scope.dashboard = {
-            entrate: 0,
-            uscite: 0,
-            netto: 0,
-            check: 0,
-            dirty: 0,
-            new: 0,
-            deleted: 0
-        };
         /*
         $scope.updateDashboard = function () {
             var data = listaMovimentiService.gridOptions.data;
