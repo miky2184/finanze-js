@@ -64,7 +64,7 @@
         $scope.actionButtons.push(listaMovimentiService.refreshBtn);        
         
         $scope.actionButtons.push(listaMovimentiService.resetFilterBtn);
-        $scope.actionButtons.push(listaMovimentiService.checkBtn);
+        //$scope.actionButtons.push(listaMovimentiService.checkBtn);
         $scope.actionButtons.push(listaMovimentiService.dirtyBtn);
 
 
