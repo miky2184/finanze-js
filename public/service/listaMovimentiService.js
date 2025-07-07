@@ -106,7 +106,7 @@
                 columnDefs: [{
                     field: 'data',
                     displayName: 'DATA',
-                    width: '6%',
+                    width: '5%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
                     cellClass: 'text-center',
@@ -284,7 +284,7 @@
                     field: 'tipo_conto',
                     name: 'tipo_conto',
                     displayName: 'TIPO CONTO',
-                    width: '7%',
+                    width: '8%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'tipo_conto',
                     editDropdownValueLabel: 'label',
