@@ -504,7 +504,7 @@
                 label: 'Add'
             },
             deleteBtn: {
-                src: 'fa-solid fa-eraser fa-xl',
+                src: 'fa-solid fa-minus fa-xl',
                 tooltip: "Cancella Riga",
                 listener: function (gridOptions, maschera) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {

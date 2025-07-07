@@ -62,7 +62,7 @@
             },
             deleteSettingBtn: {
                 label: '-',
-                src: 'fa-solid fa-eraser fa-xl',
+                src: 'fa-solid fa-minus fa-xl',
                 listener: function (gridOptions, type) {
                     if (gridOptions.gridApi.selection.getSelectedRows() && gridOptions.gridApi.selection.getSelectedRows().length > 0) {
                         gridOptions.gridApi.selection.getSelectedRows().forEach(function (row) {
