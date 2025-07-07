@@ -106,7 +106,7 @@
                 columnDefs: [{
                     field: 'data',
                     displayName: 'DATA',
-                    width: '4%',
+                    width: '6%',
                     type: 'date',
                     cellFilter: 'date:\'yyyy-MM-dd\'',
                     cellClass: 'text-center',
@@ -196,7 +196,7 @@
                     name: 'sottocategoria',
                     displayName: 'SOTTOCATEGORIA',
                     field: 'sottocategoria',
-                    width: '12%',
+                    width: '10%',
                     editableCellTemplate: 'ui-grid/dropdownEditor',
                     editDropdownIdLabel: 'sottocategoria',
                     editDropdownValueLabel: 'label',
