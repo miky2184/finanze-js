@@ -46,7 +46,8 @@
                                 'y': d[key]
                             };
                         }),
-                        color: value.hex_color             
+                        color: value.hex_color,
+                        area: true
                     });
                 }                
             });
