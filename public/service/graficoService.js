@@ -130,14 +130,13 @@
         graficoService.loadGraficoSpesoTotalePerAnno = function (year){
             dataService.data.optionsGraficoSpesoTotalePerAnno= {             
                 chart: {
-                    type: 'cumulativeLineChart',
+                    type: 'lineChart',
                     height: 650,
                     showControls: false,
                     showValues: true,
                     duration: 500,                       
                     x: function(d){return d.label;},
                     y: function(d){return d.value;},
-                    average: function(d) { return d.value; },
                     xAxis: {
                         axisLabel: 'Year',
                         showMaxMin: false
