@@ -137,6 +137,7 @@
                     duration: 500,                       
                     x: function(d){return d.label;},
                     y: function(d){return d.value;},
+                    average: function(d) { return d.value; },
                     xAxis: {
                         axisLabel: 'Year',
                         showMaxMin: false
