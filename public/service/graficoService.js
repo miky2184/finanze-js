@@ -130,7 +130,7 @@
         graficoService.loadGraficoSpesoTotalePerAnno = function (year){
             dataService.data.optionsGraficoSpesoTotalePerAnno= {             
                 chart: {
-                    type: 'multiBarHorizontalChart',
+                    type: 'cumulativeLineChart',
                     height: 650,
                     showControls: false,
                     showValues: true,
