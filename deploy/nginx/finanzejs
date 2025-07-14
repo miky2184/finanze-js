@@ -1,0 +1,21 @@
+server {
+    listen 3000 ssl;
+    server_name miky2184.ddns.net;
+
+    ssl_certificate /etc/letsencrypt/live/miky2184.ddns.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/miky2184.ddns.net/privkey.pem;
+
+    root /home/miky2184/Documents/Workspace/finanze-js/public/;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+        add_header Pragma "no-cache";
+        add_header Expires 0;
+    }
+
+    # Log files
+    access_log /var/log/nginx/finanzejs-access.log;
+    error_log /var/log/nginx/finanzejs-app.error.log;
+}

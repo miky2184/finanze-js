@@ -17,3 +17,4 @@ public/share/*
 public/.vscode/
 public/jsconfig.json
 public/service/dist/
+.idea
